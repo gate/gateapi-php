@@ -3478,7 +3478,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiers
      *
-     * Query unified account tiered discount
+     * Query unified account tiered
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3494,7 +3494,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiersWithHttpInfo
      *
-     * Query unified account tiered discount
+     * Query unified account tiered
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3547,7 +3547,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiersAsync
      *
-     * Query unified account tiered discount
+     * Query unified account tiered
      *
      *
      * @throws \InvalidArgumentException
@@ -3566,7 +3566,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiersAsyncWithHttpInfo
      *
-     * Query unified account tiered discount
+     * Query unified account tiered
      *
      *
      * @throws \InvalidArgumentException

@@ -123,7 +123,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -145,7 +145,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -204,7 +204,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -229,7 +229,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -281,7 +281,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

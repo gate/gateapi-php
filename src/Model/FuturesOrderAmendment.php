@@ -56,7 +56,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'size' => 'int',
         'price' => 'string',
-        'amend_text' => 'string'
+        'amend_text' => 'string',
+        'text' => 'string'
     ];
 
     /**
@@ -67,7 +68,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'size' => 'int64',
         'price' => null,
-        'amend_text' => null
+        'amend_text' => null,
+        'text' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'size' => 'size',
         'price' => 'price',
-        'amend_text' => 'amend_text'
+        'amend_text' => 'amend_text',
+        'text' => 'text'
     ];
 
     /**
@@ -110,7 +113,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     protected static $setters = [
         'size' => 'setSize',
         'price' => 'setPrice',
-        'amend_text' => 'setAmendText'
+        'amend_text' => 'setAmendText',
+        'text' => 'setText'
     ];
 
     /**
@@ -121,7 +125,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     protected static $getters = [
         'size' => 'getSize',
         'price' => 'getPrice',
-        'amend_text' => 'getAmendText'
+        'amend_text' => 'getAmendText',
+        'text' => 'getText'
     ];
 
     /**
@@ -187,6 +192,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -281,6 +287,30 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     public function setAmendText($amend_text)
     {
         $this->container['amend_text'] = $amend_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string|null
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string|null $text Internal users can modify information in the text field.
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
 
         return $this;
     }

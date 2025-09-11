@@ -37,5 +37,6 @@ Name | Type | Description | Notes
 **open_time** | **int** | First Open Time | [optional] 
 **risk_limit_table** | **string** | Risk limit table ID | [optional] [readonly] 
 **average_maintenance_rate** | **string** | Average maintenance margin rate | [optional] [readonly] 
+**pid** | **int** | Sub-account position ID | [optional] [readonly] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

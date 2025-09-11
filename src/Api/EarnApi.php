@@ -2167,7 +2167,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string[]
+     * @return object
      */
     public function findCoin($find_coin)
     {
@@ -2184,7 +2184,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
     public function findCoinWithHttpInfo($find_coin)
     {
@@ -2214,7 +2214,7 @@ class EarnApi
             );
         }
 
-        $returnType = 'string[]';
+        $returnType = 'object';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2261,7 +2261,7 @@ class EarnApi
      */
     public function findCoinAsyncWithHttpInfo($find_coin)
     {
-        $returnType = 'string[]';
+        $returnType = 'object';
         $request = $this->findCoinRequest($find_coin);
 
         return $this->client

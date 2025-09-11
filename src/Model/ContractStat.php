@@ -66,7 +66,8 @@ class ContractStat implements ModelInterface, ArrayAccess
         'open_interest' => 'int',
         'open_interest_usd' => 'double',
         'top_lsr_account' => 'double',
-        'top_lsr_size' => 'double'
+        'top_lsr_size' => 'double',
+        'mark_price' => 'double'
     ];
 
     /**
@@ -87,7 +88,8 @@ class ContractStat implements ModelInterface, ArrayAccess
         'open_interest' => 'int64',
         'open_interest_usd' => 'double',
         'top_lsr_account' => 'double',
-        'top_lsr_size' => 'double'
+        'top_lsr_size' => 'double',
+        'mark_price' => 'double'
     ];
 
     /**
@@ -129,7 +131,8 @@ class ContractStat implements ModelInterface, ArrayAccess
         'open_interest' => 'open_interest',
         'open_interest_usd' => 'open_interest_usd',
         'top_lsr_account' => 'top_lsr_account',
-        'top_lsr_size' => 'top_lsr_size'
+        'top_lsr_size' => 'top_lsr_size',
+        'mark_price' => 'mark_price'
     ];
 
     /**
@@ -150,7 +153,8 @@ class ContractStat implements ModelInterface, ArrayAccess
         'open_interest' => 'setOpenInterest',
         'open_interest_usd' => 'setOpenInterestUsd',
         'top_lsr_account' => 'setTopLsrAccount',
-        'top_lsr_size' => 'setTopLsrSize'
+        'top_lsr_size' => 'setTopLsrSize',
+        'mark_price' => 'setMarkPrice'
     ];
 
     /**
@@ -171,7 +175,8 @@ class ContractStat implements ModelInterface, ArrayAccess
         'open_interest' => 'getOpenInterest',
         'open_interest_usd' => 'getOpenInterestUsd',
         'top_lsr_account' => 'getTopLsrAccount',
-        'top_lsr_size' => 'getTopLsrSize'
+        'top_lsr_size' => 'getTopLsrSize',
+        'mark_price' => 'getMarkPrice'
     ];
 
     /**
@@ -247,6 +252,7 @@ class ContractStat implements ModelInterface, ArrayAccess
         $this->container['open_interest_usd'] = isset($data['open_interest_usd']) ? $data['open_interest_usd'] : null;
         $this->container['top_lsr_account'] = isset($data['top_lsr_account']) ? $data['top_lsr_account'] : null;
         $this->container['top_lsr_size'] = isset($data['top_lsr_size']) ? $data['top_lsr_size'] : null;
+        $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
     }
 
     /**
@@ -581,6 +587,30 @@ class ContractStat implements ModelInterface, ArrayAccess
     public function setTopLsrSize($top_lsr_size)
     {
         $this->container['top_lsr_size'] = $top_lsr_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets mark_price
+     *
+     * @return double|null
+     */
+    public function getMarkPrice()
+    {
+        return $this->container['mark_price'];
+    }
+
+    /**
+     * Sets mark_price
+     *
+     * @param double|null $mark_price Mark price
+     *
+     * @return $this
+     */
+    public function setMarkPrice($mark_price)
+    {
+        $this->container['mark_price'] = $mark_price;
 
         return $this;
     }

@@ -418,7 +418,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
     /**
      * Sets subtype
      *
-     * @param string|null $subtype 子类型
+     * @param string|null $subtype SubType
      *
      * @return $this
      */
@@ -514,7 +514,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
     /**
      * Sets update_stamp
      *
-     * @param int|null $update_stamp 更新时间戳
+     * @param int|null $update_stamp UpdateTimestamp
      *
      * @return $this
      */

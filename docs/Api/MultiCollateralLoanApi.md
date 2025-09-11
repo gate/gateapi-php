@@ -43,7 +43,7 @@ $apiInstance = new GateApi\Api\MultiCollateralLoanApi(
 $associate_array['page'] = 1; // int | Page number
 $associate_array['limit'] = 10; // int | Maximum number of records returned in a single list
 $associate_array['sort'] = 'ltv_asc'; // string | Sort type: `time_desc` - Created time descending (default), `ltv_asc` - Collateral ratio ascending, `ltv_desc` - Collateral ratio descending.
-$associate_array['order_type'] = 'current'; // string | Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
+$associate_array['order_type'] = 'current'; // string | Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
 
 try {
     $result = $apiInstance->listMultiCollateralOrders($associate_array);
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number | [optional] [default to 1]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 10]
  **sort** | **string**| Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. | [optional]
- **order_type** | **string**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specifiedOrder type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | [optional]
+ **order_type** | **string**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | [optional]
 
 ### Return type
 

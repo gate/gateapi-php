@@ -92,7 +92,9 @@ class Contract implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'funding_cap_ratio' => 'string',
         'status' => 'string',
-        'launch_time' => 'int'
+        'launch_time' => 'int',
+        'delisting_time' => 'int',
+        'delisted_time' => 'int'
     ];
 
     /**
@@ -138,7 +140,9 @@ class Contract implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'funding_cap_ratio' => null,
         'status' => null,
-        'launch_time' => 'int64'
+        'launch_time' => 'int64',
+        'delisting_time' => 'int64',
+        'delisted_time' => 'int64'
     ];
 
     /**
@@ -205,7 +209,9 @@ class Contract implements ModelInterface, ArrayAccess
         'create_time' => 'create_time',
         'funding_cap_ratio' => 'funding_cap_ratio',
         'status' => 'status',
-        'launch_time' => 'launch_time'
+        'launch_time' => 'launch_time',
+        'delisting_time' => 'delisting_time',
+        'delisted_time' => 'delisted_time'
     ];
 
     /**
@@ -251,7 +257,9 @@ class Contract implements ModelInterface, ArrayAccess
         'create_time' => 'setCreateTime',
         'funding_cap_ratio' => 'setFundingCapRatio',
         'status' => 'setStatus',
-        'launch_time' => 'setLaunchTime'
+        'launch_time' => 'setLaunchTime',
+        'delisting_time' => 'setDelistingTime',
+        'delisted_time' => 'setDelistedTime'
     ];
 
     /**
@@ -297,7 +305,9 @@ class Contract implements ModelInterface, ArrayAccess
         'create_time' => 'getCreateTime',
         'funding_cap_ratio' => 'getFundingCapRatio',
         'status' => 'getStatus',
-        'launch_time' => 'getLaunchTime'
+        'launch_time' => 'getLaunchTime',
+        'delisting_time' => 'getDelistingTime',
+        'delisted_time' => 'getDelistedTime'
     ];
 
     /**
@@ -428,6 +438,8 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['funding_cap_ratio'] = isset($data['funding_cap_ratio']) ? $data['funding_cap_ratio'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['launch_time'] = isset($data['launch_time']) ? $data['launch_time'] : null;
+        $this->container['delisting_time'] = isset($data['delisting_time']) ? $data['delisting_time'] : null;
+        $this->container['delisted_time'] = isset($data['delisted_time']) ? $data['delisted_time'] : null;
     }
 
     /**
@@ -1365,7 +1377,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted)
+     * @param string|null $status Contract status types include: prelaunch (pre-launch), trading (active), delisting (delisting), delisted (delisted), circuit_breaker (circuit breaker)
      *
      * @return $this
      */
@@ -1396,6 +1408,54 @@ class Contract implements ModelInterface, ArrayAccess
     public function setLaunchTime($launch_time)
     {
         $this->container['launch_time'] = $launch_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets delisting_time
+     *
+     * @return int|null
+     */
+    public function getDelistingTime()
+    {
+        return $this->container['delisting_time'];
+    }
+
+    /**
+     * Sets delisting_time
+     *
+     * @param int|null $delisting_time Timestamp when contract enters reduce-only state
+     *
+     * @return $this
+     */
+    public function setDelistingTime($delisting_time)
+    {
+        $this->container['delisting_time'] = $delisting_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets delisted_time
+     *
+     * @return int|null
+     */
+    public function getDelistedTime()
+    {
+        return $this->container['delisted_time'];
+    }
+
+    /**
+     * Sets delisted_time
+     *
+     * @param int|null $delisted_time Contract delisting time
+     *
+     * @return $this
+     */
+    public function setDelistedTime($delisted_time)
+    {
+        $this->container['delisted_time'] = $delisted_time;
 
         return $this;
     }

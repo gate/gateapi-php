@@ -58,6 +58,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'id' => 'int',
         'user' => 'int',
         'create_time' => 'double',
+        'update_time' => 'double',
         'finish_time' => 'double',
         'finish_as' => 'string',
         'status' => 'string',
@@ -80,7 +81,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'auto_size' => 'string',
         'stp_id' => 'int',
         'stp_act' => 'string',
-        'amend_text' => 'string'
+        'amend_text' => 'string',
+        'limit_vip' => 'int',
+        'pid' => 'int'
     ];
 
     /**
@@ -92,6 +95,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'id' => 'int64',
         'user' => null,
         'create_time' => 'double',
+        'update_time' => 'double',
         'finish_time' => 'double',
         'finish_as' => null,
         'status' => null,
@@ -114,7 +118,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'auto_size' => null,
         'stp_id' => null,
         'stp_act' => null,
-        'amend_text' => null
+        'amend_text' => null,
+        'limit_vip' => 'int64',
+        'pid' => 'int64'
     ];
 
     /**
@@ -147,6 +153,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'id' => 'id',
         'user' => 'user',
         'create_time' => 'create_time',
+        'update_time' => 'update_time',
         'finish_time' => 'finish_time',
         'finish_as' => 'finish_as',
         'status' => 'status',
@@ -169,7 +176,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'auto_size' => 'auto_size',
         'stp_id' => 'stp_id',
         'stp_act' => 'stp_act',
-        'amend_text' => 'amend_text'
+        'amend_text' => 'amend_text',
+        'limit_vip' => 'limit_vip',
+        'pid' => 'pid'
     ];
 
     /**
@@ -181,6 +190,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'user' => 'setUser',
         'create_time' => 'setCreateTime',
+        'update_time' => 'setUpdateTime',
         'finish_time' => 'setFinishTime',
         'finish_as' => 'setFinishAs',
         'status' => 'setStatus',
@@ -203,7 +213,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'auto_size' => 'setAutoSize',
         'stp_id' => 'setStpId',
         'stp_act' => 'setStpAct',
-        'amend_text' => 'setAmendText'
+        'amend_text' => 'setAmendText',
+        'limit_vip' => 'setLimitVip',
+        'pid' => 'setPid'
     ];
 
     /**
@@ -215,6 +227,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'user' => 'getUser',
         'create_time' => 'getCreateTime',
+        'update_time' => 'getUpdateTime',
         'finish_time' => 'getFinishTime',
         'finish_as' => 'getFinishAs',
         'status' => 'getStatus',
@@ -237,7 +250,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'auto_size' => 'getAutoSize',
         'stp_id' => 'getStpId',
         'stp_act' => 'getStpAct',
-        'amend_text' => 'getAmendText'
+        'amend_text' => 'getAmendText',
+        'limit_vip' => 'getLimitVip',
+        'pid' => 'getPid'
     ];
 
     /**
@@ -400,6 +415,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
@@ -423,6 +439,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         $this->container['stp_id'] = isset($data['stp_id']) ? $data['stp_id'] : null;
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
+        $this->container['limit_vip'] = isset($data['limit_vip']) ? $data['limit_vip'] : null;
+        $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
     }
 
     /**
@@ -563,6 +581,30 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     public function setCreateTime($create_time)
     {
         $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_time
+     *
+     * @return double|null
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['update_time'];
+    }
+
+    /**
+     * Sets update_time
+     *
+     * @param double|null $update_time OrderUpdateTime
+     *
+     * @return $this
+     */
+    public function setUpdateTime($update_time)
+    {
+        $this->container['update_time'] = $update_time;
 
         return $this;
     }
@@ -1160,6 +1202,54 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     public function setAmendText($amend_text)
     {
         $this->container['amend_text'] = $amend_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_vip
+     *
+     * @return int|null
+     */
+    public function getLimitVip()
+    {
+        return $this->container['limit_vip'];
+    }
+
+    /**
+     * Sets limit_vip
+     *
+     * @param int|null $limit_vip Counterparty user's VIP level for limit order fills. Current order will only match with orders whose VIP level is less than or equal to the specified level. Only 11~16 are supported; default is 0
+     *
+     * @return $this
+     */
+    public function setLimitVip($limit_vip)
+    {
+        $this->container['limit_vip'] = $limit_vip;
+
+        return $this;
+    }
+
+    /**
+     * Gets pid
+     *
+     * @return int|null
+     */
+    public function getPid()
+    {
+        return $this->container['pid'];
+    }
+
+    /**
+     * Sets pid
+     *
+     * @param int|null $pid Position ID
+     *
+     * @return $this
+     */
+    public function setPid($pid)
+    {
+        $this->container['pid'] = $pid;
 
         return $this;
     }

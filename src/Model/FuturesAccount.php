@@ -62,6 +62,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'string',
         'currency' => 'string',
         'in_dual_mode' => 'bool',
+        'position_mode' => 'string',
         'enable_credit' => 'bool',
         'position_initial_margin' => 'string',
         'maintenance_margin' => 'string',
@@ -96,6 +97,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => null,
         'currency' => null,
         'in_dual_mode' => null,
+        'position_mode' => null,
         'enable_credit' => null,
         'position_initial_margin' => null,
         'maintenance_margin' => null,
@@ -151,6 +153,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'point',
         'currency' => 'currency',
         'in_dual_mode' => 'in_dual_mode',
+        'position_mode' => 'position_mode',
         'enable_credit' => 'enable_credit',
         'position_initial_margin' => 'position_initial_margin',
         'maintenance_margin' => 'maintenance_margin',
@@ -185,6 +188,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'setPoint',
         'currency' => 'setCurrency',
         'in_dual_mode' => 'setInDualMode',
+        'position_mode' => 'setPositionMode',
         'enable_credit' => 'setEnableCredit',
         'position_initial_margin' => 'setPositionInitialMargin',
         'maintenance_margin' => 'setMaintenanceMargin',
@@ -219,6 +223,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'getPoint',
         'currency' => 'getCurrency',
         'in_dual_mode' => 'getInDualMode',
+        'position_mode' => 'getPositionMode',
         'enable_credit' => 'getEnableCredit',
         'position_initial_margin' => 'getPositionInitialMargin',
         'maintenance_margin' => 'getMaintenanceMargin',
@@ -307,6 +312,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         $this->container['point'] = isset($data['point']) ? $data['point'] : null;
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
         $this->container['in_dual_mode'] = isset($data['in_dual_mode']) ? $data['in_dual_mode'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
         $this->container['enable_credit'] = isset($data['enable_credit']) ? $data['enable_credit'] : null;
         $this->container['position_initial_margin'] = isset($data['position_initial_margin']) ? $data['position_initial_margin'] : null;
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
@@ -539,6 +545,30 @@ class FuturesAccount implements ModelInterface, ArrayAccess
     public function setInDualMode($in_dual_mode)
     {
         $this->container['in_dual_mode'] = $in_dual_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets position_mode
+     *
+     * @return string|null
+     */
+    public function getPositionMode()
+    {
+        return $this->container['position_mode'];
+    }
+
+    /**
+     * Sets position_mode
+     *
+     * @param string|null $position_mode Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated)
+     *
+     * @return $this
+     */
+    public function setPositionMode($position_mode)
+    {
+        $this->container['position_mode'] = $position_mode;
 
         return $this;
     }

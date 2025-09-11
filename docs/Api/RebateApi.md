@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## agencyCommissionsHistory
 
-> \GateApi\Model\AgencyCommissionHistory[] agencyCommissionsHistory($currency, $user_id, $from, $to, $limit, $offset)
+> \GateApi\Model\AgencyCommissionHistory[] agencyCommissionsHistory($currency, $commission_type, $user_id, $from, $to, $limit, $offset)
 
 Broker obtains rebate history of recommended users
 
@@ -114,6 +114,7 @@ $apiInstance = new GateApi\Api\RebateApi(
     $config
 );
 $associate_array['currency'] = 'BTC'; // string | Specify the currency. If not specified, returns all currencies
+$associate_array['commission_type'] = 1; // int | Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
 $associate_array['user_id'] = 10003; // int | User ID. If not specified, all user records will be returned
 $associate_array['from'] = 1602120000; // int | Start time for querying records, defaults to 7 days before current time if not specified
 $associate_array['to'] = 1602123600; // int | End timestamp for the query, defaults to current time if not specified
@@ -139,6 +140,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional]
+ **commission_type** | **int**| Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate | [optional]
  **user_id** | **int**| User ID. If not specified, all user records will be returned | [optional]
  **from** | **int**| Start time for querying records, defaults to 7 days before current time if not specified | [optional]
  **to** | **int**| End timestamp for the query, defaults to current time if not specified | [optional]

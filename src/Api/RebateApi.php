@@ -472,6 +472,7 @@ class RebateApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
+     * @param  int $commission_type Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate (optional)
      * @param  int $user_id User ID. If not specified, all user records will be returned (optional)
      * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -496,6 +497,7 @@ class RebateApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
+     * @param  int $commission_type Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate (optional)
      * @param  int $user_id User ID. If not specified, all user records will be returned (optional)
      * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -557,6 +559,7 @@ class RebateApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
+     * @param  int $commission_type Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate (optional)
      * @param  int $user_id User ID. If not specified, all user records will be returned (optional)
      * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -584,6 +587,7 @@ class RebateApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
+     * @param  int $commission_type Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate (optional)
      * @param  int $user_id User ID. If not specified, all user records will be returned (optional)
      * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -638,6 +642,7 @@ class RebateApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
+     * @param  int $commission_type Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate (optional)
      * @param  int $user_id User ID. If not specified, all user records will be returned (optional)
      * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -651,6 +656,7 @@ class RebateApi
     {
         // unbox the parameters from the associative array
         $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
+        $commission_type = array_key_exists('commission_type', $associative_array) ? $associative_array['commission_type'] : null;
         $user_id = array_key_exists('user_id', $associative_array) ? $associative_array['user_id'] : null;
         $from = array_key_exists('from', $associative_array) ? $associative_array['from'] : null;
         $to = array_key_exists('to', $associative_array) ? $associative_array['to'] : null;
@@ -685,6 +691,18 @@ class RebateApi
             }
             else {
                 $queryParams['currency'] = $currency;
+            }
+        }
+
+        // query params
+        if ($commission_type !== null) {
+            if('form' === 'form' && is_array($commission_type)) {
+                foreach($commission_type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['commission_type'] = $commission_type;
             }
         }
 

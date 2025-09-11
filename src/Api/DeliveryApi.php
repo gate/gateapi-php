@@ -952,7 +952,7 @@ class DeliveryApi
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
-     * @param  string $last_id 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围 (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang (optional)
      * @param  int $from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. (optional)
      * @param  int $to Specify end time in Unix seconds, default to current time. (optional)
      *
@@ -976,7 +976,7 @@ class DeliveryApi
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
-     * @param  string $last_id 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围 (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang (optional)
      * @param  int $from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. (optional)
      * @param  int $to Specify end time in Unix seconds, default to current time. (optional)
      *
@@ -1037,7 +1037,7 @@ class DeliveryApi
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
-     * @param  string $last_id 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围 (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang (optional)
      * @param  int $from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. (optional)
      * @param  int $to Specify end time in Unix seconds, default to current time. (optional)
      *
@@ -1064,7 +1064,7 @@ class DeliveryApi
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
-     * @param  string $last_id 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围 (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang (optional)
      * @param  int $from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. (optional)
      * @param  int $to Specify end time in Unix seconds, default to current time. (optional)
      *
@@ -1118,7 +1118,7 @@ class DeliveryApi
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
-     * @param  string $last_id 以上个列表的最后一条记录的 ID 作为下个列表的起点。 该字段不再继续支持，新的请求请使用 &#x60;from&#x60; 和 &#x60;to&#x60; 字段来限定时间范围 (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list.This field is no longer supported. For new requests, please use the fromand tofields to specify the time rang (optional)
      * @param  int $from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. (optional)
      * @param  int $to Specify end time in Unix seconds, default to current time. (optional)
      *
@@ -1307,7 +1307,7 @@ class DeliveryApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time (optional, default to '5m')
+     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time (optional, default to '5m')
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1331,7 +1331,7 @@ class DeliveryApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time (optional, default to '5m')
+     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time (optional, default to '5m')
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1392,7 +1392,7 @@ class DeliveryApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time (optional, default to '5m')
+     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time (optional, default to '5m')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1419,7 +1419,7 @@ class DeliveryApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time (optional, default to '5m')
+     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time (optional, default to '5m')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1473,7 +1473,7 @@ class DeliveryApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeTime interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial timeweek, 7d time is aligned with Unix initial time (optional, default to '5m')
+     * @param  string $interval Time interval between data points, note that 1w represents a natural week, 7d time is aligned with Unix initial time (optional, default to '5m')
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2439,7 +2439,7 @@ class DeliveryApi
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate (optional)
+     * @param  string $type Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2462,7 +2462,7 @@ class DeliveryApi
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate (optional)
+     * @param  string $type Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2522,7 +2522,7 @@ class DeliveryApi
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate (optional)
+     * @param  string $type Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2548,7 +2548,7 @@ class DeliveryApi
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate (optional)
+     * @param  string $type Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2601,7 +2601,7 @@ class DeliveryApi
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $type Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate (optional)
+     * @param  string $type Change types: - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4121,7 +4121,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -4146,7 +4146,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -4208,7 +4208,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -4236,7 +4236,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -4291,7 +4291,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -5553,7 +5553,7 @@ class DeliveryApi
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -5578,7 +5578,7 @@ class DeliveryApi
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -5640,7 +5640,7 @@ class DeliveryApi
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -5668,7 +5668,7 @@ class DeliveryApi
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -5723,7 +5723,7 @@ class DeliveryApi
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  int $count_total Whether to return total number matched, defaults to 0 (no return) (optional, default to 0)
      *
      * @throws \InvalidArgumentException

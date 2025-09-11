@@ -1606,7 +1606,7 @@ class SpotApi
      *
      * @param  string $currency_pair Currency pair (required)
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  bool $reverse Whether to retrieve data less than &#x60;last_id&#x60;. Default returns records greater than &#x60;last_id&#x60;.  Set to &#x60;true&#x60; to trace back market trade records, &#x60;false&#x60; to get latest trades.  No effect when &#x60;last_id&#x60; is not set. (optional, default to false)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -1631,7 +1631,7 @@ class SpotApi
      *
      * @param  string $currency_pair Currency pair (required)
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  bool $reverse Whether to retrieve data less than &#x60;last_id&#x60;. Default returns records greater than &#x60;last_id&#x60;.  Set to &#x60;true&#x60; to trace back market trade records, &#x60;false&#x60; to get latest trades.  No effect when &#x60;last_id&#x60; is not set. (optional, default to false)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -1693,7 +1693,7 @@ class SpotApi
      *
      * @param  string $currency_pair Currency pair (required)
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  bool $reverse Whether to retrieve data less than &#x60;last_id&#x60;. Default returns records greater than &#x60;last_id&#x60;.  Set to &#x60;true&#x60; to trace back market trade records, &#x60;false&#x60; to get latest trades.  No effect when &#x60;last_id&#x60; is not set. (optional, default to false)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -1721,7 +1721,7 @@ class SpotApi
      *
      * @param  string $currency_pair Currency pair (required)
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  bool $reverse Whether to retrieve data less than &#x60;last_id&#x60;. Default returns records greater than &#x60;last_id&#x60;.  Set to &#x60;true&#x60; to trace back market trade records, &#x60;false&#x60; to get latest trades.  No effect when &#x60;last_id&#x60; is not set. (optional, default to false)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
@@ -1776,7 +1776,7 @@ class SpotApi
      *
      * @param  string $currency_pair Currency pair (required)
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
-     * @param  string $last_id Specify the currency name to query in batches, and support up to 100 pass parameters at a time (optional)
+     * @param  string $last_id Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used (optional)
      * @param  bool $reverse Whether to retrieve data less than &#x60;last_id&#x60;. Default returns records greater than &#x60;last_id&#x60;.  Set to &#x60;true&#x60; to trace back market trade records, &#x60;false&#x60; to get latest trades.  No effect when &#x60;last_id&#x60; is not set. (optional, default to false)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)

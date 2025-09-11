@@ -74,7 +74,12 @@ class FuturesTicker implements ModelInterface, ArrayAccess
         'lowest_ask' => 'string',
         'lowest_size' => 'string',
         'highest_bid' => 'string',
-        'highest_size' => 'string'
+        'highest_size' => 'string',
+        'change_utc0' => 'string',
+        'change_utc8' => 'string',
+        'change_price' => 'string',
+        'change_utc0_price' => 'string',
+        'change_utc8_price' => 'string'
     ];
 
     /**
@@ -103,7 +108,12 @@ class FuturesTicker implements ModelInterface, ArrayAccess
         'lowest_ask' => null,
         'lowest_size' => null,
         'highest_bid' => null,
-        'highest_size' => null
+        'highest_size' => null,
+        'change_utc0' => null,
+        'change_utc8' => null,
+        'change_price' => null,
+        'change_utc0_price' => null,
+        'change_utc8_price' => null
     ];
 
     /**
@@ -153,7 +163,12 @@ class FuturesTicker implements ModelInterface, ArrayAccess
         'lowest_ask' => 'lowest_ask',
         'lowest_size' => 'lowest_size',
         'highest_bid' => 'highest_bid',
-        'highest_size' => 'highest_size'
+        'highest_size' => 'highest_size',
+        'change_utc0' => 'change_utc0',
+        'change_utc8' => 'change_utc8',
+        'change_price' => 'change_price',
+        'change_utc0_price' => 'change_utc0_price',
+        'change_utc8_price' => 'change_utc8_price'
     ];
 
     /**
@@ -182,7 +197,12 @@ class FuturesTicker implements ModelInterface, ArrayAccess
         'lowest_ask' => 'setLowestAsk',
         'lowest_size' => 'setLowestSize',
         'highest_bid' => 'setHighestBid',
-        'highest_size' => 'setHighestSize'
+        'highest_size' => 'setHighestSize',
+        'change_utc0' => 'setChangeUtc0',
+        'change_utc8' => 'setChangeUtc8',
+        'change_price' => 'setChangePrice',
+        'change_utc0_price' => 'setChangeUtc0Price',
+        'change_utc8_price' => 'setChangeUtc8Price'
     ];
 
     /**
@@ -211,7 +231,12 @@ class FuturesTicker implements ModelInterface, ArrayAccess
         'lowest_ask' => 'getLowestAsk',
         'lowest_size' => 'getLowestSize',
         'highest_bid' => 'getHighestBid',
-        'highest_size' => 'getHighestSize'
+        'highest_size' => 'getHighestSize',
+        'change_utc0' => 'getChangeUtc0',
+        'change_utc8' => 'getChangeUtc8',
+        'change_price' => 'getChangePrice',
+        'change_utc0_price' => 'getChangeUtc0Price',
+        'change_utc8_price' => 'getChangeUtc8Price'
     ];
 
     /**
@@ -295,6 +320,11 @@ class FuturesTicker implements ModelInterface, ArrayAccess
         $this->container['lowest_size'] = isset($data['lowest_size']) ? $data['lowest_size'] : null;
         $this->container['highest_bid'] = isset($data['highest_bid']) ? $data['highest_bid'] : null;
         $this->container['highest_size'] = isset($data['highest_size']) ? $data['highest_size'] : null;
+        $this->container['change_utc0'] = isset($data['change_utc0']) ? $data['change_utc0'] : null;
+        $this->container['change_utc8'] = isset($data['change_utc8']) ? $data['change_utc8'] : null;
+        $this->container['change_price'] = isset($data['change_price']) ? $data['change_price'] : null;
+        $this->container['change_utc0_price'] = isset($data['change_utc0_price']) ? $data['change_utc0_price'] : null;
+        $this->container['change_utc8_price'] = isset($data['change_utc8_price']) ? $data['change_utc8_price'] : null;
     }
 
     /**
@@ -821,6 +851,126 @@ class FuturesTicker implements ModelInterface, ArrayAccess
     public function setHighestSize($highest_size)
     {
         $this->container['highest_size'] = $highest_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets change_utc0
+     *
+     * @return string|null
+     */
+    public function getChangeUtc0()
+    {
+        return $this->container['change_utc0'];
+    }
+
+    /**
+     * Sets change_utc0
+     *
+     * @param string|null $change_utc0 Percentage change at utc0. Negative values indicate a drop, e.g., -7.45%
+     *
+     * @return $this
+     */
+    public function setChangeUtc0($change_utc0)
+    {
+        $this->container['change_utc0'] = $change_utc0;
+
+        return $this;
+    }
+
+    /**
+     * Gets change_utc8
+     *
+     * @return string|null
+     */
+    public function getChangeUtc8()
+    {
+        return $this->container['change_utc8'];
+    }
+
+    /**
+     * Sets change_utc8
+     *
+     * @param string|null $change_utc8 Percentage change at utc8. Negative values indicate a drop, e.g., -7.45%
+     *
+     * @return $this
+     */
+    public function setChangeUtc8($change_utc8)
+    {
+        $this->container['change_utc8'] = $change_utc8;
+
+        return $this;
+    }
+
+    /**
+     * Gets change_price
+     *
+     * @return string|null
+     */
+    public function getChangePrice()
+    {
+        return $this->container['change_price'];
+    }
+
+    /**
+     * Sets change_price
+     *
+     * @param string|null $change_price 24h change amount. Negative values indicate a drop, e.g., -7.45
+     *
+     * @return $this
+     */
+    public function setChangePrice($change_price)
+    {
+        $this->container['change_price'] = $change_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets change_utc0_price
+     *
+     * @return string|null
+     */
+    public function getChangeUtc0Price()
+    {
+        return $this->container['change_utc0_price'];
+    }
+
+    /**
+     * Sets change_utc0_price
+     *
+     * @param string|null $change_utc0_price Change amount at utc0. Negative values indicate a drop, e.g., -7.45
+     *
+     * @return $this
+     */
+    public function setChangeUtc0Price($change_utc0_price)
+    {
+        $this->container['change_utc0_price'] = $change_utc0_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets change_utc8_price
+     *
+     * @return string|null
+     */
+    public function getChangeUtc8Price()
+    {
+        return $this->container['change_utc8_price'];
+    }
+
+    /**
+     * Sets change_utc8_price
+     *
+     * @param string|null $change_utc8_price Change amount at utc8. Negative values indicate a drop, e.g., -7.45
+     *
+     * @return $this
+     */
+    public function setChangeUtc8Price($change_utc8_price)
+    {
+        $this->container['change_utc8_price'] = $change_utc8_price;
 
         return $this;
     }

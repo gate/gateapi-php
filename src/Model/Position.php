@@ -87,7 +87,8 @@ class Position implements ModelInterface, ArrayAccess
         'update_id' => 'int',
         'open_time' => 'int',
         'risk_limit_table' => 'string',
-        'average_maintenance_rate' => 'string'
+        'average_maintenance_rate' => 'string',
+        'pid' => 'int'
     ];
 
     /**
@@ -128,7 +129,8 @@ class Position implements ModelInterface, ArrayAccess
         'update_id' => 'int64',
         'open_time' => 'int64',
         'risk_limit_table' => null,
-        'average_maintenance_rate' => null
+        'average_maintenance_rate' => null,
+        'pid' => 'int64'
     ];
 
     /**
@@ -190,7 +192,8 @@ class Position implements ModelInterface, ArrayAccess
         'update_id' => 'update_id',
         'open_time' => 'open_time',
         'risk_limit_table' => 'risk_limit_table',
-        'average_maintenance_rate' => 'average_maintenance_rate'
+        'average_maintenance_rate' => 'average_maintenance_rate',
+        'pid' => 'pid'
     ];
 
     /**
@@ -231,7 +234,8 @@ class Position implements ModelInterface, ArrayAccess
         'update_id' => 'setUpdateId',
         'open_time' => 'setOpenTime',
         'risk_limit_table' => 'setRiskLimitTable',
-        'average_maintenance_rate' => 'setAverageMaintenanceRate'
+        'average_maintenance_rate' => 'setAverageMaintenanceRate',
+        'pid' => 'setPid'
     ];
 
     /**
@@ -272,7 +276,8 @@ class Position implements ModelInterface, ArrayAccess
         'update_id' => 'getUpdateId',
         'open_time' => 'getOpenTime',
         'risk_limit_table' => 'getRiskLimitTable',
-        'average_maintenance_rate' => 'getAverageMaintenanceRate'
+        'average_maintenance_rate' => 'getAverageMaintenanceRate',
+        'pid' => 'getPid'
     ];
 
     /**
@@ -385,6 +390,7 @@ class Position implements ModelInterface, ArrayAccess
         $this->container['open_time'] = isset($data['open_time']) ? $data['open_time'] : null;
         $this->container['risk_limit_table'] = isset($data['risk_limit_table']) ? $data['risk_limit_table'] : null;
         $this->container['average_maintenance_rate'] = isset($data['average_maintenance_rate']) ? $data['average_maintenance_rate'] : null;
+        $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
     }
 
     /**
@@ -1216,6 +1222,30 @@ class Position implements ModelInterface, ArrayAccess
     public function setAverageMaintenanceRate($average_maintenance_rate)
     {
         $this->container['average_maintenance_rate'] = $average_maintenance_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets pid
+     *
+     * @return int|null
+     */
+    public function getPid()
+    {
+        return $this->container['pid'];
+    }
+
+    /**
+     * Sets pid
+     *
+     * @param int|null $pid Sub-account position ID
+     *
+     * @return $this
+     */
+    public function setPid($pid)
+    {
+        $this->container['pid'] = $pid;
 
         return $this;
     }

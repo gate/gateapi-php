@@ -511,7 +511,7 @@ void (empty response body)
 
 ## findCoin
 
-> string[] findCoin($find_coin)
+> object findCoin($find_coin)
 
 Staking coins
 
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string[]**
+**object**
 
 ### Authorization
 

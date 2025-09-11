@@ -54,7 +54,6 @@ class FindCoin implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
         'cointype' => 'string'
     ];
 
@@ -64,7 +63,6 @@ class FindCoin implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
         'cointype' => null
     ];
 
@@ -95,7 +93,6 @@ class FindCoin implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
         'cointype' => 'cointype'
     ];
 
@@ -105,7 +102,6 @@ class FindCoin implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
         'cointype' => 'setCointype'
     ];
 
@@ -115,7 +111,6 @@ class FindCoin implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
         'cointype' => 'getCointype'
     ];
 
@@ -179,7 +174,6 @@ class FindCoin implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
         $this->container['cointype'] = isset($data['cointype']) ? $data['cointype'] : null;
     }
 
@@ -208,30 +202,6 @@ class FindCoin implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
-     *
-     * @return string|null
-     */
-    public function getCoin()
-    {
-        return $this->container['coin'];
-    }
-
-    /**
-     * Sets coin
-     *
-     * @param string|null $coin Currency
-     *
-     * @return $this
-     */
-    public function setCoin($coin)
-    {
-        $this->container['coin'] = $coin;
-
-        return $this;
-    }
-
-    /**
      * Gets cointype
      *
      * @return string|null
@@ -244,7 +214,7 @@ class FindCoin implements ModelInterface, ArrayAccess
     /**
      * Sets cointype
      *
-     * @param string|null $cointype Token Type: swap-Voucher, lock-Locked
+     * @param string|null $cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
      *
      * @return $this
      */

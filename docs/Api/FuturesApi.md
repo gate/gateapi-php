@@ -316,7 +316,7 @@ No authorization required
 
 ## listFuturesCandlesticks
 
-> \GateApi\Model\FuturesCandlestick[] listFuturesCandlesticks($settle, $contract, $from, $to, $limit, $interval)
+> \GateApi\Model\FuturesCandlestick[] listFuturesCandlesticks($settle, $contract, $from, $to, $limit, $interval, $timezone)
 
 Futures market K-line chart
 
@@ -340,6 +340,7 @@ $associate_array['from'] = 1546905600; // int | Start time of candlesticks, form
 $associate_array['to'] = 1546935600; // int | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
 $associate_array['limit'] = 100; // int | Maximum number of recent data points to return. `limit` conflicts with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
 $associate_array['interval'] = '5m'; // string | Interval time between data points. Note that `1w` means natural week(Mon-Sun), while `7d` means every 7d since unix 0. 30d represents a natural month, not 30 days
+$associate_array['timezone'] = 'utc0'; // string | Time zone: all/utc0/utc8, default utc0
 
 try {
     $result = $apiInstance->listFuturesCandlesticks($associate_array);
@@ -365,6 +366,7 @@ Name | Type | Description  | Notes
  **to** | **int**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional]
  **limit** | **int**| Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **string**| Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days | [optional] [default to &#39;5m&#39;]
+ **timezone** | **string**| Time zone: all/utc0/utc8, default utc0 | [optional] [default to &#39;utc0&#39;]
 
 ### Return type
 
@@ -770,7 +772,7 @@ No authorization required
 
 Query liquidation order history
 
-The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for detailsThe time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for interfaces, refer to field descriptions for details
+The time interval between from and to is maximum 3600. Some private fields are not returned by public interfaces, refer to field descriptions for details
 
 ### Example
 
@@ -838,7 +840,7 @@ No authorization required
 
 Query risk limit tiers
 
-When the 'contract' parameter is not passed, the default is to query the risk limits for the top 100 markets.'Limit' and 'offset' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect empty.
+When the 'contract' parameter is not passed, the default is to query the risk limits for the top 100 markets. 'Limit' and 'offset' correspond to pagination queries at the market level, not to the length of the returned array. This only takes effect when the contract parameter is empty.
 
 ### Example
 
@@ -988,7 +990,7 @@ $associate_array['limit'] = 100; // int | Maximum number of records returned in 
 $associate_array['offset'] = 0; // int | List offset, starting from 0
 $associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
 $associate_array['to'] = 1547706332; // int | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-$associate_array['type'] = 'dnw'; // string | Changing Type：  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction
+$associate_array['type'] = 'dnw'; // string | Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction
 
 try {
     $result = $apiInstance->listFuturesAccountBook($associate_array);
@@ -1014,7 +1016,7 @@ Name | Type | Description  | Notes
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
  **to** | **int**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional]
- **type** | **string**| Changing Type：  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: point_fee: POINT Trading fee - point_refr: POINT Referrer rebate - bonus_offset: bouns deduction | [optional]
+ **type** | **string**| Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction | [optional]
 
 ### Return type
 
@@ -1232,7 +1234,7 @@ Name | Type | Description  | Notes
 
 ## updatePositionLeverage
 
-> \GateApi\Model\Position updatePositionLeverage($settle, $contract, $leverage, $cross_leverage_limit)
+> \GateApi\Model\Position updatePositionLeverage($settle, $contract, $leverage, $cross_leverage_limit, $pid)
 
 Update position leverage
 
@@ -1256,9 +1258,10 @@ $settle = 'usdt'; // string | Settle currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $leverage = '10'; // string | New position leverage
 $cross_leverage_limit = '10'; // string | Cross margin leverage (valid only when `leverage` is 0)
+$pid = 1; // int | Product ID
 
 try {
-    $result = $apiInstance->updatePositionLeverage($settle, $contract, $leverage, $cross_leverage_limit);
+    $result = $apiInstance->updatePositionLeverage($settle, $contract, $leverage, $cross_leverage_limit, $pid);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1277,6 +1280,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract |
  **leverage** | **string**| New position leverage |
  **cross_leverage_limit** | **string**| Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional]
+ **pid** | **int**| Product ID | [optional]
 
 ### Return type
 
@@ -1837,7 +1841,7 @@ $associate_array['status'] = 'open'; // string | Query order list based on statu
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
-$associate_array['last_id'] = '12345'; // string | Specify the currency name to query in batches, and support up to 100 pass parameters at a time
+$associate_array['last_id'] = '12345'; // string | Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used
 
 try {
     $result = $apiInstance->listFuturesOrders($associate_array);
@@ -1862,7 +1866,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
- **last_id** | **string**| Specify the currency name to query in batches, and support up to 100 pass parameters at a time | [optional]
+ **last_id** | **string**| Use the ID of the last record in the previous list as the starting point for the next list  Operations based on custom IDs can only be checked when orders are pending. After orders are completed (filled/cancelled), they can be checked within 1 hour after completion. After expiration, only order IDs can be used | [optional]
 
 ### Return type
 
@@ -1950,7 +1954,7 @@ Name | Type | Description  | Notes
 
 ## cancelFuturesOrders
 
-> \GateApi\Model\FuturesOrder[] cancelFuturesOrders($settle, $contract, $x_gate_exptime, $side)
+> \GateApi\Model\FuturesOrder[] cancelFuturesOrders($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text)
 
 Cancel all orders with 'open' status
 
@@ -1975,10 +1979,12 @@ $apiInstance = new GateApi\Api\FuturesApi(
 $settle = 'usdt'; // string | Settle currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
-$side = 'ask'; // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders
+$side = 'ask'; // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
+$exclude_reduce_only = false; // bool | Whether to exclude reduce-only orders
+$text = 'cancel by user'; // string | Remark for order cancellation
 
 try {
-    $result = $apiInstance->cancelFuturesOrders($settle, $contract, $x_gate_exptime, $side);
+    $result = $apiInstance->cancelFuturesOrders($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1996,7 +2002,9 @@ Name | Type | Description  | Notes
  **settle** | **string**| Settle currency |
  **contract** | **string**| Futures contract |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
- **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell ordersspecified. Set to bid, set to ask to cancel all sell orders | [optional]
+ **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | [optional]
+ **exclude_reduce_only** | **bool**| Whether to exclude reduce-only orders | [optional] [default to false]
+ **text** | **string**| Remark for order cancellation | [optional]
 
 ### Return type
 

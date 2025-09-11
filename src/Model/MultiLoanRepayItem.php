@@ -198,6 +198,9 @@ class MultiLoanRepayItem implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['repaid_all'] === null) {
+            $invalidProperties[] = "'repaid_all' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -264,7 +267,7 @@ class MultiLoanRepayItem implements ModelInterface, ArrayAccess
     /**
      * Gets repaid_all
      *
-     * @return bool|null
+     * @return bool
      */
     public function getRepaidAll()
     {
@@ -274,7 +277,7 @@ class MultiLoanRepayItem implements ModelInterface, ArrayAccess
     /**
      * Sets repaid_all
      *
-     * @param bool|null $repaid_all Repayment method, set to true for full repayment, false for partial repayment
+     * @param bool $repaid_all Repayment method, set to true for full repayment, false for partial repayment
      *
      * @return $this
      */

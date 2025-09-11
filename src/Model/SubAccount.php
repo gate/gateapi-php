@@ -283,7 +283,7 @@ class SubAccount implements ModelInterface, ArrayAccess
     /**
      * Sets login_name
      *
-     * @param string $login_name 子账户登陆名：仅支持字母、数字、下划线，不可包含其他非法字符。
+     * @param string $login_name Sub-account login name: Only letters, numbers and underscores are supported, cannot contain other invalid characters
      *
      * @return $this
      */
