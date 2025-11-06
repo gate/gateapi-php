@@ -590,7 +590,7 @@ class WithdrawalApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\LedgerRecord
+     * @return \GateApi\Model\WithdrawalsDel
      */
     public function cancelWithdrawal($withdrawal_id)
     {
@@ -607,7 +607,7 @@ class WithdrawalApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\LedgerRecord, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\WithdrawalsDel, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelWithdrawalWithHttpInfo($withdrawal_id)
     {
@@ -637,7 +637,7 @@ class WithdrawalApi
             );
         }
 
-        $returnType = '\GateApi\Model\LedgerRecord';
+        $returnType = '\GateApi\Model\WithdrawalsDel';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -684,7 +684,7 @@ class WithdrawalApi
      */
     public function cancelWithdrawalAsyncWithHttpInfo($withdrawal_id)
     {
-        $returnType = '\GateApi\Model\LedgerRecord';
+        $returnType = '\GateApi\Model\WithdrawalsDel';
         $request = $this->cancelWithdrawalRequest($withdrawal_id);
 
         return $this->client

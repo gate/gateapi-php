@@ -1,6 +1,6 @@
 <?php
 /**
- * Eth2Swap
+ * KeyPerms
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * Eth2Swap Class Doc Comment
+ * KeyPerms Class Doc Comment
  *
  * @category Class
- * @description ETH Mining
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class Eth2Swap implements ModelInterface, ArrayAccess
+class KeyPerms implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class Eth2Swap implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Eth2Swap';
+    protected static $openAPIModelName = '_________Key___perms';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +54,8 @@ class Eth2Swap implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'side' => 'string',
-        'amount' => 'string'
+        'name' => 'string',
+        'read_only' => 'bool'
     ];
 
     /**
@@ -65,8 +64,8 @@ class Eth2Swap implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'side' => null,
-        'amount' => null
+        'name' => null,
+        'read_only' => null
     ];
 
     /**
@@ -96,8 +95,8 @@ class Eth2Swap implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'side' => 'side',
-        'amount' => 'amount'
+        'name' => 'name',
+        'read_only' => 'read_only'
     ];
 
     /**
@@ -106,8 +105,8 @@ class Eth2Swap implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'side' => 'setSide',
-        'amount' => 'setAmount'
+        'name' => 'setName',
+        'read_only' => 'setReadOnly'
     ];
 
     /**
@@ -116,8 +115,8 @@ class Eth2Swap implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'side' => 'getSide',
-        'amount' => 'getAmount'
+        'name' => 'getName',
+        'read_only' => 'getReadOnly'
     ];
 
     /**
@@ -180,8 +179,8 @@ class Eth2Swap implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['read_only'] = isset($data['read_only']) ? $data['read_only'] : null;
     }
 
     /**
@@ -193,12 +192,6 @@ class Eth2Swap implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['side'] === null) {
-            $invalidProperties[] = "'side' can't be null";
-        }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,49 +208,49 @@ class Eth2Swap implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets side
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getSide()
+    public function getName()
     {
-        return $this->container['side'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets side
+     * Sets name
      *
-     * @param string $side 1-Forward Swap (ETH -> GTETH), 2-Reverse Swap (GTETH -> ETH)
+     * @param string|null $name 权限功能名称（不传值即为清空）  - `wallet`: 钱包 - `spot`: 现货/杠杆 - `futures`: 永续合约 - `delivery`: 交割合约 - `earn`: 理财 - `custody`: 托管 - `options`: 期权 - `account`: 账户信息 - `loan`: 借贷 - `margin`: 杠杆 - `unified`: 统一账户 - `copy`: 跟单 - `pilot`: 创新 - `otc`: otc - `alpha`: alpha - `crossx`: 跨所
      *
      * @return $this
      */
-    public function setSide($side)
+    public function setName($name)
     {
-        $this->container['side'] = $side;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets amount
+     * Gets read_only
      *
-     * @return string
+     * @return bool|null
      */
-    public function getAmount()
+    public function getReadOnly()
     {
-        return $this->container['amount'];
+        return $this->container['read_only'];
     }
 
     /**
-     * Sets amount
+     * Sets read_only
      *
-     * @param string $amount Swap Amount
+     * @param bool|null $read_only Read Only
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setReadOnly($read_only)
     {
-        $this->container['amount'] = $amount;
+        $this->container['read_only'] = $read_only;
 
         return $this;
     }

@@ -273,6 +273,12 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
+        }
+        if ($this->container['rule'] === null) {
+            $invalidProperties[] = "'rule' can't be null";
+        }
         $allowedValues = $this->getRuleAllowableValues();
         if (!is_null($this->container['rule']) && !in_array($this->container['rule'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -365,7 +371,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
     /**
      * Gets price
      *
-     * @return string|null
+     * @return string
      */
     public function getPrice()
     {
@@ -375,7 +381,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price Price value for price trigger, or spread value for spread trigger
+     * @param string $price Price value for price trigger, or spread value for spread trigger
      *
      * @return $this
      */
@@ -389,7 +395,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
     /**
      * Gets rule
      *
-     * @return int|null
+     * @return int
      */
     public function getRule()
     {
@@ -399,14 +405,14 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
     /**
      * Sets rule
      *
-     * @param int|null $rule Price Condition Type  - 1: Trigger when the price calculated based on `strategy_type` and `price_type` is greater than or equal to `Trigger.Price`, while Trigger.Price must > last_price - 2: Trigger when the price calculated based on `strategy_type` and `price_type` is less than or equal to `Trigger.Price`, and Trigger.Price must < last_price
+     * @param int $rule Price Condition Type  - 1: Trigger when the price calculated based on `strategy_type` and `price_type` is greater than or equal to `Trigger.Price`, while Trigger.Price must > last_price - 2: Trigger when the price calculated based on `strategy_type` and `price_type` is less than or equal to `Trigger.Price`, and Trigger.Price must < last_price
      *
      * @return $this
      */
     public function setRule($rule)
     {
         $allowedValues = $this->getRuleAllowableValues();
-        if (!is_null($rule) && !in_array($rule, $allowedValues, true)) {
+        if (!in_array($rule, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'rule', must be one of '%s'",

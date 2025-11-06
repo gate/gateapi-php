@@ -116,7 +116,7 @@ class EarnApi
     /**
      * Operation swapETH2
      *
-     * ETH2 swap
+     * ETH swap
      *
      * @param  \GateApi\Model\Eth2Swap $eth2_swap eth2_swap (required)
      *
@@ -132,7 +132,7 @@ class EarnApi
     /**
      * Operation swapETH2WithHttpInfo
      *
-     * ETH2 swap
+     * ETH swap
      *
      * @param  \GateApi\Model\Eth2Swap $eth2_swap (required)
      *
@@ -174,7 +174,7 @@ class EarnApi
     /**
      * Operation swapETH2Async
      *
-     * ETH2 swap
+     * ETH swap
      *
      * @param  \GateApi\Model\Eth2Swap $eth2_swap (required)
      *
@@ -194,7 +194,7 @@ class EarnApi
     /**
      * Operation swapETH2AsyncWithHttpInfo
      *
-     * ETH2 swap
+     * ETH swap
      *
      * @param  \GateApi\Model\Eth2Swap $eth2_swap (required)
      *
@@ -326,7 +326,7 @@ class EarnApi
     /**
      * Operation rateListETH2
      *
-     * ETH2 historical return rate query
+     * GTETH historical return rate query
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -342,7 +342,7 @@ class EarnApi
     /**
      * Operation rateListETH2WithHttpInfo
      *
-     * ETH2 historical return rate query
+     * GTETH historical return rate query
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -395,7 +395,7 @@ class EarnApi
     /**
      * Operation rateListETH2Async
      *
-     * ETH2 historical return rate query
+     * GTETH historical return rate query
      *
      *
      * @throws \InvalidArgumentException
@@ -414,7 +414,7 @@ class EarnApi
     /**
      * Operation rateListETH2AsyncWithHttpInfo
      *
-     * ETH2 historical return rate query
+     * GTETH historical return rate query
      *
      *
      * @throws \InvalidArgumentException
@@ -2167,7 +2167,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return object[]
      */
     public function findCoin($find_coin)
     {
@@ -2184,7 +2184,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object[], HTTP status code, HTTP response headers (array of strings)
      */
     public function findCoinWithHttpInfo($find_coin)
     {
@@ -2214,7 +2214,7 @@ class EarnApi
             );
         }
 
-        $returnType = 'object';
+        $returnType = 'object[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2261,7 +2261,7 @@ class EarnApi
      */
     public function findCoinAsyncWithHttpInfo($find_coin)
     {
-        $returnType = 'object';
+        $returnType = 'object[]';
         $request = $this->findCoinRequest($find_coin);
 
         return $this->client
@@ -2620,6 +2620,854 @@ class EarnApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation orderList
+     *
+     * List of on-chain coin-earning orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $type Type 0-staking 1-redemption (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\OrderListStruct
+     */
+    public function orderList($associative_array)
+    {
+        list($response) = $this->orderListWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation orderListWithHttpInfo
+     *
+     * List of on-chain coin-earning orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $type Type 0-staking 1-redemption (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\OrderListStruct, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function orderListWithHttpInfo($associative_array)
+    {
+        $request = $this->orderListRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\OrderListStruct';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation orderListAsync
+     *
+     * List of on-chain coin-earning orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $type Type 0-staking 1-redemption (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function orderListAsync($associative_array)
+    {
+        return $this->orderListAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation orderListAsyncWithHttpInfo
+     *
+     * List of on-chain coin-earning orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $type Type 0-staking 1-redemption (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function orderListAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\OrderListStruct';
+        $request = $this->orderListRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'orderList'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $type Type 0-staking 1-redemption (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function orderListRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $pid = array_key_exists('pid', $associative_array) ? $associative_array['pid'] : null;
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling EarnApi.orderList, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/earn/staking/order_list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($pid !== null) {
+            if('form' === 'form' && is_array($pid)) {
+                foreach($pid as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pid'] = $pid;
+            }
+        }
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation awardList
+     *
+     * On-chain coin-earning dividend records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AwardListStruct
+     */
+    public function awardList($associative_array)
+    {
+        list($response) = $this->awardListWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation awardListWithHttpInfo
+     *
+     * On-chain coin-earning dividend records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AwardListStruct, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function awardListWithHttpInfo($associative_array)
+    {
+        $request = $this->awardListRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AwardListStruct';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation awardListAsync
+     *
+     * On-chain coin-earning dividend records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function awardListAsync($associative_array)
+    {
+        return $this->awardListAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation awardListAsyncWithHttpInfo
+     *
+     * On-chain coin-earning dividend records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function awardListAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\AwardListStruct';
+        $request = $this->awardListRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'awardList'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $pid Product ID (optional)
+     * @param  string $coin Currency name (optional)
+     * @param  int $page Page number (optional, default to 1)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function awardListRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $pid = array_key_exists('pid', $associative_array) ? $associative_array['pid'] : null;
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling EarnApi.awardList, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/earn/staking/award_list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($pid !== null) {
+            if('form' === 'form' && is_array($pid)) {
+                foreach($pid as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pid'] = $pid;
+            }
+        }
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation assetList
+     *
+     * On-chain coin-earning assets
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Currency name (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return object[]
+     */
+    public function assetList($associative_array)
+    {
+        list($response) = $this->assetListWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation assetListWithHttpInfo
+     *
+     * On-chain coin-earning assets
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Currency name (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of object[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function assetListWithHttpInfo($associative_array)
+    {
+        $request = $this->assetListRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = 'object[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation assetListAsync
+     *
+     * On-chain coin-earning assets
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Currency name (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function assetListAsync($associative_array)
+    {
+        return $this->assetListAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation assetListAsyncWithHttpInfo
+     *
+     * On-chain coin-earning assets
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Currency name (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function assetListAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = 'object[]';
+        $request = $this->assetListRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'assetList'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Currency name (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function assetListRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+
+
+        $resourcePath = '/earn/staking/assets';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

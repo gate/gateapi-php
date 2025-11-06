@@ -33,6 +33,8 @@ Method | HTTP request | Description
 
 Query chains supported for specified currency
 
+API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
+
 ### Example
 
 ```php
@@ -622,6 +624,8 @@ Name | Type | Description  | Notes
 > \GateApi\Model\WithdrawStatus[] listWithdrawStatus($currency)
 
 Query withdrawal status
+
+API operations are not supported for tokens with low liquidity or extremely low value. Please use the Web or App interface to query and process.
 
 ### Example
 

@@ -470,7 +470,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     /**
      * Sets fee
      *
-     * @param string|null $fee Trading fee rate
+     * @param string|null $fee Trading fee rate(deprecated)
      *
      * @return $this
      */

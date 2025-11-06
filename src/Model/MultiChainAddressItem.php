@@ -58,7 +58,8 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
         'address' => 'string',
         'payment_id' => 'string',
         'payment_name' => 'string',
-        'obtain_failed' => 'int'
+        'obtain_failed' => 'int',
+        'min_confirms' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
         'address' => null,
         'payment_id' => null,
         'payment_name' => null,
-        'obtain_failed' => null
+        'obtain_failed' => null,
+        'min_confirms' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
         'address' => 'address',
         'payment_id' => 'payment_id',
         'payment_name' => 'payment_name',
-        'obtain_failed' => 'obtain_failed'
+        'obtain_failed' => 'obtain_failed',
+        'min_confirms' => 'min_confirms'
     ];
 
     /**
@@ -118,7 +121,8 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
         'address' => 'setAddress',
         'payment_id' => 'setPaymentId',
         'payment_name' => 'setPaymentName',
-        'obtain_failed' => 'setObtainFailed'
+        'obtain_failed' => 'setObtainFailed',
+        'min_confirms' => 'setMinConfirms'
     ];
 
     /**
@@ -131,7 +135,8 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
         'address' => 'getAddress',
         'payment_id' => 'getPaymentId',
         'payment_name' => 'getPaymentName',
-        'obtain_failed' => 'getObtainFailed'
+        'obtain_failed' => 'getObtainFailed',
+        'min_confirms' => 'getMinConfirms'
     ];
 
     /**
@@ -199,6 +204,7 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
         $this->container['payment_id'] = isset($data['payment_id']) ? $data['payment_id'] : null;
         $this->container['payment_name'] = isset($data['payment_name']) ? $data['payment_name'] : null;
         $this->container['obtain_failed'] = isset($data['obtain_failed']) ? $data['obtain_failed'] : null;
+        $this->container['min_confirms'] = isset($data['min_confirms']) ? $data['min_confirms'] : null;
     }
 
     /**
@@ -341,6 +347,30 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
     public function setObtainFailed($obtain_failed)
     {
         $this->container['obtain_failed'] = $obtain_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_confirms
+     *
+     * @return int|null
+     */
+    public function getMinConfirms()
+    {
+        return $this->container['min_confirms'];
+    }
+
+    /**
+     * Sets min_confirms
+     *
+     * @param int|null $min_confirms Minimum Confirmation Count
+     *
+     * @return $this
+     */
+    public function setMinConfirms($min_confirms)
+    {
+        $this->container['min_confirms'] = $min_confirms;
 
         return $this;
     }

@@ -27,10 +27,10 @@ Method | HTTP request | Description
 [**updateDualCompPositionCrossMode**](FuturesApi.md#updateDualCompPositionCrossMode) | **POST** /futures/{settle}/dual_comp/positions/cross_mode | Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 [**updatePositionRiskLimit**](FuturesApi.md#updatePositionRiskLimit) | **POST** /futures/{settle}/positions/{contract}/risk_limit | Update position risk limit
 [**setDualMode**](FuturesApi.md#setDualMode) | **POST** /futures/{settle}/dual_mode | Set position mode
-[**getDualModePosition**](FuturesApi.md#getDualModePosition) | **GET** /futures/{settle}/dual_comp/positions/{contract} | Get position information in dual mode
-[**updateDualModePositionMargin**](FuturesApi.md#updateDualModePositionMargin) | **POST** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in dual mode
-[**updateDualModePositionLeverage**](FuturesApi.md#updateDualModePositionLeverage) | **POST** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in dual mode
-[**updateDualModePositionRiskLimit**](FuturesApi.md#updateDualModePositionRiskLimit) | **POST** /futures/{settle}/dual_comp/positions/{contract}/risk_limit | Update position risk limit in dual mode
+[**getDualModePosition**](FuturesApi.md#getDualModePosition) | **GET** /futures/{settle}/dual_comp/positions/{contract} | Get position information in Hedge Mode
+[**updateDualModePositionMargin**](FuturesApi.md#updateDualModePositionMargin) | **POST** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in Hedge Mode
+[**updateDualModePositionLeverage**](FuturesApi.md#updateDualModePositionLeverage) | **POST** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in Hedge Mode
+[**updateDualModePositionRiskLimit**](FuturesApi.md#updateDualModePositionRiskLimit) | **POST** /futures/{settle}/dual_comp/positions/{contract}/risk_limit | Update position risk limit in Hedge Mode
 [**listFuturesOrders**](FuturesApi.md#listFuturesOrders) | **GET** /futures/{settle}/orders | Query futures order list
 [**createFuturesOrder**](FuturesApi.md#createFuturesOrder) | **POST** /futures/{settle}/orders | Place futures order
 [**cancelFuturesOrders**](FuturesApi.md#cancelFuturesOrders) | **DELETE** /futures/{settle}/orders | Cancel all orders with &#39;open&#39; status
@@ -49,10 +49,12 @@ Method | HTTP request | Description
 [**cancelBatchFutureOrders**](FuturesApi.md#cancelBatchFutureOrders) | **POST** /futures/{settle}/batch_cancel_orders | Cancel batch orders by specified ID list
 [**amendBatchFutureOrders**](FuturesApi.md#amendBatchFutureOrders) | **POST** /futures/{settle}/batch_amend_orders | Batch modify orders by specified IDs
 [**getFuturesRiskLimitTable**](FuturesApi.md#getFuturesRiskLimitTable) | **GET** /futures/{settle}/risk_limit_table | Query risk limit table by table_id
+[**createFuturesBBOOrder**](FuturesApi.md#createFuturesBBOOrder) | **POST** /futures/{settle}/bbo_orders | Level-based BBO Contract Order Placement
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | Query auto order list
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
 [**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Query single auto order details
+[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/{order_id} | Modify a Single Auto Order
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
 
 
@@ -1494,7 +1496,7 @@ Name | Type | Description  | Notes
 
 Set position mode
 
-The prerequisite for changing mode is that all positions have no holdings and no pending orders
+The prerequisite for changing mode is that there are no open positions and no open orders
 
 ### Example
 
@@ -1513,7 +1515,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     $config
 );
 $settle = 'usdt'; // string | Settle currency
-$dual_mode = true; // bool | Whether to enable dual mode
+$dual_mode = true; // bool | Whether to enable Hedge Mode
 
 try {
     $result = $apiInstance->setDualMode($settle, $dual_mode);
@@ -1532,7 +1534,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Settle currency |
- **dual_mode** | **bool**| Whether to enable dual mode |
+ **dual_mode** | **bool**| Whether to enable Hedge Mode |
 
 ### Return type
 
@@ -1556,7 +1558,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\Position[] getDualModePosition($settle, $contract)
 
-Get position information in dual mode
+Get position information in Hedge Mode
 
 ### Example
 
@@ -1620,7 +1622,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\Position[] updateDualModePositionMargin($settle, $contract, $change, $dual_side)
 
-Update position margin in dual mode
+Update position margin in Hedge Mode
 
 ### Example
 
@@ -1686,7 +1688,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\Position[] updateDualModePositionLeverage($settle, $contract, $leverage, $cross_leverage_limit)
 
-Update position leverage in dual mode
+Update position leverage in Hedge Mode
 
 ### Example
 
@@ -1752,7 +1754,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\Position[] updateDualModePositionRiskLimit($settle, $contract, $risk_limit)
 
-Update position risk limit in dual mode
+Update position risk limit in Hedge Mode
 
 ### Example
 
@@ -3048,6 +3050,72 @@ No authorization required
 [[Back to README]](../../README.md)
 
 
+## createFuturesBBOOrder
+
+> \GateApi\Model\FuturesOrder createFuturesBBOOrder($settle, $futures_bbo_order, $x_gate_exptime)
+
+Level-based BBO Contract Order Placement
+
+Compared to the futures trading order placement interface (futures/{settle}/orders), it adds the `level` and `direction` parameters.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$futures_bbo_order = new \GateApi\Model\FuturesBBOOrder(); // \GateApi\Model\FuturesBBOOrder | 
+$x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+
+try {
+    $result = $apiInstance->createFuturesBBOOrder($settle, $futures_bbo_order, $x_gate_exptime);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->createFuturesBBOOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **futures_bbo_order** | [**\GateApi\Model\FuturesBBOOrder**](../Model/FuturesBBOOrder.md)|  |
+ **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
+
+### Return type
+
+[**\GateApi\Model\FuturesOrder**](../Model/FuturesOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## listPriceTriggeredOrders
 
 > \GateApi\Model\FuturesPriceTriggeredOrder[] listPriceTriggeredOrders($settle, $status, $contract, $limit, $offset)
@@ -3297,6 +3365,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## updatePriceTriggeredOrder
+
+> \GateApi\Model\TriggerOrderResponse updatePriceTriggeredOrder($settle, $order_id, $futures_update_price_triggered_order)
+
+Modify a Single Auto Order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$order_id = 'order_id_example'; // string | ID returned when order is successfully created
+$futures_update_price_triggered_order = new \GateApi\Model\FuturesUpdatePriceTriggeredOrder(); // \GateApi\Model\FuturesUpdatePriceTriggeredOrder | 
+
+try {
+    $result = $apiInstance->updatePriceTriggeredOrder($settle, $order_id, $futures_update_price_triggered_order);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->updatePriceTriggeredOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **order_id** | **string**| ID returned when order is successfully created |
+ **futures_update_price_triggered_order** | [**\GateApi\Model\FuturesUpdatePriceTriggeredOrder**](../Model/FuturesUpdatePriceTriggeredOrder.md)|  |
+
+### Return type
+
+[**\GateApi\Model\TriggerOrderResponse**](../Model/TriggerOrderResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)

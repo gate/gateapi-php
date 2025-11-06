@@ -1,6 +1,6 @@
 <?php
 /**
- * DepositRecord
+ * AwardListStruct
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * DepositRecord Class Doc Comment
+ * AwardListStruct Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class DepositRecord implements ModelInterface, ArrayAccess
+class AwardListStruct implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DepositRecord';
+    protected static $openAPIModelName = 'AwardListStruct';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,15 +54,11 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'txid' => 'string',
-        'timestamp' => 'string',
-        'amount' => 'string',
-        'currency' => 'string',
-        'address' => 'string',
-        'memo' => 'string',
-        'status' => 'string',
-        'chain' => 'string'
+        'page' => 'int',
+        'page_size' => 'int',
+        'page_count' => 'int',
+        'total_count' => 'int',
+        'list' => '\GateApi\Model\AwardListStructList[]'
     ];
 
     /**
@@ -71,15 +67,11 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'txid' => null,
-        'timestamp' => null,
-        'amount' => null,
-        'currency' => null,
-        'address' => null,
-        'memo' => null,
-        'status' => null,
-        'chain' => null
+        'page' => null,
+        'page_size' => null,
+        'page_count' => null,
+        'total_count' => null,
+        'list' => null
     ];
 
     /**
@@ -109,15 +101,11 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'txid' => 'txid',
-        'timestamp' => 'timestamp',
-        'amount' => 'amount',
-        'currency' => 'currency',
-        'address' => 'address',
-        'memo' => 'memo',
-        'status' => 'status',
-        'chain' => 'chain'
+        'page' => 'page',
+        'page_size' => 'pageSize',
+        'page_count' => 'pageCount',
+        'total_count' => 'totalCount',
+        'list' => 'list'
     ];
 
     /**
@@ -126,15 +114,11 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'txid' => 'setTxid',
-        'timestamp' => 'setTimestamp',
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency',
-        'address' => 'setAddress',
-        'memo' => 'setMemo',
-        'status' => 'setStatus',
-        'chain' => 'setChain'
+        'page' => 'setPage',
+        'page_size' => 'setPageSize',
+        'page_count' => 'setPageCount',
+        'total_count' => 'setTotalCount',
+        'list' => 'setList'
     ];
 
     /**
@@ -143,15 +127,11 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'txid' => 'getTxid',
-        'timestamp' => 'getTimestamp',
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency',
-        'address' => 'getAddress',
-        'memo' => 'getMemo',
-        'status' => 'getStatus',
-        'chain' => 'getChain'
+        'page' => 'getPage',
+        'page_size' => 'getPageSize',
+        'page_count' => 'getPageCount',
+        'total_count' => 'getTotalCount',
+        'list' => 'getList'
     ];
 
     /**
@@ -214,15 +194,11 @@ class DepositRecord implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -234,14 +210,20 @@ class DepositRecord implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['page_size'] === null) {
+            $invalidProperties[] = "'page_size' can't be null";
         }
-        if ($this->container['chain'] === null) {
-            $invalidProperties[] = "'chain' can't be null";
+        if ($this->container['page_count'] === null) {
+            $invalidProperties[] = "'page_count' can't be null";
+        }
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
+        }
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,217 +241,121 @@ class DepositRecord implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets page
      *
-     * @return string|null
+     * @return int
      */
-    public function getId()
+    public function getPage()
     {
-        return $this->container['id'];
+        return $this->container['page'];
     }
 
     /**
-     * Sets id
+     * Sets page
      *
-     * @param string|null $id Record ID
+     * @param int $page Page
      *
      * @return $this
      */
-    public function setId($id)
+    public function setPage($page)
     {
-        $this->container['id'] = $id;
+        $this->container['page'] = $page;
 
         return $this;
     }
 
     /**
-     * Gets txid
+     * Gets page_size
      *
-     * @return string|null
+     * @return int
      */
-    public function getTxid()
+    public function getPageSize()
     {
-        return $this->container['txid'];
+        return $this->container['page_size'];
     }
 
     /**
-     * Sets txid
+     * Sets page_size
      *
-     * @param string|null $txid Hash record of the withdrawal
+     * @param int $page_size Items per page
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setPageSize($page_size)
     {
-        $this->container['txid'] = $txid;
+        $this->container['page_size'] = $page_size;
 
         return $this;
     }
 
     /**
-     * Gets timestamp
+     * Gets page_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getTimestamp()
+    public function getPageCount()
     {
-        return $this->container['timestamp'];
+        return $this->container['page_count'];
     }
 
     /**
-     * Sets timestamp
+     * Sets page_count
      *
-     * @param string|null $timestamp Operation time
+     * @param int $page_count Total pages
      *
      * @return $this
      */
-    public function setTimestamp($timestamp)
+    public function setPageCount($page_count)
     {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['page_count'] = $page_count;
 
         return $this;
     }
 
     /**
-     * Gets amount
+     * Gets total_count
      *
-     * @return string
+     * @return int
      */
-    public function getAmount()
+    public function getTotalCount()
     {
-        return $this->container['amount'];
+        return $this->container['total_count'];
     }
 
     /**
-     * Sets amount
+     * Sets total_count
      *
-     * @param string $amount Token amount
+     * @param int $total_count Total entries
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setTotalCount($total_count)
     {
-        $this->container['amount'] = $amount;
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets list
      *
-     * @return string
+     * @return \GateApi\Model\AwardListStructList[]
      */
-    public function getCurrency()
+    public function getList()
     {
-        return $this->container['currency'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets currency
+     * Sets list
      *
-     * @param string $currency Currency name
+     * @param \GateApi\Model\AwardListStructList[] $list list
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setList($list)
     {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets address
-     *
-     * @return string|null
-     */
-    public function getAddress()
-    {
-        return $this->container['address'];
-    }
-
-    /**
-     * Sets address
-     *
-     * @param string|null $address Withdrawal address. Required for withdrawals
-     *
-     * @return $this
-     */
-    public function setAddress($address)
-    {
-        $this->container['address'] = $address;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Additional remarks with regards to the withdrawal
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Transaction Status  - BLOCKED: Deposit Blocked - DEP_CREDITED: Deposit Credited, Withdrawal Pending Unlock - DONE: Awaiting Fund Unlock - FINAL: Funds Credited to Spot Account - INVALID: Invalid Transaction - MANUAL: Manual Review Required - PEND: Processing - REVIEW: Under Compliance Review - TRACK: Tracking Block Confirmations, Pending Spot Account Credit
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets chain
-     *
-     * @return string
-     */
-    public function getChain()
-    {
-        return $this->container['chain'];
-    }
-
-    /**
-     * Sets chain
-     *
-     * @param string $chain Name of the chain used in withdrawals
-     *
-     * @return $this
-     */
-    public function setChain($chain)
-    {
-        $this->container['chain'] = $chain;
+        $this->container['list'] = $list;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * DepositRecord
+ * FuturesUpdatePriceTriggeredOrder
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * DepositRecord Class Doc Comment
+ * FuturesUpdatePriceTriggeredOrder Class Doc Comment
  *
  * @category Class
+ * @description Modify Price Order Details
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class DepositRecord implements ModelInterface, ArrayAccess
+class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DepositRecord';
+    protected static $openAPIModelName = 'FuturesUpdatePriceTriggeredOrder';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,15 +55,14 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'txid' => 'string',
-        'timestamp' => 'string',
-        'amount' => 'string',
-        'currency' => 'string',
-        'address' => 'string',
-        'memo' => 'string',
-        'status' => 'string',
-        'chain' => 'string'
+        'settle' => 'string',
+        'order_id' => 'int',
+        'contact' => 'string',
+        'size' => 'int',
+        'price' => 'string',
+        'trigger_price' => 'string',
+        'price_type' => 'int',
+        'auto_size' => 'string'
     ];
 
     /**
@@ -71,15 +71,14 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'txid' => null,
-        'timestamp' => null,
-        'amount' => null,
-        'currency' => null,
-        'address' => null,
-        'memo' => null,
-        'status' => null,
-        'chain' => null
+        'settle' => null,
+        'order_id' => null,
+        'contact' => null,
+        'size' => 'int64',
+        'price' => null,
+        'trigger_price' => null,
+        'price_type' => 'int32',
+        'auto_size' => null
     ];
 
     /**
@@ -109,15 +108,14 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'txid' => 'txid',
-        'timestamp' => 'timestamp',
-        'amount' => 'amount',
-        'currency' => 'currency',
-        'address' => 'address',
-        'memo' => 'memo',
-        'status' => 'status',
-        'chain' => 'chain'
+        'settle' => 'settle',
+        'order_id' => 'order_id',
+        'contact' => 'contact',
+        'size' => 'size',
+        'price' => 'price',
+        'trigger_price' => 'trigger_price',
+        'price_type' => 'price_type',
+        'auto_size' => 'auto_size'
     ];
 
     /**
@@ -126,15 +124,14 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'txid' => 'setTxid',
-        'timestamp' => 'setTimestamp',
-        'amount' => 'setAmount',
-        'currency' => 'setCurrency',
-        'address' => 'setAddress',
-        'memo' => 'setMemo',
-        'status' => 'setStatus',
-        'chain' => 'setChain'
+        'settle' => 'setSettle',
+        'order_id' => 'setOrderId',
+        'contact' => 'setContact',
+        'size' => 'setSize',
+        'price' => 'setPrice',
+        'trigger_price' => 'setTriggerPrice',
+        'price_type' => 'setPriceType',
+        'auto_size' => 'setAutoSize'
     ];
 
     /**
@@ -143,15 +140,14 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'txid' => 'getTxid',
-        'timestamp' => 'getTimestamp',
-        'amount' => 'getAmount',
-        'currency' => 'getCurrency',
-        'address' => 'getAddress',
-        'memo' => 'getMemo',
-        'status' => 'getStatus',
-        'chain' => 'getChain'
+        'settle' => 'getSettle',
+        'order_id' => 'getOrderId',
+        'contact' => 'getContact',
+        'size' => 'getSize',
+        'price' => 'getPrice',
+        'trigger_price' => 'getTriggerPrice',
+        'price_type' => 'getPriceType',
+        'auto_size' => 'getAutoSize'
     ];
 
     /**
@@ -195,8 +191,25 @@ class DepositRecord implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const PRICE_TYPE_0 = 0;
+    const PRICE_TYPE_1 = 1;
+    const PRICE_TYPE_2 = 2;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPriceTypeAllowableValues()
+    {
+        return [
+            self::PRICE_TYPE_0,
+            self::PRICE_TYPE_1,
+            self::PRICE_TYPE_2,
+        ];
+    }
     
 
     /**
@@ -214,15 +227,14 @@ class DepositRecord implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
+        $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        $this->container['auto_size'] = isset($data['auto_size']) ? $data['auto_size'] : null;
     }
 
     /**
@@ -234,15 +246,14 @@ class DepositRecord implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        $allowedValues = $this->getPriceTypeAllowableValues();
+        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'price_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
-        if ($this->container['chain'] === null) {
-            $invalidProperties[] = "'chain' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -259,217 +270,202 @@ class DepositRecord implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets settle
      *
      * @return string|null
      */
-    public function getId()
+    public function getSettle()
     {
-        return $this->container['id'];
+        return $this->container['settle'];
     }
 
     /**
-     * Sets id
+     * Sets settle
      *
-     * @param string|null $id Record ID
+     * @param string|null $settle Settlement Currency (e.g., USDT, BTC)
      *
      * @return $this
      */
-    public function setId($id)
+    public function setSettle($settle)
     {
-        $this->container['id'] = $id;
+        $this->container['settle'] = $settle;
 
         return $this;
     }
 
     /**
-     * Gets txid
+     * Gets order_id
+     *
+     * @return int|null
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param int|null $order_id ID of the Pending Take-Profit/Stop-Loss Trigger Order
+     *
+     * @return $this
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact
      *
      * @return string|null
      */
-    public function getTxid()
+    public function getContact()
     {
-        return $this->container['txid'];
+        return $this->container['contact'];
     }
 
     /**
-     * Sets txid
+     * Sets contact
      *
-     * @param string|null $txid Hash record of the withdrawal
+     * @param string|null $contact The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setContact($contact)
     {
-        $this->container['txid'] = $txid;
+        $this->container['contact'] = $contact;
 
         return $this;
     }
 
     /**
-     * Gets timestamp
+     * Gets size
+     *
+     * @return int|null
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param int|null $size Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic).
+     *
+     * @return $this
+     */
+    public function setSize($size)
+    {
+        $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
      *
      * @return string|null
      */
-    public function getTimestamp()
+    public function getPrice()
     {
-        return $this->container['timestamp'];
+        return $this->container['price'];
     }
 
     /**
-     * Sets timestamp
+     * Sets price
      *
-     * @param string|null $timestamp Operation time
+     * @param string|null $price Represents the modified trading price. A value of 0 indicates a market order.
      *
      * @return $this
      */
-    public function setTimestamp($timestamp)
+    public function setPrice($price)
     {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['price'] = $price;
 
         return $this;
     }
 
     /**
-     * Gets amount
-     *
-     * @return string
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param string $amount Token amount
-     *
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string $currency Currency name
-     *
-     * @return $this
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets address
+     * Gets trigger_price
      *
      * @return string|null
      */
-    public function getAddress()
+    public function getTriggerPrice()
     {
-        return $this->container['address'];
+        return $this->container['trigger_price'];
     }
 
     /**
-     * Sets address
+     * Sets trigger_price
      *
-     * @param string|null $address Withdrawal address. Required for withdrawals
+     * @param string|null $trigger_price Modified Trigger Price
      *
      * @return $this
      */
-    public function setAddress($address)
+    public function setTriggerPrice($trigger_price)
     {
-        $this->container['address'] = $address;
+        $this->container['trigger_price'] = $trigger_price;
 
         return $this;
     }
 
     /**
-     * Gets memo
+     * Gets price_type
+     *
+     * @return int|null
+     */
+    public function getPriceType()
+    {
+        return $this->container['price_type'];
+    }
+
+    /**
+     * Sets price_type
+     *
+     * @param int|null $price_type Reference price type. 0 - Latest trade price, 1 - Mark price, 2 - Index price
+     *
+     * @return $this
+     */
+    public function setPriceType($price_type)
+    {
+        $allowedValues = $this->getPriceTypeAllowableValues();
+        if (!is_null($price_type) && !in_array($price_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'price_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['price_type'] = $price_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets auto_size
      *
      * @return string|null
      */
-    public function getMemo()
+    public function getAutoSize()
     {
-        return $this->container['memo'];
+        return $this->container['auto_size'];
     }
 
     /**
-     * Sets memo
+     * Sets auto_size
      *
-     * @param string|null $memo Additional remarks with regards to the withdrawal
+     * @param string|null $auto_size 单仓模式不需设置auto_size 双仓模式部分平仓(size≠0)时，不需设置auto_size 双仓模式全部平仓(size=0)时，必须设置auto_size，close_long 平多头， close_short 平空头
      *
      * @return $this
      */
-    public function setMemo($memo)
+    public function setAutoSize($auto_size)
     {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Transaction Status  - BLOCKED: Deposit Blocked - DEP_CREDITED: Deposit Credited, Withdrawal Pending Unlock - DONE: Awaiting Fund Unlock - FINAL: Funds Credited to Spot Account - INVALID: Invalid Transaction - MANUAL: Manual Review Required - PEND: Processing - REVIEW: Under Compliance Review - TRACK: Tracking Block Confirmations, Pending Spot Account Credit
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets chain
-     *
-     * @return string
-     */
-    public function getChain()
-    {
-        return $this->container['chain'];
-    }
-
-    /**
-     * Sets chain
-     *
-     * @param string $chain Name of the chain used in withdrawals
-     *
-     * @return $this
-     */
-    public function setChain($chain)
-    {
-        $this->container['chain'] = $chain;
+        $this->container['auto_size'] = $auto_size;
 
         return $this;
     }

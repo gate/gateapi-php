@@ -466,7 +466,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
     /**
      * Sets available
      *
-     * @param string|null $available Available balance for transferring or trading (including bonus. Bonus cannot be withdrawn, so transfer amount needs to deduct bonus)
+     * @param string|null $available Refers to the available withdrawal or trading amount in per-position, specifically the per-position available balance under the unified account that includes the credit line (which incorporates trial funds; since trial funds cannot be withdrawn, the actual withdrawal amount needs to deduct the trial fund portion when processing withdrawals)
      *
      * @return $this
      */
@@ -538,7 +538,7 @@ class FuturesAccount implements ModelInterface, ArrayAccess
     /**
      * Sets in_dual_mode
      *
-     * @param bool|null $in_dual_mode Whether dual mode is enabled
+     * @param bool|null $in_dual_mode Whether Hedge Mode is enabled
      *
      * @return $this
      */

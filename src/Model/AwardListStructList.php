@@ -1,6 +1,6 @@
 <?php
 /**
- * DepositRecord
+ * AwardListStructList
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * DepositRecord Class Doc Comment
+ * AwardListStructList Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class DepositRecord implements ModelInterface, ArrayAccess
+class AwardListStructList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DepositRecord';
+    protected static $openAPIModelName = 'AwardListStruct_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,15 +54,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'txid' => 'string',
-        'timestamp' => 'string',
+        'pid' => 'int',
+        'mortgage_coin' => 'string',
         'amount' => 'string',
-        'currency' => 'string',
-        'address' => 'string',
-        'memo' => 'string',
-        'status' => 'string',
-        'chain' => 'string'
+        'reward_coin' => 'string',
+        'interest' => 'string',
+        'fee' => 'string',
+        'status' => 'int',
+        'bonus_date' => 'string',
+        'should_bonus_stamp' => 'int'
     ];
 
     /**
@@ -71,15 +71,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'txid' => null,
-        'timestamp' => null,
+        'pid' => null,
+        'mortgage_coin' => null,
         'amount' => null,
-        'currency' => null,
-        'address' => null,
-        'memo' => null,
+        'reward_coin' => null,
+        'interest' => null,
+        'fee' => null,
         'status' => null,
-        'chain' => null
+        'bonus_date' => null,
+        'should_bonus_stamp' => null
     ];
 
     /**
@@ -109,15 +109,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'txid' => 'txid',
-        'timestamp' => 'timestamp',
+        'pid' => 'pid',
+        'mortgage_coin' => 'mortgage_coin',
         'amount' => 'amount',
-        'currency' => 'currency',
-        'address' => 'address',
-        'memo' => 'memo',
+        'reward_coin' => 'reward_coin',
+        'interest' => 'interest',
+        'fee' => 'fee',
         'status' => 'status',
-        'chain' => 'chain'
+        'bonus_date' => 'bonus_date',
+        'should_bonus_stamp' => 'should_bonus_stamp'
     ];
 
     /**
@@ -126,15 +126,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'txid' => 'setTxid',
-        'timestamp' => 'setTimestamp',
+        'pid' => 'setPid',
+        'mortgage_coin' => 'setMortgageCoin',
         'amount' => 'setAmount',
-        'currency' => 'setCurrency',
-        'address' => 'setAddress',
-        'memo' => 'setMemo',
+        'reward_coin' => 'setRewardCoin',
+        'interest' => 'setInterest',
+        'fee' => 'setFee',
         'status' => 'setStatus',
-        'chain' => 'setChain'
+        'bonus_date' => 'setBonusDate',
+        'should_bonus_stamp' => 'setShouldBonusStamp'
     ];
 
     /**
@@ -143,15 +143,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'txid' => 'getTxid',
-        'timestamp' => 'getTimestamp',
+        'pid' => 'getPid',
+        'mortgage_coin' => 'getMortgageCoin',
         'amount' => 'getAmount',
-        'currency' => 'getCurrency',
-        'address' => 'getAddress',
-        'memo' => 'getMemo',
+        'reward_coin' => 'getRewardCoin',
+        'interest' => 'getInterest',
+        'fee' => 'getFee',
         'status' => 'getStatus',
-        'chain' => 'getChain'
+        'bonus_date' => 'getBonusDate',
+        'should_bonus_stamp' => 'getShouldBonusStamp'
     ];
 
     /**
@@ -214,15 +214,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        $this->container['mortgage_coin'] = isset($data['mortgage_coin']) ? $data['mortgage_coin'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        $this->container['reward_coin'] = isset($data['reward_coin']) ? $data['reward_coin'] : null;
+        $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        $this->container['bonus_date'] = isset($data['bonus_date']) ? $data['bonus_date'] : null;
+        $this->container['should_bonus_stamp'] = isset($data['should_bonus_stamp']) ? $data['should_bonus_stamp'] : null;
     }
 
     /**
@@ -234,14 +234,32 @@ class DepositRecord implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['pid'] === null) {
+            $invalidProperties[] = "'pid' can't be null";
+        }
+        if ($this->container['mortgage_coin'] === null) {
+            $invalidProperties[] = "'mortgage_coin' can't be null";
+        }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['reward_coin'] === null) {
+            $invalidProperties[] = "'reward_coin' can't be null";
         }
-        if ($this->container['chain'] === null) {
-            $invalidProperties[] = "'chain' can't be null";
+        if ($this->container['interest'] === null) {
+            $invalidProperties[] = "'interest' can't be null";
+        }
+        if ($this->container['fee'] === null) {
+            $invalidProperties[] = "'fee' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['bonus_date'] === null) {
+            $invalidProperties[] = "'bonus_date' can't be null";
+        }
+        if ($this->container['should_bonus_stamp'] === null) {
+            $invalidProperties[] = "'should_bonus_stamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,73 +277,49 @@ class DepositRecord implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets pid
      *
-     * @return string|null
+     * @return int
      */
-    public function getId()
+    public function getPid()
     {
-        return $this->container['id'];
+        return $this->container['pid'];
     }
 
     /**
-     * Sets id
+     * Sets pid
      *
-     * @param string|null $id Record ID
+     * @param int $pid Product ID
      *
      * @return $this
      */
-    public function setId($id)
+    public function setPid($pid)
     {
-        $this->container['id'] = $id;
+        $this->container['pid'] = $pid;
 
         return $this;
     }
 
     /**
-     * Gets txid
+     * Gets mortgage_coin
      *
-     * @return string|null
+     * @return string
      */
-    public function getTxid()
+    public function getMortgageCoin()
     {
-        return $this->container['txid'];
+        return $this->container['mortgage_coin'];
     }
 
     /**
-     * Sets txid
+     * Sets mortgage_coin
      *
-     * @param string|null $txid Hash record of the withdrawal
+     * @param string $mortgage_coin Collateral currency
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setMortgageCoin($mortgage_coin)
     {
-        $this->container['txid'] = $txid;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return string|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param string|null $timestamp Operation time
-     *
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['mortgage_coin'] = $mortgage_coin;
 
         return $this;
     }
@@ -343,7 +337,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Token amount
+     * @param string $amount Amount
      *
      * @return $this
      */
@@ -355,73 +349,73 @@ class DepositRecord implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets currency
+     * Gets reward_coin
      *
      * @return string
      */
-    public function getCurrency()
+    public function getRewardCoin()
     {
-        return $this->container['currency'];
+        return $this->container['reward_coin'];
     }
 
     /**
-     * Sets currency
+     * Sets reward_coin
      *
-     * @param string $currency Currency name
+     * @param string $reward_coin Reward currency
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setRewardCoin($reward_coin)
     {
-        $this->container['currency'] = $currency;
+        $this->container['reward_coin'] = $reward_coin;
 
         return $this;
     }
 
     /**
-     * Gets address
+     * Gets interest
      *
-     * @return string|null
+     * @return string
      */
-    public function getAddress()
+    public function getInterest()
     {
-        return $this->container['address'];
+        return $this->container['interest'];
     }
 
     /**
-     * Sets address
+     * Sets interest
      *
-     * @param string|null $address Withdrawal address. Required for withdrawals
+     * @param string $interest Interest amount
      *
      * @return $this
      */
-    public function setAddress($address)
+    public function setInterest($interest)
     {
-        $this->container['address'] = $address;
+        $this->container['interest'] = $interest;
 
         return $this;
     }
 
     /**
-     * Gets memo
+     * Gets fee
      *
-     * @return string|null
+     * @return string
      */
-    public function getMemo()
+    public function getFee()
     {
-        return $this->container['memo'];
+        return $this->container['fee'];
     }
 
     /**
-     * Sets memo
+     * Sets fee
      *
-     * @param string|null $memo Additional remarks with regards to the withdrawal
+     * @param string $fee fee
      *
      * @return $this
      */
-    public function setMemo($memo)
+    public function setFee($fee)
     {
-        $this->container['memo'] = $memo;
+        $this->container['fee'] = $fee;
 
         return $this;
     }
@@ -429,7 +423,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string|null
+     * @return int
      */
     public function getStatus()
     {
@@ -439,7 +433,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Transaction Status  - BLOCKED: Deposit Blocked - DEP_CREDITED: Deposit Credited, Withdrawal Pending Unlock - DONE: Awaiting Fund Unlock - FINAL: Funds Credited to Spot Account - INVALID: Invalid Transaction - MANUAL: Manual Review Required - PEND: Processing - REVIEW: Under Compliance Review - TRACK: Tracking Block Confirmations, Pending Spot Account Credit
+     * @param int $status Status
      *
      * @return $this
      */
@@ -451,25 +445,49 @@ class DepositRecord implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets chain
+     * Gets bonus_date
      *
      * @return string
      */
-    public function getChain()
+    public function getBonusDate()
     {
-        return $this->container['chain'];
+        return $this->container['bonus_date'];
     }
 
     /**
-     * Sets chain
+     * Sets bonus_date
      *
-     * @param string $chain Name of the chain used in withdrawals
+     * @param string $bonus_date Date
      *
      * @return $this
      */
-    public function setChain($chain)
+    public function setBonusDate($bonus_date)
     {
-        $this->container['chain'] = $chain;
+        $this->container['bonus_date'] = $bonus_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets should_bonus_stamp
+     *
+     * @return int
+     */
+    public function getShouldBonusStamp()
+    {
+        return $this->container['should_bonus_stamp'];
+    }
+
+    /**
+     * Sets should_bonus_stamp
+     *
+     * @param int $should_bonus_stamp Scheduled distribution timestamp
+     *
+     * @return $this
+     */
+    public function setShouldBonusStamp($should_bonus_stamp)
+    {
+        $this->container['should_bonus_stamp'] = $should_bonus_stamp;
 
         return $this;
     }

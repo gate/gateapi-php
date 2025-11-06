@@ -6266,7 +6266,7 @@ class SpotApi
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      * @param  string $order_id Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present (optional)
-     * @param  string $account Specify query account (optional)
+     * @param  string $account The accountparameter has been deprecated. The interface supports querying all transaction records of the account. (optional)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      *
@@ -6291,7 +6291,7 @@ class SpotApi
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      * @param  string $order_id Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present (optional)
-     * @param  string $account Specify query account (optional)
+     * @param  string $account The accountparameter has been deprecated. The interface supports querying all transaction records of the account. (optional)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      *
@@ -6353,7 +6353,7 @@ class SpotApi
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      * @param  string $order_id Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present (optional)
-     * @param  string $account Specify query account (optional)
+     * @param  string $account The accountparameter has been deprecated. The interface supports querying all transaction records of the account. (optional)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      *
@@ -6381,7 +6381,7 @@ class SpotApi
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      * @param  string $order_id Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present (optional)
-     * @param  string $account Specify query account (optional)
+     * @param  string $account The accountparameter has been deprecated. The interface supports querying all transaction records of the account. (optional)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      *
@@ -6436,7 +6436,7 @@ class SpotApi
      * @param  int $limit Maximum number of items returned in list. Default: 100, minimum: 1, maximum: 1000 (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      * @param  string $order_id Filter trades with specified order ID. &#x60;currency_pair&#x60; is also required if this field is present (optional)
-     * @param  string $account Specify query account (optional)
+     * @param  string $account The accountparameter has been deprecated. The interface supports querying all transaction records of the account. (optional)
      * @param  int $from Start timestamp for the query (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      *

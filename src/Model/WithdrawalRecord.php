@@ -63,6 +63,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
         'fee' => 'string',
         'currency' => 'string',
         'address' => 'string',
+        'type' => 'string',
         'fail_reason' => 'string',
         'timestamp2' => 'string',
         'memo' => 'string',
@@ -85,6 +86,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
         'fee' => null,
         'currency' => null,
         'address' => null,
+        'type' => null,
         'fail_reason' => null,
         'timestamp2' => null,
         'memo' => null,
@@ -128,6 +130,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
         'fee' => 'fee',
         'currency' => 'currency',
         'address' => 'address',
+        'type' => 'type',
         'fail_reason' => 'fail_reason',
         'timestamp2' => 'timestamp2',
         'memo' => 'memo',
@@ -150,6 +153,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
         'fee' => 'setFee',
         'currency' => 'setCurrency',
         'address' => 'setAddress',
+        'type' => 'setType',
         'fail_reason' => 'setFailReason',
         'timestamp2' => 'setTimestamp2',
         'memo' => 'setMemo',
@@ -172,6 +176,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
         'fee' => 'getFee',
         'currency' => 'getCurrency',
         'address' => 'getAddress',
+        'type' => 'getType',
         'fail_reason' => 'getFailReason',
         'timestamp2' => 'getTimestamp2',
         'memo' => 'getMemo',
@@ -248,6 +253,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['fail_reason'] = isset($data['fail_reason']) ? $data['fail_reason'] : null;
         $this->container['timestamp2'] = isset($data['timestamp2']) ? $data['timestamp2'] : null;
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
@@ -505,6 +511,30 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Business Type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
      * Gets fail_reason
      *
      * @return string|null
@@ -589,7 +619,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Transaction status  - DONE: Completed (block_number > 0 is considered to be truly completed) - CANCEL: Canceled - REQUEST: Requesting - MANUAL: Pending manual review - BCODE: Recharge code operation - EXTPEND: Sent awaiting confirmation - FAIL: Failure on the chain awaiting confirmation - INVALID: Invalid order - VERIFY: Verifying - PROCES: Processing - PEND: Processing - DMOVE: pending manual review - REVIEW: Under review
+     * @param string|null $status Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed (Only considered truly on-chain when block_number > 0) - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
      *
      * @return $this
      */

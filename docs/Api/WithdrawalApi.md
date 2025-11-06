@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ## cancelWithdrawal
 
-> \GateApi\Model\LedgerRecord cancelWithdrawal($withdrawal_id)
+> \GateApi\Model\WithdrawalsDel cancelWithdrawal($withdrawal_id)
 
 Cancel withdrawal with specified ID
 
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\LedgerRecord**](../Model/LedgerRecord.md)
+[**\GateApi\Model\WithdrawalsDel**](../Model/WithdrawalsDel.md)
 
 ### Authorization
 

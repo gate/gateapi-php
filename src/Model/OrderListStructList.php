@@ -1,6 +1,6 @@
 <?php
 /**
- * DepositRecord
+ * OrderListStructList
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * DepositRecord Class Doc Comment
+ * OrderListStructList Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class DepositRecord implements ModelInterface, ArrayAccess
+class OrderListStructList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DepositRecord';
+    protected static $openAPIModelName = 'OrderListStruct_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,15 +54,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'txid' => 'string',
-        'timestamp' => 'string',
+        'pid' => 'int',
+        'coin' => 'string',
         'amount' => 'string',
-        'currency' => 'string',
-        'address' => 'string',
-        'memo' => 'string',
-        'status' => 'string',
-        'chain' => 'string'
+        'type' => 'int',
+        'status' => 'int',
+        'redeem_stamp' => 'int',
+        'create_stamp' => 'int',
+        'exchange_amount' => 'string',
+        'fee' => 'string'
     ];
 
     /**
@@ -71,15 +71,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'txid' => null,
-        'timestamp' => null,
+        'pid' => null,
+        'coin' => null,
         'amount' => null,
-        'currency' => null,
-        'address' => null,
-        'memo' => null,
+        'type' => null,
         'status' => null,
-        'chain' => null
+        'redeem_stamp' => null,
+        'create_stamp' => null,
+        'exchange_amount' => null,
+        'fee' => null
     ];
 
     /**
@@ -109,15 +109,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'txid' => 'txid',
-        'timestamp' => 'timestamp',
+        'pid' => 'pid',
+        'coin' => 'coin',
         'amount' => 'amount',
-        'currency' => 'currency',
-        'address' => 'address',
-        'memo' => 'memo',
+        'type' => 'type',
         'status' => 'status',
-        'chain' => 'chain'
+        'redeem_stamp' => 'redeem_stamp',
+        'create_stamp' => 'createStamp',
+        'exchange_amount' => 'exchange_amount',
+        'fee' => 'fee'
     ];
 
     /**
@@ -126,15 +126,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'txid' => 'setTxid',
-        'timestamp' => 'setTimestamp',
+        'pid' => 'setPid',
+        'coin' => 'setCoin',
         'amount' => 'setAmount',
-        'currency' => 'setCurrency',
-        'address' => 'setAddress',
-        'memo' => 'setMemo',
+        'type' => 'setType',
         'status' => 'setStatus',
-        'chain' => 'setChain'
+        'redeem_stamp' => 'setRedeemStamp',
+        'create_stamp' => 'setCreateStamp',
+        'exchange_amount' => 'setExchangeAmount',
+        'fee' => 'setFee'
     ];
 
     /**
@@ -143,15 +143,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'txid' => 'getTxid',
-        'timestamp' => 'getTimestamp',
+        'pid' => 'getPid',
+        'coin' => 'getCoin',
         'amount' => 'getAmount',
-        'currency' => 'getCurrency',
-        'address' => 'getAddress',
-        'memo' => 'getMemo',
+        'type' => 'getType',
         'status' => 'getStatus',
-        'chain' => 'getChain'
+        'redeem_stamp' => 'getRedeemStamp',
+        'create_stamp' => 'getCreateStamp',
+        'exchange_amount' => 'getExchangeAmount',
+        'fee' => 'getFee'
     ];
 
     /**
@@ -214,15 +214,15 @@ class DepositRecord implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        $this->container['redeem_stamp'] = isset($data['redeem_stamp']) ? $data['redeem_stamp'] : null;
+        $this->container['create_stamp'] = isset($data['create_stamp']) ? $data['create_stamp'] : null;
+        $this->container['exchange_amount'] = isset($data['exchange_amount']) ? $data['exchange_amount'] : null;
+        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
     }
 
     /**
@@ -234,14 +234,32 @@ class DepositRecord implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['pid'] === null) {
+            $invalidProperties[] = "'pid' can't be null";
+        }
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
+        }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['chain'] === null) {
-            $invalidProperties[] = "'chain' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['redeem_stamp'] === null) {
+            $invalidProperties[] = "'redeem_stamp' can't be null";
+        }
+        if ($this->container['create_stamp'] === null) {
+            $invalidProperties[] = "'create_stamp' can't be null";
+        }
+        if ($this->container['exchange_amount'] === null) {
+            $invalidProperties[] = "'exchange_amount' can't be null";
+        }
+        if ($this->container['fee'] === null) {
+            $invalidProperties[] = "'fee' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,73 +277,49 @@ class DepositRecord implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets pid
      *
-     * @return string|null
+     * @return int
      */
-    public function getId()
+    public function getPid()
     {
-        return $this->container['id'];
+        return $this->container['pid'];
     }
 
     /**
-     * Sets id
+     * Sets pid
      *
-     * @param string|null $id Record ID
+     * @param int $pid Product ID
      *
      * @return $this
      */
-    public function setId($id)
+    public function setPid($pid)
     {
-        $this->container['id'] = $id;
+        $this->container['pid'] = $pid;
 
         return $this;
     }
 
     /**
-     * Gets txid
+     * Gets coin
      *
-     * @return string|null
+     * @return string
      */
-    public function getTxid()
+    public function getCoin()
     {
-        return $this->container['txid'];
+        return $this->container['coin'];
     }
 
     /**
-     * Sets txid
+     * Sets coin
      *
-     * @param string|null $txid Hash record of the withdrawal
+     * @param string $coin Staked and redeemed currencies
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setCoin($coin)
     {
-        $this->container['txid'] = $txid;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return string|null
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param string|null $timestamp Operation time
-     *
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['coin'] = $coin;
 
         return $this;
     }
@@ -343,7 +337,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Token amount
+     * @param string $amount Amount
      *
      * @return $this
      */
@@ -355,73 +349,25 @@ class DepositRecord implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets currency
+     * Gets type
      *
-     * @return string
+     * @return int
      */
-    public function getCurrency()
+    public function getType()
     {
-        return $this->container['currency'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets currency
+     * Sets type
      *
-     * @param string $currency Currency name
+     * @param int $type Type 0-Staking 1-Redemption
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setType($type)
     {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets address
-     *
-     * @return string|null
-     */
-    public function getAddress()
-    {
-        return $this->container['address'];
-    }
-
-    /**
-     * Sets address
-     *
-     * @param string|null $address Withdrawal address. Required for withdrawals
-     *
-     * @return $this
-     */
-    public function setAddress($address)
-    {
-        $this->container['address'] = $address;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Additional remarks with regards to the withdrawal
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
+        $this->container['type'] = $type;
 
         return $this;
     }
@@ -429,7 +375,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string|null
+     * @return int
      */
     public function getStatus()
     {
@@ -439,7 +385,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Transaction Status  - BLOCKED: Deposit Blocked - DEP_CREDITED: Deposit Credited, Withdrawal Pending Unlock - DONE: Awaiting Fund Unlock - FINAL: Funds Credited to Spot Account - INVALID: Invalid Transaction - MANUAL: Manual Review Required - PEND: Processing - REVIEW: Under Compliance Review - TRACK: Tracking Block Confirmations, Pending Spot Account Credit
+     * @param int $status Status
      *
      * @return $this
      */
@@ -451,25 +397,97 @@ class DepositRecord implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets chain
+     * Gets redeem_stamp
      *
-     * @return string
+     * @return int
      */
-    public function getChain()
+    public function getRedeemStamp()
     {
-        return $this->container['chain'];
+        return $this->container['redeem_stamp'];
     }
 
     /**
-     * Sets chain
+     * Sets redeem_stamp
      *
-     * @param string $chain Name of the chain used in withdrawals
+     * @param int $redeem_stamp Redemption credit time
      *
      * @return $this
      */
-    public function setChain($chain)
+    public function setRedeemStamp($redeem_stamp)
     {
-        $this->container['chain'] = $chain;
+        $this->container['redeem_stamp'] = $redeem_stamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_stamp
+     *
+     * @return int
+     */
+    public function getCreateStamp()
+    {
+        return $this->container['create_stamp'];
+    }
+
+    /**
+     * Sets create_stamp
+     *
+     * @param int $create_stamp Order time
+     *
+     * @return $this
+     */
+    public function setCreateStamp($create_stamp)
+    {
+        $this->container['create_stamp'] = $create_stamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_amount
+     *
+     * @return string
+     */
+    public function getExchangeAmount()
+    {
+        return $this->container['exchange_amount'];
+    }
+
+    /**
+     * Sets exchange_amount
+     *
+     * @param string $exchange_amount Exchange rate
+     *
+     * @return $this
+     */
+    public function setExchangeAmount($exchange_amount)
+    {
+        $this->container['exchange_amount'] = $exchange_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets fee
+     *
+     * @return string
+     */
+    public function getFee()
+    {
+        return $this->container['fee'];
+    }
+
+    /**
+     * Sets fee
+     *
+     * @param string $fee fee
+     *
+     * @return $this
+     */
+    public function setFee($fee)
+    {
+        $this->container['fee'] = $fee;
 
         return $this;
     }

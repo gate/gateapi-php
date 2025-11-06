@@ -1062,7 +1062,7 @@ class Position implements ModelInterface, ArrayAccess
     /**
      * Sets mode
      *
-     * @param string|null $mode Position mode, including:  - `single`: Single position mode - `dual_long`: Long position in dual position mode - `dual_short`: Short position in dual position mode
+     * @param string|null $mode Position mode, including:  - `single`: One-way Mode - `dual_long`: Long position in Hedge Mode - `dual_short`: Short position in Hedge Mode
      *
      * @return $this
      */

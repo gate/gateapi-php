@@ -6810,7 +6810,7 @@ class FuturesApi
      * Set position mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  bool $dual_mode Whether to enable dual mode (required)
+     * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6828,7 +6828,7 @@ class FuturesApi
      * Set position mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  bool $dual_mode Whether to enable dual mode (required)
+     * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6883,7 +6883,7 @@ class FuturesApi
      * Set position mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  bool $dual_mode Whether to enable dual mode (required)
+     * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6904,7 +6904,7 @@ class FuturesApi
      * Set position mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  bool $dual_mode Whether to enable dual mode (required)
+     * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6952,7 +6952,7 @@ class FuturesApi
      * Create request for operation 'setDualMode'
      *
      * @param  string $settle Settle currency (required)
-     * @param  bool $dual_mode Whether to enable dual mode (required)
+     * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7070,7 +7070,7 @@ class FuturesApi
     /**
      * Operation getDualModePosition
      *
-     * Get position information in dual mode
+     * Get position information in Hedge Mode
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7090,7 +7090,7 @@ class FuturesApi
     /**
      * Operation getDualModePositionWithHttpInfo
      *
-     * Get position information in dual mode
+     * Get position information in Hedge Mode
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7147,7 +7147,7 @@ class FuturesApi
     /**
      * Operation getDualModePositionAsync
      *
-     * Get position information in dual mode
+     * Get position information in Hedge Mode
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7170,7 +7170,7 @@ class FuturesApi
     /**
      * Operation getDualModePositionAsyncWithHttpInfo
      *
-     * Get position information in dual mode
+     * Get position information in Hedge Mode
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7344,7 +7344,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionMargin
      *
-     * Update position margin in dual mode
+     * Update position margin in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7364,7 +7364,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionMarginWithHttpInfo
      *
-     * Update position margin in dual mode
+     * Update position margin in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7421,7 +7421,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionMarginAsync
      *
-     * Update position margin in dual mode
+     * Update position margin in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7444,7 +7444,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionMarginAsyncWithHttpInfo
      *
-     * Update position margin in dual mode
+     * Update position margin in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7650,7 +7650,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionLeverage
      *
-     * Update position leverage in dual mode
+     * Update position leverage in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7670,7 +7670,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionLeverageWithHttpInfo
      *
-     * Update position leverage in dual mode
+     * Update position leverage in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7727,7 +7727,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionLeverageAsync
      *
-     * Update position leverage in dual mode
+     * Update position leverage in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7750,7 +7750,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionLeverageAsyncWithHttpInfo
      *
-     * Update position leverage in dual mode
+     * Update position leverage in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7950,7 +7950,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionRiskLimit
      *
-     * Update position risk limit in dual mode
+     * Update position risk limit in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -7969,7 +7969,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionRiskLimitWithHttpInfo
      *
-     * Update position risk limit in dual mode
+     * Update position risk limit in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -8025,7 +8025,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionRiskLimitAsync
      *
-     * Update position risk limit in dual mode
+     * Update position risk limit in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -8047,7 +8047,7 @@ class FuturesApi
     /**
      * Operation updateDualModePositionRiskLimitAsyncWithHttpInfo
      *
-     * Update position risk limit in dual mode
+     * Update position risk limit in Hedge Mode
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
@@ -13784,6 +13784,270 @@ class FuturesApi
     }
 
     /**
+     * Operation createFuturesBBOOrder
+     *
+     * Level-based BBO Contract Order Placement
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order futures_bbo_order (required)
+     * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FuturesOrder
+     */
+    public function createFuturesBBOOrder($settle, $futures_bbo_order, $x_gate_exptime = null)
+    {
+        list($response) = $this->createFuturesBBOOrderWithHttpInfo($settle, $futures_bbo_order, $x_gate_exptime);
+        return $response;
+    }
+
+    /**
+     * Operation createFuturesBBOOrderWithHttpInfo
+     *
+     * Level-based BBO Contract Order Placement
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
+     * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FuturesOrder, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createFuturesBBOOrderWithHttpInfo($settle, $futures_bbo_order, $x_gate_exptime = null)
+    {
+        $request = $this->createFuturesBBOOrderRequest($settle, $futures_bbo_order, $x_gate_exptime);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FuturesOrder';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createFuturesBBOOrderAsync
+     *
+     * Level-based BBO Contract Order Placement
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
+     * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFuturesBBOOrderAsync($settle, $futures_bbo_order, $x_gate_exptime = null)
+    {
+        return $this->createFuturesBBOOrderAsyncWithHttpInfo($settle, $futures_bbo_order, $x_gate_exptime)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createFuturesBBOOrderAsyncWithHttpInfo
+     *
+     * Level-based BBO Contract Order Placement
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
+     * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFuturesBBOOrderAsyncWithHttpInfo($settle, $futures_bbo_order, $x_gate_exptime = null)
+    {
+        $returnType = '\GateApi\Model\FuturesOrder';
+        $request = $this->createFuturesBBOOrderRequest($settle, $futures_bbo_order, $x_gate_exptime);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createFuturesBBOOrder'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
+     * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createFuturesBBOOrderRequest($settle, $futures_bbo_order, $x_gate_exptime = null)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling createFuturesBBOOrder'
+            );
+        }
+        // verify the required parameter 'futures_bbo_order' is set
+        if ($futures_bbo_order === null || (is_array($futures_bbo_order) && count($futures_bbo_order) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $futures_bbo_order when calling createFuturesBBOOrder'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/bbo_orders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_gate_exptime !== null) {
+            $headerParams['x-gate-exptime'] = ObjectSerializer::toHeaderValue($x_gate_exptime);
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($futures_bbo_order)) {
+            $_tempBody = $futures_bbo_order;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listPriceTriggeredOrders
      *
      * Query auto order list
@@ -14890,6 +15154,280 @@ class FuturesApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updatePriceTriggeredOrder
+     *
+     * Modify a Single Auto Order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
+     * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order futures_update_price_triggered_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\TriggerOrderResponse
+     */
+    public function updatePriceTriggeredOrder($settle, $order_id, $futures_update_price_triggered_order)
+    {
+        list($response) = $this->updatePriceTriggeredOrderWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order);
+        return $response;
+    }
+
+    /**
+     * Operation updatePriceTriggeredOrderWithHttpInfo
+     *
+     * Modify a Single Auto Order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
+     * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\TriggerOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updatePriceTriggeredOrderWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order)
+    {
+        $request = $this->updatePriceTriggeredOrderRequest($settle, $order_id, $futures_update_price_triggered_order);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\TriggerOrderResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation updatePriceTriggeredOrderAsync
+     *
+     * Modify a Single Auto Order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
+     * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updatePriceTriggeredOrderAsync($settle, $order_id, $futures_update_price_triggered_order)
+    {
+        return $this->updatePriceTriggeredOrderAsyncWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updatePriceTriggeredOrderAsyncWithHttpInfo
+     *
+     * Modify a Single Auto Order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
+     * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updatePriceTriggeredOrderAsyncWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order)
+    {
+        $returnType = '\GateApi\Model\TriggerOrderResponse';
+        $request = $this->updatePriceTriggeredOrderRequest($settle, $order_id, $futures_update_price_triggered_order);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updatePriceTriggeredOrder'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
+     * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updatePriceTriggeredOrderRequest($settle, $order_id, $futures_update_price_triggered_order)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling updatePriceTriggeredOrder'
+            );
+        }
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling updatePriceTriggeredOrder'
+            );
+        }
+        // verify the required parameter 'futures_update_price_triggered_order' is set
+        if ($futures_update_price_triggered_order === null || (is_array($futures_update_price_triggered_order) && count($futures_update_price_triggered_order) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $futures_update_price_triggered_order when calling updatePriceTriggeredOrder'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/price_orders/{order_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // path params
+        if ($order_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'order_id' . '}',
+                ObjectSerializer::toPathValue($order_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($futures_update_price_triggered_order)) {
+            $_tempBody = $futures_update_price_triggered_order;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('PUT', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

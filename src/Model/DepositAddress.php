@@ -56,6 +56,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'currency' => 'string',
         'address' => 'string',
+        'min_deposit_amount' => 'string',
         'multichain_addresses' => '\GateApi\Model\MultiChainAddressItem[]'
     ];
 
@@ -67,6 +68,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'currency' => null,
         'address' => null,
+        'min_deposit_amount' => null,
         'multichain_addresses' => null
     ];
 
@@ -99,6 +101,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'currency' => 'currency',
         'address' => 'address',
+        'min_deposit_amount' => 'min_deposit_amount',
         'multichain_addresses' => 'multichain_addresses'
     ];
 
@@ -110,6 +113,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
     protected static $setters = [
         'currency' => 'setCurrency',
         'address' => 'setAddress',
+        'min_deposit_amount' => 'setMinDepositAmount',
         'multichain_addresses' => 'setMultichainAddresses'
     ];
 
@@ -121,6 +125,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
     protected static $getters = [
         'currency' => 'getCurrency',
         'address' => 'getAddress',
+        'min_deposit_amount' => 'getMinDepositAmount',
         'multichain_addresses' => 'getMultichainAddresses'
     ];
 
@@ -186,6 +191,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['min_deposit_amount'] = isset($data['min_deposit_amount']) ? $data['min_deposit_amount'] : null;
         $this->container['multichain_addresses'] = isset($data['multichain_addresses']) ? $data['multichain_addresses'] : null;
     }
 
@@ -263,6 +269,30 @@ class DepositAddress implements ModelInterface, ArrayAccess
     public function setAddress($address)
     {
         $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_deposit_amount
+     *
+     * @return string|null
+     */
+    public function getMinDepositAmount()
+    {
+        return $this->container['min_deposit_amount'];
+    }
+
+    /**
+     * Sets min_deposit_amount
+     *
+     * @param string|null $min_deposit_amount Minimum Deposit Amount
+     *
+     * @return $this
+     */
+    public function setMinDepositAmount($min_deposit_amount)
+    {
+        $this->container['min_deposit_amount'] = $min_deposit_amount;
 
         return $this;
     }

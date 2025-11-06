@@ -61,7 +61,8 @@ class CurrencyChain implements ModelInterface, ArrayAccess
         'is_disabled' => 'int',
         'is_deposit_disabled' => 'int',
         'is_withdraw_disabled' => 'int',
-        'decimal' => 'string'
+        'decimal' => 'string',
+        'is_tag' => 'int'
     ];
 
     /**
@@ -77,7 +78,8 @@ class CurrencyChain implements ModelInterface, ArrayAccess
         'is_disabled' => 'int32',
         'is_deposit_disabled' => 'int32',
         'is_withdraw_disabled' => 'int32',
-        'decimal' => null
+        'decimal' => null,
+        'is_tag' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class CurrencyChain implements ModelInterface, ArrayAccess
         'is_disabled' => 'is_disabled',
         'is_deposit_disabled' => 'is_deposit_disabled',
         'is_withdraw_disabled' => 'is_withdraw_disabled',
-        'decimal' => 'decimal'
+        'decimal' => 'decimal',
+        'is_tag' => 'is_tag'
     ];
 
     /**
@@ -130,7 +133,8 @@ class CurrencyChain implements ModelInterface, ArrayAccess
         'is_disabled' => 'setIsDisabled',
         'is_deposit_disabled' => 'setIsDepositDisabled',
         'is_withdraw_disabled' => 'setIsWithdrawDisabled',
-        'decimal' => 'setDecimal'
+        'decimal' => 'setDecimal',
+        'is_tag' => 'setIsTag'
     ];
 
     /**
@@ -146,7 +150,8 @@ class CurrencyChain implements ModelInterface, ArrayAccess
         'is_disabled' => 'getIsDisabled',
         'is_deposit_disabled' => 'getIsDepositDisabled',
         'is_withdraw_disabled' => 'getIsWithdrawDisabled',
-        'decimal' => 'getDecimal'
+        'decimal' => 'getDecimal',
+        'is_tag' => 'getIsTag'
     ];
 
     /**
@@ -217,6 +222,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
         $this->container['is_deposit_disabled'] = isset($data['is_deposit_disabled']) ? $data['is_deposit_disabled'] : null;
         $this->container['is_withdraw_disabled'] = isset($data['is_withdraw_disabled']) ? $data['is_withdraw_disabled'] : null;
         $this->container['decimal'] = isset($data['decimal']) ? $data['decimal'] : null;
+        $this->container['is_tag'] = isset($data['is_tag']) ? $data['is_tag'] : null;
     }
 
     /**
@@ -431,6 +437,30 @@ class CurrencyChain implements ModelInterface, ArrayAccess
     public function setDecimal($decimal)
     {
         $this->container['decimal'] = $decimal;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_tag
+     *
+     * @return int|null
+     */
+    public function getIsTag()
+    {
+        return $this->container['is_tag'];
+    }
+
+    /**
+     * Sets is_tag
+     *
+     * @param int|null $is_tag Whether to Include Tag
+     *
+     * @return $this
+     */
+    public function setIsTag($is_tag)
+    {
+        $this->container['is_tag'] = $is_tag;
 
         return $this;
     }
