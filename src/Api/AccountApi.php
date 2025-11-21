@@ -341,7 +341,7 @@ class AccountApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Key
+     * @return \GateApi\Model\AccountKeyInfo
      */
     public function getAccountMainKeys()
     {
@@ -357,7 +357,7 @@ class AccountApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Key, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\AccountKeyInfo, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountMainKeysWithHttpInfo()
     {
@@ -387,7 +387,7 @@ class AccountApi
             );
         }
 
-        $returnType = '\GateApi\Model\Key';
+        $returnType = '\GateApi\Model\AccountKeyInfo';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -432,7 +432,7 @@ class AccountApi
      */
     public function getAccountMainKeysAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\Key';
+        $returnType = '\GateApi\Model\AccountKeyInfo';
         $request = $this->getAccountMainKeysRequest();
 
         return $this->client
