@@ -1,4 +1,4 @@
-# # Key
+# # AccountKeyInfo
 
 ## Properties
 
@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **currency_pairs** | **string[]** | Trading Pair Whitelist, Maximum 30 Pairs | [optional] 
 **user_id** | **int** | User ID | [optional] 
 **ip_whitelist** | **string[]** | IP Whitelist | [optional] 
-**perms** | [**\GateApi\Model\KeyPerms[]**](KeyPerms.md) |  | [optional] 
+**perms** | [**\GateApi\Model\AccountKeyInfoPerms[]**](AccountKeyInfoPerms.md) |  | [optional] 
 **key** | [**\GateApi\Model\AccountDetailKey**](AccountDetailKey.md) |  | [optional] 
 **created_at** | **string** | Created time | [optional] [readonly] 
 **updated_at** | **string** | Last Update Time | [optional] [readonly] 
