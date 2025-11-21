@@ -282,7 +282,7 @@ class SpotPriceTrigger implements ModelInterface, ArrayAccess
     /**
      * Sets rule
      *
-     * @param string $rule Price trigger condition  - `>=`: triggered when market price is greater than or equal to `price` - `<=`: triggered when market price is less than or equal to `price`
+     * @param string $rule 价格条件类型 - 大于等于 (>=): 表示市场价格大于等于 price 时触发 - 小于等于 (<=): 表示市场价格小于等于 price 时触发
      *
      * @return $this
      */
