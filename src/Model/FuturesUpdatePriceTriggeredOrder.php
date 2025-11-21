@@ -459,7 +459,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     /**
      * Sets auto_size
      *
-     * @param string|null $auto_size 单仓模式不需设置auto_size 双仓模式部分平仓(size≠0)时，不需设置auto_size 双仓模式全部平仓(size=0)时，必须设置auto_size，close_long 平多头， close_short 平空头
+     * @param string|null $auto_size One-way Mode: auto_size is not required Hedge Mode partial closing (size≠0): auto_size is not required Hedge Mode full closing (size=0): auto_size must be set, close_long for closing long positions, close_short for closing short positions
      *
      * @return $this
      */

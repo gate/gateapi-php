@@ -616,7 +616,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets iso_balance
      *
-     * @param string|null $iso_balance Isolated margin balance is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+     * @param string|null $iso_balance Isolated Margin Balance applies to Single-Currency Margin Mode and Cross-Currency Margin Mode, and is 0 in other modes such as Portfolio Margin Mode.
      *
      * @return $this
      */

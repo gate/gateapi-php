@@ -61,6 +61,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
         'currency' => 'string',
         'address' => 'string',
         'memo' => 'string',
+        'block_number' => 'string',
         'status' => 'string',
         'chain' => 'string'
     ];
@@ -78,6 +79,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
         'currency' => null,
         'address' => null,
         'memo' => null,
+        'block_number' => null,
         'status' => null,
         'chain' => null
     ];
@@ -116,6 +118,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
         'currency' => 'currency',
         'address' => 'address',
         'memo' => 'memo',
+        'block_number' => 'block_number',
         'status' => 'status',
         'chain' => 'chain'
     ];
@@ -133,6 +136,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
         'currency' => 'setCurrency',
         'address' => 'setAddress',
         'memo' => 'setMemo',
+        'block_number' => 'setBlockNumber',
         'status' => 'setStatus',
         'chain' => 'setChain'
     ];
@@ -150,6 +154,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
         'currency' => 'getCurrency',
         'address' => 'getAddress',
         'memo' => 'getMemo',
+        'block_number' => 'getBlockNumber',
         'status' => 'getStatus',
         'chain' => 'getChain'
     ];
@@ -221,6 +226,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        $this->container['block_number'] = isset($data['block_number']) ? $data['block_number'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
     }
@@ -427,6 +433,30 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets block_number
+     *
+     * @return string|null
+     */
+    public function getBlockNumber()
+    {
+        return $this->container['block_number'];
+    }
+
+    /**
+     * Sets block_number
+     *
+     * @param string|null $block_number Block Number
+     *
+     * @return $this
+     */
+    public function setBlockNumber($block_number)
+    {
+        $this->container['block_number'] = $block_number;
+
+        return $this;
+    }
+
+    /**
      * Gets status
      *
      * @return string|null
@@ -439,7 +469,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status 交易状态  - BCODE: 充值码操作 - CANCEL: 已取消 - CANCELPEND: 取消提现中 - DMOVE: 待人工审核 - DONE: 完成 (block_number > 0 时表示已完成上链) - EXTPEND: 已经发送等待确认 - FAIL: 链上失败等待确认 - FVERIFY: 人脸审核处理中 - LOCKED: 钱包侧锁单 - MANUAL: 待人工审核 - REJECT: 拒绝 - REQUEST: 请求中 - REVIEW: 审核中
+     * @param string|null $status Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DMOVE: Pending Manual Review - DONE: Completed (Only considered truly on-chain when block_number > 0) - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
      *
      * @return $this
      */

@@ -202,7 +202,7 @@ $associate_array['settle'] = 'usdt'; // string | Settle currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['interval'] = '0'; // string | Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
 $associate_array['limit'] = 10; // int | Number of depth levels
-$associate_array['with_id'] = false; // bool | Whether to return depth update ID. This ID increments by 1 each time depth changes
+$associate_array['with_id'] = false; // bool | Whether to return depth update ID. This ID increments by 1 each time the depth changes
 
 try {
     $result = $apiInstance->listFuturesOrderBook($associate_array);
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
  **contract** | **string**| Futures contract |
  **interval** | **string**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
  **limit** | **int**| Number of depth levels | [optional] [default to 10]
- **with_id** | **bool**| Whether to return depth update ID. This ID increments by 1 each time depth changes | [optional] [default to false]
+ **with_id** | **bool**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [optional] [default to false]
 
 ### Return type
 

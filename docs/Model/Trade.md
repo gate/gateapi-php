@@ -20,5 +20,6 @@ Name | Type | Description | Notes
 **amend_text** | **string** | The custom data that the user remarked when amending the order | [optional] 
 **sequence_id** | **string** | Consecutive trade ID within a single market. Used to track and identify trades in the specific market | [optional] 
 **text** | **string** | User-defined information, not returned in public endpoints | [optional] 
+**deal** | **string** | Total Executed Value | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

@@ -220,7 +220,7 @@ class KeyPerms implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string|null $name 权限功能名称（不传值即为清空）  - `wallet`: 钱包 - `spot`: 现货/杠杆 - `futures`: 永续合约 - `delivery`: 交割合约 - `earn`: 理财 - `custody`: 托管 - `options`: 期权 - `account`: 账户信息 - `loan`: 借贷 - `margin`: 杠杆 - `unified`: 统一账户 - `copy`: 跟单 - `pilot`: 创新 - `otc`: otc - `alpha`: alpha - `crossx`: 跨所
+     * @param string|null $name Permission function name (no value will be cleared) - `wallet`: wallet - `spot`: spot/margin - `futures`: perpetual contract - `delivery`: delivery contract - `earn`: earn - `custody`: custody - `options`: options - `account`: account information - `loan`: lending - `margin`: margin - `unified`: unified account - `copy`: copy trading- `pilot`: pilot - `otc`: otc - `alpha`: alpha - `crossx`: cross-exchange
      *
      * @return $this
      */

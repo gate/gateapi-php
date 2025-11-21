@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **funding** | **string** | Uniloan financial management amount, effective when turned on as a unified account margin switch | [optional] 
 **funding_version** | **string** | Funding version | [optional] 
 **cross_balance** | **string** | Full margin balance is valid in single currency margin mode, and is 0 in other modes such as cross currency margin/combined margin mode | [optional] 
-**iso_balance** | **string** | Isolated margin balance is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
+**iso_balance** | **string** | Isolated Margin Balance applies to Single-Currency Margin Mode and Cross-Currency Margin Mode, and is 0 in other modes such as Portfolio Margin Mode. | [optional] 
 **im** | **string** | Full-position initial margin is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
 **mm** | **string** | Cross margin maintenance margin, valid in single-currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode | [optional] 
 **imr** | **string** | Full-position initial margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode | [optional] 

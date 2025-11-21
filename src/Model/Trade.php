@@ -69,7 +69,8 @@ class Trade implements ModelInterface, ArrayAccess
         'gt_fee' => 'string',
         'amend_text' => 'string',
         'sequence_id' => 'string',
-        'text' => 'string'
+        'text' => 'string',
+        'deal' => 'string'
     ];
 
     /**
@@ -93,7 +94,8 @@ class Trade implements ModelInterface, ArrayAccess
         'gt_fee' => null,
         'amend_text' => null,
         'sequence_id' => null,
-        'text' => null
+        'text' => null,
+        'deal' => null
     ];
 
     /**
@@ -138,7 +140,8 @@ class Trade implements ModelInterface, ArrayAccess
         'gt_fee' => 'gt_fee',
         'amend_text' => 'amend_text',
         'sequence_id' => 'sequence_id',
-        'text' => 'text'
+        'text' => 'text',
+        'deal' => 'deal'
     ];
 
     /**
@@ -162,7 +165,8 @@ class Trade implements ModelInterface, ArrayAccess
         'gt_fee' => 'setGtFee',
         'amend_text' => 'setAmendText',
         'sequence_id' => 'setSequenceId',
-        'text' => 'setText'
+        'text' => 'setText',
+        'deal' => 'setDeal'
     ];
 
     /**
@@ -186,7 +190,8 @@ class Trade implements ModelInterface, ArrayAccess
         'gt_fee' => 'getGtFee',
         'amend_text' => 'getAmendText',
         'sequence_id' => 'getSequenceId',
-        'text' => 'getText'
+        'text' => 'getText',
+        'deal' => 'getDeal'
     ];
 
     /**
@@ -295,6 +300,7 @@ class Trade implements ModelInterface, ArrayAccess
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
         $this->container['sequence_id'] = isset($data['sequence_id']) ? $data['sequence_id'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['deal'] = isset($data['deal']) ? $data['deal'] : null;
     }
 
     /**
@@ -735,6 +741,30 @@ class Trade implements ModelInterface, ArrayAccess
     public function setText($text)
     {
         $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets deal
+     *
+     * @return string|null
+     */
+    public function getDeal()
+    {
+        return $this->container['deal'];
+    }
+
+    /**
+     * Sets deal
+     *
+     * @param string|null $deal Total Executed Value
+     *
+     * @return $this
+     */
+    public function setDeal($deal)
+    {
+        $this->container['deal'] = $deal;
 
         return $this;
     }

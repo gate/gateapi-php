@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **watch_market** | **string** | Underlying Market | [optional] 
 **start_time** | **int** | Start Time | [optional] 
 **end_time** | **int** | End time | [optional] 
-**status** | **string** | Status:   &#x60;in_process&#x60;-in progress  &#x60;will_begin&#x60;-will begin  &#x60;wait_settlement&#x60;-waiting for settlement  &#x60;done&#x60;-done | [optional] 
+**status** | **string** | Status:  &#x60;in_process&#x60;-in progress  &#x60;will_begin&#x60;-will begin  &#x60;wait_settlement&#x60;-waiting for settlement  &#x60;done&#x60;-done | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

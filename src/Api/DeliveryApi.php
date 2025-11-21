@@ -618,7 +618,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
-     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time depth changes (optional, default to false)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -641,7 +641,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
-     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time depth changes (optional, default to false)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -701,7 +701,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
-     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time depth changes (optional, default to false)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -727,7 +727,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
-     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time depth changes (optional, default to false)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -780,7 +780,7 @@ class DeliveryApi
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
-     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time depth changes (optional, default to false)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

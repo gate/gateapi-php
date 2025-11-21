@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **price** | **string** | Represents the modified trading price. A value of 0 indicates a market order. | [optional] 
 **trigger_price** | **string** | Modified Trigger Price | [optional] 
 **price_type** | **int** | Reference price type. 0 - Latest trade price, 1 - Mark price, 2 - Index price | [optional] 
-**auto_size** | **string** | 单仓模式不需设置auto_size 双仓模式部分平仓(size≠0)时，不需设置auto_size 双仓模式全部平仓(size&#x3D;0)时，必须设置auto_size，close_long 平多头， close_short 平空头 | [optional] 
+**auto_size** | **string** | One-way Mode: auto_size is not required Hedge Mode partial closing (size≠0): auto_size is not required Hedge Mode full closing (size&#x3D;0): auto_size must be set, close_long for closing long positions, close_short for closing short positions | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

@@ -545,7 +545,7 @@ class StructuredGetProjectList implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Status:   `in_process`-in progress  `will_begin`-will begin  `wait_settlement`-waiting for settlement  `done`-done
+     * @param string|null $status Status:  `in_process`-in progress  `will_begin`-will begin  `wait_settlement`-waiting for settlement  `done`-done
      *
      * @return $this
      */

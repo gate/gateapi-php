@@ -71,6 +71,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
         'unified_account_total_equity' => 'string',
         'leverage' => 'string',
         'spot_order_loss' => 'string',
+        'options_order_loss' => 'string',
         'spot_hedge' => 'bool',
         'use_funding' => 'bool',
         'is_all_collateral' => 'bool'
@@ -99,6 +100,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
         'unified_account_total_equity' => null,
         'leverage' => null,
         'spot_order_loss' => null,
+        'options_order_loss' => null,
         'spot_hedge' => null,
         'use_funding' => null,
         'is_all_collateral' => null
@@ -148,6 +150,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
         'unified_account_total_equity' => 'unified_account_total_equity',
         'leverage' => 'leverage',
         'spot_order_loss' => 'spot_order_loss',
+        'options_order_loss' => 'options_order_loss',
         'spot_hedge' => 'spot_hedge',
         'use_funding' => 'use_funding',
         'is_all_collateral' => 'is_all_collateral'
@@ -176,6 +179,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
         'unified_account_total_equity' => 'setUnifiedAccountTotalEquity',
         'leverage' => 'setLeverage',
         'spot_order_loss' => 'setSpotOrderLoss',
+        'options_order_loss' => 'setOptionsOrderLoss',
         'spot_hedge' => 'setSpotHedge',
         'use_funding' => 'setUseFunding',
         'is_all_collateral' => 'setIsAllCollateral'
@@ -204,6 +208,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
         'unified_account_total_equity' => 'getUnifiedAccountTotalEquity',
         'leverage' => 'getLeverage',
         'spot_order_loss' => 'getSpotOrderLoss',
+        'options_order_loss' => 'getOptionsOrderLoss',
         'spot_hedge' => 'getSpotHedge',
         'use_funding' => 'getUseFunding',
         'is_all_collateral' => 'getIsAllCollateral'
@@ -286,6 +291,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
         $this->container['unified_account_total_equity'] = isset($data['unified_account_total_equity']) ? $data['unified_account_total_equity'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
         $this->container['spot_order_loss'] = isset($data['spot_order_loss']) ? $data['spot_order_loss'] : null;
+        $this->container['options_order_loss'] = isset($data['options_order_loss']) ? $data['options_order_loss'] : null;
         $this->container['spot_hedge'] = isset($data['spot_hedge']) ? $data['spot_hedge'] : null;
         $this->container['use_funding'] = isset($data['use_funding']) ? $data['use_funding'] : null;
         $this->container['is_all_collateral'] = isset($data['is_all_collateral']) ? $data['is_all_collateral'] : null;
@@ -712,13 +718,37 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
     /**
      * Sets spot_order_loss
      *
-     * @param string|null $spot_order_loss Total pending order loss, in USDT, valid in cross-currency margin/combined margin mode, 0 in other modes such as single-currency margin mode
+     * @param string|null $spot_order_loss Spot Pending Order Loss, in USDT, effective only in Cross-Currency Margin Mode and Portfolio Margin Mode.
      *
      * @return $this
      */
     public function setSpotOrderLoss($spot_order_loss)
     {
         $this->container['spot_order_loss'] = $spot_order_loss;
+
+        return $this;
+    }
+
+    /**
+     * Gets options_order_loss
+     *
+     * @return string|null
+     */
+    public function getOptionsOrderLoss()
+    {
+        return $this->container['options_order_loss'];
+    }
+
+    /**
+     * Sets options_order_loss
+     *
+     * @param string|null $options_order_loss Option Pending Order Loss, in USDT, effective only in Portfolio Margin Mode.
+     *
+     * @return $this
+     */
+    public function setOptionsOrderLoss($options_order_loss)
+    {
+        $this->container['options_order_loss'] = $options_order_loss;
 
         return $this;
     }
