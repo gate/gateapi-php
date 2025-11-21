@@ -1,6 +1,6 @@
 <?php
 /**
- * AccountKeyInfoPerms
+ * KeyPerms
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * AccountKeyInfoPerms Class Doc Comment
+ * KeyPerms Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class AccountKeyInfoPerms implements ModelInterface, ArrayAccess
+class KeyPerms implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class AccountKeyInfoPerms implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AccountKeyInfo_perms';
+    protected static $openAPIModelName = '_________Key___perms';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

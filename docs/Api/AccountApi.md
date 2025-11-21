@@ -74,7 +74,7 @@ This endpoint does not need any parameter.
 
 ## getAccountMainKeys
 
-> \GateApi\Model\AccountKeyInfo getAccountMainKeys()
+> \GateApi\Model\Key getAccountMainKeys()
 
 Query All Main Account Key Information
 
@@ -112,7 +112,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\AccountKeyInfo**](../Model/AccountKeyInfo.md)
+[**\GateApi\Model\Key**](../Model/Key.md)
 
 ### Authorization
 

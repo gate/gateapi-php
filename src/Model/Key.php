@@ -1,6 +1,6 @@
 <?php
 /**
- * AccountKeyInfo
+ * Key
  *
  * PHP version 7
  *
@@ -30,7 +30,7 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * AccountKeyInfo Class Doc Comment
+ * Key Class Doc Comment
  *
  * @category Class
  * @description Main Account API Key Information
@@ -38,7 +38,7 @@ use \GateApi\ObjectSerializer;
  * @author   Gate
  * @link     https://www.gate.com
  */
-class AccountKeyInfo implements ModelInterface, ArrayAccess
+class Key implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class AccountKeyInfo implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AccountKeyInfo';
+    protected static $openAPIModelName = '_________Key__';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,7 @@ class AccountKeyInfo implements ModelInterface, ArrayAccess
         'currency_pairs' => 'string[]',
         'user_id' => 'int',
         'ip_whitelist' => 'string[]',
-        'perms' => '\GateApi\Model\AccountKeyInfoPerms[]',
+        'perms' => '\GateApi\Model\KeyPerms[]',
         'key' => '\GateApi\Model\AccountDetailKey',
         'created_at' => 'string',
         'updated_at' => 'string',
@@ -409,7 +409,7 @@ class AccountKeyInfo implements ModelInterface, ArrayAccess
     /**
      * Gets perms
      *
-     * @return \GateApi\Model\AccountKeyInfoPerms[]|null
+     * @return \GateApi\Model\KeyPerms[]|null
      */
     public function getPerms()
     {
@@ -419,7 +419,7 @@ class AccountKeyInfo implements ModelInterface, ArrayAccess
     /**
      * Sets perms
      *
-     * @param \GateApi\Model\AccountKeyInfoPerms[]|null $perms perms
+     * @param \GateApi\Model\KeyPerms[]|null $perms perms
      *
      * @return $this
      */
