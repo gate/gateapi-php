@@ -58,8 +58,8 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'contract' => 'string',
         'order_id' => 'string',
-        'size' => 'int',
-        'close_size' => 'int',
+        'size' => 'string',
+        'close_size' => 'string',
         'price' => 'string',
         'role' => 'string',
         'text' => 'string',
@@ -77,8 +77,8 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'contract' => null,
         'order_id' => null,
-        'size' => 'int64',
-        'close_size' => 'int64',
+        'size' => null,
+        'close_size' => null,
         'price' => null,
         'role' => null,
         'text' => null,
@@ -383,7 +383,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -393,7 +393,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size Trading size
+     * @param string|null $size Trading size
      *
      * @return $this
      */
@@ -407,7 +407,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
     /**
      * Gets close_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getCloseSize()
     {
@@ -417,7 +417,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
     /**
      * Sets close_size
      *
-     * @param int|null $close_size Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close short position close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long position close_size<0 && size<0 && size < close_size Close long position and open short position
+     * @param string|null $close_size Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close short position close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long position close_size<0 && size<0 && size < close_size Close long position and open short position
      *
      * @return $this
      */

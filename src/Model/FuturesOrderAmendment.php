@@ -54,7 +54,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'size' => 'int',
+        'size' => 'string',
         'price' => 'string',
         'amend_text' => 'string',
         'text' => 'string'
@@ -66,7 +66,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'size' => 'int64',
+        'size' => null,
         'price' => null,
         'amend_text' => null,
         'text' => null
@@ -222,7 +222,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -232,7 +232,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size New order size, including filled part.  - If new size is less than or equal to filled size, the order will be cancelled. - Order side must be identical to the original one. - Close order size cannot be changed. - For reduce only orders, increasing size may leads to other reduce only orders being cancelled. - If price is not changed, decreasing size will not change its precedence in order book, while increasing will move it to the last at current price.
+     * @param string|null $size New order size, including filled part.  - If new size is less than or equal to filled size, the order will be cancelled. - Order side must be identical to the original one. - Close order size cannot be changed. - For reduce only orders, increasing size may leads to other reduce only orders being cancelled. - If price is not changed, decreasing size will not change its precedence in order book, while increasing will move it to the last at current price.
      *
      * @return $this
      */

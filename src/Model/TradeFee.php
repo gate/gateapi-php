@@ -57,6 +57,7 @@ class TradeFee implements ModelInterface, ArrayAccess
         'user_id' => 'int',
         'taker_fee' => 'string',
         'maker_fee' => 'string',
+        'rpi_maker_fee' => 'string',
         'gt_discount' => 'bool',
         'gt_taker_fee' => 'string',
         'gt_maker_fee' => 'string',
@@ -64,9 +65,11 @@ class TradeFee implements ModelInterface, ArrayAccess
         'point_type' => 'string',
         'futures_taker_fee' => 'string',
         'futures_maker_fee' => 'string',
+        'futures_rpi_maker_fee' => 'string',
         'delivery_taker_fee' => 'string',
         'delivery_maker_fee' => 'string',
-        'debit_fee' => 'int'
+        'debit_fee' => 'int',
+        'rpi_mm' => 'int'
     ];
 
     /**
@@ -78,6 +81,7 @@ class TradeFee implements ModelInterface, ArrayAccess
         'user_id' => 'int64',
         'taker_fee' => null,
         'maker_fee' => null,
+        'rpi_maker_fee' => null,
         'gt_discount' => null,
         'gt_taker_fee' => null,
         'gt_maker_fee' => null,
@@ -85,9 +89,11 @@ class TradeFee implements ModelInterface, ArrayAccess
         'point_type' => null,
         'futures_taker_fee' => null,
         'futures_maker_fee' => null,
+        'futures_rpi_maker_fee' => null,
         'delivery_taker_fee' => null,
         'delivery_maker_fee' => null,
-        'debit_fee' => null
+        'debit_fee' => null,
+        'rpi_mm' => null
     ];
 
     /**
@@ -120,6 +126,7 @@ class TradeFee implements ModelInterface, ArrayAccess
         'user_id' => 'user_id',
         'taker_fee' => 'taker_fee',
         'maker_fee' => 'maker_fee',
+        'rpi_maker_fee' => 'rpi_maker_fee',
         'gt_discount' => 'gt_discount',
         'gt_taker_fee' => 'gt_taker_fee',
         'gt_maker_fee' => 'gt_maker_fee',
@@ -127,9 +134,11 @@ class TradeFee implements ModelInterface, ArrayAccess
         'point_type' => 'point_type',
         'futures_taker_fee' => 'futures_taker_fee',
         'futures_maker_fee' => 'futures_maker_fee',
+        'futures_rpi_maker_fee' => 'futures_rpi_maker_fee',
         'delivery_taker_fee' => 'delivery_taker_fee',
         'delivery_maker_fee' => 'delivery_maker_fee',
-        'debit_fee' => 'debit_fee'
+        'debit_fee' => 'debit_fee',
+        'rpi_mm' => 'rpi_mm'
     ];
 
     /**
@@ -141,6 +150,7 @@ class TradeFee implements ModelInterface, ArrayAccess
         'user_id' => 'setUserId',
         'taker_fee' => 'setTakerFee',
         'maker_fee' => 'setMakerFee',
+        'rpi_maker_fee' => 'setRpiMakerFee',
         'gt_discount' => 'setGtDiscount',
         'gt_taker_fee' => 'setGtTakerFee',
         'gt_maker_fee' => 'setGtMakerFee',
@@ -148,9 +158,11 @@ class TradeFee implements ModelInterface, ArrayAccess
         'point_type' => 'setPointType',
         'futures_taker_fee' => 'setFuturesTakerFee',
         'futures_maker_fee' => 'setFuturesMakerFee',
+        'futures_rpi_maker_fee' => 'setFuturesRpiMakerFee',
         'delivery_taker_fee' => 'setDeliveryTakerFee',
         'delivery_maker_fee' => 'setDeliveryMakerFee',
-        'debit_fee' => 'setDebitFee'
+        'debit_fee' => 'setDebitFee',
+        'rpi_mm' => 'setRpiMm'
     ];
 
     /**
@@ -162,6 +174,7 @@ class TradeFee implements ModelInterface, ArrayAccess
         'user_id' => 'getUserId',
         'taker_fee' => 'getTakerFee',
         'maker_fee' => 'getMakerFee',
+        'rpi_maker_fee' => 'getRpiMakerFee',
         'gt_discount' => 'getGtDiscount',
         'gt_taker_fee' => 'getGtTakerFee',
         'gt_maker_fee' => 'getGtMakerFee',
@@ -169,9 +182,11 @@ class TradeFee implements ModelInterface, ArrayAccess
         'point_type' => 'getPointType',
         'futures_taker_fee' => 'getFuturesTakerFee',
         'futures_maker_fee' => 'getFuturesMakerFee',
+        'futures_rpi_maker_fee' => 'getFuturesRpiMakerFee',
         'delivery_taker_fee' => 'getDeliveryTakerFee',
         'delivery_maker_fee' => 'getDeliveryMakerFee',
-        'debit_fee' => 'getDebitFee'
+        'debit_fee' => 'getDebitFee',
+        'rpi_mm' => 'getRpiMm'
     ];
 
     /**
@@ -237,6 +252,7 @@ class TradeFee implements ModelInterface, ArrayAccess
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['taker_fee'] = isset($data['taker_fee']) ? $data['taker_fee'] : null;
         $this->container['maker_fee'] = isset($data['maker_fee']) ? $data['maker_fee'] : null;
+        $this->container['rpi_maker_fee'] = isset($data['rpi_maker_fee']) ? $data['rpi_maker_fee'] : null;
         $this->container['gt_discount'] = isset($data['gt_discount']) ? $data['gt_discount'] : null;
         $this->container['gt_taker_fee'] = isset($data['gt_taker_fee']) ? $data['gt_taker_fee'] : null;
         $this->container['gt_maker_fee'] = isset($data['gt_maker_fee']) ? $data['gt_maker_fee'] : null;
@@ -244,9 +260,11 @@ class TradeFee implements ModelInterface, ArrayAccess
         $this->container['point_type'] = isset($data['point_type']) ? $data['point_type'] : null;
         $this->container['futures_taker_fee'] = isset($data['futures_taker_fee']) ? $data['futures_taker_fee'] : null;
         $this->container['futures_maker_fee'] = isset($data['futures_maker_fee']) ? $data['futures_maker_fee'] : null;
+        $this->container['futures_rpi_maker_fee'] = isset($data['futures_rpi_maker_fee']) ? $data['futures_rpi_maker_fee'] : null;
         $this->container['delivery_taker_fee'] = isset($data['delivery_taker_fee']) ? $data['delivery_taker_fee'] : null;
         $this->container['delivery_maker_fee'] = isset($data['delivery_maker_fee']) ? $data['delivery_maker_fee'] : null;
         $this->container['debit_fee'] = isset($data['debit_fee']) ? $data['debit_fee'] : null;
+        $this->container['rpi_mm'] = isset($data['rpi_mm']) ? $data['rpi_mm'] : null;
     }
 
     /**
@@ -310,7 +328,7 @@ class TradeFee implements ModelInterface, ArrayAccess
     /**
      * Sets taker_fee
      *
-     * @param string|null $taker_fee taker fee rate
+     * @param string|null $taker_fee spot taker fee rate
      *
      * @return $this
      */
@@ -334,13 +352,37 @@ class TradeFee implements ModelInterface, ArrayAccess
     /**
      * Sets maker_fee
      *
-     * @param string|null $maker_fee maker fee rate
+     * @param string|null $maker_fee spot maker fee rate
      *
      * @return $this
      */
     public function setMakerFee($maker_fee)
     {
         $this->container['maker_fee'] = $maker_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets rpi_maker_fee
+     *
+     * @return string|null
+     */
+    public function getRpiMakerFee()
+    {
+        return $this->container['rpi_maker_fee'];
+    }
+
+    /**
+     * Sets rpi_maker_fee
+     *
+     * @param string|null $rpi_maker_fee spot RPI MM maker fee rate
+     *
+     * @return $this
+     */
+    public function setRpiMakerFee($rpi_maker_fee)
+    {
+        $this->container['rpi_maker_fee'] = $rpi_maker_fee;
 
         return $this;
     }
@@ -514,6 +556,30 @@ class TradeFee implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets futures_rpi_maker_fee
+     *
+     * @return string|null
+     */
+    public function getFuturesRpiMakerFee()
+    {
+        return $this->container['futures_rpi_maker_fee'];
+    }
+
+    /**
+     * Sets futures_rpi_maker_fee
+     *
+     * @param string|null $futures_rpi_maker_fee contract RPI MM maker fee rate
+     *
+     * @return $this
+     */
+    public function setFuturesRpiMakerFee($futures_rpi_maker_fee)
+    {
+        $this->container['futures_rpi_maker_fee'] = $futures_rpi_maker_fee;
+
+        return $this;
+    }
+
+    /**
      * Gets delivery_taker_fee
      *
      * @return string|null
@@ -581,6 +647,30 @@ class TradeFee implements ModelInterface, ArrayAccess
     public function setDebitFee($debit_fee)
     {
         $this->container['debit_fee'] = $debit_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets rpi_mm
+     *
+     * @return int|null
+     */
+    public function getRpiMm()
+    {
+        return $this->container['rpi_mm'];
+    }
+
+    /**
+     * Sets rpi_mm
+     *
+     * @param int|null $rpi_mm RPI MM Level
+     *
+     * @return $this
+     */
+    public function setRpiMm($rpi_mm)
+    {
+        $this->container['rpi_mm'] = $rpi_mm;
 
         return $this;
     }

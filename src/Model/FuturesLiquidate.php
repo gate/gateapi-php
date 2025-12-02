@@ -57,7 +57,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
         'time' => 'int',
         'contract' => 'string',
         'leverage' => 'string',
-        'size' => 'int',
+        'size' => 'string',
         'margin' => 'string',
         'entry_price' => 'string',
         'liq_price' => 'string',
@@ -65,7 +65,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
         'order_id' => 'int',
         'order_price' => 'string',
         'fill_price' => 'string',
-        'left' => 'int'
+        'left' => 'string'
     ];
 
     /**
@@ -77,7 +77,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
         'time' => 'int64',
         'contract' => null,
         'leverage' => null,
-        'size' => 'int64',
+        'size' => null,
         'margin' => null,
         'entry_price' => null,
         'liq_price' => null,
@@ -85,7 +85,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
         'order_id' => 'int64',
         'order_price' => null,
         'fill_price' => null,
-        'left' => 'int64'
+        'left' => null
     ];
 
     /**
@@ -342,7 +342,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -352,7 +352,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size Position size
+     * @param string|null $size Position size
      *
      * @return $this
      */
@@ -534,7 +534,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
     /**
      * Gets left
      *
-     * @return int|null
+     * @return string|null
      */
     public function getLeft()
     {
@@ -544,7 +544,7 @@ class FuturesLiquidate implements ModelInterface, ArrayAccess
     /**
      * Sets left
      *
-     * @param int|null $left Liquidation order maker size
+     * @param string|null $left Liquidation order maker size
      *
      * @return $this
      */

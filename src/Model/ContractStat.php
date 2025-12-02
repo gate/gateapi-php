@@ -55,18 +55,18 @@ class ContractStat implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'time' => 'int',
-        'lsr_taker' => 'float',
-        'lsr_account' => 'float',
-        'long_liq_size' => 'int',
+        'lsr_taker' => 'double',
+        'lsr_account' => 'double',
+        'long_liq_size' => 'string',
         'long_liq_amount' => 'double',
         'long_liq_usd' => 'double',
-        'short_liq_size' => 'int',
+        'short_liq_size' => 'string',
         'short_liq_amount' => 'double',
         'short_liq_usd' => 'double',
-        'open_interest' => 'int',
+        'open_interest' => 'string',
         'open_interest_usd' => 'double',
         'top_lsr_account' => 'double',
-        'top_lsr_size' => 'double',
+        'top_lsr_size' => 'string',
         'mark_price' => 'double'
     ];
 
@@ -77,18 +77,18 @@ class ContractStat implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'time' => 'int64',
-        'lsr_taker' => null,
-        'lsr_account' => null,
-        'long_liq_size' => 'int64',
+        'lsr_taker' => 'double',
+        'lsr_account' => 'double',
+        'long_liq_size' => null,
         'long_liq_amount' => 'double',
         'long_liq_usd' => 'double',
-        'short_liq_size' => 'int64',
+        'short_liq_size' => null,
         'short_liq_amount' => 'double',
         'short_liq_usd' => 'double',
-        'open_interest' => 'int64',
+        'open_interest' => null,
         'open_interest_usd' => 'double',
         'top_lsr_account' => 'double',
-        'top_lsr_size' => 'double',
+        'top_lsr_size' => null,
         'mark_price' => 'double'
     ];
 
@@ -306,7 +306,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets lsr_taker
      *
-     * @return float|null
+     * @return double|null
      */
     public function getLsrTaker()
     {
@@ -316,7 +316,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets lsr_taker
      *
-     * @param float|null $lsr_taker Long/short taker ratio
+     * @param double|null $lsr_taker Long/short taker ratio
      *
      * @return $this
      */
@@ -330,7 +330,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets lsr_account
      *
-     * @return float|null
+     * @return double|null
      */
     public function getLsrAccount()
     {
@@ -340,7 +340,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets lsr_account
      *
-     * @param float|null $lsr_account Long/short position user ratio
+     * @param double|null $lsr_account Long/short position user ratio
      *
      * @return $this
      */
@@ -354,7 +354,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets long_liq_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getLongLiqSize()
     {
@@ -364,7 +364,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets long_liq_size
      *
-     * @param int|null $long_liq_size Long liquidation size (contracts)
+     * @param string|null $long_liq_size Long liquidation size (contracts)
      *
      * @return $this
      */
@@ -426,7 +426,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets short_liq_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getShortLiqSize()
     {
@@ -436,7 +436,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets short_liq_size
      *
-     * @param int|null $short_liq_size Short liquidation size (contracts)
+     * @param string|null $short_liq_size Short liquidation size (contracts)
      *
      * @return $this
      */
@@ -498,7 +498,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets open_interest
      *
-     * @return int|null
+     * @return string|null
      */
     public function getOpenInterest()
     {
@@ -508,7 +508,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets open_interest
      *
-     * @param int|null $open_interest Total open interest size (contracts)
+     * @param string|null $open_interest Total open interest size (contracts)
      *
      * @return $this
      */
@@ -570,7 +570,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets top_lsr_size
      *
-     * @return double|null
+     * @return string|null
      */
     public function getTopLsrSize()
     {
@@ -580,7 +580,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets top_lsr_size
      *
-     * @param double|null $top_lsr_size Top trader long/short position ratio
+     * @param string|null $top_lsr_size Top trader long/short position ratio
      *
      * @return $this
      */

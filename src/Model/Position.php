@@ -57,7 +57,7 @@ class Position implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'user' => 'int',
         'contract' => 'string',
-        'size' => 'int',
+        'size' => 'string',
         'leverage' => 'string',
         'risk_limit' => 'string',
         'leverage_max' => 'string',
@@ -99,7 +99,7 @@ class Position implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'user' => 'int64',
         'contract' => null,
-        'size' => 'int64',
+        'size' => null,
         'leverage' => null,
         'risk_limit' => null,
         'leverage_max' => null,
@@ -476,7 +476,7 @@ class Position implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -486,7 +486,7 @@ class Position implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size Position size
+     * @param string|null $size Position size
      *
      * @return $this
      */

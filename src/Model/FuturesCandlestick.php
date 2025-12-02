@@ -56,7 +56,7 @@ class FuturesCandlestick implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         't' => 'double',
-        'v' => 'int',
+        'v' => 'string',
         'c' => 'string',
         'h' => 'string',
         'l' => 'string',
@@ -71,7 +71,7 @@ class FuturesCandlestick implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         't' => 'double',
-        'v' => 'int64',
+        'v' => null,
         'c' => null,
         'h' => null,
         'l' => null,
@@ -265,7 +265,7 @@ class FuturesCandlestick implements ModelInterface, ArrayAccess
     /**
      * Gets v
      *
-     * @return int|null
+     * @return string|null
      */
     public function getV()
     {
@@ -275,7 +275,7 @@ class FuturesCandlestick implements ModelInterface, ArrayAccess
     /**
      * Sets v
      *
-     * @param int|null $v size volume (contract size). Only returned if `contract` is not prefixed
+     * @param string|null $v size volume (contract size). Only returned if `contract` is not prefixed
      *
      * @return $this
      */

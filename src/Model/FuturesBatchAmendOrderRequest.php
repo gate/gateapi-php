@@ -57,7 +57,7 @@ class FuturesBatchAmendOrderRequest implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'order_id' => 'int',
         'text' => 'string',
-        'size' => 'int',
+        'size' => 'string',
         'price' => 'string',
         'amend_text' => 'string'
     ];
@@ -70,7 +70,7 @@ class FuturesBatchAmendOrderRequest implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'order_id' => 'int64',
         'text' => null,
-        'size' => 'int64',
+        'size' => null,
         'price' => null,
         'amend_text' => null
     ];
@@ -277,7 +277,7 @@ class FuturesBatchAmendOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -287,7 +287,7 @@ class FuturesBatchAmendOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size New order size, including filled size. - If less than or equal to the filled quantity, the order will be cancelled. - The new order side must be identical to the original one. - Close order size cannot be modified. - For reduce-only orders, increasing the size may cancel other reduce-only orders. - If the price is not modified, decreasing the size will not affect the depth queue, while increasing the size will place it at the end of the current price level.
+     * @param string|null $size New order size, including filled size. - If less than or equal to the filled quantity, the order will be cancelled. - The new order side must be identical to the original one. - Close order size cannot be modified. - For reduce-only orders, increasing the size may cancel other reduce-only orders. - If the price is not modified, decreasing the size will not affect the depth queue, while increasing the size will place it at the end of the current price level.
      *
      * @return $this
      */

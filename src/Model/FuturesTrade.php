@@ -58,7 +58,7 @@ class FuturesTrade implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'create_time_ms' => 'double',
         'contract' => 'string',
-        'size' => 'int',
+        'size' => 'string',
         'price' => 'string',
         'is_internal' => 'bool'
     ];
@@ -73,7 +73,7 @@ class FuturesTrade implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'create_time_ms' => 'double',
         'contract' => null,
-        'size' => 'int64',
+        'size' => null,
         'price' => null,
         'is_internal' => null
     ];
@@ -336,7 +336,7 @@ class FuturesTrade implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -346,7 +346,7 @@ class FuturesTrade implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size Trading size
+     * @param string|null $size Trading size
      *
      * @return $this
      */

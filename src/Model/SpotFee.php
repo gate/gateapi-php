@@ -57,13 +57,15 @@ class SpotFee implements ModelInterface, ArrayAccess
         'user_id' => 'int',
         'taker_fee' => 'string',
         'maker_fee' => 'string',
+        'rpi_maker_fee' => 'string',
         'gt_discount' => 'bool',
         'gt_taker_fee' => 'string',
         'gt_maker_fee' => 'string',
         'loan_fee' => 'string',
         'point_type' => 'string',
         'currency_pair' => 'string',
-        'debit_fee' => 'int'
+        'debit_fee' => 'int',
+        'rpi_mm' => 'int'
     ];
 
     /**
@@ -75,13 +77,15 @@ class SpotFee implements ModelInterface, ArrayAccess
         'user_id' => 'int64',
         'taker_fee' => null,
         'maker_fee' => null,
+        'rpi_maker_fee' => null,
         'gt_discount' => null,
         'gt_taker_fee' => null,
         'gt_maker_fee' => null,
         'loan_fee' => null,
         'point_type' => null,
         'currency_pair' => null,
-        'debit_fee' => null
+        'debit_fee' => null,
+        'rpi_mm' => null
     ];
 
     /**
@@ -114,13 +118,15 @@ class SpotFee implements ModelInterface, ArrayAccess
         'user_id' => 'user_id',
         'taker_fee' => 'taker_fee',
         'maker_fee' => 'maker_fee',
+        'rpi_maker_fee' => 'rpi_maker_fee',
         'gt_discount' => 'gt_discount',
         'gt_taker_fee' => 'gt_taker_fee',
         'gt_maker_fee' => 'gt_maker_fee',
         'loan_fee' => 'loan_fee',
         'point_type' => 'point_type',
         'currency_pair' => 'currency_pair',
-        'debit_fee' => 'debit_fee'
+        'debit_fee' => 'debit_fee',
+        'rpi_mm' => 'rpi_mm'
     ];
 
     /**
@@ -132,13 +138,15 @@ class SpotFee implements ModelInterface, ArrayAccess
         'user_id' => 'setUserId',
         'taker_fee' => 'setTakerFee',
         'maker_fee' => 'setMakerFee',
+        'rpi_maker_fee' => 'setRpiMakerFee',
         'gt_discount' => 'setGtDiscount',
         'gt_taker_fee' => 'setGtTakerFee',
         'gt_maker_fee' => 'setGtMakerFee',
         'loan_fee' => 'setLoanFee',
         'point_type' => 'setPointType',
         'currency_pair' => 'setCurrencyPair',
-        'debit_fee' => 'setDebitFee'
+        'debit_fee' => 'setDebitFee',
+        'rpi_mm' => 'setRpiMm'
     ];
 
     /**
@@ -150,13 +158,15 @@ class SpotFee implements ModelInterface, ArrayAccess
         'user_id' => 'getUserId',
         'taker_fee' => 'getTakerFee',
         'maker_fee' => 'getMakerFee',
+        'rpi_maker_fee' => 'getRpiMakerFee',
         'gt_discount' => 'getGtDiscount',
         'gt_taker_fee' => 'getGtTakerFee',
         'gt_maker_fee' => 'getGtMakerFee',
         'loan_fee' => 'getLoanFee',
         'point_type' => 'getPointType',
         'currency_pair' => 'getCurrencyPair',
-        'debit_fee' => 'getDebitFee'
+        'debit_fee' => 'getDebitFee',
+        'rpi_mm' => 'getRpiMm'
     ];
 
     /**
@@ -222,6 +232,7 @@ class SpotFee implements ModelInterface, ArrayAccess
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['taker_fee'] = isset($data['taker_fee']) ? $data['taker_fee'] : null;
         $this->container['maker_fee'] = isset($data['maker_fee']) ? $data['maker_fee'] : null;
+        $this->container['rpi_maker_fee'] = isset($data['rpi_maker_fee']) ? $data['rpi_maker_fee'] : null;
         $this->container['gt_discount'] = isset($data['gt_discount']) ? $data['gt_discount'] : null;
         $this->container['gt_taker_fee'] = isset($data['gt_taker_fee']) ? $data['gt_taker_fee'] : null;
         $this->container['gt_maker_fee'] = isset($data['gt_maker_fee']) ? $data['gt_maker_fee'] : null;
@@ -229,6 +240,7 @@ class SpotFee implements ModelInterface, ArrayAccess
         $this->container['point_type'] = isset($data['point_type']) ? $data['point_type'] : null;
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
         $this->container['debit_fee'] = isset($data['debit_fee']) ? $data['debit_fee'] : null;
+        $this->container['rpi_mm'] = isset($data['rpi_mm']) ? $data['rpi_mm'] : null;
     }
 
     /**
@@ -323,6 +335,30 @@ class SpotFee implements ModelInterface, ArrayAccess
     public function setMakerFee($maker_fee)
     {
         $this->container['maker_fee'] = $maker_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets rpi_maker_fee
+     *
+     * @return string|null
+     */
+    public function getRpiMakerFee()
+    {
+        return $this->container['rpi_maker_fee'];
+    }
+
+    /**
+     * Sets rpi_maker_fee
+     *
+     * @param string|null $rpi_maker_fee RPI MM maker fee rate
+     *
+     * @return $this
+     */
+    public function setRpiMakerFee($rpi_maker_fee)
+    {
+        $this->container['rpi_maker_fee'] = $rpi_maker_fee;
 
         return $this;
     }
@@ -491,6 +527,30 @@ class SpotFee implements ModelInterface, ArrayAccess
     public function setDebitFee($debit_fee)
     {
         $this->container['debit_fee'] = $debit_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets rpi_mm
+     *
+     * @return int|null
+     */
+    public function getRpiMm()
+    {
+        return $this->container['rpi_mm'];
+    }
+
+    /**
+     * Sets rpi_mm
+     *
+     * @param int|null $rpi_mm RPI MM Level
+     *
+     * @return $this
+     */
+    public function setRpiMm($rpi_mm)
+    {
+        $this->container['rpi_mm'] = $rpi_mm;
 
         return $this;
     }

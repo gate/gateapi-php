@@ -56,11 +56,11 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'time' => 'int',
         'contract' => 'string',
-        'size' => 'int',
-        'order_size' => 'int',
+        'size' => 'string',
+        'order_size' => 'string',
         'order_price' => 'string',
         'fill_price' => 'string',
-        'left' => 'int'
+        'left' => 'string'
     ];
 
     /**
@@ -71,11 +71,11 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'time' => 'int64',
         'contract' => null,
-        'size' => 'int64',
-        'order_size' => 'int64',
+        'size' => null,
+        'order_size' => null,
         'order_price' => null,
         'fill_price' => null,
-        'left' => 'int64'
+        'left' => null
     ];
 
     /**
@@ -288,7 +288,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -298,7 +298,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size User position size
+     * @param string|null $size User position size
      *
      * @return $this
      */
@@ -312,7 +312,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     /**
      * Gets order_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getOrderSize()
     {
@@ -322,7 +322,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     /**
      * Sets order_size
      *
-     * @param int|null $order_size Number of forced liquidation orders
+     * @param string|null $order_size Number of forced liquidation orders
      *
      * @return $this
      */
@@ -384,7 +384,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     /**
      * Gets left
      *
-     * @return int|null
+     * @return string|null
      */
     public function getLeft()
     {
@@ -394,7 +394,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     /**
      * Sets left
      *
-     * @param int|null $left System liquidation order maker size
+     * @param string|null $left System liquidation order maker size
      *
      * @return $this
      */

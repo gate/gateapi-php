@@ -122,7 +122,7 @@ class MultiCollateralLoanApi
      *
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
-     * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
+     * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
      * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -144,7 +144,7 @@ class MultiCollateralLoanApi
      *
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
-     * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
+     * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
      * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -203,7 +203,7 @@ class MultiCollateralLoanApi
      *
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
-     * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
+     * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
      * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -228,7 +228,7 @@ class MultiCollateralLoanApi
      *
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
-     * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
+     * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
      * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -280,7 +280,7 @@ class MultiCollateralLoanApi
      *
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
-     * @param  string $sort Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. (optional)
+     * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
      * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -412,6 +412,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -646,6 +648,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -886,6 +890,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1243,6 +1249,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1477,6 +1485,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1810,6 +1820,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2044,6 +2056,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2066,7 +2080,7 @@ class MultiCollateralLoanApi
      * Query user's collateral and borrowing currency quota information
      *
      * @param  string $type Currency type: collateral - Collateral currency, borrow - Borrowing currency (required)
-     * @param  string $currency When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. (required)
+     * @param  string $currency When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2084,7 +2098,7 @@ class MultiCollateralLoanApi
      * Query user's collateral and borrowing currency quota information
      *
      * @param  string $type Currency type: collateral - Collateral currency, borrow - Borrowing currency (required)
-     * @param  string $currency When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. (required)
+     * @param  string $currency When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2139,7 +2153,7 @@ class MultiCollateralLoanApi
      * Query user's collateral and borrowing currency quota information
      *
      * @param  string $type Currency type: collateral - Collateral currency, borrow - Borrowing currency (required)
-     * @param  string $currency When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. (required)
+     * @param  string $currency When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2160,7 +2174,7 @@ class MultiCollateralLoanApi
      * Query user's collateral and borrowing currency quota information
      *
      * @param  string $type Currency type: collateral - Collateral currency, borrow - Borrowing currency (required)
-     * @param  string $currency When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. (required)
+     * @param  string $currency When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2208,7 +2222,7 @@ class MultiCollateralLoanApi
      * Create request for operation 'listUserCurrencyQuota'
      *
      * @param  string $type Currency type: collateral - Collateral currency, borrow - Borrowing currency (required)
-     * @param  string $currency When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. (required)
+     * @param  string $currency When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2310,6 +2324,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2527,6 +2543,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2744,6 +2762,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2961,6 +2981,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3239,6 +3261,8 @@ class MultiCollateralLoanApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,

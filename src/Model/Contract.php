@@ -75,15 +75,15 @@ class Contract implements ModelInterface, ArrayAccess
         'risk_limit_base' => 'string',
         'risk_limit_step' => 'string',
         'risk_limit_max' => 'string',
-        'order_size_min' => 'int',
-        'order_size_max' => 'int',
+        'order_size_min' => 'string',
+        'order_size_max' => 'string',
         'order_price_deviate' => 'string',
         'ref_discount_rate' => 'string',
         'ref_rebate_rate' => 'string',
         'orderbook_id' => 'int',
         'trade_id' => 'int',
-        'trade_size' => 'int',
-        'position_size' => 'int',
+        'trade_size' => 'string',
+        'position_size' => 'string',
         'config_change_time' => 'double',
         'in_delisting' => 'bool',
         'orders_limit' => 'int',
@@ -123,15 +123,15 @@ class Contract implements ModelInterface, ArrayAccess
         'risk_limit_base' => null,
         'risk_limit_step' => null,
         'risk_limit_max' => null,
-        'order_size_min' => 'int64',
-        'order_size_max' => 'int64',
+        'order_size_min' => null,
+        'order_size_max' => null,
         'order_price_deviate' => null,
         'ref_discount_rate' => null,
         'ref_rebate_rate' => null,
         'orderbook_id' => 'int64',
         'trade_id' => 'int64',
-        'trade_size' => 'int64',
-        'position_size' => 'int64',
+        'trade_size' => null,
+        'position_size' => null,
         'config_change_time' => 'double',
         'in_delisting' => null,
         'orders_limit' => null,
@@ -983,7 +983,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Gets order_size_min
      *
-     * @return int|null
+     * @return string|null
      */
     public function getOrderSizeMin()
     {
@@ -993,7 +993,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets order_size_min
      *
-     * @param int|null $order_size_min Minimum order size allowed by the contract
+     * @param string|null $order_size_min Minimum order size allowed by the contract
      *
      * @return $this
      */
@@ -1007,7 +1007,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Gets order_size_max
      *
-     * @return int|null
+     * @return string|null
      */
     public function getOrderSizeMax()
     {
@@ -1017,7 +1017,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets order_size_max
      *
-     * @param int|null $order_size_max Maximum order size allowed by the contract
+     * @param string|null $order_size_max Maximum order size allowed by the contract
      *
      * @return $this
      */
@@ -1151,7 +1151,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Gets trade_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getTradeSize()
     {
@@ -1161,7 +1161,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets trade_size
      *
-     * @param int|null $trade_size Historical cumulative trading volume
+     * @param string|null $trade_size Historical cumulative trading volume
      *
      * @return $this
      */
@@ -1175,7 +1175,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Gets position_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getPositionSize()
     {
@@ -1185,7 +1185,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets position_size
      *
-     * @param int|null $position_size Current total long position size
+     * @param string|null $position_size Current total long position size
      *
      * @return $this
      */

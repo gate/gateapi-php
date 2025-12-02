@@ -55,7 +55,7 @@ class FuturesOrderBookItem implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'p' => 'string',
-        's' => 'int'
+        's' => 'string'
     ];
 
     /**
@@ -65,7 +65,7 @@ class FuturesOrderBookItem implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'p' => null,
-        's' => 'int64'
+        's' => null
     ];
 
     /**
@@ -234,7 +234,7 @@ class FuturesOrderBookItem implements ModelInterface, ArrayAccess
     /**
      * Gets s
      *
-     * @return int|null
+     * @return string|null
      */
     public function getS()
     {
@@ -244,7 +244,7 @@ class FuturesOrderBookItem implements ModelInterface, ArrayAccess
     /**
      * Sets s
      *
-     * @param int|null $s Size
+     * @param string|null $s Size
      *
      * @return $this
      */

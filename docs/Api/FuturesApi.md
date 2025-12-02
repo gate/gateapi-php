@@ -968,7 +968,7 @@ Name | Type | Description  | Notes
 
 Query futures account change history
 
-If the contract field is passed, only records containing this field after 2023-10-30 can be filtered.
+If the contract field is passed, only records containing this field after 2023-10-30 can be filtered。
 
 ### Example
 
@@ -1240,6 +1240,8 @@ Name | Type | Description  | Notes
 
 Update position leverage
 
+⚠️ Position Mode Switching Rules:  - leverage ≠ 0: Isolated Margin Mode (Regardless of whether cross_leverage_limit is filled, this parameter will be ignored) - leverage = 0: Cross Margin Mode (Use cross_leverage_limit to set the leverage multiple)  Examples: - Set isolated margin with 10x leverage: leverage=10 - Set cross margin with 10x leverage: leverage=0&cross_leverage_limit=10 - leverage=5&cross_leverage_limit=10 → Result: Isolated margin with 5x leverage (cross_leverage_limit is ignored)  ⚠️ Warning: Incorrect settings may cause unexpected position mode switching, affecting risk management.
+
 ### Example
 
 ```php
@@ -1496,7 +1498,7 @@ Name | Type | Description  | Notes
 
 Set position mode
 
-The prerequisite for changing mode is that there are no open positions and no open orders
+The prerequisite for changing mode is that all positions have no holdings and no pending orders
 
 ### Example
 
@@ -1956,7 +1958,7 @@ Name | Type | Description  | Notes
 
 ## cancelFuturesOrders
 
-> \GateApi\Model\FuturesOrder[] cancelFuturesOrders($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text)
+> \GateApi\Model\FuturesOrder[] cancelFuturesOrders($settle, $x_gate_exptime, $contract, $side, $exclude_reduce_only, $text)
 
 Cancel all orders with 'open' status
 
@@ -1979,14 +1981,14 @@ $apiInstance = new GateApi\Api\FuturesApi(
     $config
 );
 $settle = 'usdt'; // string | Settle currency
-$contract = 'BTC_USDT'; // string | Futures contract
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
+$contract = 'BTC_USDT'; // string | Contract Identifier; if specified, only cancel pending orders related to this contract
 $side = 'ask'; // string | Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders
 $exclude_reduce_only = false; // bool | Whether to exclude reduce-only orders
 $text = 'cancel by user'; // string | Remark for order cancellation
 
 try {
-    $result = $apiInstance->cancelFuturesOrders($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text);
+    $result = $apiInstance->cancelFuturesOrders($settle, $x_gate_exptime, $contract, $side, $exclude_reduce_only, $text);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -2002,8 +2004,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Settle currency |
- **contract** | **string**| Futures contract |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
+ **contract** | **string**| Contract Identifier; if specified, only cancel pending orders related to this contract | [optional]
  **side** | **string**| Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders | [optional]
  **exclude_reduce_only** | **bool**| Whether to exclude reduce-only orders | [optional] [default to false]
  **text** | **string**| Remark for order cancellation | [optional]
@@ -2864,7 +2866,7 @@ Name | Type | Description  | Notes
 
 Cancel batch orders by specified ID list
 
-Multiple different order IDs can be specified, maximum 20 records per request
+Multiple different order IDs can be specified. A maximum of 20 records can be cancelled in one request
 
 ### Example
 
@@ -2930,7 +2932,7 @@ Name | Type | Description  | Notes
 
 Batch modify orders by specified IDs
 
-Multiple different order IDs can be specified, maximum 10 orders per request
+Multiple different order IDs can be specified. A maximum of 10 orders can be modified in one request
 
 ### Example
 

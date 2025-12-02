@@ -12,16 +12,16 @@ Name | Type | Description | Notes
 **finish_as** | **string** | How the order was finished:  - filled: all filled - cancelled: manually cancelled - liquidated: cancelled because of liquidation - ioc: time in force is &#x60;IOC&#x60;, finish immediately - auto_deleveraged: finished by ADL - reduce_only: cancelled because of increasing position while &#x60;reduce-only&#x60; set - position_closed: cancelled because the position was closed - reduce_out: only reduce positions by excluding hard-to-fill orders - stp: cancelled because self trade prevention | [optional] [readonly] 
 **status** | **string** | Order status  - &#x60;open&#x60;: Pending - &#x60;finished&#x60;: Completed | [optional] [readonly] 
 **contract** | **string** | Futures contract | 
-**size** | **int** | Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders. | 
-**iceberg** | **int** | Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees. | [optional] 
-**price** | **string** | Order price. Price of 0 with &#x60;tif&#x60; set to &#x60;ioc&#x60; represents a market order. | [optional] 
+**size** | **string** | Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders. | 
+**iceberg** | **string** | Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees. | [optional] 
+**price** | **string** | Required. Order Price; a price of 0 with &#x60;tif&#x60; as &#x60;ioc&#x60; represents a market order. | 
 **close** | **bool** | Set as &#x60;true&#x60; to close the position, with &#x60;size&#x60; set to 0 | [optional] [default to false]
 **is_close** | **bool** | Is the order to close position | [optional] [readonly] 
 **reduce_only** | **bool** | Set as &#x60;true&#x60; to be reduce-only order | [optional] [default to false]
 **is_reduce_only** | **bool** | Is the order reduce-only | [optional] [readonly] 
 **is_liq** | **bool** | Is the order for liquidation | [optional] [readonly] 
 **tif** | **string** | Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none | [optional] [default to 'gtc']
-**left** | **int** | Unfilled quantity | [optional] [readonly] 
+**left** | **string** | Unfilled quantity | [optional] [readonly] 
 **fill_price** | **string** | Fill price | [optional] [readonly] 
 **text** | **string** | Custom order information. If not empty, must follow the rules below:  1. Prefixed with &#x60;t-&#x60; 2. No longer than 28 bytes without &#x60;t-&#x60; prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance | [optional] 
 **tkfr** | **string** | Taker fee | [optional] [readonly] 
@@ -33,5 +33,7 @@ Name | Type | Description | Notes
 **amend_text** | **string** | The custom data that the user remarked when amending the order | [optional] [readonly] 
 **limit_vip** | **int** | Counterparty user&#39;s VIP level for limit order fills. Current order will only match with orders whose VIP level is less than or equal to the specified level. Only 11~16 are supported; default is 0 | [optional] 
 **pid** | **int** | Position ID | [optional] 
+**order_value** | **string** | order&#39;s value | [optional] 
+**trade_value** | **string** | trade value | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

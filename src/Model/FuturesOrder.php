@@ -63,8 +63,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'finish_as' => 'string',
         'status' => 'string',
         'contract' => 'string',
-        'size' => 'int',
-        'iceberg' => 'int',
+        'size' => 'string',
+        'iceberg' => 'string',
         'price' => 'string',
         'close' => 'bool',
         'is_close' => 'bool',
@@ -72,7 +72,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'is_reduce_only' => 'bool',
         'is_liq' => 'bool',
         'tif' => 'string',
-        'left' => 'int',
+        'left' => 'string',
         'fill_price' => 'string',
         'text' => 'string',
         'tkfr' => 'string',
@@ -83,7 +83,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_act' => 'string',
         'amend_text' => 'string',
         'limit_vip' => 'int',
-        'pid' => 'int'
+        'pid' => 'int',
+        'order_value' => 'string',
+        'trade_value' => 'string'
     ];
 
     /**
@@ -100,8 +102,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'finish_as' => null,
         'status' => null,
         'contract' => null,
-        'size' => 'int64',
-        'iceberg' => 'int64',
+        'size' => null,
+        'iceberg' => null,
         'price' => null,
         'close' => null,
         'is_close' => null,
@@ -109,7 +111,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'is_reduce_only' => null,
         'is_liq' => null,
         'tif' => null,
-        'left' => 'int64',
+        'left' => null,
         'fill_price' => null,
         'text' => null,
         'tkfr' => null,
@@ -120,7 +122,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_act' => null,
         'amend_text' => null,
         'limit_vip' => 'int64',
-        'pid' => 'int64'
+        'pid' => 'int64',
+        'order_value' => null,
+        'trade_value' => null
     ];
 
     /**
@@ -178,7 +182,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_act' => 'stp_act',
         'amend_text' => 'amend_text',
         'limit_vip' => 'limit_vip',
-        'pid' => 'pid'
+        'pid' => 'pid',
+        'order_value' => 'order_value',
+        'trade_value' => 'trade_value'
     ];
 
     /**
@@ -215,7 +221,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_act' => 'setStpAct',
         'amend_text' => 'setAmendText',
         'limit_vip' => 'setLimitVip',
-        'pid' => 'setPid'
+        'pid' => 'setPid',
+        'order_value' => 'setOrderValue',
+        'trade_value' => 'setTradeValue'
     ];
 
     /**
@@ -252,7 +260,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_act' => 'getStpAct',
         'amend_text' => 'getAmendText',
         'limit_vip' => 'getLimitVip',
-        'pid' => 'getPid'
+        'pid' => 'getPid',
+        'order_value' => 'getOrderValue',
+        'trade_value' => 'getTradeValue'
     ];
 
     /**
@@ -441,6 +451,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
         $this->container['limit_vip'] = isset($data['limit_vip']) ? $data['limit_vip'] : null;
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        $this->container['order_value'] = isset($data['order_value']) ? $data['order_value'] : null;
+        $this->container['trade_value'] = isset($data['trade_value']) ? $data['trade_value'] : null;
     }
 
     /**
@@ -473,6 +485,9 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         }
         if ($this->container['size'] === null) {
             $invalidProperties[] = "'size' can't be null";
+        }
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
         }
         $allowedValues = $this->getTifAllowableValues();
         if (!is_null($this->container['tif']) && !in_array($this->container['tif'], $allowedValues, true)) {
@@ -726,7 +741,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int
+     * @return string
      */
     public function getSize()
     {
@@ -736,7 +751,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int $size Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
+     * @param string $size Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      *
      * @return $this
      */
@@ -750,7 +765,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets iceberg
      *
-     * @return int|null
+     * @return string|null
      */
     public function getIceberg()
     {
@@ -760,7 +775,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets iceberg
      *
-     * @param int|null $iceberg Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
+     * @param string|null $iceberg Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      *
      * @return $this
      */
@@ -774,7 +789,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets price
      *
-     * @return string|null
+     * @return string
      */
     public function getPrice()
     {
@@ -784,7 +799,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price Order price. Price of 0 with `tif` set to `ioc` represents a market order.
+     * @param string $price Required. Order Price; a price of 0 with `tif` as `ioc` represents a market order.
      *
      * @return $this
      */
@@ -951,7 +966,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets left
      *
-     * @return int|null
+     * @return string|null
      */
     public function getLeft()
     {
@@ -961,7 +976,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets left
      *
-     * @param int|null $left Unfilled quantity
+     * @param string|null $left Unfilled quantity
      *
      * @return $this
      */
@@ -1250,6 +1265,54 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     public function setPid($pid)
     {
         $this->container['pid'] = $pid;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_value
+     *
+     * @return string|null
+     */
+    public function getOrderValue()
+    {
+        return $this->container['order_value'];
+    }
+
+    /**
+     * Sets order_value
+     *
+     * @param string|null $order_value order's value
+     *
+     * @return $this
+     */
+    public function setOrderValue($order_value)
+    {
+        $this->container['order_value'] = $order_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_value
+     *
+     * @return string|null
+     */
+    public function getTradeValue()
+    {
+        return $this->container['trade_value'];
+    }
+
+    /**
+     * Sets trade_value
+     *
+     * @param string|null $trade_value trade value
+     *
+     * @return $this
+     */
+    public function setTradeValue($trade_value)
+    {
+        $this->container['trade_value'] = $trade_value;
 
         return $this;
     }

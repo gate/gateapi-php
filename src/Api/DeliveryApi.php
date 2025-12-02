@@ -334,6 +334,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -591,6 +593,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -622,7 +626,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesOrderBook
+     * @return \GateApi\Model\DeliveryOrderBook
      */
     public function listDeliveryOrderBook($associative_array)
     {
@@ -645,7 +649,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesOrderBook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryOrderBook, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryOrderBookWithHttpInfo($associative_array)
     {
@@ -675,7 +679,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesOrderBook';
+        $returnType = '\GateApi\Model\DeliveryOrderBook';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -734,7 +738,7 @@ class DeliveryApi
      */
     public function listDeliveryOrderBookAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesOrderBook';
+        $returnType = '\GateApi\Model\DeliveryOrderBook';
         $request = $this->listDeliveryOrderBookRequest($associative_array);
 
         return $this->client
@@ -926,6 +930,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -958,7 +964,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesTrade[]
+     * @return \GateApi\Model\DeliveryTrade[]
      */
     public function listDeliveryTrades($associative_array)
     {
@@ -982,7 +988,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesTrade[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryTrade[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryTradesWithHttpInfo($associative_array)
     {
@@ -1012,7 +1018,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesTrade[]';
+        $returnType = '\GateApi\Model\DeliveryTrade[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1073,7 +1079,7 @@ class DeliveryApi
      */
     public function listDeliveryTradesAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesTrade[]';
+        $returnType = '\GateApi\Model\DeliveryTrade[]';
         $request = $this->listDeliveryTradesRequest($associative_array);
 
         return $this->client
@@ -1279,6 +1285,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1629,6 +1637,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1897,6 +1907,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2172,6 +2184,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2197,7 +2211,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesAccount
+     * @return \GateApi\Model\DeliveryAccount
      */
     public function listDeliveryAccounts($settle)
     {
@@ -2214,7 +2228,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesAccount, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryAccount, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryAccountsWithHttpInfo($settle)
     {
@@ -2244,7 +2258,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesAccount';
+        $returnType = '\GateApi\Model\DeliveryAccount';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2291,7 +2305,7 @@ class DeliveryApi
      */
     public function listDeliveryAccountsAsyncWithHttpInfo($settle)
     {
-        $returnType = '\GateApi\Model\FuturesAccount';
+        $returnType = '\GateApi\Model\DeliveryAccount';
         $request = $this->listDeliveryAccountsRequest($settle);
 
         return $this->client
@@ -2412,6 +2426,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2443,7 +2459,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesAccountBook[]
+     * @return \GateApi\Model\DeliveryAccountBook[]
      */
     public function listDeliveryAccountBook($associative_array)
     {
@@ -2466,7 +2482,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesAccountBook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryAccountBook[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryAccountBookWithHttpInfo($associative_array)
     {
@@ -2496,7 +2512,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesAccountBook[]';
+        $returnType = '\GateApi\Model\DeliveryAccountBook[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2555,7 +2571,7 @@ class DeliveryApi
      */
     public function listDeliveryAccountBookAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesAccountBook[]';
+        $returnType = '\GateApi\Model\DeliveryAccountBook[]';
         $request = $this->listDeliveryAccountBookRequest($associative_array);
 
         return $this->client
@@ -2744,6 +2760,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2769,7 +2787,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Position[]
+     * @return \GateApi\Model\DeliveryPosition[]
      */
     public function listDeliveryPositions($settle)
     {
@@ -2786,7 +2804,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Position[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryPosition[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryPositionsWithHttpInfo($settle)
     {
@@ -2816,7 +2834,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\Position[]';
+        $returnType = '\GateApi\Model\DeliveryPosition[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2863,7 +2881,7 @@ class DeliveryApi
      */
     public function listDeliveryPositionsAsyncWithHttpInfo($settle)
     {
-        $returnType = '\GateApi\Model\Position[]';
+        $returnType = '\GateApi\Model\DeliveryPosition[]';
         $request = $this->listDeliveryPositionsRequest($settle);
 
         return $this->client
@@ -2984,6 +3002,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3010,7 +3030,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Position
+     * @return \GateApi\Model\DeliveryPosition
      */
     public function getDeliveryPosition($settle, $contract)
     {
@@ -3028,7 +3048,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Position, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryPosition, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDeliveryPositionWithHttpInfo($settle, $contract)
     {
@@ -3058,7 +3078,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3107,7 +3127,7 @@ class DeliveryApi
      */
     public function getDeliveryPositionAsyncWithHttpInfo($settle, $contract)
     {
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $request = $this->getDeliveryPositionRequest($settle, $contract);
 
         return $this->client
@@ -3244,6 +3264,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3271,7 +3293,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Position
+     * @return \GateApi\Model\DeliveryPosition
      */
     public function updateDeliveryPositionMargin($settle, $contract, $change)
     {
@@ -3290,7 +3312,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Position, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryPosition, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDeliveryPositionMarginWithHttpInfo($settle, $contract, $change)
     {
@@ -3320,7 +3342,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3371,7 +3393,7 @@ class DeliveryApi
      */
     public function updateDeliveryPositionMarginAsyncWithHttpInfo($settle, $contract, $change)
     {
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $request = $this->updateDeliveryPositionMarginRequest($settle, $contract, $change);
 
         return $this->client
@@ -3527,6 +3549,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3554,7 +3578,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Position
+     * @return \GateApi\Model\DeliveryPosition
      */
     public function updateDeliveryPositionLeverage($settle, $contract, $leverage)
     {
@@ -3573,7 +3597,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Position, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryPosition, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDeliveryPositionLeverageWithHttpInfo($settle, $contract, $leverage)
     {
@@ -3603,7 +3627,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3654,7 +3678,7 @@ class DeliveryApi
      */
     public function updateDeliveryPositionLeverageAsyncWithHttpInfo($settle, $contract, $leverage)
     {
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $request = $this->updateDeliveryPositionLeverageRequest($settle, $contract, $leverage);
 
         return $this->client
@@ -3810,6 +3834,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3837,7 +3863,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Position
+     * @return \GateApi\Model\DeliveryPosition
      */
     public function updateDeliveryPositionRiskLimit($settle, $contract, $risk_limit)
     {
@@ -3856,7 +3882,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Position, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryPosition, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDeliveryPositionRiskLimitWithHttpInfo($settle, $contract, $risk_limit)
     {
@@ -3886,7 +3912,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3937,7 +3963,7 @@ class DeliveryApi
      */
     public function updateDeliveryPositionRiskLimitAsyncWithHttpInfo($settle, $contract, $risk_limit)
     {
-        $returnType = '\GateApi\Model\Position';
+        $returnType = '\GateApi\Model\DeliveryPosition';
         $request = $this->updateDeliveryPositionRiskLimitRequest($settle, $contract, $risk_limit);
 
         return $this->client
@@ -4093,6 +4119,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4126,7 +4154,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesOrder[]
+     * @return \GateApi\Model\DeliveryOrder[]
      */
     public function listDeliveryOrders($associative_array)
     {
@@ -4151,7 +4179,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesOrder[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryOrder[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryOrdersWithHttpInfo($associative_array)
     {
@@ -4181,7 +4209,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesOrder[]';
+        $returnType = '\GateApi\Model\DeliveryOrder[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4244,7 +4272,7 @@ class DeliveryApi
      */
     public function listDeliveryOrdersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesOrder[]';
+        $returnType = '\GateApi\Model\DeliveryOrder[]';
         $request = $this->listDeliveryOrdersRequest($associative_array);
 
         return $this->client
@@ -4471,6 +4499,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4493,15 +4523,15 @@ class DeliveryApi
      * Place futures order
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\FuturesOrder $futures_order futures_order (required)
+     * @param  \GateApi\Model\DeliveryOrder $delivery_order delivery_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesOrder
+     * @return \GateApi\Model\DeliveryOrder
      */
-    public function createDeliveryOrder($settle, $futures_order)
+    public function createDeliveryOrder($settle, $delivery_order)
     {
-        list($response) = $this->createDeliveryOrderWithHttpInfo($settle, $futures_order);
+        list($response) = $this->createDeliveryOrderWithHttpInfo($settle, $delivery_order);
         return $response;
     }
 
@@ -4511,15 +4541,15 @@ class DeliveryApi
      * Place futures order
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\FuturesOrder $futures_order (required)
+     * @param  \GateApi\Model\DeliveryOrder $delivery_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesOrder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryOrder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createDeliveryOrderWithHttpInfo($settle, $futures_order)
+    public function createDeliveryOrderWithHttpInfo($settle, $delivery_order)
     {
-        $request = $this->createDeliveryOrderRequest($settle, $futures_order);
+        $request = $this->createDeliveryOrderRequest($settle, $delivery_order);
 
         $options = $this->createHttpClientOption();
         try {
@@ -4545,7 +4575,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesOrder';
+        $returnType = '\GateApi\Model\DeliveryOrder';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4566,14 +4596,14 @@ class DeliveryApi
      * Place futures order
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\FuturesOrder $futures_order (required)
+     * @param  \GateApi\Model\DeliveryOrder $delivery_order (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDeliveryOrderAsync($settle, $futures_order)
+    public function createDeliveryOrderAsync($settle, $delivery_order)
     {
-        return $this->createDeliveryOrderAsyncWithHttpInfo($settle, $futures_order)
+        return $this->createDeliveryOrderAsyncWithHttpInfo($settle, $delivery_order)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4587,15 +4617,15 @@ class DeliveryApi
      * Place futures order
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\FuturesOrder $futures_order (required)
+     * @param  \GateApi\Model\DeliveryOrder $delivery_order (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDeliveryOrderAsyncWithHttpInfo($settle, $futures_order)
+    public function createDeliveryOrderAsyncWithHttpInfo($settle, $delivery_order)
     {
-        $returnType = '\GateApi\Model\FuturesOrder';
-        $request = $this->createDeliveryOrderRequest($settle, $futures_order);
+        $returnType = '\GateApi\Model\DeliveryOrder';
+        $request = $this->createDeliveryOrderRequest($settle, $delivery_order);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4635,12 +4665,12 @@ class DeliveryApi
      * Create request for operation 'createDeliveryOrder'
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\FuturesOrder $futures_order (required)
+     * @param  \GateApi\Model\DeliveryOrder $delivery_order (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createDeliveryOrderRequest($settle, $futures_order)
+    protected function createDeliveryOrderRequest($settle, $delivery_order)
     {
         // verify the required parameter 'settle' is set
         if ($settle === null || (is_array($settle) && count($settle) === 0)) {
@@ -4648,10 +4678,10 @@ class DeliveryApi
                 'Missing the required parameter $settle when calling createDeliveryOrder'
             );
         }
-        // verify the required parameter 'futures_order' is set
-        if ($futures_order === null || (is_array($futures_order) && count($futures_order) === 0)) {
+        // verify the required parameter 'delivery_order' is set
+        if ($delivery_order === null || (is_array($delivery_order) && count($delivery_order) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $futures_order when calling createDeliveryOrder'
+                'Missing the required parameter $delivery_order when calling createDeliveryOrder'
             );
         }
 
@@ -4673,8 +4703,8 @@ class DeliveryApi
 
         // body params
         $_tempBody = null;
-        if (isset($futures_order)) {
-            $_tempBody = $futures_order;
+        if (isset($delivery_order)) {
+            $_tempBody = $delivery_order;
         }
 
         if ($multipart) {
@@ -4725,6 +4755,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4752,7 +4784,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesOrder[]
+     * @return \GateApi\Model\DeliveryOrder[]
      */
     public function cancelDeliveryOrders($settle, $contract, $side = null)
     {
@@ -4771,7 +4803,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesOrder[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryOrder[], HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelDeliveryOrdersWithHttpInfo($settle, $contract, $side = null)
     {
@@ -4801,7 +4833,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesOrder[]';
+        $returnType = '\GateApi\Model\DeliveryOrder[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4852,7 +4884,7 @@ class DeliveryApi
      */
     public function cancelDeliveryOrdersAsyncWithHttpInfo($settle, $contract, $side = null)
     {
-        $returnType = '\GateApi\Model\FuturesOrder[]';
+        $returnType = '\GateApi\Model\DeliveryOrder[]';
         $request = $this->cancelDeliveryOrdersRequest($settle, $contract, $side);
 
         return $this->client
@@ -5005,6 +5037,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5031,7 +5065,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesOrder
+     * @return \GateApi\Model\DeliveryOrder
      */
     public function getDeliveryOrder($settle, $order_id)
     {
@@ -5049,7 +5083,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesOrder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryOrder, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDeliveryOrderWithHttpInfo($settle, $order_id)
     {
@@ -5079,7 +5113,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesOrder';
+        $returnType = '\GateApi\Model\DeliveryOrder';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5128,7 +5162,7 @@ class DeliveryApi
      */
     public function getDeliveryOrderAsyncWithHttpInfo($settle, $order_id)
     {
-        $returnType = '\GateApi\Model\FuturesOrder';
+        $returnType = '\GateApi\Model\DeliveryOrder';
         $request = $this->getDeliveryOrderRequest($settle, $order_id);
 
         return $this->client
@@ -5265,6 +5299,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5291,7 +5327,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesOrder
+     * @return \GateApi\Model\DeliveryOrder
      */
     public function cancelDeliveryOrder($settle, $order_id)
     {
@@ -5309,7 +5345,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesOrder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryOrder, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelDeliveryOrderWithHttpInfo($settle, $order_id)
     {
@@ -5339,7 +5375,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesOrder';
+        $returnType = '\GateApi\Model\DeliveryOrder';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5388,7 +5424,7 @@ class DeliveryApi
      */
     public function cancelDeliveryOrderAsyncWithHttpInfo($settle, $order_id)
     {
-        $returnType = '\GateApi\Model\FuturesOrder';
+        $returnType = '\GateApi\Model\DeliveryOrder';
         $request = $this->cancelDeliveryOrderRequest($settle, $order_id);
 
         return $this->client
@@ -5525,6 +5561,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5558,7 +5596,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\MyFuturesTrade[]
+     * @return \GateApi\Model\DeliveryMyTrade[]
      */
     public function getMyDeliveryTrades($associative_array)
     {
@@ -5583,7 +5621,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\MyFuturesTrade[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryMyTrade[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyDeliveryTradesWithHttpInfo($associative_array)
     {
@@ -5613,7 +5651,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\MyFuturesTrade[]';
+        $returnType = '\GateApi\Model\DeliveryMyTrade[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5676,7 +5714,7 @@ class DeliveryApi
      */
     public function getMyDeliveryTradesAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\MyFuturesTrade[]';
+        $returnType = '\GateApi\Model\DeliveryMyTrade[]';
         $request = $this->getMyDeliveryTradesRequest($associative_array);
 
         return $this->client
@@ -5897,6 +5935,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5926,7 +5966,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\PositionClose[]
+     * @return \GateApi\Model\DeliveryPositionClose[]
      */
     public function listDeliveryPositionClose($associative_array)
     {
@@ -5947,7 +5987,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\PositionClose[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryPositionClose[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryPositionCloseWithHttpInfo($associative_array)
     {
@@ -5977,7 +6017,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\PositionClose[]';
+        $returnType = '\GateApi\Model\DeliveryPositionClose[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -6032,7 +6072,7 @@ class DeliveryApi
      */
     public function listDeliveryPositionCloseAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\PositionClose[]';
+        $returnType = '\GateApi\Model\DeliveryPositionClose[]';
         $request = $this->listDeliveryPositionCloseRequest($associative_array);
 
         return $this->client
@@ -6193,6 +6233,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6223,7 +6265,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesLiquidate[]
+     * @return \GateApi\Model\DeliveryLiquidate[]
      */
     public function listDeliveryLiquidates($associative_array)
     {
@@ -6245,7 +6287,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesLiquidate[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryLiquidate[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryLiquidatesWithHttpInfo($associative_array)
     {
@@ -6275,7 +6317,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesLiquidate[]';
+        $returnType = '\GateApi\Model\DeliveryLiquidate[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -6332,7 +6374,7 @@ class DeliveryApi
      */
     public function listDeliveryLiquidatesAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesLiquidate[]';
+        $returnType = '\GateApi\Model\DeliveryLiquidate[]';
         $request = $this->listDeliveryLiquidatesRequest($associative_array);
 
         return $this->client
@@ -6507,6 +6549,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6821,6 +6865,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6851,7 +6897,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesLimitRiskTiers[]
+     * @return \GateApi\Model\DeliveryLimitRiskTiers[]
      */
     public function listDeliveryRiskLimitTiers($associative_array)
     {
@@ -6873,7 +6919,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesLimitRiskTiers[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeliveryLimitRiskTiers[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listDeliveryRiskLimitTiersWithHttpInfo($associative_array)
     {
@@ -6903,7 +6949,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesLimitRiskTiers[]';
+        $returnType = '\GateApi\Model\DeliveryLimitRiskTiers[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -6960,7 +7006,7 @@ class DeliveryApi
      */
     public function listDeliveryRiskLimitTiersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesLimitRiskTiers[]';
+        $returnType = '\GateApi\Model\DeliveryLimitRiskTiers[]';
         $request = $this->listDeliveryRiskLimitTiersRequest($associative_array);
 
         return $this->client
@@ -7136,6 +7182,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7478,6 +7526,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7732,6 +7782,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7995,6 +8047,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8255,6 +8309,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8515,6 +8571,8 @@ class DeliveryApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,

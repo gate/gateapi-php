@@ -151,7 +151,7 @@ No authorization required
 
 ## listDeliveryOrderBook
 
-> \GateApi\Model\FuturesOrderBook listDeliveryOrderBook($settle, $contract, $interval, $limit, $with_id)
+> \GateApi\Model\DeliveryOrderBook listDeliveryOrderBook($settle, $contract, $interval, $limit, $with_id)
 
 Query futures market depth information
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesOrderBook**](../Model/FuturesOrderBook.md)
+[**\GateApi\Model\DeliveryOrderBook**](../Model/DeliveryOrderBook.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ No authorization required
 
 ## listDeliveryTrades
 
-> \GateApi\Model\FuturesTrade[] listDeliveryTrades($settle, $contract, $limit, $last_id, $from, $to)
+> \GateApi\Model\DeliveryTrade[] listDeliveryTrades($settle, $contract, $limit, $last_id, $from, $to)
 
 Futures market transaction records
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesTrade[]**](../Model/FuturesTrade.md)
+[**\GateApi\Model\DeliveryTrade[]**](../Model/DeliveryTrade.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ No authorization required
 
 ## listDeliveryAccounts
 
-> \GateApi\Model\FuturesAccount listDeliveryAccounts($settle)
+> \GateApi\Model\DeliveryAccount listDeliveryAccounts($settle)
 
 Get futures account
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesAccount**](../Model/FuturesAccount.md)
+[**\GateApi\Model\DeliveryAccount**](../Model/DeliveryAccount.md)
 
 ### Authorization
 
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 ## listDeliveryAccountBook
 
-> \GateApi\Model\FuturesAccountBook[] listDeliveryAccountBook($settle, $limit, $from, $to, $type)
+> \GateApi\Model\DeliveryAccountBook[] listDeliveryAccountBook($settle, $limit, $from, $to, $type)
 
 Query futures account change history
 
@@ -589,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesAccountBook[]**](../Model/FuturesAccountBook.md)
+[**\GateApi\Model\DeliveryAccountBook[]**](../Model/DeliveryAccountBook.md)
 
 ### Authorization
 
@@ -607,7 +607,7 @@ Name | Type | Description  | Notes
 
 ## listDeliveryPositions
 
-> \GateApi\Model\Position[] listDeliveryPositions($settle)
+> \GateApi\Model\DeliveryPosition[] listDeliveryPositions($settle)
 
 Get user position list
 
@@ -649,7 +649,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Position[]**](../Model/Position.md)
+[**\GateApi\Model\DeliveryPosition[]**](../Model/DeliveryPosition.md)
 
 ### Authorization
 
@@ -667,7 +667,7 @@ Name | Type | Description  | Notes
 
 ## getDeliveryPosition
 
-> \GateApi\Model\Position getDeliveryPosition($settle, $contract)
+> \GateApi\Model\DeliveryPosition getDeliveryPosition($settle, $contract)
 
 Get single position information
 
@@ -711,7 +711,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Position**](../Model/Position.md)
+[**\GateApi\Model\DeliveryPosition**](../Model/DeliveryPosition.md)
 
 ### Authorization
 
@@ -729,7 +729,7 @@ Name | Type | Description  | Notes
 
 ## updateDeliveryPositionMargin
 
-> \GateApi\Model\Position updateDeliveryPositionMargin($settle, $contract, $change)
+> \GateApi\Model\DeliveryPosition updateDeliveryPositionMargin($settle, $contract, $change)
 
 Update position margin
 
@@ -775,7 +775,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Position**](../Model/Position.md)
+[**\GateApi\Model\DeliveryPosition**](../Model/DeliveryPosition.md)
 
 ### Authorization
 
@@ -793,7 +793,7 @@ Name | Type | Description  | Notes
 
 ## updateDeliveryPositionLeverage
 
-> \GateApi\Model\Position updateDeliveryPositionLeverage($settle, $contract, $leverage)
+> \GateApi\Model\DeliveryPosition updateDeliveryPositionLeverage($settle, $contract, $leverage)
 
 Update position leverage
 
@@ -839,7 +839,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Position**](../Model/Position.md)
+[**\GateApi\Model\DeliveryPosition**](../Model/DeliveryPosition.md)
 
 ### Authorization
 
@@ -857,7 +857,7 @@ Name | Type | Description  | Notes
 
 ## updateDeliveryPositionRiskLimit
 
-> \GateApi\Model\Position updateDeliveryPositionRiskLimit($settle, $contract, $risk_limit)
+> \GateApi\Model\DeliveryPosition updateDeliveryPositionRiskLimit($settle, $contract, $risk_limit)
 
 Update position risk limit
 
@@ -903,7 +903,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Position**](../Model/Position.md)
+[**\GateApi\Model\DeliveryPosition**](../Model/DeliveryPosition.md)
 
 ### Authorization
 
@@ -921,7 +921,7 @@ Name | Type | Description  | Notes
 
 ## listDeliveryOrders
 
-> \GateApi\Model\FuturesOrder[] listDeliveryOrders($settle, $status, $contract, $limit, $offset, $last_id, $count_total)
+> \GateApi\Model\DeliveryOrder[] listDeliveryOrders($settle, $status, $contract, $limit, $offset, $last_id, $count_total)
 
 Query futures order list
 
@@ -979,7 +979,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesOrder[]**](../Model/FuturesOrder.md)
+[**\GateApi\Model\DeliveryOrder[]**](../Model/DeliveryOrder.md)
 
 ### Authorization
 
@@ -997,7 +997,7 @@ Name | Type | Description  | Notes
 
 ## createDeliveryOrder
 
-> \GateApi\Model\FuturesOrder createDeliveryOrder($settle, $futures_order)
+> \GateApi\Model\DeliveryOrder createDeliveryOrder($settle, $delivery_order)
 
 Place futures order
 
@@ -1020,10 +1020,10 @@ $apiInstance = new GateApi\Api\DeliveryApi(
     $config
 );
 $settle = 'usdt'; // string | Settle currency
-$futures_order = new \GateApi\Model\FuturesOrder(); // \GateApi\Model\FuturesOrder | 
+$delivery_order = new \GateApi\Model\DeliveryOrder(); // \GateApi\Model\DeliveryOrder | 
 
 try {
-    $result = $apiInstance->createDeliveryOrder($settle, $futures_order);
+    $result = $apiInstance->createDeliveryOrder($settle, $delivery_order);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1039,11 +1039,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Settle currency |
- **futures_order** | [**\GateApi\Model\FuturesOrder**](../Model/FuturesOrder.md)|  |
+ **delivery_order** | [**\GateApi\Model\DeliveryOrder**](../Model/DeliveryOrder.md)|  |
 
 ### Return type
 
-[**\GateApi\Model\FuturesOrder**](../Model/FuturesOrder.md)
+[**\GateApi\Model\DeliveryOrder**](../Model/DeliveryOrder.md)
 
 ### Authorization
 
@@ -1061,7 +1061,7 @@ Name | Type | Description  | Notes
 
 ## cancelDeliveryOrders
 
-> \GateApi\Model\FuturesOrder[] cancelDeliveryOrders($settle, $contract, $side)
+> \GateApi\Model\DeliveryOrder[] cancelDeliveryOrders($settle, $contract, $side)
 
 Cancel all orders with 'open' status
 
@@ -1109,7 +1109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesOrder[]**](../Model/FuturesOrder.md)
+[**\GateApi\Model\DeliveryOrder[]**](../Model/DeliveryOrder.md)
 
 ### Authorization
 
@@ -1127,7 +1127,7 @@ Name | Type | Description  | Notes
 
 ## getDeliveryOrder
 
-> \GateApi\Model\FuturesOrder getDeliveryOrder($settle, $order_id)
+> \GateApi\Model\DeliveryOrder getDeliveryOrder($settle, $order_id)
 
 Query single order details
 
@@ -1173,7 +1173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesOrder**](../Model/FuturesOrder.md)
+[**\GateApi\Model\DeliveryOrder**](../Model/DeliveryOrder.md)
 
 ### Authorization
 
@@ -1191,7 +1191,7 @@ Name | Type | Description  | Notes
 
 ## cancelDeliveryOrder
 
-> \GateApi\Model\FuturesOrder cancelDeliveryOrder($settle, $order_id)
+> \GateApi\Model\DeliveryOrder cancelDeliveryOrder($settle, $order_id)
 
 Cancel single order
 
@@ -1235,7 +1235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesOrder**](../Model/FuturesOrder.md)
+[**\GateApi\Model\DeliveryOrder**](../Model/DeliveryOrder.md)
 
 ### Authorization
 
@@ -1253,7 +1253,7 @@ Name | Type | Description  | Notes
 
 ## getMyDeliveryTrades
 
-> \GateApi\Model\MyFuturesTrade[] getMyDeliveryTrades($settle, $contract, $order, $limit, $offset, $last_id, $count_total)
+> \GateApi\Model\DeliveryMyTrade[] getMyDeliveryTrades($settle, $contract, $order, $limit, $offset, $last_id, $count_total)
 
 Query personal trading records
 
@@ -1309,7 +1309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\MyFuturesTrade[]**](../Model/MyFuturesTrade.md)
+[**\GateApi\Model\DeliveryMyTrade[]**](../Model/DeliveryMyTrade.md)
 
 ### Authorization
 
@@ -1327,7 +1327,7 @@ Name | Type | Description  | Notes
 
 ## listDeliveryPositionClose
 
-> \GateApi\Model\PositionClose[] listDeliveryPositionClose($settle, $contract, $limit)
+> \GateApi\Model\DeliveryPositionClose[] listDeliveryPositionClose($settle, $contract, $limit)
 
 Query position close history
 
@@ -1375,7 +1375,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\PositionClose[]**](../Model/PositionClose.md)
+[**\GateApi\Model\DeliveryPositionClose[]**](../Model/DeliveryPositionClose.md)
 
 ### Authorization
 
@@ -1393,7 +1393,7 @@ Name | Type | Description  | Notes
 
 ## listDeliveryLiquidates
 
-> \GateApi\Model\FuturesLiquidate[] listDeliveryLiquidates($settle, $contract, $limit, $at)
+> \GateApi\Model\DeliveryLiquidate[] listDeliveryLiquidates($settle, $contract, $limit, $at)
 
 Query liquidation history
 
@@ -1443,7 +1443,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesLiquidate[]**](../Model/FuturesLiquidate.md)
+[**\GateApi\Model\DeliveryLiquidate[]**](../Model/DeliveryLiquidate.md)
 
 ### Authorization
 
@@ -1529,7 +1529,7 @@ Name | Type | Description  | Notes
 
 ## listDeliveryRiskLimitTiers
 
-> \GateApi\Model\FuturesLimitRiskTiers[] listDeliveryRiskLimitTiers($settle, $contract, $limit, $offset)
+> \GateApi\Model\DeliveryLimitRiskTiers[] listDeliveryRiskLimitTiers($settle, $contract, $limit, $offset)
 
 Query risk limit tiers
 
@@ -1577,7 +1577,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesLimitRiskTiers[]**](../Model/FuturesLimitRiskTiers.md)
+[**\GateApi\Model\DeliveryLimitRiskTiers[]**](../Model/DeliveryLimitRiskTiers.md)
 
 ### Authorization
 

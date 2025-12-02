@@ -42,7 +42,7 @@ $apiInstance = new GateApi\Api\MultiCollateralLoanApi(
 );
 $associate_array['page'] = 1; // int | Page number
 $associate_array['limit'] = 10; // int | Maximum number of records returned in a single list
-$associate_array['sort'] = 'ltv_asc'; // string | Sort type: `time_desc` - Created time descending (default), `ltv_asc` - Collateral ratio ascending, `ltv_desc` - Collateral ratio descending.
+$associate_array['sort'] = 'ltv_asc'; // string | Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio
 $associate_array['order_type'] = 'current'; // string | Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified
 
 try {
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number | [optional] [default to 1]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 10]
- **sort** | **string**| Sort type: &#x60;time_desc&#x60; - Created time descending (default), &#x60;ltv_asc&#x60; - Collateral ratio ascending, &#x60;ltv_desc&#x60; - Collateral ratio descending. | [optional]
+ **sort** | **string**| Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio | [optional]
  **order_type** | **string**| Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified | [optional]
 
 ### Return type
@@ -491,7 +491,7 @@ $apiInstance = new GateApi\Api\MultiCollateralLoanApi(
     $config
 );
 $type = 'collateral'; // string | Currency type: collateral - Collateral currency, borrow - Borrowing currency
-$currency = 'BTC'; // string | When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided.
+$currency = 'BTC'; // string | When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed
 
 try {
     $result = $apiInstance->listUserCurrencyQuota($type, $currency);
@@ -510,7 +510,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **string**| Currency type: collateral - Collateral currency, borrow - Borrowing currency |
- **currency** | **string**| When it is a collateral currency, multiple currencies can be provided separated by commas; when it is a borrowing currency, only one currency can be provided. |
+ **currency** | **string**| When it is a collateral currency, multiple currencies can be passed separated by commas; when it is a borrowing currency, only one currency can be passed |
 
 ### Return type
 
@@ -694,7 +694,7 @@ No authorization required
 
 Query currency's current interest rate
 
-Query currency's current interest rate for the previous hour, current interest rate updates hourly
+Query the current interest rate of the currency in the previous hour, the current interest rate is updated every hour
 
 ### Example
 

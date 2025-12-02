@@ -394,6 +394,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -651,6 +653,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -986,6 +990,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1361,6 +1367,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -1729,6 +1737,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2079,6 +2089,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2347,6 +2359,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2682,6 +2696,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -2957,6 +2973,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3292,6 +3310,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3549,6 +3569,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -3878,6 +3900,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4193,6 +4217,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4433,6 +4459,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -4805,6 +4833,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5123,6 +5153,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5397,6 +5429,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5680,6 +5714,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -5997,6 +6033,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6251,6 +6289,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6505,6 +6545,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -6788,6 +6830,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7051,6 +7095,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7325,6 +7371,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7631,6 +7679,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -7931,6 +7981,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8214,6 +8266,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8574,6 +8628,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8838,6 +8894,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -8860,8 +8918,8 @@ class FuturesApi
      * Cancel all orders with 'open' status
      *
      * @param  string $settle Settle currency (required)
-     * @param  string $contract Futures contract (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders (optional)
      * @param  bool $exclude_reduce_only Whether to exclude reduce-only orders (optional, default to false)
      * @param  string $text Remark for order cancellation (optional)
@@ -8870,9 +8928,9 @@ class FuturesApi
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\FuturesOrder[]
      */
-    public function cancelFuturesOrders($settle, $contract, $x_gate_exptime = null, $side = null, $exclude_reduce_only = false, $text = null)
+    public function cancelFuturesOrders($settle, $x_gate_exptime = null, $contract = null, $side = null, $exclude_reduce_only = false, $text = null)
     {
-        list($response) = $this->cancelFuturesOrdersWithHttpInfo($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text);
+        list($response) = $this->cancelFuturesOrdersWithHttpInfo($settle, $x_gate_exptime, $contract, $side, $exclude_reduce_only, $text);
         return $response;
     }
 
@@ -8882,8 +8940,8 @@ class FuturesApi
      * Cancel all orders with 'open' status
      *
      * @param  string $settle Settle currency (required)
-     * @param  string $contract Futures contract (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders (optional)
      * @param  bool $exclude_reduce_only Whether to exclude reduce-only orders (optional, default to false)
      * @param  string $text Remark for order cancellation (optional)
@@ -8892,9 +8950,9 @@ class FuturesApi
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\FuturesOrder[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function cancelFuturesOrdersWithHttpInfo($settle, $contract, $x_gate_exptime = null, $side = null, $exclude_reduce_only = false, $text = null)
+    public function cancelFuturesOrdersWithHttpInfo($settle, $x_gate_exptime = null, $contract = null, $side = null, $exclude_reduce_only = false, $text = null)
     {
-        $request = $this->cancelFuturesOrdersRequest($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text);
+        $request = $this->cancelFuturesOrdersRequest($settle, $x_gate_exptime, $contract, $side, $exclude_reduce_only, $text);
 
         $options = $this->createHttpClientOption();
         try {
@@ -8941,8 +8999,8 @@ class FuturesApi
      * Cancel all orders with 'open' status
      *
      * @param  string $settle Settle currency (required)
-     * @param  string $contract Futures contract (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders (optional)
      * @param  bool $exclude_reduce_only Whether to exclude reduce-only orders (optional, default to false)
      * @param  string $text Remark for order cancellation (optional)
@@ -8950,9 +9008,9 @@ class FuturesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelFuturesOrdersAsync($settle, $contract, $x_gate_exptime = null, $side = null, $exclude_reduce_only = false, $text = null)
+    public function cancelFuturesOrdersAsync($settle, $x_gate_exptime = null, $contract = null, $side = null, $exclude_reduce_only = false, $text = null)
     {
-        return $this->cancelFuturesOrdersAsyncWithHttpInfo($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text)
+        return $this->cancelFuturesOrdersAsyncWithHttpInfo($settle, $x_gate_exptime, $contract, $side, $exclude_reduce_only, $text)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8966,8 +9024,8 @@ class FuturesApi
      * Cancel all orders with 'open' status
      *
      * @param  string $settle Settle currency (required)
-     * @param  string $contract Futures contract (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders (optional)
      * @param  bool $exclude_reduce_only Whether to exclude reduce-only orders (optional, default to false)
      * @param  string $text Remark for order cancellation (optional)
@@ -8975,10 +9033,10 @@ class FuturesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelFuturesOrdersAsyncWithHttpInfo($settle, $contract, $x_gate_exptime = null, $side = null, $exclude_reduce_only = false, $text = null)
+    public function cancelFuturesOrdersAsyncWithHttpInfo($settle, $x_gate_exptime = null, $contract = null, $side = null, $exclude_reduce_only = false, $text = null)
     {
         $returnType = '\GateApi\Model\FuturesOrder[]';
-        $request = $this->cancelFuturesOrdersRequest($settle, $contract, $x_gate_exptime, $side, $exclude_reduce_only, $text);
+        $request = $this->cancelFuturesOrdersRequest($settle, $x_gate_exptime, $contract, $side, $exclude_reduce_only, $text);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9018,8 +9076,8 @@ class FuturesApi
      * Create request for operation 'cancelFuturesOrders'
      *
      * @param  string $settle Settle currency (required)
-     * @param  string $contract Futures contract (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
+     * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $side Specify all buy orders or all sell orders, both are included if not specified. Set to bid to cancel all buy orders, set to ask to cancel all sell orders (optional)
      * @param  bool $exclude_reduce_only Whether to exclude reduce-only orders (optional, default to false)
      * @param  string $text Remark for order cancellation (optional)
@@ -9027,18 +9085,12 @@ class FuturesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function cancelFuturesOrdersRequest($settle, $contract, $x_gate_exptime = null, $side = null, $exclude_reduce_only = false, $text = null)
+    protected function cancelFuturesOrdersRequest($settle, $x_gate_exptime = null, $contract = null, $side = null, $exclude_reduce_only = false, $text = null)
     {
         // verify the required parameter 'settle' is set
         if ($settle === null || (is_array($settle) && count($settle) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $settle when calling cancelFuturesOrders'
-            );
-        }
-        // verify the required parameter 'contract' is set
-        if ($contract === null || (is_array($contract) && count($contract) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $contract when calling cancelFuturesOrders'
             );
         }
 
@@ -9162,6 +9214,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9516,6 +9570,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -9780,6 +9836,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10040,6 +10098,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10324,6 +10384,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10594,6 +10656,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -10948,6 +11012,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11320,6 +11386,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -11710,6 +11778,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12082,6 +12152,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12454,6 +12526,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12708,6 +12782,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -12979,6 +13055,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13243,6 +13321,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13507,6 +13587,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -13767,6 +13849,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14031,6 +14115,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14373,6 +14459,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14627,6 +14715,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -14884,6 +14974,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15144,6 +15236,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15418,6 +15512,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,
@@ -15678,6 +15774,8 @@ class FuturesApi
         if ($this->config->getUserAgent()) {
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
 
         $headers = array_merge(
             $defaultHeaders,

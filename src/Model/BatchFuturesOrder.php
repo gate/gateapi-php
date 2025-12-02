@@ -65,8 +65,8 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'finish_as' => 'string',
         'status' => 'string',
         'contract' => 'string',
-        'size' => 'int',
-        'iceberg' => 'int',
+        'size' => 'string',
+        'iceberg' => 'string',
         'price' => 'string',
         'close' => 'bool',
         'is_close' => 'bool',
@@ -74,7 +74,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'is_reduce_only' => 'bool',
         'is_liq' => 'bool',
         'tif' => 'string',
-        'left' => 'int',
+        'left' => 'string',
         'fill_price' => 'string',
         'text' => 'string',
         'tkfr' => 'string',
@@ -101,8 +101,8 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'finish_as' => null,
         'status' => null,
         'contract' => null,
-        'size' => 'int64',
-        'iceberg' => 'int64',
+        'size' => null,
+        'iceberg' => null,
         'price' => null,
         'close' => null,
         'is_close' => null,
@@ -110,7 +110,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'is_reduce_only' => null,
         'is_liq' => null,
         'tif' => null,
-        'left' => 'int64',
+        'left' => null,
         'fill_price' => null,
         'text' => null,
         'tkfr' => null,
@@ -762,7 +762,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -772,7 +772,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
+     * @param string|null $size Required. Trading quantity. Positive for buy, negative for sell. Set to 0 for close position orders.
      *
      * @return $this
      */
@@ -786,7 +786,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets iceberg
      *
-     * @return int|null
+     * @return string|null
      */
     public function getIceberg()
     {
@@ -796,7 +796,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets iceberg
      *
-     * @param int|null $iceberg Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
+     * @param string|null $iceberg Display size for iceberg orders. 0 for non-iceberg orders. Note that hidden portions are charged taker fees.
      *
      * @return $this
      */
@@ -987,7 +987,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets left
      *
-     * @return int|null
+     * @return string|null
      */
     public function getLeft()
     {
@@ -997,7 +997,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets left
      *
-     * @param int|null $left Unfilled quantity
+     * @param string|null $left Unfilled quantity
      *
      * @return $this
      */

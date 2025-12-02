@@ -62,8 +62,8 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
         'cross_leverage_limit' => 'string',
         'entry_price' => 'string',
         'fill_price' => 'string',
-        'trade_size' => 'int',
-        'position_size' => 'int'
+        'trade_size' => 'string',
+        'position_size' => 'string'
     ];
 
     /**
@@ -80,8 +80,8 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
         'cross_leverage_limit' => null,
         'entry_price' => null,
         'fill_price' => null,
-        'trade_size' => 'int64',
-        'position_size' => 'int64'
+        'trade_size' => null,
+        'position_size' => null
     ];
 
     /**
@@ -450,7 +450,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     /**
      * Gets trade_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getTradeSize()
     {
@@ -460,7 +460,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     /**
      * Sets trade_size
      *
-     * @param int|null $trade_size Trading size
+     * @param string|null $trade_size Trading size
      *
      * @return $this
      */
@@ -474,7 +474,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     /**
      * Gets position_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getPositionSize()
     {
@@ -484,7 +484,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     /**
      * Sets position_size
      *
-     * @param int|null $position_size Positions after auto-deleveraging
+     * @param string|null $position_size Positions after auto-deleveraging
      *
      * @return $this
      */

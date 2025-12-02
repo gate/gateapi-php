@@ -58,13 +58,14 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'contract' => 'string',
         'order_id' => 'string',
-        'size' => 'int',
-        'close_size' => 'int',
+        'size' => 'string',
+        'close_size' => 'string',
         'price' => 'string',
         'role' => 'string',
         'text' => 'string',
         'fee' => 'string',
-        'point_fee' => 'string'
+        'point_fee' => 'string',
+        'trade_value' => 'string'
     ];
 
     /**
@@ -77,13 +78,14 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
         'create_time' => 'double',
         'contract' => null,
         'order_id' => null,
-        'size' => 'int64',
-        'close_size' => 'int64',
+        'size' => null,
+        'close_size' => null,
         'price' => null,
         'role' => null,
         'text' => null,
         'fee' => null,
-        'point_fee' => null
+        'point_fee' => null,
+        'trade_value' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
         'role' => 'role',
         'text' => 'text',
         'fee' => 'fee',
-        'point_fee' => 'point_fee'
+        'point_fee' => 'point_fee',
+        'trade_value' => 'trade_value'
     ];
 
     /**
@@ -142,7 +145,8 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
         'role' => 'setRole',
         'text' => 'setText',
         'fee' => 'setFee',
-        'point_fee' => 'setPointFee'
+        'point_fee' => 'setPointFee',
+        'trade_value' => 'setTradeValue'
     ];
 
     /**
@@ -161,7 +165,8 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
         'role' => 'getRole',
         'text' => 'getText',
         'fee' => 'getFee',
-        'point_fee' => 'getPointFee'
+        'point_fee' => 'getPointFee',
+        'trade_value' => 'getTradeValue'
     ];
 
     /**
@@ -250,6 +255,7 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
         $this->container['point_fee'] = isset($data['point_fee']) ? $data['point_fee'] : null;
+        $this->container['trade_value'] = isset($data['trade_value']) ? $data['trade_value'] : null;
     }
 
     /**
@@ -383,7 +389,7 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
     /**
      * Gets size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSize()
     {
@@ -393,7 +399,7 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
     /**
      * Sets size
      *
-     * @param int|null $size Trading size
+     * @param string|null $size Trading size
      *
      * @return $this
      */
@@ -407,7 +413,7 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
     /**
      * Gets close_size
      *
-     * @return int|null
+     * @return string|null
      */
     public function getCloseSize()
     {
@@ -417,7 +423,7 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
     /**
      * Sets close_size
      *
-     * @param int|null $close_size Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close short position close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long position close_size<0 && size<0 && size < close_size Close long position and open short position
+     * @param string|null $close_size Number of closed positions:  close_size=0 && size＞0 Open long position close_size=0 && size＜0 Open short position close_size>0 && size>0 && size <= close_size Close short position close_size>0 && size>0 && size > close_size Close short position and open long position close_size<0 && size<0 && size >= close_size Close long position close_size<0 && size<0 && size < close_size Close long position and open short position
      *
      * @return $this
      */
@@ -553,6 +559,30 @@ class MyFuturesTrade implements ModelInterface, ArrayAccess
     public function setPointFee($point_fee)
     {
         $this->container['point_fee'] = $point_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_value
+     *
+     * @return string|null
+     */
+    public function getTradeValue()
+    {
+        return $this->container['trade_value'];
+    }
+
+    /**
+     * Sets trade_value
+     *
+     * @param string|null $trade_value trade value
+     *
+     * @return $this
+     */
+    public function setTradeValue($trade_value)
+    {
+        $this->container['trade_value'] = $trade_value;
 
         return $this;
     }

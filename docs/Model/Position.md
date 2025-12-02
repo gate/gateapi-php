@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user** | **int** | User ID | [optional] [readonly] 
 **contract** | **string** | Futures contract | [optional] [readonly] 
-**size** | **int** | Position size | [optional] [readonly] 
+**size** | **string** | Position size | [optional] [readonly] 
 **leverage** | **string** | Position leverage. 0 means cross margin; positive number means isolated margin | [optional] 
 **risk_limit** | **string** | Position risk limit | [optional] 
 **leverage_max** | **string** | Maximum leverage under current risk limit | [optional] [readonly] 

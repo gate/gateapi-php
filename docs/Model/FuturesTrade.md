@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **create_time** | **double** | Fill Time | [optional] 
 **create_time_ms** | **double** | Trade time, with millisecond precision to 3 decimal places | [optional] 
 **contract** | **string** | Futures contract | [optional] 
-**size** | **int** | Trading size | [optional] 
+**size** | **string** | Trading size | [optional] 
 **price** | **string** | Trade price (quote currency) | [optional] 
 **is_internal** | **bool** | Whether it is an internal trade. Internal trade refers to the takeover of liquidation orders by the insurance fund and ADL users. Since it is not a normal matching on the market depth, the trade price may deviate from the market, and it will not be recorded in the K-line. If it is not an internal trade, this field will not be returned | [optional] 
 

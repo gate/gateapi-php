@@ -365,7 +365,7 @@ class AccountDetail implements ModelInterface, ArrayAccess
     /**
      * Sets copy_trading_role
      *
-     * @param int|null $copy_trading_role User role: 0 - Normal user, 1 - Copy trading leader, 2 - Follower, 3 - Both leader and follower
+     * @param int|null $copy_trading_role User role: 0 - Normal user 1 - Copy trading leader 2 - Copy trading follower 3 - Both leader and follower
      *
      * @return $this
      */
