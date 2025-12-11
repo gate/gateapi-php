@@ -423,7 +423,7 @@ class OptionsMyTrade implements ModelInterface, ArrayAccess
     /**
      * Sets underlying_price
      *
-     * @param string|null $underlying_price Underlying price (quote currency)
+     * @param string|null $underlying_price The forward futures price corresponding to the delivery date
      *
      * @return $this
      */

@@ -298,7 +298,7 @@ class CreateUniLoan implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type Type: `borrow` - borrow, `repay` - repay
+     * @param string $type Loan Type margin: margin borrowing
      *
      * @return $this
      */

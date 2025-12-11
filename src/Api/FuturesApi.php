@@ -5739,8 +5739,8 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $leverage New position leverage (required)
-     * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
+     * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
+     * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
      * @param  int $pid Product ID (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -5760,8 +5760,8 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $leverage New position leverage (required)
-     * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
+     * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
+     * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
      * @param  int $pid Product ID (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -5818,8 +5818,8 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $leverage New position leverage (required)
-     * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
+     * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
+     * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
      * @param  int $pid Product ID (optional)
      *
      * @throws \InvalidArgumentException
@@ -5842,8 +5842,8 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $leverage New position leverage (required)
-     * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
+     * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
+     * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
      * @param  int $pid Product ID (optional)
      *
      * @throws \InvalidArgumentException
@@ -5893,8 +5893,8 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $leverage New position leverage (required)
-     * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
+     * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
+     * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
      * @param  int $pid Product ID (optional)
      *
      * @throws \InvalidArgumentException

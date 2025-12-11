@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**convertSmallBalance**](WalletApi.md#convertSmallBalance) | **POST** /wallet/small_balance | Convert small balance currency
 [**listSmallBalanceHistory**](WalletApi.md#listSmallBalanceHistory) | **GET** /wallet/small_balance_history | Get convertible small balance currency history
 [**listPushOrders**](WalletApi.md#listPushOrders) | **GET** /wallet/push | Get UID transfer history
+[**getLowCapExchangeList**](WalletApi.md#getLowCapExchangeList) | **GET** /wallet/getLowCapExchangeList | Retrieve the list of low-liquidity or low-cap tokens
 
 
 ## listCurrencyChains
@@ -1367,6 +1368,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\UidPushOrder[]**](../Model/UidPushOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getLowCapExchangeList
+
+> string[] getLowCapExchangeList()
+
+Retrieve the list of low-liquidity or low-cap tokens
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\WalletApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getLowCapExchangeList();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling WalletApi->getLowCapExchangeList: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+**string[]**
 
 ### Authorization
 

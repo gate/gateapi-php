@@ -353,7 +353,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
     /**
      * Sets underlying_price
      *
-     * @param string|null $underlying_price Underlying price (quote currency)
+     * @param string|null $underlying_price The forward futures price corresponding to the delivery date
      *
      * @return $this
      */
@@ -521,7 +521,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
     /**
      * Sets unrealised_pnl
      *
-     * @param string|null $unrealised_pnl Unrealized PNL
+     * @param string|null $unrealised_pnl Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
      *
      * @return $this
      */

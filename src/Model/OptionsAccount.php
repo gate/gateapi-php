@@ -248,6 +248,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     const MARGIN_MODE_0 = 0;
     const MARGIN_MODE_1 = 1;
     const MARGIN_MODE_2 = 2;
+    const MARGIN_MODE_3 = 3;
     
 
     
@@ -262,6 +263,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
             self::MARGIN_MODE_0,
             self::MARGIN_MODE_1,
             self::MARGIN_MODE_2,
+            self::MARGIN_MODE_3,
         ];
     }
     
@@ -371,7 +373,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Sets total
      *
-     * @param string|null $total Account Balance
+     * @param string|null $total Account balance, invalid for unified account
      *
      * @return $this
      */
@@ -419,7 +421,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Sets equity
      *
-     * @param string|null $equity Account equity, the sum of account balance and position value
+     * @param string|null $equity Account equity = balance + option position value, invalid for unified account
      *
      * @return $this
      */
@@ -491,7 +493,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Sets liq_triggered
      *
-     * @param bool|null $liq_triggered Whether to trigger position liquidation
+     * @param bool|null $liq_triggered Whether the account is in a liquidation state
      *
      * @return $this
      */
@@ -515,7 +517,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Sets margin_mode
      *
-     * @param int|null $margin_mode ｜ 保证金模式： - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式
+     * @param int|null $margin_mode 此字段表示统一账户所使用的保证金模式：  - 0：经典现货保证金模式 - 1：跨币种保证金模式 - 2：组合保证金模式 - 3: 表示为单币种保证金模式
      *
      * @return $this
      */
@@ -548,7 +550,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Sets unrealised_pnl
      *
-     * @param string|null $unrealised_pnl Unrealized PNL
+     * @param string|null $unrealised_pnl Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
      *
      * @return $this
      */

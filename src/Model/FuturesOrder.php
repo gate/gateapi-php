@@ -82,7 +82,6 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'int',
         'stp_act' => 'string',
         'amend_text' => 'string',
-        'limit_vip' => 'int',
         'pid' => 'int',
         'order_value' => 'string',
         'trade_value' => 'string'
@@ -121,7 +120,6 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_id' => null,
         'stp_act' => null,
         'amend_text' => null,
-        'limit_vip' => 'int64',
         'pid' => 'int64',
         'order_value' => null,
         'trade_value' => null
@@ -181,7 +179,6 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'stp_id',
         'stp_act' => 'stp_act',
         'amend_text' => 'amend_text',
-        'limit_vip' => 'limit_vip',
         'pid' => 'pid',
         'order_value' => 'order_value',
         'trade_value' => 'trade_value'
@@ -220,7 +217,6 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'setStpId',
         'stp_act' => 'setStpAct',
         'amend_text' => 'setAmendText',
-        'limit_vip' => 'setLimitVip',
         'pid' => 'setPid',
         'order_value' => 'setOrderValue',
         'trade_value' => 'setTradeValue'
@@ -259,7 +255,6 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'getStpId',
         'stp_act' => 'getStpAct',
         'amend_text' => 'getAmendText',
-        'limit_vip' => 'getLimitVip',
         'pid' => 'getPid',
         'order_value' => 'getOrderValue',
         'trade_value' => 'getTradeValue'
@@ -449,7 +444,6 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         $this->container['stp_id'] = isset($data['stp_id']) ? $data['stp_id'] : null;
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
-        $this->container['limit_vip'] = isset($data['limit_vip']) ? $data['limit_vip'] : null;
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
         $this->container['order_value'] = isset($data['order_value']) ? $data['order_value'] : null;
         $this->container['trade_value'] = isset($data['trade_value']) ? $data['trade_value'] : null;
@@ -1024,7 +1018,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets text
      *
-     * @param string|null $text Custom order information. If not empty, must follow the rules below:  1. Prefixed with `t-` 2. No longer than 28 bytes without `t-` prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance
+     * @param string|null $text Custom order information. If not empty, must follow the rules below:  1. Prefixed with `t-` 2. No longer than 28 bytes without `t-` prefix 3. Can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  In addition to user-defined information, the following are internal reserved fields that identify the order source:  - web: Web - api: API call - app: Mobile app - auto_deleveraging: Automatic deleveraging - liquidation: Forced liquidation of positions under the old classic mode - liq-xxx: a. Forced liquidation of positions under the new classic mode, including isolated margin, one-way cross margin, and non-hedged positions under two-way cross margin. b. Forced liquidation of isolated positions under the unified account single-currency margin mode - hedge-liq-xxx: Forced liquidation of hedged positions under the new classic mode two-way cross margin, i.e., simultaneously closing long and short positions - pm_liquidate: Forced liquidation under unified account multi-currency margin mode - comb_margin_liquidate: Forced liquidation under unified account portfolio margin mode - scm_liquidate: Forced liquidation of positions under unified account single-currency margin mode - insurance: Insurance - clear: Contract delisting withdrawal
      *
      * @return $this
      */
@@ -1217,30 +1211,6 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     public function setAmendText($amend_text)
     {
         $this->container['amend_text'] = $amend_text;
-
-        return $this;
-    }
-
-    /**
-     * Gets limit_vip
-     *
-     * @return int|null
-     */
-    public function getLimitVip()
-    {
-        return $this->container['limit_vip'];
-    }
-
-    /**
-     * Sets limit_vip
-     *
-     * @param int|null $limit_vip Counterparty user's VIP level for limit order fills. Current order will only match with orders whose VIP level is less than or equal to the specified level. Only 11~16 are supported; default is 0
-     *
-     * @return $this
-     */
-    public function setLimitVip($limit_vip)
-    {
-        $this->container['limit_vip'] = $limit_vip;
 
         return $this;
     }

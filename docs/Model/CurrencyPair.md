@@ -23,5 +23,7 @@ Name | Type | Description | Notes
 **type** | **string** | Trading pair type, normal: normal, premarket: pre-market | [optional] 
 **trade_url** | **string** | Transaction link | [optional] 
 **st_tag** | **bool** | Whether the trading pair is in ST risk assessment, false - No, true - Yes | [optional] 
+**up_rate** | **string** | Maximum Quote Rise Percentage | [optional] 
+**down_rate** | **string** | Maximum Quote Decline Percentage | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

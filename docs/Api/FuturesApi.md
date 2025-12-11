@@ -908,6 +908,8 @@ No authorization required
 
 Get futures account
 
+Query account information for classic future account and unified account
+
 ### Example
 
 ```php
@@ -1112,6 +1114,8 @@ Name | Type | Description  | Notes
 
 Get single position information
 
+Get single position information from a contract. If you hold two postions in one contract market, please use this API: /futures/{settle}/dual_comp/positions/{contract}
+
 ### Example
 
 ```php
@@ -1175,6 +1179,8 @@ Name | Type | Description  | Notes
 > \GateApi\Model\Position updatePositionMargin($settle, $contract, $change)
 
 Update position margin
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Example
 
@@ -1260,8 +1266,8 @@ $apiInstance = new GateApi\Api\FuturesApi(
 );
 $settle = 'usdt'; // string | Settle currency
 $contract = 'BTC_USDT'; // string | Futures contract
-$leverage = '10'; // string | New position leverage
-$cross_leverage_limit = '10'; // string | Cross margin leverage (valid only when `leverage` is 0)
+$leverage = '10'; // string | Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
+$cross_leverage_limit = '10'; // string | Set the leverage for cross margin. When setting cross margin leverage, the `leverage` must be set to 0.
 $pid = 1; // int | Product ID
 
 try {
@@ -1282,8 +1288,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Settle currency |
  **contract** | **string**| Futures contract |
- **leverage** | **string**| New position leverage |
- **cross_leverage_limit** | **string**| Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional]
+ **leverage** | **string**| Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. |
+ **cross_leverage_limit** | **string**| Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. | [optional]
  **pid** | **int**| Product ID | [optional]
 
 ### Return type
@@ -1433,6 +1439,8 @@ Name | Type | Description  | Notes
 > \GateApi\Model\Position updatePositionRiskLimit($settle, $contract, $risk_limit)
 
 Update position risk limit
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Example
 
@@ -1757,6 +1765,8 @@ Name | Type | Description  | Notes
 > \GateApi\Model\Position[] updateDualModePositionRiskLimit($settle, $contract, $risk_limit)
 
 Update position risk limit in Hedge Mode
+
+Under the new risk limit rules(https://www.gate.com/en/help/futures/futures-logic/22162), the position limit is related to the leverage you set; a lower leverage will result in a higher position limit. Please use the leverage adjustment api to adjust the position limit.
 
 ### Example
 

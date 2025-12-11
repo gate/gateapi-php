@@ -605,7 +605,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string|null $leverage Current leverage. Formula: underlying_price / mark_price * delta
+     * @param string|null $leverage Leverage = underlying_price / (mark_price * delta). This value is for reference only.
      *
      * @return $this
      */

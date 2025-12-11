@@ -748,7 +748,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
     /**
      * Sets quanto_base_rate
      *
-     * @param string|null $quanto_base_rate Exchange rate of base currency and settlement currency in Quanto contract. Does not exists in contracts of other types
+     * @param string|null $quanto_base_rate Deprecated
      *
      * @return $this
      */

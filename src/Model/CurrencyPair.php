@@ -73,7 +73,9 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'delisting_time' => 'int',
         'type' => 'string',
         'trade_url' => 'string',
-        'st_tag' => 'bool'
+        'st_tag' => 'bool',
+        'up_rate' => 'string',
+        'down_rate' => 'string'
     ];
 
     /**
@@ -100,7 +102,9 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'delisting_time' => 'int64',
         'type' => null,
         'trade_url' => null,
-        'st_tag' => null
+        'st_tag' => null,
+        'up_rate' => null,
+        'down_rate' => null
     ];
 
     /**
@@ -148,7 +152,9 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'delisting_time' => 'delisting_time',
         'type' => 'type',
         'trade_url' => 'trade_url',
-        'st_tag' => 'st_tag'
+        'st_tag' => 'st_tag',
+        'up_rate' => 'up_rate',
+        'down_rate' => 'down_rate'
     ];
 
     /**
@@ -175,7 +181,9 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'delisting_time' => 'setDelistingTime',
         'type' => 'setType',
         'trade_url' => 'setTradeUrl',
-        'st_tag' => 'setStTag'
+        'st_tag' => 'setStTag',
+        'up_rate' => 'setUpRate',
+        'down_rate' => 'setDownRate'
     ];
 
     /**
@@ -202,7 +210,9 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'delisting_time' => 'getDelistingTime',
         'type' => 'getType',
         'trade_url' => 'getTradeUrl',
-        'st_tag' => 'getStTag'
+        'st_tag' => 'getStTag',
+        'up_rate' => 'getUpRate',
+        'down_rate' => 'getDownRate'
     ];
 
     /**
@@ -303,6 +313,8 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['trade_url'] = isset($data['trade_url']) ? $data['trade_url'] : null;
         $this->container['st_tag'] = isset($data['st_tag']) ? $data['st_tag'] : null;
+        $this->container['up_rate'] = isset($data['up_rate']) ? $data['up_rate'] : null;
+        $this->container['down_rate'] = isset($data['down_rate']) ? $data['down_rate'] : null;
     }
 
     /**
@@ -798,6 +810,54 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     public function setStTag($st_tag)
     {
         $this->container['st_tag'] = $st_tag;
+
+        return $this;
+    }
+
+    /**
+     * Gets up_rate
+     *
+     * @return string|null
+     */
+    public function getUpRate()
+    {
+        return $this->container['up_rate'];
+    }
+
+    /**
+     * Sets up_rate
+     *
+     * @param string|null $up_rate Maximum Quote Rise Percentage
+     *
+     * @return $this
+     */
+    public function setUpRate($up_rate)
+    {
+        $this->container['up_rate'] = $up_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets down_rate
+     *
+     * @return string|null
+     */
+    public function getDownRate()
+    {
+        return $this->container['down_rate'];
+    }
+
+    /**
+     * Sets down_rate
+     *
+     * @param string|null $down_rate Maximum Quote Decline Percentage
+     *
+     * @return $this
+     */
+    public function setDownRate($down_rate)
+    {
+        $this->container['down_rate'] = $down_rate;
 
         return $this;
     }

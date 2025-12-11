@@ -624,7 +624,7 @@ class DeliveryContract implements ModelInterface, ArrayAccess
     /**
      * Sets quanto_multiplier
      *
-     * @param string|null $quanto_multiplier Multiplier used in converting from invoicing to settlement currency
+     * @param string|null $quanto_multiplier The contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
      *
      * @return $this
      */
@@ -696,7 +696,7 @@ class DeliveryContract implements ModelInterface, ArrayAccess
     /**
      * Sets maintenance_rate
      *
-     * @param string|null $maintenance_rate Maintenance rate of margin
+     * @param string|null $maintenance_rate The maintenance margin rate of the first tier of risk limit sheet
      *
      * @return $this
      */
@@ -720,7 +720,7 @@ class DeliveryContract implements ModelInterface, ArrayAccess
     /**
      * Sets mark_type
      *
-     * @param string|null $mark_type Mark price type: internal - internal trading price, index - external index price
+     * @param string|null $mark_type Deprecated
      *
      * @return $this
      */

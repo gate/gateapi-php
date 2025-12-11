@@ -323,7 +323,7 @@ class FuturesLimitRiskTiers implements ModelInterface, ArrayAccess
     /**
      * Sets maintenance_rate
      *
-     * @param string|null $maintenance_rate Maintenance margin rate
+     * @param string|null $maintenance_rate The maintenance margin rate of the first tier of risk limit sheet
      *
      * @return $this
      */

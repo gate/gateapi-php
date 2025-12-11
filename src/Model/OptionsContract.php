@@ -383,7 +383,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
     /**
      * Sets tag
      *
-     * @param string|null $tag Tag
+     * @param string|null $tag Expiry periods include day, week, and month.
      *
      * @return $this
      */
@@ -479,7 +479,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
     /**
      * Sets multiplier
      *
-     * @param string|null $multiplier Multiplier used in converting from invoicing to settlement currency
+     * @param string|null $multiplier The option contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
      *
      * @return $this
      */
@@ -527,7 +527,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
     /**
      * Sets underlying_price
      *
-     * @param string|null $underlying_price Underlying price (quote currency)
+     * @param string|null $underlying_price The forward futures price corresponding to the delivery date
      *
      * @return $this
      */
@@ -767,7 +767,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
     /**
      * Sets order_price_deviate
      *
-     * @param string|null $order_price_deviate The positive and negative offset allowed between the order price and the current mark price, that `order_price` must meet the following conditions:  order_price is within the range of mark_price +/- order_price_deviate * underlying_price and does not distinguish between buy and sell orders
+     * @param string|null $order_price_deviate Deprecated
      *
      * @return $this
      */
@@ -863,7 +863,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
     /**
      * Sets trade_id
      *
-     * @param int|null $trade_id Current trade ID
+     * @param int|null $trade_id Deprecated
      *
      * @return $this
      */
@@ -935,7 +935,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
     /**
      * Sets orders_limit
      *
-     * @param int|null $orders_limit Maximum number of pending orders
+     * @param int|null $orders_limit The maximum number of open orders each user can place in this order book.
      *
      * @return $this
      */

@@ -94,7 +94,8 @@ class Contract implements ModelInterface, ArrayAccess
         'status' => 'string',
         'launch_time' => 'int',
         'delisting_time' => 'int',
-        'delisted_time' => 'int'
+        'delisted_time' => 'int',
+        'funding_rate_limit' => 'string'
     ];
 
     /**
@@ -142,7 +143,8 @@ class Contract implements ModelInterface, ArrayAccess
         'status' => null,
         'launch_time' => 'int64',
         'delisting_time' => 'int64',
-        'delisted_time' => 'int64'
+        'delisted_time' => 'int64',
+        'funding_rate_limit' => null
     ];
 
     /**
@@ -211,7 +213,8 @@ class Contract implements ModelInterface, ArrayAccess
         'status' => 'status',
         'launch_time' => 'launch_time',
         'delisting_time' => 'delisting_time',
-        'delisted_time' => 'delisted_time'
+        'delisted_time' => 'delisted_time',
+        'funding_rate_limit' => 'funding_rate_limit'
     ];
 
     /**
@@ -259,7 +262,8 @@ class Contract implements ModelInterface, ArrayAccess
         'status' => 'setStatus',
         'launch_time' => 'setLaunchTime',
         'delisting_time' => 'setDelistingTime',
-        'delisted_time' => 'setDelistedTime'
+        'delisted_time' => 'setDelistedTime',
+        'funding_rate_limit' => 'setFundingRateLimit'
     ];
 
     /**
@@ -307,7 +311,8 @@ class Contract implements ModelInterface, ArrayAccess
         'status' => 'getStatus',
         'launch_time' => 'getLaunchTime',
         'delisting_time' => 'getDelistingTime',
-        'delisted_time' => 'getDelistedTime'
+        'delisted_time' => 'getDelistedTime',
+        'funding_rate_limit' => 'getFundingRateLimit'
     ];
 
     /**
@@ -440,6 +445,7 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['launch_time'] = isset($data['launch_time']) ? $data['launch_time'] : null;
         $this->container['delisting_time'] = isset($data['delisting_time']) ? $data['delisting_time'] : null;
         $this->container['delisted_time'] = isset($data['delisted_time']) ? $data['delisted_time'] : null;
+        $this->container['funding_rate_limit'] = isset($data['funding_rate_limit']) ? $data['funding_rate_limit'] : null;
     }
 
     /**
@@ -552,7 +558,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets quanto_multiplier
      *
-     * @param string|null $quanto_multiplier Multiplier used in converting from invoicing to settlement currency
+     * @param string|null $quanto_multiplier The contract multiplier indicates how many units of the underlying asset the face value of one contract represents.
      *
      * @return $this
      */
@@ -624,7 +630,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets maintenance_rate
      *
-     * @param string|null $maintenance_rate Maintenance rate of margin
+     * @param string|null $maintenance_rate The maintenance margin rate of the first tier of risk limit sheet
      *
      * @return $this
      */
@@ -648,7 +654,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets mark_type
      *
-     * @param string|null $mark_type Mark price type: internal - internal trading price, index - external index price
+     * @param string|null $mark_type Deprecated
      *
      * @return $this
      */
@@ -1353,7 +1359,7 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets funding_cap_ratio
      *
-     * @param string|null $funding_cap_ratio The factor for the maximum of the funding rate. Maximum of funding rate = (1/market maximum leverage - maintenance margin rate) * funding_cap_ratio
+     * @param string|null $funding_cap_ratio Deprecated
      *
      * @return $this
      */
@@ -1456,6 +1462,30 @@ class Contract implements ModelInterface, ArrayAccess
     public function setDelistedTime($delisted_time)
     {
         $this->container['delisted_time'] = $delisted_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_rate_limit
+     *
+     * @return string|null
+     */
+    public function getFundingRateLimit()
+    {
+        return $this->container['funding_rate_limit'];
+    }
+
+    /**
+     * Sets funding_rate_limit
+     *
+     * @param string|null $funding_rate_limit Upper and lower limits of funding rate
+     *
+     * @return $this
+     */
+    public function setFundingRateLimit($funding_rate_limit)
+    {
+        $this->container['funding_rate_limit'] = $funding_rate_limit;
 
         return $this;
     }

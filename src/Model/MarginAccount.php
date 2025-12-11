@@ -281,7 +281,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
     /**
      * Sets account_type
      *
-     * @param string|null $account_type Account type: risk - risk rate account, mmr - maintenance margin rate account, inactive - market not activated
+     * @param string|null $account_type Account Type  mmr: maintenance margin rate account;inactive: market not activated
      *
      * @return $this
      */
@@ -353,7 +353,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
     /**
      * Sets risk
      *
-     * @param string|null $risk Current risk rate of the margin account (returned when the account is a risk rate account)
+     * @param string|null $risk Deprecated
      *
      * @return $this
      */
@@ -377,7 +377,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
     /**
      * Sets mmr
      *
-     * @param string|null $mmr Leveraged Account Current Maintenance Margin Rate (returned when the Account is Account)
+     * @param string|null $mmr Current Maintenance Margin Rate of the account
      *
      * @return $this
      */

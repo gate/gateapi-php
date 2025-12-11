@@ -371,7 +371,7 @@ class UniLoanInterestRecord implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string|null $type Type: platform - Platform borrowing, margin - Margin borrowing
+     * @param string|null $type Loan Type margin: margin borrowing
      *
      * @return $this
      */

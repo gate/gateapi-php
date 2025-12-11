@@ -364,7 +364,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Sets total
      *
-     * @param string|null $total total is the balance after the user's accumulated deposit, withdraw, profit and loss (including realized profit and loss, fund, fee and referral rebate), excluding unrealized profit and loss.  total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
+     * @param string|null $total Balance, only applicable to classic contract account.The balance is the sum of all historical fund flows, including historical transfers in and out, closing settlements, and transaction fee expenses, but does not include upl of positions.total = SUM(history_dnw, history_pnl, history_fee, history_refr, history_fund)
      *
      * @return $this
      */
@@ -412,7 +412,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Sets position_margin
      *
-     * @param string|null $position_margin Position margin
+     * @param string|null $position_margin Deprecated
      *
      * @return $this
      */
@@ -436,7 +436,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Sets order_margin
      *
-     * @param string|null $order_margin Order margin of unfinished orders
+     * @param string|null $order_margin initial margin of all open orders
      *
      * @return $this
      */
@@ -652,7 +652,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Sets enable_evolved_classic
      *
-     * @param bool|null $enable_evolved_classic Classic account margin mode, true-new mode, false-old mode
+     * @param bool|null $enable_evolved_classic Deprecated
      *
      * @return $this
      */
@@ -892,7 +892,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Sets enable_new_dual_mode
      *
-     * @param bool|null $enable_new_dual_mode Whether to open a new two-way position mode
+     * @param bool|null $enable_new_dual_mode Deprecated
      *
      * @return $this
      */
@@ -916,7 +916,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Sets margin_mode
      *
-     * @param int|null $margin_mode Margin mode, 0-classic margin mode, 1-cross-currency margin mode, 2-combined margin mode
+     * @param int|null $margin_mode Margin mode of the account 0: classic future account or Classic Spot Margin Mode of unified account; 1:  Multi-Currency Margin Mode; 2:  Portoforlio Margin Mode; 3:  Single-Currency Margin Mode
      *
      * @return $this
      */

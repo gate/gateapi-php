@@ -227,7 +227,7 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
     /**
      * Sets upper_limit
      *
-     * @param string|null $upper_limit Maximum loan limit
+     * @param string|null $upper_limit Maximum borrowing limit. Determined by the leverage you set; the lower the leverage, the larger the borrowing limit.
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
     /**
      * Sets mmr
      *
-     * @param string|null $mmr Maintenance margin rate
+     * @param string|null $mmr Maintenance margin rate.Under tiered margin requirements(https://www.gate.com/en/help/trade/margin-trading/42357), the maintenance margin rate is a composite value.
      *
      * @return $this
      */
@@ -275,7 +275,7 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string|null $leverage Maximum leverage multiple
+     * @param string|null $leverage the maximum permissible leverage given to the current debt level; the higher the debt level, the lower the maximum leverage.
      *
      * @return $this
      */

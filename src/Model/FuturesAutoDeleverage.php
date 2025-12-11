@@ -364,7 +364,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string|null $leverage Position leverage
+     * @param string|null $leverage leverage for isolated margin. 0 means cross margin. For leverage of cross margin, please refer to `cross_leverage_limit`.
      *
      * @return $this
      */
@@ -388,7 +388,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     /**
      * Sets cross_leverage_limit
      *
-     * @param string|null $cross_leverage_limit Cross margin leverage (valid only when `leverage` is 0)
+     * @param string|null $cross_leverage_limit leverage for cross margin
      *
      * @return $this
      */
