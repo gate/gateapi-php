@@ -2082,7 +2082,7 @@ class OptionsApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesOrderBook
+     * @return \GateApi\Model\OptionsOrderBook
      */
     public function listOptionsOrderBook($associative_array)
     {
@@ -2104,7 +2104,7 @@ class OptionsApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesOrderBook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OptionsOrderBook, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOptionsOrderBookWithHttpInfo($associative_array)
     {
@@ -2134,7 +2134,7 @@ class OptionsApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesOrderBook';
+        $returnType = '\GateApi\Model\OptionsOrderBook';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2191,7 +2191,7 @@ class OptionsApi
      */
     public function listOptionsOrderBookAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesOrderBook';
+        $returnType = '\GateApi\Model\OptionsOrderBook';
         $request = $this->listOptionsOrderBookRequest($associative_array);
 
         return $this->client
@@ -3214,7 +3214,7 @@ class OptionsApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesCandlestick[]
+     * @return \GateApi\Model\OptionsCandlestick[]
      */
     public function listOptionsUnderlyingCandlesticks($associative_array)
     {
@@ -3237,7 +3237,7 @@ class OptionsApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesCandlestick[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OptionsCandlestick[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listOptionsUnderlyingCandlesticksWithHttpInfo($associative_array)
     {
@@ -3267,7 +3267,7 @@ class OptionsApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesCandlestick[]';
+        $returnType = '\GateApi\Model\OptionsCandlestick[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3326,7 +3326,7 @@ class OptionsApi
      */
     public function listOptionsUnderlyingCandlesticksAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesCandlestick[]';
+        $returnType = '\GateApi\Model\OptionsCandlestick[]';
         $request = $this->listOptionsUnderlyingCandlesticksRequest($associative_array);
 
         return $this->client
@@ -3549,7 +3549,7 @@ class OptionsApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesTrade[]
+     * @return \GateApi\Model\OptionsTrade[]
      */
     public function listOptionsTrades($associative_array)
     {
@@ -3573,7 +3573,7 @@ class OptionsApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesTrade[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OptionsTrade[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listOptionsTradesWithHttpInfo($associative_array)
     {
@@ -3603,7 +3603,7 @@ class OptionsApi
             );
         }
 
-        $returnType = '\GateApi\Model\FuturesTrade[]';
+        $returnType = '\GateApi\Model\OptionsTrade[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3664,7 +3664,7 @@ class OptionsApi
      */
     public function listOptionsTradesAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\FuturesTrade[]';
+        $returnType = '\GateApi\Model\OptionsTrade[]';
         $request = $this->listOptionsTradesRequest($associative_array);
 
         return $this->client

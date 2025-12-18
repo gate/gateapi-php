@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 ## listOptionsOrderBook
 
-> \GateApi\Model\FuturesOrderBook listOptionsOrderBook($contract, $interval, $limit, $with_id)
+> \GateApi\Model\OptionsOrderBook listOptionsOrderBook($contract, $interval, $limit, $with_id)
 
 Query options contract order book
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesOrderBook**](../Model/FuturesOrderBook.md)
+[**\GateApi\Model\OptionsOrderBook**](../Model/OptionsOrderBook.md)
 
 ### Authorization
 
@@ -702,7 +702,7 @@ No authorization required
 
 ## listOptionsUnderlyingCandlesticks
 
-> \GateApi\Model\FuturesCandlestick[] listOptionsUnderlyingCandlesticks($underlying, $limit, $from, $to, $interval)
+> \GateApi\Model\OptionsCandlestick[] listOptionsUnderlyingCandlesticks($underlying, $limit, $from, $to, $interval)
 
 Underlying index price candlestick chart
 
@@ -750,7 +750,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesCandlestick[]**](../Model/FuturesCandlestick.md)
+[**\GateApi\Model\OptionsCandlestick[]**](../Model/OptionsCandlestick.md)
 
 ### Authorization
 
@@ -768,7 +768,7 @@ No authorization required
 
 ## listOptionsTrades
 
-> \GateApi\Model\FuturesTrade[] listOptionsTrades($contract, $type, $limit, $offset, $from, $to)
+> \GateApi\Model\OptionsTrade[] listOptionsTrades($contract, $type, $limit, $offset, $from, $to)
 
 Market trade records
 
@@ -818,7 +818,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\FuturesTrade[]**](../Model/FuturesTrade.md)
+[**\GateApi\Model\OptionsTrade[]**](../Model/OptionsTrade.md)
 
 ### Authorization
 
