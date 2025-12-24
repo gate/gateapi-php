@@ -95,6 +95,8 @@ class Contract implements ModelInterface, ArrayAccess
         'launch_time' => 'int',
         'delisting_time' => 'int',
         'delisted_time' => 'int',
+        'market_order_slip_ratio' => 'string',
+        'market_order_size_max' => 'string',
         'funding_rate_limit' => 'string'
     ];
 
@@ -144,6 +146,8 @@ class Contract implements ModelInterface, ArrayAccess
         'launch_time' => 'int64',
         'delisting_time' => 'int64',
         'delisted_time' => 'int64',
+        'market_order_slip_ratio' => null,
+        'market_order_size_max' => null,
         'funding_rate_limit' => null
     ];
 
@@ -214,6 +218,8 @@ class Contract implements ModelInterface, ArrayAccess
         'launch_time' => 'launch_time',
         'delisting_time' => 'delisting_time',
         'delisted_time' => 'delisted_time',
+        'market_order_slip_ratio' => 'market_order_slip_ratio',
+        'market_order_size_max' => 'market_order_size_max',
         'funding_rate_limit' => 'funding_rate_limit'
     ];
 
@@ -263,6 +269,8 @@ class Contract implements ModelInterface, ArrayAccess
         'launch_time' => 'setLaunchTime',
         'delisting_time' => 'setDelistingTime',
         'delisted_time' => 'setDelistedTime',
+        'market_order_slip_ratio' => 'setMarketOrderSlipRatio',
+        'market_order_size_max' => 'setMarketOrderSizeMax',
         'funding_rate_limit' => 'setFundingRateLimit'
     ];
 
@@ -312,6 +320,8 @@ class Contract implements ModelInterface, ArrayAccess
         'launch_time' => 'getLaunchTime',
         'delisting_time' => 'getDelistingTime',
         'delisted_time' => 'getDelistedTime',
+        'market_order_slip_ratio' => 'getMarketOrderSlipRatio',
+        'market_order_size_max' => 'getMarketOrderSizeMax',
         'funding_rate_limit' => 'getFundingRateLimit'
     ];
 
@@ -445,6 +455,8 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['launch_time'] = isset($data['launch_time']) ? $data['launch_time'] : null;
         $this->container['delisting_time'] = isset($data['delisting_time']) ? $data['delisting_time'] : null;
         $this->container['delisted_time'] = isset($data['delisted_time']) ? $data['delisted_time'] : null;
+        $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
+        $this->container['market_order_size_max'] = isset($data['market_order_size_max']) ? $data['market_order_size_max'] : null;
         $this->container['funding_rate_limit'] = isset($data['funding_rate_limit']) ? $data['funding_rate_limit'] : null;
     }
 
@@ -1462,6 +1474,54 @@ class Contract implements ModelInterface, ArrayAccess
     public function setDelistedTime($delisted_time)
     {
         $this->container['delisted_time'] = $delisted_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_order_slip_ratio
+     *
+     * @return string|null
+     */
+    public function getMarketOrderSlipRatio()
+    {
+        return $this->container['market_order_slip_ratio'];
+    }
+
+    /**
+     * Sets market_order_slip_ratio
+     *
+     * @param string|null $market_order_slip_ratio The maximum slippage allowed for market orders, with the slippage rate calculated based on the latest market price
+     *
+     * @return $this
+     */
+    public function setMarketOrderSlipRatio($market_order_slip_ratio)
+    {
+        $this->container['market_order_slip_ratio'] = $market_order_slip_ratio;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_order_size_max
+     *
+     * @return string|null
+     */
+    public function getMarketOrderSizeMax()
+    {
+        return $this->container['market_order_size_max'];
+    }
+
+    /**
+     * Sets market_order_size_max
+     *
+     * @param string|null $market_order_size_max The maximum number of contracts supported for market orders, with a default value of 0. When the default value is used, the maximum number of contracts is limited by the `order_size_max` field
+     *
+     * @return $this
+     */
+    public function setMarketOrderSizeMax($market_order_size_max)
+    {
+        $this->container['market_order_size_max'] = $market_order_size_max;
 
         return $this;
     }

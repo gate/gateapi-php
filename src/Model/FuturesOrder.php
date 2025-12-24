@@ -84,7 +84,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'string',
         'pid' => 'int',
         'order_value' => 'string',
-        'trade_value' => 'string'
+        'trade_value' => 'string',
+        'market_order_slip_ratio' => 'string'
     ];
 
     /**
@@ -122,7 +123,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => null,
         'pid' => 'int64',
         'order_value' => null,
-        'trade_value' => null
+        'trade_value' => null,
+        'market_order_slip_ratio' => null
     ];
 
     /**
@@ -181,7 +183,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'amend_text',
         'pid' => 'pid',
         'order_value' => 'order_value',
-        'trade_value' => 'trade_value'
+        'trade_value' => 'trade_value',
+        'market_order_slip_ratio' => 'market_order_slip_ratio'
     ];
 
     /**
@@ -219,7 +222,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'setAmendText',
         'pid' => 'setPid',
         'order_value' => 'setOrderValue',
-        'trade_value' => 'setTradeValue'
+        'trade_value' => 'setTradeValue',
+        'market_order_slip_ratio' => 'setMarketOrderSlipRatio'
     ];
 
     /**
@@ -257,7 +261,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'getAmendText',
         'pid' => 'getPid',
         'order_value' => 'getOrderValue',
-        'trade_value' => 'getTradeValue'
+        'trade_value' => 'getTradeValue',
+        'market_order_slip_ratio' => 'getMarketOrderSlipRatio'
     ];
 
     /**
@@ -447,6 +452,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
         $this->container['order_value'] = isset($data['order_value']) ? $data['order_value'] : null;
         $this->container['trade_value'] = isset($data['trade_value']) ? $data['trade_value'] : null;
+        $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
     }
 
     /**
@@ -1283,6 +1289,30 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     public function setTradeValue($trade_value)
     {
         $this->container['trade_value'] = $trade_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_order_slip_ratio
+     *
+     * @return string|null
+     */
+    public function getMarketOrderSlipRatio()
+    {
+        return $this->container['market_order_slip_ratio'];
+    }
+
+    /**
+     * Sets market_order_slip_ratio
+     *
+     * @param string|null $market_order_slip_ratio Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used
+     *
+     * @return $this
+     */
+    public function setMarketOrderSlipRatio($market_order_slip_ratio)
+    {
+        $this->container['market_order_slip_ratio'] = $market_order_slip_ratio;
 
         return $this;
     }

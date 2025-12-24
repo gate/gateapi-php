@@ -334,7 +334,7 @@ class OptionsTrade implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price 成交价格 (计价货币, 单位:标的对应的期权价格)
+     * @param string|null $price Transaction Price (Quoted Currency, Unit: Underlying Option Price)
      *
      * @return $this
      */

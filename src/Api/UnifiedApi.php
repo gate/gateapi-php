@@ -1290,15 +1290,11 @@ class UnifiedApi
         $multipart = false;
 
         // query params
+        if (is_array($currencies)) {
+            $currencies = ObjectSerializer::serializeCollection($currencies, 'form', true);
+        }
         if ($currencies !== null) {
-            if('form' === 'form' && is_array($currencies)) {
-                foreach($currencies as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currencies'] = $currencies;
-            }
+            $queryParams['currencies'] = $currencies;
         }
 
         // body params
@@ -3421,15 +3417,11 @@ class UnifiedApi
         $multipart = false;
 
         // query params
+        if (is_array($currencies)) {
+            $currencies = ObjectSerializer::serializeCollection($currencies, 'form', true);
+        }
         if ($currencies !== null) {
-            if('form' === 'form' && is_array($currencies)) {
-                foreach($currencies as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currencies'] = $currencies;
-            }
+            $queryParams['currencies'] = $currencies;
         }
 
         // body params

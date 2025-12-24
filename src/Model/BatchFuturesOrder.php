@@ -82,7 +82,8 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'refu' => 'int',
         'auto_size' => 'string',
         'stp_act' => 'string',
-        'stp_id' => 'int'
+        'stp_id' => 'int',
+        'market_order_slip_ratio' => 'string'
     ];
 
     /**
@@ -118,7 +119,8 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'refu' => null,
         'auto_size' => null,
         'stp_act' => null,
-        'stp_id' => null
+        'stp_id' => null,
+        'market_order_slip_ratio' => null
     ];
 
     /**
@@ -175,7 +177,8 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'refu' => 'refu',
         'auto_size' => 'auto_size',
         'stp_act' => 'stp_act',
-        'stp_id' => 'stp_id'
+        'stp_id' => 'stp_id',
+        'market_order_slip_ratio' => 'market_order_slip_ratio'
     ];
 
     /**
@@ -211,7 +214,8 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'refu' => 'setRefu',
         'auto_size' => 'setAutoSize',
         'stp_act' => 'setStpAct',
-        'stp_id' => 'setStpId'
+        'stp_id' => 'setStpId',
+        'market_order_slip_ratio' => 'setMarketOrderSlipRatio'
     ];
 
     /**
@@ -247,7 +251,8 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         'refu' => 'getRefu',
         'auto_size' => 'getAutoSize',
         'stp_act' => 'getStpAct',
-        'stp_id' => 'getStpId'
+        'stp_id' => 'getStpId',
+        'market_order_slip_ratio' => 'getMarketOrderSlipRatio'
     ];
 
     /**
@@ -435,6 +440,7 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
         $this->container['auto_size'] = isset($data['auto_size']) ? $data['auto_size'] : null;
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
         $this->container['stp_id'] = isset($data['stp_id']) ? $data['stp_id'] : null;
+        $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
     }
 
     /**
@@ -1214,6 +1220,30 @@ class BatchFuturesOrder implements ModelInterface, ArrayAccess
     public function setStpId($stp_id)
     {
         $this->container['stp_id'] = $stp_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_order_slip_ratio
+     *
+     * @return string|null
+     */
+    public function getMarketOrderSlipRatio()
+    {
+        return $this->container['market_order_slip_ratio'];
+    }
+
+    /**
+     * Sets market_order_slip_ratio
+     *
+     * @param string|null $market_order_slip_ratio The maximum slippage ratio
+     *
+     * @return $this
+     */
+    public function setMarketOrderSlipRatio($market_order_slip_ratio)
+    {
+        $this->container['market_order_slip_ratio'] = $market_order_slip_ratio;
 
         return $this;
     }

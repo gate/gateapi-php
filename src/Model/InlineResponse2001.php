@@ -244,7 +244,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     /**
      * Sets est_rate
      *
-     * @param string|null $est_rate Unconverted percentage
+     * @param string|null $est_rate Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
      *
      * @return $this
      */
