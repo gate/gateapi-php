@@ -90,7 +90,8 @@ class Order implements ModelInterface, ArrayAccess
         'stp_id' => 'int',
         'stp_act' => 'string',
         'finish_as' => 'string',
-        'action_mode' => 'string'
+        'action_mode' => 'string',
+        'slippage' => 'string'
     ];
 
     /**
@@ -134,7 +135,8 @@ class Order implements ModelInterface, ArrayAccess
         'stp_id' => null,
         'stp_act' => null,
         'finish_as' => null,
-        'action_mode' => null
+        'action_mode' => null,
+        'slippage' => null
     ];
 
     /**
@@ -199,7 +201,8 @@ class Order implements ModelInterface, ArrayAccess
         'stp_id' => 'stp_id',
         'stp_act' => 'stp_act',
         'finish_as' => 'finish_as',
-        'action_mode' => 'action_mode'
+        'action_mode' => 'action_mode',
+        'slippage' => 'slippage'
     ];
 
     /**
@@ -243,7 +246,8 @@ class Order implements ModelInterface, ArrayAccess
         'stp_id' => 'setStpId',
         'stp_act' => 'setStpAct',
         'finish_as' => 'setFinishAs',
-        'action_mode' => 'setActionMode'
+        'action_mode' => 'setActionMode',
+        'slippage' => 'setSlippage'
     ];
 
     /**
@@ -287,7 +291,8 @@ class Order implements ModelInterface, ArrayAccess
         'stp_id' => 'getStpId',
         'stp_act' => 'getStpAct',
         'finish_as' => 'getFinishAs',
-        'action_mode' => 'getActionMode'
+        'action_mode' => 'getActionMode',
+        'slippage' => 'getSlippage'
     ];
 
     /**
@@ -506,6 +511,7 @@ class Order implements ModelInterface, ArrayAccess
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
         $this->container['action_mode'] = isset($data['action_mode']) ? $data['action_mode'] : null;
+        $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
     }
 
     /**
@@ -1503,6 +1509,30 @@ class Order implements ModelInterface, ArrayAccess
     public function setActionMode($action_mode)
     {
         $this->container['action_mode'] = $action_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets slippage
+     *
+     * @return string|null
+     */
+    public function getSlippage()
+    {
+        return $this->container['slippage'];
+    }
+
+    /**
+     * Sets slippage
+     *
+     * @param string|null $slippage Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+     *
+     * @return $this
+     */
+    public function setSlippage($slippage)
+    {
+        $this->container['slippage'] = $slippage;
 
         return $this;
     }

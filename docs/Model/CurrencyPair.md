@@ -25,5 +25,8 @@ Name | Type | Description | Notes
 **st_tag** | **bool** | Whether the trading pair is in ST risk assessment, false - No, true - Yes | [optional] 
 **up_rate** | **string** | Maximum Quote Rise Percentage | [optional] 
 **down_rate** | **string** | Maximum Quote Decline Percentage | [optional] 
+**slippage** | **string** | Currency Slippage | [optional] 
+**market_order_max_stock** | **string** | Maximum Market Order Quantity | [optional] 
+**market_order_max_money** | **string** | Maximum Market Order Amount | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

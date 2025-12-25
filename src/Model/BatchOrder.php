@@ -91,7 +91,8 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'rebated_fee_currency' => 'string',
         'stp_id' => 'int',
         'stp_act' => 'string',
-        'finish_as' => 'string'
+        'finish_as' => 'string',
+        'slippage' => 'string'
     ];
 
     /**
@@ -136,7 +137,8 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'rebated_fee_currency' => null,
         'stp_id' => null,
         'stp_act' => null,
-        'finish_as' => null
+        'finish_as' => null,
+        'slippage' => null
     ];
 
     /**
@@ -202,7 +204,8 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'rebated_fee_currency' => 'rebated_fee_currency',
         'stp_id' => 'stp_id',
         'stp_act' => 'stp_act',
-        'finish_as' => 'finish_as'
+        'finish_as' => 'finish_as',
+        'slippage' => 'slippage'
     ];
 
     /**
@@ -247,7 +250,8 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'rebated_fee_currency' => 'setRebatedFeeCurrency',
         'stp_id' => 'setStpId',
         'stp_act' => 'setStpAct',
-        'finish_as' => 'setFinishAs'
+        'finish_as' => 'setFinishAs',
+        'slippage' => 'setSlippage'
     ];
 
     /**
@@ -292,7 +296,8 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'rebated_fee_currency' => 'getRebatedFeeCurrency',
         'stp_id' => 'getStpId',
         'stp_act' => 'getStpAct',
-        'finish_as' => 'getFinishAs'
+        'finish_as' => 'getFinishAs',
+        'slippage' => 'getSlippage'
     ];
 
     /**
@@ -517,6 +522,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
         $this->container['stp_id'] = isset($data['stp_id']) ? $data['stp_id'] : null;
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
+        $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
     }
 
     /**
@@ -1546,6 +1552,30 @@ class BatchOrder implements ModelInterface, ArrayAccess
             );
         }
         $this->container['finish_as'] = $finish_as;
+
+        return $this;
+    }
+
+    /**
+     * Gets slippage
+     *
+     * @return string|null
+     */
+    public function getSlippage()
+    {
+        return $this->container['slippage'];
+    }
+
+    /**
+     * Sets slippage
+     *
+     * @param string|null $slippage Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+     *
+     * @return $this
+     */
+    public function setSlippage($slippage)
+    {
+        $this->container['slippage'] = $slippage;
 
         return $this;
     }

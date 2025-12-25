@@ -75,7 +75,10 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'trade_url' => 'string',
         'st_tag' => 'bool',
         'up_rate' => 'string',
-        'down_rate' => 'string'
+        'down_rate' => 'string',
+        'slippage' => 'string',
+        'market_order_max_stock' => 'string',
+        'market_order_max_money' => 'string'
     ];
 
     /**
@@ -104,7 +107,10 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'trade_url' => null,
         'st_tag' => null,
         'up_rate' => null,
-        'down_rate' => null
+        'down_rate' => null,
+        'slippage' => null,
+        'market_order_max_stock' => null,
+        'market_order_max_money' => null
     ];
 
     /**
@@ -154,7 +160,10 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'trade_url' => 'trade_url',
         'st_tag' => 'st_tag',
         'up_rate' => 'up_rate',
-        'down_rate' => 'down_rate'
+        'down_rate' => 'down_rate',
+        'slippage' => 'slippage',
+        'market_order_max_stock' => 'market_order_max_stock',
+        'market_order_max_money' => 'market_order_max_money'
     ];
 
     /**
@@ -183,7 +192,10 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'trade_url' => 'setTradeUrl',
         'st_tag' => 'setStTag',
         'up_rate' => 'setUpRate',
-        'down_rate' => 'setDownRate'
+        'down_rate' => 'setDownRate',
+        'slippage' => 'setSlippage',
+        'market_order_max_stock' => 'setMarketOrderMaxStock',
+        'market_order_max_money' => 'setMarketOrderMaxMoney'
     ];
 
     /**
@@ -212,7 +224,10 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'trade_url' => 'getTradeUrl',
         'st_tag' => 'getStTag',
         'up_rate' => 'getUpRate',
-        'down_rate' => 'getDownRate'
+        'down_rate' => 'getDownRate',
+        'slippage' => 'getSlippage',
+        'market_order_max_stock' => 'getMarketOrderMaxStock',
+        'market_order_max_money' => 'getMarketOrderMaxMoney'
     ];
 
     /**
@@ -315,6 +330,9 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         $this->container['st_tag'] = isset($data['st_tag']) ? $data['st_tag'] : null;
         $this->container['up_rate'] = isset($data['up_rate']) ? $data['up_rate'] : null;
         $this->container['down_rate'] = isset($data['down_rate']) ? $data['down_rate'] : null;
+        $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        $this->container['market_order_max_stock'] = isset($data['market_order_max_stock']) ? $data['market_order_max_stock'] : null;
+        $this->container['market_order_max_money'] = isset($data['market_order_max_money']) ? $data['market_order_max_money'] : null;
     }
 
     /**
@@ -858,6 +876,78 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     public function setDownRate($down_rate)
     {
         $this->container['down_rate'] = $down_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets slippage
+     *
+     * @return string|null
+     */
+    public function getSlippage()
+    {
+        return $this->container['slippage'];
+    }
+
+    /**
+     * Sets slippage
+     *
+     * @param string|null $slippage Currency Slippage
+     *
+     * @return $this
+     */
+    public function setSlippage($slippage)
+    {
+        $this->container['slippage'] = $slippage;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_order_max_stock
+     *
+     * @return string|null
+     */
+    public function getMarketOrderMaxStock()
+    {
+        return $this->container['market_order_max_stock'];
+    }
+
+    /**
+     * Sets market_order_max_stock
+     *
+     * @param string|null $market_order_max_stock Maximum Market Order Quantity
+     *
+     * @return $this
+     */
+    public function setMarketOrderMaxStock($market_order_max_stock)
+    {
+        $this->container['market_order_max_stock'] = $market_order_max_stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_order_max_money
+     *
+     * @return string|null
+     */
+    public function getMarketOrderMaxMoney()
+    {
+        return $this->container['market_order_max_money'];
+    }
+
+    /**
+     * Sets market_order_max_money
+     *
+     * @param string|null $market_order_max_money Maximum Market Order Amount
+     *
+     * @return $this
+     */
+    public function setMarketOrderMaxMoney($market_order_max_money)
+    {
+        $this->container['market_order_max_money'] = $market_order_max_money;
 
         return $this;
     }
