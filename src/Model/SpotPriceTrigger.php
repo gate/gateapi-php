@@ -227,9 +227,6 @@ class SpotPriceTrigger implements ModelInterface, ArrayAccess
             );
         }
 
-        if ($this->container['expiration'] === null) {
-            $invalidProperties[] = "'expiration' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -305,7 +302,7 @@ class SpotPriceTrigger implements ModelInterface, ArrayAccess
     /**
      * Gets expiration
      *
-     * @return int
+     * @return int|null
      */
     public function getExpiration()
     {
@@ -315,7 +312,7 @@ class SpotPriceTrigger implements ModelInterface, ArrayAccess
     /**
      * Sets expiration
      *
-     * @param int $expiration Maximum wait time for trigger condition (in seconds). Order will be cancelled if timeout
+     * @param int|null $expiration Maximum wait time for trigger condition (in seconds). Order will be cancelled if timeout
      *
      * @return $this
      */

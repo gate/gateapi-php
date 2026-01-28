@@ -85,7 +85,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'pid' => 'int',
         'order_value' => 'string',
         'trade_value' => 'string',
-        'market_order_slip_ratio' => 'string'
+        'market_order_slip_ratio' => 'string',
+        'pos_margin_mode' => 'string'
     ];
 
     /**
@@ -124,7 +125,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'pid' => 'int64',
         'order_value' => null,
         'trade_value' => null,
-        'market_order_slip_ratio' => null
+        'market_order_slip_ratio' => null,
+        'pos_margin_mode' => null
     ];
 
     /**
@@ -184,7 +186,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'pid' => 'pid',
         'order_value' => 'order_value',
         'trade_value' => 'trade_value',
-        'market_order_slip_ratio' => 'market_order_slip_ratio'
+        'market_order_slip_ratio' => 'market_order_slip_ratio',
+        'pos_margin_mode' => 'pos_margin_mode'
     ];
 
     /**
@@ -223,7 +226,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'pid' => 'setPid',
         'order_value' => 'setOrderValue',
         'trade_value' => 'setTradeValue',
-        'market_order_slip_ratio' => 'setMarketOrderSlipRatio'
+        'market_order_slip_ratio' => 'setMarketOrderSlipRatio',
+        'pos_margin_mode' => 'setPosMarginMode'
     ];
 
     /**
@@ -262,7 +266,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'pid' => 'getPid',
         'order_value' => 'getOrderValue',
         'trade_value' => 'getTradeValue',
-        'market_order_slip_ratio' => 'getMarketOrderSlipRatio'
+        'market_order_slip_ratio' => 'getMarketOrderSlipRatio',
+        'pos_margin_mode' => 'getPosMarginMode'
     ];
 
     /**
@@ -453,6 +458,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         $this->container['order_value'] = isset($data['order_value']) ? $data['order_value'] : null;
         $this->container['trade_value'] = isset($data['trade_value']) ? $data['trade_value'] : null;
         $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
+        $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
     }
 
     /**
@@ -1313,6 +1319,30 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     public function setMarketOrderSlipRatio($market_order_slip_ratio)
     {
         $this->container['market_order_slip_ratio'] = $market_order_slip_ratio;
+
+        return $this;
+    }
+
+    /**
+     * Gets pos_margin_mode
+     *
+     * @return string|null
+     */
+    public function getPosMarginMode()
+    {
+        return $this->container['pos_margin_mode'];
+    }
+
+    /**
+     * Sets pos_margin_mode
+     *
+     * @param string|null $pos_margin_mode Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode
+     *
+     * @return $this
+     */
+    public function setPosMarginMode($pos_margin_mode)
+    {
+        $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;
     }

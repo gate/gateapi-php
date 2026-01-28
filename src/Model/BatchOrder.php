@@ -882,7 +882,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+     * @param string|null $status Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
      *
      * @return $this
      */
@@ -1569,7 +1569,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Sets slippage
      *
-     * @param string|null $slippage Slippage, default limit range 0.0001-0.05, converted to percentage is 0.01%-5%, indicating the acceptable price difference for market order transactions
+     * @param string|null $slippage Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%)
      *
      * @return $this
      */

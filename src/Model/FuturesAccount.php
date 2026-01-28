@@ -62,7 +62,6 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'string',
         'currency' => 'string',
         'in_dual_mode' => 'bool',
-        'position_mode' => 'string',
         'enable_credit' => 'bool',
         'position_initial_margin' => 'string',
         'maintenance_margin' => 'string',
@@ -80,6 +79,8 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'enable_new_dual_mode' => 'bool',
         'margin_mode' => 'int',
         'enable_tiered_mm' => 'bool',
+        'enable_dual_plus' => 'bool',
+        'position_mode' => 'string',
         'history' => '\GateApi\Model\FuturesAccountHistory'
     ];
 
@@ -97,7 +98,6 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => null,
         'currency' => null,
         'in_dual_mode' => null,
-        'position_mode' => null,
         'enable_credit' => null,
         'position_initial_margin' => null,
         'maintenance_margin' => null,
@@ -115,6 +115,8 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'enable_new_dual_mode' => null,
         'margin_mode' => null,
         'enable_tiered_mm' => null,
+        'enable_dual_plus' => null,
+        'position_mode' => null,
         'history' => null
     ];
 
@@ -153,7 +155,6 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'point',
         'currency' => 'currency',
         'in_dual_mode' => 'in_dual_mode',
-        'position_mode' => 'position_mode',
         'enable_credit' => 'enable_credit',
         'position_initial_margin' => 'position_initial_margin',
         'maintenance_margin' => 'maintenance_margin',
@@ -171,6 +172,8 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'enable_new_dual_mode' => 'enable_new_dual_mode',
         'margin_mode' => 'margin_mode',
         'enable_tiered_mm' => 'enable_tiered_mm',
+        'enable_dual_plus' => 'enable_dual_plus',
+        'position_mode' => 'position_mode',
         'history' => 'history'
     ];
 
@@ -188,7 +191,6 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'setPoint',
         'currency' => 'setCurrency',
         'in_dual_mode' => 'setInDualMode',
-        'position_mode' => 'setPositionMode',
         'enable_credit' => 'setEnableCredit',
         'position_initial_margin' => 'setPositionInitialMargin',
         'maintenance_margin' => 'setMaintenanceMargin',
@@ -206,6 +208,8 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'enable_new_dual_mode' => 'setEnableNewDualMode',
         'margin_mode' => 'setMarginMode',
         'enable_tiered_mm' => 'setEnableTieredMm',
+        'enable_dual_plus' => 'setEnableDualPlus',
+        'position_mode' => 'setPositionMode',
         'history' => 'setHistory'
     ];
 
@@ -223,7 +227,6 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'point' => 'getPoint',
         'currency' => 'getCurrency',
         'in_dual_mode' => 'getInDualMode',
-        'position_mode' => 'getPositionMode',
         'enable_credit' => 'getEnableCredit',
         'position_initial_margin' => 'getPositionInitialMargin',
         'maintenance_margin' => 'getMaintenanceMargin',
@@ -241,6 +244,8 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         'enable_new_dual_mode' => 'getEnableNewDualMode',
         'margin_mode' => 'getMarginMode',
         'enable_tiered_mm' => 'getEnableTieredMm',
+        'enable_dual_plus' => 'getEnableDualPlus',
+        'position_mode' => 'getPositionMode',
         'history' => 'getHistory'
     ];
 
@@ -312,7 +317,6 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         $this->container['point'] = isset($data['point']) ? $data['point'] : null;
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
         $this->container['in_dual_mode'] = isset($data['in_dual_mode']) ? $data['in_dual_mode'] : null;
-        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
         $this->container['enable_credit'] = isset($data['enable_credit']) ? $data['enable_credit'] : null;
         $this->container['position_initial_margin'] = isset($data['position_initial_margin']) ? $data['position_initial_margin'] : null;
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
@@ -330,6 +334,8 @@ class FuturesAccount implements ModelInterface, ArrayAccess
         $this->container['enable_new_dual_mode'] = isset($data['enable_new_dual_mode']) ? $data['enable_new_dual_mode'] : null;
         $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
         $this->container['enable_tiered_mm'] = isset($data['enable_tiered_mm']) ? $data['enable_tiered_mm'] : null;
+        $this->container['enable_dual_plus'] = isset($data['enable_dual_plus']) ? $data['enable_dual_plus'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
         $this->container['history'] = isset($data['history']) ? $data['history'] : null;
     }
 
@@ -545,30 +551,6 @@ class FuturesAccount implements ModelInterface, ArrayAccess
     public function setInDualMode($in_dual_mode)
     {
         $this->container['in_dual_mode'] = $in_dual_mode;
-
-        return $this;
-    }
-
-    /**
-     * Gets position_mode
-     *
-     * @return string|null
-     */
-    public function getPositionMode()
-    {
-        return $this->container['position_mode'];
-    }
-
-    /**
-     * Sets position_mode
-     *
-     * @param string|null $position_mode Position mode: single - one-way, dual - dual-side, split - sub-positions (in_dual_mode is deprecated)
-     *
-     * @return $this
-     */
-    public function setPositionMode($position_mode)
-    {
-        $this->container['position_mode'] = $position_mode;
 
         return $this;
     }
@@ -977,6 +959,54 @@ class FuturesAccount implements ModelInterface, ArrayAccess
     public function setEnableTieredMm($enable_tiered_mm)
     {
         $this->container['enable_tiered_mm'] = $enable_tiered_mm;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_dual_plus
+     *
+     * @return bool|null
+     */
+    public function getEnableDualPlus()
+    {
+        return $this->container['enable_dual_plus'];
+    }
+
+    /**
+     * Sets enable_dual_plus
+     *
+     * @param bool|null $enable_dual_plus Whether to Support Split Position Mode
+     *
+     * @return $this
+     */
+    public function setEnableDualPlus($enable_dual_plus)
+    {
+        $this->container['enable_dual_plus'] = $enable_dual_plus;
+
+        return $this;
+    }
+
+    /**
+     * Gets position_mode
+     *
+     * @return string|null
+     */
+    public function getPositionMode()
+    {
+        return $this->container['position_mode'];
+    }
+
+    /**
+     * Sets position_mode
+     *
+     * @param string|null $position_mode Position Holding Mode single - Single Direction Position, dual - Dual Direction Position, dual_plus - Split Position
+     *
+     * @return $this
+     */
+    public function setPositionMode($position_mode)
+    {
+        $this->container['position_mode'] = $position_mode;
 
         return $this;
     }

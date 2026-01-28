@@ -56,13 +56,13 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'settle' => 'string',
-        'order_id' => 'int',
-        'contact' => 'string',
+        'order_id' => 'string',
         'size' => 'int',
         'price' => 'string',
         'trigger_price' => 'string',
         'price_type' => 'int',
-        'auto_size' => 'string'
+        'auto_size' => 'string',
+        'close' => 'bool'
     ];
 
     /**
@@ -73,12 +73,12 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'settle' => null,
         'order_id' => null,
-        'contact' => null,
         'size' => 'int64',
         'price' => null,
         'trigger_price' => null,
         'price_type' => 'int32',
-        'auto_size' => null
+        'auto_size' => null,
+        'close' => null
     ];
 
     /**
@@ -110,12 +110,12 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'settle' => 'settle',
         'order_id' => 'order_id',
-        'contact' => 'contact',
         'size' => 'size',
         'price' => 'price',
         'trigger_price' => 'trigger_price',
         'price_type' => 'price_type',
-        'auto_size' => 'auto_size'
+        'auto_size' => 'auto_size',
+        'close' => 'close'
     ];
 
     /**
@@ -126,12 +126,12 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     protected static $setters = [
         'settle' => 'setSettle',
         'order_id' => 'setOrderId',
-        'contact' => 'setContact',
         'size' => 'setSize',
         'price' => 'setPrice',
         'trigger_price' => 'setTriggerPrice',
         'price_type' => 'setPriceType',
-        'auto_size' => 'setAutoSize'
+        'auto_size' => 'setAutoSize',
+        'close' => 'setClose'
     ];
 
     /**
@@ -142,12 +142,12 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     protected static $getters = [
         'settle' => 'getSettle',
         'order_id' => 'getOrderId',
-        'contact' => 'getContact',
         'size' => 'getSize',
         'price' => 'getPrice',
         'trigger_price' => 'getTriggerPrice',
         'price_type' => 'getPriceType',
-        'auto_size' => 'getAutoSize'
+        'auto_size' => 'getAutoSize',
+        'close' => 'getClose'
     ];
 
     /**
@@ -229,12 +229,12 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     {
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
-        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
         $this->container['auto_size'] = isset($data['auto_size']) ? $data['auto_size'] : null;
+        $this->container['close'] = isset($data['close']) ? $data['close'] : null;
     }
 
     /**
@@ -246,6 +246,9 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
         $allowedValues = $this->getPriceTypeAllowableValues();
         if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -296,7 +299,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     /**
      * Gets order_id
      *
-     * @return int|null
+     * @return string
      */
     public function getOrderId()
     {
@@ -306,37 +309,13 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     /**
      * Sets order_id
      *
-     * @param int|null $order_id ID of the Pending Take-Profit/Stop-Loss Trigger Order
+     * @param string $order_id The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
      *
      * @return $this
      */
     public function setOrderId($order_id)
     {
         $this->container['order_id'] = $order_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets contact
-     *
-     * @return string|null
-     */
-    public function getContact()
-    {
-        return $this->container['contact'];
-    }
-
-    /**
-     * Sets contact
-     *
-     * @param string|null $contact The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
-     *
-     * @return $this
-     */
-    public function setContact($contact)
-    {
-        $this->container['contact'] = $contact;
 
         return $this;
     }
@@ -466,6 +445,30 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     public function setAutoSize($auto_size)
     {
         $this->container['auto_size'] = $auto_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets close
+     *
+     * @return bool|null
+     */
+    public function getClose()
+    {
+        return $this->container['close'];
+    }
+
+    /**
+     * Sets close
+     *
+     * @param bool|null $close In One-way Mode, when closing all positions, this must be set to true to perform the closing operation When partially closing positions in One-way Mode or Hedge Mode, you can omit close or set close=false
+     *
+     * @return $this
+     */
+    public function setClose($close)
+    {
+        $this->container['close'] = $close;
 
         return $this;
     }

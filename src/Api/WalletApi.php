@@ -2370,7 +2370,7 @@ class WalletApi
     /**
      * Operation getTransferOrderStatus
      *
-     * Transfer status query
+     * Main-Sub Account Transfer Status Query
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2390,7 +2390,7 @@ class WalletApi
     /**
      * Operation getTransferOrderStatusWithHttpInfo
      *
-     * Transfer status query
+     * Main-Sub Account Transfer Status Query
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2447,7 +2447,7 @@ class WalletApi
     /**
      * Operation getTransferOrderStatusAsync
      *
-     * Transfer status query
+     * Main-Sub Account Transfer Status Query
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2470,7 +2470,7 @@ class WalletApi
     /**
      * Operation getTransferOrderStatusAsyncWithHttpInfo
      *
-     * Transfer status query
+     * Main-Sub Account Transfer Status Query
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

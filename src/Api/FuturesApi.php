@@ -5448,6 +5448,318 @@ class FuturesApi
     }
 
     /**
+     * Operation getLeverage
+     *
+     * Get Leverage Information for Specified Mode
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FuturesLeverage
+     */
+    public function getLeverage($associative_array)
+    {
+        list($response) = $this->getLeverageWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getLeverageWithHttpInfo
+     *
+     * Get Leverage Information for Specified Mode
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FuturesLeverage, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getLeverageWithHttpInfo($associative_array)
+    {
+        $request = $this->getLeverageRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FuturesLeverage';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getLeverageAsync
+     *
+     * Get Leverage Information for Specified Mode
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLeverageAsync($associative_array)
+    {
+        return $this->getLeverageAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getLeverageAsyncWithHttpInfo
+     *
+     * Get Leverage Information for Specified Mode
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLeverageAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\FuturesLeverage';
+        $request = $this->getLeverageRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getLeverage'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getLeverageRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $settle = array_key_exists('settle', $associative_array) ? $associative_array['settle'] : null;
+        $contract = array_key_exists('contract', $associative_array) ? $associative_array['contract'] : null;
+        $pos_margin_mode = array_key_exists('pos_margin_mode', $associative_array) ? $associative_array['pos_margin_mode'] : null;
+        $dual_side = array_key_exists('dual_side', $associative_array) ? $associative_array['dual_side'] : null;
+
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling getLeverage'
+            );
+        }
+        // verify the required parameter 'contract' is set
+        if ($contract === null || (is_array($contract) && count($contract) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contract when calling getLeverage'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/get_leverage/{contract}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($pos_margin_mode !== null) {
+            if('form' === 'form' && is_array($pos_margin_mode)) {
+                foreach($pos_margin_mode as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pos_margin_mode'] = $pos_margin_mode;
+            }
+        }
+
+        // query params
+        if ($dual_side !== null) {
+            if('form' === 'form' && is_array($dual_side)) {
+                foreach($dual_side as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['dual_side'] = $dual_side;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // path params
+        if ($contract !== null) {
+            $resourcePath = str_replace(
+                '{' . 'contract' . '}',
+                ObjectSerializer::toPathValue($contract),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updatePositionMargin
      *
      * Update position margin
@@ -5961,6 +6273,331 @@ class FuturesApi
             }
             else {
                 $queryParams['pid'] = $pid;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // path params
+        if ($contract !== null) {
+            $resourcePath = str_replace(
+                '{' . 'contract' . '}',
+                ObjectSerializer::toPathValue($contract),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateContractPositionLeverage
+     *
+     * Update Leverage for Specified Mode
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $leverage Position Leverage Multiple (required)
+     * @param  string $margin_mode Margin Mode isolated/cross (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\Position
+     */
+    public function updateContractPositionLeverage($settle, $contract, $leverage, $margin_mode, $dual_side = null)
+    {
+        list($response) = $this->updateContractPositionLeverageWithHttpInfo($settle, $contract, $leverage, $margin_mode, $dual_side);
+        return $response;
+    }
+
+    /**
+     * Operation updateContractPositionLeverageWithHttpInfo
+     *
+     * Update Leverage for Specified Mode
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $leverage Position Leverage Multiple (required)
+     * @param  string $margin_mode Margin Mode isolated/cross (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\Position, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateContractPositionLeverageWithHttpInfo($settle, $contract, $leverage, $margin_mode, $dual_side = null)
+    {
+        $request = $this->updateContractPositionLeverageRequest($settle, $contract, $leverage, $margin_mode, $dual_side);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\Position';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation updateContractPositionLeverageAsync
+     *
+     * Update Leverage for Specified Mode
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $leverage Position Leverage Multiple (required)
+     * @param  string $margin_mode Margin Mode isolated/cross (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateContractPositionLeverageAsync($settle, $contract, $leverage, $margin_mode, $dual_side = null)
+    {
+        return $this->updateContractPositionLeverageAsyncWithHttpInfo($settle, $contract, $leverage, $margin_mode, $dual_side)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateContractPositionLeverageAsyncWithHttpInfo
+     *
+     * Update Leverage for Specified Mode
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $leverage Position Leverage Multiple (required)
+     * @param  string $margin_mode Margin Mode isolated/cross (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateContractPositionLeverageAsyncWithHttpInfo($settle, $contract, $leverage, $margin_mode, $dual_side = null)
+    {
+        $returnType = '\GateApi\Model\Position';
+        $request = $this->updateContractPositionLeverageRequest($settle, $contract, $leverage, $margin_mode, $dual_side);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateContractPositionLeverage'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $leverage Position Leverage Multiple (required)
+     * @param  string $margin_mode Margin Mode isolated/cross (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateContractPositionLeverageRequest($settle, $contract, $leverage, $margin_mode, $dual_side = null)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling updateContractPositionLeverage'
+            );
+        }
+        // verify the required parameter 'contract' is set
+        if ($contract === null || (is_array($contract) && count($contract) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contract when calling updateContractPositionLeverage'
+            );
+        }
+        // verify the required parameter 'leverage' is set
+        if ($leverage === null || (is_array($leverage) && count($leverage) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $leverage when calling updateContractPositionLeverage'
+            );
+        }
+        // verify the required parameter 'margin_mode' is set
+        if ($margin_mode === null || (is_array($margin_mode) && count($margin_mode) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $margin_mode when calling updateContractPositionLeverage'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/positions/{contract}/set_leverage';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($leverage !== null) {
+            if('form' === 'form' && is_array($leverage)) {
+                foreach($leverage as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['leverage'] = $leverage;
+            }
+        }
+
+        // query params
+        if ($margin_mode !== null) {
+            if('form' === 'form' && is_array($margin_mode)) {
+                foreach($margin_mode as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['margin_mode'] = $margin_mode;
+            }
+        }
+
+        // query params
+        if ($dual_side !== null) {
+            if('form' === 'form' && is_array($dual_side)) {
+                foreach($dual_side as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['dual_side'] = $dual_side;
             }
         }
 
@@ -7032,6 +7669,271 @@ class FuturesApi
             }
             else {
                 $queryParams['dual_mode'] = $dual_mode;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setPositionMode
+     *
+     * Set Position Holding Mode, replacing the dual_mode interface
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FuturesAccount
+     */
+    public function setPositionMode($settle, $position_mode)
+    {
+        list($response) = $this->setPositionModeWithHttpInfo($settle, $position_mode);
+        return $response;
+    }
+
+    /**
+     * Operation setPositionModeWithHttpInfo
+     *
+     * Set Position Holding Mode, replacing the dual_mode interface
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FuturesAccount, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setPositionModeWithHttpInfo($settle, $position_mode)
+    {
+        $request = $this->setPositionModeRequest($settle, $position_mode);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FuturesAccount';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation setPositionModeAsync
+     *
+     * Set Position Holding Mode, replacing the dual_mode interface
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setPositionModeAsync($settle, $position_mode)
+    {
+        return $this->setPositionModeAsyncWithHttpInfo($settle, $position_mode)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setPositionModeAsyncWithHttpInfo
+     *
+     * Set Position Holding Mode, replacing the dual_mode interface
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setPositionModeAsyncWithHttpInfo($settle, $position_mode)
+    {
+        $returnType = '\GateApi\Model\FuturesAccount';
+        $request = $this->setPositionModeRequest($settle, $position_mode);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setPositionMode'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function setPositionModeRequest($settle, $position_mode)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling setPositionMode'
+            );
+        }
+        // verify the required parameter 'position_mode' is set
+        if ($position_mode === null || (is_array($position_mode) && count($position_mode) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $position_mode when calling setPositionMode'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/set_position_mode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($position_mode !== null) {
+            if('form' === 'form' && is_array($position_mode)) {
+                foreach($position_mode as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['position_mode'] = $position_mode;
             }
         }
 

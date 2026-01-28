@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **st_tag** | **bool** | Whether the trading pair is in ST risk assessment, false - No, true - Yes | [optional] 
 **up_rate** | **string** | Maximum Quote Rise Percentage | [optional] 
 **down_rate** | **string** | Maximum Quote Decline Percentage | [optional] 
-**slippage** | **string** | Currency Slippage | [optional] 
+**slippage** | **string** | Maximum supported slippage ratio for Spot Market Order Placement, calculated based on the latest market price at the time of order placement as the benchmark (Example: 0.03 means 3%) | [optional] 
 **market_order_max_stock** | **string** | Maximum Market Order Quantity | [optional] 
 **market_order_max_money** | **string** | Maximum Market Order Amount | [optional] 
 

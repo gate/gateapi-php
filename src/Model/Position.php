@@ -88,7 +88,9 @@ class Position implements ModelInterface, ArrayAccess
         'open_time' => 'int',
         'risk_limit_table' => 'string',
         'average_maintenance_rate' => 'string',
-        'pid' => 'int'
+        'pid' => 'int',
+        'pos_margin_mode' => 'string',
+        'lever' => 'string'
     ];
 
     /**
@@ -130,7 +132,9 @@ class Position implements ModelInterface, ArrayAccess
         'open_time' => 'int64',
         'risk_limit_table' => null,
         'average_maintenance_rate' => null,
-        'pid' => 'int64'
+        'pid' => 'int64',
+        'pos_margin_mode' => null,
+        'lever' => null
     ];
 
     /**
@@ -193,7 +197,9 @@ class Position implements ModelInterface, ArrayAccess
         'open_time' => 'open_time',
         'risk_limit_table' => 'risk_limit_table',
         'average_maintenance_rate' => 'average_maintenance_rate',
-        'pid' => 'pid'
+        'pid' => 'pid',
+        'pos_margin_mode' => 'pos_margin_mode',
+        'lever' => 'lever'
     ];
 
     /**
@@ -235,7 +241,9 @@ class Position implements ModelInterface, ArrayAccess
         'open_time' => 'setOpenTime',
         'risk_limit_table' => 'setRiskLimitTable',
         'average_maintenance_rate' => 'setAverageMaintenanceRate',
-        'pid' => 'setPid'
+        'pid' => 'setPid',
+        'pos_margin_mode' => 'setPosMarginMode',
+        'lever' => 'setLever'
     ];
 
     /**
@@ -277,7 +285,9 @@ class Position implements ModelInterface, ArrayAccess
         'open_time' => 'getOpenTime',
         'risk_limit_table' => 'getRiskLimitTable',
         'average_maintenance_rate' => 'getAverageMaintenanceRate',
-        'pid' => 'getPid'
+        'pid' => 'getPid',
+        'pos_margin_mode' => 'getPosMarginMode',
+        'lever' => 'getLever'
     ];
 
     /**
@@ -391,6 +401,8 @@ class Position implements ModelInterface, ArrayAccess
         $this->container['risk_limit_table'] = isset($data['risk_limit_table']) ? $data['risk_limit_table'] : null;
         $this->container['average_maintenance_rate'] = isset($data['average_maintenance_rate']) ? $data['average_maintenance_rate'] : null;
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        $this->container['lever'] = isset($data['lever']) ? $data['lever'] : null;
     }
 
     /**
@@ -1246,6 +1258,54 @@ class Position implements ModelInterface, ArrayAccess
     public function setPid($pid)
     {
         $this->container['pid'] = $pid;
+
+        return $this;
+    }
+
+    /**
+     * Gets pos_margin_mode
+     *
+     * @return string|null
+     */
+    public function getPosMarginMode()
+    {
+        return $this->container['pos_margin_mode'];
+    }
+
+    /**
+     * Sets pos_margin_mode
+     *
+     * @param string|null $pos_margin_mode Position Margin Mode isolated - Isolated Margin, cross - Cross Margin
+     *
+     * @return $this
+     */
+    public function setPosMarginMode($pos_margin_mode)
+    {
+        $this->container['pos_margin_mode'] = $pos_margin_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets lever
+     *
+     * @return string|null
+     */
+    public function getLever()
+    {
+        return $this->container['lever'];
+    }
+
+    /**
+     * Sets lever
+     *
+     * @param string|null $lever Indicates the current leverage of the position, applicable to both isolated and cross margin, gradually replacing the current leverage and cross_leverage_limit
+     *
+     * @return $this
+     */
+    public function setLever($lever)
+    {
+        $this->container['lever'] = $lever;
 
         return $this;
     }

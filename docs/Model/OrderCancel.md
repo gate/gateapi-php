@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **update_time** | **string** | Last modification time of order | [optional] [readonly] 
 **create_time_ms** | **int** | Creation time of order (in milliseconds) | [optional] [readonly] 
 **update_time_ms** | **int** | Last modification time of order (in milliseconds) | [optional] [readonly] 
-**status** | **string** | Order status  - &#x60;open&#x60;: to be filled - &#x60;closed&#x60;: filled - &#x60;cancelled&#x60;: cancelled | [optional] [readonly] 
+**status** | **string** | Order status  - &#x60;open&#x60;: to be filled - &#x60;closed&#x60;: closed order - &#x60;cancelled&#x60;: cancelled | [optional] [readonly] 
 **currency_pair** | **string** | Currency pair | 
 **type** | **string** | Order Type   - limit : Limit Order - market : Market Order | [optional] [default to 'limit']
 **account** | **string** | Account type, spot - spot account, margin - leveraged account, unified - unified account | [optional] [default to 'spot']

@@ -21,12 +21,15 @@ Method | HTTP request | Description
 [**listFuturesAccountBook**](FuturesApi.md#listFuturesAccountBook) | **GET** /futures/{settle}/account_book | Query futures account change history
 [**listPositions**](FuturesApi.md#listPositions) | **GET** /futures/{settle}/positions | Get user position list
 [**getPosition**](FuturesApi.md#getPosition) | **GET** /futures/{settle}/positions/{contract} | Get single position information
+[**getLeverage**](FuturesApi.md#getLeverage) | **GET** /futures/{settle}/get_leverage/{contract} | Get Leverage Information for Specified Mode
 [**updatePositionMargin**](FuturesApi.md#updatePositionMargin) | **POST** /futures/{settle}/positions/{contract}/margin | Update position margin
 [**updatePositionLeverage**](FuturesApi.md#updatePositionLeverage) | **POST** /futures/{settle}/positions/{contract}/leverage | Update position leverage
+[**updateContractPositionLeverage**](FuturesApi.md#updateContractPositionLeverage) | **POST** /futures/{settle}/positions/{contract}/set_leverage | Update Leverage for Specified Mode
 [**updatePositionCrossMode**](FuturesApi.md#updatePositionCrossMode) | **POST** /futures/{settle}/positions/cross_mode | Switch Position Margin Mode
 [**updateDualCompPositionCrossMode**](FuturesApi.md#updateDualCompPositionCrossMode) | **POST** /futures/{settle}/dual_comp/positions/cross_mode | Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 [**updatePositionRiskLimit**](FuturesApi.md#updatePositionRiskLimit) | **POST** /futures/{settle}/positions/{contract}/risk_limit | Update position risk limit
 [**setDualMode**](FuturesApi.md#setDualMode) | **POST** /futures/{settle}/dual_mode | Set position mode
+[**setPositionMode**](FuturesApi.md#setPositionMode) | **POST** /futures/{settle}/set_position_mode | Set Position Holding Mode, replacing the dual_mode interface
 [**getDualModePosition**](FuturesApi.md#getDualModePosition) | **GET** /futures/{settle}/dual_comp/positions/{contract} | Get position information in Hedge Mode
 [**updateDualModePositionMargin**](FuturesApi.md#updateDualModePositionMargin) | **POST** /futures/{settle}/dual_comp/positions/{contract}/margin | Update position margin in Hedge Mode
 [**updateDualModePositionLeverage**](FuturesApi.md#updateDualModePositionLeverage) | **POST** /futures/{settle}/dual_comp/positions/{contract}/leverage | Update position leverage in Hedge Mode
@@ -1174,6 +1177,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## getLeverage
+
+> \GateApi\Model\FuturesLeverage getLeverage($settle, $contract, $pos_margin_mode, $dual_side)
+
+Get Leverage Information for Specified Mode
+
+Get Leverage Information for Specified Mode
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
+$associate_array['pos_margin_mode'] = 'isolated'; // string | Position Margin Mode, required for split position mode, values: isolated/cross.
+$associate_array['dual_side'] = 'dual_long'; // string | dual_long - Long, dual_short - Short
+
+try {
+    $result = $apiInstance->getLeverage($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->getLeverage: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **contract** | **string**| Futures contract |
+ **pos_margin_mode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. | [optional]
+ **dual_side** | **string**| dual_long - Long, dual_short - Short | [optional]
+
+### Return type
+
+[**\GateApi\Model\FuturesLeverage**](../Model/FuturesLeverage.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## updatePositionMargin
 
 > \GateApi\Model\Position updatePositionMargin($settle, $contract, $change)
@@ -1291,6 +1364,76 @@ Name | Type | Description  | Notes
  **leverage** | **string**| Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. |
  **cross_leverage_limit** | **string**| Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. | [optional]
  **pid** | **int**| Product ID | [optional]
+
+### Return type
+
+[**\GateApi\Model\Position**](../Model/Position.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## updateContractPositionLeverage
+
+> \GateApi\Model\Position updateContractPositionLeverage($settle, $contract, $leverage, $margin_mode, $dual_side)
+
+Update Leverage for Specified Mode
+
+To simplify the complex logic of the leverage interface, added a new interface for modifying leverage
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$contract = 'BTC_USDT'; // string | Futures contract
+$leverage = '10'; // string | Position Leverage Multiple
+$margin_mode = 'cross'; // string | Margin Mode isolated/cross
+$dual_side = 'dual_long'; // string | dual_long - Long, dual_short - Short
+
+try {
+    $result = $apiInstance->updateContractPositionLeverage($settle, $contract, $leverage, $margin_mode, $dual_side);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->updateContractPositionLeverage: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **contract** | **string**| Futures contract |
+ **leverage** | **string**| Position Leverage Multiple |
+ **margin_mode** | **string**| Margin Mode isolated/cross |
+ **dual_side** | **string**| dual_long - Long, dual_short - Short | [optional]
 
 ### Return type
 
@@ -1545,6 +1688,70 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Settle currency |
  **dual_mode** | **bool**| Whether to enable Hedge Mode |
+
+### Return type
+
+[**\GateApi\Model\FuturesAccount**](../Model/FuturesAccount.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## setPositionMode
+
+> \GateApi\Model\FuturesAccount setPositionMode($settle, $position_mode)
+
+Set Position Holding Mode, replacing the dual_mode interface
+
+The prerequisite for changing mode is that all positions have no holdings and no pending orders
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$position_mode = 'dual_plus'; // string | Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
+
+try {
+    $result = $apiInstance->setPositionMode($settle, $position_mode);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->setPositionMode: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **position_mode** | **string**| Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively |
 
 ### Return type
 

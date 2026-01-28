@@ -59,7 +59,9 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
         'index_price' => 'string',
         'min_quota' => 'string',
         'left_quota' => 'string',
-        'left_quote_usdt' => 'string'
+        'left_quote_usdt' => 'string',
+        'left_quota_fixed' => 'string',
+        'left_quote_usdt_fixed' => 'string'
     ];
 
     /**
@@ -72,7 +74,9 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
         'index_price' => null,
         'min_quota' => null,
         'left_quota' => null,
-        'left_quote_usdt' => null
+        'left_quote_usdt' => null,
+        'left_quota_fixed' => null,
+        'left_quote_usdt_fixed' => null
     ];
 
     /**
@@ -106,7 +110,9 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
         'index_price' => 'index_price',
         'min_quota' => 'min_quota',
         'left_quota' => 'left_quota',
-        'left_quote_usdt' => 'left_quote_usdt'
+        'left_quote_usdt' => 'left_quote_usdt',
+        'left_quota_fixed' => 'left_quota_fixed',
+        'left_quote_usdt_fixed' => 'left_quote_usdt_fixed'
     ];
 
     /**
@@ -119,7 +125,9 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
         'index_price' => 'setIndexPrice',
         'min_quota' => 'setMinQuota',
         'left_quota' => 'setLeftQuota',
-        'left_quote_usdt' => 'setLeftQuoteUsdt'
+        'left_quote_usdt' => 'setLeftQuoteUsdt',
+        'left_quota_fixed' => 'setLeftQuotaFixed',
+        'left_quote_usdt_fixed' => 'setLeftQuoteUsdtFixed'
     ];
 
     /**
@@ -132,7 +140,9 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
         'index_price' => 'getIndexPrice',
         'min_quota' => 'getMinQuota',
         'left_quota' => 'getLeftQuota',
-        'left_quote_usdt' => 'getLeftQuoteUsdt'
+        'left_quote_usdt' => 'getLeftQuoteUsdt',
+        'left_quota_fixed' => 'getLeftQuotaFixed',
+        'left_quote_usdt_fixed' => 'getLeftQuoteUsdtFixed'
     ];
 
     /**
@@ -200,6 +210,8 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
         $this->container['min_quota'] = isset($data['min_quota']) ? $data['min_quota'] : null;
         $this->container['left_quota'] = isset($data['left_quota']) ? $data['left_quota'] : null;
         $this->container['left_quote_usdt'] = isset($data['left_quote_usdt']) ? $data['left_quote_usdt'] : null;
+        $this->container['left_quota_fixed'] = isset($data['left_quota_fixed']) ? $data['left_quota_fixed'] : null;
+        $this->container['left_quote_usdt_fixed'] = isset($data['left_quote_usdt_fixed']) ? $data['left_quote_usdt_fixed'] : null;
     }
 
     /**
@@ -311,7 +323,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
     /**
      * Sets left_quota
      *
-     * @param string|null $left_quota Remaining borrowing/collateral quota for the currency
+     * @param string|null $left_quota Remaining currency limit for `borrow/collateral` (when input parameter `type` is `borrow`, represents current currency)
      *
      * @return $this
      */
@@ -335,13 +347,61 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
     /**
      * Sets left_quote_usdt
      *
-     * @param string|null $left_quote_usdt Remaining currency limit converted to USDT
+     * @param string|null $left_quote_usdt Remaining currency limit converted to USDT (when input parameter `type` is `borrow`, represents current currency)
      *
      * @return $this
      */
     public function setLeftQuoteUsdt($left_quote_usdt)
     {
         $this->container['left_quote_usdt'] = $left_quote_usdt;
+
+        return $this;
+    }
+
+    /**
+     * Gets left_quota_fixed
+     *
+     * @return string|null
+     */
+    public function getLeftQuotaFixed()
+    {
+        return $this->container['left_quota_fixed'];
+    }
+
+    /**
+     * Sets left_quota_fixed
+     *
+     * @param string|null $left_quota_fixed Remaining `borrow/collateral` limit for fixed-term currency
+     *
+     * @return $this
+     */
+    public function setLeftQuotaFixed($left_quota_fixed)
+    {
+        $this->container['left_quota_fixed'] = $left_quota_fixed;
+
+        return $this;
+    }
+
+    /**
+     * Gets left_quote_usdt_fixed
+     *
+     * @return string|null
+     */
+    public function getLeftQuoteUsdtFixed()
+    {
+        return $this->container['left_quote_usdt_fixed'];
+    }
+
+    /**
+     * Sets left_quote_usdt_fixed
+     *
+     * @param string|null $left_quote_usdt_fixed Remaining currency limit for fixed-term currency converted to USDT
+     *
+     * @return $this
+     */
+    public function setLeftQuoteUsdtFixed($left_quote_usdt_fixed)
+    {
+        $this->container['left_quote_usdt_fixed'] = $left_quote_usdt_fixed;
 
         return $this;
     }

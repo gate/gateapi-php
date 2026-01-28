@@ -846,7 +846,7 @@ class OrderCancel implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
+     * @param string|null $status Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
      *
      * @return $this
      */
