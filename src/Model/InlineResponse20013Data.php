@@ -81,7 +81,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
         'need_replenish' => 'int',
         'merchant_info' => '\GateApi\Model\InlineResponse20013DataMerchantInfo',
         'online_status' => 'int',
-        'work_hours' => 'AnyType',
+        'work_hours' => 'object',
         'transactions_month' => 'int',
         'transactions_all' => 'int',
         'trade_versatile' => 'bool'
@@ -1125,7 +1125,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     /**
      * Gets work_hours
      *
-     * @return AnyType
+     * @return object
      */
     public function getWorkHours()
     {
@@ -1135,7 +1135,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     /**
      * Sets work_hours
      *
-     * @param AnyType $work_hours Merchant online status details
+     * @param object $work_hours Merchant online status details
      *
      * @return $this
      */

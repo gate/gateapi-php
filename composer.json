@@ -1,6 +1,6 @@
 {
     "name": "gate/gateapi-php",
-    "version": "7.2.22",
+    "version": "7.2.23",
     "description": "Welcome to Gate API APIv4 provides operations related to spot, margin, and contract trading, including public interfaces for querying market data and authenticated private interfaces for implementing API-based automated trading.",
     "keywords": [
         "gate",

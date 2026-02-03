@@ -3169,15 +3169,14 @@ class P2PApi
      * Query ad details
      *
      * @param  string $adv_no adv_no (required)
-     * @param  int $ Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse20019
      */
-    public function p2pMerchantBooksAdsDetail($adv_no, $ = null)
+    public function p2pMerchantBooksAdsDetail($adv_no)
     {
-        list($response) = $this->p2pMerchantBooksAdsDetailWithHttpInfo($adv_no, $);
+        list($response) = $this->p2pMerchantBooksAdsDetailWithHttpInfo($adv_no);
         return $response;
     }
 
@@ -3187,15 +3186,14 @@ class P2PApi
      * Query ad details
      *
      * @param  string $adv_no (required)
-     * @param  int $ Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse20019, HTTP status code, HTTP response headers (array of strings)
      */
-    public function p2pMerchantBooksAdsDetailWithHttpInfo($adv_no, $ = null)
+    public function p2pMerchantBooksAdsDetailWithHttpInfo($adv_no)
     {
-        $request = $this->p2pMerchantBooksAdsDetailRequest($adv_no, $);
+        $request = $this->p2pMerchantBooksAdsDetailRequest($adv_no);
 
         $options = $this->createHttpClientOption();
         try {
@@ -3242,14 +3240,13 @@ class P2PApi
      * Query ad details
      *
      * @param  string $adv_no (required)
-     * @param  int $ Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function p2pMerchantBooksAdsDetailAsync($adv_no, $ = null)
+    public function p2pMerchantBooksAdsDetailAsync($adv_no)
     {
-        return $this->p2pMerchantBooksAdsDetailAsyncWithHttpInfo($adv_no, $)
+        return $this->p2pMerchantBooksAdsDetailAsyncWithHttpInfo($adv_no)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3263,15 +3260,14 @@ class P2PApi
      * Query ad details
      *
      * @param  string $adv_no (required)
-     * @param  int $ Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function p2pMerchantBooksAdsDetailAsyncWithHttpInfo($adv_no, $ = null)
+    public function p2pMerchantBooksAdsDetailAsyncWithHttpInfo($adv_no)
     {
         $returnType = '\GateApi\Model\InlineResponse20019';
-        $request = $this->p2pMerchantBooksAdsDetailRequest($adv_no, $);
+        $request = $this->p2pMerchantBooksAdsDetailRequest($adv_no);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3311,12 +3307,11 @@ class P2PApi
      * Create request for operation 'p2pMerchantBooksAdsDetail'
      *
      * @param  string $adv_no (required)
-     * @param  int $ Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function p2pMerchantBooksAdsDetailRequest($adv_no, $ = null)
+    protected function p2pMerchantBooksAdsDetailRequest($adv_no)
     {
         // verify the required parameter 'adv_no' is set
         if ($adv_no === null || (is_array($adv_no) && count($adv_no) === 0)) {
@@ -3331,18 +3326,6 @@ class P2PApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-        // query params
-        if ($ !== null) {
-            if('form' === 'form' && is_array($)) {
-                foreach($ as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['&#x3D;'] = $;
-            }
-        }
 
         // form params
         if ($adv_no !== null) {

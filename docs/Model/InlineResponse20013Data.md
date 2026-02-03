@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **need_replenish** | **int** | Whether margin replenishment is needed | 
 **merchant_info** | [**\GateApi\Model\InlineResponse20013DataMerchantInfo**](InlineResponse20013DataMerchantInfo.md) |  | 
 **online_status** | **int** | Merchant online status | 
-**work_hours** | [**AnyType**](.md) | Merchant online status details | 
+**work_hours** | [**object**](.md) | Merchant online status details | 
 **transactions_month** | **int** | 30-day transaction volume | 
 **transactions_all** | **int** | Total transaction volume | 
 **trade_versatile** | **bool** | Single user or composite user | 
