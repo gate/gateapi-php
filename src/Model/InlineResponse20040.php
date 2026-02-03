@@ -54,15 +54,26 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'position_id' => 'string',
         'user_id' => 'string',
-        'business_id' => 'string',
-        'type' => 'string',
-        'exchange_type' => 'string',
-        'coin' => 'string',
-        'change' => 'string',
-        'balance' => 'string',
-        'create_time' => 'string'
+        'symbol' => 'string',
+        'closed_type' => 'string',
+        'closed_pnl' => 'string',
+        'closed_pnl_rate' => 'string',
+        'open_avg_price' => 'string',
+        'closed_avg_price' => 'string',
+        'max_position_qty' => 'string',
+        'closed_qty' => 'string',
+        'closed_value' => 'string',
+        'fee' => 'string',
+        'liq_fee' => 'string',
+        'funding_fee' => 'string',
+        'position_side' => 'string',
+        'position_mode' => 'string',
+        'leverage' => 'string',
+        'business_type' => 'string',
+        'create_time' => 'string',
+        'update_time' => 'string'
     ];
 
     /**
@@ -71,15 +82,26 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'position_id' => null,
         'user_id' => null,
-        'business_id' => null,
-        'type' => null,
-        'exchange_type' => null,
-        'coin' => null,
-        'change' => null,
-        'balance' => null,
-        'create_time' => null
+        'symbol' => null,
+        'closed_type' => null,
+        'closed_pnl' => null,
+        'closed_pnl_rate' => null,
+        'open_avg_price' => null,
+        'closed_avg_price' => null,
+        'max_position_qty' => null,
+        'closed_qty' => null,
+        'closed_value' => null,
+        'fee' => null,
+        'liq_fee' => null,
+        'funding_fee' => null,
+        'position_side' => null,
+        'position_mode' => null,
+        'leverage' => null,
+        'business_type' => null,
+        'create_time' => null,
+        'update_time' => null
     ];
 
     /**
@@ -109,15 +131,26 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'position_id' => 'position_id',
         'user_id' => 'user_id',
-        'business_id' => 'business_id',
-        'type' => 'type',
-        'exchange_type' => 'exchange_type',
-        'coin' => 'coin',
-        'change' => 'change',
-        'balance' => 'balance',
-        'create_time' => 'create_time'
+        'symbol' => 'symbol',
+        'closed_type' => 'closed_type',
+        'closed_pnl' => 'closed_pnl',
+        'closed_pnl_rate' => 'closed_pnl_rate',
+        'open_avg_price' => 'open_avg_price',
+        'closed_avg_price' => 'closed_avg_price',
+        'max_position_qty' => 'max_position_qty',
+        'closed_qty' => 'closed_qty',
+        'closed_value' => 'closed_value',
+        'fee' => 'fee',
+        'liq_fee' => 'liq_fee',
+        'funding_fee' => 'funding_fee',
+        'position_side' => 'position_side',
+        'position_mode' => 'position_mode',
+        'leverage' => 'leverage',
+        'business_type' => 'business_type',
+        'create_time' => 'create_time',
+        'update_time' => 'update_time'
     ];
 
     /**
@@ -126,15 +159,26 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'position_id' => 'setPositionId',
         'user_id' => 'setUserId',
-        'business_id' => 'setBusinessId',
-        'type' => 'setType',
-        'exchange_type' => 'setExchangeType',
-        'coin' => 'setCoin',
-        'change' => 'setChange',
-        'balance' => 'setBalance',
-        'create_time' => 'setCreateTime'
+        'symbol' => 'setSymbol',
+        'closed_type' => 'setClosedType',
+        'closed_pnl' => 'setClosedPnl',
+        'closed_pnl_rate' => 'setClosedPnlRate',
+        'open_avg_price' => 'setOpenAvgPrice',
+        'closed_avg_price' => 'setClosedAvgPrice',
+        'max_position_qty' => 'setMaxPositionQty',
+        'closed_qty' => 'setClosedQty',
+        'closed_value' => 'setClosedValue',
+        'fee' => 'setFee',
+        'liq_fee' => 'setLiqFee',
+        'funding_fee' => 'setFundingFee',
+        'position_side' => 'setPositionSide',
+        'position_mode' => 'setPositionMode',
+        'leverage' => 'setLeverage',
+        'business_type' => 'setBusinessType',
+        'create_time' => 'setCreateTime',
+        'update_time' => 'setUpdateTime'
     ];
 
     /**
@@ -143,15 +187,26 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'position_id' => 'getPositionId',
         'user_id' => 'getUserId',
-        'business_id' => 'getBusinessId',
-        'type' => 'getType',
-        'exchange_type' => 'getExchangeType',
-        'coin' => 'getCoin',
-        'change' => 'getChange',
-        'balance' => 'getBalance',
-        'create_time' => 'getCreateTime'
+        'symbol' => 'getSymbol',
+        'closed_type' => 'getClosedType',
+        'closed_pnl' => 'getClosedPnl',
+        'closed_pnl_rate' => 'getClosedPnlRate',
+        'open_avg_price' => 'getOpenAvgPrice',
+        'closed_avg_price' => 'getClosedAvgPrice',
+        'max_position_qty' => 'getMaxPositionQty',
+        'closed_qty' => 'getClosedQty',
+        'closed_value' => 'getClosedValue',
+        'fee' => 'getFee',
+        'liq_fee' => 'getLiqFee',
+        'funding_fee' => 'getFundingFee',
+        'position_side' => 'getPositionSide',
+        'position_mode' => 'getPositionMode',
+        'leverage' => 'getLeverage',
+        'business_type' => 'getBusinessType',
+        'create_time' => 'getCreateTime',
+        'update_time' => 'getUpdateTime'
     ];
 
     /**
@@ -214,15 +269,26 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['position_id'] = isset($data['position_id']) ? $data['position_id'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['business_id'] = isset($data['business_id']) ? $data['business_id'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['change'] = isset($data['change']) ? $data['change'] : null;
-        $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['closed_type'] = isset($data['closed_type']) ? $data['closed_type'] : null;
+        $this->container['closed_pnl'] = isset($data['closed_pnl']) ? $data['closed_pnl'] : null;
+        $this->container['closed_pnl_rate'] = isset($data['closed_pnl_rate']) ? $data['closed_pnl_rate'] : null;
+        $this->container['open_avg_price'] = isset($data['open_avg_price']) ? $data['open_avg_price'] : null;
+        $this->container['closed_avg_price'] = isset($data['closed_avg_price']) ? $data['closed_avg_price'] : null;
+        $this->container['max_position_qty'] = isset($data['max_position_qty']) ? $data['max_position_qty'] : null;
+        $this->container['closed_qty'] = isset($data['closed_qty']) ? $data['closed_qty'] : null;
+        $this->container['closed_value'] = isset($data['closed_value']) ? $data['closed_value'] : null;
+        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        $this->container['liq_fee'] = isset($data['liq_fee']) ? $data['liq_fee'] : null;
+        $this->container['funding_fee'] = isset($data['funding_fee']) ? $data['funding_fee'] : null;
+        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
     }
 
     /**
@@ -234,32 +300,8 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
-        }
-        if ($this->container['business_id'] === null) {
-            $invalidProperties[] = "'business_id' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
-        }
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
-        }
-        if ($this->container['change'] === null) {
-            $invalidProperties[] = "'change' can't be null";
-        }
-        if ($this->container['balance'] === null) {
-            $invalidProperties[] = "'balance' can't be null";
-        }
-        if ($this->container['create_time'] === null) {
-            $invalidProperties[] = "'create_time' can't be null";
+        if ($this->container['business_type'] === null) {
+            $invalidProperties[] = "'business_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -277,25 +319,25 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets position_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getId()
+    public function getPositionId()
     {
-        return $this->container['id'];
+        return $this->container['position_id'];
     }
 
     /**
-     * Sets id
+     * Sets position_id
      *
-     * @param string $id Account Change Record ID
+     * @param string|null $position_id Position ID
      *
      * @return $this
      */
-    public function setId($id)
+    public function setPositionId($position_id)
     {
-        $this->container['id'] = $id;
+        $this->container['position_id'] = $position_id;
 
         return $this;
     }
@@ -303,7 +345,7 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return string
+     * @return string|null
      */
     public function getUserId()
     {
@@ -313,7 +355,7 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param string $user_id User ID
+     * @param string|null $user_id User ID
      *
      * @return $this
      */
@@ -325,145 +367,385 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets business_id
+     * Gets symbol
      *
-     * @return string
+     * @return string|null
      */
-    public function getBusinessId()
+    public function getSymbol()
     {
-        return $this->container['business_id'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets business_id
+     * Sets symbol
      *
-     * @param string $business_id Business ID
+     * @param string|null $symbol Currency pair
      *
      * @return $this
      */
-    public function setBusinessId($business_id)
+    public function setSymbol($symbol)
     {
-        $this->container['business_id'] = $business_id;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets closed_type
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getClosedType()
     {
-        return $this->container['type'];
+        return $this->container['closed_type'];
     }
 
     /**
-     * Sets type
+     * Sets closed_type
      *
-     * @param string $type 变更类型| `TRANSACTION` 成交 `TRADING_FEE` 手续费 `FUNDING_FEE` 合约资金费 `LIQUIDATION_FEE` 强平费 `TRANSFER_IN` 资金转入 `TRANSFER_OUT` 资金转出 `BANKRUPT_COMPENSATION` 穿仓补贴 `AUTO_REPAY` 杠杆仓位自动还负债
+     * @param string|null $closed_type Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed)
      *
      * @return $this
      */
-    public function setType($type)
+    public function setClosedType($closed_type)
     {
-        $this->container['type'] = $type;
+        $this->container['closed_type'] = $closed_type;
 
         return $this;
     }
 
     /**
-     * Gets exchange_type
+     * Gets closed_pnl
      *
-     * @return string
+     * @return string|null
      */
-    public function getExchangeType()
+    public function getClosedPnl()
     {
-        return $this->container['exchange_type'];
+        return $this->container['closed_pnl'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets closed_pnl
      *
-     * @param string $exchange_type Exchange
+     * @param string|null $closed_pnl Close Position P&L
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setClosedPnl($closed_pnl)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['closed_pnl'] = $closed_pnl;
 
         return $this;
     }
 
     /**
-     * Gets coin
+     * Gets closed_pnl_rate
      *
-     * @return string
+     * @return string|null
      */
-    public function getCoin()
+    public function getClosedPnlRate()
     {
-        return $this->container['coin'];
+        return $this->container['closed_pnl_rate'];
     }
 
     /**
-     * Sets coin
+     * Sets closed_pnl_rate
      *
-     * @param string $coin Currency
+     * @param string|null $closed_pnl_rate Close Position P&L Ratio
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setClosedPnlRate($closed_pnl_rate)
     {
-        $this->container['coin'] = $coin;
+        $this->container['closed_pnl_rate'] = $closed_pnl_rate;
 
         return $this;
     }
 
     /**
-     * Gets change
+     * Gets open_avg_price
      *
-     * @return string
+     * @return string|null
      */
-    public function getChange()
+    public function getOpenAvgPrice()
     {
-        return $this->container['change'];
+        return $this->container['open_avg_price'];
     }
 
     /**
-     * Sets change
+     * Sets open_avg_price
      *
-     * @param string $change Change amount (positive indicates transfer in; negative indicates transfer out)
+     * @param string|null $open_avg_price Average Opening Price
      *
      * @return $this
      */
-    public function setChange($change)
+    public function setOpenAvgPrice($open_avg_price)
     {
-        $this->container['change'] = $change;
+        $this->container['open_avg_price'] = $open_avg_price;
 
         return $this;
     }
 
     /**
-     * Gets balance
+     * Gets closed_avg_price
      *
-     * @return string
+     * @return string|null
      */
-    public function getBalance()
+    public function getClosedAvgPrice()
     {
-        return $this->container['balance'];
+        return $this->container['closed_avg_price'];
     }
 
     /**
-     * Sets balance
+     * Sets closed_avg_price
      *
-     * @param string $balance Balance after change
+     * @param string|null $closed_avg_price Average Close Price
      *
      * @return $this
      */
-    public function setBalance($balance)
+    public function setClosedAvgPrice($closed_avg_price)
     {
-        $this->container['balance'] = $balance;
+        $this->container['closed_avg_price'] = $closed_avg_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_position_qty
+     *
+     * @return string|null
+     */
+    public function getMaxPositionQty()
+    {
+        return $this->container['max_position_qty'];
+    }
+
+    /**
+     * Sets max_position_qty
+     *
+     * @param string|null $max_position_qty Max Trade Size
+     *
+     * @return $this
+     */
+    public function setMaxPositionQty($max_position_qty)
+    {
+        $this->container['max_position_qty'] = $max_position_qty;
+
+        return $this;
+    }
+
+    /**
+     * Gets closed_qty
+     *
+     * @return string|null
+     */
+    public function getClosedQty()
+    {
+        return $this->container['closed_qty'];
+    }
+
+    /**
+     * Sets closed_qty
+     *
+     * @param string|null $closed_qty Close Position Quantity
+     *
+     * @return $this
+     */
+    public function setClosedQty($closed_qty)
+    {
+        $this->container['closed_qty'] = $closed_qty;
+
+        return $this;
+    }
+
+    /**
+     * Gets closed_value
+     *
+     * @return string|null
+     */
+    public function getClosedValue()
+    {
+        return $this->container['closed_value'];
+    }
+
+    /**
+     * Sets closed_value
+     *
+     * @param string|null $closed_value Close Position Value
+     *
+     * @return $this
+     */
+    public function setClosedValue($closed_value)
+    {
+        $this->container['closed_value'] = $closed_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets fee
+     *
+     * @return string|null
+     */
+    public function getFee()
+    {
+        return $this->container['fee'];
+    }
+
+    /**
+     * Sets fee
+     *
+     * @param string|null $fee Position Accumulated Fees
+     *
+     * @return $this
+     */
+    public function setFee($fee)
+    {
+        $this->container['fee'] = $fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets liq_fee
+     *
+     * @return string|null
+     */
+    public function getLiqFee()
+    {
+        return $this->container['liq_fee'];
+    }
+
+    /**
+     * Sets liq_fee
+     *
+     * @param string|null $liq_fee Liquidation Fee
+     *
+     * @return $this
+     */
+    public function setLiqFee($liq_fee)
+    {
+        $this->container['liq_fee'] = $liq_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_fee
+     *
+     * @return string|null
+     */
+    public function getFundingFee()
+    {
+        return $this->container['funding_fee'];
+    }
+
+    /**
+     * Sets funding_fee
+     *
+     * @param string|null $funding_fee Funding Fee
+     *
+     * @return $this
+     */
+    public function setFundingFee($funding_fee)
+    {
+        $this->container['funding_fee'] = $funding_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets position_side
+     *
+     * @return string|null
+     */
+    public function getPositionSide()
+    {
+        return $this->container['position_side'];
+    }
+
+    /**
+     * Sets position_side
+     *
+     * @param string|null $position_side Position Direction Before Close
+     *
+     * @return $this
+     */
+    public function setPositionSide($position_side)
+    {
+        $this->container['position_side'] = $position_side;
+
+        return $this;
+    }
+
+    /**
+     * Gets position_mode
+     *
+     * @return string|null
+     */
+    public function getPositionMode()
+    {
+        return $this->container['position_mode'];
+    }
+
+    /**
+     * Sets position_mode
+     *
+     * @param string|null $position_mode Position Mode at Close
+     *
+     * @return $this
+     */
+    public function setPositionMode($position_mode)
+    {
+        $this->container['position_mode'] = $position_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets leverage
+     *
+     * @return string|null
+     */
+    public function getLeverage()
+    {
+        return $this->container['leverage'];
+    }
+
+    /**
+     * Sets leverage
+     *
+     * @param string|null $leverage Leverage at Close
+     *
+     * @return $this
+     */
+    public function setLeverage($leverage)
+    {
+        $this->container['leverage'] = $leverage;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_type
+     *
+     * @return string
+     */
+    public function getBusinessType()
+    {
+        return $this->container['business_type'];
+    }
+
+    /**
+     * Sets business_type
+     *
+     * @param string $business_type Business Type
+     *
+     * @return $this
+     */
+    public function setBusinessType($business_type)
+    {
+        $this->container['business_type'] = $business_type;
 
         return $this;
     }
@@ -471,7 +753,7 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
     /**
      * Gets create_time
      *
-     * @return string
+     * @return string|null
      */
     public function getCreateTime()
     {
@@ -481,13 +763,37 @@ class InlineResponse20040 implements ModelInterface, ArrayAccess
     /**
      * Sets create_time
      *
-     * @param string $create_time Created time
+     * @param string|null $create_time Created time
      *
      * @return $this
      */
     public function setCreateTime($create_time)
     {
         $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_time
+     *
+     * @return string|null
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['update_time'];
+    }
+
+    /**
+     * Sets update_time
+     *
+     * @param string|null $update_time Update time
+     *
+     * @return $this
+     */
+    public function setUpdateTime($update_time)
+    {
+        $this->container['update_time'] = $update_time;
 
         return $this;
     }

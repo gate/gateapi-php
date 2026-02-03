@@ -54,8 +54,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency' => 'string',
-        'est_rate' => 'string'
+        'orders' => '\GateApi\Model\TrailOrder[]'
     ];
 
     /**
@@ -64,8 +63,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'currency' => null,
-        'est_rate' => null
+        'orders' => null
     ];
 
     /**
@@ -95,8 +93,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency' => 'currency',
-        'est_rate' => 'est_rate'
+        'orders' => 'orders'
     ];
 
     /**
@@ -105,8 +102,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'currency' => 'setCurrency',
-        'est_rate' => 'setEstRate'
+        'orders' => 'setOrders'
     ];
 
     /**
@@ -115,8 +111,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'currency' => 'getCurrency',
-        'est_rate' => 'getEstRate'
+        'orders' => 'getOrders'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['est_rate'] = isset($data['est_rate']) ? $data['est_rate'] : null;
+        $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
     }
 
     /**
@@ -208,49 +202,25 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets currency
+     * Gets orders
      *
-     * @return string|null
+     * @return \GateApi\Model\TrailOrder[]|null
      */
-    public function getCurrency()
+    public function getOrders()
     {
-        return $this->container['currency'];
+        return $this->container['orders'];
     }
 
     /**
-     * Sets currency
+     * Sets orders
      *
-     * @param string|null $currency currency
+     * @param \GateApi\Model\TrailOrder[]|null $orders orders
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setOrders($orders)
     {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets est_rate
-     *
-     * @return string|null
-     */
-    public function getEstRate()
-    {
-        return $this->container['est_rate'];
-    }
-
-    /**
-     * Sets est_rate
-     *
-     * @param string|null $est_rate Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
-     *
-     * @return $this
-     */
-    public function setEstRate($est_rate)
-    {
-        $this->container['est_rate'] = $est_rate;
+        $this->container['orders'] = $orders;
 
         return $this;
     }

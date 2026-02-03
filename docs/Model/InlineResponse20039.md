@@ -4,23 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_id** | **string** | User ID | [optional] 
-**transaction_id** | **string** | filledrecordsID | [optional] 
-**order_id** | **string** | Order ID | [optional] 
-**text** | **string** | User Order ID | [optional] 
-**symbol** | **string** | Currency pair | [optional] 
-**exchange_type** | **string** | Exchange | [optional] 
-**business_type** | **string** | Business Type | [optional] 
-**side** | **string** | Buy/Sell Direction | [optional] 
-**qty** | **string** | Trading size | [optional] 
-**price** | **string** | Fill Price | [optional] 
-**fee** | **string** | fee | [optional] 
-**fee_coin** | **string** | Fee currency | [optional] 
-**fee_rate** | **string** | Fee Rate | [optional] 
-**match_role** | **string** | Filled Role | [optional] 
-**rpnl** | **string** | Realized P&amp;L | [optional] 
-**position_mode** | **string** | Position Mode | [optional] 
-**position_side** | **string** | Position Direction | [optional] 
-**create_time** | **string** | Created time | [optional] 
+**user_id** | **string** | User ID | 
+**order_id** | **string** | Order ID | 
+**text** | **string** | Client Order ID | 
+**state** | **string** | Order Status | 
+**symbol** | **string** | Currency pair | 
+**attribute** | **string** | Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce | 
+**exchange_type** | **string** | Exchange | 
+**business_type** | **string** | Business Type | 
+**qty** | **string** | Base Currency Quantity | 
+**quote_qty** | **string** | Quote Currency Quantity | 
+**price** | **string** | Price | 
+**time_in_force** | **string** | Time in Force Strategy | 
+**executed_qty** | **string** | Filled Quantity | 
+**executed_amount** | **string** | Filled Amount | 
+**executed_avg_price** | **string** | Average Filled Price | 
+**fee_coin** | **string** | Fee currency | 
+**fee** | **string** | fee | 
+**reduce_only** | **string** | Reduce Position Only | 
+**leverage** | **string** | leverage | 
+**reason** | **string** | Reason | 
+**last_executed_qty** | **string** | Latest Filled Quantity | 
+**last_executed_price** | **string** | Latest Filled Price | 
+**last_executed_amount** | **string** | Latest Filled Amount | 
+**position_side** | **string** | Position Direction | 
+**create_time** | **string** | Created time | 
+**update_time** | **string** | Update time | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

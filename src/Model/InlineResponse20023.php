@@ -54,8 +54,12 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'tx_id' => 'string',
-        'text' => 'string'
+        'timestamp' => 'float',
+        'method' => 'string',
+        'code' => 'int',
+        'message' => 'string',
+        'data' => '\GateApi\Model\InlineResponse20023Data',
+        'version' => 'string'
     ];
 
     /**
@@ -64,8 +68,12 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'tx_id' => null,
-        'text' => null
+        'timestamp' => null,
+        'method' => null,
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'version' => null
     ];
 
     /**
@@ -95,8 +103,12 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'tx_id' => 'tx_id',
-        'text' => 'text'
+        'timestamp' => 'timestamp',
+        'method' => 'method',
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'version' => 'version'
     ];
 
     /**
@@ -105,8 +117,12 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'tx_id' => 'setTxId',
-        'text' => 'setText'
+        'timestamp' => 'setTimestamp',
+        'method' => 'setMethod',
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -115,8 +131,12 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'tx_id' => 'getTxId',
-        'text' => 'getText'
+        'timestamp' => 'getTimestamp',
+        'method' => 'getMethod',
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -179,8 +199,12 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['tx_id'] = isset($data['tx_id']) ? $data['tx_id'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
     }
 
     /**
@@ -192,11 +216,23 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['tx_id'] === null) {
-            $invalidProperties[] = "'tx_id' can't be null";
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
         }
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
+        if ($this->container['method'] === null) {
+            $invalidProperties[] = "'method' can't be null";
+        }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +250,145 @@ class InlineResponse20023 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets tx_id
+     * Gets timestamp
      *
-     * @return string
+     * @return float
      */
-    public function getTxId()
+    public function getTimestamp()
     {
-        return $this->container['tx_id'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets tx_id
+     * Sets timestamp
      *
-     * @param string $tx_id Order ID
+     * @param float $timestamp timestamp
      *
      * @return $this
      */
-    public function setTxId($tx_id)
+    public function setTimestamp($timestamp)
     {
-        $this->container['tx_id'] = $tx_id;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }
 
     /**
-     * Gets text
+     * Gets method
      *
      * @return string
      */
-    public function getText()
+    public function getMethod()
     {
-        return $this->container['text'];
+        return $this->container['method'];
     }
 
     /**
-     * Sets text
+     * Sets method
      *
-     * @param string $text User-defined Order ID
+     * @param string $method method
      *
      * @return $this
      */
-    public function setText($text)
+    public function setMethod($method)
     {
-        $this->container['text'] = $text;
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return int
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param int $code code
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \GateApi\Model\InlineResponse20023Data
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \GateApi\Model\InlineResponse20023Data $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string $version version
+     *
+     * @return $this
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }

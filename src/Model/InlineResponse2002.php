@@ -56,7 +56,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'code' => 'int',
         'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse2002Data'
+        'data' => '\GateApi\Model\InlineResponse200',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -65,9 +66,10 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => null,
+        'code' => 'int32',
         'message' => null,
-        'data' => null
+        'data' => null,
+        'timestamp' => 'int64'
     ];
 
     /**
@@ -99,7 +101,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'code' => 'code',
         'message' => 'message',
-        'data' => 'data'
+        'data' => 'data',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -110,7 +113,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     protected static $setters = [
         'code' => 'setCode',
         'message' => 'setMessage',
-        'data' => 'setData'
+        'data' => 'setData',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -121,7 +125,8 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     protected static $getters = [
         'code' => 'getCode',
         'message' => 'getMessage',
-        'data' => 'getData'
+        'data' => 'getData',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -187,6 +192,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -198,15 +204,6 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -225,7 +222,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int
+     * @return int|null
      */
     public function getCode()
     {
@@ -235,7 +232,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int|null $code Status code, 0 means success
      *
      * @return $this
      */
@@ -249,7 +246,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
@@ -259,7 +256,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string|null $message Response message
      *
      * @return $this
      */
@@ -273,7 +270,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \GateApi\Model\InlineResponse2002Data
+     * @return \GateApi\Model\InlineResponse200|null
      */
     public function getData()
     {
@@ -283,13 +280,37 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \GateApi\Model\InlineResponse2002Data $data data
+     * @param \GateApi\Model\InlineResponse200|null $data data
      *
      * @return $this
      */
     public function setData($data)
     {
         $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int|null $timestamp Response timestamp (milliseconds)
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

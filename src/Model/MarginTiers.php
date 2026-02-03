@@ -310,7 +310,7 @@ class MarginTiers implements ModelInterface, ArrayAccess
     /**
      * Sets upper_limit
      *
-     * @param string|null $upper_limit Upper limit, \"\" indicates greater than (the last tier)
+     * @param string|null $upper_limit Upper limit, `` indicates greater than (the last tier)
      *
      * @return $this
      */

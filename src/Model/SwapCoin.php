@@ -56,7 +56,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'coin' => 'string',
-        'side' => 'string',
+        'side' => 'int',
         'amount' => 'string',
         'pid' => 'int'
     ];
@@ -70,7 +70,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
         'coin' => null,
         'side' => null,
         'amount' => null,
-        'pid' => 'int32'
+        'pid' => null
     ];
 
     /**
@@ -256,7 +256,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
     /**
      * Gets side
      *
-     * @return string
+     * @return int
      */
     public function getSide()
     {
@@ -266,7 +266,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param string $side 0 - Stake 1 - Redeem
+     * @param int $side 0 - Stake 1 - Redeem
      *
      * @return $this
      */

@@ -55,23 +55,31 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'user_id' => 'string',
-        'transaction_id' => 'string',
         'order_id' => 'string',
         'text' => 'string',
+        'state' => 'string',
         'symbol' => 'string',
+        'attribute' => 'string',
         'exchange_type' => 'string',
         'business_type' => 'string',
-        'side' => 'string',
         'qty' => 'string',
+        'quote_qty' => 'string',
         'price' => 'string',
-        'fee' => 'string',
+        'time_in_force' => 'string',
+        'executed_qty' => 'string',
+        'executed_amount' => 'string',
+        'executed_avg_price' => 'string',
         'fee_coin' => 'string',
-        'fee_rate' => 'string',
-        'match_role' => 'string',
-        'rpnl' => 'string',
-        'position_mode' => 'string',
+        'fee' => 'string',
+        'reduce_only' => 'string',
+        'leverage' => 'string',
+        'reason' => 'string',
+        'last_executed_qty' => 'string',
+        'last_executed_price' => 'string',
+        'last_executed_amount' => 'string',
         'position_side' => 'string',
-        'create_time' => 'string'
+        'create_time' => 'string',
+        'update_time' => 'string'
     ];
 
     /**
@@ -81,23 +89,31 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'user_id' => null,
-        'transaction_id' => null,
         'order_id' => null,
         'text' => null,
+        'state' => null,
         'symbol' => null,
+        'attribute' => null,
         'exchange_type' => null,
         'business_type' => null,
-        'side' => null,
         'qty' => null,
+        'quote_qty' => null,
         'price' => null,
-        'fee' => null,
+        'time_in_force' => null,
+        'executed_qty' => null,
+        'executed_amount' => null,
+        'executed_avg_price' => null,
         'fee_coin' => null,
-        'fee_rate' => null,
-        'match_role' => null,
-        'rpnl' => null,
-        'position_mode' => null,
+        'fee' => null,
+        'reduce_only' => null,
+        'leverage' => null,
+        'reason' => null,
+        'last_executed_qty' => null,
+        'last_executed_price' => null,
+        'last_executed_amount' => null,
         'position_side' => null,
-        'create_time' => null
+        'create_time' => null,
+        'update_time' => null
     ];
 
     /**
@@ -128,23 +144,31 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'user_id' => 'user_id',
-        'transaction_id' => 'transaction_id',
         'order_id' => 'order_id',
         'text' => 'text',
+        'state' => 'state',
         'symbol' => 'symbol',
+        'attribute' => 'attribute',
         'exchange_type' => 'exchange_type',
         'business_type' => 'business_type',
-        'side' => 'side',
         'qty' => 'qty',
+        'quote_qty' => 'quote_qty',
         'price' => 'price',
-        'fee' => 'fee',
+        'time_in_force' => 'time_in_force',
+        'executed_qty' => 'executed_qty',
+        'executed_amount' => 'executed_amount',
+        'executed_avg_price' => 'executed_avg_price',
         'fee_coin' => 'fee_coin',
-        'fee_rate' => 'fee_rate',
-        'match_role' => 'match_role',
-        'rpnl' => 'rpnl',
-        'position_mode' => 'position_mode',
+        'fee' => 'fee',
+        'reduce_only' => 'reduce_only',
+        'leverage' => 'leverage',
+        'reason' => 'reason',
+        'last_executed_qty' => 'last_executed_qty',
+        'last_executed_price' => 'last_executed_price',
+        'last_executed_amount' => 'last_executed_amount',
         'position_side' => 'position_side',
-        'create_time' => 'create_time'
+        'create_time' => 'create_time',
+        'update_time' => 'update_time'
     ];
 
     /**
@@ -154,23 +178,31 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'user_id' => 'setUserId',
-        'transaction_id' => 'setTransactionId',
         'order_id' => 'setOrderId',
         'text' => 'setText',
+        'state' => 'setState',
         'symbol' => 'setSymbol',
+        'attribute' => 'setAttribute',
         'exchange_type' => 'setExchangeType',
         'business_type' => 'setBusinessType',
-        'side' => 'setSide',
         'qty' => 'setQty',
+        'quote_qty' => 'setQuoteQty',
         'price' => 'setPrice',
-        'fee' => 'setFee',
+        'time_in_force' => 'setTimeInForce',
+        'executed_qty' => 'setExecutedQty',
+        'executed_amount' => 'setExecutedAmount',
+        'executed_avg_price' => 'setExecutedAvgPrice',
         'fee_coin' => 'setFeeCoin',
-        'fee_rate' => 'setFeeRate',
-        'match_role' => 'setMatchRole',
-        'rpnl' => 'setRpnl',
-        'position_mode' => 'setPositionMode',
+        'fee' => 'setFee',
+        'reduce_only' => 'setReduceOnly',
+        'leverage' => 'setLeverage',
+        'reason' => 'setReason',
+        'last_executed_qty' => 'setLastExecutedQty',
+        'last_executed_price' => 'setLastExecutedPrice',
+        'last_executed_amount' => 'setLastExecutedAmount',
         'position_side' => 'setPositionSide',
-        'create_time' => 'setCreateTime'
+        'create_time' => 'setCreateTime',
+        'update_time' => 'setUpdateTime'
     ];
 
     /**
@@ -180,23 +212,31 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'user_id' => 'getUserId',
-        'transaction_id' => 'getTransactionId',
         'order_id' => 'getOrderId',
         'text' => 'getText',
+        'state' => 'getState',
         'symbol' => 'getSymbol',
+        'attribute' => 'getAttribute',
         'exchange_type' => 'getExchangeType',
         'business_type' => 'getBusinessType',
-        'side' => 'getSide',
         'qty' => 'getQty',
+        'quote_qty' => 'getQuoteQty',
         'price' => 'getPrice',
-        'fee' => 'getFee',
+        'time_in_force' => 'getTimeInForce',
+        'executed_qty' => 'getExecutedQty',
+        'executed_amount' => 'getExecutedAmount',
+        'executed_avg_price' => 'getExecutedAvgPrice',
         'fee_coin' => 'getFeeCoin',
-        'fee_rate' => 'getFeeRate',
-        'match_role' => 'getMatchRole',
-        'rpnl' => 'getRpnl',
-        'position_mode' => 'getPositionMode',
+        'fee' => 'getFee',
+        'reduce_only' => 'getReduceOnly',
+        'leverage' => 'getLeverage',
+        'reason' => 'getReason',
+        'last_executed_qty' => 'getLastExecutedQty',
+        'last_executed_price' => 'getLastExecutedPrice',
+        'last_executed_amount' => 'getLastExecutedAmount',
         'position_side' => 'getPositionSide',
-        'create_time' => 'getCreateTime'
+        'create_time' => 'getCreateTime',
+        'update_time' => 'getUpdateTime'
     ];
 
     /**
@@ -260,23 +300,31 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['transaction_id'] = isset($data['transaction_id']) ? $data['transaction_id'] : null;
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['attribute'] = isset($data['attribute']) ? $data['attribute'] : null;
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
-        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
         $this->container['qty'] = isset($data['qty']) ? $data['qty'] : null;
+        $this->container['quote_qty'] = isset($data['quote_qty']) ? $data['quote_qty'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        $this->container['time_in_force'] = isset($data['time_in_force']) ? $data['time_in_force'] : null;
+        $this->container['executed_qty'] = isset($data['executed_qty']) ? $data['executed_qty'] : null;
+        $this->container['executed_amount'] = isset($data['executed_amount']) ? $data['executed_amount'] : null;
+        $this->container['executed_avg_price'] = isset($data['executed_avg_price']) ? $data['executed_avg_price'] : null;
         $this->container['fee_coin'] = isset($data['fee_coin']) ? $data['fee_coin'] : null;
-        $this->container['fee_rate'] = isset($data['fee_rate']) ? $data['fee_rate'] : null;
-        $this->container['match_role'] = isset($data['match_role']) ? $data['match_role'] : null;
-        $this->container['rpnl'] = isset($data['rpnl']) ? $data['rpnl'] : null;
-        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : null;
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        $this->container['last_executed_qty'] = isset($data['last_executed_qty']) ? $data['last_executed_qty'] : null;
+        $this->container['last_executed_price'] = isset($data['last_executed_price']) ? $data['last_executed_price'] : null;
+        $this->container['last_executed_amount'] = isset($data['last_executed_amount']) ? $data['last_executed_amount'] : null;
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
     }
 
     /**
@@ -288,6 +336,84 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
+        }
+        if ($this->container['attribute'] === null) {
+            $invalidProperties[] = "'attribute' can't be null";
+        }
+        if ($this->container['exchange_type'] === null) {
+            $invalidProperties[] = "'exchange_type' can't be null";
+        }
+        if ($this->container['business_type'] === null) {
+            $invalidProperties[] = "'business_type' can't be null";
+        }
+        if ($this->container['qty'] === null) {
+            $invalidProperties[] = "'qty' can't be null";
+        }
+        if ($this->container['quote_qty'] === null) {
+            $invalidProperties[] = "'quote_qty' can't be null";
+        }
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
+        }
+        if ($this->container['time_in_force'] === null) {
+            $invalidProperties[] = "'time_in_force' can't be null";
+        }
+        if ($this->container['executed_qty'] === null) {
+            $invalidProperties[] = "'executed_qty' can't be null";
+        }
+        if ($this->container['executed_amount'] === null) {
+            $invalidProperties[] = "'executed_amount' can't be null";
+        }
+        if ($this->container['executed_avg_price'] === null) {
+            $invalidProperties[] = "'executed_avg_price' can't be null";
+        }
+        if ($this->container['fee_coin'] === null) {
+            $invalidProperties[] = "'fee_coin' can't be null";
+        }
+        if ($this->container['fee'] === null) {
+            $invalidProperties[] = "'fee' can't be null";
+        }
+        if ($this->container['reduce_only'] === null) {
+            $invalidProperties[] = "'reduce_only' can't be null";
+        }
+        if ($this->container['leverage'] === null) {
+            $invalidProperties[] = "'leverage' can't be null";
+        }
+        if ($this->container['reason'] === null) {
+            $invalidProperties[] = "'reason' can't be null";
+        }
+        if ($this->container['last_executed_qty'] === null) {
+            $invalidProperties[] = "'last_executed_qty' can't be null";
+        }
+        if ($this->container['last_executed_price'] === null) {
+            $invalidProperties[] = "'last_executed_price' can't be null";
+        }
+        if ($this->container['last_executed_amount'] === null) {
+            $invalidProperties[] = "'last_executed_amount' can't be null";
+        }
+        if ($this->container['position_side'] === null) {
+            $invalidProperties[] = "'position_side' can't be null";
+        }
+        if ($this->container['create_time'] === null) {
+            $invalidProperties[] = "'create_time' can't be null";
+        }
+        if ($this->container['update_time'] === null) {
+            $invalidProperties[] = "'update_time' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +432,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return string|null
+     * @return string
      */
     public function getUserId()
     {
@@ -316,7 +442,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param string|null $user_id User ID
+     * @param string $user_id User ID
      *
      * @return $this
      */
@@ -328,33 +454,9 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets transaction_id
-     *
-     * @return string|null
-     */
-    public function getTransactionId()
-    {
-        return $this->container['transaction_id'];
-    }
-
-    /**
-     * Sets transaction_id
-     *
-     * @param string|null $transaction_id filledrecordsID
-     *
-     * @return $this
-     */
-    public function setTransactionId($transaction_id)
-    {
-        $this->container['transaction_id'] = $transaction_id;
-
-        return $this;
-    }
-
-    /**
      * Gets order_id
      *
-     * @return string|null
+     * @return string
      */
     public function getOrderId()
     {
@@ -364,7 +466,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets order_id
      *
-     * @param string|null $order_id Order ID
+     * @param string $order_id Order ID
      *
      * @return $this
      */
@@ -378,7 +480,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Gets text
      *
-     * @return string|null
+     * @return string
      */
     public function getText()
     {
@@ -388,7 +490,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets text
      *
-     * @param string|null $text User Order ID
+     * @param string $text Client Order ID
      *
      * @return $this
      */
@@ -400,9 +502,33 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets state
+     *
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string $state Order Status
+     *
+     * @return $this
+     */
+    public function setState($state)
+    {
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
      * Gets symbol
      *
-     * @return string|null
+     * @return string
      */
     public function getSymbol()
     {
@@ -412,7 +538,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Currency pair
+     * @param string $symbol Currency pair
      *
      * @return $this
      */
@@ -424,9 +550,33 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets attribute
+     *
+     * @return string
+     */
+    public function getAttribute()
+    {
+        return $this->container['attribute'];
+    }
+
+    /**
+     * Sets attribute
+     *
+     * @param string $attribute Attribute COMMON: Normal Order, LIQ: Liquidation Takeover Order, REDUCE: Liquidation Reduce Order, ADL: Auto-Reduce
+     *
+     * @return $this
+     */
+    public function setAttribute($attribute)
+    {
+        $this->container['attribute'] = $attribute;
+
+        return $this;
+    }
+
+    /**
      * Gets exchange_type
      *
-     * @return string|null
+     * @return string
      */
     public function getExchangeType()
     {
@@ -436,7 +586,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string|null $exchange_type Exchange
+     * @param string $exchange_type Exchange
      *
      * @return $this
      */
@@ -450,7 +600,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Gets business_type
      *
-     * @return string|null
+     * @return string
      */
     public function getBusinessType()
     {
@@ -460,7 +610,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets business_type
      *
-     * @param string|null $business_type Business Type
+     * @param string $business_type Business Type
      *
      * @return $this
      */
@@ -472,33 +622,9 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets side
-     *
-     * @return string|null
-     */
-    public function getSide()
-    {
-        return $this->container['side'];
-    }
-
-    /**
-     * Sets side
-     *
-     * @param string|null $side Buy/Sell Direction
-     *
-     * @return $this
-     */
-    public function setSide($side)
-    {
-        $this->container['side'] = $side;
-
-        return $this;
-    }
-
-    /**
      * Gets qty
      *
-     * @return string|null
+     * @return string
      */
     public function getQty()
     {
@@ -508,7 +634,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets qty
      *
-     * @param string|null $qty Trading size
+     * @param string $qty Base Currency Quantity
      *
      * @return $this
      */
@@ -520,9 +646,33 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets quote_qty
+     *
+     * @return string
+     */
+    public function getQuoteQty()
+    {
+        return $this->container['quote_qty'];
+    }
+
+    /**
+     * Sets quote_qty
+     *
+     * @param string $quote_qty Quote Currency Quantity
+     *
+     * @return $this
+     */
+    public function setQuoteQty($quote_qty)
+    {
+        $this->container['quote_qty'] = $quote_qty;
+
+        return $this;
+    }
+
+    /**
      * Gets price
      *
-     * @return string|null
+     * @return string
      */
     public function getPrice()
     {
@@ -532,7 +682,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price Fill Price
+     * @param string $price Price
      *
      * @return $this
      */
@@ -544,25 +694,97 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets fee
+     * Gets time_in_force
      *
-     * @return string|null
+     * @return string
      */
-    public function getFee()
+    public function getTimeInForce()
     {
-        return $this->container['fee'];
+        return $this->container['time_in_force'];
     }
 
     /**
-     * Sets fee
+     * Sets time_in_force
      *
-     * @param string|null $fee fee
+     * @param string $time_in_force Time in Force Strategy
      *
      * @return $this
      */
-    public function setFee($fee)
+    public function setTimeInForce($time_in_force)
     {
-        $this->container['fee'] = $fee;
+        $this->container['time_in_force'] = $time_in_force;
+
+        return $this;
+    }
+
+    /**
+     * Gets executed_qty
+     *
+     * @return string
+     */
+    public function getExecutedQty()
+    {
+        return $this->container['executed_qty'];
+    }
+
+    /**
+     * Sets executed_qty
+     *
+     * @param string $executed_qty Filled Quantity
+     *
+     * @return $this
+     */
+    public function setExecutedQty($executed_qty)
+    {
+        $this->container['executed_qty'] = $executed_qty;
+
+        return $this;
+    }
+
+    /**
+     * Gets executed_amount
+     *
+     * @return string
+     */
+    public function getExecutedAmount()
+    {
+        return $this->container['executed_amount'];
+    }
+
+    /**
+     * Sets executed_amount
+     *
+     * @param string $executed_amount Filled Amount
+     *
+     * @return $this
+     */
+    public function setExecutedAmount($executed_amount)
+    {
+        $this->container['executed_amount'] = $executed_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets executed_avg_price
+     *
+     * @return string
+     */
+    public function getExecutedAvgPrice()
+    {
+        return $this->container['executed_avg_price'];
+    }
+
+    /**
+     * Sets executed_avg_price
+     *
+     * @param string $executed_avg_price Average Filled Price
+     *
+     * @return $this
+     */
+    public function setExecutedAvgPrice($executed_avg_price)
+    {
+        $this->container['executed_avg_price'] = $executed_avg_price;
 
         return $this;
     }
@@ -570,7 +792,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Gets fee_coin
      *
-     * @return string|null
+     * @return string
      */
     public function getFeeCoin()
     {
@@ -580,7 +802,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets fee_coin
      *
-     * @param string|null $fee_coin Fee currency
+     * @param string $fee_coin Fee currency
      *
      * @return $this
      */
@@ -592,97 +814,169 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets fee_rate
+     * Gets fee
      *
-     * @return string|null
+     * @return string
      */
-    public function getFeeRate()
+    public function getFee()
     {
-        return $this->container['fee_rate'];
+        return $this->container['fee'];
     }
 
     /**
-     * Sets fee_rate
+     * Sets fee
      *
-     * @param string|null $fee_rate Fee Rate
+     * @param string $fee fee
      *
      * @return $this
      */
-    public function setFeeRate($fee_rate)
+    public function setFee($fee)
     {
-        $this->container['fee_rate'] = $fee_rate;
+        $this->container['fee'] = $fee;
 
         return $this;
     }
 
     /**
-     * Gets match_role
+     * Gets reduce_only
      *
-     * @return string|null
+     * @return string
      */
-    public function getMatchRole()
+    public function getReduceOnly()
     {
-        return $this->container['match_role'];
+        return $this->container['reduce_only'];
     }
 
     /**
-     * Sets match_role
+     * Sets reduce_only
      *
-     * @param string|null $match_role Filled Role
+     * @param string $reduce_only Reduce Position Only
      *
      * @return $this
      */
-    public function setMatchRole($match_role)
+    public function setReduceOnly($reduce_only)
     {
-        $this->container['match_role'] = $match_role;
+        $this->container['reduce_only'] = $reduce_only;
 
         return $this;
     }
 
     /**
-     * Gets rpnl
+     * Gets leverage
      *
-     * @return string|null
+     * @return string
      */
-    public function getRpnl()
+    public function getLeverage()
     {
-        return $this->container['rpnl'];
+        return $this->container['leverage'];
     }
 
     /**
-     * Sets rpnl
+     * Sets leverage
      *
-     * @param string|null $rpnl Realized P&L
+     * @param string $leverage leverage
      *
      * @return $this
      */
-    public function setRpnl($rpnl)
+    public function setLeverage($leverage)
     {
-        $this->container['rpnl'] = $rpnl;
+        $this->container['leverage'] = $leverage;
 
         return $this;
     }
 
     /**
-     * Gets position_mode
+     * Gets reason
      *
-     * @return string|null
+     * @return string
      */
-    public function getPositionMode()
+    public function getReason()
     {
-        return $this->container['position_mode'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets position_mode
+     * Sets reason
      *
-     * @param string|null $position_mode Position Mode
+     * @param string $reason Reason
      *
      * @return $this
      */
-    public function setPositionMode($position_mode)
+    public function setReason($reason)
     {
-        $this->container['position_mode'] = $position_mode;
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_executed_qty
+     *
+     * @return string
+     */
+    public function getLastExecutedQty()
+    {
+        return $this->container['last_executed_qty'];
+    }
+
+    /**
+     * Sets last_executed_qty
+     *
+     * @param string $last_executed_qty Latest Filled Quantity
+     *
+     * @return $this
+     */
+    public function setLastExecutedQty($last_executed_qty)
+    {
+        $this->container['last_executed_qty'] = $last_executed_qty;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_executed_price
+     *
+     * @return string
+     */
+    public function getLastExecutedPrice()
+    {
+        return $this->container['last_executed_price'];
+    }
+
+    /**
+     * Sets last_executed_price
+     *
+     * @param string $last_executed_price Latest Filled Price
+     *
+     * @return $this
+     */
+    public function setLastExecutedPrice($last_executed_price)
+    {
+        $this->container['last_executed_price'] = $last_executed_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_executed_amount
+     *
+     * @return string
+     */
+    public function getLastExecutedAmount()
+    {
+        return $this->container['last_executed_amount'];
+    }
+
+    /**
+     * Sets last_executed_amount
+     *
+     * @param string $last_executed_amount Latest Filled Amount
+     *
+     * @return $this
+     */
+    public function setLastExecutedAmount($last_executed_amount)
+    {
+        $this->container['last_executed_amount'] = $last_executed_amount;
 
         return $this;
     }
@@ -690,7 +984,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Gets position_side
      *
-     * @return string|null
+     * @return string
      */
     public function getPositionSide()
     {
@@ -700,7 +994,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets position_side
      *
-     * @param string|null $position_side Position Direction
+     * @param string $position_side Position Direction
      *
      * @return $this
      */
@@ -714,7 +1008,7 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Gets create_time
      *
-     * @return string|null
+     * @return string
      */
     public function getCreateTime()
     {
@@ -724,13 +1018,37 @@ class InlineResponse20039 implements ModelInterface, ArrayAccess
     /**
      * Sets create_time
      *
-     * @param string|null $create_time Created time
+     * @param string $create_time Created time
      *
      * @return $this
      */
     public function setCreateTime($create_time)
     {
         $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_time
+     *
+     * @return string
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['update_time'];
+    }
+
+    /**
+     * Sets update_time
+     *
+     * @param string $update_time Update time
+     *
+     * @return $this
+     */
+    public function setUpdateTime($update_time)
+    {
+        $this->container['update_time'] = $update_time;
 
         return $this;
     }

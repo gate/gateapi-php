@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coin** | **string** | Currency | 
-**side** | **string** | 0 - Stake 1 - Redeem | 
+**side** | **int** | 0 - Stake 1 - Redeem | 
 **amount** | **string** | Size | 
 **pid** | **int** | DeFi-type Mining Protocol Identifier | [optional] 
 

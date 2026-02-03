@@ -79,7 +79,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
         'enable_new_dual_mode' => 'bool',
         'margin_mode' => 'int',
         'enable_tiered_mm' => 'bool',
-        'history' => '\GateApi\Model\FuturesAccountHistory'
+        'history' => '\GateApi\Model\DeliveryAccountHistory'
     ];
 
     /**
@@ -954,7 +954,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Gets history
      *
-     * @return \GateApi\Model\FuturesAccountHistory|null
+     * @return \GateApi\Model\DeliveryAccountHistory|null
      */
     public function getHistory()
     {
@@ -964,7 +964,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     /**
      * Sets history
      *
-     * @param \GateApi\Model\FuturesAccountHistory|null $history history
+     * @param \GateApi\Model\DeliveryAccountHistory|null $history history
      *
      * @return $this
      */

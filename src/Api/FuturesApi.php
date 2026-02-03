@@ -2715,6 +2715,259 @@ class FuturesApi
     }
 
     /**
+     * Operation listBatchFuturesFundingRates
+     *
+     * Batch Query Historical Funding Rate Data for Perpetual Contracts
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request batch_funding_rates_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\BatchFundingRatesResponse[]
+     */
+    public function listBatchFuturesFundingRates($settle, $batch_funding_rates_request)
+    {
+        list($response) = $this->listBatchFuturesFundingRatesWithHttpInfo($settle, $batch_funding_rates_request);
+        return $response;
+    }
+
+    /**
+     * Operation listBatchFuturesFundingRatesWithHttpInfo
+     *
+     * Batch Query Historical Funding Rate Data for Perpetual Contracts
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\BatchFundingRatesResponse[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listBatchFuturesFundingRatesWithHttpInfo($settle, $batch_funding_rates_request)
+    {
+        $request = $this->listBatchFuturesFundingRatesRequest($settle, $batch_funding_rates_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\BatchFundingRatesResponse[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listBatchFuturesFundingRatesAsync
+     *
+     * Batch Query Historical Funding Rate Data for Perpetual Contracts
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listBatchFuturesFundingRatesAsync($settle, $batch_funding_rates_request)
+    {
+        return $this->listBatchFuturesFundingRatesAsyncWithHttpInfo($settle, $batch_funding_rates_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listBatchFuturesFundingRatesAsyncWithHttpInfo
+     *
+     * Batch Query Historical Funding Rate Data for Perpetual Contracts
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listBatchFuturesFundingRatesAsyncWithHttpInfo($settle, $batch_funding_rates_request)
+    {
+        $returnType = '\GateApi\Model\BatchFundingRatesResponse[]';
+        $request = $this->listBatchFuturesFundingRatesRequest($settle, $batch_funding_rates_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listBatchFuturesFundingRates'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listBatchFuturesFundingRatesRequest($settle, $batch_funding_rates_request)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling listBatchFuturesFundingRates'
+            );
+        }
+        // verify the required parameter 'batch_funding_rates_request' is set
+        if ($batch_funding_rates_request === null || (is_array($batch_funding_rates_request) && count($batch_funding_rates_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_funding_rates_request when calling listBatchFuturesFundingRates'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/funding_rates';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($batch_funding_rates_request)) {
+            $_tempBody = $batch_funding_rates_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listFuturesInsuranceLedger
      *
      * Futures market insurance fund history
@@ -5066,6 +5319,368 @@ class FuturesApi
             }
             else {
                 $queryParams['holding'] = $holding;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // query params
+        if ($offset !== null) {
+            if('form' === 'form' && is_array($offset)) {
+                foreach($offset as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['offset'] = $offset;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listPositionsTimerange
+     *
+     * Get user's historical position information list by time
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
+     * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $offset List offset, starting from 0 (optional, default to 0)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\PositionTimerange[]
+     */
+    public function listPositionsTimerange($associative_array)
+    {
+        list($response) = $this->listPositionsTimerangeWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listPositionsTimerangeWithHttpInfo
+     *
+     * Get user's historical position information list by time
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
+     * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $offset List offset, starting from 0 (optional, default to 0)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\PositionTimerange[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listPositionsTimerangeWithHttpInfo($associative_array)
+    {
+        $request = $this->listPositionsTimerangeRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\PositionTimerange[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listPositionsTimerangeAsync
+     *
+     * Get user's historical position information list by time
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
+     * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $offset List offset, starting from 0 (optional, default to 0)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPositionsTimerangeAsync($associative_array)
+    {
+        return $this->listPositionsTimerangeAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listPositionsTimerangeAsyncWithHttpInfo
+     *
+     * Get user's historical position information list by time
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
+     * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $offset List offset, starting from 0 (optional, default to 0)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listPositionsTimerangeAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\PositionTimerange[]';
+        $request = $this->listPositionsTimerangeRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listPositionsTimerange'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
+     * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $offset List offset, starting from 0 (optional, default to 0)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listPositionsTimerangeRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $settle = array_key_exists('settle', $associative_array) ? $associative_array['settle'] : null;
+        $contract = array_key_exists('contract', $associative_array) ? $associative_array['contract'] : null;
+        $from = array_key_exists('from', $associative_array) ? $associative_array['from'] : null;
+        $to = array_key_exists('to', $associative_array) ? $associative_array['to'] : null;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 100;
+        $offset = array_key_exists('offset', $associative_array) ? $associative_array['offset'] : 0;
+
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling listPositionsTimerange'
+            );
+        }
+        // verify the required parameter 'contract' is set
+        if ($contract === null || (is_array($contract) && count($contract) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contract when calling listPositionsTimerange'
+            );
+        }
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling FuturesApi.listPositionsTimerange, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling FuturesApi.listPositionsTimerange, must be bigger than or equal to 1.');
+        }
+
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling FuturesApi.listPositionsTimerange, must be bigger than or equal to 0.');
+        }
+
+
+        $resourcePath = '/futures/{settle}/positions_timerange';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($contract !== null) {
+            if('form' === 'form' && is_array($contract)) {
+                foreach($contract as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['contract'] = $contract;
+            }
+        }
+
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
             }
         }
 
@@ -15029,6 +15644,2081 @@ class FuturesApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createTrailOrder
+     *
+     * Create trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\CreateTrailOrder $create_trail_order create_trail_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse201
+     */
+    public function createTrailOrder($settle, $create_trail_order)
+    {
+        list($response) = $this->createTrailOrderWithHttpInfo($settle, $create_trail_order);
+        return $response;
+    }
+
+    /**
+     * Operation createTrailOrderWithHttpInfo
+     *
+     * Create trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse201, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createTrailOrderWithHttpInfo($settle, $create_trail_order)
+    {
+        $request = $this->createTrailOrderRequest($settle, $create_trail_order);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse201';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createTrailOrderAsync
+     *
+     * Create trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTrailOrderAsync($settle, $create_trail_order)
+    {
+        return $this->createTrailOrderAsyncWithHttpInfo($settle, $create_trail_order)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createTrailOrderAsyncWithHttpInfo
+     *
+     * Create trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTrailOrderAsyncWithHttpInfo($settle, $create_trail_order)
+    {
+        $returnType = '\GateApi\Model\InlineResponse201';
+        $request = $this->createTrailOrderRequest($settle, $create_trail_order);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createTrailOrder'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createTrailOrderRequest($settle, $create_trail_order)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling createTrailOrder'
+            );
+        }
+        // verify the required parameter 'create_trail_order' is set
+        if ($create_trail_order === null || (is_array($create_trail_order) && count($create_trail_order) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_trail_order when calling createTrailOrder'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/autoorder/v1/trail/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($create_trail_order)) {
+            $_tempBody = $create_trail_order;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation stopTrailOrder
+     *
+     * Terminate trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopTrailOrder $stop_trail_order stop_trail_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse200
+     */
+    public function stopTrailOrder($settle, $stop_trail_order)
+    {
+        list($response) = $this->stopTrailOrderWithHttpInfo($settle, $stop_trail_order);
+        return $response;
+    }
+
+    /**
+     * Operation stopTrailOrderWithHttpInfo
+     *
+     * Terminate trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function stopTrailOrderWithHttpInfo($settle, $stop_trail_order)
+    {
+        $request = $this->stopTrailOrderRequest($settle, $stop_trail_order);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse200';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation stopTrailOrderAsync
+     *
+     * Terminate trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stopTrailOrderAsync($settle, $stop_trail_order)
+    {
+        return $this->stopTrailOrderAsyncWithHttpInfo($settle, $stop_trail_order)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation stopTrailOrderAsyncWithHttpInfo
+     *
+     * Terminate trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stopTrailOrderAsyncWithHttpInfo($settle, $stop_trail_order)
+    {
+        $returnType = '\GateApi\Model\InlineResponse200';
+        $request = $this->stopTrailOrderRequest($settle, $stop_trail_order);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'stopTrailOrder'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function stopTrailOrderRequest($settle, $stop_trail_order)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling stopTrailOrder'
+            );
+        }
+        // verify the required parameter 'stop_trail_order' is set
+        if ($stop_trail_order === null || (is_array($stop_trail_order) && count($stop_trail_order) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $stop_trail_order when calling stopTrailOrder'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/autoorder/v1/trail/stop';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($stop_trail_order)) {
+            $_tempBody = $stop_trail_order;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation stopAllTrailOrders
+     *
+     * Batch terminate trail orders
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders stop_all_trail_orders (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2001
+     */
+    public function stopAllTrailOrders($settle, $stop_all_trail_orders)
+    {
+        list($response) = $this->stopAllTrailOrdersWithHttpInfo($settle, $stop_all_trail_orders);
+        return $response;
+    }
+
+    /**
+     * Operation stopAllTrailOrdersWithHttpInfo
+     *
+     * Batch terminate trail orders
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function stopAllTrailOrdersWithHttpInfo($settle, $stop_all_trail_orders)
+    {
+        $request = $this->stopAllTrailOrdersRequest($settle, $stop_all_trail_orders);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2001';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation stopAllTrailOrdersAsync
+     *
+     * Batch terminate trail orders
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stopAllTrailOrdersAsync($settle, $stop_all_trail_orders)
+    {
+        return $this->stopAllTrailOrdersAsyncWithHttpInfo($settle, $stop_all_trail_orders)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation stopAllTrailOrdersAsyncWithHttpInfo
+     *
+     * Batch terminate trail orders
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stopAllTrailOrdersAsyncWithHttpInfo($settle, $stop_all_trail_orders)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2001';
+        $request = $this->stopAllTrailOrdersRequest($settle, $stop_all_trail_orders);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'stopAllTrailOrders'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function stopAllTrailOrdersRequest($settle, $stop_all_trail_orders)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling stopAllTrailOrders'
+            );
+        }
+        // verify the required parameter 'stop_all_trail_orders' is set
+        if ($stop_all_trail_orders === null || (is_array($stop_all_trail_orders) && count($stop_all_trail_orders) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $stop_all_trail_orders when calling stopAllTrailOrders'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/autoorder/v1/trail/stop_all';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($stop_all_trail_orders)) {
+            $_tempBody = $stop_all_trail_orders;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getTrailOrders
+     *
+     * Get trail order list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Contract name (optional)
+     * @param  bool $is_finished Whether historical order (optional)
+     * @param  int $start_at Start time of time range (optional)
+     * @param  int $end_at End time of time range (optional)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     * @param  int $sort_by Common sort field, 1-creation time, 2-end time (optional, default to 1)
+     * @param  bool $hide_cancel Hide cancelled orders (optional, default to false)
+     * @param  int $related_position Associated position, if provided, only return orders associated with this position, 1-long, 2-short (optional)
+     * @param  bool $sort_by_trigger Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions (optional, default to false)
+     * @param  int $reduce_only Whether reduce only, 1-yes, 2-no (optional)
+     * @param  int $side Direction, 1-long position, 2-short position (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2001
+     */
+    public function getTrailOrders($associative_array)
+    {
+        list($response) = $this->getTrailOrdersWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getTrailOrdersWithHttpInfo
+     *
+     * Get trail order list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Contract name (optional)
+     * @param  bool $is_finished Whether historical order (optional)
+     * @param  int $start_at Start time of time range (optional)
+     * @param  int $end_at End time of time range (optional)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     * @param  int $sort_by Common sort field, 1-creation time, 2-end time (optional, default to 1)
+     * @param  bool $hide_cancel Hide cancelled orders (optional, default to false)
+     * @param  int $related_position Associated position, if provided, only return orders associated with this position, 1-long, 2-short (optional)
+     * @param  bool $sort_by_trigger Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions (optional, default to false)
+     * @param  int $reduce_only Whether reduce only, 1-yes, 2-no (optional)
+     * @param  int $side Direction, 1-long position, 2-short position (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTrailOrdersWithHttpInfo($associative_array)
+    {
+        $request = $this->getTrailOrdersRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2001';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getTrailOrdersAsync
+     *
+     * Get trail order list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Contract name (optional)
+     * @param  bool $is_finished Whether historical order (optional)
+     * @param  int $start_at Start time of time range (optional)
+     * @param  int $end_at End time of time range (optional)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     * @param  int $sort_by Common sort field, 1-creation time, 2-end time (optional, default to 1)
+     * @param  bool $hide_cancel Hide cancelled orders (optional, default to false)
+     * @param  int $related_position Associated position, if provided, only return orders associated with this position, 1-long, 2-short (optional)
+     * @param  bool $sort_by_trigger Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions (optional, default to false)
+     * @param  int $reduce_only Whether reduce only, 1-yes, 2-no (optional)
+     * @param  int $side Direction, 1-long position, 2-short position (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTrailOrdersAsync($associative_array)
+    {
+        return $this->getTrailOrdersAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTrailOrdersAsyncWithHttpInfo
+     *
+     * Get trail order list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Contract name (optional)
+     * @param  bool $is_finished Whether historical order (optional)
+     * @param  int $start_at Start time of time range (optional)
+     * @param  int $end_at End time of time range (optional)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     * @param  int $sort_by Common sort field, 1-creation time, 2-end time (optional, default to 1)
+     * @param  bool $hide_cancel Hide cancelled orders (optional, default to false)
+     * @param  int $related_position Associated position, if provided, only return orders associated with this position, 1-long, 2-short (optional)
+     * @param  bool $sort_by_trigger Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions (optional, default to false)
+     * @param  int $reduce_only Whether reduce only, 1-yes, 2-no (optional)
+     * @param  int $side Direction, 1-long position, 2-short position (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTrailOrdersAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2001';
+        $request = $this->getTrailOrdersRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTrailOrders'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  string $contract Contract name (optional)
+     * @param  bool $is_finished Whether historical order (optional)
+     * @param  int $start_at Start time of time range (optional)
+     * @param  int $end_at End time of time range (optional)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     * @param  int $sort_by Common sort field, 1-creation time, 2-end time (optional, default to 1)
+     * @param  bool $hide_cancel Hide cancelled orders (optional, default to false)
+     * @param  int $related_position Associated position, if provided, only return orders associated with this position, 1-long, 2-short (optional)
+     * @param  bool $sort_by_trigger Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions (optional, default to false)
+     * @param  int $reduce_only Whether reduce only, 1-yes, 2-no (optional)
+     * @param  int $side Direction, 1-long position, 2-short position (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getTrailOrdersRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $settle = array_key_exists('settle', $associative_array) ? $associative_array['settle'] : null;
+        $contract = array_key_exists('contract', $associative_array) ? $associative_array['contract'] : null;
+        $is_finished = array_key_exists('is_finished', $associative_array) ? $associative_array['is_finished'] : null;
+        $start_at = array_key_exists('start_at', $associative_array) ? $associative_array['start_at'] : null;
+        $end_at = array_key_exists('end_at', $associative_array) ? $associative_array['end_at'] : null;
+        $page_num = array_key_exists('page_num', $associative_array) ? $associative_array['page_num'] : 1;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : 20;
+        $sort_by = array_key_exists('sort_by', $associative_array) ? $associative_array['sort_by'] : 1;
+        $hide_cancel = array_key_exists('hide_cancel', $associative_array) ? $associative_array['hide_cancel'] : false;
+        $related_position = array_key_exists('related_position', $associative_array) ? $associative_array['related_position'] : null;
+        $sort_by_trigger = array_key_exists('sort_by_trigger', $associative_array) ? $associative_array['sort_by_trigger'] : false;
+        $reduce_only = array_key_exists('reduce_only', $associative_array) ? $associative_array['reduce_only'] : null;
+        $side = array_key_exists('side', $associative_array) ? $associative_array['side'] : null;
+
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling getTrailOrders'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/autoorder/v1/trail/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($contract !== null) {
+            if('form' === 'form' && is_array($contract)) {
+                foreach($contract as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['contract'] = $contract;
+            }
+        }
+
+        // query params
+        if ($is_finished !== null) {
+            if('form' === 'form' && is_array($is_finished)) {
+                foreach($is_finished as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['is_finished'] = $is_finished;
+            }
+        }
+
+        // query params
+        if ($start_at !== null) {
+            if('form' === 'form' && is_array($start_at)) {
+                foreach($start_at as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_at'] = $start_at;
+            }
+        }
+
+        // query params
+        if ($end_at !== null) {
+            if('form' === 'form' && is_array($end_at)) {
+                foreach($end_at as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_at'] = $end_at;
+            }
+        }
+
+        // query params
+        if ($page_num !== null) {
+            if('form' === 'form' && is_array($page_num)) {
+                foreach($page_num as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_num'] = $page_num;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
+
+        // query params
+        if ($sort_by !== null) {
+            if('form' === 'form' && is_array($sort_by)) {
+                foreach($sort_by as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort_by'] = $sort_by;
+            }
+        }
+
+        // query params
+        if ($hide_cancel !== null) {
+            if('form' === 'form' && is_array($hide_cancel)) {
+                foreach($hide_cancel as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['hide_cancel'] = $hide_cancel;
+            }
+        }
+
+        // query params
+        if ($related_position !== null) {
+            if('form' === 'form' && is_array($related_position)) {
+                foreach($related_position as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['related_position'] = $related_position;
+            }
+        }
+
+        // query params
+        if ($sort_by_trigger !== null) {
+            if('form' === 'form' && is_array($sort_by_trigger)) {
+                foreach($sort_by_trigger as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort_by_trigger'] = $sort_by_trigger;
+            }
+        }
+
+        // query params
+        if ($reduce_only !== null) {
+            if('form' === 'form' && is_array($reduce_only)) {
+                foreach($reduce_only as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['reduce_only'] = $reduce_only;
+            }
+        }
+
+        // query params
+        if ($side !== null) {
+            if('form' === 'form' && is_array($side)) {
+                foreach($side as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['side'] = $side;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getTrailOrderDetail
+     *
+     * Get trail order details
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2002
+     */
+    public function getTrailOrderDetail($settle, $id)
+    {
+        list($response) = $this->getTrailOrderDetailWithHttpInfo($settle, $id);
+        return $response;
+    }
+
+    /**
+     * Operation getTrailOrderDetailWithHttpInfo
+     *
+     * Get trail order details
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTrailOrderDetailWithHttpInfo($settle, $id)
+    {
+        $request = $this->getTrailOrderDetailRequest($settle, $id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2002';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getTrailOrderDetailAsync
+     *
+     * Get trail order details
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTrailOrderDetailAsync($settle, $id)
+    {
+        return $this->getTrailOrderDetailAsyncWithHttpInfo($settle, $id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTrailOrderDetailAsyncWithHttpInfo
+     *
+     * Get trail order details
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTrailOrderDetailAsyncWithHttpInfo($settle, $id)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2002';
+        $request = $this->getTrailOrderDetailRequest($settle, $id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTrailOrderDetail'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getTrailOrderDetailRequest($settle, $id)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling getTrailOrderDetail'
+            );
+        }
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getTrailOrderDetail'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/autoorder/v1/trail/detail';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($id !== null) {
+            if('form' === 'form' && is_array($id)) {
+                foreach($id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['id'] = $id;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateTrailOrder
+     *
+     * Update trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order update_trail_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse200
+     */
+    public function updateTrailOrder($settle, $update_trail_order)
+    {
+        list($response) = $this->updateTrailOrderWithHttpInfo($settle, $update_trail_order);
+        return $response;
+    }
+
+    /**
+     * Operation updateTrailOrderWithHttpInfo
+     *
+     * Update trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateTrailOrderWithHttpInfo($settle, $update_trail_order)
+    {
+        $request = $this->updateTrailOrderRequest($settle, $update_trail_order);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse200';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation updateTrailOrderAsync
+     *
+     * Update trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateTrailOrderAsync($settle, $update_trail_order)
+    {
+        return $this->updateTrailOrderAsyncWithHttpInfo($settle, $update_trail_order)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateTrailOrderAsyncWithHttpInfo
+     *
+     * Update trail order
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateTrailOrderAsyncWithHttpInfo($settle, $update_trail_order)
+    {
+        $returnType = '\GateApi\Model\InlineResponse200';
+        $request = $this->updateTrailOrderRequest($settle, $update_trail_order);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateTrailOrder'
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateTrailOrderRequest($settle, $update_trail_order)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling updateTrailOrder'
+            );
+        }
+        // verify the required parameter 'update_trail_order' is set
+        if ($update_trail_order === null || (is_array($update_trail_order) && count($update_trail_order) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_trail_order when calling updateTrailOrder'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/autoorder/v1/trail/update';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($update_trail_order)) {
+            $_tempBody = $update_trail_order;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getTrailOrderChangeLog
+     *
+     * Get trail order user modification records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2003
+     */
+    public function getTrailOrderChangeLog($associative_array)
+    {
+        list($response) = $this->getTrailOrderChangeLogWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getTrailOrderChangeLogWithHttpInfo
+     *
+     * Get trail order user modification records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTrailOrderChangeLogWithHttpInfo($associative_array)
+    {
+        $request = $this->getTrailOrderChangeLogRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2003';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getTrailOrderChangeLogAsync
+     *
+     * Get trail order user modification records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTrailOrderChangeLogAsync($associative_array)
+    {
+        return $this->getTrailOrderChangeLogAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTrailOrderChangeLogAsyncWithHttpInfo
+     *
+     * Get trail order user modification records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTrailOrderChangeLogAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2003';
+        $request = $this->getTrailOrderChangeLogRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTrailOrderChangeLog'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Settle currency (required)
+     * @param  int $id Order ID (required)
+     * @param  int $page_num Page number, starting from 1 (optional, default to 1)
+     * @param  int $page_size Number of items per page (optional, default to 20)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getTrailOrderChangeLogRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $settle = array_key_exists('settle', $associative_array) ? $associative_array['settle'] : null;
+        $id = array_key_exists('id', $associative_array) ? $associative_array['id'] : null;
+        $page_num = array_key_exists('page_num', $associative_array) ? $associative_array['page_num'] : 1;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : 20;
+
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling getTrailOrderChangeLog'
+            );
+        }
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getTrailOrderChangeLog'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/autoorder/v1/trail/change_log';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($id !== null) {
+            if('form' === 'form' && is_array($id)) {
+                foreach($id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['id'] = $id;
+            }
+        }
+
+        // query params
+        if ($page_num !== null) {
+            if('form' === 'form' && is_array($page_num)) {
+                foreach($page_num as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_num'] = $page_num;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

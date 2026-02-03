@@ -54,8 +54,17 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_id' => 'float',
-        'text' => 'string'
+        'id' => 'string',
+        'text' => 'string',
+        'from_account_type' => 'string',
+        'to_account_type' => 'string',
+        'coin' => 'string',
+        'amount' => 'string',
+        'actual_receive' => 'string',
+        'status' => 'string',
+        'fail_reason' => 'string',
+        'create_time' => 'int',
+        'update_time' => 'int'
     ];
 
     /**
@@ -64,8 +73,17 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
-        'text' => null
+        'id' => null,
+        'text' => null,
+        'from_account_type' => null,
+        'to_account_type' => null,
+        'coin' => null,
+        'amount' => null,
+        'actual_receive' => null,
+        'status' => null,
+        'fail_reason' => null,
+        'create_time' => null,
+        'update_time' => null
     ];
 
     /**
@@ -95,8 +113,17 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'order_id',
-        'text' => 'text'
+        'id' => 'id',
+        'text' => 'text',
+        'from_account_type' => 'from_account_type',
+        'to_account_type' => 'to_account_type',
+        'coin' => 'coin',
+        'amount' => 'amount',
+        'actual_receive' => 'actual_receive',
+        'status' => 'status',
+        'fail_reason' => 'fail_reason',
+        'create_time' => 'create_time',
+        'update_time' => 'update_time'
     ];
 
     /**
@@ -105,8 +132,17 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId',
-        'text' => 'setText'
+        'id' => 'setId',
+        'text' => 'setText',
+        'from_account_type' => 'setFromAccountType',
+        'to_account_type' => 'setToAccountType',
+        'coin' => 'setCoin',
+        'amount' => 'setAmount',
+        'actual_receive' => 'setActualReceive',
+        'status' => 'setStatus',
+        'fail_reason' => 'setFailReason',
+        'create_time' => 'setCreateTime',
+        'update_time' => 'setUpdateTime'
     ];
 
     /**
@@ -115,8 +151,17 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId',
-        'text' => 'getText'
+        'id' => 'getId',
+        'text' => 'getText',
+        'from_account_type' => 'getFromAccountType',
+        'to_account_type' => 'getToAccountType',
+        'coin' => 'getCoin',
+        'amount' => 'getAmount',
+        'actual_receive' => 'getActualReceive',
+        'status' => 'getStatus',
+        'fail_reason' => 'getFailReason',
+        'create_time' => 'getCreateTime',
+        'update_time' => 'getUpdateTime'
     ];
 
     /**
@@ -179,8 +224,17 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['from_account_type'] = isset($data['from_account_type']) ? $data['from_account_type'] : null;
+        $this->container['to_account_type'] = isset($data['to_account_type']) ? $data['to_account_type'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['actual_receive'] = isset($data['actual_receive']) ? $data['actual_receive'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['fail_reason'] = isset($data['fail_reason']) ? $data['fail_reason'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
     }
 
     /**
@@ -192,11 +246,32 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['order_id'] === null) {
-            $invalidProperties[] = "'order_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['text'] === null) {
             $invalidProperties[] = "'text' can't be null";
+        }
+        if ($this->container['from_account_type'] === null) {
+            $invalidProperties[] = "'from_account_type' can't be null";
+        }
+        if ($this->container['to_account_type'] === null) {
+            $invalidProperties[] = "'to_account_type' can't be null";
+        }
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
+        }
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['create_time'] === null) {
+            $invalidProperties[] = "'create_time' can't be null";
+        }
+        if ($this->container['update_time'] === null) {
+            $invalidProperties[] = "'update_time' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,25 +289,25 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets order_id
+     * Gets id
      *
-     * @return float
+     * @return string
      */
-    public function getOrderId()
+    public function getId()
     {
-        return $this->container['order_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets order_id
+     * Sets id
      *
-     * @param float $order_id order_id
+     * @param string $id Order ID
      *
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setId($id)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -250,13 +325,229 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
     /**
      * Sets text
      *
-     * @param string $text text
+     * @param string $text Client Custom ID
      *
      * @return $this
      */
     public function setText($text)
     {
         $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_account_type
+     *
+     * @return string
+     */
+    public function getFromAccountType()
+    {
+        return $this->container['from_account_type'];
+    }
+
+    /**
+     * Sets from_account_type
+     *
+     * @param string $from_account_type Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
+     *
+     * @return $this
+     */
+    public function setFromAccountType($from_account_type)
+    {
+        $this->container['from_account_type'] = $from_account_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_account_type
+     *
+     * @return string
+     */
+    public function getToAccountType()
+    {
+        return $this->container['to_account_type'];
+    }
+
+    /**
+     * Sets to_account_type
+     *
+     * @param string $to_account_type to_account_type
+     *
+     * @return $this
+     */
+    public function setToAccountType($to_account_type)
+    {
+        $this->container['to_account_type'] = $to_account_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets coin
+     *
+     * @return string
+     */
+    public function getCoin()
+    {
+        return $this->container['coin'];
+    }
+
+    /**
+     * Sets coin
+     *
+     * @param string $coin Currency
+     *
+     * @return $this
+     */
+    public function setCoin($coin)
+    {
+        $this->container['coin'] = $coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount
+     *
+     * @return string
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param string $amount Transfer amount, the amount requested for the transfer
+     *
+     * @return $this
+     */
+    public function setAmount($amount)
+    {
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets actual_receive
+     *
+     * @return string|null
+     */
+    public function getActualReceive()
+    {
+        return $this->container['actual_receive'];
+    }
+
+    /**
+     * Sets actual_receive
+     *
+     * @param string|null $actual_receive Actual credited amount (has a value when status = SUCCESS; empty for other statuses)
+     *
+     * @return $this
+     */
+    public function setActualReceive($actual_receive)
+    {
+        $this->container['actual_receive'] = $actual_receive;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status Transfer Status - `FAIL`: Failed - `SUCCESS`: Successful - `PENDING`: Transfer in Progress
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets fail_reason
+     *
+     * @return string|null
+     */
+    public function getFailReason()
+    {
+        return $this->container['fail_reason'];
+    }
+
+    /**
+     * Sets fail_reason
+     *
+     * @param string|null $fail_reason Failure reason (has a value when status = FAIL; empty for other statuses)
+     *
+     * @return $this
+     */
+    public function setFailReason($fail_reason)
+    {
+        $this->container['fail_reason'] = $fail_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_time
+     *
+     * @return int
+     */
+    public function getCreateTime()
+    {
+        return $this->container['create_time'];
+    }
+
+    /**
+     * Sets create_time
+     *
+     * @param int $create_time Creation time of order
+     *
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_time
+     *
+     * @return int
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['update_time'];
+    }
+
+    /**
+     * Sets update_time
+     *
+     * @param int $update_time OrderUpdateTime
+     *
+     * @return $this
+     */
+    public function setUpdateTime($update_time)
+    {
+        $this->container['update_time'] = $update_time;
 
         return $this;
     }

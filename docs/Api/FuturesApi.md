@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**listFuturesPremiumIndex**](FuturesApi.md#listFuturesPremiumIndex) | **GET** /futures/{settle}/premium_index | Premium Index K-line chart
 [**listFuturesTickers**](FuturesApi.md#listFuturesTickers) | **GET** /futures/{settle}/tickers | Get all futures trading statistics
 [**listFuturesFundingRateHistory**](FuturesApi.md#listFuturesFundingRateHistory) | **GET** /futures/{settle}/funding_rate | Futures market historical funding rate
+[**listBatchFuturesFundingRates**](FuturesApi.md#listBatchFuturesFundingRates) | **POST** /futures/{settle}/funding_rates | Batch Query Historical Funding Rate Data for Perpetual Contracts
 [**listFuturesInsuranceLedger**](FuturesApi.md#listFuturesInsuranceLedger) | **GET** /futures/{settle}/insurance | Futures market insurance fund history
 [**listContractStats**](FuturesApi.md#listContractStats) | **GET** /futures/{settle}/contract_stats | Futures statistics
 [**getIndexConstituents**](FuturesApi.md#getIndexConstituents) | **GET** /futures/{settle}/index_constituents/{index} | Query index constituents
@@ -20,6 +21,7 @@ Method | HTTP request | Description
 [**listFuturesAccounts**](FuturesApi.md#listFuturesAccounts) | **GET** /futures/{settle}/accounts | Get futures account
 [**listFuturesAccountBook**](FuturesApi.md#listFuturesAccountBook) | **GET** /futures/{settle}/account_book | Query futures account change history
 [**listPositions**](FuturesApi.md#listPositions) | **GET** /futures/{settle}/positions | Get user position list
+[**listPositionsTimerange**](FuturesApi.md#listPositionsTimerange) | **GET** /futures/{settle}/positions_timerange | Get user&#39;s historical position information list by time
 [**getPosition**](FuturesApi.md#getPosition) | **GET** /futures/{settle}/positions/{contract} | Get single position information
 [**getLeverage**](FuturesApi.md#getLeverage) | **GET** /futures/{settle}/get_leverage/{contract} | Get Leverage Information for Specified Mode
 [**updatePositionMargin**](FuturesApi.md#updatePositionMargin) | **POST** /futures/{settle}/positions/{contract}/margin | Update position margin
@@ -53,6 +55,13 @@ Method | HTTP request | Description
 [**amendBatchFutureOrders**](FuturesApi.md#amendBatchFutureOrders) | **POST** /futures/{settle}/batch_amend_orders | Batch modify orders by specified IDs
 [**getFuturesRiskLimitTable**](FuturesApi.md#getFuturesRiskLimitTable) | **GET** /futures/{settle}/risk_limit_table | Query risk limit table by table_id
 [**createFuturesBBOOrder**](FuturesApi.md#createFuturesBBOOrder) | **POST** /futures/{settle}/bbo_orders | Level-based BBO Contract Order Placement
+[**createTrailOrder**](FuturesApi.md#createTrailOrder) | **POST** /futures/{settle}/autoorder/v1/trail/create | Create trail order
+[**stopTrailOrder**](FuturesApi.md#stopTrailOrder) | **POST** /futures/{settle}/autoorder/v1/trail/stop | Terminate trail order
+[**stopAllTrailOrders**](FuturesApi.md#stopAllTrailOrders) | **POST** /futures/{settle}/autoorder/v1/trail/stop_all | Batch terminate trail orders
+[**getTrailOrders**](FuturesApi.md#getTrailOrders) | **GET** /futures/{settle}/autoorder/v1/trail/list | Get trail order list
+[**getTrailOrderDetail**](FuturesApi.md#getTrailOrderDetail) | **GET** /futures/{settle}/autoorder/v1/trail/detail | Get trail order details
+[**updateTrailOrder**](FuturesApi.md#updateTrailOrder) | **POST** /futures/{settle}/autoorder/v1/trail/update | Update trail order
+[**getTrailOrderChangeLog**](FuturesApi.md#getTrailOrderChangeLog) | **GET** /futures/{settle}/autoorder/v1/trail/change_log | Get trail order user modification records
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/{settle}/price_orders | Query auto order list
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/{settle}/price_orders | Create price-triggered order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
@@ -587,6 +596,64 @@ No authorization required
 [[Back to README]](../../README.md)
 
 
+## listBatchFuturesFundingRates
+
+> \GateApi\Model\BatchFundingRatesResponse[] listBatchFuturesFundingRates($settle, $batch_funding_rates_request)
+
+Batch Query Historical Funding Rate Data for Perpetual Contracts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$settle = 'usdt'; // string | Settle currency
+$batch_funding_rates_request = new \GateApi\Model\BatchFundingRatesRequest(); // \GateApi\Model\BatchFundingRatesRequest | 
+
+try {
+    $result = $apiInstance->listBatchFuturesFundingRates($settle, $batch_funding_rates_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->listBatchFuturesFundingRates: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **batch_funding_rates_request** | [**\GateApi\Model\BatchFundingRatesRequest**](../Model/BatchFundingRatesRequest.md)|  |
+
+### Return type
+
+[**\GateApi\Model\BatchFundingRatesResponse[]**](../Model/BatchFundingRatesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## listFuturesInsuranceLedger
 
 > \GateApi\Model\InsuranceRecord[] listFuturesInsuranceLedger($settle, $limit)
@@ -1096,6 +1163,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\Position[]**](../Model/Position.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listPositionsTimerange
+
+> \GateApi\Model\PositionTimerange[] listPositionsTimerange($settle, $contract, $from, $to, $limit, $offset)
+
+Get user's historical position information list by time
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
+$associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
+$associate_array['to'] = 1547706332; // int | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
+$associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
+$associate_array['offset'] = 0; // int | List offset, starting from 0
+
+try {
+    $result = $apiInstance->listPositionsTimerange($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->listPositionsTimerange: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **contract** | **string**| Futures contract |
+ **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
+ **to** | **int**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional]
+ **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
+ **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
+
+### Return type
+
+[**\GateApi\Model\PositionTimerange[]**](../Model/PositionTimerange.md)
 
 ### Authorization
 
@@ -3328,6 +3467,470 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createTrailOrder
+
+> \GateApi\Model\InlineResponse201 createTrailOrder($settle, $create_trail_order)
+
+Create trail order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$create_trail_order = new \GateApi\Model\CreateTrailOrder(); // \GateApi\Model\CreateTrailOrder | 
+
+try {
+    $result = $apiInstance->createTrailOrder($settle, $create_trail_order);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->createTrailOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **create_trail_order** | [**\GateApi\Model\CreateTrailOrder**](../Model/CreateTrailOrder.md)|  |
+
+### Return type
+
+[**\GateApi\Model\InlineResponse201**](../Model/InlineResponse201.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## stopTrailOrder
+
+> \GateApi\Model\InlineResponse200 stopTrailOrder($settle, $stop_trail_order)
+
+Terminate trail order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$stop_trail_order = new \GateApi\Model\StopTrailOrder(); // \GateApi\Model\StopTrailOrder | 
+
+try {
+    $result = $apiInstance->stopTrailOrder($settle, $stop_trail_order);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->stopTrailOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **stop_trail_order** | [**\GateApi\Model\StopTrailOrder**](../Model/StopTrailOrder.md)|  |
+
+### Return type
+
+[**\GateApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## stopAllTrailOrders
+
+> \GateApi\Model\InlineResponse2001 stopAllTrailOrders($settle, $stop_all_trail_orders)
+
+Batch terminate trail orders
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$stop_all_trail_orders = new \GateApi\Model\StopAllTrailOrders(); // \GateApi\Model\StopAllTrailOrders | 
+
+try {
+    $result = $apiInstance->stopAllTrailOrders($settle, $stop_all_trail_orders);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->stopAllTrailOrders: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **stop_all_trail_orders** | [**\GateApi\Model\StopAllTrailOrders**](../Model/StopAllTrailOrders.md)|  |
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getTrailOrders
+
+> \GateApi\Model\InlineResponse2001 getTrailOrders($settle, $contract, $is_finished, $start_at, $end_at, $page_num, $page_size, $sort_by, $hide_cancel, $related_position, $sort_by_trigger, $reduce_only, $side)
+
+Get trail order list
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['contract'] = 'contract_example'; // string | Contract name
+$associate_array['is_finished'] = True; // bool | Whether historical order
+$associate_array['start_at'] = 56; // int | Start time of time range
+$associate_array['end_at'] = 56; // int | End time of time range
+$associate_array['page_num'] = 1; // int | Page number, starting from 1
+$associate_array['page_size'] = 20; // int | Number of items per page
+$associate_array['sort_by'] = 1; // int | Common sort field, 1-creation time, 2-end time
+$associate_array['hide_cancel'] = false; // bool | Hide cancelled orders
+$associate_array['related_position'] = 56; // int | Associated position, if provided, only return orders associated with this position, 1-long, 2-short
+$associate_array['sort_by_trigger'] = false; // bool | Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions
+$associate_array['reduce_only'] = 56; // int | Whether reduce only, 1-yes, 2-no
+$associate_array['side'] = 56; // int | Direction, 1-long position, 2-short position
+
+try {
+    $result = $apiInstance->getTrailOrders($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->getTrailOrders: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **contract** | **string**| Contract name | [optional]
+ **is_finished** | **bool**| Whether historical order | [optional]
+ **start_at** | **int**| Start time of time range | [optional]
+ **end_at** | **int**| End time of time range | [optional]
+ **page_num** | **int**| Page number, starting from 1 | [optional] [default to 1]
+ **page_size** | **int**| Number of items per page | [optional] [default to 20]
+ **sort_by** | **int**| Common sort field, 1-creation time, 2-end time | [optional] [default to 1]
+ **hide_cancel** | **bool**| Hide cancelled orders | [optional] [default to false]
+ **related_position** | **int**| Associated position, if provided, only return orders associated with this position, 1-long, 2-short | [optional]
+ **sort_by_trigger** | **bool**| Sort by trigger price and activation price, easy to trigger or activate first, only for current orders associated with positions | [optional] [default to false]
+ **reduce_only** | **int**| Whether reduce only, 1-yes, 2-no | [optional]
+ **side** | **int**| Direction, 1-long position, 2-short position | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getTrailOrderDetail
+
+> \GateApi\Model\InlineResponse2002 getTrailOrderDetail($settle, $id)
+
+Get trail order details
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$id = 56; // int | Order ID
+
+try {
+    $result = $apiInstance->getTrailOrderDetail($settle, $id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->getTrailOrderDetail: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **id** | **int**| Order ID |
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## updateTrailOrder
+
+> \GateApi\Model\InlineResponse200 updateTrailOrder($settle, $update_trail_order)
+
+Update trail order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settle = 'usdt'; // string | Settle currency
+$update_trail_order = new \GateApi\Model\UpdateTrailOrder(); // \GateApi\Model\UpdateTrailOrder | 
+
+try {
+    $result = $apiInstance->updateTrailOrder($settle, $update_trail_order);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->updateTrailOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **update_trail_order** | [**\GateApi\Model\UpdateTrailOrder**](../Model/UpdateTrailOrder.md)|  |
+
+### Return type
+
+[**\GateApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getTrailOrderChangeLog
+
+> \GateApi\Model\InlineResponse2003 getTrailOrderChangeLog($settle, $id, $page_num, $page_size)
+
+Get trail order user modification records
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['id'] = 56; // int | Order ID
+$associate_array['page_num'] = 1; // int | Page number, starting from 1
+$associate_array['page_size'] = 20; // int | Number of items per page
+
+try {
+    $result = $apiInstance->getTrailOrderChangeLog($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->getTrailOrderChangeLog: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Settle currency |
+ **id** | **int**| Order ID |
+ **page_num** | **int**| Page number, starting from 1 | [optional] [default to 1]
+ **page_size** | **int**| Number of items per page | [optional] [default to 20]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)

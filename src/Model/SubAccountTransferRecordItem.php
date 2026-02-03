@@ -400,7 +400,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Transfer amount
+     * @param string $amount Transfer Amount
      *
      * @return $this
      */

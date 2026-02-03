@@ -54,13 +54,8 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'quote_id' => 'string',
-        'valid_ms' => 'string',
-        'from_coin' => 'string',
-        'to_coin' => 'string',
-        'from_amount' => 'string',
-        'to_amount' => 'string',
-        'price' => 'string'
+        'tx_id' => 'string',
+        'text' => 'string'
     ];
 
     /**
@@ -69,13 +64,8 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'quote_id' => null,
-        'valid_ms' => null,
-        'from_coin' => null,
-        'to_coin' => null,
-        'from_amount' => null,
-        'to_amount' => null,
-        'price' => null
+        'tx_id' => null,
+        'text' => null
     ];
 
     /**
@@ -105,13 +95,8 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'quote_id' => 'quote_id',
-        'valid_ms' => 'valid_ms',
-        'from_coin' => 'from_coin',
-        'to_coin' => 'to_coin',
-        'from_amount' => 'from_amount',
-        'to_amount' => 'to_amount',
-        'price' => 'price'
+        'tx_id' => 'tx_id',
+        'text' => 'text'
     ];
 
     /**
@@ -120,13 +105,8 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'quote_id' => 'setQuoteId',
-        'valid_ms' => 'setValidMs',
-        'from_coin' => 'setFromCoin',
-        'to_coin' => 'setToCoin',
-        'from_amount' => 'setFromAmount',
-        'to_amount' => 'setToAmount',
-        'price' => 'setPrice'
+        'tx_id' => 'setTxId',
+        'text' => 'setText'
     ];
 
     /**
@@ -135,13 +115,8 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'quote_id' => 'getQuoteId',
-        'valid_ms' => 'getValidMs',
-        'from_coin' => 'getFromCoin',
-        'to_coin' => 'getToCoin',
-        'from_amount' => 'getFromAmount',
-        'to_amount' => 'getToAmount',
-        'price' => 'getPrice'
+        'tx_id' => 'getTxId',
+        'text' => 'getText'
     ];
 
     /**
@@ -204,13 +179,8 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
-        $this->container['valid_ms'] = isset($data['valid_ms']) ? $data['valid_ms'] : null;
-        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
-        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
-        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
-        $this->container['to_amount'] = isset($data['to_amount']) ? $data['to_amount'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['tx_id'] = isset($data['tx_id']) ? $data['tx_id'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -222,26 +192,11 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['quote_id'] === null) {
-            $invalidProperties[] = "'quote_id' can't be null";
+        if ($this->container['tx_id'] === null) {
+            $invalidProperties[] = "'tx_id' can't be null";
         }
-        if ($this->container['valid_ms'] === null) {
-            $invalidProperties[] = "'valid_ms' can't be null";
-        }
-        if ($this->container['from_coin'] === null) {
-            $invalidProperties[] = "'from_coin' can't be null";
-        }
-        if ($this->container['to_coin'] === null) {
-            $invalidProperties[] = "'to_coin' can't be null";
-        }
-        if ($this->container['from_amount'] === null) {
-            $invalidProperties[] = "'from_amount' can't be null";
-        }
-        if ($this->container['to_amount'] === null) {
-            $invalidProperties[] = "'to_amount' can't be null";
-        }
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,169 +214,49 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets quote_id
+     * Gets tx_id
      *
      * @return string
      */
-    public function getQuoteId()
+    public function getTxId()
     {
-        return $this->container['quote_id'];
+        return $this->container['tx_id'];
     }
 
     /**
-     * Sets quote_id
+     * Sets tx_id
      *
-     * @param string $quote_id Quote ID
+     * @param string $tx_id Order ID
      *
      * @return $this
      */
-    public function setQuoteId($quote_id)
+    public function setTxId($tx_id)
     {
-        $this->container['quote_id'] = $quote_id;
+        $this->container['tx_id'] = $tx_id;
 
         return $this;
     }
 
     /**
-     * Gets valid_ms
+     * Gets text
      *
      * @return string
      */
-    public function getValidMs()
+    public function getText()
     {
-        return $this->container['valid_ms'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets valid_ms
+     * Sets text
      *
-     * @param string $valid_ms Valid time (milliseconds timestamp)
+     * @param string $text User-defined Order ID
      *
      * @return $this
      */
-    public function setValidMs($valid_ms)
+    public function setText($text)
     {
-        $this->container['valid_ms'] = $valid_ms;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_coin
-     *
-     * @return string
-     */
-    public function getFromCoin()
-    {
-        return $this->container['from_coin'];
-    }
-
-    /**
-     * Sets from_coin
-     *
-     * @param string $from_coin Asset Sold
-     *
-     * @return $this
-     */
-    public function setFromCoin($from_coin)
-    {
-        $this->container['from_coin'] = $from_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets to_coin
-     *
-     * @return string
-     */
-    public function getToCoin()
-    {
-        return $this->container['to_coin'];
-    }
-
-    /**
-     * Sets to_coin
-     *
-     * @param string $to_coin Asset Bought
-     *
-     * @return $this
-     */
-    public function setToCoin($to_coin)
-    {
-        $this->container['to_coin'] = $to_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_amount
-     *
-     * @return string
-     */
-    public function getFromAmount()
-    {
-        return $this->container['from_amount'];
-    }
-
-    /**
-     * Sets from_amount
-     *
-     * @param string $from_amount Amount to sell
-     *
-     * @return $this
-     */
-    public function setFromAmount($from_amount)
-    {
-        $this->container['from_amount'] = $from_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets to_amount
-     *
-     * @return string
-     */
-    public function getToAmount()
-    {
-        return $this->container['to_amount'];
-    }
-
-    /**
-     * Sets to_amount
-     *
-     * @param string $to_amount Amount to buy
-     *
-     * @return $this
-     */
-    public function setToAmount($to_amount)
-    {
-        $this->container['to_amount'] = $to_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param string $price Price
-     *
-     * @return $this
-     */
-    public function setPrice($price)
-    {
-        $this->container['price'] = $price;
+        $this->container['text'] = $text;
 
         return $this;
     }

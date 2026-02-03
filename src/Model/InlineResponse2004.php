@@ -54,8 +54,8 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string'
+        'time' => 'int',
+        'value' => 'string'
     ];
 
     /**
@@ -64,8 +64,8 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null
+        'time' => 'int64',
+        'value' => null
     ];
 
     /**
@@ -95,8 +95,8 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message'
+        'time' => 'time',
+        'value' => 'value'
     ];
 
     /**
@@ -105,8 +105,8 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage'
+        'time' => 'setTime',
+        'value' => 'setValue'
     ];
 
     /**
@@ -115,8 +115,8 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage'
+        'time' => 'getTime',
+        'value' => 'getValue'
     ];
 
     /**
@@ -179,8 +179,8 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -192,12 +192,6 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -214,49 +208,49 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets time
      *
-     * @return int
+     * @return int|null
      */
-    public function getCode()
+    public function getTime()
     {
-        return $this->container['code'];
+        return $this->container['time'];
     }
 
     /**
-     * Sets code
+     * Sets time
      *
-     * @param int $code code
+     * @param int|null $time time
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setTime($time)
     {
-        $this->container['code'] = $code;
+        $this->container['time'] = $time;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets value
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage()
+    public function getValue()
     {
-        return $this->container['message'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets message
+     * Sets value
      *
-     * @param string $message message
+     * @param string|null $value value
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setValue($value)
     {
-        $this->container['message'] = $message;
+        $this->container['value'] = $value;
 
         return $this;
     }

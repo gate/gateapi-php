@@ -76,6 +76,7 @@ class Contract implements ModelInterface, ArrayAccess
         'risk_limit_step' => 'string',
         'risk_limit_max' => 'string',
         'order_size_min' => 'string',
+        'enable_decimal' => 'bool',
         'order_size_max' => 'string',
         'order_price_deviate' => 'string',
         'ref_discount_rate' => 'string',
@@ -127,6 +128,7 @@ class Contract implements ModelInterface, ArrayAccess
         'risk_limit_step' => null,
         'risk_limit_max' => null,
         'order_size_min' => null,
+        'enable_decimal' => null,
         'order_size_max' => null,
         'order_price_deviate' => null,
         'ref_discount_rate' => null,
@@ -199,6 +201,7 @@ class Contract implements ModelInterface, ArrayAccess
         'risk_limit_step' => 'risk_limit_step',
         'risk_limit_max' => 'risk_limit_max',
         'order_size_min' => 'order_size_min',
+        'enable_decimal' => 'enable_decimal',
         'order_size_max' => 'order_size_max',
         'order_price_deviate' => 'order_price_deviate',
         'ref_discount_rate' => 'ref_discount_rate',
@@ -250,6 +253,7 @@ class Contract implements ModelInterface, ArrayAccess
         'risk_limit_step' => 'setRiskLimitStep',
         'risk_limit_max' => 'setRiskLimitMax',
         'order_size_min' => 'setOrderSizeMin',
+        'enable_decimal' => 'setEnableDecimal',
         'order_size_max' => 'setOrderSizeMax',
         'order_price_deviate' => 'setOrderPriceDeviate',
         'ref_discount_rate' => 'setRefDiscountRate',
@@ -301,6 +305,7 @@ class Contract implements ModelInterface, ArrayAccess
         'risk_limit_step' => 'getRiskLimitStep',
         'risk_limit_max' => 'getRiskLimitMax',
         'order_size_min' => 'getOrderSizeMin',
+        'enable_decimal' => 'getEnableDecimal',
         'order_size_max' => 'getOrderSizeMax',
         'order_price_deviate' => 'getOrderPriceDeviate',
         'ref_discount_rate' => 'getRefDiscountRate',
@@ -436,6 +441,7 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['risk_limit_step'] = isset($data['risk_limit_step']) ? $data['risk_limit_step'] : null;
         $this->container['risk_limit_max'] = isset($data['risk_limit_max']) ? $data['risk_limit_max'] : null;
         $this->container['order_size_min'] = isset($data['order_size_min']) ? $data['order_size_min'] : null;
+        $this->container['enable_decimal'] = isset($data['enable_decimal']) ? $data['enable_decimal'] : null;
         $this->container['order_size_max'] = isset($data['order_size_max']) ? $data['order_size_max'] : null;
         $this->container['order_price_deviate'] = isset($data['order_price_deviate']) ? $data['order_price_deviate'] : null;
         $this->container['ref_discount_rate'] = isset($data['ref_discount_rate']) ? $data['ref_discount_rate'] : null;
@@ -1018,6 +1024,30 @@ class Contract implements ModelInterface, ArrayAccess
     public function setOrderSizeMin($order_size_min)
     {
         $this->container['order_size_min'] = $order_size_min;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_decimal
+     *
+     * @return bool|null
+     */
+    public function getEnableDecimal()
+    {
+        return $this->container['enable_decimal'];
+    }
+
+    /**
+     * Sets enable_decimal
+     *
+     * @param bool|null $enable_decimal Whether decimal string type is supported for contract lot size. When this field is set to `true`, it indicates that the contract supports decimal lot sizes (i.e., the `size` field can use a decimal string type); when set to `false`, it indicates that the contract does not support decimal lot sizes (i.e., the `size` field can only use an integer type).
+     *
+     * @return $this
+     */
+    public function setEnableDecimal($enable_decimal)
+    {
+        $this->container['enable_decimal'] = $enable_decimal;
 
         return $this;
     }

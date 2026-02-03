@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**order_id** | **string** | Order ID | 
-**text** | **string** | User-defined Order ID | 
+**symbol** | **string** |  | [optional] 
+**tiers** | [**\GateApi\Model\RuleRiskLimitsTiers[]**](RuleRiskLimitsTiers.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

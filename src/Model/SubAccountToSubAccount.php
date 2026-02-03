@@ -412,7 +412,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Transfer amount
+     * @param string $amount Transfer Amount, supports up to 8 decimal places, must be greater than 0
      *
      * @return $this
      */

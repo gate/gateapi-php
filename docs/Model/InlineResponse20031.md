@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**spot_maker_fee** | **string** | spotMakerfee rate | 
-**spot_taker_fee** | **string** | spotTakerfee rate | 
-**future_maker_fee** | **string** | contractMakerfee rate | 
-**future_taker_fee** | **string** | contractTakerfee rate | 
-**special_fee_list** | [**\GateApi\Model\InlineResponse20031SpecialFeeList[]**](InlineResponse20031SpecialFeeList.md) |  | 
+**quote_id** | **string** | Quote ID | 
+**valid_ms** | **string** | Valid time (milliseconds timestamp) | 
+**from_coin** | **string** | Asset Sold | 
+**to_coin** | **string** | Asset Bought | 
+**from_amount** | **string** | Amount to sell | 
+**to_amount** | **string** | Amount to buy | 
+**price** | **string** | Price | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

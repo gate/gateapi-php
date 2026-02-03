@@ -4,14 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Account Change Record ID | 
-**user_id** | **string** | User ID | 
-**business_id** | **string** | Business ID | 
-**type** | **string** | 变更类型| &#x60;TRANSACTION&#x60; 成交 &#x60;TRADING_FEE&#x60; 手续费 &#x60;FUNDING_FEE&#x60; 合约资金费 &#x60;LIQUIDATION_FEE&#x60; 强平费 &#x60;TRANSFER_IN&#x60; 资金转入 &#x60;TRANSFER_OUT&#x60; 资金转出 &#x60;BANKRUPT_COMPENSATION&#x60; 穿仓补贴 &#x60;AUTO_REPAY&#x60; 杠杆仓位自动还负债 | 
-**exchange_type** | **string** | Exchange | 
-**coin** | **string** | Currency | 
-**change** | **string** | Change amount (positive indicates transfer in; negative indicates transfer out) | 
-**balance** | **string** | Balance after change | 
-**create_time** | **string** | Created time | 
+**position_id** | **string** | Position ID | [optional] 
+**user_id** | **string** | User ID | [optional] 
+**symbol** | **string** | Currency pair | [optional] 
+**closed_type** | **string** | Position close type (PARTIAL_CLOSED: partially closed; COMPLETE_CLOSED: fully closed) | [optional] 
+**closed_pnl** | **string** | Close Position P&amp;L | [optional] 
+**closed_pnl_rate** | **string** | Close Position P&amp;L Ratio | [optional] 
+**open_avg_price** | **string** | Average Opening Price | [optional] 
+**closed_avg_price** | **string** | Average Close Price | [optional] 
+**max_position_qty** | **string** | Max Trade Size | [optional] 
+**closed_qty** | **string** | Close Position Quantity | [optional] 
+**closed_value** | **string** | Close Position Value | [optional] 
+**fee** | **string** | Position Accumulated Fees | [optional] 
+**liq_fee** | **string** | Liquidation Fee | [optional] 
+**funding_fee** | **string** | Funding Fee | [optional] 
+**position_side** | **string** | Position Direction Before Close | [optional] 
+**position_mode** | **string** | Position Mode at Close | [optional] 
+**leverage** | **string** | Leverage at Close | [optional] 
+**business_type** | **string** | Business Type | 
+**create_time** | **string** | Created time | [optional] 
+**update_time** | **string** | Update time | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

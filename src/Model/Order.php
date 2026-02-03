@@ -362,6 +362,7 @@ class Order implements ModelInterface, ArrayAccess
     const FINISH_AS_POC = 'poc';
     const FINISH_AS_FOK = 'fok';
     const FINISH_AS_STP = 'stp';
+    const FINISH_AS_PRICE_PROTECT_CANCELLED = 'price_protect_cancelled';
     const FINISH_AS_UNKNOWN = 'unknown';
     
 
@@ -455,6 +456,7 @@ class Order implements ModelInterface, ArrayAccess
             self::FINISH_AS_POC,
             self::FINISH_AS_FOK,
             self::FINISH_AS_STP,
+            self::FINISH_AS_PRICE_PROTECT_CANCELLED,
             self::FINISH_AS_UNKNOWN,
         ];
     }
@@ -1469,7 +1471,7 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Sets finish_as
      *
-     * @param string|null $finish_as Order completion statuses include:  - open: Awaiting processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled due to liquidation - small: Order quantity too small - depth_not_enough: Cancelled due to insufficient market depth - trader_not_enough: Cancelled due to insufficient counterparty - ioc: Not immediately filled because tif is set to ioc - poc: Not met the order poc - fok: Not fully filled immediately because tif is set to fok - stp: Cancelled due to self-trade prevention - unknown: Unknown
+     * @param string|null $finish_as Order completion statuses include:  - open: Awaiting processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled due to liquidation - small: Order quantity too small - depth_not_enough: Cancelled due to insufficient market depth - trader_not_enough: Cancelled due to insufficient counterparty - ioc: Not immediately filled because tif is set to ioc - poc: Not met the order poc - fok: Not fully filled immediately because tif is set to fok - stp: Cancelled due to self-trade prevention - price_protect_cancelled: Order cancelled due to price protection- unknown: Unknown
      *
      * @return $this
      */

@@ -54,11 +54,12 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
-        'min_trans_amount' => 'float',
-        'est_fee' => 'float',
-        'precision' => 'int',
-        'is_disabled' => 'int'
+        'timestamp' => 'float',
+        'method' => 'string',
+        'code' => 'int',
+        'message' => 'string',
+        'data' => '\GateApi\Model\InlineResponse20021Data',
+        'version' => 'string'
     ];
 
     /**
@@ -67,11 +68,12 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
-        'min_trans_amount' => null,
-        'est_fee' => null,
-        'precision' => null,
-        'is_disabled' => null
+        'timestamp' => null,
+        'method' => null,
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'version' => null
     ];
 
     /**
@@ -101,11 +103,12 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
-        'min_trans_amount' => 'min_trans_amount',
-        'est_fee' => 'est_fee',
-        'precision' => 'precision',
-        'is_disabled' => 'is_disabled'
+        'timestamp' => 'timestamp',
+        'method' => 'method',
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'version' => 'version'
     ];
 
     /**
@@ -114,11 +117,12 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
-        'min_trans_amount' => 'setMinTransAmount',
-        'est_fee' => 'setEstFee',
-        'precision' => 'setPrecision',
-        'is_disabled' => 'setIsDisabled'
+        'timestamp' => 'setTimestamp',
+        'method' => 'setMethod',
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -127,11 +131,12 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
-        'min_trans_amount' => 'getMinTransAmount',
-        'est_fee' => 'getEstFee',
-        'precision' => 'getPrecision',
-        'is_disabled' => 'getIsDisabled'
+        'timestamp' => 'getTimestamp',
+        'method' => 'getMethod',
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -194,11 +199,12 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['min_trans_amount'] = isset($data['min_trans_amount']) ? $data['min_trans_amount'] : null;
-        $this->container['est_fee'] = isset($data['est_fee']) ? $data['est_fee'] : null;
-        $this->container['precision'] = isset($data['precision']) ? $data['precision'] : null;
-        $this->container['is_disabled'] = isset($data['is_disabled']) ? $data['is_disabled'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
     }
 
     /**
@@ -210,20 +216,23 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
         }
-        if ($this->container['min_trans_amount'] === null) {
-            $invalidProperties[] = "'min_trans_amount' can't be null";
+        if ($this->container['method'] === null) {
+            $invalidProperties[] = "'method' can't be null";
         }
-        if ($this->container['est_fee'] === null) {
-            $invalidProperties[] = "'est_fee' can't be null";
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
         }
-        if ($this->container['precision'] === null) {
-            $invalidProperties[] = "'precision' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['is_disabled'] === null) {
-            $invalidProperties[] = "'is_disabled' can't be null";
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
         }
         return $invalidProperties;
     }
@@ -241,121 +250,145 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
+     * Gets timestamp
+     *
+     * @return float
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param float $timestamp timestamp
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
      *
      * @return string
      */
-    public function getCoin()
+    public function getMethod()
     {
-        return $this->container['coin'];
+        return $this->container['method'];
     }
 
     /**
-     * Sets coin
+     * Sets method
      *
-     * @param string $coin Currency
+     * @param string $method method
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setMethod($method)
     {
-        $this->container['coin'] = $coin;
+        $this->container['method'] = $method;
 
         return $this;
     }
 
     /**
-     * Gets min_trans_amount
-     *
-     * @return float
-     */
-    public function getMinTransAmount()
-    {
-        return $this->container['min_trans_amount'];
-    }
-
-    /**
-     * Sets min_trans_amount
-     *
-     * @param float $min_trans_amount Minimum Transfer Quantity (including estimated fees)
-     *
-     * @return $this
-     */
-    public function setMinTransAmount($min_trans_amount)
-    {
-        $this->container['min_trans_amount'] = $min_trans_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets est_fee
-     *
-     * @return float
-     */
-    public function getEstFee()
-    {
-        return $this->container['est_fee'];
-    }
-
-    /**
-     * Sets est_fee
-     *
-     * @param float $est_fee Estimated Fee
-     *
-     * @return $this
-     */
-    public function setEstFee($est_fee)
-    {
-        $this->container['est_fee'] = $est_fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets precision
+     * Gets code
      *
      * @return int
      */
-    public function getPrecision()
+    public function getCode()
     {
-        return $this->container['precision'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets precision
+     * Sets code
      *
-     * @param int $precision Precision
+     * @param int $code code
      *
      * @return $this
      */
-    public function setPrecision($precision)
+    public function setCode($code)
     {
-        $this->container['precision'] = $precision;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets is_disabled
+     * Gets message
      *
-     * @return int
+     * @return string
      */
-    public function getIsDisabled()
+    public function getMessage()
     {
-        return $this->container['is_disabled'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets is_disabled
+     * Sets message
      *
-     * @param int $is_disabled If it is disabled. 0 means NOT being disabled
+     * @param string $message message
      *
      * @return $this
      */
-    public function setIsDisabled($is_disabled)
+    public function setMessage($message)
     {
-        $this->container['is_disabled'] = $is_disabled;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \GateApi\Model\InlineResponse20021Data
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \GateApi\Model\InlineResponse20021Data $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string $version version
+     *
+     * @return $this
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }

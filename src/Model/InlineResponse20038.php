@@ -56,15 +56,8 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'user_id' => 'string',
         'symbol' => 'string',
-        'interest_id' => 'string',
-        'liability_id' => 'string',
-        'liability' => 'string',
-        'liability_coin' => 'string',
-        'interest' => 'string',
-        'interest_rate' => 'string',
-        'interest_type' => 'string',
-        'create_time' => 'string',
-        'exchange_type' => 'string'
+        'crossex_adl_rank' => 'string',
+        'exchange_adl_rank' => 'string'
     ];
 
     /**
@@ -75,15 +68,8 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'user_id' => null,
         'symbol' => null,
-        'interest_id' => null,
-        'liability_id' => null,
-        'liability' => null,
-        'liability_coin' => null,
-        'interest' => null,
-        'interest_rate' => null,
-        'interest_type' => null,
-        'create_time' => null,
-        'exchange_type' => null
+        'crossex_adl_rank' => null,
+        'exchange_adl_rank' => null
     ];
 
     /**
@@ -113,17 +99,10 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_id' => 'userId',
+        'user_id' => 'user_id',
         'symbol' => 'symbol',
-        'interest_id' => 'interest_id',
-        'liability_id' => 'liability_id',
-        'liability' => 'liability',
-        'liability_coin' => 'liability_coin',
-        'interest' => 'interest',
-        'interest_rate' => 'interest_rate',
-        'interest_type' => 'interest_type',
-        'create_time' => 'create_time',
-        'exchange_type' => 'exchange_type'
+        'crossex_adl_rank' => 'crossex_adl_rank',
+        'exchange_adl_rank' => 'exchange_adl_rank'
     ];
 
     /**
@@ -134,15 +113,8 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     protected static $setters = [
         'user_id' => 'setUserId',
         'symbol' => 'setSymbol',
-        'interest_id' => 'setInterestId',
-        'liability_id' => 'setLiabilityId',
-        'liability' => 'setLiability',
-        'liability_coin' => 'setLiabilityCoin',
-        'interest' => 'setInterest',
-        'interest_rate' => 'setInterestRate',
-        'interest_type' => 'setInterestType',
-        'create_time' => 'setCreateTime',
-        'exchange_type' => 'setExchangeType'
+        'crossex_adl_rank' => 'setCrossexAdlRank',
+        'exchange_adl_rank' => 'setExchangeAdlRank'
     ];
 
     /**
@@ -153,15 +125,8 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     protected static $getters = [
         'user_id' => 'getUserId',
         'symbol' => 'getSymbol',
-        'interest_id' => 'getInterestId',
-        'liability_id' => 'getLiabilityId',
-        'liability' => 'getLiability',
-        'liability_coin' => 'getLiabilityCoin',
-        'interest' => 'getInterest',
-        'interest_rate' => 'getInterestRate',
-        'interest_type' => 'getInterestType',
-        'create_time' => 'getCreateTime',
-        'exchange_type' => 'getExchangeType'
+        'crossex_adl_rank' => 'getCrossexAdlRank',
+        'exchange_adl_rank' => 'getExchangeAdlRank'
     ];
 
     /**
@@ -226,15 +191,8 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['interest_id'] = isset($data['interest_id']) ? $data['interest_id'] : null;
-        $this->container['liability_id'] = isset($data['liability_id']) ? $data['liability_id'] : null;
-        $this->container['liability'] = isset($data['liability']) ? $data['liability'] : null;
-        $this->container['liability_coin'] = isset($data['liability_coin']) ? $data['liability_coin'] : null;
-        $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
-        $this->container['interest_rate'] = isset($data['interest_rate']) ? $data['interest_rate'] : null;
-        $this->container['interest_type'] = isset($data['interest_type']) ? $data['interest_type'] : null;
-        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['crossex_adl_rank'] = isset($data['crossex_adl_rank']) ? $data['crossex_adl_rank'] : null;
+        $this->container['exchange_adl_rank'] = isset($data['exchange_adl_rank']) ? $data['exchange_adl_rank'] : null;
     }
 
     /**
@@ -252,32 +210,11 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
         if ($this->container['symbol'] === null) {
             $invalidProperties[] = "'symbol' can't be null";
         }
-        if ($this->container['interest_id'] === null) {
-            $invalidProperties[] = "'interest_id' can't be null";
+        if ($this->container['crossex_adl_rank'] === null) {
+            $invalidProperties[] = "'crossex_adl_rank' can't be null";
         }
-        if ($this->container['liability_id'] === null) {
-            $invalidProperties[] = "'liability_id' can't be null";
-        }
-        if ($this->container['liability'] === null) {
-            $invalidProperties[] = "'liability' can't be null";
-        }
-        if ($this->container['liability_coin'] === null) {
-            $invalidProperties[] = "'liability_coin' can't be null";
-        }
-        if ($this->container['interest'] === null) {
-            $invalidProperties[] = "'interest' can't be null";
-        }
-        if ($this->container['interest_rate'] === null) {
-            $invalidProperties[] = "'interest_rate' can't be null";
-        }
-        if ($this->container['interest_type'] === null) {
-            $invalidProperties[] = "'interest_type' can't be null";
-        }
-        if ($this->container['create_time'] === null) {
-            $invalidProperties[] = "'create_time' can't be null";
-        }
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
+        if ($this->container['exchange_adl_rank'] === null) {
+            $invalidProperties[] = "'exchange_adl_rank' can't be null";
         }
         return $invalidProperties;
     }
@@ -331,7 +268,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Trading Pair
+     * @param string $symbol Currency pair
      *
      * @return $this
      */
@@ -343,217 +280,49 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets interest_id
+     * Gets crossex_adl_rank
      *
      * @return string
      */
-    public function getInterestId()
+    public function getCrossexAdlRank()
     {
-        return $this->container['interest_id'];
+        return $this->container['crossex_adl_rank'];
     }
 
     /**
-     * Sets interest_id
+     * Sets crossex_adl_rank
      *
-     * @param string $interest_id Interest Deduction ID
+     * @param string $crossex_adl_rank CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
      *
      * @return $this
      */
-    public function setInterestId($interest_id)
+    public function setCrossexAdlRank($crossex_adl_rank)
     {
-        $this->container['interest_id'] = $interest_id;
+        $this->container['crossex_adl_rank'] = $crossex_adl_rank;
 
         return $this;
     }
 
     /**
-     * Gets liability_id
+     * Gets exchange_adl_rank
      *
      * @return string
      */
-    public function getLiabilityId()
+    public function getExchangeAdlRank()
     {
-        return $this->container['liability_id'];
+        return $this->container['exchange_adl_rank'];
     }
 
     /**
-     * Sets liability_id
+     * Sets exchange_adl_rank
      *
-     * @param string $liability_id Debt Source ID, can be Order ID or Position ID
+     * @param string $exchange_adl_rank Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
      *
      * @return $this
      */
-    public function setLiabilityId($liability_id)
+    public function setExchangeAdlRank($exchange_adl_rank)
     {
-        $this->container['liability_id'] = $liability_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets liability
-     *
-     * @return string
-     */
-    public function getLiability()
-    {
-        return $this->container['liability'];
-    }
-
-    /**
-     * Sets liability
-     *
-     * @param string $liability Debt Quantity
-     *
-     * @return $this
-     */
-    public function setLiability($liability)
-    {
-        $this->container['liability'] = $liability;
-
-        return $this;
-    }
-
-    /**
-     * Gets liability_coin
-     *
-     * @return string
-     */
-    public function getLiabilityCoin()
-    {
-        return $this->container['liability_coin'];
-    }
-
-    /**
-     * Sets liability_coin
-     *
-     * @param string $liability_coin Debt Currency
-     *
-     * @return $this
-     */
-    public function setLiabilityCoin($liability_coin)
-    {
-        $this->container['liability_coin'] = $liability_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets interest
-     *
-     * @return string
-     */
-    public function getInterest()
-    {
-        return $this->container['interest'];
-    }
-
-    /**
-     * Sets interest
-     *
-     * @param string $interest Interest
-     *
-     * @return $this
-     */
-    public function setInterest($interest)
-    {
-        $this->container['interest'] = $interest;
-
-        return $this;
-    }
-
-    /**
-     * Gets interest_rate
-     *
-     * @return string
-     */
-    public function getInterestRate()
-    {
-        return $this->container['interest_rate'];
-    }
-
-    /**
-     * Sets interest_rate
-     *
-     * @param string $interest_rate interest rate
-     *
-     * @return $this
-     */
-    public function setInterestRate($interest_rate)
-    {
-        $this->container['interest_rate'] = $interest_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets interest_type
-     *
-     * @return string
-     */
-    public function getInterestType()
-    {
-        return $this->container['interest_type'];
-    }
-
-    /**
-     * Sets interest_type
-     *
-     * @param string $interest_type Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
-     *
-     * @return $this
-     */
-    public function setInterestType($interest_type)
-    {
-        $this->container['interest_type'] = $interest_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_time
-     *
-     * @return string
-     */
-    public function getCreateTime()
-    {
-        return $this->container['create_time'];
-    }
-
-    /**
-     * Sets create_time
-     *
-     * @param string $create_time Created time
-     *
-     * @return $this
-     */
-    public function setCreateTime($create_time)
-    {
-        $this->container['create_time'] = $create_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets exchange_type
-     *
-     * @return string
-     */
-    public function getExchangeType()
-    {
-        return $this->container['exchange_type'];
-    }
-
-    /**
-     * Sets exchange_type
-     *
-     * @param string $exchange_type Exchange
-     *
-     * @return $this
-     */
-    public function setExchangeType($exchange_type)
-    {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['exchange_adl_rank'] = $exchange_adl_rank;
 
         return $this;
     }

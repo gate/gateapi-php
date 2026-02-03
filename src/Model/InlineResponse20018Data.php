@@ -54,7 +54,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'srvtm' => 'int'
+        'status' => 'int'
     ];
 
     /**
@@ -63,7 +63,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'srvtm' => null
+        'status' => null
     ];
 
     /**
@@ -93,7 +93,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'srvtm' => 'SRVTM'
+        'status' => 'status'
     ];
 
     /**
@@ -102,7 +102,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'srvtm' => 'setSrvtm'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -111,7 +111,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'srvtm' => 'getSrvtm'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -174,7 +174,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['srvtm'] = isset($data['srvtm']) ? $data['srvtm'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -186,8 +186,8 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['srvtm'] === null) {
-            $invalidProperties[] = "'srvtm' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         return $invalidProperties;
     }
@@ -205,25 +205,25 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets srvtm
+     * Gets status
      *
      * @return int
      */
-    public function getSrvtm()
+    public function getStatus()
     {
-        return $this->container['srvtm'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets srvtm
+     * Sets status
      *
-     * @param int $srvtm Timestamp when message was successfully sent (current timestamp)
+     * @param int $status Ad status after successful update
      *
      * @return $this
      */
-    public function setSrvtm($srvtm)
+    public function setStatus($status)
     {
-        $this->container['srvtm'] = $srvtm;
+        $this->container['status'] = $status;
 
         return $this;
     }

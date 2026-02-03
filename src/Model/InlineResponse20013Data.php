@@ -54,78 +54,37 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'is_sell' => 'int',
-        'txid' => 'int',
-        'orderid' => 'int',
-        'timest' => 'int',
-        'last_pay_time' => 'int',
-        'remain_pay_time' => 'int',
-        'currency_type' => 'string',
-        'want_type' => 'string',
-        'rate' => 'string',
-        'amount' => 'string',
-        'total' => 'string',
-        'status' => 'string',
-        'reason_id' => 'string',
-        'reason_desc' => 'string',
-        'toast_id' => 'int',
-        'cancel_time' => 'string',
-        'seller_confirm' => 'int',
-        'in_appeal' => 'int',
-        'dispute_time' => 'int',
-        'cancelable' => 'int',
-        'hide_payment' => 'int',
-        'trade_tips' => 'string',
-        'show_bank' => 'string',
-        'bankname' => 'string',
-        'bankbranch' => 'string',
-        'bankid' => 'string',
-        'bank_holder_realname' => 'string',
-        'show_ali' => 'string',
-        'aliname' => 'string',
-        'is_alicode' => 'int',
-        'show_wechat' => 'string',
-        'wename' => 'string',
-        'show_others' => 'string',
-        'pay_others' => 'string[]',
-        'sel_paytype' => 'string',
-        'its_uid' => 'string',
-        'its_is_blue_vip' => 'int',
-        'its_tier' => 'int',
-        'its_avatar' => 'string',
-        'its_nickname' => 'string',
-        'its_realname' => 'string',
-        'is_follow' => 'int',
+        'is_self' => 'bool',
+        'user_timest' => 'string',
+        'counterparties_num' => 'int',
+        'email_verified' => 'string',
+        'verified' => 'string',
+        'has_phone' => 'string',
+        'user_name' => 'string',
+        'user_note' => 'string',
+        'complete_transactions' => 'string',
+        'paid_transactions' => 'string',
+        'accepted_transactions' => 'string',
+        'transactions_used_time' => 'string',
+        'cancelled_used_time_month' => 'string',
+        'complete_transactions_month' => 'string',
+        'complete_rate_month' => 'int',
+        'orders_buy_rate_month' => 'int',
         'is_black' => 'int',
+        'is_follow' => 'int',
         'have_traded' => 'int',
-        'appeal_unread' => 'int',
-        'appeal_allow_cancel' => 'int',
-        'appeal_verdict_has_open' => 'string',
-        'im_unread' => 'int',
-        'message' => 'string',
-        'score' => 'string',
-        'payment_voucher_url' => 'string[]',
-        'complete_number' => 'int',
-        'complete_rate_month' => 'string',
-        'check_journal_account' => 'bool',
-        'show_journal_account' => 'bool',
-        'is_freeze_guarantee' => 'int',
-        'usdt_left_guarantee' => 'string',
-        'guarantee_curr_type' => 'string',
-        'timest_paid' => 'int',
-        'state' => 'string',
-        'release_coin_switch' => 'int',
-        'own_realname' => 'string',
-        'confirmation_use_time_month' => 'int',
-        'is_risk_user' => 'int',
-        'is_xt' => 'int',
-        'order_type' => 'int',
-        'symbol' => 'string',
-        'is_show_receive' => 'int',
-        'is_taker' => 'int',
-        'is_online' => 'int',
-        'show_seller_contact_info' => 'bool',
-        'supported_pay_types' => 'string[]'
+        'biz_uid' => 'string',
+        'blue_vip' => 'int',
+        'work_status' => 'int',
+        'registration_days' => 'int',
+        'first_trade_days' => 'int',
+        'need_replenish' => 'int',
+        'merchant_info' => '\GateApi\Model\InlineResponse20013DataMerchantInfo',
+        'online_status' => 'int',
+        'work_hours' => 'AnyType',
+        'transactions_month' => 'int',
+        'transactions_all' => 'int',
+        'trade_versatile' => 'bool'
     ];
 
     /**
@@ -134,78 +93,37 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'is_sell' => null,
-        'txid' => null,
-        'orderid' => null,
-        'timest' => null,
-        'last_pay_time' => null,
-        'remain_pay_time' => null,
-        'currency_type' => null,
-        'want_type' => null,
-        'rate' => null,
-        'amount' => null,
-        'total' => null,
-        'status' => null,
-        'reason_id' => null,
-        'reason_desc' => null,
-        'toast_id' => null,
-        'cancel_time' => null,
-        'seller_confirm' => null,
-        'in_appeal' => null,
-        'dispute_time' => null,
-        'cancelable' => null,
-        'hide_payment' => null,
-        'trade_tips' => null,
-        'show_bank' => null,
-        'bankname' => null,
-        'bankbranch' => null,
-        'bankid' => null,
-        'bank_holder_realname' => null,
-        'show_ali' => null,
-        'aliname' => null,
-        'is_alicode' => null,
-        'show_wechat' => null,
-        'wename' => null,
-        'show_others' => null,
-        'pay_others' => null,
-        'sel_paytype' => null,
-        'its_uid' => null,
-        'its_is_blue_vip' => null,
-        'its_tier' => null,
-        'its_avatar' => null,
-        'its_nickname' => null,
-        'its_realname' => null,
-        'is_follow' => null,
-        'is_black' => null,
-        'have_traded' => null,
-        'appeal_unread' => null,
-        'appeal_allow_cancel' => null,
-        'appeal_verdict_has_open' => null,
-        'im_unread' => null,
-        'message' => null,
-        'score' => null,
-        'payment_voucher_url' => null,
-        'complete_number' => null,
+        'is_self' => null,
+        'user_timest' => null,
+        'counterparties_num' => null,
+        'email_verified' => null,
+        'verified' => null,
+        'has_phone' => null,
+        'user_name' => null,
+        'user_note' => null,
+        'complete_transactions' => null,
+        'paid_transactions' => null,
+        'accepted_transactions' => null,
+        'transactions_used_time' => null,
+        'cancelled_used_time_month' => null,
+        'complete_transactions_month' => null,
         'complete_rate_month' => null,
-        'check_journal_account' => null,
-        'show_journal_account' => null,
-        'is_freeze_guarantee' => null,
-        'usdt_left_guarantee' => null,
-        'guarantee_curr_type' => null,
-        'timest_paid' => null,
-        'state' => null,
-        'release_coin_switch' => null,
-        'own_realname' => null,
-        'confirmation_use_time_month' => null,
-        'is_risk_user' => null,
-        'is_xt' => null,
-        'order_type' => null,
-        'symbol' => null,
-        'is_show_receive' => null,
-        'is_taker' => null,
-        'is_online' => null,
-        'show_seller_contact_info' => null,
-        'supported_pay_types' => null
+        'orders_buy_rate_month' => null,
+        'is_black' => null,
+        'is_follow' => null,
+        'have_traded' => null,
+        'biz_uid' => null,
+        'blue_vip' => null,
+        'work_status' => null,
+        'registration_days' => null,
+        'first_trade_days' => null,
+        'need_replenish' => null,
+        'merchant_info' => null,
+        'online_status' => null,
+        'work_hours' => null,
+        'transactions_month' => null,
+        'transactions_all' => null,
+        'trade_versatile' => null
     ];
 
     /**
@@ -235,78 +153,37 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'is_sell' => 'is_sell',
-        'txid' => 'txid',
-        'orderid' => 'orderid',
-        'timest' => 'timest',
-        'last_pay_time' => 'last_pay_time',
-        'remain_pay_time' => 'remain_pay_time',
-        'currency_type' => 'currencyType',
-        'want_type' => 'want_type',
-        'rate' => 'rate',
-        'amount' => 'amount',
-        'total' => 'total',
-        'status' => 'status',
-        'reason_id' => 'reason_id',
-        'reason_desc' => 'reason_desc',
-        'toast_id' => 'toast_id',
-        'cancel_time' => 'cancel_time',
-        'seller_confirm' => 'seller_confirm',
-        'in_appeal' => 'in_appeal',
-        'dispute_time' => 'dispute_time',
-        'cancelable' => 'cancelable',
-        'hide_payment' => 'hide_payment',
-        'trade_tips' => 'trade_tips',
-        'show_bank' => 'show_bank',
-        'bankname' => 'bankname',
-        'bankbranch' => 'bankbranch',
-        'bankid' => 'bankid',
-        'bank_holder_realname' => 'bank_holder_realname',
-        'show_ali' => 'show_ali',
-        'aliname' => 'aliname',
-        'is_alicode' => 'is_alicode',
-        'show_wechat' => 'show_wechat',
-        'wename' => 'wename',
-        'show_others' => 'show_others',
-        'pay_others' => 'pay_others',
-        'sel_paytype' => 'sel_paytype',
-        'its_uid' => 'its_uid',
-        'its_is_blue_vip' => 'its_is_blue_vip',
-        'its_tier' => 'its_tier',
-        'its_avatar' => 'its_avatar',
-        'its_nickname' => 'its_nickname',
-        'its_realname' => 'its_realname',
-        'is_follow' => 'is_follow',
-        'is_black' => 'is_black',
-        'have_traded' => 'have_traded',
-        'appeal_unread' => 'appeal_unread',
-        'appeal_allow_cancel' => 'appeal_allow_cancel',
-        'appeal_verdict_has_open' => 'appeal_verdict_has_open',
-        'im_unread' => 'im_unread',
-        'message' => 'message',
-        'score' => 'score',
-        'payment_voucher_url' => 'payment_voucher_url',
-        'complete_number' => 'complete_number',
+        'is_self' => 'is_self',
+        'user_timest' => 'user_timest',
+        'counterparties_num' => 'counterparties_num',
+        'email_verified' => 'email_verified',
+        'verified' => 'verified',
+        'has_phone' => 'has_phone',
+        'user_name' => 'user_name',
+        'user_note' => 'user_note',
+        'complete_transactions' => 'complete_transactions',
+        'paid_transactions' => 'paid_transactions',
+        'accepted_transactions' => 'accepted_transactions',
+        'transactions_used_time' => 'transactions_used_time',
+        'cancelled_used_time_month' => 'cancelled_used_time_month',
+        'complete_transactions_month' => 'complete_transactions_month',
         'complete_rate_month' => 'complete_rate_month',
-        'check_journal_account' => 'check_journal_account',
-        'show_journal_account' => 'show_journal_account',
-        'is_freeze_guarantee' => 'is_freeze_guarantee',
-        'usdt_left_guarantee' => 'usdt_left_guarantee',
-        'guarantee_curr_type' => 'guarantee_curr_type',
-        'timest_paid' => 'timest_paid',
-        'state' => 'state',
-        'release_coin_switch' => 'release_coin_switch',
-        'own_realname' => 'own_realname',
-        'confirmation_use_time_month' => 'confirmation_use_time_month',
-        'is_risk_user' => 'is_risk_user',
-        'is_xt' => 'is_xt',
-        'order_type' => 'order_type',
-        'symbol' => 'symbol',
-        'is_show_receive' => 'is_show_receive',
-        'is_taker' => 'is_taker',
-        'is_online' => 'is_online',
-        'show_seller_contact_info' => 'show_seller_contact_info',
-        'supported_pay_types' => 'supported_pay_types'
+        'orders_buy_rate_month' => 'orders_buy_rate_month',
+        'is_black' => 'is_black',
+        'is_follow' => 'is_follow',
+        'have_traded' => 'have_traded',
+        'biz_uid' => 'biz_uid',
+        'blue_vip' => 'blue_vip',
+        'work_status' => 'work_status',
+        'registration_days' => 'registration_days',
+        'first_trade_days' => 'first_trade_days',
+        'need_replenish' => 'need_replenish',
+        'merchant_info' => 'merchant_info',
+        'online_status' => 'online_status',
+        'work_hours' => 'work_hours',
+        'transactions_month' => 'transactions_month',
+        'transactions_all' => 'transactions_all',
+        'trade_versatile' => 'trade_versatile'
     ];
 
     /**
@@ -315,78 +192,37 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'is_sell' => 'setIsSell',
-        'txid' => 'setTxid',
-        'orderid' => 'setOrderid',
-        'timest' => 'setTimest',
-        'last_pay_time' => 'setLastPayTime',
-        'remain_pay_time' => 'setRemainPayTime',
-        'currency_type' => 'setCurrencyType',
-        'want_type' => 'setWantType',
-        'rate' => 'setRate',
-        'amount' => 'setAmount',
-        'total' => 'setTotal',
-        'status' => 'setStatus',
-        'reason_id' => 'setReasonId',
-        'reason_desc' => 'setReasonDesc',
-        'toast_id' => 'setToastId',
-        'cancel_time' => 'setCancelTime',
-        'seller_confirm' => 'setSellerConfirm',
-        'in_appeal' => 'setInAppeal',
-        'dispute_time' => 'setDisputeTime',
-        'cancelable' => 'setCancelable',
-        'hide_payment' => 'setHidePayment',
-        'trade_tips' => 'setTradeTips',
-        'show_bank' => 'setShowBank',
-        'bankname' => 'setBankname',
-        'bankbranch' => 'setBankbranch',
-        'bankid' => 'setBankid',
-        'bank_holder_realname' => 'setBankHolderRealname',
-        'show_ali' => 'setShowAli',
-        'aliname' => 'setAliname',
-        'is_alicode' => 'setIsAlicode',
-        'show_wechat' => 'setShowWechat',
-        'wename' => 'setWename',
-        'show_others' => 'setShowOthers',
-        'pay_others' => 'setPayOthers',
-        'sel_paytype' => 'setSelPaytype',
-        'its_uid' => 'setItsUid',
-        'its_is_blue_vip' => 'setItsIsBlueVip',
-        'its_tier' => 'setItsTier',
-        'its_avatar' => 'setItsAvatar',
-        'its_nickname' => 'setItsNickname',
-        'its_realname' => 'setItsRealname',
-        'is_follow' => 'setIsFollow',
-        'is_black' => 'setIsBlack',
-        'have_traded' => 'setHaveTraded',
-        'appeal_unread' => 'setAppealUnread',
-        'appeal_allow_cancel' => 'setAppealAllowCancel',
-        'appeal_verdict_has_open' => 'setAppealVerdictHasOpen',
-        'im_unread' => 'setImUnread',
-        'message' => 'setMessage',
-        'score' => 'setScore',
-        'payment_voucher_url' => 'setPaymentVoucherUrl',
-        'complete_number' => 'setCompleteNumber',
+        'is_self' => 'setIsSelf',
+        'user_timest' => 'setUserTimest',
+        'counterparties_num' => 'setCounterpartiesNum',
+        'email_verified' => 'setEmailVerified',
+        'verified' => 'setVerified',
+        'has_phone' => 'setHasPhone',
+        'user_name' => 'setUserName',
+        'user_note' => 'setUserNote',
+        'complete_transactions' => 'setCompleteTransactions',
+        'paid_transactions' => 'setPaidTransactions',
+        'accepted_transactions' => 'setAcceptedTransactions',
+        'transactions_used_time' => 'setTransactionsUsedTime',
+        'cancelled_used_time_month' => 'setCancelledUsedTimeMonth',
+        'complete_transactions_month' => 'setCompleteTransactionsMonth',
         'complete_rate_month' => 'setCompleteRateMonth',
-        'check_journal_account' => 'setCheckJournalAccount',
-        'show_journal_account' => 'setShowJournalAccount',
-        'is_freeze_guarantee' => 'setIsFreezeGuarantee',
-        'usdt_left_guarantee' => 'setUsdtLeftGuarantee',
-        'guarantee_curr_type' => 'setGuaranteeCurrType',
-        'timest_paid' => 'setTimestPaid',
-        'state' => 'setState',
-        'release_coin_switch' => 'setReleaseCoinSwitch',
-        'own_realname' => 'setOwnRealname',
-        'confirmation_use_time_month' => 'setConfirmationUseTimeMonth',
-        'is_risk_user' => 'setIsRiskUser',
-        'is_xt' => 'setIsXt',
-        'order_type' => 'setOrderType',
-        'symbol' => 'setSymbol',
-        'is_show_receive' => 'setIsShowReceive',
-        'is_taker' => 'setIsTaker',
-        'is_online' => 'setIsOnline',
-        'show_seller_contact_info' => 'setShowSellerContactInfo',
-        'supported_pay_types' => 'setSupportedPayTypes'
+        'orders_buy_rate_month' => 'setOrdersBuyRateMonth',
+        'is_black' => 'setIsBlack',
+        'is_follow' => 'setIsFollow',
+        'have_traded' => 'setHaveTraded',
+        'biz_uid' => 'setBizUid',
+        'blue_vip' => 'setBlueVip',
+        'work_status' => 'setWorkStatus',
+        'registration_days' => 'setRegistrationDays',
+        'first_trade_days' => 'setFirstTradeDays',
+        'need_replenish' => 'setNeedReplenish',
+        'merchant_info' => 'setMerchantInfo',
+        'online_status' => 'setOnlineStatus',
+        'work_hours' => 'setWorkHours',
+        'transactions_month' => 'setTransactionsMonth',
+        'transactions_all' => 'setTransactionsAll',
+        'trade_versatile' => 'setTradeVersatile'
     ];
 
     /**
@@ -395,78 +231,37 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'is_sell' => 'getIsSell',
-        'txid' => 'getTxid',
-        'orderid' => 'getOrderid',
-        'timest' => 'getTimest',
-        'last_pay_time' => 'getLastPayTime',
-        'remain_pay_time' => 'getRemainPayTime',
-        'currency_type' => 'getCurrencyType',
-        'want_type' => 'getWantType',
-        'rate' => 'getRate',
-        'amount' => 'getAmount',
-        'total' => 'getTotal',
-        'status' => 'getStatus',
-        'reason_id' => 'getReasonId',
-        'reason_desc' => 'getReasonDesc',
-        'toast_id' => 'getToastId',
-        'cancel_time' => 'getCancelTime',
-        'seller_confirm' => 'getSellerConfirm',
-        'in_appeal' => 'getInAppeal',
-        'dispute_time' => 'getDisputeTime',
-        'cancelable' => 'getCancelable',
-        'hide_payment' => 'getHidePayment',
-        'trade_tips' => 'getTradeTips',
-        'show_bank' => 'getShowBank',
-        'bankname' => 'getBankname',
-        'bankbranch' => 'getBankbranch',
-        'bankid' => 'getBankid',
-        'bank_holder_realname' => 'getBankHolderRealname',
-        'show_ali' => 'getShowAli',
-        'aliname' => 'getAliname',
-        'is_alicode' => 'getIsAlicode',
-        'show_wechat' => 'getShowWechat',
-        'wename' => 'getWename',
-        'show_others' => 'getShowOthers',
-        'pay_others' => 'getPayOthers',
-        'sel_paytype' => 'getSelPaytype',
-        'its_uid' => 'getItsUid',
-        'its_is_blue_vip' => 'getItsIsBlueVip',
-        'its_tier' => 'getItsTier',
-        'its_avatar' => 'getItsAvatar',
-        'its_nickname' => 'getItsNickname',
-        'its_realname' => 'getItsRealname',
-        'is_follow' => 'getIsFollow',
-        'is_black' => 'getIsBlack',
-        'have_traded' => 'getHaveTraded',
-        'appeal_unread' => 'getAppealUnread',
-        'appeal_allow_cancel' => 'getAppealAllowCancel',
-        'appeal_verdict_has_open' => 'getAppealVerdictHasOpen',
-        'im_unread' => 'getImUnread',
-        'message' => 'getMessage',
-        'score' => 'getScore',
-        'payment_voucher_url' => 'getPaymentVoucherUrl',
-        'complete_number' => 'getCompleteNumber',
+        'is_self' => 'getIsSelf',
+        'user_timest' => 'getUserTimest',
+        'counterparties_num' => 'getCounterpartiesNum',
+        'email_verified' => 'getEmailVerified',
+        'verified' => 'getVerified',
+        'has_phone' => 'getHasPhone',
+        'user_name' => 'getUserName',
+        'user_note' => 'getUserNote',
+        'complete_transactions' => 'getCompleteTransactions',
+        'paid_transactions' => 'getPaidTransactions',
+        'accepted_transactions' => 'getAcceptedTransactions',
+        'transactions_used_time' => 'getTransactionsUsedTime',
+        'cancelled_used_time_month' => 'getCancelledUsedTimeMonth',
+        'complete_transactions_month' => 'getCompleteTransactionsMonth',
         'complete_rate_month' => 'getCompleteRateMonth',
-        'check_journal_account' => 'getCheckJournalAccount',
-        'show_journal_account' => 'getShowJournalAccount',
-        'is_freeze_guarantee' => 'getIsFreezeGuarantee',
-        'usdt_left_guarantee' => 'getUsdtLeftGuarantee',
-        'guarantee_curr_type' => 'getGuaranteeCurrType',
-        'timest_paid' => 'getTimestPaid',
-        'state' => 'getState',
-        'release_coin_switch' => 'getReleaseCoinSwitch',
-        'own_realname' => 'getOwnRealname',
-        'confirmation_use_time_month' => 'getConfirmationUseTimeMonth',
-        'is_risk_user' => 'getIsRiskUser',
-        'is_xt' => 'getIsXt',
-        'order_type' => 'getOrderType',
-        'symbol' => 'getSymbol',
-        'is_show_receive' => 'getIsShowReceive',
-        'is_taker' => 'getIsTaker',
-        'is_online' => 'getIsOnline',
-        'show_seller_contact_info' => 'getShowSellerContactInfo',
-        'supported_pay_types' => 'getSupportedPayTypes'
+        'orders_buy_rate_month' => 'getOrdersBuyRateMonth',
+        'is_black' => 'getIsBlack',
+        'is_follow' => 'getIsFollow',
+        'have_traded' => 'getHaveTraded',
+        'biz_uid' => 'getBizUid',
+        'blue_vip' => 'getBlueVip',
+        'work_status' => 'getWorkStatus',
+        'registration_days' => 'getRegistrationDays',
+        'first_trade_days' => 'getFirstTradeDays',
+        'need_replenish' => 'getNeedReplenish',
+        'merchant_info' => 'getMerchantInfo',
+        'online_status' => 'getOnlineStatus',
+        'work_hours' => 'getWorkHours',
+        'transactions_month' => 'getTransactionsMonth',
+        'transactions_all' => 'getTransactionsAll',
+        'trade_versatile' => 'getTradeVersatile'
     ];
 
     /**
@@ -529,78 +324,37 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_sell'] = isset($data['is_sell']) ? $data['is_sell'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['orderid'] = isset($data['orderid']) ? $data['orderid'] : null;
-        $this->container['timest'] = isset($data['timest']) ? $data['timest'] : null;
-        $this->container['last_pay_time'] = isset($data['last_pay_time']) ? $data['last_pay_time'] : null;
-        $this->container['remain_pay_time'] = isset($data['remain_pay_time']) ? $data['remain_pay_time'] : null;
-        $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
-        $this->container['want_type'] = isset($data['want_type']) ? $data['want_type'] : null;
-        $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
-        $this->container['reason_desc'] = isset($data['reason_desc']) ? $data['reason_desc'] : null;
-        $this->container['toast_id'] = isset($data['toast_id']) ? $data['toast_id'] : null;
-        $this->container['cancel_time'] = isset($data['cancel_time']) ? $data['cancel_time'] : null;
-        $this->container['seller_confirm'] = isset($data['seller_confirm']) ? $data['seller_confirm'] : null;
-        $this->container['in_appeal'] = isset($data['in_appeal']) ? $data['in_appeal'] : null;
-        $this->container['dispute_time'] = isset($data['dispute_time']) ? $data['dispute_time'] : null;
-        $this->container['cancelable'] = isset($data['cancelable']) ? $data['cancelable'] : null;
-        $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
-        $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
-        $this->container['show_bank'] = isset($data['show_bank']) ? $data['show_bank'] : null;
-        $this->container['bankname'] = isset($data['bankname']) ? $data['bankname'] : null;
-        $this->container['bankbranch'] = isset($data['bankbranch']) ? $data['bankbranch'] : null;
-        $this->container['bankid'] = isset($data['bankid']) ? $data['bankid'] : null;
-        $this->container['bank_holder_realname'] = isset($data['bank_holder_realname']) ? $data['bank_holder_realname'] : null;
-        $this->container['show_ali'] = isset($data['show_ali']) ? $data['show_ali'] : null;
-        $this->container['aliname'] = isset($data['aliname']) ? $data['aliname'] : null;
-        $this->container['is_alicode'] = isset($data['is_alicode']) ? $data['is_alicode'] : null;
-        $this->container['show_wechat'] = isset($data['show_wechat']) ? $data['show_wechat'] : null;
-        $this->container['wename'] = isset($data['wename']) ? $data['wename'] : null;
-        $this->container['show_others'] = isset($data['show_others']) ? $data['show_others'] : null;
-        $this->container['pay_others'] = isset($data['pay_others']) ? $data['pay_others'] : null;
-        $this->container['sel_paytype'] = isset($data['sel_paytype']) ? $data['sel_paytype'] : null;
-        $this->container['its_uid'] = isset($data['its_uid']) ? $data['its_uid'] : null;
-        $this->container['its_is_blue_vip'] = isset($data['its_is_blue_vip']) ? $data['its_is_blue_vip'] : null;
-        $this->container['its_tier'] = isset($data['its_tier']) ? $data['its_tier'] : null;
-        $this->container['its_avatar'] = isset($data['its_avatar']) ? $data['its_avatar'] : null;
-        $this->container['its_nickname'] = isset($data['its_nickname']) ? $data['its_nickname'] : null;
-        $this->container['its_realname'] = isset($data['its_realname']) ? $data['its_realname'] : null;
-        $this->container['is_follow'] = isset($data['is_follow']) ? $data['is_follow'] : null;
-        $this->container['is_black'] = isset($data['is_black']) ? $data['is_black'] : null;
-        $this->container['have_traded'] = isset($data['have_traded']) ? $data['have_traded'] : null;
-        $this->container['appeal_unread'] = isset($data['appeal_unread']) ? $data['appeal_unread'] : null;
-        $this->container['appeal_allow_cancel'] = isset($data['appeal_allow_cancel']) ? $data['appeal_allow_cancel'] : null;
-        $this->container['appeal_verdict_has_open'] = isset($data['appeal_verdict_has_open']) ? $data['appeal_verdict_has_open'] : null;
-        $this->container['im_unread'] = isset($data['im_unread']) ? $data['im_unread'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['score'] = isset($data['score']) ? $data['score'] : null;
-        $this->container['payment_voucher_url'] = isset($data['payment_voucher_url']) ? $data['payment_voucher_url'] : null;
-        $this->container['complete_number'] = isset($data['complete_number']) ? $data['complete_number'] : null;
+        $this->container['is_self'] = isset($data['is_self']) ? $data['is_self'] : null;
+        $this->container['user_timest'] = isset($data['user_timest']) ? $data['user_timest'] : null;
+        $this->container['counterparties_num'] = isset($data['counterparties_num']) ? $data['counterparties_num'] : null;
+        $this->container['email_verified'] = isset($data['email_verified']) ? $data['email_verified'] : null;
+        $this->container['verified'] = isset($data['verified']) ? $data['verified'] : null;
+        $this->container['has_phone'] = isset($data['has_phone']) ? $data['has_phone'] : null;
+        $this->container['user_name'] = isset($data['user_name']) ? $data['user_name'] : null;
+        $this->container['user_note'] = isset($data['user_note']) ? $data['user_note'] : null;
+        $this->container['complete_transactions'] = isset($data['complete_transactions']) ? $data['complete_transactions'] : null;
+        $this->container['paid_transactions'] = isset($data['paid_transactions']) ? $data['paid_transactions'] : null;
+        $this->container['accepted_transactions'] = isset($data['accepted_transactions']) ? $data['accepted_transactions'] : null;
+        $this->container['transactions_used_time'] = isset($data['transactions_used_time']) ? $data['transactions_used_time'] : null;
+        $this->container['cancelled_used_time_month'] = isset($data['cancelled_used_time_month']) ? $data['cancelled_used_time_month'] : null;
+        $this->container['complete_transactions_month'] = isset($data['complete_transactions_month']) ? $data['complete_transactions_month'] : null;
         $this->container['complete_rate_month'] = isset($data['complete_rate_month']) ? $data['complete_rate_month'] : null;
-        $this->container['check_journal_account'] = isset($data['check_journal_account']) ? $data['check_journal_account'] : null;
-        $this->container['show_journal_account'] = isset($data['show_journal_account']) ? $data['show_journal_account'] : null;
-        $this->container['is_freeze_guarantee'] = isset($data['is_freeze_guarantee']) ? $data['is_freeze_guarantee'] : null;
-        $this->container['usdt_left_guarantee'] = isset($data['usdt_left_guarantee']) ? $data['usdt_left_guarantee'] : null;
-        $this->container['guarantee_curr_type'] = isset($data['guarantee_curr_type']) ? $data['guarantee_curr_type'] : null;
-        $this->container['timest_paid'] = isset($data['timest_paid']) ? $data['timest_paid'] : null;
-        $this->container['state'] = isset($data['state']) ? $data['state'] : null;
-        $this->container['release_coin_switch'] = isset($data['release_coin_switch']) ? $data['release_coin_switch'] : null;
-        $this->container['own_realname'] = isset($data['own_realname']) ? $data['own_realname'] : null;
-        $this->container['confirmation_use_time_month'] = isset($data['confirmation_use_time_month']) ? $data['confirmation_use_time_month'] : null;
-        $this->container['is_risk_user'] = isset($data['is_risk_user']) ? $data['is_risk_user'] : null;
-        $this->container['is_xt'] = isset($data['is_xt']) ? $data['is_xt'] : null;
-        $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['is_show_receive'] = isset($data['is_show_receive']) ? $data['is_show_receive'] : null;
-        $this->container['is_taker'] = isset($data['is_taker']) ? $data['is_taker'] : null;
-        $this->container['is_online'] = isset($data['is_online']) ? $data['is_online'] : null;
-        $this->container['show_seller_contact_info'] = isset($data['show_seller_contact_info']) ? $data['show_seller_contact_info'] : null;
-        $this->container['supported_pay_types'] = isset($data['supported_pay_types']) ? $data['supported_pay_types'] : null;
+        $this->container['orders_buy_rate_month'] = isset($data['orders_buy_rate_month']) ? $data['orders_buy_rate_month'] : null;
+        $this->container['is_black'] = isset($data['is_black']) ? $data['is_black'] : null;
+        $this->container['is_follow'] = isset($data['is_follow']) ? $data['is_follow'] : null;
+        $this->container['have_traded'] = isset($data['have_traded']) ? $data['have_traded'] : null;
+        $this->container['biz_uid'] = isset($data['biz_uid']) ? $data['biz_uid'] : null;
+        $this->container['blue_vip'] = isset($data['blue_vip']) ? $data['blue_vip'] : null;
+        $this->container['work_status'] = isset($data['work_status']) ? $data['work_status'] : null;
+        $this->container['registration_days'] = isset($data['registration_days']) ? $data['registration_days'] : null;
+        $this->container['first_trade_days'] = isset($data['first_trade_days']) ? $data['first_trade_days'] : null;
+        $this->container['need_replenish'] = isset($data['need_replenish']) ? $data['need_replenish'] : null;
+        $this->container['merchant_info'] = isset($data['merchant_info']) ? $data['merchant_info'] : null;
+        $this->container['online_status'] = isset($data['online_status']) ? $data['online_status'] : null;
+        $this->container['work_hours'] = isset($data['work_hours']) ? $data['work_hours'] : null;
+        $this->container['transactions_month'] = isset($data['transactions_month']) ? $data['transactions_month'] : null;
+        $this->container['transactions_all'] = isset($data['transactions_all']) ? $data['transactions_all'] : null;
+        $this->container['trade_versatile'] = isset($data['trade_versatile']) ? $data['trade_versatile'] : null;
     }
 
     /**
@@ -612,221 +366,98 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['is_sell'] === null) {
-            $invalidProperties[] = "'is_sell' can't be null";
+        if ($this->container['is_self'] === null) {
+            $invalidProperties[] = "'is_self' can't be null";
         }
-        if ($this->container['txid'] === null) {
-            $invalidProperties[] = "'txid' can't be null";
+        if ($this->container['user_timest'] === null) {
+            $invalidProperties[] = "'user_timest' can't be null";
         }
-        if ($this->container['orderid'] === null) {
-            $invalidProperties[] = "'orderid' can't be null";
+        if ($this->container['counterparties_num'] === null) {
+            $invalidProperties[] = "'counterparties_num' can't be null";
         }
-        if ($this->container['timest'] === null) {
-            $invalidProperties[] = "'timest' can't be null";
+        if ($this->container['email_verified'] === null) {
+            $invalidProperties[] = "'email_verified' can't be null";
         }
-        if ($this->container['last_pay_time'] === null) {
-            $invalidProperties[] = "'last_pay_time' can't be null";
+        if ($this->container['verified'] === null) {
+            $invalidProperties[] = "'verified' can't be null";
         }
-        if ($this->container['remain_pay_time'] === null) {
-            $invalidProperties[] = "'remain_pay_time' can't be null";
+        if ($this->container['has_phone'] === null) {
+            $invalidProperties[] = "'has_phone' can't be null";
         }
-        if ($this->container['currency_type'] === null) {
-            $invalidProperties[] = "'currency_type' can't be null";
+        if ($this->container['user_name'] === null) {
+            $invalidProperties[] = "'user_name' can't be null";
         }
-        if ($this->container['want_type'] === null) {
-            $invalidProperties[] = "'want_type' can't be null";
+        if ($this->container['user_note'] === null) {
+            $invalidProperties[] = "'user_note' can't be null";
         }
-        if ($this->container['rate'] === null) {
-            $invalidProperties[] = "'rate' can't be null";
+        if ($this->container['complete_transactions'] === null) {
+            $invalidProperties[] = "'complete_transactions' can't be null";
         }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['paid_transactions'] === null) {
+            $invalidProperties[] = "'paid_transactions' can't be null";
         }
-        if ($this->container['total'] === null) {
-            $invalidProperties[] = "'total' can't be null";
+        if ($this->container['accepted_transactions'] === null) {
+            $invalidProperties[] = "'accepted_transactions' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['transactions_used_time'] === null) {
+            $invalidProperties[] = "'transactions_used_time' can't be null";
         }
-        if ($this->container['reason_id'] === null) {
-            $invalidProperties[] = "'reason_id' can't be null";
+        if ($this->container['cancelled_used_time_month'] === null) {
+            $invalidProperties[] = "'cancelled_used_time_month' can't be null";
         }
-        if ($this->container['reason_desc'] === null) {
-            $invalidProperties[] = "'reason_desc' can't be null";
-        }
-        if ($this->container['toast_id'] === null) {
-            $invalidProperties[] = "'toast_id' can't be null";
-        }
-        if ($this->container['cancel_time'] === null) {
-            $invalidProperties[] = "'cancel_time' can't be null";
-        }
-        if ($this->container['seller_confirm'] === null) {
-            $invalidProperties[] = "'seller_confirm' can't be null";
-        }
-        if ($this->container['in_appeal'] === null) {
-            $invalidProperties[] = "'in_appeal' can't be null";
-        }
-        if ($this->container['dispute_time'] === null) {
-            $invalidProperties[] = "'dispute_time' can't be null";
-        }
-        if ($this->container['cancelable'] === null) {
-            $invalidProperties[] = "'cancelable' can't be null";
-        }
-        if ($this->container['hide_payment'] === null) {
-            $invalidProperties[] = "'hide_payment' can't be null";
-        }
-        if ($this->container['trade_tips'] === null) {
-            $invalidProperties[] = "'trade_tips' can't be null";
-        }
-        if ($this->container['show_bank'] === null) {
-            $invalidProperties[] = "'show_bank' can't be null";
-        }
-        if ($this->container['bankname'] === null) {
-            $invalidProperties[] = "'bankname' can't be null";
-        }
-        if ($this->container['bankbranch'] === null) {
-            $invalidProperties[] = "'bankbranch' can't be null";
-        }
-        if ($this->container['bankid'] === null) {
-            $invalidProperties[] = "'bankid' can't be null";
-        }
-        if ($this->container['bank_holder_realname'] === null) {
-            $invalidProperties[] = "'bank_holder_realname' can't be null";
-        }
-        if ($this->container['show_ali'] === null) {
-            $invalidProperties[] = "'show_ali' can't be null";
-        }
-        if ($this->container['aliname'] === null) {
-            $invalidProperties[] = "'aliname' can't be null";
-        }
-        if ($this->container['is_alicode'] === null) {
-            $invalidProperties[] = "'is_alicode' can't be null";
-        }
-        if ($this->container['show_wechat'] === null) {
-            $invalidProperties[] = "'show_wechat' can't be null";
-        }
-        if ($this->container['wename'] === null) {
-            $invalidProperties[] = "'wename' can't be null";
-        }
-        if ($this->container['show_others'] === null) {
-            $invalidProperties[] = "'show_others' can't be null";
-        }
-        if ($this->container['pay_others'] === null) {
-            $invalidProperties[] = "'pay_others' can't be null";
-        }
-        if ($this->container['sel_paytype'] === null) {
-            $invalidProperties[] = "'sel_paytype' can't be null";
-        }
-        if ($this->container['its_uid'] === null) {
-            $invalidProperties[] = "'its_uid' can't be null";
-        }
-        if ($this->container['its_is_blue_vip'] === null) {
-            $invalidProperties[] = "'its_is_blue_vip' can't be null";
-        }
-        if ($this->container['its_tier'] === null) {
-            $invalidProperties[] = "'its_tier' can't be null";
-        }
-        if ($this->container['its_avatar'] === null) {
-            $invalidProperties[] = "'its_avatar' can't be null";
-        }
-        if ($this->container['its_nickname'] === null) {
-            $invalidProperties[] = "'its_nickname' can't be null";
-        }
-        if ($this->container['its_realname'] === null) {
-            $invalidProperties[] = "'its_realname' can't be null";
-        }
-        if ($this->container['is_follow'] === null) {
-            $invalidProperties[] = "'is_follow' can't be null";
-        }
-        if ($this->container['is_black'] === null) {
-            $invalidProperties[] = "'is_black' can't be null";
-        }
-        if ($this->container['have_traded'] === null) {
-            $invalidProperties[] = "'have_traded' can't be null";
-        }
-        if ($this->container['appeal_unread'] === null) {
-            $invalidProperties[] = "'appeal_unread' can't be null";
-        }
-        if ($this->container['appeal_allow_cancel'] === null) {
-            $invalidProperties[] = "'appeal_allow_cancel' can't be null";
-        }
-        if ($this->container['appeal_verdict_has_open'] === null) {
-            $invalidProperties[] = "'appeal_verdict_has_open' can't be null";
-        }
-        if ($this->container['im_unread'] === null) {
-            $invalidProperties[] = "'im_unread' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['score'] === null) {
-            $invalidProperties[] = "'score' can't be null";
-        }
-        if ($this->container['payment_voucher_url'] === null) {
-            $invalidProperties[] = "'payment_voucher_url' can't be null";
-        }
-        if ($this->container['complete_number'] === null) {
-            $invalidProperties[] = "'complete_number' can't be null";
+        if ($this->container['complete_transactions_month'] === null) {
+            $invalidProperties[] = "'complete_transactions_month' can't be null";
         }
         if ($this->container['complete_rate_month'] === null) {
             $invalidProperties[] = "'complete_rate_month' can't be null";
         }
-        if ($this->container['check_journal_account'] === null) {
-            $invalidProperties[] = "'check_journal_account' can't be null";
+        if ($this->container['orders_buy_rate_month'] === null) {
+            $invalidProperties[] = "'orders_buy_rate_month' can't be null";
         }
-        if ($this->container['show_journal_account'] === null) {
-            $invalidProperties[] = "'show_journal_account' can't be null";
+        if ($this->container['is_black'] === null) {
+            $invalidProperties[] = "'is_black' can't be null";
         }
-        if ($this->container['is_freeze_guarantee'] === null) {
-            $invalidProperties[] = "'is_freeze_guarantee' can't be null";
+        if ($this->container['is_follow'] === null) {
+            $invalidProperties[] = "'is_follow' can't be null";
         }
-        if ($this->container['usdt_left_guarantee'] === null) {
-            $invalidProperties[] = "'usdt_left_guarantee' can't be null";
+        if ($this->container['have_traded'] === null) {
+            $invalidProperties[] = "'have_traded' can't be null";
         }
-        if ($this->container['guarantee_curr_type'] === null) {
-            $invalidProperties[] = "'guarantee_curr_type' can't be null";
+        if ($this->container['biz_uid'] === null) {
+            $invalidProperties[] = "'biz_uid' can't be null";
         }
-        if ($this->container['timest_paid'] === null) {
-            $invalidProperties[] = "'timest_paid' can't be null";
+        if ($this->container['blue_vip'] === null) {
+            $invalidProperties[] = "'blue_vip' can't be null";
         }
-        if ($this->container['state'] === null) {
-            $invalidProperties[] = "'state' can't be null";
+        if ($this->container['work_status'] === null) {
+            $invalidProperties[] = "'work_status' can't be null";
         }
-        if ($this->container['release_coin_switch'] === null) {
-            $invalidProperties[] = "'release_coin_switch' can't be null";
+        if ($this->container['registration_days'] === null) {
+            $invalidProperties[] = "'registration_days' can't be null";
         }
-        if ($this->container['own_realname'] === null) {
-            $invalidProperties[] = "'own_realname' can't be null";
+        if ($this->container['first_trade_days'] === null) {
+            $invalidProperties[] = "'first_trade_days' can't be null";
         }
-        if ($this->container['confirmation_use_time_month'] === null) {
-            $invalidProperties[] = "'confirmation_use_time_month' can't be null";
+        if ($this->container['need_replenish'] === null) {
+            $invalidProperties[] = "'need_replenish' can't be null";
         }
-        if ($this->container['is_risk_user'] === null) {
-            $invalidProperties[] = "'is_risk_user' can't be null";
+        if ($this->container['merchant_info'] === null) {
+            $invalidProperties[] = "'merchant_info' can't be null";
         }
-        if ($this->container['is_xt'] === null) {
-            $invalidProperties[] = "'is_xt' can't be null";
+        if ($this->container['online_status'] === null) {
+            $invalidProperties[] = "'online_status' can't be null";
         }
-        if ($this->container['order_type'] === null) {
-            $invalidProperties[] = "'order_type' can't be null";
+        if ($this->container['work_hours'] === null) {
+            $invalidProperties[] = "'work_hours' can't be null";
         }
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
+        if ($this->container['transactions_month'] === null) {
+            $invalidProperties[] = "'transactions_month' can't be null";
         }
-        if ($this->container['is_show_receive'] === null) {
-            $invalidProperties[] = "'is_show_receive' can't be null";
+        if ($this->container['transactions_all'] === null) {
+            $invalidProperties[] = "'transactions_all' can't be null";
         }
-        if ($this->container['is_taker'] === null) {
-            $invalidProperties[] = "'is_taker' can't be null";
-        }
-        if ($this->container['is_online'] === null) {
-            $invalidProperties[] = "'is_online' can't be null";
-        }
-        if ($this->container['show_seller_contact_info'] === null) {
-            $invalidProperties[] = "'show_seller_contact_info' can't be null";
-        }
-        if ($this->container['supported_pay_types'] === null) {
-            $invalidProperties[] = "'supported_pay_types' can't be null";
+        if ($this->container['trade_versatile'] === null) {
+            $invalidProperties[] = "'trade_versatile' can't be null";
         }
         return $invalidProperties;
     }
@@ -844,1009 +475,385 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets is_sell
+     * Gets is_self
+     *
+     * @return bool
+     */
+    public function getIsSelf()
+    {
+        return $this->container['is_self'];
+    }
+
+    /**
+     * Sets is_self
+     *
+     * @param bool $is_self Whether self
+     *
+     * @return $this
+     */
+    public function setIsSelf($is_self)
+    {
+        $this->container['is_self'] = $is_self;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_timest
+     *
+     * @return string
+     */
+    public function getUserTimest()
+    {
+        return $this->container['user_timest'];
+    }
+
+    /**
+     * Sets user_timest
+     *
+     * @param string $user_timest User registration time (formatted string)
+     *
+     * @return $this
+     */
+    public function setUserTimest($user_timest)
+    {
+        $this->container['user_timest'] = $user_timest;
+
+        return $this;
+    }
+
+    /**
+     * Gets counterparties_num
      *
      * @return int
      */
-    public function getIsSell()
+    public function getCounterpartiesNum()
     {
-        return $this->container['is_sell'];
+        return $this->container['counterparties_num'];
     }
 
     /**
-     * Sets is_sell
+     * Sets counterparties_num
      *
-     * @param int $is_sell Whether sell order
+     * @param int $counterparties_num Number of counterparties
      *
      * @return $this
      */
-    public function setIsSell($is_sell)
+    public function setCounterpartiesNum($counterparties_num)
     {
-        $this->container['is_sell'] = $is_sell;
+        $this->container['counterparties_num'] = $counterparties_num;
 
         return $this;
     }
 
     /**
-     * Gets txid
+     * Gets email_verified
+     *
+     * @return string
+     */
+    public function getEmailVerified()
+    {
+        return $this->container['email_verified'];
+    }
+
+    /**
+     * Sets email_verified
+     *
+     * @param string $email_verified Whether email is verified
+     *
+     * @return $this
+     */
+    public function setEmailVerified($email_verified)
+    {
+        $this->container['email_verified'] = $email_verified;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified
+     *
+     * @return string
+     */
+    public function getVerified()
+    {
+        return $this->container['verified'];
+    }
+
+    /**
+     * Sets verified
+     *
+     * @param string $verified Whether KYC verification is completed
+     *
+     * @return $this
+     */
+    public function setVerified($verified)
+    {
+        $this->container['verified'] = $verified;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_phone
+     *
+     * @return string
+     */
+    public function getHasPhone()
+    {
+        return $this->container['has_phone'];
+    }
+
+    /**
+     * Sets has_phone
+     *
+     * @param string $has_phone Whether phone is bound
+     *
+     * @return $this
+     */
+    public function setHasPhone($has_phone)
+    {
+        $this->container['has_phone'] = $has_phone;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_name
+     *
+     * @return string
+     */
+    public function getUserName()
+    {
+        return $this->container['user_name'];
+    }
+
+    /**
+     * Sets user_name
+     *
+     * @param string $user_name Username
+     *
+     * @return $this
+     */
+    public function setUserName($user_name)
+    {
+        $this->container['user_name'] = $user_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_note
+     *
+     * @return string
+     */
+    public function getUserNote()
+    {
+        return $this->container['user_note'];
+    }
+
+    /**
+     * Sets user_note
+     *
+     * @param string $user_note User note information
+     *
+     * @return $this
+     */
+    public function setUserNote($user_note)
+    {
+        $this->container['user_note'] = $user_note;
+
+        return $this;
+    }
+
+    /**
+     * Gets complete_transactions
+     *
+     * @return string
+     */
+    public function getCompleteTransactions()
+    {
+        return $this->container['complete_transactions'];
+    }
+
+    /**
+     * Sets complete_transactions
+     *
+     * @param string $complete_transactions Total completed orders
+     *
+     * @return $this
+     */
+    public function setCompleteTransactions($complete_transactions)
+    {
+        $this->container['complete_transactions'] = $complete_transactions;
+
+        return $this;
+    }
+
+    /**
+     * Gets paid_transactions
+     *
+     * @return string
+     */
+    public function getPaidTransactions()
+    {
+        return $this->container['paid_transactions'];
+    }
+
+    /**
+     * Sets paid_transactions
+     *
+     * @param string $paid_transactions Number of completed buy orders
+     *
+     * @return $this
+     */
+    public function setPaidTransactions($paid_transactions)
+    {
+        $this->container['paid_transactions'] = $paid_transactions;
+
+        return $this;
+    }
+
+    /**
+     * Gets accepted_transactions
+     *
+     * @return string
+     */
+    public function getAcceptedTransactions()
+    {
+        return $this->container['accepted_transactions'];
+    }
+
+    /**
+     * Sets accepted_transactions
+     *
+     * @param string $accepted_transactions Number of completed sell orders
+     *
+     * @return $this
+     */
+    public function setAcceptedTransactions($accepted_transactions)
+    {
+        $this->container['accepted_transactions'] = $accepted_transactions;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions_used_time
+     *
+     * @return string
+     */
+    public function getTransactionsUsedTime()
+    {
+        return $this->container['transactions_used_time'];
+    }
+
+    /**
+     * Sets transactions_used_time
+     *
+     * @param string $transactions_used_time Average time to confirm receipt
+     *
+     * @return $this
+     */
+    public function setTransactionsUsedTime($transactions_used_time)
+    {
+        $this->container['transactions_used_time'] = $transactions_used_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets cancelled_used_time_month
+     *
+     * @return string
+     */
+    public function getCancelledUsedTimeMonth()
+    {
+        return $this->container['cancelled_used_time_month'];
+    }
+
+    /**
+     * Sets cancelled_used_time_month
+     *
+     * @param string $cancelled_used_time_month Cancellation time in last 30 days
+     *
+     * @return $this
+     */
+    public function setCancelledUsedTimeMonth($cancelled_used_time_month)
+    {
+        $this->container['cancelled_used_time_month'] = $cancelled_used_time_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets complete_transactions_month
+     *
+     * @return string
+     */
+    public function getCompleteTransactionsMonth()
+    {
+        return $this->container['complete_transactions_month'];
+    }
+
+    /**
+     * Sets complete_transactions_month
+     *
+     * @param string $complete_transactions_month Number of completed orders in last 30 days
+     *
+     * @return $this
+     */
+    public function setCompleteTransactionsMonth($complete_transactions_month)
+    {
+        $this->container['complete_transactions_month'] = $complete_transactions_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets complete_rate_month
      *
      * @return int
      */
-    public function getTxid()
+    public function getCompleteRateMonth()
     {
-        return $this->container['txid'];
+        return $this->container['complete_rate_month'];
     }
 
     /**
-     * Sets txid
+     * Sets complete_rate_month
      *
-     * @param int $txid Order ID
+     * @param int $complete_rate_month Completion rate in last 30 days
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setCompleteRateMonth($complete_rate_month)
     {
-        $this->container['txid'] = $txid;
+        $this->container['complete_rate_month'] = $complete_rate_month;
 
         return $this;
     }
 
     /**
-     * Gets orderid
+     * Gets orders_buy_rate_month
      *
      * @return int
      */
-    public function getOrderid()
+    public function getOrdersBuyRateMonth()
     {
-        return $this->container['orderid'];
+        return $this->container['orders_buy_rate_month'];
     }
 
     /**
-     * Sets orderid
+     * Sets orders_buy_rate_month
      *
-     * @param int $orderid Order ID
-     *
-     * @return $this
-     */
-    public function setOrderid($orderid)
-    {
-        $this->container['orderid'] = $orderid;
-
-        return $this;
-    }
-
-    /**
-     * Gets timest
-     *
-     * @return int
-     */
-    public function getTimest()
-    {
-        return $this->container['timest'];
-    }
-
-    /**
-     * Sets timest
-     *
-     * @param int $timest Order creation timestamp
+     * @param int $orders_buy_rate_month Buy order ratio in last 30 days
      *
      * @return $this
      */
-    public function setTimest($timest)
+    public function setOrdersBuyRateMonth($orders_buy_rate_month)
     {
-        $this->container['timest'] = $timest;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_pay_time
-     *
-     * @return int
-     */
-    public function getLastPayTime()
-    {
-        return $this->container['last_pay_time'];
-    }
-
-    /**
-     * Sets last_pay_time
-     *
-     * @param int $last_pay_time Payment deadline
-     *
-     * @return $this
-     */
-    public function setLastPayTime($last_pay_time)
-    {
-        $this->container['last_pay_time'] = $last_pay_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets remain_pay_time
-     *
-     * @return int
-     */
-    public function getRemainPayTime()
-    {
-        return $this->container['remain_pay_time'];
-    }
-
-    /**
-     * Sets remain_pay_time
-     *
-     * @param int $remain_pay_time Remaining payment time
-     *
-     * @return $this
-     */
-    public function setRemainPayTime($remain_pay_time)
-    {
-        $this->container['remain_pay_time'] = $remain_pay_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency_type
-     *
-     * @return string
-     */
-    public function getCurrencyType()
-    {
-        return $this->container['currency_type'];
-    }
-
-    /**
-     * Sets currency_type
-     *
-     * @param string $currency_type Cryptocurrency type
-     *
-     * @return $this
-     */
-    public function setCurrencyType($currency_type)
-    {
-        $this->container['currency_type'] = $currency_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets want_type
-     *
-     * @return string
-     */
-    public function getWantType()
-    {
-        return $this->container['want_type'];
-    }
-
-    /**
-     * Sets want_type
-     *
-     * @param string $want_type Fiat currency type
-     *
-     * @return $this
-     */
-    public function setWantType($want_type)
-    {
-        $this->container['want_type'] = $want_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate
-     *
-     * @return string
-     */
-    public function getRate()
-    {
-        return $this->container['rate'];
-    }
-
-    /**
-     * Sets rate
-     *
-     * @param string $rate Price
-     *
-     * @return $this
-     */
-    public function setRate($rate)
-    {
-        $this->container['rate'] = $rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return string
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param string $amount Size
-     *
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return string
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param string $total Fiat amount
-     *
-     * @return $this
-     */
-    public function setTotal($total)
-    {
-        $this->container['total'] = $total;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status Order Status
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason_id
-     *
-     * @return string
-     */
-    public function getReasonId()
-    {
-        return $this->container['reason_id'];
-    }
-
-    /**
-     * Sets reason_id
-     *
-     * @param string $reason_id Cancellation reason ID
-     *
-     * @return $this
-     */
-    public function setReasonId($reason_id)
-    {
-        $this->container['reason_id'] = $reason_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason_desc
-     *
-     * @return string
-     */
-    public function getReasonDesc()
-    {
-        return $this->container['reason_desc'];
-    }
-
-    /**
-     * Sets reason_desc
-     *
-     * @param string $reason_desc Cancellation reason
-     *
-     * @return $this
-     */
-    public function setReasonDesc($reason_desc)
-    {
-        $this->container['reason_desc'] = $reason_desc;
-
-        return $this;
-    }
-
-    /**
-     * Gets toast_id
-     *
-     * @return int
-     */
-    public function getToastId()
-    {
-        return $this->container['toast_id'];
-    }
-
-    /**
-     * Sets toast_id
-     *
-     * @param int $toast_id Popup ID
-     *
-     * @return $this
-     */
-    public function setToastId($toast_id)
-    {
-        $this->container['toast_id'] = $toast_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets cancel_time
-     *
-     * @return string
-     */
-    public function getCancelTime()
-    {
-        return $this->container['cancel_time'];
-    }
-
-    /**
-     * Sets cancel_time
-     *
-     * @param string $cancel_time Cancellation time
-     *
-     * @return $this
-     */
-    public function setCancelTime($cancel_time)
-    {
-        $this->container['cancel_time'] = $cancel_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_confirm
-     *
-     * @return int
-     */
-    public function getSellerConfirm()
-    {
-        return $this->container['seller_confirm'];
-    }
-
-    /**
-     * Sets seller_confirm
-     *
-     * @param int $seller_confirm Whether seller confirmed the reason
-     *
-     * @return $this
-     */
-    public function setSellerConfirm($seller_confirm)
-    {
-        $this->container['seller_confirm'] = $seller_confirm;
-
-        return $this;
-    }
-
-    /**
-     * Gets in_appeal
-     *
-     * @return int
-     */
-    public function getInAppeal()
-    {
-        return $this->container['in_appeal'];
-    }
-
-    /**
-     * Sets in_appeal
-     *
-     * @param int $in_appeal Whether in dispute
-     *
-     * @return $this
-     */
-    public function setInAppeal($in_appeal)
-    {
-        $this->container['in_appeal'] = $in_appeal;
-
-        return $this;
-    }
-
-    /**
-     * Gets dispute_time
-     *
-     * @return int
-     */
-    public function getDisputeTime()
-    {
-        return $this->container['dispute_time'];
-    }
-
-    /**
-     * Sets dispute_time
-     *
-     * @param int $dispute_time Appeal time limit
-     *
-     * @return $this
-     */
-    public function setDisputeTime($dispute_time)
-    {
-        $this->container['dispute_time'] = $dispute_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets cancelable
-     *
-     * @return int
-     */
-    public function getCancelable()
-    {
-        return $this->container['cancelable'];
-    }
-
-    /**
-     * Sets cancelable
-     *
-     * @param int $cancelable Whether order cancellation is allowed
-     *
-     * @return $this
-     */
-    public function setCancelable($cancelable)
-    {
-        $this->container['cancelable'] = $cancelable;
-
-        return $this;
-    }
-
-    /**
-     * Gets hide_payment
-     *
-     * @return int
-     */
-    public function getHidePayment()
-    {
-        return $this->container['hide_payment'];
-    }
-
-    /**
-     * Sets hide_payment
-     *
-     * @param int $hide_payment Whether to hide payment method
-     *
-     * @return $this
-     */
-    public function setHidePayment($hide_payment)
-    {
-        $this->container['hide_payment'] = $hide_payment;
-
-        return $this;
-    }
-
-    /**
-     * Gets trade_tips
-     *
-     * @return string
-     */
-    public function getTradeTips()
-    {
-        return $this->container['trade_tips'];
-    }
-
-    /**
-     * Sets trade_tips
-     *
-     * @param string $trade_tips Trading terms
-     *
-     * @return $this
-     */
-    public function setTradeTips($trade_tips)
-    {
-        $this->container['trade_tips'] = $trade_tips;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_bank
-     *
-     * @return string
-     */
-    public function getShowBank()
-    {
-        return $this->container['show_bank'];
-    }
-
-    /**
-     * Sets show_bank
-     *
-     * @param string $show_bank Whether to display bank
-     *
-     * @return $this
-     */
-    public function setShowBank($show_bank)
-    {
-        $this->container['show_bank'] = $show_bank;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankname
-     *
-     * @return string
-     */
-    public function getBankname()
-    {
-        return $this->container['bankname'];
-    }
-
-    /**
-     * Sets bankname
-     *
-     * @param string $bankname Bank name
-     *
-     * @return $this
-     */
-    public function setBankname($bankname)
-    {
-        $this->container['bankname'] = $bankname;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankbranch
-     *
-     * @return string
-     */
-    public function getBankbranch()
-    {
-        return $this->container['bankbranch'];
-    }
-
-    /**
-     * Sets bankbranch
-     *
-     * @param string $bankbranch Bank branch name
-     *
-     * @return $this
-     */
-    public function setBankbranch($bankbranch)
-    {
-        $this->container['bankbranch'] = $bankbranch;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankid
-     *
-     * @return string
-     */
-    public function getBankid()
-    {
-        return $this->container['bankid'];
-    }
-
-    /**
-     * Sets bankid
-     *
-     * @param string $bankid Bank ID
-     *
-     * @return $this
-     */
-    public function setBankid($bankid)
-    {
-        $this->container['bankid'] = $bankid;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_holder_realname
-     *
-     * @return string
-     */
-    public function getBankHolderRealname()
-    {
-        return $this->container['bank_holder_realname'];
-    }
-
-    /**
-     * Sets bank_holder_realname
-     *
-     * @param string $bank_holder_realname Bank cardholder name
-     *
-     * @return $this
-     */
-    public function setBankHolderRealname($bank_holder_realname)
-    {
-        $this->container['bank_holder_realname'] = $bank_holder_realname;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_ali
-     *
-     * @return string
-     */
-    public function getShowAli()
-    {
-        return $this->container['show_ali'];
-    }
-
-    /**
-     * Sets show_ali
-     *
-     * @param string $show_ali Whether to display Alipay
-     *
-     * @return $this
-     */
-    public function setShowAli($show_ali)
-    {
-        $this->container['show_ali'] = $show_ali;
-
-        return $this;
-    }
-
-    /**
-     * Gets aliname
-     *
-     * @return string
-     */
-    public function getAliname()
-    {
-        return $this->container['aliname'];
-    }
-
-    /**
-     * Sets aliname
-     *
-     * @param string $aliname Alipay account name
-     *
-     * @return $this
-     */
-    public function setAliname($aliname)
-    {
-        $this->container['aliname'] = $aliname;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_alicode
-     *
-     * @return int
-     */
-    public function getIsAlicode()
-    {
-        return $this->container['is_alicode'];
-    }
-
-    /**
-     * Sets is_alicode
-     *
-     * @param int $is_alicode Whether Alipay QR code exists
-     *
-     * @return $this
-     */
-    public function setIsAlicode($is_alicode)
-    {
-        $this->container['is_alicode'] = $is_alicode;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_wechat
-     *
-     * @return string
-     */
-    public function getShowWechat()
-    {
-        return $this->container['show_wechat'];
-    }
-
-    /**
-     * Sets show_wechat
-     *
-     * @param string $show_wechat Whether to display WeChat
-     *
-     * @return $this
-     */
-    public function setShowWechat($show_wechat)
-    {
-        $this->container['show_wechat'] = $show_wechat;
-
-        return $this;
-    }
-
-    /**
-     * Gets wename
-     *
-     * @return string
-     */
-    public function getWename()
-    {
-        return $this->container['wename'];
-    }
-
-    /**
-     * Sets wename
-     *
-     * @param string $wename WeChat account name
-     *
-     * @return $this
-     */
-    public function setWename($wename)
-    {
-        $this->container['wename'] = $wename;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_others
-     *
-     * @return string
-     */
-    public function getShowOthers()
-    {
-        return $this->container['show_others'];
-    }
-
-    /**
-     * Sets show_others
-     *
-     * @param string $show_others Whether to display other payment methods
-     *
-     * @return $this
-     */
-    public function setShowOthers($show_others)
-    {
-        $this->container['show_others'] = $show_others;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_others
-     *
-     * @return string[]
-     */
-    public function getPayOthers()
-    {
-        return $this->container['pay_others'];
-    }
-
-    /**
-     * Sets pay_others
-     *
-     * @param string[] $pay_others Other payment methods
-     *
-     * @return $this
-     */
-    public function setPayOthers($pay_others)
-    {
-        $this->container['pay_others'] = $pay_others;
-
-        return $this;
-    }
-
-    /**
-     * Gets sel_paytype
-     *
-     * @return string
-     */
-    public function getSelPaytype()
-    {
-        return $this->container['sel_paytype'];
-    }
-
-    /**
-     * Sets sel_paytype
-     *
-     * @param string $sel_paytype Payment type
-     *
-     * @return $this
-     */
-    public function setSelPaytype($sel_paytype)
-    {
-        $this->container['sel_paytype'] = $sel_paytype;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_uid
-     *
-     * @return string
-     */
-    public function getItsUid()
-    {
-        return $this->container['its_uid'];
-    }
-
-    /**
-     * Sets its_uid
-     *
-     * @param string $its_uid Counterparty UID
-     *
-     * @return $this
-     */
-    public function setItsUid($its_uid)
-    {
-        $this->container['its_uid'] = $its_uid;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_is_blue_vip
-     *
-     * @return int
-     */
-    public function getItsIsBlueVip()
-    {
-        return $this->container['its_is_blue_vip'];
-    }
-
-    /**
-     * Sets its_is_blue_vip
-     *
-     * @param int $its_is_blue_vip Whether counterparty is Blue V
-     *
-     * @return $this
-     */
-    public function setItsIsBlueVip($its_is_blue_vip)
-    {
-        $this->container['its_is_blue_vip'] = $its_is_blue_vip;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_tier
-     *
-     * @return int
-     */
-    public function getItsTier()
-    {
-        return $this->container['its_tier'];
-    }
-
-    /**
-     * Sets its_tier
-     *
-     * @param int $its_tier Counterparty VIP tier
-     *
-     * @return $this
-     */
-    public function setItsTier($its_tier)
-    {
-        $this->container['its_tier'] = $its_tier;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_avatar
-     *
-     * @return string
-     */
-    public function getItsAvatar()
-    {
-        return $this->container['its_avatar'];
-    }
-
-    /**
-     * Sets its_avatar
-     *
-     * @param string $its_avatar Counterparty avatar
-     *
-     * @return $this
-     */
-    public function setItsAvatar($its_avatar)
-    {
-        $this->container['its_avatar'] = $its_avatar;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_nickname
-     *
-     * @return string
-     */
-    public function getItsNickname()
-    {
-        return $this->container['its_nickname'];
-    }
-
-    /**
-     * Sets its_nickname
-     *
-     * @param string $its_nickname Counterparty nickname
-     *
-     * @return $this
-     */
-    public function setItsNickname($its_nickname)
-    {
-        $this->container['its_nickname'] = $its_nickname;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_realname
-     *
-     * @return string
-     */
-    public function getItsRealname()
-    {
-        return $this->container['its_realname'];
-    }
-
-    /**
-     * Sets its_realname
-     *
-     * @param string $its_realname Counterparty username
-     *
-     * @return $this
-     */
-    public function setItsRealname($its_realname)
-    {
-        $this->container['its_realname'] = $its_realname;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_follow
-     *
-     * @return int
-     */
-    public function getIsFollow()
-    {
-        return $this->container['is_follow'];
-    }
-
-    /**
-     * Sets is_follow
-     *
-     * @param int $is_follow Whether following
-     *
-     * @return $this
-     */
-    public function setIsFollow($is_follow)
-    {
-        $this->container['is_follow'] = $is_follow;
+        $this->container['orders_buy_rate_month'] = $orders_buy_rate_month;
 
         return $this;
     }
@@ -1876,6 +883,30 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets is_follow
+     *
+     * @return int
+     */
+    public function getIsFollow()
+    {
+        return $this->container['is_follow'];
+    }
+
+    /**
+     * Sets is_follow
+     *
+     * @param int $is_follow Whether following
+     *
+     * @return $this
+     */
+    public function setIsFollow($is_follow)
+    {
+        $this->container['is_follow'] = $is_follow;
+
+        return $this;
+    }
+
+    /**
      * Gets have_traded
      *
      * @return int
@@ -1888,7 +919,7 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     /**
      * Sets have_traded
      *
-     * @param int $have_traded Whether traded before
+     * @param int $have_traded Whether traded with self
      *
      * @return $this
      */
@@ -1900,673 +931,289 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets appeal_unread
-     *
-     * @return int
-     */
-    public function getAppealUnread()
-    {
-        return $this->container['appeal_unread'];
-    }
-
-    /**
-     * Sets appeal_unread
-     *
-     * @param int $appeal_unread Unread appeals
-     *
-     * @return $this
-     */
-    public function setAppealUnread($appeal_unread)
-    {
-        $this->container['appeal_unread'] = $appeal_unread;
-
-        return $this;
-    }
-
-    /**
-     * Gets appeal_allow_cancel
-     *
-     * @return int
-     */
-    public function getAppealAllowCancel()
-    {
-        return $this->container['appeal_allow_cancel'];
-    }
-
-    /**
-     * Sets appeal_allow_cancel
-     *
-     * @param int $appeal_allow_cancel Whether appeal cancellation is allowed
-     *
-     * @return $this
-     */
-    public function setAppealAllowCancel($appeal_allow_cancel)
-    {
-        $this->container['appeal_allow_cancel'] = $appeal_allow_cancel;
-
-        return $this;
-    }
-
-    /**
-     * Gets appeal_verdict_has_open
+     * Gets biz_uid
      *
      * @return string
      */
-    public function getAppealVerdictHasOpen()
+    public function getBizUid()
     {
-        return $this->container['appeal_verdict_has_open'];
+        return $this->container['biz_uid'];
     }
 
     /**
-     * Sets appeal_verdict_has_open
+     * Sets biz_uid
      *
-     * @param string $appeal_verdict_has_open Appeal result (including pending appeals)
+     * @param string $biz_uid Encrypted UID
      *
      * @return $this
      */
-    public function setAppealVerdictHasOpen($appeal_verdict_has_open)
+    public function setBizUid($biz_uid)
     {
-        $this->container['appeal_verdict_has_open'] = $appeal_verdict_has_open;
+        $this->container['biz_uid'] = $biz_uid;
 
         return $this;
     }
 
     /**
-     * Gets im_unread
+     * Gets blue_vip
      *
      * @return int
      */
-    public function getImUnread()
+    public function getBlueVip()
     {
-        return $this->container['im_unread'];
+        return $this->container['blue_vip'];
     }
 
     /**
-     * Sets im_unread
+     * Sets blue_vip
      *
-     * @param int $im_unread IM unread
+     * @param int $blue_vip Blue V Crown Shield
      *
      * @return $this
      */
-    public function setImUnread($im_unread)
+    public function setBlueVip($blue_vip)
     {
-        $this->container['im_unread'] = $im_unread;
+        $this->container['blue_vip'] = $blue_vip;
 
         return $this;
     }
 
     /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message Review content
-     *
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets score
-     *
-     * @return string
-     */
-    public function getScore()
-    {
-        return $this->container['score'];
-    }
-
-    /**
-     * Sets score
-     *
-     * @param string $score Rating
-     *
-     * @return $this
-     */
-    public function setScore($score)
-    {
-        $this->container['score'] = $score;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_voucher_url
-     *
-     * @return string[]
-     */
-    public function getPaymentVoucherUrl()
-    {
-        return $this->container['payment_voucher_url'];
-    }
-
-    /**
-     * Sets payment_voucher_url
-     *
-     * @param string[] $payment_voucher_url Payment voucher
-     *
-     * @return $this
-     */
-    public function setPaymentVoucherUrl($payment_voucher_url)
-    {
-        $this->container['payment_voucher_url'] = $payment_voucher_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets complete_number
+     * Gets work_status
      *
      * @return int
      */
-    public function getCompleteNumber()
+    public function getWorkStatus()
     {
-        return $this->container['complete_number'];
+        return $this->container['work_status'];
     }
 
     /**
-     * Sets complete_number
+     * Sets work_status
      *
-     * @param int $complete_number Counterparty transaction volume
+     * @param int $work_status Merchant work status
      *
      * @return $this
      */
-    public function setCompleteNumber($complete_number)
+    public function setWorkStatus($work_status)
     {
-        $this->container['complete_number'] = $complete_number;
+        $this->container['work_status'] = $work_status;
 
         return $this;
     }
 
     /**
-     * Gets complete_rate_month
+     * Gets registration_days
      *
-     * @return string
+     * @return int
      */
-    public function getCompleteRateMonth()
+    public function getRegistrationDays()
     {
-        return $this->container['complete_rate_month'];
+        return $this->container['registration_days'];
     }
 
     /**
-     * Sets complete_rate_month
+     * Sets registration_days
      *
-     * @param string $complete_rate_month Counterparty completion rate
+     * @param int $registration_days Registration days
      *
      * @return $this
      */
-    public function setCompleteRateMonth($complete_rate_month)
+    public function setRegistrationDays($registration_days)
     {
-        $this->container['complete_rate_month'] = $complete_rate_month;
+        $this->container['registration_days'] = $registration_days;
 
         return $this;
     }
 
     /**
-     * Gets check_journal_account
+     * Gets first_trade_days
+     *
+     * @return int
+     */
+    public function getFirstTradeDays()
+    {
+        return $this->container['first_trade_days'];
+    }
+
+    /**
+     * Sets first_trade_days
+     *
+     * @param int $first_trade_days Days since first trade
+     *
+     * @return $this
+     */
+    public function setFirstTradeDays($first_trade_days)
+    {
+        $this->container['first_trade_days'] = $first_trade_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets need_replenish
+     *
+     * @return int
+     */
+    public function getNeedReplenish()
+    {
+        return $this->container['need_replenish'];
+    }
+
+    /**
+     * Sets need_replenish
+     *
+     * @param int $need_replenish Whether margin replenishment is needed
+     *
+     * @return $this
+     */
+    public function setNeedReplenish($need_replenish)
+    {
+        $this->container['need_replenish'] = $need_replenish;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_info
+     *
+     * @return \GateApi\Model\InlineResponse20013DataMerchantInfo
+     */
+    public function getMerchantInfo()
+    {
+        return $this->container['merchant_info'];
+    }
+
+    /**
+     * Sets merchant_info
+     *
+     * @param \GateApi\Model\InlineResponse20013DataMerchantInfo $merchant_info merchant_info
+     *
+     * @return $this
+     */
+    public function setMerchantInfo($merchant_info)
+    {
+        $this->container['merchant_info'] = $merchant_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets online_status
+     *
+     * @return int
+     */
+    public function getOnlineStatus()
+    {
+        return $this->container['online_status'];
+    }
+
+    /**
+     * Sets online_status
+     *
+     * @param int $online_status Merchant online status
+     *
+     * @return $this
+     */
+    public function setOnlineStatus($online_status)
+    {
+        $this->container['online_status'] = $online_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets work_hours
+     *
+     * @return AnyType
+     */
+    public function getWorkHours()
+    {
+        return $this->container['work_hours'];
+    }
+
+    /**
+     * Sets work_hours
+     *
+     * @param AnyType $work_hours Merchant online status details
+     *
+     * @return $this
+     */
+    public function setWorkHours($work_hours)
+    {
+        $this->container['work_hours'] = $work_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions_month
+     *
+     * @return int
+     */
+    public function getTransactionsMonth()
+    {
+        return $this->container['transactions_month'];
+    }
+
+    /**
+     * Sets transactions_month
+     *
+     * @param int $transactions_month 30-day transaction volume
+     *
+     * @return $this
+     */
+    public function setTransactionsMonth($transactions_month)
+    {
+        $this->container['transactions_month'] = $transactions_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions_all
+     *
+     * @return int
+     */
+    public function getTransactionsAll()
+    {
+        return $this->container['transactions_all'];
+    }
+
+    /**
+     * Sets transactions_all
+     *
+     * @param int $transactions_all Total transaction volume
+     *
+     * @return $this
+     */
+    public function setTransactionsAll($transactions_all)
+    {
+        $this->container['transactions_all'] = $transactions_all;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_versatile
      *
      * @return bool
      */
-    public function getCheckJournalAccount()
+    public function getTradeVersatile()
     {
-        return $this->container['check_journal_account'];
+        return $this->container['trade_versatile'];
     }
 
     /**
-     * Sets check_journal_account
+     * Sets trade_versatile
      *
-     * @param bool $check_journal_account Whether transaction record is verified
+     * @param bool $trade_versatile Single user or composite user
      *
      * @return $this
      */
-    public function setCheckJournalAccount($check_journal_account)
+    public function setTradeVersatile($trade_versatile)
     {
-        $this->container['check_journal_account'] = $check_journal_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_journal_account
-     *
-     * @return bool
-     */
-    public function getShowJournalAccount()
-    {
-        return $this->container['show_journal_account'];
-    }
-
-    /**
-     * Sets show_journal_account
-     *
-     * @param bool $show_journal_account Whether to display transaction records
-     *
-     * @return $this
-     */
-    public function setShowJournalAccount($show_journal_account)
-    {
-        $this->container['show_journal_account'] = $show_journal_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_freeze_guarantee
-     *
-     * @return int
-     */
-    public function getIsFreezeGuarantee()
-    {
-        return $this->container['is_freeze_guarantee'];
-    }
-
-    /**
-     * Sets is_freeze_guarantee
-     *
-     * @param int $is_freeze_guarantee Whether margin is frozen
-     *
-     * @return $this
-     */
-    public function setIsFreezeGuarantee($is_freeze_guarantee)
-    {
-        $this->container['is_freeze_guarantee'] = $is_freeze_guarantee;
-
-        return $this;
-    }
-
-    /**
-     * Gets usdt_left_guarantee
-     *
-     * @return string
-     */
-    public function getUsdtLeftGuarantee()
-    {
-        return $this->container['usdt_left_guarantee'];
-    }
-
-    /**
-     * Sets usdt_left_guarantee
-     *
-     * @param string $usdt_left_guarantee Remaining USDT margin
-     *
-     * @return $this
-     */
-    public function setUsdtLeftGuarantee($usdt_left_guarantee)
-    {
-        $this->container['usdt_left_guarantee'] = $usdt_left_guarantee;
-
-        return $this;
-    }
-
-    /**
-     * Gets guarantee_curr_type
-     *
-     * @return string
-     */
-    public function getGuaranteeCurrType()
-    {
-        return $this->container['guarantee_curr_type'];
-    }
-
-    /**
-     * Sets guarantee_curr_type
-     *
-     * @param string $guarantee_curr_type Margin currency type
-     *
-     * @return $this
-     */
-    public function setGuaranteeCurrType($guarantee_curr_type)
-    {
-        $this->container['guarantee_curr_type'] = $guarantee_curr_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets timest_paid
-     *
-     * @return int
-     */
-    public function getTimestPaid()
-    {
-        return $this->container['timest_paid'];
-    }
-
-    /**
-     * Sets timest_paid
-     *
-     * @param int $timest_paid Payment time
-     *
-     * @return $this
-     */
-    public function setTimestPaid($timest_paid)
-    {
-        $this->container['timest_paid'] = $timest_paid;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string $state Order Status
-     *
-     * @return $this
-     */
-    public function setState($state)
-    {
-        $this->container['state'] = $state;
-
-        return $this;
-    }
-
-    /**
-     * Gets release_coin_switch
-     *
-     * @return int
-     */
-    public function getReleaseCoinSwitch()
-    {
-        return $this->container['release_coin_switch'];
-    }
-
-    /**
-     * Sets release_coin_switch
-     *
-     * @param int $release_coin_switch Coin release switch configuration
-     *
-     * @return $this
-     */
-    public function setReleaseCoinSwitch($release_coin_switch)
-    {
-        $this->container['release_coin_switch'] = $release_coin_switch;
-
-        return $this;
-    }
-
-    /**
-     * Gets own_realname
-     *
-     * @return string
-     */
-    public function getOwnRealname()
-    {
-        return $this->container['own_realname'];
-    }
-
-    /**
-     * Sets own_realname
-     *
-     * @param string $own_realname Username
-     *
-     * @return $this
-     */
-    public function setOwnRealname($own_realname)
-    {
-        $this->container['own_realname'] = $own_realname;
-
-        return $this;
-    }
-
-    /**
-     * Gets confirmation_use_time_month
-     *
-     * @return int
-     */
-    public function getConfirmationUseTimeMonth()
-    {
-        return $this->container['confirmation_use_time_month'];
-    }
-
-    /**
-     * Sets confirmation_use_time_month
-     *
-     * @param int $confirmation_use_time_month Average confirmation time in last 30 days
-     *
-     * @return $this
-     */
-    public function setConfirmationUseTimeMonth($confirmation_use_time_month)
-    {
-        $this->container['confirmation_use_time_month'] = $confirmation_use_time_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_risk_user
-     *
-     * @return int
-     */
-    public function getIsRiskUser()
-    {
-        return $this->container['is_risk_user'];
-    }
-
-    /**
-     * Sets is_risk_user
-     *
-     * @param int $is_risk_user Whether risk user
-     *
-     * @return $this
-     */
-    public function setIsRiskUser($is_risk_user)
-    {
-        $this->container['is_risk_user'] = $is_risk_user;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_xt
-     *
-     * @return int
-     */
-    public function getIsXt()
-    {
-        return $this->container['is_xt'];
-    }
-
-    /**
-     * Sets is_xt
-     *
-     * @param int $is_xt Whether XT order
-     *
-     * @return $this
-     */
-    public function setIsXt($is_xt)
-    {
-        $this->container['is_xt'] = $is_xt;
-
-        return $this;
-    }
-
-    /**
-     * Gets order_type
-     *
-     * @return int
-     */
-    public function getOrderType()
-    {
-        return $this->container['order_type'];
-    }
-
-    /**
-     * Sets order_type
-     *
-     * @param int $order_type Order Type
-     *
-     * @return $this
-     */
-    public function setOrderType($order_type)
-    {
-        $this->container['order_type'] = $order_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets symbol
-     *
-     * @return string
-     */
-    public function getSymbol()
-    {
-        return $this->container['symbol'];
-    }
-
-    /**
-     * Sets symbol
-     *
-     * @param string $symbol Fiat currency symbol
-     *
-     * @return $this
-     */
-    public function setSymbol($symbol)
-    {
-        $this->container['symbol'] = $symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_show_receive
-     *
-     * @return int
-     */
-    public function getIsShowReceive()
-    {
-        return $this->container['is_show_receive'];
-    }
-
-    /**
-     * Sets is_show_receive
-     *
-     * @param int $is_show_receive Whether to show confirm receipt during appeal
-     *
-     * @return $this
-     */
-    public function setIsShowReceive($is_show_receive)
-    {
-        $this->container['is_show_receive'] = $is_show_receive;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_taker
-     *
-     * @return int
-     */
-    public function getIsTaker()
-    {
-        return $this->container['is_taker'];
-    }
-
-    /**
-     * Sets is_taker
-     *
-     * @param int $is_taker Whether regular user
-     *
-     * @return $this
-     */
-    public function setIsTaker($is_taker)
-    {
-        $this->container['is_taker'] = $is_taker;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_online
-     *
-     * @return int
-     */
-    public function getIsOnline()
-    {
-        return $this->container['is_online'];
-    }
-
-    /**
-     * Sets is_online
-     *
-     * @param int $is_online Merchant online status
-     *
-     * @return $this
-     */
-    public function setIsOnline($is_online)
-    {
-        $this->container['is_online'] = $is_online;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_seller_contact_info
-     *
-     * @return bool
-     */
-    public function getShowSellerContactInfo()
-    {
-        return $this->container['show_seller_contact_info'];
-    }
-
-    /**
-     * Sets show_seller_contact_info
-     *
-     * @param bool $show_seller_contact_info Whether to display seller contact information
-     *
-     * @return $this
-     */
-    public function setShowSellerContactInfo($show_seller_contact_info)
-    {
-        $this->container['show_seller_contact_info'] = $show_seller_contact_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets supported_pay_types
-     *
-     * @return string[]
-     */
-    public function getSupportedPayTypes()
-    {
-        return $this->container['supported_pay_types'];
-    }
-
-    /**
-     * Sets supported_pay_types
-     *
-     * @param string[] $supported_pay_types Payment methods supported by current order
-     *
-     * @return $this
-     */
-    public function setSupportedPayTypes($supported_pay_types)
-    {
-        $this->container['supported_pay_types'] = $supported_pay_types;
+        $this->container['trade_versatile'] = $trade_versatile;
 
         return $this;
     }

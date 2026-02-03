@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **int** |  | 
-**message** | **string** |  | 
-**timestamp** | **int** |  | 
+**change_log** | [**\GateApi\Model\TrailChangeLog[]**](TrailChangeLog.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

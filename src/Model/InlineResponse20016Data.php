@@ -54,7 +54,10 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'lists' => '\GateApi\Model\InlineResponse20016DataLists[]'
+        'list' => '\GateApi\Model\InlineResponse20016DataList[]',
+        'trans_time' => '\GateApi\Model\InlineResponse20016DataTransTime[]',
+        'count' => 'int',
+        'exported_num' => 'int'
     ];
 
     /**
@@ -63,7 +66,10 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'lists' => null
+        'list' => null,
+        'trans_time' => null,
+        'count' => null,
+        'exported_num' => null
     ];
 
     /**
@@ -93,7 +99,10 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'lists' => 'lists'
+        'list' => 'list',
+        'trans_time' => 'trans_time',
+        'count' => 'count',
+        'exported_num' => 'exported_num'
     ];
 
     /**
@@ -102,7 +111,10 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'lists' => 'setLists'
+        'list' => 'setList',
+        'trans_time' => 'setTransTime',
+        'count' => 'setCount',
+        'exported_num' => 'setExportedNum'
     ];
 
     /**
@@ -111,7 +123,10 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'lists' => 'getLists'
+        'list' => 'getList',
+        'trans_time' => 'getTransTime',
+        'count' => 'getCount',
+        'exported_num' => 'getExportedNum'
     ];
 
     /**
@@ -174,7 +189,10 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['lists'] = isset($data['lists']) ? $data['lists'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['trans_time'] = isset($data['trans_time']) ? $data['trans_time'] : null;
+        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
+        $this->container['exported_num'] = isset($data['exported_num']) ? $data['exported_num'] : null;
     }
 
     /**
@@ -186,8 +204,17 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['lists'] === null) {
-            $invalidProperties[] = "'lists' can't be null";
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
+        }
+        if ($this->container['trans_time'] === null) {
+            $invalidProperties[] = "'trans_time' can't be null";
+        }
+        if ($this->container['count'] === null) {
+            $invalidProperties[] = "'count' can't be null";
+        }
+        if ($this->container['exported_num'] === null) {
+            $invalidProperties[] = "'exported_num' can't be null";
         }
         return $invalidProperties;
     }
@@ -205,25 +232,97 @@ class InlineResponse20016Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets lists
+     * Gets list
      *
-     * @return \GateApi\Model\InlineResponse20016DataLists[]
+     * @return \GateApi\Model\InlineResponse20016DataList[]
      */
-    public function getLists()
+    public function getList()
     {
-        return $this->container['lists'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets lists
+     * Sets list
      *
-     * @param \GateApi\Model\InlineResponse20016DataLists[] $lists lists
+     * @param \GateApi\Model\InlineResponse20016DataList[] $list list
      *
      * @return $this
      */
-    public function setLists($lists)
+    public function setList($list)
     {
-        $this->container['lists'] = $lists;
+        $this->container['list'] = $list;
+
+        return $this;
+    }
+
+    /**
+     * Gets trans_time
+     *
+     * @return \GateApi\Model\InlineResponse20016DataTransTime[]
+     */
+    public function getTransTime()
+    {
+        return $this->container['trans_time'];
+    }
+
+    /**
+     * Sets trans_time
+     *
+     * @param \GateApi\Model\InlineResponse20016DataTransTime[] $trans_time Countdown time
+     *
+     * @return $this
+     */
+    public function setTransTime($trans_time)
+    {
+        $this->container['trans_time'] = $trans_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return int
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int $count Number of orders
+     *
+     * @return $this
+     */
+    public function setCount($count)
+    {
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets exported_num
+     *
+     * @return int
+     */
+    public function getExportedNum()
+    {
+        return $this->container['exported_num'];
+    }
+
+    /**
+     * Sets exported_num
+     *
+     * @param int $exported_num Export count
+     *
+     * @return $this
+     */
+    public function setExportedNum($exported_num)
+    {
+        $this->container['exported_num'] = $exported_num;
 
         return $this;
     }

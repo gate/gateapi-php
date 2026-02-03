@@ -54,8 +54,8 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_id' => 'string',
-        'text' => 'string'
+        'symbol' => 'string',
+        'tiers' => '\GateApi\Model\RuleRiskLimitsTiers[]'
     ];
 
     /**
@@ -64,8 +64,8 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
-        'text' => null
+        'symbol' => null,
+        'tiers' => null
     ];
 
     /**
@@ -95,8 +95,8 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'order_id',
-        'text' => 'text'
+        'symbol' => 'symbol',
+        'tiers' => 'tiers'
     ];
 
     /**
@@ -105,8 +105,8 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId',
-        'text' => 'setText'
+        'symbol' => 'setSymbol',
+        'tiers' => 'setTiers'
     ];
 
     /**
@@ -115,8 +115,8 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId',
-        'text' => 'getText'
+        'symbol' => 'getSymbol',
+        'tiers' => 'getTiers'
     ];
 
     /**
@@ -179,8 +179,8 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['tiers'] = isset($data['tiers']) ? $data['tiers'] : null;
     }
 
     /**
@@ -192,12 +192,6 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['order_id'] === null) {
-            $invalidProperties[] = "'order_id' can't be null";
-        }
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -214,49 +208,49 @@ class InlineResponse20024 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets order_id
+     * Gets symbol
      *
-     * @return string
+     * @return string|null
      */
-    public function getOrderId()
+    public function getSymbol()
     {
-        return $this->container['order_id'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets order_id
+     * Sets symbol
      *
-     * @param string $order_id Order ID
+     * @param string|null $symbol symbol
      *
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setSymbol($symbol)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets text
+     * Gets tiers
      *
-     * @return string
+     * @return \GateApi\Model\RuleRiskLimitsTiers[]|null
      */
-    public function getText()
+    public function getTiers()
     {
-        return $this->container['text'];
+        return $this->container['tiers'];
     }
 
     /**
-     * Sets text
+     * Sets tiers
      *
-     * @param string $text User-defined Order ID
+     * @param \GateApi\Model\RuleRiskLimitsTiers[]|null $tiers tiers
      *
      * @return $this
      */
-    public function setText($text)
+    public function setTiers($tiers)
     {
-        $this->container['text'] = $text;
+        $this->container['tiers'] = $tiers;
 
         return $this;
     }

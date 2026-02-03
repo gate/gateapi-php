@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## createOtcQuote
 
-> \GateApi\Model\InlineResponse2002 createOtcQuote($inline_object1)
+> \GateApi\Model\InlineResponse2006 createOtcQuote($inline_object1)
 
 Fiat and stablecoin quote
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\GateApi\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## createOtcOrder
 
-> \GateApi\Model\InlineResponse2003 createOtcOrder($inline_object2)
+> \GateApi\Model\InlineResponse2007 createOtcOrder($inline_object2)
 
 Create fiat order
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\GateApi\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ## createStableCoinOrder
 
-> \GateApi\Model\InlineResponse2004 createStableCoinOrder($inline_object3)
+> \GateApi\Model\InlineResponse2008 createStableCoinOrder($inline_object3)
 
 Create stablecoin order
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\GateApi\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ## getUserDefaultBank
 
-> \GateApi\Model\InlineResponse2005 getUserDefaultBank()
+> \GateApi\Model\InlineResponse2009 getUserDefaultBank()
 
 Get user's default bank account information
 
@@ -243,7 +243,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\GateApi\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
 
 ### Authorization
 
@@ -261,7 +261,7 @@ This endpoint does not need any parameter.
 
 ## markOtcOrderPaid
 
-> \GateApi\Model\InlineResponse2003 markOtcOrderPaid($inline_object4)
+> \GateApi\Model\InlineResponse2007 markOtcOrderPaid($inline_object4)
 
 Mark fiat order as paid
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\GateApi\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ## cancelOtcOrder
 
-> \GateApi\Model\InlineResponse2003 cancelOtcOrder($order_id)
+> \GateApi\Model\InlineResponse2007 cancelOtcOrder($order_id)
 
 Fiat order cancellation
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\GateApi\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -385,7 +385,7 @@ Name | Type | Description  | Notes
 
 ## listOtcOrders
 
-> \GateApi\Model\InlineResponse2006 listOtcOrders($type, $fiat_currency, $crypto_currency, $start_time, $end_time, $status, $pn, $ps)
+> \GateApi\Model\InlineResponse20010 listOtcOrders($type, $fiat_currency, $crypto_currency, $start_time, $end_time, $status, $pn, $ps)
 
 Fiat order list
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\GateApi\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
 
 ### Authorization
 
@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 
 ## listStableCoinOrders
 
-> \GateApi\Model\InlineResponse2007 listStableCoinOrders($page_size, $page_number, $coin_name, $start_time, $end_time, $status)
+> \GateApi\Model\InlineResponse20011 listStableCoinOrders($page_size, $page_number, $coin_name, $start_time, $end_time, $status)
 
 Stablecoin order list
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\GateApi\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 ## getOtcOrderDetail
 
-> \GateApi\Model\InlineResponse2008 getOtcOrderDetail($order_id)
+> \GateApi\Model\InlineResponse20012 getOtcOrderDetail($order_id)
 
 Fiat order details
 
@@ -581,7 +581,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
+[**\GateApi\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 

@@ -4,7 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tx_id** | **string** | Order ID | 
-**text** | **string** | User-defined Order ID | 
+**timestamp** | **float** |  | 
+**method** | **string** |  | 
+**code** | **int** |  | 
+**message** | **string** |  | 
+**data** | [**\GateApi\Model\InlineResponse20023Data**](InlineResponse20023Data.md) |  | 
+**version** | **string** |  | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

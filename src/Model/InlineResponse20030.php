@@ -54,10 +54,8 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
-        'exchange_type' => 'string',
-        'hour_interest_rate' => 'string',
-        'time' => 'string'
+        'order_id' => 'float',
+        'text' => 'string'
     ];
 
     /**
@@ -66,10 +64,8 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
-        'exchange_type' => null,
-        'hour_interest_rate' => null,
-        'time' => null
+        'order_id' => null,
+        'text' => null
     ];
 
     /**
@@ -99,10 +95,8 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
-        'exchange_type' => 'exchange_type',
-        'hour_interest_rate' => 'hour_interest_rate',
-        'time' => 'time'
+        'order_id' => 'order_id',
+        'text' => 'text'
     ];
 
     /**
@@ -111,10 +105,8 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
-        'exchange_type' => 'setExchangeType',
-        'hour_interest_rate' => 'setHourInterestRate',
-        'time' => 'setTime'
+        'order_id' => 'setOrderId',
+        'text' => 'setText'
     ];
 
     /**
@@ -123,10 +115,8 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
-        'exchange_type' => 'getExchangeType',
-        'hour_interest_rate' => 'getHourInterestRate',
-        'time' => 'getTime'
+        'order_id' => 'getOrderId',
+        'text' => 'getText'
     ];
 
     /**
@@ -189,10 +179,8 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['hour_interest_rate'] = isset($data['hour_interest_rate']) ? $data['hour_interest_rate'] : null;
-        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -204,17 +192,11 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
         }
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
-        }
-        if ($this->container['hour_interest_rate'] === null) {
-            $invalidProperties[] = "'hour_interest_rate' can't be null";
-        }
-        if ($this->container['time'] === null) {
-            $invalidProperties[] = "'time' can't be null";
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +214,49 @@ class InlineResponse20030 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
+     * Gets order_id
      *
-     * @return string
+     * @return float
      */
-    public function getCoin()
+    public function getOrderId()
     {
-        return $this->container['coin'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets coin
+     * Sets order_id
      *
-     * @param string $coin Currency
+     * @param float $order_id order_id
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setOrderId($order_id)
     {
-        $this->container['coin'] = $coin;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
 
     /**
-     * Gets exchange_type
+     * Gets text
      *
      * @return string
      */
-    public function getExchangeType()
+    public function getText()
     {
-        return $this->container['exchange_type'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets text
      *
-     * @param string $exchange_type Exchange
+     * @param string $text text
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setText($text)
     {
-        $this->container['exchange_type'] = $exchange_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets hour_interest_rate
-     *
-     * @return string
-     */
-    public function getHourInterestRate()
-    {
-        return $this->container['hour_interest_rate'];
-    }
-
-    /**
-     * Sets hour_interest_rate
-     *
-     * @param string $hour_interest_rate Hourly Interest Rate
-     *
-     * @return $this
-     */
-    public function setHourInterestRate($hour_interest_rate)
-    {
-        $this->container['hour_interest_rate'] = $hour_interest_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets time
-     *
-     * @return string
-     */
-    public function getTime()
-    {
-        return $this->container['time'];
-    }
-
-    /**
-     * Sets time
-     *
-     * @param string $time Millisecond Timestamp
-     *
-     * @return $this
-     */
-    public function setTime($time)
-    {
-        $this->container['time'] = $time;
+        $this->container['text'] = $text;
 
         return $this;
     }

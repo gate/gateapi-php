@@ -64,7 +64,8 @@ class FuturesAccountHistory implements ModelInterface, ArrayAccess
         'point_fee' => 'string',
         'point_refr' => 'string',
         'bonus_dnw' => 'string',
-        'bonus_offset' => 'string'
+        'bonus_offset' => 'string',
+        'cross_settle' => 'string'
     ];
 
     /**
@@ -82,7 +83,8 @@ class FuturesAccountHistory implements ModelInterface, ArrayAccess
         'point_fee' => null,
         'point_refr' => null,
         'bonus_dnw' => null,
-        'bonus_offset' => null
+        'bonus_offset' => null,
+        'cross_settle' => null
     ];
 
     /**
@@ -121,7 +123,8 @@ class FuturesAccountHistory implements ModelInterface, ArrayAccess
         'point_fee' => 'point_fee',
         'point_refr' => 'point_refr',
         'bonus_dnw' => 'bonus_dnw',
-        'bonus_offset' => 'bonus_offset'
+        'bonus_offset' => 'bonus_offset',
+        'cross_settle' => 'cross_settle'
     ];
 
     /**
@@ -139,7 +142,8 @@ class FuturesAccountHistory implements ModelInterface, ArrayAccess
         'point_fee' => 'setPointFee',
         'point_refr' => 'setPointRefr',
         'bonus_dnw' => 'setBonusDnw',
-        'bonus_offset' => 'setBonusOffset'
+        'bonus_offset' => 'setBonusOffset',
+        'cross_settle' => 'setCrossSettle'
     ];
 
     /**
@@ -157,7 +161,8 @@ class FuturesAccountHistory implements ModelInterface, ArrayAccess
         'point_fee' => 'getPointFee',
         'point_refr' => 'getPointRefr',
         'bonus_dnw' => 'getBonusDnw',
-        'bonus_offset' => 'getBonusOffset'
+        'bonus_offset' => 'getBonusOffset',
+        'cross_settle' => 'getCrossSettle'
     ];
 
     /**
@@ -230,6 +235,7 @@ class FuturesAccountHistory implements ModelInterface, ArrayAccess
         $this->container['point_refr'] = isset($data['point_refr']) ? $data['point_refr'] : null;
         $this->container['bonus_dnw'] = isset($data['bonus_dnw']) ? $data['bonus_dnw'] : null;
         $this->container['bonus_offset'] = isset($data['bonus_offset']) ? $data['bonus_offset'] : null;
+        $this->container['cross_settle'] = isset($data['cross_settle']) ? $data['cross_settle'] : null;
     }
 
     /**
@@ -492,6 +498,30 @@ class FuturesAccountHistory implements ModelInterface, ArrayAccess
     public function setBonusOffset($bonus_offset)
     {
         $this->container['bonus_offset'] = $bonus_offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets cross_settle
+     *
+     * @return string|null
+     */
+    public function getCrossSettle()
+    {
+        return $this->container['cross_settle'];
+    }
+
+    /**
+     * Sets cross_settle
+     *
+     * @param string|null $cross_settle Represents the value of profit settlement from the futures account to the spot account under Unified Account Mode. Negative values indicate settlement from futures to spot, while positive values indicate settlement from spot to futures. This value is cumulative.
+     *
+     * @return $this
+     */
+    public function setCrossSettle($cross_settle)
+    {
+        $this->container['cross_settle'] = $cross_settle;
 
         return $this;
     }

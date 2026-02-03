@@ -54,8 +54,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'time' => 'int',
-        'value' => 'string'
+        'order' => '\GateApi\Model\TrailOrder'
     ];
 
     /**
@@ -64,8 +63,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'time' => 'int64',
-        'value' => null
+        'order' => null
     ];
 
     /**
@@ -95,8 +93,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'time' => 'time',
-        'value' => 'value'
+        'order' => 'order'
     ];
 
     /**
@@ -105,8 +102,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'time' => 'setTime',
-        'value' => 'setValue'
+        'order' => 'setOrder'
     ];
 
     /**
@@ -115,8 +111,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'time' => 'getTime',
-        'value' => 'getValue'
+        'order' => 'getOrder'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['order'] = isset($data['order']) ? $data['order'] : null;
     }
 
     /**
@@ -208,49 +202,25 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets time
+     * Gets order
      *
-     * @return int|null
+     * @return \GateApi\Model\TrailOrder|null
      */
-    public function getTime()
+    public function getOrder()
     {
-        return $this->container['time'];
+        return $this->container['order'];
     }
 
     /**
-     * Sets time
+     * Sets order
      *
-     * @param int|null $time time
+     * @param \GateApi\Model\TrailOrder|null $order order
      *
      * @return $this
      */
-    public function setTime($time)
+    public function setOrder($order)
     {
-        $this->container['time'] = $time;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return string|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string|null $value value
-     *
-     * @return $this
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
+        $this->container['order'] = $order;
 
         return $this;
     }

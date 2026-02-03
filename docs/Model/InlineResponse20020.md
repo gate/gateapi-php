@@ -4,7 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** |  | [optional] 
-**tiers** | [**\GateApi\Model\RuleRiskLimitsTiers[]**](RuleRiskLimitsTiers.md) |  | [optional] 
+**timestamp** | **float** |  | 
+**method** | **string** |  | 
+**code** | **int** |  | 
+**message** | **string** |  | 
+**data** | [**\GateApi\Model\InlineResponse20020Data**](InlineResponse20020Data.md) |  | 
+**version** | **string** | Version number | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

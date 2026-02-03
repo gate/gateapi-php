@@ -54,11 +54,17 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pn' => 'int',
-        'ps' => 'int',
-        'total_pn' => 'int',
-        'count' => 'int',
-        'list' => '\GateApi\Model\InlineResponse2006DataList[]'
+        'type' => 'string',
+        'pay_coin' => 'string',
+        'get_coin' => 'string',
+        'pay_amount' => 'string',
+        'get_amount' => 'string',
+        'rate' => 'string',
+        'rate_reci' => 'string',
+        'promotion_code' => 'string',
+        'side' => 'string',
+        'order_type' => 'string',
+        'quote_token' => 'string'
     ];
 
     /**
@@ -67,11 +73,17 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'pn' => null,
-        'ps' => null,
-        'total_pn' => null,
-        'count' => null,
-        'list' => null
+        'type' => null,
+        'pay_coin' => null,
+        'get_coin' => null,
+        'pay_amount' => null,
+        'get_amount' => null,
+        'rate' => null,
+        'rate_reci' => null,
+        'promotion_code' => null,
+        'side' => null,
+        'order_type' => null,
+        'quote_token' => null
     ];
 
     /**
@@ -101,11 +113,17 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'pn' => 'pn',
-        'ps' => 'ps',
-        'total_pn' => 'total_pn',
-        'count' => 'count',
-        'list' => 'list'
+        'type' => 'type',
+        'pay_coin' => 'pay_coin',
+        'get_coin' => 'get_coin',
+        'pay_amount' => 'pay_amount',
+        'get_amount' => 'get_amount',
+        'rate' => 'rate',
+        'rate_reci' => 'rate_reci',
+        'promotion_code' => 'promotion_code',
+        'side' => 'side',
+        'order_type' => 'order_type',
+        'quote_token' => 'quote_token'
     ];
 
     /**
@@ -114,11 +132,17 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'pn' => 'setPn',
-        'ps' => 'setPs',
-        'total_pn' => 'setTotalPn',
-        'count' => 'setCount',
-        'list' => 'setList'
+        'type' => 'setType',
+        'pay_coin' => 'setPayCoin',
+        'get_coin' => 'setGetCoin',
+        'pay_amount' => 'setPayAmount',
+        'get_amount' => 'setGetAmount',
+        'rate' => 'setRate',
+        'rate_reci' => 'setRateReci',
+        'promotion_code' => 'setPromotionCode',
+        'side' => 'setSide',
+        'order_type' => 'setOrderType',
+        'quote_token' => 'setQuoteToken'
     ];
 
     /**
@@ -127,11 +151,17 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'pn' => 'getPn',
-        'ps' => 'getPs',
-        'total_pn' => 'getTotalPn',
-        'count' => 'getCount',
-        'list' => 'getList'
+        'type' => 'getType',
+        'pay_coin' => 'getPayCoin',
+        'get_coin' => 'getGetCoin',
+        'pay_amount' => 'getPayAmount',
+        'get_amount' => 'getGetAmount',
+        'rate' => 'getRate',
+        'rate_reci' => 'getRateReci',
+        'promotion_code' => 'getPromotionCode',
+        'side' => 'getSide',
+        'order_type' => 'getOrderType',
+        'quote_token' => 'getQuoteToken'
     ];
 
     /**
@@ -194,11 +224,17 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['pn'] = isset($data['pn']) ? $data['pn'] : null;
-        $this->container['ps'] = isset($data['ps']) ? $data['ps'] : null;
-        $this->container['total_pn'] = isset($data['total_pn']) ? $data['total_pn'] : null;
-        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
+        $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
+        $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
+        $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
+        $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        $this->container['rate_reci'] = isset($data['rate_reci']) ? $data['rate_reci'] : null;
+        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
     }
 
     /**
@@ -210,20 +246,38 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['pn'] === null) {
-            $invalidProperties[] = "'pn' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['ps'] === null) {
-            $invalidProperties[] = "'ps' can't be null";
+        if ($this->container['pay_coin'] === null) {
+            $invalidProperties[] = "'pay_coin' can't be null";
         }
-        if ($this->container['total_pn'] === null) {
-            $invalidProperties[] = "'total_pn' can't be null";
+        if ($this->container['get_coin'] === null) {
+            $invalidProperties[] = "'get_coin' can't be null";
         }
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
+        if ($this->container['pay_amount'] === null) {
+            $invalidProperties[] = "'pay_amount' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['get_amount'] === null) {
+            $invalidProperties[] = "'get_amount' can't be null";
+        }
+        if ($this->container['rate'] === null) {
+            $invalidProperties[] = "'rate' can't be null";
+        }
+        if ($this->container['rate_reci'] === null) {
+            $invalidProperties[] = "'rate_reci' can't be null";
+        }
+        if ($this->container['promotion_code'] === null) {
+            $invalidProperties[] = "'promotion_code' can't be null";
+        }
+        if ($this->container['side'] === null) {
+            $invalidProperties[] = "'side' can't be null";
+        }
+        if ($this->container['order_type'] === null) {
+            $invalidProperties[] = "'order_type' can't be null";
+        }
+        if ($this->container['quote_token'] === null) {
+            $invalidProperties[] = "'quote_token' can't be null";
         }
         return $invalidProperties;
     }
@@ -241,121 +295,265 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets pn
+     * Gets type
      *
-     * @return int
+     * @return string
      */
-    public function getPn()
+    public function getType()
     {
-        return $this->container['pn'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets pn
+     * Sets type
      *
-     * @param int $pn pn
+     * @param string $type BUY (on-ramp) or SELL (off-ramp)
      *
      * @return $this
      */
-    public function setPn($pn)
+    public function setType($type)
     {
-        $this->container['pn'] = $pn;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets ps
+     * Gets pay_coin
      *
-     * @return int
+     * @return string
      */
-    public function getPs()
+    public function getPayCoin()
     {
-        return $this->container['ps'];
+        return $this->container['pay_coin'];
     }
 
     /**
-     * Sets ps
+     * Sets pay_coin
      *
-     * @param int $ps ps
+     * @param string $pay_coin Payment currency
      *
      * @return $this
      */
-    public function setPs($ps)
+    public function setPayCoin($pay_coin)
     {
-        $this->container['ps'] = $ps;
+        $this->container['pay_coin'] = $pay_coin;
 
         return $this;
     }
 
     /**
-     * Gets total_pn
+     * Gets get_coin
      *
-     * @return int
+     * @return string
      */
-    public function getTotalPn()
+    public function getGetCoin()
     {
-        return $this->container['total_pn'];
+        return $this->container['get_coin'];
     }
 
     /**
-     * Sets total_pn
+     * Sets get_coin
      *
-     * @param int $total_pn total_pn
+     * @param string $get_coin Currency
      *
      * @return $this
      */
-    public function setTotalPn($total_pn)
+    public function setGetCoin($get_coin)
     {
-        $this->container['total_pn'] = $total_pn;
+        $this->container['get_coin'] = $get_coin;
 
         return $this;
     }
 
     /**
-     * Gets count
+     * Gets pay_amount
      *
-     * @return int
+     * @return string
      */
-    public function getCount()
+    public function getPayAmount()
     {
-        return $this->container['count'];
+        return $this->container['pay_amount'];
     }
 
     /**
-     * Sets count
+     * Sets pay_amount
      *
-     * @param int $count count
+     * @param string $pay_amount Payment amount
      *
      * @return $this
      */
-    public function setCount($count)
+    public function setPayAmount($pay_amount)
     {
-        $this->container['count'] = $count;
+        $this->container['pay_amount'] = $pay_amount;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets get_amount
      *
-     * @return \GateApi\Model\InlineResponse2006DataList[]
+     * @return string
      */
-    public function getList()
+    public function getGetAmount()
     {
-        return $this->container['list'];
+        return $this->container['get_amount'];
     }
 
     /**
-     * Sets list
+     * Sets get_amount
      *
-     * @param \GateApi\Model\InlineResponse2006DataList[] $list list
+     * @param string $get_amount Redemption Amount
      *
      * @return $this
      */
-    public function setList($list)
+    public function setGetAmount($get_amount)
     {
-        $this->container['list'] = $list;
+        $this->container['get_amount'] = $get_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets rate
+     *
+     * @return string
+     */
+    public function getRate()
+    {
+        return $this->container['rate'];
+    }
+
+    /**
+     * Sets rate
+     *
+     * @param string $rate Exchange rate
+     *
+     * @return $this
+     */
+    public function setRate($rate)
+    {
+        $this->container['rate'] = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets rate_reci
+     *
+     * @return string
+     */
+    public function getRateReci()
+    {
+        return $this->container['rate_reci'];
+    }
+
+    /**
+     * Sets rate_reci
+     *
+     * @param string $rate_reci Reciprocal of the exchange rate
+     *
+     * @return $this
+     */
+    public function setRateReci($rate_reci)
+    {
+        $this->container['rate_reci'] = $rate_reci;
+
+        return $this;
+    }
+
+    /**
+     * Gets promotion_code
+     *
+     * @return string
+     */
+    public function getPromotionCode()
+    {
+        return $this->container['promotion_code'];
+    }
+
+    /**
+     * Sets promotion_code
+     *
+     * @param string $promotion_code Promotion code
+     *
+     * @return $this
+     */
+    public function setPromotionCode($promotion_code)
+    {
+        $this->container['promotion_code'] = $promotion_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets side
+     *
+     * @return string
+     */
+    public function getSide()
+    {
+        return $this->container['side'];
+    }
+
+    /**
+     * Sets side
+     *
+     * @param string $side Quote method
+     *
+     * @return $this
+     */
+    public function setSide($side)
+    {
+        $this->container['side'] = $side;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_type
+     *
+     * @return string
+     */
+    public function getOrderType()
+    {
+        return $this->container['order_type'];
+    }
+
+    /**
+     * Sets order_type
+     *
+     * @param string $order_type Order type: FIAT (fiat) / STABLE (stablecoin)
+     *
+     * @return $this
+     */
+    public function setOrderType($order_type)
+    {
+        $this->container['order_type'] = $order_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets quote_token
+     *
+     * @return string
+     */
+    public function getQuoteToken()
+    {
+        return $this->container['quote_token'];
+    }
+
+    /**
+     * Sets quote_token
+     *
+     * @param string $quote_token Quote token required when placing an order
+     *
+     * @return $this
+     */
+    public function setQuoteToken($quote_token)
+    {
+        $this->container['quote_token'] = $quote_token;
 
         return $this;
     }

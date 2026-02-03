@@ -54,10 +54,8 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse2005Data',
-        'timestamp' => 'int'
+        'currency' => 'string',
+        'est_rate' => 'string'
     ];
 
     /**
@@ -66,10 +64,8 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null,
-        'data' => null,
-        'timestamp' => null
+        'currency' => null,
+        'est_rate' => null
     ];
 
     /**
@@ -99,10 +95,8 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'data' => 'data',
-        'timestamp' => 'timestamp'
+        'currency' => 'currency',
+        'est_rate' => 'est_rate'
     ];
 
     /**
@@ -111,10 +105,8 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'data' => 'setData',
-        'timestamp' => 'setTimestamp'
+        'currency' => 'setCurrency',
+        'est_rate' => 'setEstRate'
     ];
 
     /**
@@ -123,10 +115,8 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'data' => 'getData',
-        'timestamp' => 'getTimestamp'
+        'currency' => 'getCurrency',
+        'est_rate' => 'getEstRate'
     ];
 
     /**
@@ -189,10 +179,8 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['est_rate'] = isset($data['est_rate']) ? $data['est_rate'] : null;
     }
 
     /**
@@ -204,18 +192,6 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -232,97 +208,49 @@ class InlineResponse2005 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets currency
      *
-     * @return int
+     * @return string|null
      */
-    public function getCode()
+    public function getCurrency()
     {
-        return $this->container['code'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets code
+     * Sets currency
      *
-     * @param int $code code
+     * @param string|null $currency currency
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setCurrency($currency)
     {
-        $this->container['code'] = $code;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets est_rate
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage()
+    public function getEstRate()
     {
-        return $this->container['message'];
+        return $this->container['est_rate'];
     }
 
     /**
-     * Sets message
+     * Sets est_rate
      *
-     * @param string $message message
+     * @param string|null $est_rate Estimated Annualized Rate, e.g., `est_rate`: `0.8014` represents an annualized rate of 80.14%
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setEstRate($est_rate)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \GateApi\Model\InlineResponse2005Data
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \GateApi\Model\InlineResponse2005Data $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return int
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param int $timestamp timestamp
-     *
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['est_rate'] = $est_rate;
 
         return $this;
     }

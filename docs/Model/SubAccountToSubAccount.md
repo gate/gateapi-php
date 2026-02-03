@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **sub_account_from_type** | **string** | Source sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account | 
 **sub_account_to** | **string** | Transfer to the user id of the sub-account | 
 **sub_account_to_type** | **string** | Target sub-account trading account: spot - spot account, futures - perpetual contract account, delivery - delivery contract account | 
-**amount** | **string** | Transfer amount | 
+**amount** | **string** | Transfer Amount, supports up to 8 decimal places, must be greater than 0 | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

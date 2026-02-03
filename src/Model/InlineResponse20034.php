@@ -54,10 +54,10 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_id' => 'string',
-        'symbol' => 'string',
-        'crossex_adl_rank' => 'string',
-        'exchange_adl_rank' => 'string'
+        'coin' => 'string',
+        'exchange_type' => 'string',
+        'hour_interest_rate' => 'string',
+        'time' => 'string'
     ];
 
     /**
@@ -66,10 +66,10 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'user_id' => null,
-        'symbol' => null,
-        'crossex_adl_rank' => null,
-        'exchange_adl_rank' => null
+        'coin' => null,
+        'exchange_type' => null,
+        'hour_interest_rate' => null,
+        'time' => null
     ];
 
     /**
@@ -99,10 +99,10 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_id' => 'user_id',
-        'symbol' => 'symbol',
-        'crossex_adl_rank' => 'crossex_adl_rank',
-        'exchange_adl_rank' => 'exchange_adl_rank'
+        'coin' => 'coin',
+        'exchange_type' => 'exchange_type',
+        'hour_interest_rate' => 'hour_interest_rate',
+        'time' => 'time'
     ];
 
     /**
@@ -111,10 +111,10 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'user_id' => 'setUserId',
-        'symbol' => 'setSymbol',
-        'crossex_adl_rank' => 'setCrossexAdlRank',
-        'exchange_adl_rank' => 'setExchangeAdlRank'
+        'coin' => 'setCoin',
+        'exchange_type' => 'setExchangeType',
+        'hour_interest_rate' => 'setHourInterestRate',
+        'time' => 'setTime'
     ];
 
     /**
@@ -123,10 +123,10 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'user_id' => 'getUserId',
-        'symbol' => 'getSymbol',
-        'crossex_adl_rank' => 'getCrossexAdlRank',
-        'exchange_adl_rank' => 'getExchangeAdlRank'
+        'coin' => 'getCoin',
+        'exchange_type' => 'getExchangeType',
+        'hour_interest_rate' => 'getHourInterestRate',
+        'time' => 'getTime'
     ];
 
     /**
@@ -189,10 +189,10 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['crossex_adl_rank'] = isset($data['crossex_adl_rank']) ? $data['crossex_adl_rank'] : null;
-        $this->container['exchange_adl_rank'] = isset($data['exchange_adl_rank']) ? $data['exchange_adl_rank'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['hour_interest_rate'] = isset($data['hour_interest_rate']) ? $data['hour_interest_rate'] : null;
+        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
     }
 
     /**
@@ -204,17 +204,17 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
         }
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
+        if ($this->container['exchange_type'] === null) {
+            $invalidProperties[] = "'exchange_type' can't be null";
         }
-        if ($this->container['crossex_adl_rank'] === null) {
-            $invalidProperties[] = "'crossex_adl_rank' can't be null";
+        if ($this->container['hour_interest_rate'] === null) {
+            $invalidProperties[] = "'hour_interest_rate' can't be null";
         }
-        if ($this->container['exchange_adl_rank'] === null) {
-            $invalidProperties[] = "'exchange_adl_rank' can't be null";
+        if ($this->container['time'] === null) {
+            $invalidProperties[] = "'time' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +232,97 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets user_id
+     * Gets coin
      *
      * @return string
      */
-    public function getUserId()
+    public function getCoin()
     {
-        return $this->container['user_id'];
+        return $this->container['coin'];
     }
 
     /**
-     * Sets user_id
+     * Sets coin
      *
-     * @param string $user_id User ID
+     * @param string $coin Currency
      *
      * @return $this
      */
-    public function setUserId($user_id)
+    public function setCoin($coin)
     {
-        $this->container['user_id'] = $user_id;
+        $this->container['coin'] = $coin;
 
         return $this;
     }
 
     /**
-     * Gets symbol
+     * Gets exchange_type
      *
      * @return string
      */
-    public function getSymbol()
+    public function getExchangeType()
     {
-        return $this->container['symbol'];
+        return $this->container['exchange_type'];
     }
 
     /**
-     * Sets symbol
+     * Sets exchange_type
      *
-     * @param string $symbol Currency pair
+     * @param string $exchange_type Exchange
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setExchangeType($exchange_type)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }
 
     /**
-     * Gets crossex_adl_rank
+     * Gets hour_interest_rate
      *
      * @return string
      */
-    public function getCrossexAdlRank()
+    public function getHourInterestRate()
     {
-        return $this->container['crossex_adl_rank'];
+        return $this->container['hour_interest_rate'];
     }
 
     /**
-     * Sets crossex_adl_rank
+     * Sets hour_interest_rate
      *
-     * @param string $crossex_adl_rank CROSSEX position-reduction indicator ranking (1–5, higher value ranks higher)
+     * @param string $hour_interest_rate Hourly Interest Rate
      *
      * @return $this
      */
-    public function setCrossexAdlRank($crossex_adl_rank)
+    public function setHourInterestRate($hour_interest_rate)
     {
-        $this->container['crossex_adl_rank'] = $crossex_adl_rank;
+        $this->container['hour_interest_rate'] = $hour_interest_rate;
 
         return $this;
     }
 
     /**
-     * Gets exchange_adl_rank
+     * Gets time
      *
      * @return string
      */
-    public function getExchangeAdlRank()
+    public function getTime()
     {
-        return $this->container['exchange_adl_rank'];
+        return $this->container['time'];
     }
 
     /**
-     * Sets exchange_adl_rank
+     * Sets time
      *
-     * @param string $exchange_adl_rank Original exchange information (Binance: 0–4, higher value ranks higher; OKX: 0–5, higher value ranks higher; Gate: 1–5, lower value ranks higher)
+     * @param string $time Millisecond Timestamp
      *
      * @return $this
      */
-    public function setExchangeAdlRank($exchange_adl_rank)
+    public function setTime($time)
     {
-        $this->container['exchange_adl_rank'] = $exchange_adl_rank;
+        $this->container['time'] = $time;
 
         return $this;
     }

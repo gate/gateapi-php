@@ -56,7 +56,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'code' => 'int',
         'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse2007Data'
+        'timestamp' => 'int'
     ];
 
     /**
@@ -67,7 +67,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'code' => null,
         'message' => null,
-        'data' => null
+        'timestamp' => null
     ];
 
     /**
@@ -99,7 +99,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'code' => 'code',
         'message' => 'message',
-        'data' => 'data'
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -110,7 +110,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     protected static $setters = [
         'code' => 'setCode',
         'message' => 'setMessage',
-        'data' => 'setData'
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -121,7 +121,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     protected static $getters = [
         'code' => 'getCode',
         'message' => 'getMessage',
-        'data' => 'getData'
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -186,7 +186,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -204,8 +204,8 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -271,25 +271,25 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets data
+     * Gets timestamp
      *
-     * @return \GateApi\Model\InlineResponse2007Data
+     * @return int
      */
-    public function getData()
+    public function getTimestamp()
     {
-        return $this->container['data'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets data
+     * Sets timestamp
      *
-     * @param \GateApi\Model\InlineResponse2007Data $data data
+     * @param int $timestamp timestamp
      *
      * @return $this
      */
-    public function setData($data)
+    public function setTimestamp($timestamp)
     {
-        $this->container['data'] = $data;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }
