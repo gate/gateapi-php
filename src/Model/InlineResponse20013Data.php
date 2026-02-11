@@ -54,37 +54,22 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'is_self' => 'bool',
-        'user_timest' => 'string',
-        'counterparties_num' => 'int',
-        'email_verified' => 'string',
-        'verified' => 'string',
-        'has_phone' => 'string',
-        'user_name' => 'string',
-        'user_note' => 'string',
-        'complete_transactions' => 'string',
-        'paid_transactions' => 'string',
-        'accepted_transactions' => 'string',
-        'transactions_used_time' => 'string',
-        'cancelled_used_time_month' => 'string',
-        'complete_transactions_month' => 'string',
-        'complete_rate_month' => 'int',
-        'orders_buy_rate_month' => 'int',
-        'is_black' => 'int',
-        'is_follow' => 'int',
-        'have_traded' => 'int',
-        'biz_uid' => 'string',
-        'blue_vip' => 'int',
-        'work_status' => 'int',
-        'registration_days' => 'int',
-        'first_trade_days' => 'int',
-        'need_replenish' => 'int',
-        'merchant_info' => '\GateApi\Model\InlineResponse20013DataMerchantInfo',
-        'online_status' => 'int',
-        'work_hours' => 'object',
-        'transactions_month' => 'int',
-        'transactions_all' => 'int',
-        'trade_versatile' => 'bool'
+        'order_id' => 'string',
+        'uid' => 'string',
+        'type' => 'string',
+        'fiat_currency' => 'string',
+        'fiat_amount' => 'string',
+        'crypto_currency' => 'string',
+        'crypto_amount' => 'string',
+        'rate' => 'string',
+        'transfer_remark' => 'string',
+        'status' => 'string',
+        'db_status' => 'string',
+        'create_time' => 'string',
+        'memo' => 'string',
+        'side' => 'string',
+        'promotion_code' => 'string',
+        'trade_no' => 'string'
     ];
 
     /**
@@ -93,37 +78,22 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'is_self' => null,
-        'user_timest' => null,
-        'counterparties_num' => null,
-        'email_verified' => null,
-        'verified' => null,
-        'has_phone' => null,
-        'user_name' => null,
-        'user_note' => null,
-        'complete_transactions' => null,
-        'paid_transactions' => null,
-        'accepted_transactions' => null,
-        'transactions_used_time' => null,
-        'cancelled_used_time_month' => null,
-        'complete_transactions_month' => null,
-        'complete_rate_month' => null,
-        'orders_buy_rate_month' => null,
-        'is_black' => null,
-        'is_follow' => null,
-        'have_traded' => null,
-        'biz_uid' => null,
-        'blue_vip' => null,
-        'work_status' => null,
-        'registration_days' => null,
-        'first_trade_days' => null,
-        'need_replenish' => null,
-        'merchant_info' => null,
-        'online_status' => null,
-        'work_hours' => null,
-        'transactions_month' => null,
-        'transactions_all' => null,
-        'trade_versatile' => null
+        'order_id' => null,
+        'uid' => null,
+        'type' => null,
+        'fiat_currency' => null,
+        'fiat_amount' => null,
+        'crypto_currency' => null,
+        'crypto_amount' => null,
+        'rate' => null,
+        'transfer_remark' => null,
+        'status' => null,
+        'db_status' => null,
+        'create_time' => null,
+        'memo' => null,
+        'side' => null,
+        'promotion_code' => null,
+        'trade_no' => null
     ];
 
     /**
@@ -153,37 +123,22 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'is_self' => 'is_self',
-        'user_timest' => 'user_timest',
-        'counterparties_num' => 'counterparties_num',
-        'email_verified' => 'email_verified',
-        'verified' => 'verified',
-        'has_phone' => 'has_phone',
-        'user_name' => 'user_name',
-        'user_note' => 'user_note',
-        'complete_transactions' => 'complete_transactions',
-        'paid_transactions' => 'paid_transactions',
-        'accepted_transactions' => 'accepted_transactions',
-        'transactions_used_time' => 'transactions_used_time',
-        'cancelled_used_time_month' => 'cancelled_used_time_month',
-        'complete_transactions_month' => 'complete_transactions_month',
-        'complete_rate_month' => 'complete_rate_month',
-        'orders_buy_rate_month' => 'orders_buy_rate_month',
-        'is_black' => 'is_black',
-        'is_follow' => 'is_follow',
-        'have_traded' => 'have_traded',
-        'biz_uid' => 'biz_uid',
-        'blue_vip' => 'blue_vip',
-        'work_status' => 'work_status',
-        'registration_days' => 'registration_days',
-        'first_trade_days' => 'first_trade_days',
-        'need_replenish' => 'need_replenish',
-        'merchant_info' => 'merchant_info',
-        'online_status' => 'online_status',
-        'work_hours' => 'work_hours',
-        'transactions_month' => 'transactions_month',
-        'transactions_all' => 'transactions_all',
-        'trade_versatile' => 'trade_versatile'
+        'order_id' => 'order_id',
+        'uid' => 'uid',
+        'type' => 'type',
+        'fiat_currency' => 'fiat_currency',
+        'fiat_amount' => 'fiat_amount',
+        'crypto_currency' => 'crypto_currency',
+        'crypto_amount' => 'crypto_amount',
+        'rate' => 'rate',
+        'transfer_remark' => 'transfer_remark',
+        'status' => 'status',
+        'db_status' => 'db_status',
+        'create_time' => 'create_time',
+        'memo' => 'memo',
+        'side' => 'side',
+        'promotion_code' => 'promotion_code',
+        'trade_no' => 'trade_no'
     ];
 
     /**
@@ -192,37 +147,22 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'is_self' => 'setIsSelf',
-        'user_timest' => 'setUserTimest',
-        'counterparties_num' => 'setCounterpartiesNum',
-        'email_verified' => 'setEmailVerified',
-        'verified' => 'setVerified',
-        'has_phone' => 'setHasPhone',
-        'user_name' => 'setUserName',
-        'user_note' => 'setUserNote',
-        'complete_transactions' => 'setCompleteTransactions',
-        'paid_transactions' => 'setPaidTransactions',
-        'accepted_transactions' => 'setAcceptedTransactions',
-        'transactions_used_time' => 'setTransactionsUsedTime',
-        'cancelled_used_time_month' => 'setCancelledUsedTimeMonth',
-        'complete_transactions_month' => 'setCompleteTransactionsMonth',
-        'complete_rate_month' => 'setCompleteRateMonth',
-        'orders_buy_rate_month' => 'setOrdersBuyRateMonth',
-        'is_black' => 'setIsBlack',
-        'is_follow' => 'setIsFollow',
-        'have_traded' => 'setHaveTraded',
-        'biz_uid' => 'setBizUid',
-        'blue_vip' => 'setBlueVip',
-        'work_status' => 'setWorkStatus',
-        'registration_days' => 'setRegistrationDays',
-        'first_trade_days' => 'setFirstTradeDays',
-        'need_replenish' => 'setNeedReplenish',
-        'merchant_info' => 'setMerchantInfo',
-        'online_status' => 'setOnlineStatus',
-        'work_hours' => 'setWorkHours',
-        'transactions_month' => 'setTransactionsMonth',
-        'transactions_all' => 'setTransactionsAll',
-        'trade_versatile' => 'setTradeVersatile'
+        'order_id' => 'setOrderId',
+        'uid' => 'setUid',
+        'type' => 'setType',
+        'fiat_currency' => 'setFiatCurrency',
+        'fiat_amount' => 'setFiatAmount',
+        'crypto_currency' => 'setCryptoCurrency',
+        'crypto_amount' => 'setCryptoAmount',
+        'rate' => 'setRate',
+        'transfer_remark' => 'setTransferRemark',
+        'status' => 'setStatus',
+        'db_status' => 'setDbStatus',
+        'create_time' => 'setCreateTime',
+        'memo' => 'setMemo',
+        'side' => 'setSide',
+        'promotion_code' => 'setPromotionCode',
+        'trade_no' => 'setTradeNo'
     ];
 
     /**
@@ -231,37 +171,22 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'is_self' => 'getIsSelf',
-        'user_timest' => 'getUserTimest',
-        'counterparties_num' => 'getCounterpartiesNum',
-        'email_verified' => 'getEmailVerified',
-        'verified' => 'getVerified',
-        'has_phone' => 'getHasPhone',
-        'user_name' => 'getUserName',
-        'user_note' => 'getUserNote',
-        'complete_transactions' => 'getCompleteTransactions',
-        'paid_transactions' => 'getPaidTransactions',
-        'accepted_transactions' => 'getAcceptedTransactions',
-        'transactions_used_time' => 'getTransactionsUsedTime',
-        'cancelled_used_time_month' => 'getCancelledUsedTimeMonth',
-        'complete_transactions_month' => 'getCompleteTransactionsMonth',
-        'complete_rate_month' => 'getCompleteRateMonth',
-        'orders_buy_rate_month' => 'getOrdersBuyRateMonth',
-        'is_black' => 'getIsBlack',
-        'is_follow' => 'getIsFollow',
-        'have_traded' => 'getHaveTraded',
-        'biz_uid' => 'getBizUid',
-        'blue_vip' => 'getBlueVip',
-        'work_status' => 'getWorkStatus',
-        'registration_days' => 'getRegistrationDays',
-        'first_trade_days' => 'getFirstTradeDays',
-        'need_replenish' => 'getNeedReplenish',
-        'merchant_info' => 'getMerchantInfo',
-        'online_status' => 'getOnlineStatus',
-        'work_hours' => 'getWorkHours',
-        'transactions_month' => 'getTransactionsMonth',
-        'transactions_all' => 'getTransactionsAll',
-        'trade_versatile' => 'getTradeVersatile'
+        'order_id' => 'getOrderId',
+        'uid' => 'getUid',
+        'type' => 'getType',
+        'fiat_currency' => 'getFiatCurrency',
+        'fiat_amount' => 'getFiatAmount',
+        'crypto_currency' => 'getCryptoCurrency',
+        'crypto_amount' => 'getCryptoAmount',
+        'rate' => 'getRate',
+        'transfer_remark' => 'getTransferRemark',
+        'status' => 'getStatus',
+        'db_status' => 'getDbStatus',
+        'create_time' => 'getCreateTime',
+        'memo' => 'getMemo',
+        'side' => 'getSide',
+        'promotion_code' => 'getPromotionCode',
+        'trade_no' => 'getTradeNo'
     ];
 
     /**
@@ -324,37 +249,22 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_self'] = isset($data['is_self']) ? $data['is_self'] : null;
-        $this->container['user_timest'] = isset($data['user_timest']) ? $data['user_timest'] : null;
-        $this->container['counterparties_num'] = isset($data['counterparties_num']) ? $data['counterparties_num'] : null;
-        $this->container['email_verified'] = isset($data['email_verified']) ? $data['email_verified'] : null;
-        $this->container['verified'] = isset($data['verified']) ? $data['verified'] : null;
-        $this->container['has_phone'] = isset($data['has_phone']) ? $data['has_phone'] : null;
-        $this->container['user_name'] = isset($data['user_name']) ? $data['user_name'] : null;
-        $this->container['user_note'] = isset($data['user_note']) ? $data['user_note'] : null;
-        $this->container['complete_transactions'] = isset($data['complete_transactions']) ? $data['complete_transactions'] : null;
-        $this->container['paid_transactions'] = isset($data['paid_transactions']) ? $data['paid_transactions'] : null;
-        $this->container['accepted_transactions'] = isset($data['accepted_transactions']) ? $data['accepted_transactions'] : null;
-        $this->container['transactions_used_time'] = isset($data['transactions_used_time']) ? $data['transactions_used_time'] : null;
-        $this->container['cancelled_used_time_month'] = isset($data['cancelled_used_time_month']) ? $data['cancelled_used_time_month'] : null;
-        $this->container['complete_transactions_month'] = isset($data['complete_transactions_month']) ? $data['complete_transactions_month'] : null;
-        $this->container['complete_rate_month'] = isset($data['complete_rate_month']) ? $data['complete_rate_month'] : null;
-        $this->container['orders_buy_rate_month'] = isset($data['orders_buy_rate_month']) ? $data['orders_buy_rate_month'] : null;
-        $this->container['is_black'] = isset($data['is_black']) ? $data['is_black'] : null;
-        $this->container['is_follow'] = isset($data['is_follow']) ? $data['is_follow'] : null;
-        $this->container['have_traded'] = isset($data['have_traded']) ? $data['have_traded'] : null;
-        $this->container['biz_uid'] = isset($data['biz_uid']) ? $data['biz_uid'] : null;
-        $this->container['blue_vip'] = isset($data['blue_vip']) ? $data['blue_vip'] : null;
-        $this->container['work_status'] = isset($data['work_status']) ? $data['work_status'] : null;
-        $this->container['registration_days'] = isset($data['registration_days']) ? $data['registration_days'] : null;
-        $this->container['first_trade_days'] = isset($data['first_trade_days']) ? $data['first_trade_days'] : null;
-        $this->container['need_replenish'] = isset($data['need_replenish']) ? $data['need_replenish'] : null;
-        $this->container['merchant_info'] = isset($data['merchant_info']) ? $data['merchant_info'] : null;
-        $this->container['online_status'] = isset($data['online_status']) ? $data['online_status'] : null;
-        $this->container['work_hours'] = isset($data['work_hours']) ? $data['work_hours'] : null;
-        $this->container['transactions_month'] = isset($data['transactions_month']) ? $data['transactions_month'] : null;
-        $this->container['transactions_all'] = isset($data['transactions_all']) ? $data['transactions_all'] : null;
-        $this->container['trade_versatile'] = isset($data['trade_versatile']) ? $data['trade_versatile'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
+        $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
+        $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
+        $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
+        $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        $this->container['transfer_remark'] = isset($data['transfer_remark']) ? $data['transfer_remark'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['db_status'] = isset($data['db_status']) ? $data['db_status'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        $this->container['trade_no'] = isset($data['trade_no']) ? $data['trade_no'] : null;
     }
 
     /**
@@ -366,98 +276,53 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['is_self'] === null) {
-            $invalidProperties[] = "'is_self' can't be null";
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
         }
-        if ($this->container['user_timest'] === null) {
-            $invalidProperties[] = "'user_timest' can't be null";
+        if ($this->container['uid'] === null) {
+            $invalidProperties[] = "'uid' can't be null";
         }
-        if ($this->container['counterparties_num'] === null) {
-            $invalidProperties[] = "'counterparties_num' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['email_verified'] === null) {
-            $invalidProperties[] = "'email_verified' can't be null";
+        if ($this->container['fiat_currency'] === null) {
+            $invalidProperties[] = "'fiat_currency' can't be null";
         }
-        if ($this->container['verified'] === null) {
-            $invalidProperties[] = "'verified' can't be null";
+        if ($this->container['fiat_amount'] === null) {
+            $invalidProperties[] = "'fiat_amount' can't be null";
         }
-        if ($this->container['has_phone'] === null) {
-            $invalidProperties[] = "'has_phone' can't be null";
+        if ($this->container['crypto_currency'] === null) {
+            $invalidProperties[] = "'crypto_currency' can't be null";
         }
-        if ($this->container['user_name'] === null) {
-            $invalidProperties[] = "'user_name' can't be null";
+        if ($this->container['crypto_amount'] === null) {
+            $invalidProperties[] = "'crypto_amount' can't be null";
         }
-        if ($this->container['user_note'] === null) {
-            $invalidProperties[] = "'user_note' can't be null";
+        if ($this->container['rate'] === null) {
+            $invalidProperties[] = "'rate' can't be null";
         }
-        if ($this->container['complete_transactions'] === null) {
-            $invalidProperties[] = "'complete_transactions' can't be null";
+        if ($this->container['transfer_remark'] === null) {
+            $invalidProperties[] = "'transfer_remark' can't be null";
         }
-        if ($this->container['paid_transactions'] === null) {
-            $invalidProperties[] = "'paid_transactions' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['accepted_transactions'] === null) {
-            $invalidProperties[] = "'accepted_transactions' can't be null";
+        if ($this->container['db_status'] === null) {
+            $invalidProperties[] = "'db_status' can't be null";
         }
-        if ($this->container['transactions_used_time'] === null) {
-            $invalidProperties[] = "'transactions_used_time' can't be null";
+        if ($this->container['create_time'] === null) {
+            $invalidProperties[] = "'create_time' can't be null";
         }
-        if ($this->container['cancelled_used_time_month'] === null) {
-            $invalidProperties[] = "'cancelled_used_time_month' can't be null";
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
         }
-        if ($this->container['complete_transactions_month'] === null) {
-            $invalidProperties[] = "'complete_transactions_month' can't be null";
+        if ($this->container['side'] === null) {
+            $invalidProperties[] = "'side' can't be null";
         }
-        if ($this->container['complete_rate_month'] === null) {
-            $invalidProperties[] = "'complete_rate_month' can't be null";
+        if ($this->container['promotion_code'] === null) {
+            $invalidProperties[] = "'promotion_code' can't be null";
         }
-        if ($this->container['orders_buy_rate_month'] === null) {
-            $invalidProperties[] = "'orders_buy_rate_month' can't be null";
-        }
-        if ($this->container['is_black'] === null) {
-            $invalidProperties[] = "'is_black' can't be null";
-        }
-        if ($this->container['is_follow'] === null) {
-            $invalidProperties[] = "'is_follow' can't be null";
-        }
-        if ($this->container['have_traded'] === null) {
-            $invalidProperties[] = "'have_traded' can't be null";
-        }
-        if ($this->container['biz_uid'] === null) {
-            $invalidProperties[] = "'biz_uid' can't be null";
-        }
-        if ($this->container['blue_vip'] === null) {
-            $invalidProperties[] = "'blue_vip' can't be null";
-        }
-        if ($this->container['work_status'] === null) {
-            $invalidProperties[] = "'work_status' can't be null";
-        }
-        if ($this->container['registration_days'] === null) {
-            $invalidProperties[] = "'registration_days' can't be null";
-        }
-        if ($this->container['first_trade_days'] === null) {
-            $invalidProperties[] = "'first_trade_days' can't be null";
-        }
-        if ($this->container['need_replenish'] === null) {
-            $invalidProperties[] = "'need_replenish' can't be null";
-        }
-        if ($this->container['merchant_info'] === null) {
-            $invalidProperties[] = "'merchant_info' can't be null";
-        }
-        if ($this->container['online_status'] === null) {
-            $invalidProperties[] = "'online_status' can't be null";
-        }
-        if ($this->container['work_hours'] === null) {
-            $invalidProperties[] = "'work_hours' can't be null";
-        }
-        if ($this->container['transactions_month'] === null) {
-            $invalidProperties[] = "'transactions_month' can't be null";
-        }
-        if ($this->container['transactions_all'] === null) {
-            $invalidProperties[] = "'transactions_all' can't be null";
-        }
-        if ($this->container['trade_versatile'] === null) {
-            $invalidProperties[] = "'trade_versatile' can't be null";
+        if ($this->container['trade_no'] === null) {
+            $invalidProperties[] = "'trade_no' can't be null";
         }
         return $invalidProperties;
     }
@@ -475,745 +340,385 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets is_self
-     *
-     * @return bool
-     */
-    public function getIsSelf()
-    {
-        return $this->container['is_self'];
-    }
-
-    /**
-     * Sets is_self
-     *
-     * @param bool $is_self Whether self
-     *
-     * @return $this
-     */
-    public function setIsSelf($is_self)
-    {
-        $this->container['is_self'] = $is_self;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_timest
+     * Gets order_id
      *
      * @return string
      */
-    public function getUserTimest()
+    public function getOrderId()
     {
-        return $this->container['user_timest'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets user_timest
+     * Sets order_id
      *
-     * @param string $user_timest User registration time (formatted string)
+     * @param string $order_id Order ID
      *
      * @return $this
      */
-    public function setUserTimest($user_timest)
+    public function setOrderId($order_id)
     {
-        $this->container['user_timest'] = $user_timest;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
 
     /**
-     * Gets counterparties_num
-     *
-     * @return int
-     */
-    public function getCounterpartiesNum()
-    {
-        return $this->container['counterparties_num'];
-    }
-
-    /**
-     * Sets counterparties_num
-     *
-     * @param int $counterparties_num Number of counterparties
-     *
-     * @return $this
-     */
-    public function setCounterpartiesNum($counterparties_num)
-    {
-        $this->container['counterparties_num'] = $counterparties_num;
-
-        return $this;
-    }
-
-    /**
-     * Gets email_verified
+     * Gets uid
      *
      * @return string
      */
-    public function getEmailVerified()
+    public function getUid()
     {
-        return $this->container['email_verified'];
+        return $this->container['uid'];
     }
 
     /**
-     * Sets email_verified
+     * Sets uid
      *
-     * @param string $email_verified Whether email is verified
+     * @param string $uid User ID
      *
      * @return $this
      */
-    public function setEmailVerified($email_verified)
+    public function setUid($uid)
     {
-        $this->container['email_verified'] = $email_verified;
+        $this->container['uid'] = $uid;
 
         return $this;
     }
 
     /**
-     * Gets verified
+     * Gets type
      *
      * @return string
      */
-    public function getVerified()
+    public function getType()
     {
-        return $this->container['verified'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets verified
+     * Sets type
      *
-     * @param string $verified Whether KYC verification is completed
+     * @param string $type Order Type
      *
      * @return $this
      */
-    public function setVerified($verified)
+    public function setType($type)
     {
-        $this->container['verified'] = $verified;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets has_phone
+     * Gets fiat_currency
      *
      * @return string
      */
-    public function getHasPhone()
+    public function getFiatCurrency()
     {
-        return $this->container['has_phone'];
+        return $this->container['fiat_currency'];
     }
 
     /**
-     * Sets has_phone
+     * Sets fiat_currency
      *
-     * @param string $has_phone Whether phone is bound
+     * @param string $fiat_currency Fiat type
      *
      * @return $this
      */
-    public function setHasPhone($has_phone)
+    public function setFiatCurrency($fiat_currency)
     {
-        $this->container['has_phone'] = $has_phone;
+        $this->container['fiat_currency'] = $fiat_currency;
 
         return $this;
     }
 
     /**
-     * Gets user_name
+     * Gets fiat_amount
      *
      * @return string
      */
-    public function getUserName()
+    public function getFiatAmount()
     {
-        return $this->container['user_name'];
+        return $this->container['fiat_amount'];
     }
 
     /**
-     * Sets user_name
+     * Sets fiat_amount
      *
-     * @param string $user_name Username
+     * @param string $fiat_amount Fiat amount
      *
      * @return $this
      */
-    public function setUserName($user_name)
+    public function setFiatAmount($fiat_amount)
     {
-        $this->container['user_name'] = $user_name;
+        $this->container['fiat_amount'] = $fiat_amount;
 
         return $this;
     }
 
     /**
-     * Gets user_note
+     * Gets crypto_currency
      *
      * @return string
      */
-    public function getUserNote()
+    public function getCryptoCurrency()
     {
-        return $this->container['user_note'];
+        return $this->container['crypto_currency'];
     }
 
     /**
-     * Sets user_note
+     * Sets crypto_currency
      *
-     * @param string $user_note User note information
+     * @param string $crypto_currency Stablecoin
      *
      * @return $this
      */
-    public function setUserNote($user_note)
+    public function setCryptoCurrency($crypto_currency)
     {
-        $this->container['user_note'] = $user_note;
+        $this->container['crypto_currency'] = $crypto_currency;
 
         return $this;
     }
 
     /**
-     * Gets complete_transactions
+     * Gets crypto_amount
      *
      * @return string
      */
-    public function getCompleteTransactions()
+    public function getCryptoAmount()
     {
-        return $this->container['complete_transactions'];
+        return $this->container['crypto_amount'];
     }
 
     /**
-     * Sets complete_transactions
+     * Sets crypto_amount
      *
-     * @param string $complete_transactions Total completed orders
+     * @param string $crypto_amount Stablecoin amount
      *
      * @return $this
      */
-    public function setCompleteTransactions($complete_transactions)
+    public function setCryptoAmount($crypto_amount)
     {
-        $this->container['complete_transactions'] = $complete_transactions;
+        $this->container['crypto_amount'] = $crypto_amount;
 
         return $this;
     }
 
     /**
-     * Gets paid_transactions
+     * Gets rate
      *
      * @return string
      */
-    public function getPaidTransactions()
+    public function getRate()
     {
-        return $this->container['paid_transactions'];
+        return $this->container['rate'];
     }
 
     /**
-     * Sets paid_transactions
+     * Sets rate
      *
-     * @param string $paid_transactions Number of completed buy orders
+     * @param string $rate Exchange rate
      *
      * @return $this
      */
-    public function setPaidTransactions($paid_transactions)
+    public function setRate($rate)
     {
-        $this->container['paid_transactions'] = $paid_transactions;
+        $this->container['rate'] = $rate;
 
         return $this;
     }
 
     /**
-     * Gets accepted_transactions
+     * Gets transfer_remark
      *
      * @return string
      */
-    public function getAcceptedTransactions()
+    public function getTransferRemark()
     {
-        return $this->container['accepted_transactions'];
+        return $this->container['transfer_remark'];
     }
 
     /**
-     * Sets accepted_transactions
+     * Sets transfer_remark
      *
-     * @param string $accepted_transactions Number of completed sell orders
+     * @param string $transfer_remark Remark
      *
      * @return $this
      */
-    public function setAcceptedTransactions($accepted_transactions)
+    public function setTransferRemark($transfer_remark)
     {
-        $this->container['accepted_transactions'] = $accepted_transactions;
+        $this->container['transfer_remark'] = $transfer_remark;
 
         return $this;
     }
 
     /**
-     * Gets transactions_used_time
+     * Gets status
      *
      * @return string
      */
-    public function getTransactionsUsedTime()
+    public function getStatus()
     {
-        return $this->container['transactions_used_time'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets transactions_used_time
+     * Sets status
      *
-     * @param string $transactions_used_time Average time to confirm receipt
+     * @param string $status Status
      *
      * @return $this
      */
-    public function setTransactionsUsedTime($transactions_used_time)
+    public function setStatus($status)
     {
-        $this->container['transactions_used_time'] = $transactions_used_time;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets cancelled_used_time_month
+     * Gets db_status
      *
      * @return string
      */
-    public function getCancelledUsedTimeMonth()
+    public function getDbStatus()
     {
-        return $this->container['cancelled_used_time_month'];
+        return $this->container['db_status'];
     }
 
     /**
-     * Sets cancelled_used_time_month
+     * Sets db_status
      *
-     * @param string $cancelled_used_time_month Cancellation time in last 30 days
+     * @param string $db_status db_status
      *
      * @return $this
      */
-    public function setCancelledUsedTimeMonth($cancelled_used_time_month)
+    public function setDbStatus($db_status)
     {
-        $this->container['cancelled_used_time_month'] = $cancelled_used_time_month;
+        $this->container['db_status'] = $db_status;
 
         return $this;
     }
 
     /**
-     * Gets complete_transactions_month
+     * Gets create_time
      *
      * @return string
      */
-    public function getCompleteTransactionsMonth()
+    public function getCreateTime()
     {
-        return $this->container['complete_transactions_month'];
+        return $this->container['create_time'];
     }
 
     /**
-     * Sets complete_transactions_month
+     * Sets create_time
      *
-     * @param string $complete_transactions_month Number of completed orders in last 30 days
+     * @param string $create_time Created time
      *
      * @return $this
      */
-    public function setCompleteTransactionsMonth($complete_transactions_month)
+    public function setCreateTime($create_time)
     {
-        $this->container['complete_transactions_month'] = $complete_transactions_month;
+        $this->container['create_time'] = $create_time;
 
         return $this;
     }
 
     /**
-     * Gets complete_rate_month
-     *
-     * @return int
-     */
-    public function getCompleteRateMonth()
-    {
-        return $this->container['complete_rate_month'];
-    }
-
-    /**
-     * Sets complete_rate_month
-     *
-     * @param int $complete_rate_month Completion rate in last 30 days
-     *
-     * @return $this
-     */
-    public function setCompleteRateMonth($complete_rate_month)
-    {
-        $this->container['complete_rate_month'] = $complete_rate_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets orders_buy_rate_month
-     *
-     * @return int
-     */
-    public function getOrdersBuyRateMonth()
-    {
-        return $this->container['orders_buy_rate_month'];
-    }
-
-    /**
-     * Sets orders_buy_rate_month
-     *
-     * @param int $orders_buy_rate_month Buy order ratio in last 30 days
-     *
-     * @return $this
-     */
-    public function setOrdersBuyRateMonth($orders_buy_rate_month)
-    {
-        $this->container['orders_buy_rate_month'] = $orders_buy_rate_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_black
-     *
-     * @return int
-     */
-    public function getIsBlack()
-    {
-        return $this->container['is_black'];
-    }
-
-    /**
-     * Sets is_black
-     *
-     * @param int $is_black Whether blocked
-     *
-     * @return $this
-     */
-    public function setIsBlack($is_black)
-    {
-        $this->container['is_black'] = $is_black;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_follow
-     *
-     * @return int
-     */
-    public function getIsFollow()
-    {
-        return $this->container['is_follow'];
-    }
-
-    /**
-     * Sets is_follow
-     *
-     * @param int $is_follow Whether following
-     *
-     * @return $this
-     */
-    public function setIsFollow($is_follow)
-    {
-        $this->container['is_follow'] = $is_follow;
-
-        return $this;
-    }
-
-    /**
-     * Gets have_traded
-     *
-     * @return int
-     */
-    public function getHaveTraded()
-    {
-        return $this->container['have_traded'];
-    }
-
-    /**
-     * Sets have_traded
-     *
-     * @param int $have_traded Whether traded with self
-     *
-     * @return $this
-     */
-    public function setHaveTraded($have_traded)
-    {
-        $this->container['have_traded'] = $have_traded;
-
-        return $this;
-    }
-
-    /**
-     * Gets biz_uid
+     * Gets memo
      *
      * @return string
      */
-    public function getBizUid()
+    public function getMemo()
     {
-        return $this->container['biz_uid'];
+        return $this->container['memo'];
     }
 
     /**
-     * Sets biz_uid
+     * Sets memo
      *
-     * @param string $biz_uid Encrypted UID
+     * @param string $memo Cancellation or rejection reason
      *
      * @return $this
      */
-    public function setBizUid($biz_uid)
+    public function setMemo($memo)
     {
-        $this->container['biz_uid'] = $biz_uid;
+        $this->container['memo'] = $memo;
 
         return $this;
     }
 
     /**
-     * Gets blue_vip
+     * Gets side
      *
-     * @return int
+     * @return string
      */
-    public function getBlueVip()
+    public function getSide()
     {
-        return $this->container['blue_vip'];
+        return $this->container['side'];
     }
 
     /**
-     * Sets blue_vip
+     * Sets side
      *
-     * @param int $blue_vip Blue V Crown Shield
+     * @param string $side Quote direction
      *
      * @return $this
      */
-    public function setBlueVip($blue_vip)
+    public function setSide($side)
     {
-        $this->container['blue_vip'] = $blue_vip;
+        $this->container['side'] = $side;
 
         return $this;
     }
 
     /**
-     * Gets work_status
+     * Gets promotion_code
      *
-     * @return int
+     * @return string
      */
-    public function getWorkStatus()
+    public function getPromotionCode()
     {
-        return $this->container['work_status'];
+        return $this->container['promotion_code'];
     }
 
     /**
-     * Sets work_status
+     * Sets promotion_code
      *
-     * @param int $work_status Merchant work status
+     * @param string $promotion_code Promotion code
      *
      * @return $this
      */
-    public function setWorkStatus($work_status)
+    public function setPromotionCode($promotion_code)
     {
-        $this->container['work_status'] = $work_status;
+        $this->container['promotion_code'] = $promotion_code;
 
         return $this;
     }
 
     /**
-     * Gets registration_days
+     * Gets trade_no
      *
-     * @return int
+     * @return string
      */
-    public function getRegistrationDays()
+    public function getTradeNo()
     {
-        return $this->container['registration_days'];
+        return $this->container['trade_no'];
     }
 
     /**
-     * Sets registration_days
+     * Sets trade_no
      *
-     * @param int $registration_days Registration days
+     * @param string $trade_no Trade number
      *
      * @return $this
      */
-    public function setRegistrationDays($registration_days)
+    public function setTradeNo($trade_no)
     {
-        $this->container['registration_days'] = $registration_days;
-
-        return $this;
-    }
-
-    /**
-     * Gets first_trade_days
-     *
-     * @return int
-     */
-    public function getFirstTradeDays()
-    {
-        return $this->container['first_trade_days'];
-    }
-
-    /**
-     * Sets first_trade_days
-     *
-     * @param int $first_trade_days Days since first trade
-     *
-     * @return $this
-     */
-    public function setFirstTradeDays($first_trade_days)
-    {
-        $this->container['first_trade_days'] = $first_trade_days;
-
-        return $this;
-    }
-
-    /**
-     * Gets need_replenish
-     *
-     * @return int
-     */
-    public function getNeedReplenish()
-    {
-        return $this->container['need_replenish'];
-    }
-
-    /**
-     * Sets need_replenish
-     *
-     * @param int $need_replenish Whether margin replenishment is needed
-     *
-     * @return $this
-     */
-    public function setNeedReplenish($need_replenish)
-    {
-        $this->container['need_replenish'] = $need_replenish;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchant_info
-     *
-     * @return \GateApi\Model\InlineResponse20013DataMerchantInfo
-     */
-    public function getMerchantInfo()
-    {
-        return $this->container['merchant_info'];
-    }
-
-    /**
-     * Sets merchant_info
-     *
-     * @param \GateApi\Model\InlineResponse20013DataMerchantInfo $merchant_info merchant_info
-     *
-     * @return $this
-     */
-    public function setMerchantInfo($merchant_info)
-    {
-        $this->container['merchant_info'] = $merchant_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets online_status
-     *
-     * @return int
-     */
-    public function getOnlineStatus()
-    {
-        return $this->container['online_status'];
-    }
-
-    /**
-     * Sets online_status
-     *
-     * @param int $online_status Merchant online status
-     *
-     * @return $this
-     */
-    public function setOnlineStatus($online_status)
-    {
-        $this->container['online_status'] = $online_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets work_hours
-     *
-     * @return object
-     */
-    public function getWorkHours()
-    {
-        return $this->container['work_hours'];
-    }
-
-    /**
-     * Sets work_hours
-     *
-     * @param object $work_hours Merchant online status details
-     *
-     * @return $this
-     */
-    public function setWorkHours($work_hours)
-    {
-        $this->container['work_hours'] = $work_hours;
-
-        return $this;
-    }
-
-    /**
-     * Gets transactions_month
-     *
-     * @return int
-     */
-    public function getTransactionsMonth()
-    {
-        return $this->container['transactions_month'];
-    }
-
-    /**
-     * Sets transactions_month
-     *
-     * @param int $transactions_month 30-day transaction volume
-     *
-     * @return $this
-     */
-    public function setTransactionsMonth($transactions_month)
-    {
-        $this->container['transactions_month'] = $transactions_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets transactions_all
-     *
-     * @return int
-     */
-    public function getTransactionsAll()
-    {
-        return $this->container['transactions_all'];
-    }
-
-    /**
-     * Sets transactions_all
-     *
-     * @param int $transactions_all Total transaction volume
-     *
-     * @return $this
-     */
-    public function setTransactionsAll($transactions_all)
-    {
-        $this->container['transactions_all'] = $transactions_all;
-
-        return $this;
-    }
-
-    /**
-     * Gets trade_versatile
-     *
-     * @return bool
-     */
-    public function getTradeVersatile()
-    {
-        return $this->container['trade_versatile'];
-    }
-
-    /**
-     * Sets trade_versatile
-     *
-     * @param bool $trade_versatile Single user or composite user
-     *
-     * @return $this
-     */
-    public function setTradeVersatile($trade_versatile)
-    {
-        $this->container['trade_versatile'] = $trade_versatile;
+        $this->container['trade_no'] = $trade_no;
 
         return $this;
     }

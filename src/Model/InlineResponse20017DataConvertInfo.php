@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20016DataConvertInfo
+ * InlineResponse20017DataConvertInfo
  *
  * PHP version 7
  *
@@ -30,7 +30,7 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20016DataConvertInfo Class Doc Comment
+ * InlineResponse20017DataConvertInfo Class Doc Comment
  *
  * @category Class
  * @description Flash swap order information
@@ -38,7 +38,7 @@ use \GateApi\ObjectSerializer;
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20016DataConvertInfo implements ModelInterface, ArrayAccess
+class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineResponse20016DataConvertInfo implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_16_data_convert_info';
+    protected static $openAPIModelName = 'inline_response_200_17_data_convert_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

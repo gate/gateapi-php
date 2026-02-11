@@ -54,22 +54,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_id' => 'string',
-        'uid' => 'string',
-        'type' => 'string',
-        'fiat_currency' => 'string',
-        'fiat_amount' => 'string',
-        'crypto_currency' => 'string',
-        'crypto_amount' => 'string',
-        'rate' => 'string',
-        'transfer_remark' => 'string',
-        'status' => 'string',
-        'db_status' => 'string',
-        'create_time' => 'string',
-        'memo' => 'string',
-        'side' => 'string',
-        'promotion_code' => 'string',
-        'trade_no' => 'string'
+        'total' => 'int',
+        'page_size' => 'int',
+        'page_number' => 'int',
+        'total_page' => 'int',
+        'list' => '\GateApi\Model\InlineResponse20012DataList[]'
     ];
 
     /**
@@ -78,22 +67,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
-        'uid' => null,
-        'type' => null,
-        'fiat_currency' => null,
-        'fiat_amount' => null,
-        'crypto_currency' => null,
-        'crypto_amount' => null,
-        'rate' => null,
-        'transfer_remark' => null,
-        'status' => null,
-        'db_status' => null,
-        'create_time' => null,
-        'memo' => null,
-        'side' => null,
-        'promotion_code' => null,
-        'trade_no' => null
+        'total' => null,
+        'page_size' => null,
+        'page_number' => null,
+        'total_page' => null,
+        'list' => null
     ];
 
     /**
@@ -123,22 +101,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'order_id',
-        'uid' => 'uid',
-        'type' => 'type',
-        'fiat_currency' => 'fiat_currency',
-        'fiat_amount' => 'fiat_amount',
-        'crypto_currency' => 'crypto_currency',
-        'crypto_amount' => 'crypto_amount',
-        'rate' => 'rate',
-        'transfer_remark' => 'transfer_remark',
-        'status' => 'status',
-        'db_status' => 'db_status',
-        'create_time' => 'create_time',
-        'memo' => 'memo',
-        'side' => 'side',
-        'promotion_code' => 'promotion_code',
-        'trade_no' => 'trade_no'
+        'total' => 'total',
+        'page_size' => 'page_size',
+        'page_number' => 'page_number',
+        'total_page' => 'total_page',
+        'list' => 'list'
     ];
 
     /**
@@ -147,22 +114,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId',
-        'uid' => 'setUid',
-        'type' => 'setType',
-        'fiat_currency' => 'setFiatCurrency',
-        'fiat_amount' => 'setFiatAmount',
-        'crypto_currency' => 'setCryptoCurrency',
-        'crypto_amount' => 'setCryptoAmount',
-        'rate' => 'setRate',
-        'transfer_remark' => 'setTransferRemark',
-        'status' => 'setStatus',
-        'db_status' => 'setDbStatus',
-        'create_time' => 'setCreateTime',
-        'memo' => 'setMemo',
-        'side' => 'setSide',
-        'promotion_code' => 'setPromotionCode',
-        'trade_no' => 'setTradeNo'
+        'total' => 'setTotal',
+        'page_size' => 'setPageSize',
+        'page_number' => 'setPageNumber',
+        'total_page' => 'setTotalPage',
+        'list' => 'setList'
     ];
 
     /**
@@ -171,22 +127,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId',
-        'uid' => 'getUid',
-        'type' => 'getType',
-        'fiat_currency' => 'getFiatCurrency',
-        'fiat_amount' => 'getFiatAmount',
-        'crypto_currency' => 'getCryptoCurrency',
-        'crypto_amount' => 'getCryptoAmount',
-        'rate' => 'getRate',
-        'transfer_remark' => 'getTransferRemark',
-        'status' => 'getStatus',
-        'db_status' => 'getDbStatus',
-        'create_time' => 'getCreateTime',
-        'memo' => 'getMemo',
-        'side' => 'getSide',
-        'promotion_code' => 'getPromotionCode',
-        'trade_no' => 'getTradeNo'
+        'total' => 'getTotal',
+        'page_size' => 'getPageSize',
+        'page_number' => 'getPageNumber',
+        'total_page' => 'getTotalPage',
+        'list' => 'getList'
     ];
 
     /**
@@ -249,22 +194,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
-        $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
-        $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
-        $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
-        $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
-        $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
-        $this->container['transfer_remark'] = isset($data['transfer_remark']) ? $data['transfer_remark'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['db_status'] = isset($data['db_status']) ? $data['db_status'] : null;
-        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
-        $this->container['trade_no'] = isset($data['trade_no']) ? $data['trade_no'] : null;
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        $this->container['page_number'] = isset($data['page_number']) ? $data['page_number'] : null;
+        $this->container['total_page'] = isset($data['total_page']) ? $data['total_page'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -276,53 +210,20 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['order_id'] === null) {
-            $invalidProperties[] = "'order_id' can't be null";
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
         }
-        if ($this->container['uid'] === null) {
-            $invalidProperties[] = "'uid' can't be null";
+        if ($this->container['page_size'] === null) {
+            $invalidProperties[] = "'page_size' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['page_number'] === null) {
+            $invalidProperties[] = "'page_number' can't be null";
         }
-        if ($this->container['fiat_currency'] === null) {
-            $invalidProperties[] = "'fiat_currency' can't be null";
+        if ($this->container['total_page'] === null) {
+            $invalidProperties[] = "'total_page' can't be null";
         }
-        if ($this->container['fiat_amount'] === null) {
-            $invalidProperties[] = "'fiat_amount' can't be null";
-        }
-        if ($this->container['crypto_currency'] === null) {
-            $invalidProperties[] = "'crypto_currency' can't be null";
-        }
-        if ($this->container['crypto_amount'] === null) {
-            $invalidProperties[] = "'crypto_amount' can't be null";
-        }
-        if ($this->container['rate'] === null) {
-            $invalidProperties[] = "'rate' can't be null";
-        }
-        if ($this->container['transfer_remark'] === null) {
-            $invalidProperties[] = "'transfer_remark' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['db_status'] === null) {
-            $invalidProperties[] = "'db_status' can't be null";
-        }
-        if ($this->container['create_time'] === null) {
-            $invalidProperties[] = "'create_time' can't be null";
-        }
-        if ($this->container['memo'] === null) {
-            $invalidProperties[] = "'memo' can't be null";
-        }
-        if ($this->container['side'] === null) {
-            $invalidProperties[] = "'side' can't be null";
-        }
-        if ($this->container['promotion_code'] === null) {
-            $invalidProperties[] = "'promotion_code' can't be null";
-        }
-        if ($this->container['trade_no'] === null) {
-            $invalidProperties[] = "'trade_no' can't be null";
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
         }
         return $invalidProperties;
     }
@@ -340,385 +241,121 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets order_id
+     * Gets total
      *
-     * @return string
+     * @return int
      */
-    public function getOrderId()
+    public function getTotal()
     {
-        return $this->container['order_id'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets order_id
+     * Sets total
      *
-     * @param string $order_id Order ID
+     * @param int $total total
      *
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setTotal($total)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['total'] = $total;
 
         return $this;
     }
 
     /**
-     * Gets uid
+     * Gets page_size
      *
-     * @return string
+     * @return int
      */
-    public function getUid()
+    public function getPageSize()
     {
-        return $this->container['uid'];
+        return $this->container['page_size'];
     }
 
     /**
-     * Sets uid
+     * Sets page_size
      *
-     * @param string $uid User ID
+     * @param int $page_size page_size
      *
      * @return $this
      */
-    public function setUid($uid)
+    public function setPageSize($page_size)
     {
-        $this->container['uid'] = $uid;
+        $this->container['page_size'] = $page_size;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets page_number
      *
-     * @return string
+     * @return int
      */
-    public function getType()
+    public function getPageNumber()
     {
-        return $this->container['type'];
+        return $this->container['page_number'];
     }
 
     /**
-     * Sets type
+     * Sets page_number
      *
-     * @param string $type Order Type
+     * @param int $page_number page_number
      *
      * @return $this
      */
-    public function setType($type)
+    public function setPageNumber($page_number)
     {
-        $this->container['type'] = $type;
+        $this->container['page_number'] = $page_number;
 
         return $this;
     }
 
     /**
-     * Gets fiat_currency
+     * Gets total_page
      *
-     * @return string
+     * @return int
      */
-    public function getFiatCurrency()
+    public function getTotalPage()
     {
-        return $this->container['fiat_currency'];
+        return $this->container['total_page'];
     }
 
     /**
-     * Sets fiat_currency
+     * Sets total_page
      *
-     * @param string $fiat_currency Fiat type
+     * @param int $total_page total_page
      *
      * @return $this
      */
-    public function setFiatCurrency($fiat_currency)
+    public function setTotalPage($total_page)
     {
-        $this->container['fiat_currency'] = $fiat_currency;
+        $this->container['total_page'] = $total_page;
 
         return $this;
     }
 
     /**
-     * Gets fiat_amount
+     * Gets list
      *
-     * @return string
+     * @return \GateApi\Model\InlineResponse20012DataList[]
      */
-    public function getFiatAmount()
+    public function getList()
     {
-        return $this->container['fiat_amount'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets fiat_amount
+     * Sets list
      *
-     * @param string $fiat_amount Fiat amount
+     * @param \GateApi\Model\InlineResponse20012DataList[] $list list
      *
      * @return $this
      */
-    public function setFiatAmount($fiat_amount)
+    public function setList($list)
     {
-        $this->container['fiat_amount'] = $fiat_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets crypto_currency
-     *
-     * @return string
-     */
-    public function getCryptoCurrency()
-    {
-        return $this->container['crypto_currency'];
-    }
-
-    /**
-     * Sets crypto_currency
-     *
-     * @param string $crypto_currency Stablecoin
-     *
-     * @return $this
-     */
-    public function setCryptoCurrency($crypto_currency)
-    {
-        $this->container['crypto_currency'] = $crypto_currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets crypto_amount
-     *
-     * @return string
-     */
-    public function getCryptoAmount()
-    {
-        return $this->container['crypto_amount'];
-    }
-
-    /**
-     * Sets crypto_amount
-     *
-     * @param string $crypto_amount Stablecoin amount
-     *
-     * @return $this
-     */
-    public function setCryptoAmount($crypto_amount)
-    {
-        $this->container['crypto_amount'] = $crypto_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate
-     *
-     * @return string
-     */
-    public function getRate()
-    {
-        return $this->container['rate'];
-    }
-
-    /**
-     * Sets rate
-     *
-     * @param string $rate Exchange rate
-     *
-     * @return $this
-     */
-    public function setRate($rate)
-    {
-        $this->container['rate'] = $rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets transfer_remark
-     *
-     * @return string
-     */
-    public function getTransferRemark()
-    {
-        return $this->container['transfer_remark'];
-    }
-
-    /**
-     * Sets transfer_remark
-     *
-     * @param string $transfer_remark Remark
-     *
-     * @return $this
-     */
-    public function setTransferRemark($transfer_remark)
-    {
-        $this->container['transfer_remark'] = $transfer_remark;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status Status
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets db_status
-     *
-     * @return string
-     */
-    public function getDbStatus()
-    {
-        return $this->container['db_status'];
-    }
-
-    /**
-     * Sets db_status
-     *
-     * @param string $db_status db_status
-     *
-     * @return $this
-     */
-    public function setDbStatus($db_status)
-    {
-        $this->container['db_status'] = $db_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_time
-     *
-     * @return string
-     */
-    public function getCreateTime()
-    {
-        return $this->container['create_time'];
-    }
-
-    /**
-     * Sets create_time
-     *
-     * @param string $create_time Created time
-     *
-     * @return $this
-     */
-    public function setCreateTime($create_time)
-    {
-        $this->container['create_time'] = $create_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string $memo Cancellation or rejection reason
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets side
-     *
-     * @return string
-     */
-    public function getSide()
-    {
-        return $this->container['side'];
-    }
-
-    /**
-     * Sets side
-     *
-     * @param string $side Quote direction
-     *
-     * @return $this
-     */
-    public function setSide($side)
-    {
-        $this->container['side'] = $side;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_code
-     *
-     * @return string
-     */
-    public function getPromotionCode()
-    {
-        return $this->container['promotion_code'];
-    }
-
-    /**
-     * Sets promotion_code
-     *
-     * @param string $promotion_code Promotion code
-     *
-     * @return $this
-     */
-    public function setPromotionCode($promotion_code)
-    {
-        $this->container['promotion_code'] = $promotion_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets trade_no
-     *
-     * @return string
-     */
-    public function getTradeNo()
-    {
-        return $this->container['trade_no'];
-    }
-
-    /**
-     * Sets trade_no
-     *
-     * @param string $trade_no Trade number
-     *
-     * @return $this
-     */
-    public function setTradeNo($trade_no)
-    {
-        $this->container['trade_no'] = $trade_no;
+        $this->container['list'] = $list;
 
         return $this;
     }

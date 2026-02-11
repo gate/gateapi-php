@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## p2pMerchantAccountGetUserInfo
 
-> \GateApi\Model\InlineResponse20013 p2pMerchantAccountGetUserInfo()
+> \GateApi\Model\InlineResponse20014 p2pMerchantAccountGetUserInfo()
 
 Get account information
 
@@ -58,7 +58,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
+[**\GateApi\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ No authorization required
 
 ## p2pMerchantAccountGetCounterpartyUserInfo
 
-> \GateApi\Model\InlineResponse20014 p2pMerchantAccountGetCounterpartyUserInfo($biz_uid)
+> \GateApi\Model\InlineResponse20015 p2pMerchantAccountGetCounterpartyUserInfo($biz_uid)
 
 Get counterparty information
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
+[**\GateApi\Model\InlineResponse20015**](../Model/InlineResponse20015.md)
 
 ### Authorization
 
@@ -132,7 +132,7 @@ No authorization required
 
 ## p2pMerchantAccountGetMyselfPayment
 
-> \GateApi\Model\InlineResponse20015 p2pMerchantAccountGetMyselfPayment($fiat)
+> \GateApi\Model\InlineResponse20016 p2pMerchantAccountGetMyselfPayment($fiat)
 
 Get payment method list
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20015**](../Model/InlineResponse20015.md)
+[**\GateApi\Model\InlineResponse20016**](../Model/InlineResponse20016.md)
 
 ### Authorization
 
@@ -188,7 +188,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetPendingTransactionList
 
-> \GateApi\Model\InlineResponse20016 p2pMerchantTransactionGetPendingTransactionList($crypto_currency, $fiat_currency, $order_tab, $select_type, $status, $txid, $start_time, $end_time)
+> \GateApi\Model\InlineResponse20017 p2pMerchantTransactionGetPendingTransactionList($crypto_currency, $fiat_currency, $order_tab, $select_type, $status, $txid, $start_time, $end_time)
 
 Get pending orders
 
@@ -206,9 +206,9 @@ $apiInstance = new GateApi\Api\P2PApi(
 );
 $crypto_currency = 'crypto_currency_example'; // string | Cryptocurrency
 $fiat_currency = 'fiat_currency_example'; // string | Fiat currency
-$order_tab = 'order_tab_example'; // string | Order tab, default is pending (pending: Processing (pending: AND status in ('OPEN',  'PAID', 'LOCKED', 'TEMP')); dispute: In dispute (status in ('ACCEPT',  'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
+$order_tab = 'order_tab_example'; // string | 订单标签页，默认pending（pending：处理中（pending:  AND status in ('OPEN', 'PAID', 'LOCKED', 'TEMP')）；dispute：申诉中（status in ('ACCEPT', 'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
 $select_type = 'select_type_example'; // string | Buy/Sell (sell=Sell, buy=Buy, others=All)
-$status = 'status_example'; // string | 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+$status = 'status_example'; // string | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
 $txid = 56; // int | Order ID
 $start_time = 56; // int | Start timestamp, default is 00:00 89 days ago
 $end_time = 56; // int | End timestamp, default is 23:59:59 today
@@ -231,16 +231,16 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **crypto_currency** | **string**| Cryptocurrency |
  **fiat_currency** | **string**| Fiat currency |
- **order_tab** | **string**| Order tab, default is pending (pending: Processing (pending: AND status in (&#39;OPEN&#39;,  &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In dispute (status in (&#39;ACCEPT&#39;,  &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) | [optional]
+ **order_tab** | **string**| 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) | [optional]
  **select_type** | **string**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional]
- **status** | **string**| 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED） | [optional]
+ **status** | **string**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional]
  **txid** | **int**| Order ID | [optional]
  **start_time** | **int**| Start timestamp, default is 00:00 89 days ago | [optional]
  **end_time** | **int**| End timestamp, default is 23:59:59 today | [optional]
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20016**](../Model/InlineResponse20016.md)
+[**\GateApi\Model\InlineResponse20017**](../Model/InlineResponse20017.md)
 
 ### Authorization
 
@@ -258,7 +258,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetCompletedTransactionList
 
-> \GateApi\Model\InlineResponse20016 p2pMerchantTransactionGetCompletedTransactionList($crypto_currency, $fiat_currency, $select_type, $status, $txid, $start_time, $end_time, $query_dispute, $page, $per_page)
+> \GateApi\Model\InlineResponse20017 p2pMerchantTransactionGetCompletedTransactionList($crypto_currency, $fiat_currency, $select_type, $status, $txid, $start_time, $end_time, $query_dispute, $page, $per_page)
 
 Get all/historical orders
 
@@ -277,7 +277,7 @@ $apiInstance = new GateApi\Api\P2PApi(
 $crypto_currency = 'crypto_currency_example'; // string | Cryptocurrency
 $fiat_currency = 'fiat_currency_example'; // string | Fiat currency
 $select_type = 'select_type_example'; // string | Buy/Sell (sell=Sell, buy=Buy, others=All)
-$status = 'status_example'; // string | 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+$status = 'status_example'; // string | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
 $txid = 56; // int | Order ID
 $start_time = 56; // int | Start timestamp, default is 00:00 89 days ago
 $end_time = 56; // int | End timestamp, default is 23:59:59 today
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
  **crypto_currency** | **string**| Cryptocurrency |
  **fiat_currency** | **string**| Fiat currency |
  **select_type** | **string**| Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional]
- **status** | **string**| 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED） | [optional]
+ **status** | **string**| Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional]
  **txid** | **int**| Order ID | [optional]
  **start_time** | **int**| Start timestamp, default is 00:00 89 days ago | [optional]
  **end_time** | **int**| End timestamp, default is 23:59:59 today | [optional]
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20016**](../Model/InlineResponse20016.md)
+[**\GateApi\Model\InlineResponse20017**](../Model/InlineResponse20017.md)
 
 ### Authorization
 
@@ -332,7 +332,7 @@ No authorization required
 
 ## p2pMerchantTransactionGetTransactionDetails
 
-> \GateApi\Model\InlineResponse20017 p2pMerchantTransactionGetTransactionDetails($txid, $channel)
+> \GateApi\Model\InlineResponse20018 p2pMerchantTransactionGetTransactionDetails($txid, $channel)
 
 Query order details
 
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20017**](../Model/InlineResponse20017.md)
+[**\GateApi\Model\InlineResponse20018**](../Model/InlineResponse20018.md)
 
 ### Authorization
 
@@ -666,7 +666,7 @@ No authorization required
 
 ## p2pMerchantBooksAdsUpdateStatus
 
-> \GateApi\Model\InlineResponse20018 p2pMerchantBooksAdsUpdateStatus($adv_no, $adv_status, $trade_type)
+> \GateApi\Model\InlineResponse20019 p2pMerchantBooksAdsUpdateStatus($adv_no, $adv_status, $trade_type)
 
 Update ad status
 
@@ -708,7 +708,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20018**](../Model/InlineResponse20018.md)
+[**\GateApi\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
 
 ### Authorization
 
@@ -726,7 +726,7 @@ No authorization required
 
 ## p2pMerchantBooksAdsDetail
 
-> \GateApi\Model\InlineResponse20019 p2pMerchantBooksAdsDetail($adv_no)
+> \GateApi\Model\InlineResponse20020 p2pMerchantBooksAdsDetail($adv_no)
 
 Query ad details
 
@@ -764,7 +764,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
+[**\GateApi\Model\InlineResponse20020**](../Model/InlineResponse20020.md)
 
 ### Authorization
 
@@ -782,7 +782,7 @@ No authorization required
 
 ## p2pMerchantBooksMyAdsList
 
-> \GateApi\Model\InlineResponse20020 p2pMerchantBooksMyAdsList($asset, $fiat_unit, $trade_type)
+> \GateApi\Model\InlineResponse20021 p2pMerchantBooksMyAdsList($asset, $fiat_unit, $trade_type)
 
 Get my ad list
 
@@ -824,7 +824,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20020**](../Model/InlineResponse20020.md)
+[**\GateApi\Model\InlineResponse20021**](../Model/InlineResponse20021.md)
 
 ### Authorization
 
@@ -842,7 +842,7 @@ No authorization required
 
 ## p2pMerchantChatGetChatsList
 
-> \GateApi\Model\InlineResponse20021 p2pMerchantChatGetChatsList($txid, $lastreceived, $firstreceived)
+> \GateApi\Model\InlineResponse20022 p2pMerchantChatGetChatsList($txid, $lastreceived, $firstreceived)
 
 Get chat history
 
@@ -884,7 +884,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20021**](../Model/InlineResponse20021.md)
+[**\GateApi\Model\InlineResponse20022**](../Model/InlineResponse20022.md)
 
 ### Authorization
 
@@ -902,7 +902,7 @@ No authorization required
 
 ## p2pMerchantChatSendChatMessage
 
-> \GateApi\Model\InlineResponse20022 p2pMerchantChatSendChatMessage($txid, $message, $type)
+> \GateApi\Model\InlineResponse20023 p2pMerchantChatSendChatMessage($txid, $message, $type)
 
 Send text message
 
@@ -944,7 +944,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20022**](../Model/InlineResponse20022.md)
+[**\GateApi\Model\InlineResponse20023**](../Model/InlineResponse20023.md)
 
 ### Authorization
 
@@ -962,7 +962,7 @@ No authorization required
 
 ## p2pMerchantChatUploadChatFile
 
-> \GateApi\Model\InlineResponse20023 p2pMerchantChatUploadChatFile($image_content_type, $base64_img)
+> \GateApi\Model\InlineResponse20024 p2pMerchantChatUploadChatFile($image_content_type, $base64_img)
 
 Upload chat file
 
@@ -1002,7 +1002,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20023**](../Model/InlineResponse20023.md)
+[**\GateApi\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
 
 ### Authorization
 

@@ -4,10 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pn** | **int** |  | 
-**ps** | **int** |  | 
-**total_pn** | **int** |  | 
-**count** | **int** |  | 
-**list** | [**\GateApi\Model\InlineResponse20010DataList[]**](InlineResponse20010DataList.md) |  | 
+**lists** | [**\GateApi\Model\InlineResponse20010DataLists[]**](InlineResponse20010DataLists.md) | Bank card list | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

@@ -58,7 +58,7 @@ class InlineResponse20015 implements ModelInterface, ArrayAccess
         'method' => 'string',
         'code' => 'int',
         'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse20015Data[]',
+        'data' => '\GateApi\Model\InlineResponse20015Data',
         'version' => 'string'
     ];
 
@@ -348,7 +348,7 @@ class InlineResponse20015 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \GateApi\Model\InlineResponse20015Data[]
+     * @return \GateApi\Model\InlineResponse20015Data
      */
     public function getData()
     {
@@ -358,7 +358,7 @@ class InlineResponse20015 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \GateApi\Model\InlineResponse20015Data[] $data data
+     * @param \GateApi\Model\InlineResponse20015Data $data data
      *
      * @return $this
      */

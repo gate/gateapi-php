@@ -226,7 +226,7 @@ class FuturesPositionCrossMode implements ModelInterface, ArrayAccess
     /**
      * Sets mode
      *
-     * @param string $mode Cross margin or isolated margin mode. ISOLATED - isolated margin mode, CROSS - cross margin mode
+     * @param string $mode Cross/isolated margin mode. ISOLATED - isolated margin, CROSS - cross margin
      *
      * @return $this
      */

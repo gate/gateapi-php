@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20032Assets
+ * InlineResponse20033Assets
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20032Assets Class Doc Comment
+ * InlineResponse20033Assets Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20032Assets implements ModelInterface, ArrayAccess
+class InlineResponse20033Assets implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20032Assets implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_32_assets';
+    protected static $openAPIModelName = 'inline_response_200_33_assets';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

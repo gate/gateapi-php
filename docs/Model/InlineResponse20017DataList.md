@@ -1,4 +1,4 @@
-# # InlineResponse20016DataList
+# # InlineResponse20017DataList
 
 ## Properties
 
@@ -64,6 +64,6 @@ Name | Type | Description | Notes
 **od_time** | **int** | Countdown time | [optional] 
 **order_type** | **int** | Order Type | [optional] 
 **order_tag** | **string[]** | Order tags | [optional] 
-**convert_info** | [**\GateApi\Model\InlineResponse20016DataConvertInfo**](InlineResponse20016DataConvertInfo.md) |  | [optional] 
+**convert_info** | [**\GateApi\Model\InlineResponse20017DataConvertInfo**](InlineResponse20017DataConvertInfo.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

@@ -339,7 +339,7 @@ $apiInstance = new GateApi\Api\SpotApi(
     new GuzzleHttp\Client()
 );
 $associate_array['currency_pair'] = 'BTC_USDT'; // string | Currency pair
-$associate_array['interval'] = '0'; // string | Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+$associate_array['interval'] = '0'; // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
 $associate_array['limit'] = 10; // int | Number of depth levels
 $associate_array['with_id'] = false; // bool | Return order book update ID
 
@@ -362,7 +362,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency_pair** | **string**| Currency pair |
- **interval** | **string**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **int**| Number of depth levels | [optional] [default to 10]
  **with_id** | **bool**| Return order book update ID | [optional] [default to false]
 
@@ -462,7 +462,7 @@ No authorization required
 
 Market K-line chart
 
-Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
+K-line chart data returns a maximum of 1000 points per request. When specifying from, to, and interval, ensure the number of points is not excessive
 
 ### Example
 

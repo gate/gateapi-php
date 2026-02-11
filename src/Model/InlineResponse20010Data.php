@@ -54,11 +54,7 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pn' => 'int',
-        'ps' => 'int',
-        'total_pn' => 'int',
-        'count' => 'int',
-        'list' => '\GateApi\Model\InlineResponse20010DataList[]'
+        'lists' => '\GateApi\Model\InlineResponse20010DataLists[]'
     ];
 
     /**
@@ -67,11 +63,7 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'pn' => null,
-        'ps' => null,
-        'total_pn' => null,
-        'count' => null,
-        'list' => null
+        'lists' => null
     ];
 
     /**
@@ -101,11 +93,7 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'pn' => 'pn',
-        'ps' => 'ps',
-        'total_pn' => 'total_pn',
-        'count' => 'count',
-        'list' => 'list'
+        'lists' => 'lists'
     ];
 
     /**
@@ -114,11 +102,7 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'pn' => 'setPn',
-        'ps' => 'setPs',
-        'total_pn' => 'setTotalPn',
-        'count' => 'setCount',
-        'list' => 'setList'
+        'lists' => 'setLists'
     ];
 
     /**
@@ -127,11 +111,7 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'pn' => 'getPn',
-        'ps' => 'getPs',
-        'total_pn' => 'getTotalPn',
-        'count' => 'getCount',
-        'list' => 'getList'
+        'lists' => 'getLists'
     ];
 
     /**
@@ -194,11 +174,7 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['pn'] = isset($data['pn']) ? $data['pn'] : null;
-        $this->container['ps'] = isset($data['ps']) ? $data['ps'] : null;
-        $this->container['total_pn'] = isset($data['total_pn']) ? $data['total_pn'] : null;
-        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['lists'] = isset($data['lists']) ? $data['lists'] : null;
     }
 
     /**
@@ -210,20 +186,8 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['pn'] === null) {
-            $invalidProperties[] = "'pn' can't be null";
-        }
-        if ($this->container['ps'] === null) {
-            $invalidProperties[] = "'ps' can't be null";
-        }
-        if ($this->container['total_pn'] === null) {
-            $invalidProperties[] = "'total_pn' can't be null";
-        }
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
-        }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['lists'] === null) {
+            $invalidProperties[] = "'lists' can't be null";
         }
         return $invalidProperties;
     }
@@ -241,121 +205,25 @@ class InlineResponse20010Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets pn
+     * Gets lists
      *
-     * @return int
+     * @return \GateApi\Model\InlineResponse20010DataLists[]
      */
-    public function getPn()
+    public function getLists()
     {
-        return $this->container['pn'];
+        return $this->container['lists'];
     }
 
     /**
-     * Sets pn
+     * Sets lists
      *
-     * @param int $pn pn
+     * @param \GateApi\Model\InlineResponse20010DataLists[] $lists Bank card list
      *
      * @return $this
      */
-    public function setPn($pn)
+    public function setLists($lists)
     {
-        $this->container['pn'] = $pn;
-
-        return $this;
-    }
-
-    /**
-     * Gets ps
-     *
-     * @return int
-     */
-    public function getPs()
-    {
-        return $this->container['ps'];
-    }
-
-    /**
-     * Sets ps
-     *
-     * @param int $ps ps
-     *
-     * @return $this
-     */
-    public function setPs($ps)
-    {
-        $this->container['ps'] = $ps;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_pn
-     *
-     * @return int
-     */
-    public function getTotalPn()
-    {
-        return $this->container['total_pn'];
-    }
-
-    /**
-     * Sets total_pn
-     *
-     * @param int $total_pn total_pn
-     *
-     * @return $this
-     */
-    public function setTotalPn($total_pn)
-    {
-        $this->container['total_pn'] = $total_pn;
-
-        return $this;
-    }
-
-    /**
-     * Gets count
-     *
-     * @return int
-     */
-    public function getCount()
-    {
-        return $this->container['count'];
-    }
-
-    /**
-     * Sets count
-     *
-     * @param int $count count
-     *
-     * @return $this
-     */
-    public function setCount($count)
-    {
-        $this->container['count'] = $count;
-
-        return $this;
-    }
-
-    /**
-     * Gets list
-     *
-     * @return \GateApi\Model\InlineResponse20010DataList[]
-     */
-    public function getList()
-    {
-        return $this->container['list'];
-    }
-
-    /**
-     * Sets list
-     *
-     * @param \GateApi\Model\InlineResponse20010DataList[] $list list
-     *
-     * @return $this
-     */
-    public function setList($list)
-    {
-        $this->container['list'] = $list;
+        $this->container['lists'] = $lists;
 
         return $this;
     }

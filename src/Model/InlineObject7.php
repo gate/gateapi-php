@@ -310,7 +310,7 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     /**
      * Sets order_tab
      *
-     * @param string|null $order_tab Order tab, default is pending (pending: Processing (pending: AND status in ('OPEN',  'PAID', 'LOCKED', 'TEMP')); dispute: In dispute (status in ('ACCEPT',  'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
+     * @param string|null $order_tab 订单标签页，默认pending（pending：处理中（pending:  AND status in ('OPEN', 'PAID', 'LOCKED', 'TEMP')）；dispute：申诉中（status in ('ACCEPT', 'BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
      *
      * @return $this
      */
@@ -358,7 +358,7 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status 订单状态（dispute: 申诉订单； closed: ACCEPT、BCLOSED； cancel： CANCEL、BECANCEL、SCLOSED、SCANCEL； locked: LOCKED； open: OPEN； paid： PAID； completed： CANCEL、BECANCEL、SCLOSED、SCANCEL、ACCEPT、BCLOSED）
+     * @param string|null $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
      *
      * @return $this
      */

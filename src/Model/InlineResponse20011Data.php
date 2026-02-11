@@ -54,10 +54,10 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total' => 'int',
-        'page_size' => 'int',
-        'page_number' => 'int',
-        'total_page' => 'int',
+        'pn' => 'int',
+        'ps' => 'int',
+        'total_pn' => 'int',
+        'count' => 'int',
         'list' => '\GateApi\Model\InlineResponse20011DataList[]'
     ];
 
@@ -67,10 +67,10 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'total' => null,
-        'page_size' => null,
-        'page_number' => null,
-        'total_page' => null,
+        'pn' => null,
+        'ps' => null,
+        'total_pn' => null,
+        'count' => null,
         'list' => null
     ];
 
@@ -101,10 +101,10 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'total' => 'total',
-        'page_size' => 'page_size',
-        'page_number' => 'page_number',
-        'total_page' => 'total_page',
+        'pn' => 'pn',
+        'ps' => 'ps',
+        'total_pn' => 'total_pn',
+        'count' => 'count',
         'list' => 'list'
     ];
 
@@ -114,10 +114,10 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'total' => 'setTotal',
-        'page_size' => 'setPageSize',
-        'page_number' => 'setPageNumber',
-        'total_page' => 'setTotalPage',
+        'pn' => 'setPn',
+        'ps' => 'setPs',
+        'total_pn' => 'setTotalPn',
+        'count' => 'setCount',
         'list' => 'setList'
     ];
 
@@ -127,10 +127,10 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'total' => 'getTotal',
-        'page_size' => 'getPageSize',
-        'page_number' => 'getPageNumber',
-        'total_page' => 'getTotalPage',
+        'pn' => 'getPn',
+        'ps' => 'getPs',
+        'total_pn' => 'getTotalPn',
+        'count' => 'getCount',
         'list' => 'getList'
     ];
 
@@ -194,10 +194,10 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
-        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
-        $this->container['page_number'] = isset($data['page_number']) ? $data['page_number'] : null;
-        $this->container['total_page'] = isset($data['total_page']) ? $data['total_page'] : null;
+        $this->container['pn'] = isset($data['pn']) ? $data['pn'] : null;
+        $this->container['ps'] = isset($data['ps']) ? $data['ps'] : null;
+        $this->container['total_pn'] = isset($data['total_pn']) ? $data['total_pn'] : null;
+        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
@@ -210,17 +210,17 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['total'] === null) {
-            $invalidProperties[] = "'total' can't be null";
+        if ($this->container['pn'] === null) {
+            $invalidProperties[] = "'pn' can't be null";
         }
-        if ($this->container['page_size'] === null) {
-            $invalidProperties[] = "'page_size' can't be null";
+        if ($this->container['ps'] === null) {
+            $invalidProperties[] = "'ps' can't be null";
         }
-        if ($this->container['page_number'] === null) {
-            $invalidProperties[] = "'page_number' can't be null";
+        if ($this->container['total_pn'] === null) {
+            $invalidProperties[] = "'total_pn' can't be null";
         }
-        if ($this->container['total_page'] === null) {
-            $invalidProperties[] = "'total_page' can't be null";
+        if ($this->container['count'] === null) {
+            $invalidProperties[] = "'count' can't be null";
         }
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
@@ -241,97 +241,97 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets total
+     * Gets pn
      *
      * @return int
      */
-    public function getTotal()
+    public function getPn()
     {
-        return $this->container['total'];
+        return $this->container['pn'];
     }
 
     /**
-     * Sets total
+     * Sets pn
      *
-     * @param int $total total
+     * @param int $pn pn
      *
      * @return $this
      */
-    public function setTotal($total)
+    public function setPn($pn)
     {
-        $this->container['total'] = $total;
+        $this->container['pn'] = $pn;
 
         return $this;
     }
 
     /**
-     * Gets page_size
+     * Gets ps
      *
      * @return int
      */
-    public function getPageSize()
+    public function getPs()
     {
-        return $this->container['page_size'];
+        return $this->container['ps'];
     }
 
     /**
-     * Sets page_size
+     * Sets ps
      *
-     * @param int $page_size page_size
+     * @param int $ps ps
      *
      * @return $this
      */
-    public function setPageSize($page_size)
+    public function setPs($ps)
     {
-        $this->container['page_size'] = $page_size;
+        $this->container['ps'] = $ps;
 
         return $this;
     }
 
     /**
-     * Gets page_number
+     * Gets total_pn
      *
      * @return int
      */
-    public function getPageNumber()
+    public function getTotalPn()
     {
-        return $this->container['page_number'];
+        return $this->container['total_pn'];
     }
 
     /**
-     * Sets page_number
+     * Sets total_pn
      *
-     * @param int $page_number page_number
+     * @param int $total_pn total_pn
      *
      * @return $this
      */
-    public function setPageNumber($page_number)
+    public function setTotalPn($total_pn)
     {
-        $this->container['page_number'] = $page_number;
+        $this->container['total_pn'] = $total_pn;
 
         return $this;
     }
 
     /**
-     * Gets total_page
+     * Gets count
      *
      * @return int
      */
-    public function getTotalPage()
+    public function getCount()
     {
-        return $this->container['total_page'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets total_page
+     * Sets count
      *
-     * @param int $total_page total_page
+     * @param int $count count
      *
      * @return $this
      */
-    public function setTotalPage($total_page)
+    public function setCount($count)
     {
-        $this->container['total_page'] = $total_page;
+        $this->container['count'] = $count;
 
         return $this;
     }

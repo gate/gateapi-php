@@ -2076,7 +2076,7 @@ class OptionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $contract Options contract name (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -2098,7 +2098,7 @@ class OptionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $contract Options contract name (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -2157,7 +2157,7 @@ class OptionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $contract Options contract name (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -2182,7 +2182,7 @@ class OptionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $contract Options contract name (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -2234,7 +2234,7 @@ class OptionsApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $contract Options contract name (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *

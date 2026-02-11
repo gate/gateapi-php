@@ -2345,7 +2345,7 @@ class MultiCollateralLoanApi
     /**
      * Operation listMultiCollateralCurrencies
      *
-     * Query supported borrowing and collateral currencies for multi-currency collateral
+     * Query borrow currencies and collateral currencies supported by multi-currency collateral
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -2361,7 +2361,7 @@ class MultiCollateralLoanApi
     /**
      * Operation listMultiCollateralCurrenciesWithHttpInfo
      *
-     * Query supported borrowing and collateral currencies for multi-currency collateral
+     * Query borrow currencies and collateral currencies supported by multi-currency collateral
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -2414,7 +2414,7 @@ class MultiCollateralLoanApi
     /**
      * Operation listMultiCollateralCurrenciesAsync
      *
-     * Query supported borrowing and collateral currencies for multi-currency collateral
+     * Query borrow currencies and collateral currencies supported by multi-currency collateral
      *
      *
      * @throws \InvalidArgumentException
@@ -2433,7 +2433,7 @@ class MultiCollateralLoanApi
     /**
      * Operation listMultiCollateralCurrenciesAsyncWithHttpInfo
      *
-     * Query supported borrowing and collateral currencies for multi-currency collateral
+     * Query borrow currencies and collateral currencies supported by multi-currency collateral
      *
      *
      * @throws \InvalidArgumentException

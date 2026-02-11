@@ -371,7 +371,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20024[]
+     * @return \GateApi\Model\InlineResponse20025[]
      */
     public function listCrossexRuleRiskLimits($symbols)
     {
@@ -388,7 +388,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20024[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20025[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexRuleRiskLimitsWithHttpInfo($symbols)
     {
@@ -418,7 +418,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20024[]';
+        $returnType = '\GateApi\Model\InlineResponse20025[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -465,7 +465,7 @@ class CrossExApi
      */
     public function listCrossexRuleRiskLimitsAsyncWithHttpInfo($symbols)
     {
-        $returnType = '\GateApi\Model\InlineResponse20024[]';
+        $returnType = '\GateApi\Model\InlineResponse20025[]';
         $request = $this->listCrossexRuleRiskLimitsRequest($symbols);
 
         return $this->client
@@ -615,7 +615,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20025[]
+     * @return \GateApi\Model\InlineResponse20026[]
      */
     public function listCrossexTransferCoins($associative_array)
     {
@@ -634,7 +634,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20025[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20026[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexTransferCoinsWithHttpInfo($associative_array)
     {
@@ -664,7 +664,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20025[]';
+        $returnType = '\GateApi\Model\InlineResponse20026[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -715,7 +715,7 @@ class CrossExApi
      */
     public function listCrossexTransferCoinsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20025[]';
+        $returnType = '\GateApi\Model\InlineResponse20026[]';
         $request = $this->listCrossexTransferCoinsRequest($associative_array);
 
         return $this->client
@@ -869,7 +869,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20026[]
+     * @return \GateApi\Model\InlineResponse20027[]
      */
     public function listCrossexTransfers($associative_array)
     {
@@ -893,7 +893,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20026[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20027[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexTransfersWithHttpInfo($associative_array)
     {
@@ -923,7 +923,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20026[]';
+        $returnType = '\GateApi\Model\InlineResponse20027[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -984,7 +984,7 @@ class CrossExApi
      */
     public function listCrossexTransfersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20026[]';
+        $returnType = '\GateApi\Model\InlineResponse20027[]';
         $request = $this->listCrossexTransfersRequest($associative_array);
 
         return $this->client
@@ -1204,7 +1204,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20027
+     * @return \GateApi\Model\InlineResponse20028
      */
     public function createCrossexTransfer($inline_object20 = null)
     {
@@ -1221,7 +1221,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20027, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20028, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCrossexTransferWithHttpInfo($inline_object20 = null)
     {
@@ -1251,7 +1251,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20027';
+        $returnType = '\GateApi\Model\InlineResponse20028';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1298,7 +1298,7 @@ class CrossExApi
      */
     public function createCrossexTransferAsyncWithHttpInfo($inline_object20 = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20027';
+        $returnType = '\GateApi\Model\InlineResponse20028';
         $request = $this->createCrossexTransferRequest($inline_object20);
 
         return $this->client
@@ -1434,7 +1434,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20028
+     * @return \GateApi\Model\InlineResponse20029
      */
     public function createCrossexOrder($inline_object21 = null)
     {
@@ -1451,7 +1451,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20028, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20029, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCrossexOrderWithHttpInfo($inline_object21 = null)
     {
@@ -1481,7 +1481,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20028';
+        $returnType = '\GateApi\Model\InlineResponse20029';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1528,7 +1528,7 @@ class CrossExApi
      */
     public function createCrossexOrderAsyncWithHttpInfo($inline_object21 = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20028';
+        $returnType = '\GateApi\Model\InlineResponse20029';
         $request = $this->createCrossexOrderRequest($inline_object21);
 
         return $this->client
@@ -1664,7 +1664,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20029
+     * @return \GateApi\Model\InlineResponse20030
      */
     public function getCrossexOrder($order_id)
     {
@@ -1681,7 +1681,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20029, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20030, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCrossexOrderWithHttpInfo($order_id)
     {
@@ -1711,7 +1711,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20029';
+        $returnType = '\GateApi\Model\InlineResponse20030';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1758,7 +1758,7 @@ class CrossExApi
      */
     public function getCrossexOrderAsyncWithHttpInfo($order_id)
     {
-        $returnType = '\GateApi\Model\InlineResponse20029';
+        $returnType = '\GateApi\Model\InlineResponse20030';
         $request = $this->getCrossexOrderRequest($order_id);
 
         return $this->client
@@ -1907,7 +1907,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20030
+     * @return \GateApi\Model\InlineResponse20031
      */
     public function updateCrossexOrder($order_id, $inline_object22 = null)
     {
@@ -1925,7 +1925,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20030, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20031, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCrossexOrderWithHttpInfo($order_id, $inline_object22 = null)
     {
@@ -1955,7 +1955,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20030';
+        $returnType = '\GateApi\Model\InlineResponse20031';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2004,7 +2004,7 @@ class CrossExApi
      */
     public function updateCrossexOrderAsyncWithHttpInfo($order_id, $inline_object22 = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20030';
+        $returnType = '\GateApi\Model\InlineResponse20031';
         $request = $this->updateCrossexOrderRequest($order_id, $inline_object22);
 
         return $this->client
@@ -2406,7 +2406,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20031
+     * @return \GateApi\Model\InlineResponse20032
      */
     public function createCrossexConvertQuote($inline_object23 = null)
     {
@@ -2423,7 +2423,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20031, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20032, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCrossexConvertQuoteWithHttpInfo($inline_object23 = null)
     {
@@ -2453,7 +2453,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20031';
+        $returnType = '\GateApi\Model\InlineResponse20032';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2500,7 +2500,7 @@ class CrossExApi
      */
     public function createCrossexConvertQuoteAsyncWithHttpInfo($inline_object23 = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20031';
+        $returnType = '\GateApi\Model\InlineResponse20032';
         $request = $this->createCrossexConvertQuoteRequest($inline_object23);
 
         return $this->client
@@ -2868,7 +2868,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20032
+     * @return \GateApi\Model\InlineResponse20033
      */
     public function getCrossexAccount($associative_array)
     {
@@ -2887,7 +2887,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20032, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20033, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCrossexAccountWithHttpInfo($associative_array)
     {
@@ -2917,7 +2917,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20032';
+        $returnType = '\GateApi\Model\InlineResponse20033';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2968,7 +2968,7 @@ class CrossExApi
      */
     public function getCrossexAccountAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20032';
+        $returnType = '\GateApi\Model\InlineResponse20033';
         $request = $this->getCrossexAccountRequest($associative_array);
 
         return $this->client
@@ -3350,7 +3350,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20033[]
+     * @return \GateApi\Model\InlineResponse20034[]
      */
     public function getCrossexPositionsLeverage($associative_array)
     {
@@ -3369,7 +3369,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20033[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20034[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getCrossexPositionsLeverageWithHttpInfo($associative_array)
     {
@@ -3399,7 +3399,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20033[]';
+        $returnType = '\GateApi\Model\InlineResponse20034[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3450,7 +3450,7 @@ class CrossExApi
      */
     public function getCrossexPositionsLeverageAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20033[]';
+        $returnType = '\GateApi\Model\InlineResponse20034[]';
         $request = $this->getCrossexPositionsLeverageRequest($associative_array);
 
         return $this->client
@@ -3832,7 +3832,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20033[]
+     * @return \GateApi\Model\InlineResponse20034[]
      */
     public function getCrossexMarginPositionsLeverage($associative_array)
     {
@@ -3851,7 +3851,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20033[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20034[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getCrossexMarginPositionsLeverageWithHttpInfo($associative_array)
     {
@@ -3881,7 +3881,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20033[]';
+        $returnType = '\GateApi\Model\InlineResponse20034[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3932,7 +3932,7 @@ class CrossExApi
      */
     public function getCrossexMarginPositionsLeverageAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20033[]';
+        $returnType = '\GateApi\Model\InlineResponse20034[]';
         $request = $this->getCrossexMarginPositionsLeverageRequest($associative_array);
 
         return $this->client
@@ -4312,7 +4312,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20028
+     * @return \GateApi\Model\InlineResponse20029
      */
     public function closeCrossexPosition($inline_object28 = null)
     {
@@ -4329,7 +4329,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20028, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20029, HTTP status code, HTTP response headers (array of strings)
      */
     public function closeCrossexPositionWithHttpInfo($inline_object28 = null)
     {
@@ -4359,7 +4359,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20028';
+        $returnType = '\GateApi\Model\InlineResponse20029';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4406,7 +4406,7 @@ class CrossExApi
      */
     public function closeCrossexPositionAsyncWithHttpInfo($inline_object28 = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20028';
+        $returnType = '\GateApi\Model\InlineResponse20029';
         $request = $this->closeCrossexPositionRequest($inline_object28);
 
         return $this->client
@@ -4545,7 +4545,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20034[]
+     * @return \GateApi\Model\InlineResponse20035[]
      */
     public function getCrossexInterestRate($associative_array)
     {
@@ -4565,7 +4565,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20034[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20035[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getCrossexInterestRateWithHttpInfo($associative_array)
     {
@@ -4595,7 +4595,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20034[]';
+        $returnType = '\GateApi\Model\InlineResponse20035[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4648,7 +4648,7 @@ class CrossExApi
      */
     public function getCrossexInterestRateAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20034[]';
+        $returnType = '\GateApi\Model\InlineResponse20035[]';
         $request = $this->getCrossexInterestRateRequest($associative_array);
 
         return $this->client
@@ -4811,7 +4811,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20035
+     * @return \GateApi\Model\InlineResponse20036
      */
     public function getCrossexFee()
     {
@@ -4827,7 +4827,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20035, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20036, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCrossexFeeWithHttpInfo()
     {
@@ -4857,7 +4857,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20035';
+        $returnType = '\GateApi\Model\InlineResponse20036';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4902,7 +4902,7 @@ class CrossExApi
      */
     public function getCrossexFeeAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse20035';
+        $returnType = '\GateApi\Model\InlineResponse20036';
         $request = $this->getCrossexFeeRequest();
 
         return $this->client
@@ -5037,7 +5037,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20036[]
+     * @return \GateApi\Model\InlineResponse20037[]
      */
     public function listCrossexPositions($associative_array)
     {
@@ -5057,7 +5057,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20036[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20037[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexPositionsWithHttpInfo($associative_array)
     {
@@ -5087,7 +5087,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20036[]';
+        $returnType = '\GateApi\Model\InlineResponse20037[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5140,7 +5140,7 @@ class CrossExApi
      */
     public function listCrossexPositionsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20036[]';
+        $returnType = '\GateApi\Model\InlineResponse20037[]';
         $request = $this->listCrossexPositionsRequest($associative_array);
 
         return $this->client
@@ -5307,7 +5307,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20037[]
+     * @return \GateApi\Model\InlineResponse20038[]
      */
     public function listCrossexMarginPositions($associative_array)
     {
@@ -5327,7 +5327,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20037[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20038[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexMarginPositionsWithHttpInfo($associative_array)
     {
@@ -5357,7 +5357,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20037[]';
+        $returnType = '\GateApi\Model\InlineResponse20038[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5410,7 +5410,7 @@ class CrossExApi
      */
     public function listCrossexMarginPositionsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20037[]';
+        $returnType = '\GateApi\Model\InlineResponse20038[]';
         $request = $this->listCrossexMarginPositionsRequest($associative_array);
 
         return $this->client
@@ -5574,7 +5574,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20038[]
+     * @return \GateApi\Model\InlineResponse20039[]
      */
     public function listCrossexAdlRank($symbol)
     {
@@ -5591,7 +5591,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20038[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20039[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexAdlRankWithHttpInfo($symbol)
     {
@@ -5621,7 +5621,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20038[]';
+        $returnType = '\GateApi\Model\InlineResponse20039[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5668,7 +5668,7 @@ class CrossExApi
      */
     public function listCrossexAdlRankAsyncWithHttpInfo($symbol)
     {
-        $returnType = '\GateApi\Model\InlineResponse20038[]';
+        $returnType = '\GateApi\Model\InlineResponse20039[]';
         $request = $this->listCrossexAdlRankRequest($symbol);
 
         return $this->client
@@ -5823,7 +5823,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20029[]
+     * @return \GateApi\Model\InlineResponse20030[]
      */
     public function listCrossexOpenOrders($associative_array)
     {
@@ -5844,7 +5844,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20029[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20030[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexOpenOrdersWithHttpInfo($associative_array)
     {
@@ -5874,7 +5874,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20029[]';
+        $returnType = '\GateApi\Model\InlineResponse20030[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5929,7 +5929,7 @@ class CrossExApi
      */
     public function listCrossexOpenOrdersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20029[]';
+        $returnType = '\GateApi\Model\InlineResponse20030[]';
         $request = $this->listCrossexOpenOrdersRequest($associative_array);
 
         return $this->client
@@ -6113,7 +6113,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20039[]
+     * @return \GateApi\Model\InlineResponse20040[]
      */
     public function listCrossexHistoryOrders($associative_array)
     {
@@ -6136,7 +6136,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20039[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20040[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexHistoryOrdersWithHttpInfo($associative_array)
     {
@@ -6166,7 +6166,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20039[]';
+        $returnType = '\GateApi\Model\InlineResponse20040[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -6225,7 +6225,7 @@ class CrossExApi
      */
     public function listCrossexHistoryOrdersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20039[]';
+        $returnType = '\GateApi\Model\InlineResponse20040[]';
         $request = $this->listCrossexHistoryOrdersRequest($associative_array);
 
         return $this->client
@@ -6437,7 +6437,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20040[]
+     * @return \GateApi\Model\InlineResponse20041[]
      */
     public function listCrossexHistoryPositions($associative_array)
     {
@@ -6460,7 +6460,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20040[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20041[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexHistoryPositionsWithHttpInfo($associative_array)
     {
@@ -6490,7 +6490,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20040[]';
+        $returnType = '\GateApi\Model\InlineResponse20041[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -6549,7 +6549,7 @@ class CrossExApi
      */
     public function listCrossexHistoryPositionsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20040[]';
+        $returnType = '\GateApi\Model\InlineResponse20041[]';
         $request = $this->listCrossexHistoryPositionsRequest($associative_array);
 
         return $this->client
@@ -6761,7 +6761,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20041[]
+     * @return \GateApi\Model\InlineResponse20042[]
      */
     public function listCrossexHistoryMarginPositions($associative_array)
     {
@@ -6784,7 +6784,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20041[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20042[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexHistoryMarginPositionsWithHttpInfo($associative_array)
     {
@@ -6814,7 +6814,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20041[]';
+        $returnType = '\GateApi\Model\InlineResponse20042[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -6873,7 +6873,7 @@ class CrossExApi
      */
     public function listCrossexHistoryMarginPositionsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20041[]';
+        $returnType = '\GateApi\Model\InlineResponse20042[]';
         $request = $this->listCrossexHistoryMarginPositionsRequest($associative_array);
 
         return $this->client
@@ -7086,7 +7086,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20042[]
+     * @return \GateApi\Model\InlineResponse20043[]
      */
     public function listCrossexHistoryMarginInterests($associative_array)
     {
@@ -7110,7 +7110,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20042[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20043[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexHistoryMarginInterestsWithHttpInfo($associative_array)
     {
@@ -7140,7 +7140,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20042[]';
+        $returnType = '\GateApi\Model\InlineResponse20043[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -7201,7 +7201,7 @@ class CrossExApi
      */
     public function listCrossexHistoryMarginInterestsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20042[]';
+        $returnType = '\GateApi\Model\InlineResponse20043[]';
         $request = $this->listCrossexHistoryMarginInterestsRequest($associative_array);
 
         return $this->client
@@ -7427,7 +7427,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20043[]
+     * @return \GateApi\Model\InlineResponse20044[]
      */
     public function listCrossexHistoryTrades($associative_array)
     {
@@ -7450,7 +7450,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20043[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20044[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexHistoryTradesWithHttpInfo($associative_array)
     {
@@ -7480,7 +7480,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20043[]';
+        $returnType = '\GateApi\Model\InlineResponse20044[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -7539,7 +7539,7 @@ class CrossExApi
      */
     public function listCrossexHistoryTradesAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20043[]';
+        $returnType = '\GateApi\Model\InlineResponse20044[]';
         $request = $this->listCrossexHistoryTradesRequest($associative_array);
 
         return $this->client
@@ -7751,7 +7751,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20044[]
+     * @return \GateApi\Model\InlineResponse20045[]
      */
     public function listCrossexAccountBook($associative_array)
     {
@@ -7774,7 +7774,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20044[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20045[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexAccountBookWithHttpInfo($associative_array)
     {
@@ -7804,7 +7804,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20044[]';
+        $returnType = '\GateApi\Model\InlineResponse20045[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -7863,7 +7863,7 @@ class CrossExApi
      */
     public function listCrossexAccountBookAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20044[]';
+        $returnType = '\GateApi\Model\InlineResponse20045[]';
         $request = $this->listCrossexAccountBookRequest($associative_array);
 
         return $this->client
@@ -8072,7 +8072,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20045[]
+     * @return \GateApi\Model\InlineResponse20046[]
      */
     public function listCrossexCoinDiscountRate($associative_array)
     {
@@ -8092,7 +8092,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20045[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20046[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexCoinDiscountRateWithHttpInfo($associative_array)
     {
@@ -8122,7 +8122,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20045[]';
+        $returnType = '\GateApi\Model\InlineResponse20046[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -8175,7 +8175,7 @@ class CrossExApi
      */
     public function listCrossexCoinDiscountRateAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20045[]';
+        $returnType = '\GateApi\Model\InlineResponse20046[]';
         $request = $this->listCrossexCoinDiscountRateRequest($associative_array);
 
         return $this->client

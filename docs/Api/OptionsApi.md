@@ -477,7 +477,7 @@ $apiInstance = new GateApi\Api\OptionsApi(
     new GuzzleHttp\Client()
 );
 $associate_array['contract'] = 'BTC_USDT-20210916-5000-C'; // string | Options contract name
-$associate_array['interval'] = '0'; // string | Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified
+$associate_array['interval'] = '0'; // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
 $associate_array['limit'] = 10; // int | Number of depth levels
 $associate_array['with_id'] = false; // bool | Whether to return depth update ID. This ID increments by 1 each time the depth changes
 
@@ -500,7 +500,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contract** | **string**| Options contract name |
- **interval** | **string**| Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **int**| Number of depth levels | [optional] [default to 10]
  **with_id** | **bool**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [optional] [default to false]
 

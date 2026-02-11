@@ -33,7 +33,6 @@ use \GateApi\ObjectSerializer;
  * PlaceDualInvestmentOrder Class Doc Comment
  *
  * @category Class
- * @description Dual Investment Order
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -55,8 +54,22 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'plan_id' => 'string',
-        'amount' => 'string',
+        'id' => 'int',
+        'plan_id' => 'int',
+        'copies' => 'string',
+        'invest_amount' => 'string',
+        'settlement_amount' => 'string',
+        'create_time' => 'int',
+        'complete_time' => 'int',
+        'status' => 'string',
+        'invest_currency' => 'string',
+        'exercise_currency' => 'string',
+        'exercise_price' => 'string',
+        'settlement_price' => 'string',
+        'settlement_currency' => 'string',
+        'apy_display' => 'string',
+        'apy_settlement' => 'string',
+        'delivery_time' => 'int',
         'text' => 'string'
     ];
 
@@ -66,8 +79,22 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'plan_id' => null,
-        'amount' => null,
+        'id' => 'int32',
+        'plan_id' => 'int32',
+        'copies' => null,
+        'invest_amount' => null,
+        'settlement_amount' => null,
+        'create_time' => 'int32',
+        'complete_time' => 'int32',
+        'status' => null,
+        'invest_currency' => null,
+        'exercise_currency' => null,
+        'exercise_price' => null,
+        'settlement_price' => null,
+        'settlement_currency' => null,
+        'apy_display' => null,
+        'apy_settlement' => null,
+        'delivery_time' => 'int32',
         'text' => null
     ];
 
@@ -98,8 +125,22 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'plan_id' => 'plan_id',
-        'amount' => 'amount',
+        'copies' => 'copies',
+        'invest_amount' => 'invest_amount',
+        'settlement_amount' => 'settlement_amount',
+        'create_time' => 'create_time',
+        'complete_time' => 'complete_time',
+        'status' => 'status',
+        'invest_currency' => 'invest_currency',
+        'exercise_currency' => 'exercise_currency',
+        'exercise_price' => 'exercise_price',
+        'settlement_price' => 'settlement_price',
+        'settlement_currency' => 'settlement_currency',
+        'apy_display' => 'apy_display',
+        'apy_settlement' => 'apy_settlement',
+        'delivery_time' => 'delivery_time',
         'text' => 'text'
     ];
 
@@ -109,8 +150,22 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'plan_id' => 'setPlanId',
-        'amount' => 'setAmount',
+        'copies' => 'setCopies',
+        'invest_amount' => 'setInvestAmount',
+        'settlement_amount' => 'setSettlementAmount',
+        'create_time' => 'setCreateTime',
+        'complete_time' => 'setCompleteTime',
+        'status' => 'setStatus',
+        'invest_currency' => 'setInvestCurrency',
+        'exercise_currency' => 'setExerciseCurrency',
+        'exercise_price' => 'setExercisePrice',
+        'settlement_price' => 'setSettlementPrice',
+        'settlement_currency' => 'setSettlementCurrency',
+        'apy_display' => 'setApyDisplay',
+        'apy_settlement' => 'setApySettlement',
+        'delivery_time' => 'setDeliveryTime',
         'text' => 'setText'
     ];
 
@@ -120,8 +175,22 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'plan_id' => 'getPlanId',
-        'amount' => 'getAmount',
+        'copies' => 'getCopies',
+        'invest_amount' => 'getInvestAmount',
+        'settlement_amount' => 'getSettlementAmount',
+        'create_time' => 'getCreateTime',
+        'complete_time' => 'getCompleteTime',
+        'status' => 'getStatus',
+        'invest_currency' => 'getInvestCurrency',
+        'exercise_currency' => 'getExerciseCurrency',
+        'exercise_price' => 'getExercisePrice',
+        'settlement_price' => 'getSettlementPrice',
+        'settlement_currency' => 'getSettlementCurrency',
+        'apy_display' => 'getApyDisplay',
+        'apy_settlement' => 'getApySettlement',
+        'delivery_time' => 'getDeliveryTime',
         'text' => 'getText'
     ];
 
@@ -185,8 +254,22 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['copies'] = isset($data['copies']) ? $data['copies'] : null;
+        $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
+        $this->container['settlement_amount'] = isset($data['settlement_amount']) ? $data['settlement_amount'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['complete_time'] = isset($data['complete_time']) ? $data['complete_time'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['invest_currency'] = isset($data['invest_currency']) ? $data['invest_currency'] : null;
+        $this->container['exercise_currency'] = isset($data['exercise_currency']) ? $data['exercise_currency'] : null;
+        $this->container['exercise_price'] = isset($data['exercise_price']) ? $data['exercise_price'] : null;
+        $this->container['settlement_price'] = isset($data['settlement_price']) ? $data['settlement_price'] : null;
+        $this->container['settlement_currency'] = isset($data['settlement_currency']) ? $data['settlement_currency'] : null;
+        $this->container['apy_display'] = isset($data['apy_display']) ? $data['apy_display'] : null;
+        $this->container['apy_settlement'] = isset($data['apy_settlement']) ? $data['apy_settlement'] : null;
+        $this->container['delivery_time'] = isset($data['delivery_time']) ? $data['delivery_time'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
@@ -199,12 +282,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['plan_id'] === null) {
-            $invalidProperties[] = "'plan_id' can't be null";
-        }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -221,9 +298,33 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id Order ID
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets plan_id
      *
-     * @return string
+     * @return int|null
      */
     public function getPlanId()
     {
@@ -233,7 +334,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     /**
      * Sets plan_id
      *
-     * @param string $plan_id Product ID
+     * @param int|null $plan_id Product ID
      *
      * @return $this
      */
@@ -245,25 +346,337 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets amount
+     * Gets copies
      *
-     * @return string
+     * @return string|null
      */
-    public function getAmount()
+    public function getCopies()
     {
-        return $this->container['amount'];
+        return $this->container['copies'];
     }
 
     /**
-     * Sets amount
+     * Sets copies
      *
-     * @param string $amount Subscription amount, mutually exclusive with copies field
+     * @param string|null $copies Units
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setCopies($copies)
     {
-        $this->container['amount'] = $amount;
+        $this->container['copies'] = $copies;
+
+        return $this;
+    }
+
+    /**
+     * Gets invest_amount
+     *
+     * @return string|null
+     */
+    public function getInvestAmount()
+    {
+        return $this->container['invest_amount'];
+    }
+
+    /**
+     * Sets invest_amount
+     *
+     * @param string|null $invest_amount Investment Quantity
+     *
+     * @return $this
+     */
+    public function setInvestAmount($invest_amount)
+    {
+        $this->container['invest_amount'] = $invest_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets settlement_amount
+     *
+     * @return string|null
+     */
+    public function getSettlementAmount()
+    {
+        return $this->container['settlement_amount'];
+    }
+
+    /**
+     * Sets settlement_amount
+     *
+     * @param string|null $settlement_amount Settlement Quantity
+     *
+     * @return $this
+     */
+    public function setSettlementAmount($settlement_amount)
+    {
+        $this->container['settlement_amount'] = $settlement_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_time
+     *
+     * @return int|null
+     */
+    public function getCreateTime()
+    {
+        return $this->container['create_time'];
+    }
+
+    /**
+     * Sets create_time
+     *
+     * @param int|null $create_time Created time
+     *
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets complete_time
+     *
+     * @return int|null
+     */
+    public function getCompleteTime()
+    {
+        return $this->container['complete_time'];
+    }
+
+    /**
+     * Sets complete_time
+     *
+     * @param int|null $complete_time Completed Time
+     *
+     * @return $this
+     */
+    public function setCompleteTime($complete_time)
+    {
+        $this->container['complete_time'] = $complete_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Status:  `INIT`-Created `SETTLEMENT_SUCCESS`-Settlement Success `SETTLEMENT_PROCESSING`-Settlement Processing `CANCELED`-Canceled `FAILED`-Failed
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets invest_currency
+     *
+     * @return string|null
+     */
+    public function getInvestCurrency()
+    {
+        return $this->container['invest_currency'];
+    }
+
+    /**
+     * Sets invest_currency
+     *
+     * @param string|null $invest_currency Investment Token
+     *
+     * @return $this
+     */
+    public function setInvestCurrency($invest_currency)
+    {
+        $this->container['invest_currency'] = $invest_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets exercise_currency
+     *
+     * @return string|null
+     */
+    public function getExerciseCurrency()
+    {
+        return $this->container['exercise_currency'];
+    }
+
+    /**
+     * Sets exercise_currency
+     *
+     * @param string|null $exercise_currency Strike Token
+     *
+     * @return $this
+     */
+    public function setExerciseCurrency($exercise_currency)
+    {
+        $this->container['exercise_currency'] = $exercise_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets exercise_price
+     *
+     * @return string|null
+     */
+    public function getExercisePrice()
+    {
+        return $this->container['exercise_price'];
+    }
+
+    /**
+     * Sets exercise_price
+     *
+     * @param string|null $exercise_price Strike price
+     *
+     * @return $this
+     */
+    public function setExercisePrice($exercise_price)
+    {
+        $this->container['exercise_price'] = $exercise_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets settlement_price
+     *
+     * @return string|null
+     */
+    public function getSettlementPrice()
+    {
+        return $this->container['settlement_price'];
+    }
+
+    /**
+     * Sets settlement_price
+     *
+     * @param string|null $settlement_price Settlement price
+     *
+     * @return $this
+     */
+    public function setSettlementPrice($settlement_price)
+    {
+        $this->container['settlement_price'] = $settlement_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets settlement_currency
+     *
+     * @return string|null
+     */
+    public function getSettlementCurrency()
+    {
+        return $this->container['settlement_currency'];
+    }
+
+    /**
+     * Sets settlement_currency
+     *
+     * @param string|null $settlement_currency Settlement currency
+     *
+     * @return $this
+     */
+    public function setSettlementCurrency($settlement_currency)
+    {
+        $this->container['settlement_currency'] = $settlement_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets apy_display
+     *
+     * @return string|null
+     */
+    public function getApyDisplay()
+    {
+        return $this->container['apy_display'];
+    }
+
+    /**
+     * Sets apy_display
+     *
+     * @param string|null $apy_display Annual Yield
+     *
+     * @return $this
+     */
+    public function setApyDisplay($apy_display)
+    {
+        $this->container['apy_display'] = $apy_display;
+
+        return $this;
+    }
+
+    /**
+     * Gets apy_settlement
+     *
+     * @return string|null
+     */
+    public function getApySettlement()
+    {
+        return $this->container['apy_settlement'];
+    }
+
+    /**
+     * Sets apy_settlement
+     *
+     * @param string|null $apy_settlement Settlement Annual Yield
+     *
+     * @return $this
+     */
+    public function setApySettlement($apy_settlement)
+    {
+        $this->container['apy_settlement'] = $apy_settlement;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_time
+     *
+     * @return int|null
+     */
+    public function getDeliveryTime()
+    {
+        return $this->container['delivery_time'];
+    }
+
+    /**
+     * Sets delivery_time
+     *
+     * @param int|null $delivery_time Settlement time
+     *
+     * @return $this
+     */
+    public function setDeliveryTime($delivery_time)
+    {
+        $this->container['delivery_time'] = $delivery_time;
 
         return $this;
     }
@@ -281,7 +694,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     /**
      * Sets text
      *
-     * @param string|null $text Order custom information. Users can set custom ID with this field. Custom fields must meet the following conditions:  1. Must start with `t-` 2. Excluding `t-`, length cannot exceed 28 bytes 3. Can only contain numbers, letters, underscore(_), hyphen(-) or dot(.)
+     * @param string|null $text Custom order information
      *
      * @return $this
      */

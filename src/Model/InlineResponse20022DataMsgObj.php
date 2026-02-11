@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20015List
+ * InlineResponse20022DataMsgObj
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20015List Class Doc Comment
+ * InlineResponse20022DataMsgObj Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20015List implements ModelInterface, ArrayAccess
+class InlineResponse20022DataMsgObj implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_15_list';
+    protected static $openAPIModelName = 'inline_response_200_22_data_msg_obj';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,18 +54,14 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uid' => 'int',
-        'bankid' => 'string',
-        'nickname' => 'int',
-        'bankname' => 'string',
-        'bankbranch' => 'string',
-        'bankcity' => 'string',
-        'bankprov' => 'string',
-        'bankaddr' => 'string',
-        'bankdesc' => 'string',
-        'hold_uid' => 'int',
-        'hold_username' => 'string',
-        'real_name' => 'string',
+        'status' => 'string',
+        'text' => 'string',
+        'payment_voucher' => 'string[]',
+        'reason_id' => 'int',
+        'toast_id' => 'int',
+        'reason_memo' => 'string',
+        'cancel_time' => 'int',
+        'seller_confirm' => 'int',
         'id' => 'string',
         'account_des' => 'string',
         'pay_type' => 'string',
@@ -75,7 +71,10 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
         'memo' => 'string',
         'code' => 'string',
         'memo_ext' => 'string',
-        'trade_tips' => 'string'
+        'trade_tips' => 'string',
+        'real_name' => 'string',
+        'is_delete' => 'int',
+        'pay_name' => 'string'
     ];
 
     /**
@@ -84,18 +83,14 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'uid' => null,
-        'bankid' => null,
-        'nickname' => null,
-        'bankname' => null,
-        'bankbranch' => null,
-        'bankcity' => null,
-        'bankprov' => null,
-        'bankaddr' => null,
-        'bankdesc' => null,
-        'hold_uid' => null,
-        'hold_username' => null,
-        'real_name' => null,
+        'status' => null,
+        'text' => null,
+        'payment_voucher' => null,
+        'reason_id' => null,
+        'toast_id' => null,
+        'reason_memo' => null,
+        'cancel_time' => null,
+        'seller_confirm' => null,
         'id' => null,
         'account_des' => null,
         'pay_type' => null,
@@ -105,7 +100,10 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
         'memo' => null,
         'code' => null,
         'memo_ext' => null,
-        'trade_tips' => null
+        'trade_tips' => null,
+        'real_name' => null,
+        'is_delete' => null,
+        'pay_name' => null
     ];
 
     /**
@@ -135,18 +133,14 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'uid' => 'uid',
-        'bankid' => 'bankid',
-        'nickname' => 'nickname',
-        'bankname' => 'bankname',
-        'bankbranch' => 'bankbranch',
-        'bankcity' => 'bankcity',
-        'bankprov' => 'bankprov',
-        'bankaddr' => 'bankaddr',
-        'bankdesc' => 'bankdesc',
-        'hold_uid' => 'holdUid',
-        'hold_username' => 'hold_username',
-        'real_name' => 'real_name',
+        'status' => 'status',
+        'text' => 'text',
+        'payment_voucher' => 'payment_voucher',
+        'reason_id' => 'reason_id',
+        'toast_id' => 'toast_id',
+        'reason_memo' => 'reason_memo',
+        'cancel_time' => 'cancel_time',
+        'seller_confirm' => 'seller_confirm',
         'id' => 'id',
         'account_des' => 'account_des',
         'pay_type' => 'pay_type',
@@ -156,7 +150,10 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
         'memo' => 'memo',
         'code' => 'code',
         'memo_ext' => 'memo_ext',
-        'trade_tips' => 'trade_tips'
+        'trade_tips' => 'trade_tips',
+        'real_name' => 'real_name',
+        'is_delete' => 'is_delete',
+        'pay_name' => 'pay_name'
     ];
 
     /**
@@ -165,18 +162,14 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'uid' => 'setUid',
-        'bankid' => 'setBankid',
-        'nickname' => 'setNickname',
-        'bankname' => 'setBankname',
-        'bankbranch' => 'setBankbranch',
-        'bankcity' => 'setBankcity',
-        'bankprov' => 'setBankprov',
-        'bankaddr' => 'setBankaddr',
-        'bankdesc' => 'setBankdesc',
-        'hold_uid' => 'setHoldUid',
-        'hold_username' => 'setHoldUsername',
-        'real_name' => 'setRealName',
+        'status' => 'setStatus',
+        'text' => 'setText',
+        'payment_voucher' => 'setPaymentVoucher',
+        'reason_id' => 'setReasonId',
+        'toast_id' => 'setToastId',
+        'reason_memo' => 'setReasonMemo',
+        'cancel_time' => 'setCancelTime',
+        'seller_confirm' => 'setSellerConfirm',
         'id' => 'setId',
         'account_des' => 'setAccountDes',
         'pay_type' => 'setPayType',
@@ -186,7 +179,10 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
         'memo' => 'setMemo',
         'code' => 'setCode',
         'memo_ext' => 'setMemoExt',
-        'trade_tips' => 'setTradeTips'
+        'trade_tips' => 'setTradeTips',
+        'real_name' => 'setRealName',
+        'is_delete' => 'setIsDelete',
+        'pay_name' => 'setPayName'
     ];
 
     /**
@@ -195,18 +191,14 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'uid' => 'getUid',
-        'bankid' => 'getBankid',
-        'nickname' => 'getNickname',
-        'bankname' => 'getBankname',
-        'bankbranch' => 'getBankbranch',
-        'bankcity' => 'getBankcity',
-        'bankprov' => 'getBankprov',
-        'bankaddr' => 'getBankaddr',
-        'bankdesc' => 'getBankdesc',
-        'hold_uid' => 'getHoldUid',
-        'hold_username' => 'getHoldUsername',
-        'real_name' => 'getRealName',
+        'status' => 'getStatus',
+        'text' => 'getText',
+        'payment_voucher' => 'getPaymentVoucher',
+        'reason_id' => 'getReasonId',
+        'toast_id' => 'getToastId',
+        'reason_memo' => 'getReasonMemo',
+        'cancel_time' => 'getCancelTime',
+        'seller_confirm' => 'getSellerConfirm',
         'id' => 'getId',
         'account_des' => 'getAccountDes',
         'pay_type' => 'getPayType',
@@ -216,7 +208,10 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
         'memo' => 'getMemo',
         'code' => 'getCode',
         'memo_ext' => 'getMemoExt',
-        'trade_tips' => 'getTradeTips'
+        'trade_tips' => 'getTradeTips',
+        'real_name' => 'getRealName',
+        'is_delete' => 'getIsDelete',
+        'pay_name' => 'getPayName'
     ];
 
     /**
@@ -279,18 +274,14 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
-        $this->container['bankid'] = isset($data['bankid']) ? $data['bankid'] : null;
-        $this->container['nickname'] = isset($data['nickname']) ? $data['nickname'] : null;
-        $this->container['bankname'] = isset($data['bankname']) ? $data['bankname'] : null;
-        $this->container['bankbranch'] = isset($data['bankbranch']) ? $data['bankbranch'] : null;
-        $this->container['bankcity'] = isset($data['bankcity']) ? $data['bankcity'] : null;
-        $this->container['bankprov'] = isset($data['bankprov']) ? $data['bankprov'] : null;
-        $this->container['bankaddr'] = isset($data['bankaddr']) ? $data['bankaddr'] : null;
-        $this->container['bankdesc'] = isset($data['bankdesc']) ? $data['bankdesc'] : null;
-        $this->container['hold_uid'] = isset($data['hold_uid']) ? $data['hold_uid'] : null;
-        $this->container['hold_username'] = isset($data['hold_username']) ? $data['hold_username'] : null;
-        $this->container['real_name'] = isset($data['real_name']) ? $data['real_name'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['payment_voucher'] = isset($data['payment_voucher']) ? $data['payment_voucher'] : null;
+        $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
+        $this->container['toast_id'] = isset($data['toast_id']) ? $data['toast_id'] : null;
+        $this->container['reason_memo'] = isset($data['reason_memo']) ? $data['reason_memo'] : null;
+        $this->container['cancel_time'] = isset($data['cancel_time']) ? $data['cancel_time'] : null;
+        $this->container['seller_confirm'] = isset($data['seller_confirm']) ? $data['seller_confirm'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['account_des'] = isset($data['account_des']) ? $data['account_des'] : null;
         $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
@@ -301,6 +292,9 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['memo_ext'] = isset($data['memo_ext']) ? $data['memo_ext'] : null;
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        $this->container['real_name'] = isset($data['real_name']) ? $data['real_name'] : null;
+        $this->container['is_delete'] = isset($data['is_delete']) ? $data['is_delete'] : null;
+        $this->container['pay_name'] = isset($data['pay_name']) ? $data['pay_name'] : null;
     }
 
     /**
@@ -312,6 +306,45 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['account_des'] === null) {
+            $invalidProperties[] = "'account_des' can't be null";
+        }
+        if ($this->container['pay_type'] === null) {
+            $invalidProperties[] = "'pay_type' can't be null";
+        }
+        if ($this->container['file'] === null) {
+            $invalidProperties[] = "'file' can't be null";
+        }
+        if ($this->container['file_key'] === null) {
+            $invalidProperties[] = "'file_key' can't be null";
+        }
+        if ($this->container['account'] === null) {
+            $invalidProperties[] = "'account' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['memo_ext'] === null) {
+            $invalidProperties[] = "'memo_ext' can't be null";
+        }
+        if ($this->container['trade_tips'] === null) {
+            $invalidProperties[] = "'trade_tips' can't be null";
+        }
+        if ($this->container['real_name'] === null) {
+            $invalidProperties[] = "'real_name' can't be null";
+        }
+        if ($this->container['is_delete'] === null) {
+            $invalidProperties[] = "'is_delete' can't be null";
+        }
+        if ($this->container['pay_name'] === null) {
+            $invalidProperties[] = "'pay_name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -328,289 +361,193 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets uid
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Order status when message was sent
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string|null
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string|null $text Message content
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_voucher
+     *
+     * @return string[]|null
+     */
+    public function getPaymentVoucher()
+    {
+        return $this->container['payment_voucher'];
+    }
+
+    /**
+     * Sets payment_voucher
+     *
+     * @param string[]|null $payment_voucher Payment voucher
+     *
+     * @return $this
+     */
+    public function setPaymentVoucher($payment_voucher)
+    {
+        $this->container['payment_voucher'] = $payment_voucher;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason_id
      *
      * @return int|null
      */
-    public function getUid()
+    public function getReasonId()
     {
-        return $this->container['uid'];
+        return $this->container['reason_id'];
     }
 
     /**
-     * Sets uid
+     * Sets reason_id
      *
-     * @param int|null $uid useruID
+     * @param int|null $reason_id Cancellation reason ID
      *
      * @return $this
      */
-    public function setUid($uid)
+    public function setReasonId($reason_id)
     {
-        $this->container['uid'] = $uid;
+        $this->container['reason_id'] = $reason_id;
 
         return $this;
     }
 
     /**
-     * Gets bankid
-     *
-     * @return string|null
-     */
-    public function getBankid()
-    {
-        return $this->container['bankid'];
-    }
-
-    /**
-     * Sets bankid
-     *
-     * @param string|null $bankid User's currently bound payment method (primary key ID)
-     *
-     * @return $this
-     */
-    public function setBankid($bankid)
-    {
-        $this->container['bankid'] = $bankid;
-
-        return $this;
-    }
-
-    /**
-     * Gets nickname
+     * Gets toast_id
      *
      * @return int|null
      */
-    public function getNickname()
+    public function getToastId()
     {
-        return $this->container['nickname'];
+        return $this->container['toast_id'];
     }
 
     /**
-     * Sets nickname
+     * Sets toast_id
      *
-     * @param int|null $nickname Cardholder UID
+     * @param int|null $toast_id Cancellation reason popup
      *
      * @return $this
      */
-    public function setNickname($nickname)
+    public function setToastId($toast_id)
     {
-        $this->container['nickname'] = $nickname;
+        $this->container['toast_id'] = $toast_id;
 
         return $this;
     }
 
     /**
-     * Gets bankname
+     * Gets reason_memo
      *
      * @return string|null
      */
-    public function getBankname()
+    public function getReasonMemo()
     {
-        return $this->container['bankname'];
+        return $this->container['reason_memo'];
     }
 
     /**
-     * Sets bankname
+     * Sets reason_memo
      *
-     * @param string|null $bankname Bank name
+     * @param string|null $reason_memo Cancellation reason title
      *
      * @return $this
      */
-    public function setBankname($bankname)
+    public function setReasonMemo($reason_memo)
     {
-        $this->container['bankname'] = $bankname;
+        $this->container['reason_memo'] = $reason_memo;
 
         return $this;
     }
 
     /**
-     * Gets bankbranch
-     *
-     * @return string|null
-     */
-    public function getBankbranch()
-    {
-        return $this->container['bankbranch'];
-    }
-
-    /**
-     * Sets bankbranch
-     *
-     * @param string|null $bankbranch Bank branch name
-     *
-     * @return $this
-     */
-    public function setBankbranch($bankbranch)
-    {
-        $this->container['bankbranch'] = $bankbranch;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankcity
-     *
-     * @return string|null
-     */
-    public function getBankcity()
-    {
-        return $this->container['bankcity'];
-    }
-
-    /**
-     * Sets bankcity
-     *
-     * @param string|null $bankcity Bank city
-     *
-     * @return $this
-     */
-    public function setBankcity($bankcity)
-    {
-        $this->container['bankcity'] = $bankcity;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankprov
-     *
-     * @return string|null
-     */
-    public function getBankprov()
-    {
-        return $this->container['bankprov'];
-    }
-
-    /**
-     * Sets bankprov
-     *
-     * @param string|null $bankprov Bank province
-     *
-     * @return $this
-     */
-    public function setBankprov($bankprov)
-    {
-        $this->container['bankprov'] = $bankprov;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankaddr
-     *
-     * @return string|null
-     */
-    public function getBankaddr()
-    {
-        return $this->container['bankaddr'];
-    }
-
-    /**
-     * Sets bankaddr
-     *
-     * @param string|null $bankaddr Bank card number
-     *
-     * @return $this
-     */
-    public function setBankaddr($bankaddr)
-    {
-        $this->container['bankaddr'] = $bankaddr;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankdesc
-     *
-     * @return string|null
-     */
-    public function getBankdesc()
-    {
-        return $this->container['bankdesc'];
-    }
-
-    /**
-     * Sets bankdesc
-     *
-     * @param string|null $bankdesc Bank note
-     *
-     * @return $this
-     */
-    public function setBankdesc($bankdesc)
-    {
-        $this->container['bankdesc'] = $bankdesc;
-
-        return $this;
-    }
-
-    /**
-     * Gets hold_uid
+     * Gets cancel_time
      *
      * @return int|null
      */
-    public function getHoldUid()
+    public function getCancelTime()
     {
-        return $this->container['hold_uid'];
+        return $this->container['cancel_time'];
     }
 
     /**
-     * Sets hold_uid
+     * Sets cancel_time
      *
-     * @param int|null $hold_uid Cardholder UID
+     * @param int|null $cancel_time Cancellation time
      *
      * @return $this
      */
-    public function setHoldUid($hold_uid)
+    public function setCancelTime($cancel_time)
     {
-        $this->container['hold_uid'] = $hold_uid;
+        $this->container['cancel_time'] = $cancel_time;
 
         return $this;
     }
 
     /**
-     * Gets hold_username
+     * Gets seller_confirm
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getHoldUsername()
+    public function getSellerConfirm()
     {
-        return $this->container['hold_username'];
+        return $this->container['seller_confirm'];
     }
 
     /**
-     * Sets hold_username
+     * Sets seller_confirm
      *
-     * @param string|null $hold_username Cardholder name
+     * @param int|null $seller_confirm Whether seller confirmed the reason
      *
      * @return $this
      */
-    public function setHoldUsername($hold_username)
+    public function setSellerConfirm($seller_confirm)
     {
-        $this->container['hold_username'] = $hold_username;
-
-        return $this;
-    }
-
-    /**
-     * Gets real_name
-     *
-     * @return string|null
-     */
-    public function getRealName()
-    {
-        return $this->container['real_name'];
-    }
-
-    /**
-     * Sets real_name
-     *
-     * @param string|null $real_name userfirst name
-     *
-     * @return $this
-     */
-    public function setRealName($real_name)
-    {
-        $this->container['real_name'] = $real_name;
+        $this->container['seller_confirm'] = $seller_confirm;
 
         return $this;
     }
@@ -618,7 +555,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -628,7 +565,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id User's currently bound payment method (primary key ID)
+     * @param string $id Payment method information ID
      *
      * @return $this
      */
@@ -642,7 +579,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets account_des
      *
-     * @return string|null
+     * @return string
      */
     public function getAccountDes()
     {
@@ -652,7 +589,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets account_des
      *
-     * @param string|null $account_des Payment method description
+     * @param string $account_des Payment method description
      *
      * @return $this
      */
@@ -666,7 +603,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets pay_type
      *
-     * @return string|null
+     * @return string
      */
     public function getPayType()
     {
@@ -676,7 +613,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets pay_type
      *
-     * @param string|null $pay_type Payment method type
+     * @param string $pay_type Payment method type
      *
      * @return $this
      */
@@ -690,7 +627,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets file
      *
-     * @return string|null
+     * @return string
      */
     public function getFile()
     {
@@ -700,7 +637,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets file
      *
-     * @param string|null $file Payment method file link
+     * @param string $file Payment method file link
      *
      * @return $this
      */
@@ -714,7 +651,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets file_key
      *
-     * @return string|null
+     * @return string
      */
     public function getFileKey()
     {
@@ -724,7 +661,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets file_key
      *
-     * @param string|null $file_key Payment method file key
+     * @param string $file_key Payment method file key
      *
      * @return $this
      */
@@ -738,7 +675,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets account
      *
-     * @return string|null
+     * @return string
      */
     public function getAccount()
     {
@@ -748,7 +685,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param string|null $account Payment method name
+     * @param string $account Payment method name
      *
      * @return $this
      */
@@ -762,7 +699,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets memo
      *
-     * @return string|null
+     * @return string
      */
     public function getMemo()
     {
@@ -772,7 +709,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets memo
      *
-     * @param string|null $memo Payment method note
+     * @param string $memo Payment method note
      *
      * @return $this
      */
@@ -786,7 +723,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return string|null
+     * @return string
      */
     public function getCode()
     {
@@ -796,7 +733,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param string|null $code Payment method code
+     * @param string $code Payment method code
      *
      * @return $this
      */
@@ -810,7 +747,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets memo_ext
      *
-     * @return string|null
+     * @return string
      */
     public function getMemoExt()
     {
@@ -820,7 +757,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets memo_ext
      *
-     * @param string|null $memo_ext Payment method additional note
+     * @param string $memo_ext Payment method additional note
      *
      * @return $this
      */
@@ -834,7 +771,7 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Gets trade_tips
      *
-     * @return string|null
+     * @return string
      */
     public function getTradeTips()
     {
@@ -844,13 +781,85 @@ class InlineResponse20015List implements ModelInterface, ArrayAccess
     /**
      * Sets trade_tips
      *
-     * @param string|null $trade_tips Payment method transaction information
+     * @param string $trade_tips Payment method tip
      *
      * @return $this
      */
     public function setTradeTips($trade_tips)
     {
         $this->container['trade_tips'] = $trade_tips;
+
+        return $this;
+    }
+
+    /**
+     * Gets real_name
+     *
+     * @return string
+     */
+    public function getRealName()
+    {
+        return $this->container['real_name'];
+    }
+
+    /**
+     * Sets real_name
+     *
+     * @param string $real_name Payment method username
+     *
+     * @return $this
+     */
+    public function setRealName($real_name)
+    {
+        $this->container['real_name'] = $real_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_delete
+     *
+     * @return int
+     */
+    public function getIsDelete()
+    {
+        return $this->container['is_delete'];
+    }
+
+    /**
+     * Sets is_delete
+     *
+     * @param int $is_delete Whether deleted
+     *
+     * @return $this
+     */
+    public function setIsDelete($is_delete)
+    {
+        $this->container['is_delete'] = $is_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets pay_name
+     *
+     * @return string
+     */
+    public function getPayName()
+    {
+        return $this->container['pay_name'];
+    }
+
+    /**
+     * Sets pay_name
+     *
+     * @param string $pay_name Payment method full name
+     *
+     * @return $this
+     */
+    public function setPayName($pay_name)
+    {
+        $this->container['pay_name'] = $pay_name;
 
         return $this;
     }

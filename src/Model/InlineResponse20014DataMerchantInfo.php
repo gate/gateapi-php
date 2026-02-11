@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010DataCryptoCurrencyInfo
+ * InlineResponse20014DataMerchantInfo
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20010DataCryptoCurrencyInfo Class Doc Comment
+ * InlineResponse20014DataMerchantInfo Class Doc Comment
  *
  * @category Class
+ * @description Markets where user can place orders
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, ArrayAccess
+class InlineResponse20014DataMerchantInfo implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_10_data_crypto_currency_info';
+    protected static $openAPIModelName = 'inline_response_200_14_data_merchant_info';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,8 +55,8 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'icon' => 'string'
+        'type' => 'string',
+        'market' => 'string'
     ];
 
     /**
@@ -64,8 +65,8 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'icon' => null
+        'type' => null,
+        'market' => null
     ];
 
     /**
@@ -95,8 +96,8 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'icon' => 'icon'
+        'type' => 'type',
+        'market' => 'market'
     ];
 
     /**
@@ -105,8 +106,8 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'icon' => 'setIcon'
+        'type' => 'setType',
+        'market' => 'setMarket'
     ];
 
     /**
@@ -115,8 +116,8 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'icon' => 'getIcon'
+        'type' => 'getType',
+        'market' => 'getMarket'
     ];
 
     /**
@@ -179,8 +180,8 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['icon'] = isset($data['icon']) ? $data['icon'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['market'] = isset($data['market']) ? $data['market'] : null;
     }
 
     /**
@@ -192,11 +193,11 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['icon'] === null) {
-            $invalidProperties[] = "'icon' can't be null";
+        if ($this->container['market'] === null) {
+            $invalidProperties[] = "'market' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +215,49 @@ class InlineResponse20010DataCryptoCurrencyInfo implements ModelInterface, Array
 
 
     /**
-     * Gets name
+     * Gets type
      *
      * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
+     * Sets type
      *
-     * @param string $name name
+     * @param string $type type
      *
      * @return $this
      */
-    public function setName($name)
+    public function setType($type)
     {
-        $this->container['name'] = $name;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets icon
+     * Gets market
      *
      * @return string
      */
-    public function getIcon()
+    public function getMarket()
     {
-        return $this->container['icon'];
+        return $this->container['market'];
     }
 
     /**
-     * Sets icon
+     * Sets market
      *
-     * @param string $icon icon
+     * @param string $market market
      *
      * @return $this
      */
-    public function setIcon($icon)
+    public function setMarket($market)
     {
-        $this->container['icon'] = $icon;
+        $this->container['market'] = $market;
 
         return $this;
     }

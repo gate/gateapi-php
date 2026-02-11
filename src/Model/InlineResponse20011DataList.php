@@ -54,17 +54,23 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
+        'time' => 'string',
+        'timestamp' => 'int',
+        'order_id' => 'string',
         'trade_no' => 'string',
-        'pay_coin' => 'string',
-        'pay_amount' => 'string',
-        'get_coin' => 'string',
-        'get_amount' => 'string',
-        'rate' => 'string',
-        'rate_reci' => 'string',
+        'type' => 'string',
         'status' => 'string',
-        'create_timest' => 'int',
-        'create_time' => 'string'
+        'db_status' => 'string',
+        'fiat_currency' => 'string',
+        'fiat_currency_info' => '\GateApi\Model\InlineResponse20011DataFiatCurrencyInfo',
+        'fiat_amount' => 'string',
+        'crypto_currency' => 'string',
+        'crypto_currency_info' => '\GateApi\Model\InlineResponse20011DataCryptoCurrencyInfo',
+        'crypto_amount' => 'string',
+        'rate' => 'string',
+        'transfer_remark' => 'string',
+        'gate_bank_account_iban' => 'string',
+        'promotion_code' => 'string'
     ];
 
     /**
@@ -73,17 +79,23 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'time' => null,
+        'timestamp' => null,
+        'order_id' => null,
         'trade_no' => null,
-        'pay_coin' => null,
-        'pay_amount' => null,
-        'get_coin' => null,
-        'get_amount' => null,
-        'rate' => null,
-        'rate_reci' => null,
+        'type' => null,
         'status' => null,
-        'create_timest' => null,
-        'create_time' => null
+        'db_status' => null,
+        'fiat_currency' => null,
+        'fiat_currency_info' => null,
+        'fiat_amount' => null,
+        'crypto_currency' => null,
+        'crypto_currency_info' => null,
+        'crypto_amount' => null,
+        'rate' => null,
+        'transfer_remark' => null,
+        'gate_bank_account_iban' => null,
+        'promotion_code' => null
     ];
 
     /**
@@ -113,17 +125,23 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'time' => 'time',
+        'timestamp' => 'timestamp',
+        'order_id' => 'order_id',
         'trade_no' => 'trade_no',
-        'pay_coin' => 'pay_coin',
-        'pay_amount' => 'pay_amount',
-        'get_coin' => 'get_coin',
-        'get_amount' => 'get_amount',
-        'rate' => 'rate',
-        'rate_reci' => 'rate_reci',
+        'type' => 'type',
         'status' => 'status',
-        'create_timest' => 'create_timest',
-        'create_time' => 'create_time'
+        'db_status' => 'db_status',
+        'fiat_currency' => 'fiat_currency',
+        'fiat_currency_info' => 'fiat_currency_info',
+        'fiat_amount' => 'fiat_amount',
+        'crypto_currency' => 'crypto_currency',
+        'crypto_currency_info' => 'crypto_currency_info',
+        'crypto_amount' => 'crypto_amount',
+        'rate' => 'rate',
+        'transfer_remark' => 'transfer_remark',
+        'gate_bank_account_iban' => 'gate_bank_account_iban',
+        'promotion_code' => 'promotion_code'
     ];
 
     /**
@@ -132,17 +150,23 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'time' => 'setTime',
+        'timestamp' => 'setTimestamp',
+        'order_id' => 'setOrderId',
         'trade_no' => 'setTradeNo',
-        'pay_coin' => 'setPayCoin',
-        'pay_amount' => 'setPayAmount',
-        'get_coin' => 'setGetCoin',
-        'get_amount' => 'setGetAmount',
-        'rate' => 'setRate',
-        'rate_reci' => 'setRateReci',
+        'type' => 'setType',
         'status' => 'setStatus',
-        'create_timest' => 'setCreateTimest',
-        'create_time' => 'setCreateTime'
+        'db_status' => 'setDbStatus',
+        'fiat_currency' => 'setFiatCurrency',
+        'fiat_currency_info' => 'setFiatCurrencyInfo',
+        'fiat_amount' => 'setFiatAmount',
+        'crypto_currency' => 'setCryptoCurrency',
+        'crypto_currency_info' => 'setCryptoCurrencyInfo',
+        'crypto_amount' => 'setCryptoAmount',
+        'rate' => 'setRate',
+        'transfer_remark' => 'setTransferRemark',
+        'gate_bank_account_iban' => 'setGateBankAccountIban',
+        'promotion_code' => 'setPromotionCode'
     ];
 
     /**
@@ -151,17 +175,23 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'time' => 'getTime',
+        'timestamp' => 'getTimestamp',
+        'order_id' => 'getOrderId',
         'trade_no' => 'getTradeNo',
-        'pay_coin' => 'getPayCoin',
-        'pay_amount' => 'getPayAmount',
-        'get_coin' => 'getGetCoin',
-        'get_amount' => 'getGetAmount',
-        'rate' => 'getRate',
-        'rate_reci' => 'getRateReci',
+        'type' => 'getType',
         'status' => 'getStatus',
-        'create_timest' => 'getCreateTimest',
-        'create_time' => 'getCreateTime'
+        'db_status' => 'getDbStatus',
+        'fiat_currency' => 'getFiatCurrency',
+        'fiat_currency_info' => 'getFiatCurrencyInfo',
+        'fiat_amount' => 'getFiatAmount',
+        'crypto_currency' => 'getCryptoCurrency',
+        'crypto_currency_info' => 'getCryptoCurrencyInfo',
+        'crypto_amount' => 'getCryptoAmount',
+        'rate' => 'getRate',
+        'transfer_remark' => 'getTransferRemark',
+        'gate_bank_account_iban' => 'getGateBankAccountIban',
+        'promotion_code' => 'getPromotionCode'
     ];
 
     /**
@@ -224,17 +254,23 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
         $this->container['trade_no'] = isset($data['trade_no']) ? $data['trade_no'] : null;
-        $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
-        $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
-        $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
-        $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
-        $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
-        $this->container['rate_reci'] = isset($data['rate_reci']) ? $data['rate_reci'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['create_timest'] = isset($data['create_timest']) ? $data['create_timest'] : null;
-        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['db_status'] = isset($data['db_status']) ? $data['db_status'] : null;
+        $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
+        $this->container['fiat_currency_info'] = isset($data['fiat_currency_info']) ? $data['fiat_currency_info'] : null;
+        $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
+        $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
+        $this->container['crypto_currency_info'] = isset($data['crypto_currency_info']) ? $data['crypto_currency_info'] : null;
+        $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
+        $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        $this->container['transfer_remark'] = isset($data['transfer_remark']) ? $data['transfer_remark'] : null;
+        $this->container['gate_bank_account_iban'] = isset($data['gate_bank_account_iban']) ? $data['gate_bank_account_iban'] : null;
+        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
     }
 
     /**
@@ -262,25 +298,73 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets time
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getId()
+    public function getTime()
     {
-        return $this->container['id'];
+        return $this->container['time'];
     }
 
     /**
-     * Sets id
+     * Sets time
      *
-     * @param int|null $id Order ID
+     * @param string|null $time Current time
      *
      * @return $this
      */
-    public function setId($id)
+    public function setTime($time)
     {
-        $this->container['id'] = $id;
+        $this->container['time'] = $time;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int|null $timestamp Current timestamp
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_id
+     *
+     * @return string|null
+     */
+    public function getOrderId()
+    {
+        return $this->container['order_id'];
+    }
+
+    /**
+     * Sets order_id
+     *
+     * @param string|null $order_id orderId
+     *
+     * @return $this
+     */
+    public function setOrderId($order_id)
+    {
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
@@ -298,7 +382,7 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
     /**
      * Sets trade_no
      *
-     * @param string|null $trade_no Transaction reference number
+     * @param string|null $trade_no Trade number
      *
      * @return $this
      */
@@ -310,97 +394,217 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets pay_coin
+     * Gets type
      *
      * @return string|null
      */
-    public function getPayCoin()
+    public function getType()
     {
-        return $this->container['pay_coin'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets pay_coin
+     * Sets type
      *
-     * @param string|null $pay_coin Payment currency
+     * @param string|null $type Quote direction buy/sell/all
      *
      * @return $this
      */
-    public function setPayCoin($pay_coin)
+    public function setType($type)
     {
-        $this->container['pay_coin'] = $pay_coin;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets pay_amount
+     * Gets status
      *
      * @return string|null
      */
-    public function getPayAmount()
+    public function getStatus()
     {
-        return $this->container['pay_amount'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets pay_amount
+     * Sets status
      *
-     * @param string|null $pay_amount Payment amount
+     * @param string|null $status Order Status
      *
      * @return $this
      */
-    public function setPayAmount($pay_amount)
+    public function setStatus($status)
     {
-        $this->container['pay_amount'] = $pay_amount;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets get_coin
+     * Gets db_status
      *
      * @return string|null
      */
-    public function getGetCoin()
+    public function getDbStatus()
     {
-        return $this->container['get_coin'];
+        return $this->container['db_status'];
     }
 
     /**
-     * Sets get_coin
+     * Sets db_status
      *
-     * @param string|null $get_coin Received currency
+     * @param string|null $db_status db_status
      *
      * @return $this
      */
-    public function setGetCoin($get_coin)
+    public function setDbStatus($db_status)
     {
-        $this->container['get_coin'] = $get_coin;
+        $this->container['db_status'] = $db_status;
 
         return $this;
     }
 
     /**
-     * Gets get_amount
+     * Gets fiat_currency
      *
      * @return string|null
      */
-    public function getGetAmount()
+    public function getFiatCurrency()
     {
-        return $this->container['get_amount'];
+        return $this->container['fiat_currency'];
     }
 
     /**
-     * Sets get_amount
+     * Sets fiat_currency
      *
-     * @param string|null $get_amount Received amount
+     * @param string|null $fiat_currency Fiat type
      *
      * @return $this
      */
-    public function setGetAmount($get_amount)
+    public function setFiatCurrency($fiat_currency)
     {
-        $this->container['get_amount'] = $get_amount;
+        $this->container['fiat_currency'] = $fiat_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_currency_info
+     *
+     * @return \GateApi\Model\InlineResponse20011DataFiatCurrencyInfo|null
+     */
+    public function getFiatCurrencyInfo()
+    {
+        return $this->container['fiat_currency_info'];
+    }
+
+    /**
+     * Sets fiat_currency_info
+     *
+     * @param \GateApi\Model\InlineResponse20011DataFiatCurrencyInfo|null $fiat_currency_info fiat_currency_info
+     *
+     * @return $this
+     */
+    public function setFiatCurrencyInfo($fiat_currency_info)
+    {
+        $this->container['fiat_currency_info'] = $fiat_currency_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_amount
+     *
+     * @return string|null
+     */
+    public function getFiatAmount()
+    {
+        return $this->container['fiat_amount'];
+    }
+
+    /**
+     * Sets fiat_amount
+     *
+     * @param string|null $fiat_amount Fiat amount
+     *
+     * @return $this
+     */
+    public function setFiatAmount($fiat_amount)
+    {
+        $this->container['fiat_amount'] = $fiat_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets crypto_currency
+     *
+     * @return string|null
+     */
+    public function getCryptoCurrency()
+    {
+        return $this->container['crypto_currency'];
+    }
+
+    /**
+     * Sets crypto_currency
+     *
+     * @param string|null $crypto_currency Stablecoin
+     *
+     * @return $this
+     */
+    public function setCryptoCurrency($crypto_currency)
+    {
+        $this->container['crypto_currency'] = $crypto_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets crypto_currency_info
+     *
+     * @return \GateApi\Model\InlineResponse20011DataCryptoCurrencyInfo|null
+     */
+    public function getCryptoCurrencyInfo()
+    {
+        return $this->container['crypto_currency_info'];
+    }
+
+    /**
+     * Sets crypto_currency_info
+     *
+     * @param \GateApi\Model\InlineResponse20011DataCryptoCurrencyInfo|null $crypto_currency_info crypto_currency_info
+     *
+     * @return $this
+     */
+    public function setCryptoCurrencyInfo($crypto_currency_info)
+    {
+        $this->container['crypto_currency_info'] = $crypto_currency_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets crypto_amount
+     *
+     * @return string|null
+     */
+    public function getCryptoAmount()
+    {
+        return $this->container['crypto_amount'];
+    }
+
+    /**
+     * Sets crypto_amount
+     *
+     * @param string|null $crypto_amount Stablecoin amount
+     *
+     * @return $this
+     */
+    public function setCryptoAmount($crypto_amount)
+    {
+        $this->container['crypto_amount'] = $crypto_amount;
 
         return $this;
     }
@@ -430,97 +634,73 @@ class InlineResponse20011DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets rate_reci
+     * Gets transfer_remark
      *
      * @return string|null
      */
-    public function getRateReci()
+    public function getTransferRemark()
     {
-        return $this->container['rate_reci'];
+        return $this->container['transfer_remark'];
     }
 
     /**
-     * Sets rate_reci
+     * Sets transfer_remark
      *
-     * @param string|null $rate_reci Reciprocal of the exchange rate
+     * @param string|null $transfer_remark Remark
      *
      * @return $this
      */
-    public function setRateReci($rate_reci)
+    public function setTransferRemark($transfer_remark)
     {
-        $this->container['rate_reci'] = $rate_reci;
+        $this->container['transfer_remark'] = $transfer_remark;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets gate_bank_account_iban
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getGateBankAccountIban()
     {
-        return $this->container['status'];
+        return $this->container['gate_bank_account_iban'];
     }
 
     /**
-     * Sets status
+     * Sets gate_bank_account_iban
      *
-     * @param string|null $status PROCESSING: in progress / DONE: completed / FAILED: failed
+     * @param string|null $gate_bank_account_iban Bank account
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setGateBankAccountIban($gate_bank_account_iban)
     {
-        $this->container['status'] = $status;
+        $this->container['gate_bank_account_iban'] = $gate_bank_account_iban;
 
         return $this;
     }
 
     /**
-     * Gets create_timest
-     *
-     * @return int|null
-     */
-    public function getCreateTimest()
-    {
-        return $this->container['create_timest'];
-    }
-
-    /**
-     * Sets create_timest
-     *
-     * @param int|null $create_timest timetimestamp
-     *
-     * @return $this
-     */
-    public function setCreateTimest($create_timest)
-    {
-        $this->container['create_timest'] = $create_timest;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_time
+     * Gets promotion_code
      *
      * @return string|null
      */
-    public function getCreateTime()
+    public function getPromotionCode()
     {
-        return $this->container['create_time'];
+        return $this->container['promotion_code'];
     }
 
     /**
-     * Sets create_time
+     * Sets promotion_code
      *
-     * @param string|null $create_time Created time
+     * @param string|null $promotion_code Promotion code
      *
      * @return $this
      */
-    public function setCreateTime($create_time)
+    public function setPromotionCode($promotion_code)
     {
-        $this->container['create_time'] = $create_time;
+        $this->container['promotion_code'] = $promotion_code;
 
         return $this;
     }

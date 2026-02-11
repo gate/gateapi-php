@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **code** | **int** |  | 
 **message** | **string** |  | 
 **data** | [**\GateApi\Model\InlineResponse20021Data**](InlineResponse20021Data.md) |  | 
-**version** | **string** |  | 
+**version** | **string** | Version number | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

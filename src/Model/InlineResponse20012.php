@@ -54,8 +54,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
         'code' => 'int',
+        'message' => 'string',
         'data' => '\GateApi\Model\InlineResponse20012Data'
     ];
 
@@ -65,8 +65,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'message' => null,
         'code' => null,
+        'message' => null,
         'data' => null
     ];
 
@@ -97,8 +97,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
         'code' => 'code',
+        'message' => 'message',
         'data' => 'data'
     ];
 
@@ -108,8 +108,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
         'code' => 'setCode',
+        'message' => 'setMessage',
         'data' => 'setData'
     ];
 
@@ -119,8 +119,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
         'code' => 'getCode',
+        'message' => 'getMessage',
         'data' => 'getData'
     ];
 
@@ -184,8 +184,8 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
@@ -198,11 +198,11 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
         if ($this->container['code'] === null) {
             $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
@@ -221,30 +221,6 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message message
-     *
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
 
     /**
      * Gets code
@@ -266,6 +242,30 @@ class InlineResponse20012 implements ModelInterface, ArrayAccess
     public function setCode($code)
     {
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
 
         return $this;
     }

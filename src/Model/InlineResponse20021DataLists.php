@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20020DataLists
+ * InlineResponse20021DataLists
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20020DataLists Class Doc Comment
+ * InlineResponse20021DataLists Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20020DataLists implements ModelInterface, ArrayAccess
+class InlineResponse20021DataLists implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20020DataLists implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_20_data_lists';
+    protected static $openAPIModelName = 'inline_response_200_21_data_lists';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

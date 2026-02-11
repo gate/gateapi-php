@@ -478,7 +478,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     /**
      * Sets per_value
      *
-     * @param string|null $per_value Value Per Unit
+     * @param string|null $per_value Value Per Unit (deprecated)
      *
      * @return $this
      */
@@ -574,7 +574,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Status:   `NOTSTARTED`-Not Started  `ONGOING`-In Progress  `ENDED`-Ended
+     * @param string|null $status 状态:  `NOTSTARTED`-未开始 `ONGOING`-进行中 `ENDED`-已结束
      *
      * @return $this
      */

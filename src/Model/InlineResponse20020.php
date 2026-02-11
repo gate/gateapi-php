@@ -382,7 +382,7 @@ class InlineResponse20020 implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param string $version Version number
+     * @param string $version version
      *
      * @return $this
      */

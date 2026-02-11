@@ -56,7 +56,8 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'code' => 'int',
         'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse20010Data'
+        'data' => '\GateApi\Model\InlineResponse20010Data',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -67,7 +68,8 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'code' => null,
         'message' => null,
-        'data' => null
+        'data' => null,
+        'timestamp' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'code' => 'code',
         'message' => 'message',
-        'data' => 'data'
+        'data' => 'data',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -110,7 +113,8 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     protected static $setters = [
         'code' => 'setCode',
         'message' => 'setMessage',
-        'data' => 'setData'
+        'data' => 'setData',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -121,7 +125,8 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     protected static $getters = [
         'code' => 'getCode',
         'message' => 'getMessage',
-        'data' => 'getData'
+        'data' => 'getData',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -187,6 +192,7 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -206,6 +212,9 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
         }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -290,6 +299,30 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
     public function setData($data)
     {
         $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int $timestamp timestamp
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

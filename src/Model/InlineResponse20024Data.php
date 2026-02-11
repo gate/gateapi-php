@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20013DataMerchantInfo
+ * InlineResponse20024Data
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20013DataMerchantInfo Class Doc Comment
+ * InlineResponse20024Data Class Doc Comment
  *
  * @category Class
- * @description Markets where user can place orders
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
+class InlineResponse20024Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_13_data_merchant_info';
+    protected static $openAPIModelName = 'inline_response_200_24_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +54,7 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'market' => 'string'
+        'file_key' => 'string'
     ];
 
     /**
@@ -65,8 +63,7 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'market' => null
+        'file_key' => null
     ];
 
     /**
@@ -96,8 +93,7 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'market' => 'market'
+        'file_key' => 'file_key'
     ];
 
     /**
@@ -106,8 +102,7 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'market' => 'setMarket'
+        'file_key' => 'setFileKey'
     ];
 
     /**
@@ -116,8 +111,7 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'market' => 'getMarket'
+        'file_key' => 'getFileKey'
     ];
 
     /**
@@ -180,8 +174,7 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
     }
 
     /**
@@ -193,11 +186,8 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['market'] === null) {
-            $invalidProperties[] = "'market' can't be null";
+        if ($this->container['file_key'] === null) {
+            $invalidProperties[] = "'file_key' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,49 +205,25 @@ class InlineResponse20013DataMerchantInfo implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets type
+     * Gets file_key
      *
      * @return string
      */
-    public function getType()
+    public function getFileKey()
     {
-        return $this->container['type'];
+        return $this->container['file_key'];
     }
 
     /**
-     * Sets type
+     * Sets file_key
      *
-     * @param string $type type
+     * @param string $file_key File key
      *
      * @return $this
      */
-    public function setType($type)
+    public function setFileKey($file_key)
     {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets market
-     *
-     * @return string
-     */
-    public function getMarket()
-    {
-        return $this->container['market'];
-    }
-
-    /**
-     * Sets market
-     *
-     * @param string $market market
-     *
-     * @return $this
-     */
-    public function setMarket($market)
-    {
-        $this->container['market'] = $market;
+        $this->container['file_key'] = $file_key;
 
         return $this;
     }

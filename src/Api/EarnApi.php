@@ -1118,15 +1118,16 @@ class EarnApi
      *
      * Place Dual Investment order
      *
-     * @param  \GateApi\Model\PlaceDualInvestmentOrder $place_dual_investment_order place_dual_investment_order (required)
+     * @param  \GateApi\Model\PlaceDualInvestmentOrderParams $place_dual_investment_order_params place_dual_investment_order_params (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \GateApi\Model\PlaceDualInvestmentOrder
      */
-    public function placeDualOrder($place_dual_investment_order)
+    public function placeDualOrder($place_dual_investment_order_params)
     {
-        $this->placeDualOrderWithHttpInfo($place_dual_investment_order);
+        list($response) = $this->placeDualOrderWithHttpInfo($place_dual_investment_order_params);
+        return $response;
     }
 
     /**
@@ -1134,15 +1135,15 @@ class EarnApi
      *
      * Place Dual Investment order
      *
-     * @param  \GateApi\Model\PlaceDualInvestmentOrder $place_dual_investment_order (required)
+     * @param  \GateApi\Model\PlaceDualInvestmentOrderParams $place_dual_investment_order_params (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\PlaceDualInvestmentOrder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function placeDualOrderWithHttpInfo($place_dual_investment_order)
+    public function placeDualOrderWithHttpInfo($place_dual_investment_order_params)
     {
-        $request = $this->placeDualOrderRequest($place_dual_investment_order);
+        $request = $this->placeDualOrderRequest($place_dual_investment_order_params);
 
         $options = $this->createHttpClientOption();
         try {
@@ -1168,7 +1169,19 @@ class EarnApi
             );
         }
 
-        return [null, $statusCode, $response->getHeaders()];
+        $returnType = '\GateApi\Model\PlaceDualInvestmentOrder';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
     }
 
     /**
@@ -1176,14 +1189,14 @@ class EarnApi
      *
      * Place Dual Investment order
      *
-     * @param  \GateApi\Model\PlaceDualInvestmentOrder $place_dual_investment_order (required)
+     * @param  \GateApi\Model\PlaceDualInvestmentOrderParams $place_dual_investment_order_params (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function placeDualOrderAsync($place_dual_investment_order)
+    public function placeDualOrderAsync($place_dual_investment_order_params)
     {
-        return $this->placeDualOrderAsyncWithHttpInfo($place_dual_investment_order)
+        return $this->placeDualOrderAsyncWithHttpInfo($place_dual_investment_order_params)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1196,21 +1209,32 @@ class EarnApi
      *
      * Place Dual Investment order
      *
-     * @param  \GateApi\Model\PlaceDualInvestmentOrder $place_dual_investment_order (required)
+     * @param  \GateApi\Model\PlaceDualInvestmentOrderParams $place_dual_investment_order_params (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function placeDualOrderAsyncWithHttpInfo($place_dual_investment_order)
+    public function placeDualOrderAsyncWithHttpInfo($place_dual_investment_order_params)
     {
-        $returnType = '';
-        $request = $this->placeDualOrderRequest($place_dual_investment_order);
+        $returnType = '\GateApi\Model\PlaceDualInvestmentOrder';
+        $request = $this->placeDualOrderRequest($place_dual_investment_order_params);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1232,17 +1256,17 @@ class EarnApi
     /**
      * Create request for operation 'placeDualOrder'
      *
-     * @param  \GateApi\Model\PlaceDualInvestmentOrder $place_dual_investment_order (required)
+     * @param  \GateApi\Model\PlaceDualInvestmentOrderParams $place_dual_investment_order_params (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function placeDualOrderRequest($place_dual_investment_order)
+    protected function placeDualOrderRequest($place_dual_investment_order_params)
     {
-        // verify the required parameter 'place_dual_investment_order' is set
-        if ($place_dual_investment_order === null || (is_array($place_dual_investment_order) && count($place_dual_investment_order) === 0)) {
+        // verify the required parameter 'place_dual_investment_order_params' is set
+        if ($place_dual_investment_order_params === null || (is_array($place_dual_investment_order_params) && count($place_dual_investment_order_params) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $place_dual_investment_order when calling placeDualOrder'
+                'Missing the required parameter $place_dual_investment_order_params when calling placeDualOrder'
             );
         }
 
@@ -1255,17 +1279,17 @@ class EarnApi
 
         // body params
         $_tempBody = null;
-        if (isset($place_dual_investment_order)) {
-            $_tempBody = $place_dual_investment_order;
+        if (isset($place_dual_investment_order_params)) {
+            $_tempBody = $place_dual_investment_order_params;
         }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 ['application/json']
             );
         }

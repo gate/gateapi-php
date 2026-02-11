@@ -1304,7 +1304,7 @@ class SpotApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency_pair Currency pair (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Return order book update ID (optional, default to false)
      *
@@ -1326,7 +1326,7 @@ class SpotApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency_pair Currency pair (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Return order book update ID (optional, default to false)
      *
@@ -1385,7 +1385,7 @@ class SpotApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency_pair Currency pair (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Return order book update ID (optional, default to false)
      *
@@ -1410,7 +1410,7 @@ class SpotApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency_pair Currency pair (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Return order book update ID (optional, default to false)
      *
@@ -1462,7 +1462,7 @@ class SpotApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency_pair Currency pair (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Return order book update ID (optional, default to false)
      *

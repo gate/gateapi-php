@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20016DataTransTime
+ * InlineResponse20046
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20016DataTransTime Class Doc Comment
+ * InlineResponse20046 Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
+class InlineResponse20046 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_16_data_trans_time';
+    protected static $openAPIModelName = 'inline_response_200_46';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +54,12 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'od_time' => 'int'
+        'coin' => 'string',
+        'exchange_type' => 'string',
+        'tier' => 'string',
+        'min_value' => 'string',
+        'max_value' => 'string',
+        'discount_rate' => 'string'
     ];
 
     /**
@@ -63,7 +68,12 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'od_time' => null
+        'coin' => null,
+        'exchange_type' => null,
+        'tier' => null,
+        'min_value' => null,
+        'max_value' => null,
+        'discount_rate' => null
     ];
 
     /**
@@ -93,7 +103,12 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'od_time' => 'od_time'
+        'coin' => 'coin',
+        'exchange_type' => 'exchange_type',
+        'tier' => 'tier',
+        'min_value' => 'min_value',
+        'max_value' => 'max_value',
+        'discount_rate' => 'discount_rate'
     ];
 
     /**
@@ -102,7 +117,12 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'od_time' => 'setOdTime'
+        'coin' => 'setCoin',
+        'exchange_type' => 'setExchangeType',
+        'tier' => 'setTier',
+        'min_value' => 'setMinValue',
+        'max_value' => 'setMaxValue',
+        'discount_rate' => 'setDiscountRate'
     ];
 
     /**
@@ -111,7 +131,12 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'od_time' => 'getOdTime'
+        'coin' => 'getCoin',
+        'exchange_type' => 'getExchangeType',
+        'tier' => 'getTier',
+        'min_value' => 'getMinValue',
+        'max_value' => 'getMaxValue',
+        'discount_rate' => 'getDiscountRate'
     ];
 
     /**
@@ -174,7 +199,12 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['od_time'] = isset($data['od_time']) ? $data['od_time'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        $this->container['min_value'] = isset($data['min_value']) ? $data['min_value'] : null;
+        $this->container['max_value'] = isset($data['max_value']) ? $data['max_value'] : null;
+        $this->container['discount_rate'] = isset($data['discount_rate']) ? $data['discount_rate'] : null;
     }
 
     /**
@@ -186,6 +216,24 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
+        }
+        if ($this->container['exchange_type'] === null) {
+            $invalidProperties[] = "'exchange_type' can't be null";
+        }
+        if ($this->container['tier'] === null) {
+            $invalidProperties[] = "'tier' can't be null";
+        }
+        if ($this->container['min_value'] === null) {
+            $invalidProperties[] = "'min_value' can't be null";
+        }
+        if ($this->container['max_value'] === null) {
+            $invalidProperties[] = "'max_value' can't be null";
+        }
+        if ($this->container['discount_rate'] === null) {
+            $invalidProperties[] = "'discount_rate' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -202,25 +250,145 @@ class InlineResponse20016DataTransTime implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets od_time
+     * Gets coin
      *
-     * @return int|null
+     * @return string
      */
-    public function getOdTime()
+    public function getCoin()
     {
-        return $this->container['od_time'];
+        return $this->container['coin'];
     }
 
     /**
-     * Sets od_time
+     * Sets coin
      *
-     * @param int|null $od_time od_time
+     * @param string $coin Currency
      *
      * @return $this
      */
-    public function setOdTime($od_time)
+    public function setCoin($coin)
     {
-        $this->container['od_time'] = $od_time;
+        $this->container['coin'] = $coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_type
+     *
+     * @return string
+     */
+    public function getExchangeType()
+    {
+        return $this->container['exchange_type'];
+    }
+
+    /**
+     * Sets exchange_type
+     *
+     * @param string $exchange_type Exchange
+     *
+     * @return $this
+     */
+    public function setExchangeType($exchange_type)
+    {
+        $this->container['exchange_type'] = $exchange_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets tier
+     *
+     * @return string
+     */
+    public function getTier()
+    {
+        return $this->container['tier'];
+    }
+
+    /**
+     * Sets tier
+     *
+     * @param string $tier Tier
+     *
+     * @return $this
+     */
+    public function setTier($tier)
+    {
+        $this->container['tier'] = $tier;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_value
+     *
+     * @return string
+     */
+    public function getMinValue()
+    {
+        return $this->container['min_value'];
+    }
+
+    /**
+     * Sets min_value
+     *
+     * @param string $min_value Minimum value
+     *
+     * @return $this
+     */
+    public function setMinValue($min_value)
+    {
+        $this->container['min_value'] = $min_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_value
+     *
+     * @return string
+     */
+    public function getMaxValue()
+    {
+        return $this->container['max_value'];
+    }
+
+    /**
+     * Sets max_value
+     *
+     * @param string $max_value Maximum value
+     *
+     * @return $this
+     */
+    public function setMaxValue($max_value)
+    {
+        $this->container['max_value'] = $max_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets discount_rate
+     *
+     * @return string
+     */
+    public function getDiscountRate()
+    {
+        return $this->container['discount_rate'];
+    }
+
+    /**
+     * Sets discount_rate
+     *
+     * @param string $discount_rate Discount rate
+     *
+     * @return $this
+     */
+    public function setDiscountRate($discount_rate)
+    {
+        $this->container['discount_rate'] = $discount_rate;
 
         return $this;
     }

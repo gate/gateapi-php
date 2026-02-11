@@ -4,16 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Order ID | [optional] 
-**trade_no** | **string** | Transaction reference number | [optional] 
-**pay_coin** | **string** | Payment currency | [optional] 
-**pay_amount** | **string** | Payment amount | [optional] 
-**get_coin** | **string** | Received currency | [optional] 
-**get_amount** | **string** | Received amount | [optional] 
+**time** | **string** | Current time | [optional] 
+**timestamp** | **int** | Current timestamp | [optional] 
+**order_id** | **string** | orderId | [optional] 
+**trade_no** | **string** | Trade number | [optional] 
+**type** | **string** | Quote direction buy/sell/all | [optional] 
+**status** | **string** | Order Status | [optional] 
+**db_status** | **string** |  | [optional] 
+**fiat_currency** | **string** | Fiat type | [optional] 
+**fiat_currency_info** | [**\GateApi\Model\InlineResponse20011DataFiatCurrencyInfo**](InlineResponse20011DataFiatCurrencyInfo.md) |  | [optional] 
+**fiat_amount** | **string** | Fiat amount | [optional] 
+**crypto_currency** | **string** | Stablecoin | [optional] 
+**crypto_currency_info** | [**\GateApi\Model\InlineResponse20011DataCryptoCurrencyInfo**](InlineResponse20011DataCryptoCurrencyInfo.md) |  | [optional] 
+**crypto_amount** | **string** | Stablecoin amount | [optional] 
 **rate** | **string** | Exchange rate | [optional] 
-**rate_reci** | **string** | Reciprocal of the exchange rate | [optional] 
-**status** | **string** | PROCESSING: in progress / DONE: completed / FAILED: failed | [optional] 
-**create_timest** | **int** | timetimestamp | [optional] 
-**create_time** | **string** | Created time | [optional] 
+**transfer_remark** | **string** | Remark | [optional] 
+**gate_bank_account_iban** | **string** | Bank account | [optional] 
+**promotion_code** | **string** | Promotion code | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

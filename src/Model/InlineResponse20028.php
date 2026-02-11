@@ -54,7 +54,7 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_id' => 'string',
+        'tx_id' => 'string',
         'text' => 'string'
     ];
 
@@ -64,7 +64,7 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
+        'tx_id' => null,
         'text' => null
     ];
 
@@ -95,7 +95,7 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'order_id',
+        'tx_id' => 'tx_id',
         'text' => 'text'
     ];
 
@@ -105,7 +105,7 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId',
+        'tx_id' => 'setTxId',
         'text' => 'setText'
     ];
 
@@ -115,7 +115,7 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId',
+        'tx_id' => 'getTxId',
         'text' => 'getText'
     ];
 
@@ -179,7 +179,7 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['tx_id'] = isset($data['tx_id']) ? $data['tx_id'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
@@ -192,8 +192,8 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['order_id'] === null) {
-            $invalidProperties[] = "'order_id' can't be null";
+        if ($this->container['tx_id'] === null) {
+            $invalidProperties[] = "'tx_id' can't be null";
         }
         if ($this->container['text'] === null) {
             $invalidProperties[] = "'text' can't be null";
@@ -214,25 +214,25 @@ class InlineResponse20028 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets order_id
+     * Gets tx_id
      *
      * @return string
      */
-    public function getOrderId()
+    public function getTxId()
     {
-        return $this->container['order_id'];
+        return $this->container['tx_id'];
     }
 
     /**
-     * Sets order_id
+     * Sets tx_id
      *
-     * @param string $order_id Order ID
+     * @param string $tx_id Order ID
      *
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setTxId($tx_id)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['tx_id'] = $tx_id;
 
         return $this;
     }

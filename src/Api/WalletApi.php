@@ -611,7 +611,7 @@ class WalletApi
      * @param  string $withdraw_id Withdrawal record ID starts with &#39;w&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled (optional)
      * @param  string $asset_class Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone (optional)
      * @param  string $withdraw_order_id User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -637,7 +637,7 @@ class WalletApi
      * @param  string $withdraw_id Withdrawal record ID starts with &#39;w&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled (optional)
      * @param  string $asset_class Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone (optional)
      * @param  string $withdraw_order_id User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -700,7 +700,7 @@ class WalletApi
      * @param  string $withdraw_id Withdrawal record ID starts with &#39;w&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled (optional)
      * @param  string $asset_class Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone (optional)
      * @param  string $withdraw_order_id User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -729,7 +729,7 @@ class WalletApi
      * @param  string $withdraw_id Withdrawal record ID starts with &#39;w&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled (optional)
      * @param  string $asset_class Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone (optional)
      * @param  string $withdraw_order_id User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -785,7 +785,7 @@ class WalletApi
      * @param  string $withdraw_id Withdrawal record ID starts with &#39;w&#39;, such as: w1879219868. When withdraw_id is not empty, only this specific withdrawal record will be queried, and time-based querying will be disabled (optional)
      * @param  string $asset_class Currency type of withdrawal record, empty by default. Supports querying withdrawal records in main zone and innovation zone on demand. Value range: SPOT, PILOT  SPOT: Main Zone PILOT: Innovation Zone (optional)
      * @param  string $withdraw_order_id User-defined order number for withdrawal. Default is empty. When not empty, the specified user-defined order number record will be queried (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -997,7 +997,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of entries returned in the list, limited to 500 transactions (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1020,7 +1020,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of entries returned in the list, limited to 500 transactions (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1080,7 +1080,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of entries returned in the list, limited to 500 transactions (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1106,7 +1106,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of entries returned in the list, limited to 500 transactions (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1159,7 +1159,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $currency Specify the currency. If not specified, returns all currencies (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of entries returned in the list, limited to 500 transactions (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1568,7 +1568,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1591,7 +1591,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1651,7 +1651,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1677,7 +1677,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1730,7 +1730,7 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
-     * @param  int $from Start time for querying records, defaults to 7 days before current time if not specified (optional)
+     * @param  int $from Start time for querying records. If not specified, defaults to 7 days before current time (optional)
      * @param  int $to End timestamp for the query, defaults to current time if not specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)

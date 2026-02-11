@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20010DataFiatCurrencyInfo
+ * InlineResponse20017DataTransTime
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20010DataFiatCurrencyInfo Class Doc Comment
+ * InlineResponse20017DataTransTime Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAccess
+class InlineResponse20017DataTransTime implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_10_data_fiat_currency_info';
+    protected static $openAPIModelName = 'inline_response_200_17_data_trans_time';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,8 +54,7 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'icon' => 'string'
+        'od_time' => 'int'
     ];
 
     /**
@@ -64,8 +63,7 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'icon' => null
+        'od_time' => null
     ];
 
     /**
@@ -95,8 +93,7 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'icon' => 'icon'
+        'od_time' => 'od_time'
     ];
 
     /**
@@ -105,8 +102,7 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'icon' => 'setIcon'
+        'od_time' => 'setOdTime'
     ];
 
     /**
@@ -115,8 +111,7 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'icon' => 'getIcon'
+        'od_time' => 'getOdTime'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['icon'] = isset($data['icon']) ? $data['icon'] : null;
+        $this->container['od_time'] = isset($data['od_time']) ? $data['od_time'] : null;
     }
 
     /**
@@ -192,12 +186,6 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['icon'] === null) {
-            $invalidProperties[] = "'icon' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -214,49 +202,25 @@ class InlineResponse20010DataFiatCurrencyInfo implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets name
+     * Gets od_time
      *
-     * @return string
+     * @return int|null
      */
-    public function getName()
+    public function getOdTime()
     {
-        return $this->container['name'];
+        return $this->container['od_time'];
     }
 
     /**
-     * Sets name
+     * Sets od_time
      *
-     * @param string $name Name
+     * @param int|null $od_time od_time
      *
      * @return $this
      */
-    public function setName($name)
+    public function setOdTime($od_time)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets icon
-     *
-     * @return string
-     */
-    public function getIcon()
-    {
-        return $this->container['icon'];
-    }
-
-    /**
-     * Sets icon
-     *
-     * @param string $icon Image
-     *
-     * @return $this
-     */
-    public function setIcon($icon)
-    {
-        $this->container['icon'] = $icon;
+        $this->container['od_time'] = $od_time;
 
         return $this;
     }

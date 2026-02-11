@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20035SpecialFeeList
+ * InlineResponse20036SpecialFeeList
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20035SpecialFeeList Class Doc Comment
+ * InlineResponse20036SpecialFeeList Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20035SpecialFeeList implements ModelInterface, ArrayAccess
+class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20035SpecialFeeList implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_35_special_fee_list';
+    protected static $openAPIModelName = 'inline_response_200_36_special_fee_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

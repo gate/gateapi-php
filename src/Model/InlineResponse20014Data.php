@@ -54,7 +54,9 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'is_self' => 'bool',
         'user_timest' => 'string',
+        'counterparties_num' => 'int',
         'email_verified' => 'string',
         'verified' => 'string',
         'has_phone' => 'string',
@@ -67,11 +69,21 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         'cancelled_used_time_month' => 'string',
         'complete_transactions_month' => 'string',
         'complete_rate_month' => 'int',
+        'orders_buy_rate_month' => 'int',
+        'is_black' => 'int',
         'is_follow' => 'int',
         'have_traded' => 'int',
         'biz_uid' => 'string',
+        'blue_vip' => 'int',
+        'work_status' => 'int',
         'registration_days' => 'int',
         'first_trade_days' => 'int',
+        'need_replenish' => 'int',
+        'merchant_info' => '\GateApi\Model\InlineResponse20014DataMerchantInfo',
+        'online_status' => 'int',
+        'work_hours' => 'object',
+        'transactions_month' => 'int',
+        'transactions_all' => 'int',
         'trade_versatile' => 'bool'
     ];
 
@@ -81,7 +93,9 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'is_self' => null,
         'user_timest' => null,
+        'counterparties_num' => null,
         'email_verified' => null,
         'verified' => null,
         'has_phone' => null,
@@ -94,11 +108,21 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         'cancelled_used_time_month' => null,
         'complete_transactions_month' => null,
         'complete_rate_month' => null,
+        'orders_buy_rate_month' => null,
+        'is_black' => null,
         'is_follow' => null,
         'have_traded' => null,
         'biz_uid' => null,
+        'blue_vip' => null,
+        'work_status' => null,
         'registration_days' => null,
         'first_trade_days' => null,
+        'need_replenish' => null,
+        'merchant_info' => null,
+        'online_status' => null,
+        'work_hours' => null,
+        'transactions_month' => null,
+        'transactions_all' => null,
         'trade_versatile' => null
     ];
 
@@ -129,7 +153,9 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'is_self' => 'is_self',
         'user_timest' => 'user_timest',
+        'counterparties_num' => 'counterparties_num',
         'email_verified' => 'email_verified',
         'verified' => 'verified',
         'has_phone' => 'has_phone',
@@ -142,11 +168,21 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         'cancelled_used_time_month' => 'cancelled_used_time_month',
         'complete_transactions_month' => 'complete_transactions_month',
         'complete_rate_month' => 'complete_rate_month',
+        'orders_buy_rate_month' => 'orders_buy_rate_month',
+        'is_black' => 'is_black',
         'is_follow' => 'is_follow',
         'have_traded' => 'have_traded',
         'biz_uid' => 'biz_uid',
+        'blue_vip' => 'blue_vip',
+        'work_status' => 'work_status',
         'registration_days' => 'registration_days',
         'first_trade_days' => 'first_trade_days',
+        'need_replenish' => 'need_replenish',
+        'merchant_info' => 'merchant_info',
+        'online_status' => 'online_status',
+        'work_hours' => 'work_hours',
+        'transactions_month' => 'transactions_month',
+        'transactions_all' => 'transactions_all',
         'trade_versatile' => 'trade_versatile'
     ];
 
@@ -156,7 +192,9 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'is_self' => 'setIsSelf',
         'user_timest' => 'setUserTimest',
+        'counterparties_num' => 'setCounterpartiesNum',
         'email_verified' => 'setEmailVerified',
         'verified' => 'setVerified',
         'has_phone' => 'setHasPhone',
@@ -169,11 +207,21 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         'cancelled_used_time_month' => 'setCancelledUsedTimeMonth',
         'complete_transactions_month' => 'setCompleteTransactionsMonth',
         'complete_rate_month' => 'setCompleteRateMonth',
+        'orders_buy_rate_month' => 'setOrdersBuyRateMonth',
+        'is_black' => 'setIsBlack',
         'is_follow' => 'setIsFollow',
         'have_traded' => 'setHaveTraded',
         'biz_uid' => 'setBizUid',
+        'blue_vip' => 'setBlueVip',
+        'work_status' => 'setWorkStatus',
         'registration_days' => 'setRegistrationDays',
         'first_trade_days' => 'setFirstTradeDays',
+        'need_replenish' => 'setNeedReplenish',
+        'merchant_info' => 'setMerchantInfo',
+        'online_status' => 'setOnlineStatus',
+        'work_hours' => 'setWorkHours',
+        'transactions_month' => 'setTransactionsMonth',
+        'transactions_all' => 'setTransactionsAll',
         'trade_versatile' => 'setTradeVersatile'
     ];
 
@@ -183,7 +231,9 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'is_self' => 'getIsSelf',
         'user_timest' => 'getUserTimest',
+        'counterparties_num' => 'getCounterpartiesNum',
         'email_verified' => 'getEmailVerified',
         'verified' => 'getVerified',
         'has_phone' => 'getHasPhone',
@@ -196,11 +246,21 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         'cancelled_used_time_month' => 'getCancelledUsedTimeMonth',
         'complete_transactions_month' => 'getCompleteTransactionsMonth',
         'complete_rate_month' => 'getCompleteRateMonth',
+        'orders_buy_rate_month' => 'getOrdersBuyRateMonth',
+        'is_black' => 'getIsBlack',
         'is_follow' => 'getIsFollow',
         'have_traded' => 'getHaveTraded',
         'biz_uid' => 'getBizUid',
+        'blue_vip' => 'getBlueVip',
+        'work_status' => 'getWorkStatus',
         'registration_days' => 'getRegistrationDays',
         'first_trade_days' => 'getFirstTradeDays',
+        'need_replenish' => 'getNeedReplenish',
+        'merchant_info' => 'getMerchantInfo',
+        'online_status' => 'getOnlineStatus',
+        'work_hours' => 'getWorkHours',
+        'transactions_month' => 'getTransactionsMonth',
+        'transactions_all' => 'getTransactionsAll',
         'trade_versatile' => 'getTradeVersatile'
     ];
 
@@ -264,7 +324,9 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['is_self'] = isset($data['is_self']) ? $data['is_self'] : null;
         $this->container['user_timest'] = isset($data['user_timest']) ? $data['user_timest'] : null;
+        $this->container['counterparties_num'] = isset($data['counterparties_num']) ? $data['counterparties_num'] : null;
         $this->container['email_verified'] = isset($data['email_verified']) ? $data['email_verified'] : null;
         $this->container['verified'] = isset($data['verified']) ? $data['verified'] : null;
         $this->container['has_phone'] = isset($data['has_phone']) ? $data['has_phone'] : null;
@@ -277,11 +339,21 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         $this->container['cancelled_used_time_month'] = isset($data['cancelled_used_time_month']) ? $data['cancelled_used_time_month'] : null;
         $this->container['complete_transactions_month'] = isset($data['complete_transactions_month']) ? $data['complete_transactions_month'] : null;
         $this->container['complete_rate_month'] = isset($data['complete_rate_month']) ? $data['complete_rate_month'] : null;
+        $this->container['orders_buy_rate_month'] = isset($data['orders_buy_rate_month']) ? $data['orders_buy_rate_month'] : null;
+        $this->container['is_black'] = isset($data['is_black']) ? $data['is_black'] : null;
         $this->container['is_follow'] = isset($data['is_follow']) ? $data['is_follow'] : null;
         $this->container['have_traded'] = isset($data['have_traded']) ? $data['have_traded'] : null;
         $this->container['biz_uid'] = isset($data['biz_uid']) ? $data['biz_uid'] : null;
+        $this->container['blue_vip'] = isset($data['blue_vip']) ? $data['blue_vip'] : null;
+        $this->container['work_status'] = isset($data['work_status']) ? $data['work_status'] : null;
         $this->container['registration_days'] = isset($data['registration_days']) ? $data['registration_days'] : null;
         $this->container['first_trade_days'] = isset($data['first_trade_days']) ? $data['first_trade_days'] : null;
+        $this->container['need_replenish'] = isset($data['need_replenish']) ? $data['need_replenish'] : null;
+        $this->container['merchant_info'] = isset($data['merchant_info']) ? $data['merchant_info'] : null;
+        $this->container['online_status'] = isset($data['online_status']) ? $data['online_status'] : null;
+        $this->container['work_hours'] = isset($data['work_hours']) ? $data['work_hours'] : null;
+        $this->container['transactions_month'] = isset($data['transactions_month']) ? $data['transactions_month'] : null;
+        $this->container['transactions_all'] = isset($data['transactions_all']) ? $data['transactions_all'] : null;
         $this->container['trade_versatile'] = isset($data['trade_versatile']) ? $data['trade_versatile'] : null;
     }
 
@@ -294,8 +366,14 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['is_self'] === null) {
+            $invalidProperties[] = "'is_self' can't be null";
+        }
         if ($this->container['user_timest'] === null) {
             $invalidProperties[] = "'user_timest' can't be null";
+        }
+        if ($this->container['counterparties_num'] === null) {
+            $invalidProperties[] = "'counterparties_num' can't be null";
         }
         if ($this->container['email_verified'] === null) {
             $invalidProperties[] = "'email_verified' can't be null";
@@ -333,6 +411,12 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         if ($this->container['complete_rate_month'] === null) {
             $invalidProperties[] = "'complete_rate_month' can't be null";
         }
+        if ($this->container['orders_buy_rate_month'] === null) {
+            $invalidProperties[] = "'orders_buy_rate_month' can't be null";
+        }
+        if ($this->container['is_black'] === null) {
+            $invalidProperties[] = "'is_black' can't be null";
+        }
         if ($this->container['is_follow'] === null) {
             $invalidProperties[] = "'is_follow' can't be null";
         }
@@ -342,11 +426,35 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         if ($this->container['biz_uid'] === null) {
             $invalidProperties[] = "'biz_uid' can't be null";
         }
+        if ($this->container['blue_vip'] === null) {
+            $invalidProperties[] = "'blue_vip' can't be null";
+        }
+        if ($this->container['work_status'] === null) {
+            $invalidProperties[] = "'work_status' can't be null";
+        }
         if ($this->container['registration_days'] === null) {
             $invalidProperties[] = "'registration_days' can't be null";
         }
         if ($this->container['first_trade_days'] === null) {
             $invalidProperties[] = "'first_trade_days' can't be null";
+        }
+        if ($this->container['need_replenish'] === null) {
+            $invalidProperties[] = "'need_replenish' can't be null";
+        }
+        if ($this->container['merchant_info'] === null) {
+            $invalidProperties[] = "'merchant_info' can't be null";
+        }
+        if ($this->container['online_status'] === null) {
+            $invalidProperties[] = "'online_status' can't be null";
+        }
+        if ($this->container['work_hours'] === null) {
+            $invalidProperties[] = "'work_hours' can't be null";
+        }
+        if ($this->container['transactions_month'] === null) {
+            $invalidProperties[] = "'transactions_month' can't be null";
+        }
+        if ($this->container['transactions_all'] === null) {
+            $invalidProperties[] = "'transactions_all' can't be null";
         }
         if ($this->container['trade_versatile'] === null) {
             $invalidProperties[] = "'trade_versatile' can't be null";
@@ -365,6 +473,30 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets is_self
+     *
+     * @return bool
+     */
+    public function getIsSelf()
+    {
+        return $this->container['is_self'];
+    }
+
+    /**
+     * Sets is_self
+     *
+     * @param bool $is_self Whether self
+     *
+     * @return $this
+     */
+    public function setIsSelf($is_self)
+    {
+        $this->container['is_self'] = $is_self;
+
+        return $this;
+    }
 
     /**
      * Gets user_timest
@@ -386,6 +518,30 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     public function setUserTimest($user_timest)
     {
         $this->container['user_timest'] = $user_timest;
+
+        return $this;
+    }
+
+    /**
+     * Gets counterparties_num
+     *
+     * @return int
+     */
+    public function getCounterpartiesNum()
+    {
+        return $this->container['counterparties_num'];
+    }
+
+    /**
+     * Sets counterparties_num
+     *
+     * @param int $counterparties_num Number of counterparties
+     *
+     * @return $this
+     */
+    public function setCounterpartiesNum($counterparties_num)
+    {
+        $this->container['counterparties_num'] = $counterparties_num;
 
         return $this;
     }
@@ -679,6 +835,54 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets orders_buy_rate_month
+     *
+     * @return int
+     */
+    public function getOrdersBuyRateMonth()
+    {
+        return $this->container['orders_buy_rate_month'];
+    }
+
+    /**
+     * Sets orders_buy_rate_month
+     *
+     * @param int $orders_buy_rate_month Buy order ratio in last 30 days
+     *
+     * @return $this
+     */
+    public function setOrdersBuyRateMonth($orders_buy_rate_month)
+    {
+        $this->container['orders_buy_rate_month'] = $orders_buy_rate_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_black
+     *
+     * @return int
+     */
+    public function getIsBlack()
+    {
+        return $this->container['is_black'];
+    }
+
+    /**
+     * Sets is_black
+     *
+     * @param int $is_black Whether blocked
+     *
+     * @return $this
+     */
+    public function setIsBlack($is_black)
+    {
+        $this->container['is_black'] = $is_black;
+
+        return $this;
+    }
+
+    /**
      * Gets is_follow
      *
      * @return int
@@ -751,6 +955,54 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets blue_vip
+     *
+     * @return int
+     */
+    public function getBlueVip()
+    {
+        return $this->container['blue_vip'];
+    }
+
+    /**
+     * Sets blue_vip
+     *
+     * @param int $blue_vip Blue V Crown Shield
+     *
+     * @return $this
+     */
+    public function setBlueVip($blue_vip)
+    {
+        $this->container['blue_vip'] = $blue_vip;
+
+        return $this;
+    }
+
+    /**
+     * Gets work_status
+     *
+     * @return int
+     */
+    public function getWorkStatus()
+    {
+        return $this->container['work_status'];
+    }
+
+    /**
+     * Sets work_status
+     *
+     * @param int $work_status Merchant work status
+     *
+     * @return $this
+     */
+    public function setWorkStatus($work_status)
+    {
+        $this->container['work_status'] = $work_status;
+
+        return $this;
+    }
+
+    /**
      * Gets registration_days
      *
      * @return int
@@ -794,6 +1046,150 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     public function setFirstTradeDays($first_trade_days)
     {
         $this->container['first_trade_days'] = $first_trade_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets need_replenish
+     *
+     * @return int
+     */
+    public function getNeedReplenish()
+    {
+        return $this->container['need_replenish'];
+    }
+
+    /**
+     * Sets need_replenish
+     *
+     * @param int $need_replenish Whether margin replenishment is needed
+     *
+     * @return $this
+     */
+    public function setNeedReplenish($need_replenish)
+    {
+        $this->container['need_replenish'] = $need_replenish;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_info
+     *
+     * @return \GateApi\Model\InlineResponse20014DataMerchantInfo
+     */
+    public function getMerchantInfo()
+    {
+        return $this->container['merchant_info'];
+    }
+
+    /**
+     * Sets merchant_info
+     *
+     * @param \GateApi\Model\InlineResponse20014DataMerchantInfo $merchant_info merchant_info
+     *
+     * @return $this
+     */
+    public function setMerchantInfo($merchant_info)
+    {
+        $this->container['merchant_info'] = $merchant_info;
+
+        return $this;
+    }
+
+    /**
+     * Gets online_status
+     *
+     * @return int
+     */
+    public function getOnlineStatus()
+    {
+        return $this->container['online_status'];
+    }
+
+    /**
+     * Sets online_status
+     *
+     * @param int $online_status Merchant online status
+     *
+     * @return $this
+     */
+    public function setOnlineStatus($online_status)
+    {
+        $this->container['online_status'] = $online_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets work_hours
+     *
+     * @return object
+     */
+    public function getWorkHours()
+    {
+        return $this->container['work_hours'];
+    }
+
+    /**
+     * Sets work_hours
+     *
+     * @param object $work_hours Merchant online status details
+     *
+     * @return $this
+     */
+    public function setWorkHours($work_hours)
+    {
+        $this->container['work_hours'] = $work_hours;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions_month
+     *
+     * @return int
+     */
+    public function getTransactionsMonth()
+    {
+        return $this->container['transactions_month'];
+    }
+
+    /**
+     * Sets transactions_month
+     *
+     * @param int $transactions_month 30-day transaction volume
+     *
+     * @return $this
+     */
+    public function setTransactionsMonth($transactions_month)
+    {
+        $this->container['transactions_month'] = $transactions_month;
+
+        return $this;
+    }
+
+    /**
+     * Gets transactions_all
+     *
+     * @return int
+     */
+    public function getTransactionsAll()
+    {
+        return $this->container['transactions_all'];
+    }
+
+    /**
+     * Sets transactions_all
+     *
+     * @param int $transactions_all Total transaction volume
+     *
+     * @return $this
+     */
+    public function setTransactionsAll($transactions_all)
+    {
+        $this->container['transactions_all'] = $transactions_all;
 
         return $this;
     }

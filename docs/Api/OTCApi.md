@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**createOtcOrder**](OTCApi.md#createOtcOrder) | **POST** /otc/order/create | Create fiat order
 [**createStableCoinOrder**](OTCApi.md#createStableCoinOrder) | **POST** /otc/stable_coin/order/create | Create stablecoin order
 [**getUserDefaultBank**](OTCApi.md#getUserDefaultBank) | **GET** /otc/get_user_def_bank | Get user&#39;s default bank account information
+[**getBankList**](OTCApi.md#getBankList) | **GET** /otc/bank_list | Get user bank card list
 [**markOtcOrderPaid**](OTCApi.md#markOtcOrderPaid) | **POST** /otc/order/paid | Mark fiat order as paid
 [**cancelOtcOrder**](OTCApi.md#cancelOtcOrder) | **POST** /otc/order/cancel | Fiat order cancellation
 [**listOtcOrders**](OTCApi.md#listOtcOrders) | **GET** /otc/order/list | Fiat order list
@@ -259,6 +260,64 @@ This endpoint does not need any parameter.
 [[Back to README]](../../README.md)
 
 
+## getBankList
+
+> \GateApi\Model\InlineResponse20010 getBankList()
+
+Get user bank card list
+
+Get user bank card list for selecting bank card when placing orders
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\OTCApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getBankList();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling OTCApi->getBankList: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\GateApi\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## markOtcOrderPaid
 
 > \GateApi\Model\InlineResponse2007 markOtcOrderPaid($inline_object4)
@@ -385,7 +444,7 @@ Name | Type | Description  | Notes
 
 ## listOtcOrders
 
-> \GateApi\Model\InlineResponse20010 listOtcOrders($type, $fiat_currency, $crypto_currency, $start_time, $end_time, $status, $pn, $ps)
+> \GateApi\Model\InlineResponse20011 listOtcOrders($type, $fiat_currency, $crypto_currency, $start_time, $end_time, $status, $pn, $ps)
 
 Fiat order list
 
@@ -412,7 +471,7 @@ $associate_array['fiat_currency'] = 'fiat_currency_example'; // string | Fiat cu
 $associate_array['crypto_currency'] = 'crypto_currency_example'; // string | Digital currency
 $associate_array['start_time'] = 'start_time_example'; // string | starttime   for example : 2025-09-09
 $associate_array['end_time'] = 'end_time_example'; // string | endtime  for example :2025-09-09
-$associate_array['status'] = 'status_example'; // string | DONE ：完成 CANCEL  ：取消 PROCESSING ：进行中
+$associate_array['status'] = 'status_example'; // string | DONE: Completed CANCEL: Canceled PROCESSING: In Progress
 $associate_array['pn'] = 'pn_example'; // string | Page number
 $associate_array['ps'] = 'ps_example'; // string | Number of items per page
 
@@ -439,13 +498,13 @@ Name | Type | Description  | Notes
  **crypto_currency** | **string**| Digital currency | [optional]
  **start_time** | **string**| starttime   for example : 2025-09-09 | [optional]
  **end_time** | **string**| endtime  for example :2025-09-09 | [optional]
- **status** | **string**| DONE ：完成 CANCEL  ：取消 PROCESSING ：进行中 | [optional]
+ **status** | **string**| DONE: Completed CANCEL: Canceled PROCESSING: In Progress | [optional]
  **pn** | **string**| Page number | [optional]
  **ps** | **string**| Number of items per page | [optional]
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\GateApi\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 
@@ -463,7 +522,7 @@ Name | Type | Description  | Notes
 
 ## listStableCoinOrders
 
-> \GateApi\Model\InlineResponse20011 listStableCoinOrders($page_size, $page_number, $coin_name, $start_time, $end_time, $status)
+> \GateApi\Model\InlineResponse20012 listStableCoinOrders($page_size, $page_number, $coin_name, $start_time, $end_time, $status)
 
 Stablecoin order list
 
@@ -519,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\GateApi\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -537,7 +596,7 @@ Name | Type | Description  | Notes
 
 ## getOtcOrderDetail
 
-> \GateApi\Model\InlineResponse20012 getOtcOrderDetail($order_id)
+> \GateApi\Model\InlineResponse20013 getOtcOrderDetail($order_id)
 
 Fiat order details
 
@@ -581,7 +640,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\GateApi\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 

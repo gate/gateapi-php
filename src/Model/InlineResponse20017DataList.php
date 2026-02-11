@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20016DataList
+ * InlineResponse20017DataList
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20016DataList Class Doc Comment
+ * InlineResponse20017DataList Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20016DataList implements ModelInterface, ArrayAccess
+class InlineResponse20017DataList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20016DataList implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_16_data_list';
+    protected static $openAPIModelName = 'inline_response_200_17_data_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -114,7 +114,7 @@ class InlineResponse20016DataList implements ModelInterface, ArrayAccess
         'od_time' => 'int',
         'order_type' => 'int',
         'order_tag' => 'string[]',
-        'convert_info' => '\GateApi\Model\InlineResponse20016DataConvertInfo'
+        'convert_info' => '\GateApi\Model\InlineResponse20017DataConvertInfo'
     ];
 
     /**
@@ -2004,7 +2004,7 @@ class InlineResponse20016DataList implements ModelInterface, ArrayAccess
     /**
      * Gets convert_info
      *
-     * @return \GateApi\Model\InlineResponse20016DataConvertInfo|null
+     * @return \GateApi\Model\InlineResponse20017DataConvertInfo|null
      */
     public function getConvertInfo()
     {
@@ -2014,7 +2014,7 @@ class InlineResponse20016DataList implements ModelInterface, ArrayAccess
     /**
      * Sets convert_info
      *
-     * @param \GateApi\Model\InlineResponse20016DataConvertInfo|null $convert_info convert_info
+     * @param \GateApi\Model\InlineResponse20017DataConvertInfo|null $convert_info convert_info
      *
      * @return $this
      */

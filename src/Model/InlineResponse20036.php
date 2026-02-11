@@ -54,27 +54,11 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_id' => 'string',
-        'position_id' => 'string',
-        'symbol' => 'string',
-        'position_side' => 'string',
-        'initial_margin' => 'string',
-        'maintenance_margin' => 'string',
-        'position_qty' => 'string',
-        'position_value' => 'string',
-        'upnl' => 'string',
-        'upnl_rate' => 'string',
-        'entry_price' => 'string',
-        'mark_price' => 'string',
-        'leverage' => 'string',
-        'max_leverage' => 'string',
-        'risk_limit' => 'string',
-        'fee' => 'string',
-        'funding_fee' => 'string',
-        'funding_time' => 'string',
-        'create_time' => 'string',
-        'update_time' => 'string',
-        'closed_pnl' => 'string'
+        'spot_maker_fee' => 'string',
+        'spot_taker_fee' => 'string',
+        'future_maker_fee' => 'string',
+        'future_taker_fee' => 'string',
+        'special_fee_list' => '\GateApi\Model\InlineResponse20036SpecialFeeList[]'
     ];
 
     /**
@@ -83,27 +67,11 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'user_id' => null,
-        'position_id' => null,
-        'symbol' => null,
-        'position_side' => null,
-        'initial_margin' => null,
-        'maintenance_margin' => null,
-        'position_qty' => null,
-        'position_value' => null,
-        'upnl' => null,
-        'upnl_rate' => null,
-        'entry_price' => null,
-        'mark_price' => null,
-        'leverage' => null,
-        'max_leverage' => null,
-        'risk_limit' => null,
-        'fee' => null,
-        'funding_fee' => null,
-        'funding_time' => null,
-        'create_time' => null,
-        'update_time' => null,
-        'closed_pnl' => null
+        'spot_maker_fee' => null,
+        'spot_taker_fee' => null,
+        'future_maker_fee' => null,
+        'future_taker_fee' => null,
+        'special_fee_list' => null
     ];
 
     /**
@@ -133,27 +101,11 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_id' => 'user_id',
-        'position_id' => 'position_id',
-        'symbol' => 'symbol',
-        'position_side' => 'position_side',
-        'initial_margin' => 'initial_margin',
-        'maintenance_margin' => 'maintenance_margin',
-        'position_qty' => 'position_qty',
-        'position_value' => 'position_value',
-        'upnl' => 'upnl',
-        'upnl_rate' => 'upnl_rate',
-        'entry_price' => 'entry_price',
-        'mark_price' => 'mark_price',
-        'leverage' => 'leverage',
-        'max_leverage' => 'max_leverage',
-        'risk_limit' => 'risk_limit',
-        'fee' => 'fee',
-        'funding_fee' => 'funding_fee',
-        'funding_time' => 'funding_time',
-        'create_time' => 'create_time',
-        'update_time' => 'update_time',
-        'closed_pnl' => 'closed_pnl'
+        'spot_maker_fee' => 'spot_maker_fee',
+        'spot_taker_fee' => 'spot_taker_fee',
+        'future_maker_fee' => 'future_maker_fee',
+        'future_taker_fee' => 'future_taker_fee',
+        'special_fee_list' => 'special_fee_list'
     ];
 
     /**
@@ -162,27 +114,11 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'user_id' => 'setUserId',
-        'position_id' => 'setPositionId',
-        'symbol' => 'setSymbol',
-        'position_side' => 'setPositionSide',
-        'initial_margin' => 'setInitialMargin',
-        'maintenance_margin' => 'setMaintenanceMargin',
-        'position_qty' => 'setPositionQty',
-        'position_value' => 'setPositionValue',
-        'upnl' => 'setUpnl',
-        'upnl_rate' => 'setUpnlRate',
-        'entry_price' => 'setEntryPrice',
-        'mark_price' => 'setMarkPrice',
-        'leverage' => 'setLeverage',
-        'max_leverage' => 'setMaxLeverage',
-        'risk_limit' => 'setRiskLimit',
-        'fee' => 'setFee',
-        'funding_fee' => 'setFundingFee',
-        'funding_time' => 'setFundingTime',
-        'create_time' => 'setCreateTime',
-        'update_time' => 'setUpdateTime',
-        'closed_pnl' => 'setClosedPnl'
+        'spot_maker_fee' => 'setSpotMakerFee',
+        'spot_taker_fee' => 'setSpotTakerFee',
+        'future_maker_fee' => 'setFutureMakerFee',
+        'future_taker_fee' => 'setFutureTakerFee',
+        'special_fee_list' => 'setSpecialFeeList'
     ];
 
     /**
@@ -191,27 +127,11 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'user_id' => 'getUserId',
-        'position_id' => 'getPositionId',
-        'symbol' => 'getSymbol',
-        'position_side' => 'getPositionSide',
-        'initial_margin' => 'getInitialMargin',
-        'maintenance_margin' => 'getMaintenanceMargin',
-        'position_qty' => 'getPositionQty',
-        'position_value' => 'getPositionValue',
-        'upnl' => 'getUpnl',
-        'upnl_rate' => 'getUpnlRate',
-        'entry_price' => 'getEntryPrice',
-        'mark_price' => 'getMarkPrice',
-        'leverage' => 'getLeverage',
-        'max_leverage' => 'getMaxLeverage',
-        'risk_limit' => 'getRiskLimit',
-        'fee' => 'getFee',
-        'funding_fee' => 'getFundingFee',
-        'funding_time' => 'getFundingTime',
-        'create_time' => 'getCreateTime',
-        'update_time' => 'getUpdateTime',
-        'closed_pnl' => 'getClosedPnl'
+        'spot_maker_fee' => 'getSpotMakerFee',
+        'spot_taker_fee' => 'getSpotTakerFee',
+        'future_maker_fee' => 'getFutureMakerFee',
+        'future_taker_fee' => 'getFutureTakerFee',
+        'special_fee_list' => 'getSpecialFeeList'
     ];
 
     /**
@@ -274,27 +194,11 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['position_id'] = isset($data['position_id']) ? $data['position_id'] : null;
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
-        $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
-        $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
-        $this->container['position_qty'] = isset($data['position_qty']) ? $data['position_qty'] : null;
-        $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
-        $this->container['upnl'] = isset($data['upnl']) ? $data['upnl'] : null;
-        $this->container['upnl_rate'] = isset($data['upnl_rate']) ? $data['upnl_rate'] : null;
-        $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
-        $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
-        $this->container['max_leverage'] = isset($data['max_leverage']) ? $data['max_leverage'] : null;
-        $this->container['risk_limit'] = isset($data['risk_limit']) ? $data['risk_limit'] : null;
-        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
-        $this->container['funding_fee'] = isset($data['funding_fee']) ? $data['funding_fee'] : null;
-        $this->container['funding_time'] = isset($data['funding_time']) ? $data['funding_time'] : null;
-        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
-        $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
-        $this->container['closed_pnl'] = isset($data['closed_pnl']) ? $data['closed_pnl'] : null;
+        $this->container['spot_maker_fee'] = isset($data['spot_maker_fee']) ? $data['spot_maker_fee'] : null;
+        $this->container['spot_taker_fee'] = isset($data['spot_taker_fee']) ? $data['spot_taker_fee'] : null;
+        $this->container['future_maker_fee'] = isset($data['future_maker_fee']) ? $data['future_maker_fee'] : null;
+        $this->container['future_taker_fee'] = isset($data['future_taker_fee']) ? $data['future_taker_fee'] : null;
+        $this->container['special_fee_list'] = isset($data['special_fee_list']) ? $data['special_fee_list'] : null;
     }
 
     /**
@@ -306,6 +210,21 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['spot_maker_fee'] === null) {
+            $invalidProperties[] = "'spot_maker_fee' can't be null";
+        }
+        if ($this->container['spot_taker_fee'] === null) {
+            $invalidProperties[] = "'spot_taker_fee' can't be null";
+        }
+        if ($this->container['future_maker_fee'] === null) {
+            $invalidProperties[] = "'future_maker_fee' can't be null";
+        }
+        if ($this->container['future_taker_fee'] === null) {
+            $invalidProperties[] = "'future_taker_fee' can't be null";
+        }
+        if ($this->container['special_fee_list'] === null) {
+            $invalidProperties[] = "'special_fee_list' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -322,505 +241,121 @@ class InlineResponse20036 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets user_id
+     * Gets spot_maker_fee
      *
-     * @return string|null
+     * @return string
      */
-    public function getUserId()
+    public function getSpotMakerFee()
     {
-        return $this->container['user_id'];
+        return $this->container['spot_maker_fee'];
     }
 
     /**
-     * Sets user_id
+     * Sets spot_maker_fee
      *
-     * @param string|null $user_id User ID
+     * @param string $spot_maker_fee spotMakerfee rate
      *
      * @return $this
      */
-    public function setUserId($user_id)
+    public function setSpotMakerFee($spot_maker_fee)
     {
-        $this->container['user_id'] = $user_id;
+        $this->container['spot_maker_fee'] = $spot_maker_fee;
 
         return $this;
     }
 
     /**
-     * Gets position_id
+     * Gets spot_taker_fee
      *
-     * @return string|null
+     * @return string
      */
-    public function getPositionId()
+    public function getSpotTakerFee()
     {
-        return $this->container['position_id'];
+        return $this->container['spot_taker_fee'];
     }
 
     /**
-     * Sets position_id
+     * Sets spot_taker_fee
      *
-     * @param string|null $position_id Position ID
+     * @param string $spot_taker_fee spotTakerfee rate
      *
      * @return $this
      */
-    public function setPositionId($position_id)
+    public function setSpotTakerFee($spot_taker_fee)
     {
-        $this->container['position_id'] = $position_id;
+        $this->container['spot_taker_fee'] = $spot_taker_fee;
 
         return $this;
     }
 
     /**
-     * Gets symbol
+     * Gets future_maker_fee
      *
-     * @return string|null
+     * @return string
      */
-    public function getSymbol()
+    public function getFutureMakerFee()
     {
-        return $this->container['symbol'];
+        return $this->container['future_maker_fee'];
     }
 
     /**
-     * Sets symbol
+     * Sets future_maker_fee
      *
-     * @param string|null $symbol Currency pair
+     * @param string $future_maker_fee contractMakerfee rate
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setFutureMakerFee($future_maker_fee)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['future_maker_fee'] = $future_maker_fee;
 
         return $this;
     }
 
     /**
-     * Gets position_side
+     * Gets future_taker_fee
      *
-     * @return string|null
+     * @return string
      */
-    public function getPositionSide()
+    public function getFutureTakerFee()
     {
-        return $this->container['position_side'];
+        return $this->container['future_taker_fee'];
     }
 
     /**
-     * Sets position_side
+     * Sets future_taker_fee
      *
-     * @param string|null $position_side Position Direction
+     * @param string $future_taker_fee contractTakerfee rate
      *
      * @return $this
      */
-    public function setPositionSide($position_side)
+    public function setFutureTakerFee($future_taker_fee)
     {
-        $this->container['position_side'] = $position_side;
+        $this->container['future_taker_fee'] = $future_taker_fee;
 
         return $this;
     }
 
     /**
-     * Gets initial_margin
+     * Gets special_fee_list
      *
-     * @return string|null
+     * @return \GateApi\Model\InlineResponse20036SpecialFeeList[]
      */
-    public function getInitialMargin()
+    public function getSpecialFeeList()
     {
-        return $this->container['initial_margin'];
+        return $this->container['special_fee_list'];
     }
 
     /**
-     * Sets initial_margin
+     * Sets special_fee_list
      *
-     * @param string|null $initial_margin Initial Margin
+     * @param \GateApi\Model\InlineResponse20036SpecialFeeList[] $special_fee_list special_fee_list
      *
      * @return $this
      */
-    public function setInitialMargin($initial_margin)
+    public function setSpecialFeeList($special_fee_list)
     {
-        $this->container['initial_margin'] = $initial_margin;
-
-        return $this;
-    }
-
-    /**
-     * Gets maintenance_margin
-     *
-     * @return string|null
-     */
-    public function getMaintenanceMargin()
-    {
-        return $this->container['maintenance_margin'];
-    }
-
-    /**
-     * Sets maintenance_margin
-     *
-     * @param string|null $maintenance_margin Maintenance margin
-     *
-     * @return $this
-     */
-    public function setMaintenanceMargin($maintenance_margin)
-    {
-        $this->container['maintenance_margin'] = $maintenance_margin;
-
-        return $this;
-    }
-
-    /**
-     * Gets position_qty
-     *
-     * @return string|null
-     */
-    public function getPositionQty()
-    {
-        return $this->container['position_qty'];
-    }
-
-    /**
-     * Sets position_qty
-     *
-     * @param string|null $position_qty Position Quantity
-     *
-     * @return $this
-     */
-    public function setPositionQty($position_qty)
-    {
-        $this->container['position_qty'] = $position_qty;
-
-        return $this;
-    }
-
-    /**
-     * Gets position_value
-     *
-     * @return string|null
-     */
-    public function getPositionValue()
-    {
-        return $this->container['position_value'];
-    }
-
-    /**
-     * Sets position_value
-     *
-     * @param string|null $position_value Position Value
-     *
-     * @return $this
-     */
-    public function setPositionValue($position_value)
-    {
-        $this->container['position_value'] = $position_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets upnl
-     *
-     * @return string|null
-     */
-    public function getUpnl()
-    {
-        return $this->container['upnl'];
-    }
-
-    /**
-     * Sets upnl
-     *
-     * @param string|null $upnl Unrealized P&L
-     *
-     * @return $this
-     */
-    public function setUpnl($upnl)
-    {
-        $this->container['upnl'] = $upnl;
-
-        return $this;
-    }
-
-    /**
-     * Gets upnl_rate
-     *
-     * @return string|null
-     */
-    public function getUpnlRate()
-    {
-        return $this->container['upnl_rate'];
-    }
-
-    /**
-     * Sets upnl_rate
-     *
-     * @param string|null $upnl_rate Unrealized P&L Ratio
-     *
-     * @return $this
-     */
-    public function setUpnlRate($upnl_rate)
-    {
-        $this->container['upnl_rate'] = $upnl_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets entry_price
-     *
-     * @return string|null
-     */
-    public function getEntryPrice()
-    {
-        return $this->container['entry_price'];
-    }
-
-    /**
-     * Sets entry_price
-     *
-     * @param string|null $entry_price Position Average Entry Price
-     *
-     * @return $this
-     */
-    public function setEntryPrice($entry_price)
-    {
-        $this->container['entry_price'] = $entry_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets mark_price
-     *
-     * @return string|null
-     */
-    public function getMarkPrice()
-    {
-        return $this->container['mark_price'];
-    }
-
-    /**
-     * Sets mark_price
-     *
-     * @param string|null $mark_price Mark price
-     *
-     * @return $this
-     */
-    public function setMarkPrice($mark_price)
-    {
-        $this->container['mark_price'] = $mark_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets leverage
-     *
-     * @return string|null
-     */
-    public function getLeverage()
-    {
-        return $this->container['leverage'];
-    }
-
-    /**
-     * Sets leverage
-     *
-     * @param string|null $leverage Position Leverage
-     *
-     * @return $this
-     */
-    public function setLeverage($leverage)
-    {
-        $this->container['leverage'] = $leverage;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_leverage
-     *
-     * @return string|null
-     */
-    public function getMaxLeverage()
-    {
-        return $this->container['max_leverage'];
-    }
-
-    /**
-     * Sets max_leverage
-     *
-     * @param string|null $max_leverage Maximum leverage
-     *
-     * @return $this
-     */
-    public function setMaxLeverage($max_leverage)
-    {
-        $this->container['max_leverage'] = $max_leverage;
-
-        return $this;
-    }
-
-    /**
-     * Gets risk_limit
-     *
-     * @return string|null
-     */
-    public function getRiskLimit()
-    {
-        return $this->container['risk_limit'];
-    }
-
-    /**
-     * Sets risk_limit
-     *
-     * @param string|null $risk_limit Position risk limit
-     *
-     * @return $this
-     */
-    public function setRiskLimit($risk_limit)
-    {
-        $this->container['risk_limit'] = $risk_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee
-     *
-     * @return string|null
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee
-     *
-     * @param string|null $fee Position Fee
-     *
-     * @return $this
-     */
-    public function setFee($fee)
-    {
-        $this->container['fee'] = $fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets funding_fee
-     *
-     * @return string|null
-     */
-    public function getFundingFee()
-    {
-        return $this->container['funding_fee'];
-    }
-
-    /**
-     * Sets funding_fee
-     *
-     * @param string|null $funding_fee Position Funding Fee
-     *
-     * @return $this
-     */
-    public function setFundingFee($funding_fee)
-    {
-        $this->container['funding_fee'] = $funding_fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets funding_time
-     *
-     * @return string|null
-     */
-    public function getFundingTime()
-    {
-        return $this->container['funding_time'];
-    }
-
-    /**
-     * Sets funding_time
-     *
-     * @param string|null $funding_time Position funding fee collection time (0 indicates it has not been collected yet)
-     *
-     * @return $this
-     */
-    public function setFundingTime($funding_time)
-    {
-        $this->container['funding_time'] = $funding_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_time
-     *
-     * @return string|null
-     */
-    public function getCreateTime()
-    {
-        return $this->container['create_time'];
-    }
-
-    /**
-     * Sets create_time
-     *
-     * @param string|null $create_time Position Creation Time
-     *
-     * @return $this
-     */
-    public function setCreateTime($create_time)
-    {
-        $this->container['create_time'] = $create_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets update_time
-     *
-     * @return string|null
-     */
-    public function getUpdateTime()
-    {
-        return $this->container['update_time'];
-    }
-
-    /**
-     * Sets update_time
-     *
-     * @param string|null $update_time Position Update Time
-     *
-     * @return $this
-     */
-    public function setUpdateTime($update_time)
-    {
-        $this->container['update_time'] = $update_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets closed_pnl
-     *
-     * @return string|null
-     */
-    public function getClosedPnl()
-    {
-        return $this->container['closed_pnl'];
-    }
-
-    /**
-     * Sets closed_pnl
-     *
-     * @param string|null $closed_pnl Realized PnL
-     *
-     * @return $this
-     */
-    public function setClosedPnl($closed_pnl)
-    {
-        $this->container['closed_pnl'] = $closed_pnl;
+        $this->container['special_fee_list'] = $special_fee_list;
 
         return $this;
     }

@@ -41,7 +41,7 @@ $apiInstance = new GateApi\Api\RebateApi(
 );
 $associate_array['currency_pair'] = 'BTC_USDT'; // string | Specify the trading pair. If not specified, returns all trading pairs
 $associate_array['user_id'] = 10003; // int | User ID. If not specified, all user records will be returned
-$associate_array['from'] = 1602120000; // int | Start time for querying records, defaults to 7 days before current time if not specified
+$associate_array['from'] = 1602120000; // int | Start time for querying records. If not specified, defaults to 7 days before current time
 $associate_array['to'] = 1602123600; // int | End timestamp for the query, defaults to current time if not specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency_pair** | **string**| Specify the trading pair. If not specified, returns all trading pairs | [optional]
  **user_id** | **int**| User ID. If not specified, all user records will be returned | [optional]
- **from** | **int**| Start time for querying records, defaults to 7 days before current time if not specified | [optional]
+ **from** | **int**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional]
  **to** | **int**| End timestamp for the query, defaults to current time if not specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -116,7 +116,7 @@ $apiInstance = new GateApi\Api\RebateApi(
 $associate_array['currency'] = 'BTC'; // string | Specify the currency. If not specified, returns all currencies
 $associate_array['commission_type'] = 1; // int | Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate
 $associate_array['user_id'] = 10003; // int | User ID. If not specified, all user records will be returned
-$associate_array['from'] = 1602120000; // int | Start time for querying records, defaults to 7 days before current time if not specified
+$associate_array['from'] = 1602120000; // int | Start time for querying records. If not specified, defaults to 7 days before current time
 $associate_array['to'] = 1602123600; // int | End timestamp for the query, defaults to current time if not specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional]
  **commission_type** | **int**| Rebate type: 1 - Direct rebate, 2 - Indirect rebate, 3 - Self rebate | [optional]
  **user_id** | **int**| User ID. If not specified, all user records will be returned | [optional]
- **from** | **int**| Start time for querying records, defaults to 7 days before current time if not specified | [optional]
+ **from** | **int**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional]
  **to** | **int**| End timestamp for the query, defaults to current time if not specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -191,7 +191,7 @@ $apiInstance = new GateApi\Api\RebateApi(
 );
 $associate_array['currency_pair'] = 'BTC_USDT'; // string | Specify the trading pair. If not specified, returns all trading pairs
 $associate_array['user_id'] = 10003; // int | User ID. If not specified, all user records will be returned
-$associate_array['from'] = 1602120000; // int | Start time for querying records, defaults to 7 days before current time if not specified
+$associate_array['from'] = 1602120000; // int | Start time for querying records. If not specified, defaults to 7 days before current time
 $associate_array['to'] = 1602123600; // int | End timestamp for the query, defaults to current time if not specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency_pair** | **string**| Specify the trading pair. If not specified, returns all trading pairs | [optional]
  **user_id** | **int**| User ID. If not specified, all user records will be returned | [optional]
- **from** | **int**| Start time for querying records, defaults to 7 days before current time if not specified | [optional]
+ **from** | **int**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional]
  **to** | **int**| End timestamp for the query, defaults to current time if not specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -265,7 +265,7 @@ $apiInstance = new GateApi\Api\RebateApi(
 );
 $associate_array['currency'] = 'BTC'; // string | Specify the currency. If not specified, returns all currencies
 $associate_array['user_id'] = 10003; // int | User ID. If not specified, all user records will be returned
-$associate_array['from'] = 1602120000; // int | Start time for querying records, defaults to 7 days before current time if not specified
+$associate_array['from'] = 1602120000; // int | Start time for querying records. If not specified, defaults to 7 days before current time
 $associate_array['to'] = 1602123600; // int | End timestamp for the query, defaults to current time if not specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **string**| Specify the currency. If not specified, returns all currencies | [optional]
  **user_id** | **int**| User ID. If not specified, all user records will be returned | [optional]
- **from** | **int**| Start time for querying records, defaults to 7 days before current time if not specified | [optional]
+ **from** | **int**| Start time for querying records. If not specified, defaults to 7 days before current time | [optional]
  **to** | **int**| End timestamp for the query, defaults to current time if not specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]

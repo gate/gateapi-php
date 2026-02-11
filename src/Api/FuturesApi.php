@@ -680,7 +680,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -703,7 +703,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -763,7 +763,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -789,7 +789,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -842,7 +842,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $interval Price precision for depth aggregation, 0 means no aggregation, defaults to 0 if not specified (optional, default to '0')
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
      * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
      *
@@ -1397,7 +1397,7 @@ class FuturesApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days (optional, default to '5m')
+     * @param  string $interval Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month (optional, default to '5m')
      * @param  string $timezone Time zone: all/utc0/utc8, default utc0 (optional, default to 'utc0')
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -1422,7 +1422,7 @@ class FuturesApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days (optional, default to '5m')
+     * @param  string $interval Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month (optional, default to '5m')
      * @param  string $timezone Time zone: all/utc0/utc8, default utc0 (optional, default to 'utc0')
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -1484,7 +1484,7 @@ class FuturesApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days (optional, default to '5m')
+     * @param  string $interval Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month (optional, default to '5m')
      * @param  string $timezone Time zone: all/utc0/utc8, default utc0 (optional, default to 'utc0')
      *
      * @throws \InvalidArgumentException
@@ -1512,7 +1512,7 @@ class FuturesApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days (optional, default to '5m')
+     * @param  string $interval Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month (optional, default to '5m')
      * @param  string $timezone Time zone: all/utc0/utc8, default utc0 (optional, default to 'utc0')
      *
      * @throws \InvalidArgumentException
@@ -1567,7 +1567,7 @@ class FuturesApi
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
      * @param  int $limit Maximum number of recent data points to return. &#x60;limit&#x60; conflicts with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (optional, default to 100)
-     * @param  string $interval Interval time between data points. Note that &#x60;1w&#x60; means natural week(Mon-Sun), while &#x60;7d&#x60; means every 7d since unix 0. 30d represents a natural month, not 30 days (optional, default to '5m')
+     * @param  string $interval Time interval for data points. Note: 1w represents a natural week, 7d is aligned with Unix epoch time, 30d represents a natural month (optional, default to '5m')
      * @param  string $timezone Time zone: all/utc0/utc8, default utc0 (optional, default to 'utc0')
      *
      * @throws \InvalidArgumentException

@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ## placeDualOrder
 
-> placeDualOrder($place_dual_investment_order)
+> \GateApi\Model\PlaceDualInvestmentOrder placeDualOrder($place_dual_investment_order_params)
 
 Place Dual Investment order
 
@@ -285,10 +285,11 @@ $apiInstance = new GateApi\Api\EarnApi(
     new GuzzleHttp\Client(),
     $config
 );
-$place_dual_investment_order = new \GateApi\Model\PlaceDualInvestmentOrder(); // \GateApi\Model\PlaceDualInvestmentOrder | 
+$place_dual_investment_order_params = new \GateApi\Model\PlaceDualInvestmentOrderParams(); // \GateApi\Model\PlaceDualInvestmentOrderParams | 
 
 try {
-    $apiInstance->placeDualOrder($place_dual_investment_order);
+    $result = $apiInstance->placeDualOrder($place_dual_investment_order_params);
+    print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
 } catch (Exception $e) {
@@ -302,11 +303,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **place_dual_investment_order** | [**\GateApi\Model\PlaceDualInvestmentOrder**](../Model/PlaceDualInvestmentOrder.md)|  |
+ **place_dual_investment_order_params** | [**\GateApi\Model\PlaceDualInvestmentOrderParams**](../Model/PlaceDualInvestmentOrderParams.md)|  |
 
 ### Return type
 
-void (empty response body)
+[**\GateApi\Model\PlaceDualInvestmentOrder**](../Model/PlaceDualInvestmentOrder.md)
 
 ### Authorization
 
@@ -315,7 +316,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)
