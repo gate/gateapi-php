@@ -55,8 +55,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'txid' => 'int',
-        'type' => 'int',
-        'message' => 'string'
+        'lastreceived' => 'int',
+        'firstreceived' => 'int'
     ];
 
     /**
@@ -66,8 +66,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'txid' => null,
-        'type' => null,
-        'message' => null
+        'lastreceived' => null,
+        'firstreceived' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'txid' => 'txid',
-        'type' => 'type',
-        'message' => 'message'
+        'lastreceived' => 'lastreceived',
+        'firstreceived' => 'firstreceived'
     ];
 
     /**
@@ -109,8 +109,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'txid' => 'setTxid',
-        'type' => 'setType',
-        'message' => 'setMessage'
+        'lastreceived' => 'setLastreceived',
+        'firstreceived' => 'setFirstreceived'
     ];
 
     /**
@@ -120,8 +120,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'txid' => 'getTxid',
-        'type' => 'getType',
-        'message' => 'getMessage'
+        'lastreceived' => 'getLastreceived',
+        'firstreceived' => 'getFirstreceived'
     ];
 
     /**
@@ -185,8 +185,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['lastreceived'] = isset($data['lastreceived']) ? $data['lastreceived'] : null;
+        $this->container['firstreceived'] = isset($data['firstreceived']) ? $data['firstreceived'] : null;
     }
 
     /**
@@ -200,9 +200,6 @@ class InlineObject18 implements ModelInterface, ArrayAccess
 
         if ($this->container['txid'] === null) {
             $invalidProperties[] = "'txid' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
         }
         return $invalidProperties;
     }
@@ -244,49 +241,49 @@ class InlineObject18 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets type
+     * Gets lastreceived
      *
      * @return int|null
      */
-    public function getType()
+    public function getLastreceived()
     {
-        return $this->container['type'];
+        return $this->container['lastreceived'];
     }
 
     /**
-     * Sets type
+     * Sets lastreceived
      *
-     * @param int|null $type 0=Text, 1=File (video or image), default is 0 if not provided
+     * @param int|null $lastreceived Pagination timestamp (forward)
      *
      * @return $this
      */
-    public function setType($type)
+    public function setLastreceived($lastreceived)
     {
-        $this->container['type'] = $type;
+        $this->container['lastreceived'] = $lastreceived;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets firstreceived
      *
-     * @return string
+     * @return int|null
      */
-    public function getMessage()
+    public function getFirstreceived()
     {
-        return $this->container['message'];
+        return $this->container['firstreceived'];
     }
 
     /**
-     * Sets message
+     * Sets firstreceived
      *
-     * @param string $message Message content
+     * @param int|null $firstreceived Pagination timestamp (backward)
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setFirstreceived($firstreceived)
     {
-        $this->container['message'] = $message;
+        $this->container['firstreceived'] = $firstreceived;
 
         return $this;
     }

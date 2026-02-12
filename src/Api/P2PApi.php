@@ -803,7 +803,7 @@ class P2PApi
      *
      * @param  string $crypto_currency Cryptocurrency (required)
      * @param  string $fiat_currency Fiat currency (required)
-     * @param  string $order_tab 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
+     * @param  string $order_tab Order tab, default: pending (pending: In Progress (pending: AND status in (&#39;OPEN&#39;,&#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In Dispute (status in (&#39;ACCEPT&#39;,&#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
      * @param  string $select_type Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) (optional)
      * @param  string $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) (optional)
      * @param  int $txid Order ID (optional)
@@ -827,7 +827,7 @@ class P2PApi
      *
      * @param  string $crypto_currency Cryptocurrency (required)
      * @param  string $fiat_currency Fiat currency (required)
-     * @param  string $order_tab 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
+     * @param  string $order_tab Order tab, default: pending (pending: In Progress (pending: AND status in (&#39;OPEN&#39;,&#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In Dispute (status in (&#39;ACCEPT&#39;,&#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
      * @param  string $select_type Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) (optional)
      * @param  string $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) (optional)
      * @param  int $txid Order ID (optional)
@@ -888,7 +888,7 @@ class P2PApi
      *
      * @param  string $crypto_currency Cryptocurrency (required)
      * @param  string $fiat_currency Fiat currency (required)
-     * @param  string $order_tab 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
+     * @param  string $order_tab Order tab, default: pending (pending: In Progress (pending: AND status in (&#39;OPEN&#39;,&#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In Dispute (status in (&#39;ACCEPT&#39;,&#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
      * @param  string $select_type Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) (optional)
      * @param  string $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) (optional)
      * @param  int $txid Order ID (optional)
@@ -915,7 +915,7 @@ class P2PApi
      *
      * @param  string $crypto_currency Cryptocurrency (required)
      * @param  string $fiat_currency Fiat currency (required)
-     * @param  string $order_tab 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
+     * @param  string $order_tab Order tab, default: pending (pending: In Progress (pending: AND status in (&#39;OPEN&#39;,&#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In Dispute (status in (&#39;ACCEPT&#39;,&#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
      * @param  string $select_type Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) (optional)
      * @param  string $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) (optional)
      * @param  int $txid Order ID (optional)
@@ -969,7 +969,7 @@ class P2PApi
      *
      * @param  string $crypto_currency Cryptocurrency (required)
      * @param  string $fiat_currency Fiat currency (required)
-     * @param  string $order_tab 订单标签页，默认pending（pending：处理中（pending:  AND status in (&#39;OPEN&#39;, &#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)）；dispute：申诉中（status in (&#39;ACCEPT&#39;, &#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
+     * @param  string $order_tab Order tab, default: pending (pending: In Progress (pending: AND status in (&#39;OPEN&#39;,&#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In Dispute (status in (&#39;ACCEPT&#39;,&#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) (optional)
      * @param  string $select_type Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) (optional)
      * @param  string $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) (optional)
      * @param  int $txid Order ID (optional)
@@ -3648,6 +3648,273 @@ class P2PApi
     }
 
     /**
+     * Operation p2pMerchantBooksAdsList
+     *
+     * Get Advertisement List
+     *
+     * @param  string $asset Cryptocurrency (required)
+     * @param  string $fiat_unit Fiat currency (required)
+     * @param  string $trade_type Buy/Sell, sell/buy (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse20022
+     */
+    public function p2pMerchantBooksAdsList($asset, $fiat_unit, $trade_type)
+    {
+        list($response) = $this->p2pMerchantBooksAdsListWithHttpInfo($asset, $fiat_unit, $trade_type);
+        return $response;
+    }
+
+    /**
+     * Operation p2pMerchantBooksAdsListWithHttpInfo
+     *
+     * Get Advertisement List
+     *
+     * @param  string $asset Cryptocurrency (required)
+     * @param  string $fiat_unit Fiat currency (required)
+     * @param  string $trade_type Buy/Sell, sell/buy (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse20022, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function p2pMerchantBooksAdsListWithHttpInfo($asset, $fiat_unit, $trade_type)
+    {
+        $request = $this->p2pMerchantBooksAdsListRequest($asset, $fiat_unit, $trade_type);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse20022';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation p2pMerchantBooksAdsListAsync
+     *
+     * Get Advertisement List
+     *
+     * @param  string $asset Cryptocurrency (required)
+     * @param  string $fiat_unit Fiat currency (required)
+     * @param  string $trade_type Buy/Sell, sell/buy (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function p2pMerchantBooksAdsListAsync($asset, $fiat_unit, $trade_type)
+    {
+        return $this->p2pMerchantBooksAdsListAsyncWithHttpInfo($asset, $fiat_unit, $trade_type)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation p2pMerchantBooksAdsListAsyncWithHttpInfo
+     *
+     * Get Advertisement List
+     *
+     * @param  string $asset Cryptocurrency (required)
+     * @param  string $fiat_unit Fiat currency (required)
+     * @param  string $trade_type Buy/Sell, sell/buy (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function p2pMerchantBooksAdsListAsyncWithHttpInfo($asset, $fiat_unit, $trade_type)
+    {
+        $returnType = '\GateApi\Model\InlineResponse20022';
+        $request = $this->p2pMerchantBooksAdsListRequest($asset, $fiat_unit, $trade_type);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'p2pMerchantBooksAdsList'
+     *
+     * @param  string $asset Cryptocurrency (required)
+     * @param  string $fiat_unit Fiat currency (required)
+     * @param  string $trade_type Buy/Sell, sell/buy (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function p2pMerchantBooksAdsListRequest($asset, $fiat_unit, $trade_type)
+    {
+        // verify the required parameter 'asset' is set
+        if ($asset === null || (is_array($asset) && count($asset) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $asset when calling p2pMerchantBooksAdsList'
+            );
+        }
+        // verify the required parameter 'fiat_unit' is set
+        if ($fiat_unit === null || (is_array($fiat_unit) && count($fiat_unit) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fiat_unit when calling p2pMerchantBooksAdsList'
+            );
+        }
+        // verify the required parameter 'trade_type' is set
+        if ($trade_type === null || (is_array($trade_type) && count($trade_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $trade_type when calling p2pMerchantBooksAdsList'
+            );
+        }
+
+        $resourcePath = '/p2p/merchant/books/ads_list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // form params
+        if ($asset !== null) {
+            $formParams['asset'] = ObjectSerializer::toFormValue($asset);
+        }
+
+        // form params
+        if ($fiat_unit !== null) {
+            $formParams['fiat_unit'] = ObjectSerializer::toFormValue($fiat_unit);
+        }
+
+        // form params
+        if ($trade_type !== null) {
+            $formParams['trade_type'] = ObjectSerializer::toFormValue($trade_type);
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation p2pMerchantChatGetChatsList
      *
      * Get chat history
@@ -3658,7 +3925,7 @@ class P2PApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20022
+     * @return \GateApi\Model\InlineResponse20023
      */
     public function p2pMerchantChatGetChatsList($txid, $lastreceived = null, $firstreceived = null)
     {
@@ -3677,7 +3944,7 @@ class P2PApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20022, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20023, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantChatGetChatsListWithHttpInfo($txid, $lastreceived = null, $firstreceived = null)
     {
@@ -3707,7 +3974,7 @@ class P2PApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20022';
+        $returnType = '\GateApi\Model\InlineResponse20023';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3758,7 +4025,7 @@ class P2PApi
      */
     public function p2pMerchantChatGetChatsListAsyncWithHttpInfo($txid, $lastreceived = null, $firstreceived = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20022';
+        $returnType = '\GateApi\Model\InlineResponse20023';
         $request = $this->p2pMerchantChatGetChatsListRequest($txid, $lastreceived, $firstreceived);
 
         return $this->client
@@ -3913,7 +4180,7 @@ class P2PApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20023
+     * @return \GateApi\Model\InlineResponse20024
      */
     public function p2pMerchantChatSendChatMessage($txid, $message, $type = null)
     {
@@ -3932,7 +4199,7 @@ class P2PApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20023, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantChatSendChatMessageWithHttpInfo($txid, $message, $type = null)
     {
@@ -3962,7 +4229,7 @@ class P2PApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20023';
+        $returnType = '\GateApi\Model\InlineResponse20024';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4013,7 +4280,7 @@ class P2PApi
      */
     public function p2pMerchantChatSendChatMessageAsyncWithHttpInfo($txid, $message, $type = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20023';
+        $returnType = '\GateApi\Model\InlineResponse20024';
         $request = $this->p2pMerchantChatSendChatMessageRequest($txid, $message, $type);
 
         return $this->client
@@ -4173,7 +4440,7 @@ class P2PApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20024
+     * @return \GateApi\Model\InlineResponse20025
      */
     public function p2pMerchantChatUploadChatFile($image_content_type, $base64_img)
     {
@@ -4191,7 +4458,7 @@ class P2PApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantChatUploadChatFileWithHttpInfo($image_content_type, $base64_img)
     {
@@ -4221,7 +4488,7 @@ class P2PApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20024';
+        $returnType = '\GateApi\Model\InlineResponse20025';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4270,7 +4537,7 @@ class P2PApi
      */
     public function p2pMerchantChatUploadChatFileAsyncWithHttpInfo($image_content_type, $base64_img)
     {
-        $returnType = '\GateApi\Model\InlineResponse20024';
+        $returnType = '\GateApi\Model\InlineResponse20025';
         $request = $this->p2pMerchantChatUploadChatFileRequest($image_content_type, $base64_img);
 
         return $this->client

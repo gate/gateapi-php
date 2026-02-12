@@ -54,11 +54,8 @@ class InlineObject20 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
-        'amount' => 'string',
-        'from' => 'string',
-        'to' => 'string',
-        'text' => 'string'
+        'image_content_type' => 'string',
+        'base64_img' => 'string'
     ];
 
     /**
@@ -67,11 +64,8 @@ class InlineObject20 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
-        'amount' => null,
-        'from' => null,
-        'to' => null,
-        'text' => null
+        'image_content_type' => null,
+        'base64_img' => null
     ];
 
     /**
@@ -101,11 +95,8 @@ class InlineObject20 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
-        'amount' => 'amount',
-        'from' => 'from',
-        'to' => 'to',
-        'text' => 'text'
+        'image_content_type' => 'image_content_type',
+        'base64_img' => 'base64_img'
     ];
 
     /**
@@ -114,11 +105,8 @@ class InlineObject20 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
-        'amount' => 'setAmount',
-        'from' => 'setFrom',
-        'to' => 'setTo',
-        'text' => 'setText'
+        'image_content_type' => 'setImageContentType',
+        'base64_img' => 'setBase64Img'
     ];
 
     /**
@@ -127,11 +115,8 @@ class InlineObject20 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
-        'amount' => 'getAmount',
-        'from' => 'getFrom',
-        'to' => 'getTo',
-        'text' => 'getText'
+        'image_content_type' => 'getImageContentType',
+        'base64_img' => 'getBase64Img'
     ];
 
     /**
@@ -194,11 +179,8 @@ class InlineObject20 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['from'] = isset($data['from']) ? $data['from'] : null;
-        $this->container['to'] = isset($data['to']) ? $data['to'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['image_content_type'] = isset($data['image_content_type']) ? $data['image_content_type'] : null;
+        $this->container['base64_img'] = isset($data['base64_img']) ? $data['base64_img'] : null;
     }
 
     /**
@@ -210,17 +192,11 @@ class InlineObject20 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
+        if ($this->container['image_content_type'] === null) {
+            $invalidProperties[] = "'image_content_type' can't be null";
         }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['from'] === null) {
-            $invalidProperties[] = "'from' can't be null";
-        }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
+        if ($this->container['base64_img'] === null) {
+            $invalidProperties[] = "'base64_img' can't be null";
         }
         return $invalidProperties;
     }
@@ -238,121 +214,49 @@ class InlineObject20 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
+     * Gets image_content_type
      *
      * @return string
      */
-    public function getCoin()
+    public function getImageContentType()
     {
-        return $this->container['coin'];
+        return $this->container['image_content_type'];
     }
 
     /**
-     * Sets coin
+     * Sets image_content_type
      *
-     * @param string $coin Currency
+     * @param string $image_content_type File type, currently only images and videos are supported
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setImageContentType($image_content_type)
     {
-        $this->container['coin'] = $coin;
+        $this->container['image_content_type'] = $image_content_type;
 
         return $this;
     }
 
     /**
-     * Gets amount
+     * Gets base64_img
      *
      * @return string
      */
-    public function getAmount()
+    public function getBase64Img()
     {
-        return $this->container['amount'];
+        return $this->container['base64_img'];
     }
 
     /**
-     * Sets amount
+     * Sets base64_img
      *
-     * @param string $amount Transfer amount
+     * @param string $base64_img File content (base64 encoded)
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setBase64Img($base64_img)
     {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets from
-     *
-     * @return string
-     */
-    public function getFrom()
-    {
-        return $this->container['from'];
-    }
-
-    /**
-     * Sets from
-     *
-     * @param string $from Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
-     *
-     * @return $this
-     */
-    public function setFrom($from)
-    {
-        $this->container['from'] = $from;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
-     *
-     * @return string
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param string $to Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
-     *
-     * @return $this
-     */
-    public function setTo($to)
-    {
-        $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text User-defined ID
-     *
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->container['text'] = $text;
+        $this->container['base64_img'] = $base64_img;
 
         return $this;
     }

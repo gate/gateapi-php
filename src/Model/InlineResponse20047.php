@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20036SpecialFeeList
+ * InlineResponse20047
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20036SpecialFeeList Class Doc Comment
+ * InlineResponse20047 Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
+class InlineResponse20047 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_36_special_fee_list';
+    protected static $openAPIModelName = 'inline_response_200_47';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +54,12 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'taker_fee_rate' => 'string',
-        'maker_fee_rate' => 'string'
+        'coin' => 'string',
+        'exchange_type' => 'string',
+        'tier' => 'string',
+        'min_value' => 'string',
+        'max_value' => 'string',
+        'discount_rate' => 'string'
     ];
 
     /**
@@ -65,9 +68,12 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'taker_fee_rate' => null,
-        'maker_fee_rate' => null
+        'coin' => null,
+        'exchange_type' => null,
+        'tier' => null,
+        'min_value' => null,
+        'max_value' => null,
+        'discount_rate' => null
     ];
 
     /**
@@ -97,9 +103,12 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'taker_fee_rate' => 'taker_fee_rate',
-        'maker_fee_rate' => 'maker_fee_rate'
+        'coin' => 'coin',
+        'exchange_type' => 'exchange_type',
+        'tier' => 'tier',
+        'min_value' => 'min_value',
+        'max_value' => 'max_value',
+        'discount_rate' => 'discount_rate'
     ];
 
     /**
@@ -108,9 +117,12 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'taker_fee_rate' => 'setTakerFeeRate',
-        'maker_fee_rate' => 'setMakerFeeRate'
+        'coin' => 'setCoin',
+        'exchange_type' => 'setExchangeType',
+        'tier' => 'setTier',
+        'min_value' => 'setMinValue',
+        'max_value' => 'setMaxValue',
+        'discount_rate' => 'setDiscountRate'
     ];
 
     /**
@@ -119,9 +131,12 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'taker_fee_rate' => 'getTakerFeeRate',
-        'maker_fee_rate' => 'getMakerFeeRate'
+        'coin' => 'getCoin',
+        'exchange_type' => 'getExchangeType',
+        'tier' => 'getTier',
+        'min_value' => 'getMinValue',
+        'max_value' => 'getMaxValue',
+        'discount_rate' => 'getDiscountRate'
     ];
 
     /**
@@ -184,9 +199,12 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['taker_fee_rate'] = isset($data['taker_fee_rate']) ? $data['taker_fee_rate'] : null;
-        $this->container['maker_fee_rate'] = isset($data['maker_fee_rate']) ? $data['maker_fee_rate'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        $this->container['min_value'] = isset($data['min_value']) ? $data['min_value'] : null;
+        $this->container['max_value'] = isset($data['max_value']) ? $data['max_value'] : null;
+        $this->container['discount_rate'] = isset($data['discount_rate']) ? $data['discount_rate'] : null;
     }
 
     /**
@@ -198,14 +216,23 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
         }
-        if ($this->container['taker_fee_rate'] === null) {
-            $invalidProperties[] = "'taker_fee_rate' can't be null";
+        if ($this->container['exchange_type'] === null) {
+            $invalidProperties[] = "'exchange_type' can't be null";
         }
-        if ($this->container['maker_fee_rate'] === null) {
-            $invalidProperties[] = "'maker_fee_rate' can't be null";
+        if ($this->container['tier'] === null) {
+            $invalidProperties[] = "'tier' can't be null";
+        }
+        if ($this->container['min_value'] === null) {
+            $invalidProperties[] = "'min_value' can't be null";
+        }
+        if ($this->container['max_value'] === null) {
+            $invalidProperties[] = "'max_value' can't be null";
+        }
+        if ($this->container['discount_rate'] === null) {
+            $invalidProperties[] = "'discount_rate' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,73 +250,145 @@ class InlineResponse20036SpecialFeeList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets symbol
+     * Gets coin
      *
      * @return string
      */
-    public function getSymbol()
+    public function getCoin()
     {
-        return $this->container['symbol'];
+        return $this->container['coin'];
     }
 
     /**
-     * Sets symbol
+     * Sets coin
      *
-     * @param string $symbol Currency pair
+     * @param string $coin Currency
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setCoin($coin)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['coin'] = $coin;
 
         return $this;
     }
 
     /**
-     * Gets taker_fee_rate
+     * Gets exchange_type
      *
      * @return string
      */
-    public function getTakerFeeRate()
+    public function getExchangeType()
     {
-        return $this->container['taker_fee_rate'];
+        return $this->container['exchange_type'];
     }
 
     /**
-     * Sets taker_fee_rate
+     * Sets exchange_type
      *
-     * @param string $taker_fee_rate Taker fee rate
+     * @param string $exchange_type Exchange
      *
      * @return $this
      */
-    public function setTakerFeeRate($taker_fee_rate)
+    public function setExchangeType($exchange_type)
     {
-        $this->container['taker_fee_rate'] = $taker_fee_rate;
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }
 
     /**
-     * Gets maker_fee_rate
+     * Gets tier
      *
      * @return string
      */
-    public function getMakerFeeRate()
+    public function getTier()
     {
-        return $this->container['maker_fee_rate'];
+        return $this->container['tier'];
     }
 
     /**
-     * Sets maker_fee_rate
+     * Sets tier
      *
-     * @param string $maker_fee_rate Maker fee rate
+     * @param string $tier Tier
      *
      * @return $this
      */
-    public function setMakerFeeRate($maker_fee_rate)
+    public function setTier($tier)
     {
-        $this->container['maker_fee_rate'] = $maker_fee_rate;
+        $this->container['tier'] = $tier;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_value
+     *
+     * @return string
+     */
+    public function getMinValue()
+    {
+        return $this->container['min_value'];
+    }
+
+    /**
+     * Sets min_value
+     *
+     * @param string $min_value Minimum value
+     *
+     * @return $this
+     */
+    public function setMinValue($min_value)
+    {
+        $this->container['min_value'] = $min_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_value
+     *
+     * @return string
+     */
+    public function getMaxValue()
+    {
+        return $this->container['max_value'];
+    }
+
+    /**
+     * Sets max_value
+     *
+     * @param string $max_value Maximum value
+     *
+     * @return $this
+     */
+    public function setMaxValue($max_value)
+    {
+        $this->container['max_value'] = $max_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets discount_rate
+     *
+     * @return string
+     */
+    public function getDiscountRate()
+    {
+        return $this->container['discount_rate'];
+    }
+
+    /**
+     * Sets discount_rate
+     *
+     * @param string $discount_rate Discount rate
+     *
+     * @return $this
+     */
+    public function setDiscountRate($discount_rate)
+    {
+        $this->container['discount_rate'] = $discount_rate;
 
         return $this;
     }

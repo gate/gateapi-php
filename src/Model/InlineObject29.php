@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject28
+ * InlineObject29
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject28 Class Doc Comment
+ * InlineObject29 Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject28 implements ModelInterface, ArrayAccess
+class InlineObject29 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_28';
+    protected static $openAPIModelName = 'inline_object_29';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,7 +55,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'leverage' => 'string'
+        'position_side' => 'string'
     ];
 
     /**
@@ -65,7 +65,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'leverage' => null
+        'position_side' => null
     ];
 
     /**
@@ -96,7 +96,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'leverage' => 'leverage'
+        'position_side' => 'position_side'
     ];
 
     /**
@@ -106,7 +106,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'leverage' => 'setLeverage'
+        'position_side' => 'setPositionSide'
     ];
 
     /**
@@ -116,7 +116,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'leverage' => 'getLeverage'
+        'position_side' => 'getPositionSide'
     ];
 
     /**
@@ -180,7 +180,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
     }
 
     /**
@@ -194,9 +194,6 @@ class InlineObject28 implements ModelInterface, ArrayAccess
 
         if ($this->container['symbol'] === null) {
             $invalidProperties[] = "'symbol' can't be null";
-        }
-        if ($this->container['leverage'] === null) {
-            $invalidProperties[] = "'leverage' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,7 +223,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Currency pair
+     * @param string $symbol Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
      *
      * @return $this
      */
@@ -238,25 +235,25 @@ class InlineObject28 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets leverage
+     * Gets position_side
      *
-     * @return string
+     * @return string|null
      */
-    public function getLeverage()
+    public function getPositionSide()
     {
-        return $this->container['leverage'];
+        return $this->container['position_side'];
     }
 
     /**
-     * Sets leverage
+     * Sets position_side
      *
-     * @param string $leverage leverage
+     * @param string|null $position_side Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method
      *
      * @return $this
      */
-    public function setLeverage($leverage)
+    public function setPositionSide($position_side)
     {
-        $this->container['leverage'] = $leverage;
+        $this->container['position_side'] = $position_side;
 
         return $this;
     }

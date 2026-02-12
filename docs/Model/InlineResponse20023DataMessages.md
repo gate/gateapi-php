@@ -1,4 +1,4 @@
-# # InlineResponse20022DataMessages
+# # InlineResponse20023DataMessages
 
 ## Properties
 
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **msg** | **string** | Message content | 
 **username** | **string** | Message sender username | 
 **timest** | **int** | Message timestamp | 
-**msg_obj** | [**\GateApi\Model\InlineResponse20022DataMsgObj**](InlineResponse20022DataMsgObj.md) |  | 
+**msg_obj** | [**\GateApi\Model\InlineResponse20023DataMsgObj**](InlineResponse20023DataMsgObj.md) |  | 
 **uid** | **string** | Message sender UID | 
 **type** | **int** | Message type | 
 **pic** | **string** | File link | 

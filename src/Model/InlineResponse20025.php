@@ -54,8 +54,12 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'tiers' => '\GateApi\Model\RuleRiskLimitsTiers[]'
+        'timestamp' => 'float',
+        'method' => 'string',
+        'code' => 'int',
+        'message' => 'string',
+        'data' => '\GateApi\Model\InlineResponse20025Data',
+        'version' => 'string'
     ];
 
     /**
@@ -64,8 +68,12 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'tiers' => null
+        'timestamp' => null,
+        'method' => null,
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'version' => null
     ];
 
     /**
@@ -95,8 +103,12 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'tiers' => 'tiers'
+        'timestamp' => 'timestamp',
+        'method' => 'method',
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'version' => 'version'
     ];
 
     /**
@@ -105,8 +117,12 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'tiers' => 'setTiers'
+        'timestamp' => 'setTimestamp',
+        'method' => 'setMethod',
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -115,8 +131,12 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'tiers' => 'getTiers'
+        'timestamp' => 'getTimestamp',
+        'method' => 'getMethod',
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -179,8 +199,12 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['tiers'] = isset($data['tiers']) ? $data['tiers'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
     }
 
     /**
@@ -192,6 +216,24 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
+        if ($this->container['method'] === null) {
+            $invalidProperties[] = "'method' can't be null";
+        }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -208,49 +250,145 @@ class InlineResponse20025 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets symbol
+     * Gets timestamp
      *
-     * @return string|null
+     * @return float
      */
-    public function getSymbol()
+    public function getTimestamp()
     {
-        return $this->container['symbol'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets symbol
+     * Sets timestamp
      *
-     * @param string|null $symbol symbol
+     * @param float $timestamp timestamp
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setTimestamp($timestamp)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }
 
     /**
-     * Gets tiers
+     * Gets method
      *
-     * @return \GateApi\Model\RuleRiskLimitsTiers[]|null
+     * @return string
      */
-    public function getTiers()
+    public function getMethod()
     {
-        return $this->container['tiers'];
+        return $this->container['method'];
     }
 
     /**
-     * Sets tiers
+     * Sets method
      *
-     * @param \GateApi\Model\RuleRiskLimitsTiers[]|null $tiers tiers
+     * @param string $method method
      *
      * @return $this
      */
-    public function setTiers($tiers)
+    public function setMethod($method)
     {
-        $this->container['tiers'] = $tiers;
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return int
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param int $code code
+     *
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \GateApi\Model\InlineResponse20025Data
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \GateApi\Model\InlineResponse20025Data $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string $version version
+     *
+     * @return $this
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }

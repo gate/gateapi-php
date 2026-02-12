@@ -55,23 +55,16 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'user_id' => 'string',
-        'transaction_id' => 'string',
-        'order_id' => 'string',
-        'text' => 'string',
         'symbol' => 'string',
-        'exchange_type' => 'string',
-        'business_type' => 'string',
-        'side' => 'string',
-        'qty' => 'string',
-        'price' => 'string',
-        'fee' => 'string',
-        'fee_coin' => 'string',
-        'fee_rate' => 'string',
-        'match_role' => 'string',
-        'rpnl' => 'string',
-        'position_mode' => 'string',
-        'position_side' => 'string',
-        'create_time' => 'string'
+        'interest_id' => 'string',
+        'liability_id' => 'string',
+        'liability' => 'string',
+        'liability_coin' => 'string',
+        'interest' => 'string',
+        'interest_rate' => 'string',
+        'interest_type' => 'string',
+        'create_time' => 'string',
+        'exchange_type' => 'string'
     ];
 
     /**
@@ -81,23 +74,16 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'user_id' => null,
-        'transaction_id' => null,
-        'order_id' => null,
-        'text' => null,
         'symbol' => null,
-        'exchange_type' => null,
-        'business_type' => null,
-        'side' => null,
-        'qty' => null,
-        'price' => null,
-        'fee' => null,
-        'fee_coin' => null,
-        'fee_rate' => null,
-        'match_role' => null,
-        'rpnl' => null,
-        'position_mode' => null,
-        'position_side' => null,
-        'create_time' => null
+        'interest_id' => null,
+        'liability_id' => null,
+        'liability' => null,
+        'liability_coin' => null,
+        'interest' => null,
+        'interest_rate' => null,
+        'interest_type' => null,
+        'create_time' => null,
+        'exchange_type' => null
     ];
 
     /**
@@ -127,24 +113,17 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_id' => 'user_id',
-        'transaction_id' => 'transaction_id',
-        'order_id' => 'order_id',
-        'text' => 'text',
+        'user_id' => 'userId',
         'symbol' => 'symbol',
-        'exchange_type' => 'exchange_type',
-        'business_type' => 'business_type',
-        'side' => 'side',
-        'qty' => 'qty',
-        'price' => 'price',
-        'fee' => 'fee',
-        'fee_coin' => 'fee_coin',
-        'fee_rate' => 'fee_rate',
-        'match_role' => 'match_role',
-        'rpnl' => 'rpnl',
-        'position_mode' => 'position_mode',
-        'position_side' => 'position_side',
-        'create_time' => 'create_time'
+        'interest_id' => 'interest_id',
+        'liability_id' => 'liability_id',
+        'liability' => 'liability',
+        'liability_coin' => 'liability_coin',
+        'interest' => 'interest',
+        'interest_rate' => 'interest_rate',
+        'interest_type' => 'interest_type',
+        'create_time' => 'create_time',
+        'exchange_type' => 'exchange_type'
     ];
 
     /**
@@ -154,23 +133,16 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'user_id' => 'setUserId',
-        'transaction_id' => 'setTransactionId',
-        'order_id' => 'setOrderId',
-        'text' => 'setText',
         'symbol' => 'setSymbol',
-        'exchange_type' => 'setExchangeType',
-        'business_type' => 'setBusinessType',
-        'side' => 'setSide',
-        'qty' => 'setQty',
-        'price' => 'setPrice',
-        'fee' => 'setFee',
-        'fee_coin' => 'setFeeCoin',
-        'fee_rate' => 'setFeeRate',
-        'match_role' => 'setMatchRole',
-        'rpnl' => 'setRpnl',
-        'position_mode' => 'setPositionMode',
-        'position_side' => 'setPositionSide',
-        'create_time' => 'setCreateTime'
+        'interest_id' => 'setInterestId',
+        'liability_id' => 'setLiabilityId',
+        'liability' => 'setLiability',
+        'liability_coin' => 'setLiabilityCoin',
+        'interest' => 'setInterest',
+        'interest_rate' => 'setInterestRate',
+        'interest_type' => 'setInterestType',
+        'create_time' => 'setCreateTime',
+        'exchange_type' => 'setExchangeType'
     ];
 
     /**
@@ -180,23 +152,16 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'user_id' => 'getUserId',
-        'transaction_id' => 'getTransactionId',
-        'order_id' => 'getOrderId',
-        'text' => 'getText',
         'symbol' => 'getSymbol',
-        'exchange_type' => 'getExchangeType',
-        'business_type' => 'getBusinessType',
-        'side' => 'getSide',
-        'qty' => 'getQty',
-        'price' => 'getPrice',
-        'fee' => 'getFee',
-        'fee_coin' => 'getFeeCoin',
-        'fee_rate' => 'getFeeRate',
-        'match_role' => 'getMatchRole',
-        'rpnl' => 'getRpnl',
-        'position_mode' => 'getPositionMode',
-        'position_side' => 'getPositionSide',
-        'create_time' => 'getCreateTime'
+        'interest_id' => 'getInterestId',
+        'liability_id' => 'getLiabilityId',
+        'liability' => 'getLiability',
+        'liability_coin' => 'getLiabilityCoin',
+        'interest' => 'getInterest',
+        'interest_rate' => 'getInterestRate',
+        'interest_type' => 'getInterestType',
+        'create_time' => 'getCreateTime',
+        'exchange_type' => 'getExchangeType'
     ];
 
     /**
@@ -260,23 +225,16 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['transaction_id'] = isset($data['transaction_id']) ? $data['transaction_id'] : null;
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
-        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['qty'] = isset($data['qty']) ? $data['qty'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
-        $this->container['fee_coin'] = isset($data['fee_coin']) ? $data['fee_coin'] : null;
-        $this->container['fee_rate'] = isset($data['fee_rate']) ? $data['fee_rate'] : null;
-        $this->container['match_role'] = isset($data['match_role']) ? $data['match_role'] : null;
-        $this->container['rpnl'] = isset($data['rpnl']) ? $data['rpnl'] : null;
-        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
-        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        $this->container['interest_id'] = isset($data['interest_id']) ? $data['interest_id'] : null;
+        $this->container['liability_id'] = isset($data['liability_id']) ? $data['liability_id'] : null;
+        $this->container['liability'] = isset($data['liability']) ? $data['liability'] : null;
+        $this->container['liability_coin'] = isset($data['liability_coin']) ? $data['liability_coin'] : null;
+        $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        $this->container['interest_rate'] = isset($data['interest_rate']) ? $data['interest_rate'] : null;
+        $this->container['interest_type'] = isset($data['interest_type']) ? $data['interest_type'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
     }
 
     /**
@@ -288,6 +246,39 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
+        }
+        if ($this->container['interest_id'] === null) {
+            $invalidProperties[] = "'interest_id' can't be null";
+        }
+        if ($this->container['liability_id'] === null) {
+            $invalidProperties[] = "'liability_id' can't be null";
+        }
+        if ($this->container['liability'] === null) {
+            $invalidProperties[] = "'liability' can't be null";
+        }
+        if ($this->container['liability_coin'] === null) {
+            $invalidProperties[] = "'liability_coin' can't be null";
+        }
+        if ($this->container['interest'] === null) {
+            $invalidProperties[] = "'interest' can't be null";
+        }
+        if ($this->container['interest_rate'] === null) {
+            $invalidProperties[] = "'interest_rate' can't be null";
+        }
+        if ($this->container['interest_type'] === null) {
+            $invalidProperties[] = "'interest_type' can't be null";
+        }
+        if ($this->container['create_time'] === null) {
+            $invalidProperties[] = "'create_time' can't be null";
+        }
+        if ($this->container['exchange_type'] === null) {
+            $invalidProperties[] = "'exchange_type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +297,7 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return string|null
+     * @return string
      */
     public function getUserId()
     {
@@ -316,7 +307,7 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param string|null $user_id User ID
+     * @param string $user_id User ID
      *
      * @return $this
      */
@@ -328,81 +319,9 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets transaction_id
-     *
-     * @return string|null
-     */
-    public function getTransactionId()
-    {
-        return $this->container['transaction_id'];
-    }
-
-    /**
-     * Sets transaction_id
-     *
-     * @param string|null $transaction_id filledrecordsID
-     *
-     * @return $this
-     */
-    public function setTransactionId($transaction_id)
-    {
-        $this->container['transaction_id'] = $transaction_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets order_id
-     *
-     * @return string|null
-     */
-    public function getOrderId()
-    {
-        return $this->container['order_id'];
-    }
-
-    /**
-     * Sets order_id
-     *
-     * @param string|null $order_id Order ID
-     *
-     * @return $this
-     */
-    public function setOrderId($order_id)
-    {
-        $this->container['order_id'] = $order_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text User Order ID
-     *
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
      * Gets symbol
      *
-     * @return string|null
+     * @return string
      */
     public function getSymbol()
     {
@@ -412,7 +331,7 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Currency pair
+     * @param string $symbol Trading Pair
      *
      * @return $this
      */
@@ -424,289 +343,169 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets exchange_type
+     * Gets interest_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getExchangeType()
+    public function getInterestId()
     {
-        return $this->container['exchange_type'];
+        return $this->container['interest_id'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets interest_id
      *
-     * @param string|null $exchange_type Exchange
+     * @param string $interest_id Interest Deduction ID
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setInterestId($interest_id)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['interest_id'] = $interest_id;
 
         return $this;
     }
 
     /**
-     * Gets business_type
+     * Gets liability_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getBusinessType()
+    public function getLiabilityId()
     {
-        return $this->container['business_type'];
+        return $this->container['liability_id'];
     }
 
     /**
-     * Sets business_type
+     * Sets liability_id
      *
-     * @param string|null $business_type Business Type
+     * @param string $liability_id Debt Source ID, can be Order ID or Position ID
      *
      * @return $this
      */
-    public function setBusinessType($business_type)
+    public function setLiabilityId($liability_id)
     {
-        $this->container['business_type'] = $business_type;
+        $this->container['liability_id'] = $liability_id;
 
         return $this;
     }
 
     /**
-     * Gets side
+     * Gets liability
      *
-     * @return string|null
+     * @return string
      */
-    public function getSide()
+    public function getLiability()
     {
-        return $this->container['side'];
+        return $this->container['liability'];
     }
 
     /**
-     * Sets side
+     * Sets liability
      *
-     * @param string|null $side Buy/Sell Direction
+     * @param string $liability Debt Quantity
      *
      * @return $this
      */
-    public function setSide($side)
+    public function setLiability($liability)
     {
-        $this->container['side'] = $side;
+        $this->container['liability'] = $liability;
 
         return $this;
     }
 
     /**
-     * Gets qty
+     * Gets liability_coin
      *
-     * @return string|null
+     * @return string
      */
-    public function getQty()
+    public function getLiabilityCoin()
     {
-        return $this->container['qty'];
+        return $this->container['liability_coin'];
     }
 
     /**
-     * Sets qty
+     * Sets liability_coin
      *
-     * @param string|null $qty Trading size
+     * @param string $liability_coin Debt Currency
      *
      * @return $this
      */
-    public function setQty($qty)
+    public function setLiabilityCoin($liability_coin)
     {
-        $this->container['qty'] = $qty;
+        $this->container['liability_coin'] = $liability_coin;
 
         return $this;
     }
 
     /**
-     * Gets price
+     * Gets interest
      *
-     * @return string|null
+     * @return string
      */
-    public function getPrice()
+    public function getInterest()
     {
-        return $this->container['price'];
+        return $this->container['interest'];
     }
 
     /**
-     * Sets price
+     * Sets interest
      *
-     * @param string|null $price Fill Price
+     * @param string $interest Interest
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setInterest($interest)
     {
-        $this->container['price'] = $price;
+        $this->container['interest'] = $interest;
 
         return $this;
     }
 
     /**
-     * Gets fee
+     * Gets interest_rate
      *
-     * @return string|null
+     * @return string
      */
-    public function getFee()
+    public function getInterestRate()
     {
-        return $this->container['fee'];
+        return $this->container['interest_rate'];
     }
 
     /**
-     * Sets fee
+     * Sets interest_rate
      *
-     * @param string|null $fee fee
+     * @param string $interest_rate interest rate
      *
      * @return $this
      */
-    public function setFee($fee)
+    public function setInterestRate($interest_rate)
     {
-        $this->container['fee'] = $fee;
+        $this->container['interest_rate'] = $interest_rate;
 
         return $this;
     }
 
     /**
-     * Gets fee_coin
+     * Gets interest_type
      *
-     * @return string|null
+     * @return string
      */
-    public function getFeeCoin()
+    public function getInterestType()
     {
-        return $this->container['fee_coin'];
+        return $this->container['interest_type'];
     }
 
     /**
-     * Sets fee_coin
+     * Sets interest_type
      *
-     * @param string|null $fee_coin Fee currency
+     * @param string $interest_type Interest deduction type (`PERIODIC_POSITION`: periodic position interest; `PERIODIC_OPEN_ORDER`: periodic open-order interest; `IMMEDIATE_OPEN_ORDER`: interest charged on order opening)
      *
      * @return $this
      */
-    public function setFeeCoin($fee_coin)
+    public function setInterestType($interest_type)
     {
-        $this->container['fee_coin'] = $fee_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee_rate
-     *
-     * @return string|null
-     */
-    public function getFeeRate()
-    {
-        return $this->container['fee_rate'];
-    }
-
-    /**
-     * Sets fee_rate
-     *
-     * @param string|null $fee_rate Fee Rate
-     *
-     * @return $this
-     */
-    public function setFeeRate($fee_rate)
-    {
-        $this->container['fee_rate'] = $fee_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets match_role
-     *
-     * @return string|null
-     */
-    public function getMatchRole()
-    {
-        return $this->container['match_role'];
-    }
-
-    /**
-     * Sets match_role
-     *
-     * @param string|null $match_role Filled Role
-     *
-     * @return $this
-     */
-    public function setMatchRole($match_role)
-    {
-        $this->container['match_role'] = $match_role;
-
-        return $this;
-    }
-
-    /**
-     * Gets rpnl
-     *
-     * @return string|null
-     */
-    public function getRpnl()
-    {
-        return $this->container['rpnl'];
-    }
-
-    /**
-     * Sets rpnl
-     *
-     * @param string|null $rpnl Realized P&L
-     *
-     * @return $this
-     */
-    public function setRpnl($rpnl)
-    {
-        $this->container['rpnl'] = $rpnl;
-
-        return $this;
-    }
-
-    /**
-     * Gets position_mode
-     *
-     * @return string|null
-     */
-    public function getPositionMode()
-    {
-        return $this->container['position_mode'];
-    }
-
-    /**
-     * Sets position_mode
-     *
-     * @param string|null $position_mode Position Mode
-     *
-     * @return $this
-     */
-    public function setPositionMode($position_mode)
-    {
-        $this->container['position_mode'] = $position_mode;
-
-        return $this;
-    }
-
-    /**
-     * Gets position_side
-     *
-     * @return string|null
-     */
-    public function getPositionSide()
-    {
-        return $this->container['position_side'];
-    }
-
-    /**
-     * Sets position_side
-     *
-     * @param string|null $position_side Position Direction
-     *
-     * @return $this
-     */
-    public function setPositionSide($position_side)
-    {
-        $this->container['position_side'] = $position_side;
+        $this->container['interest_type'] = $interest_type;
 
         return $this;
     }
@@ -714,7 +513,7 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     /**
      * Gets create_time
      *
-     * @return string|null
+     * @return string
      */
     public function getCreateTime()
     {
@@ -724,13 +523,37 @@ class InlineResponse20044 implements ModelInterface, ArrayAccess
     /**
      * Sets create_time
      *
-     * @param string|null $create_time Created time
+     * @param string $create_time Created time
      *
      * @return $this
      */
     public function setCreateTime($create_time)
     {
         $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_type
+     *
+     * @return string
+     */
+    public function getExchangeType()
+    {
+        return $this->container['exchange_type'];
+    }
+
+    /**
+     * Sets exchange_type
+     *
+     * @param string $exchange_type Exchange
+     *
+     * @return $this
+     */
+    public function setExchangeType($exchange_type)
+    {
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }

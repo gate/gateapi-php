@@ -54,8 +54,9 @@ class InlineObject19 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'image_content_type' => 'string',
-        'base64_img' => 'string'
+        'txid' => 'int',
+        'type' => 'int',
+        'message' => 'string'
     ];
 
     /**
@@ -64,8 +65,9 @@ class InlineObject19 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'image_content_type' => null,
-        'base64_img' => null
+        'txid' => null,
+        'type' => null,
+        'message' => null
     ];
 
     /**
@@ -95,8 +97,9 @@ class InlineObject19 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'image_content_type' => 'image_content_type',
-        'base64_img' => 'base64_img'
+        'txid' => 'txid',
+        'type' => 'type',
+        'message' => 'message'
     ];
 
     /**
@@ -105,8 +108,9 @@ class InlineObject19 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'image_content_type' => 'setImageContentType',
-        'base64_img' => 'setBase64Img'
+        'txid' => 'setTxid',
+        'type' => 'setType',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -115,8 +119,9 @@ class InlineObject19 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'image_content_type' => 'getImageContentType',
-        'base64_img' => 'getBase64Img'
+        'txid' => 'getTxid',
+        'type' => 'getType',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -179,8 +184,9 @@ class InlineObject19 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['image_content_type'] = isset($data['image_content_type']) ? $data['image_content_type'] : null;
-        $this->container['base64_img'] = isset($data['base64_img']) ? $data['base64_img'] : null;
+        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
     }
 
     /**
@@ -192,11 +198,11 @@ class InlineObject19 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['image_content_type'] === null) {
-            $invalidProperties[] = "'image_content_type' can't be null";
+        if ($this->container['txid'] === null) {
+            $invalidProperties[] = "'txid' can't be null";
         }
-        if ($this->container['base64_img'] === null) {
-            $invalidProperties[] = "'base64_img' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +220,73 @@ class InlineObject19 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets image_content_type
+     * Gets txid
      *
-     * @return string
+     * @return int
      */
-    public function getImageContentType()
+    public function getTxid()
     {
-        return $this->container['image_content_type'];
+        return $this->container['txid'];
     }
 
     /**
-     * Sets image_content_type
+     * Sets txid
      *
-     * @param string $image_content_type File type, currently only images and videos are supported
+     * @param int $txid Order ID
      *
      * @return $this
      */
-    public function setImageContentType($image_content_type)
+    public function setTxid($txid)
     {
-        $this->container['image_content_type'] = $image_content_type;
+        $this->container['txid'] = $txid;
 
         return $this;
     }
 
     /**
-     * Gets base64_img
+     * Gets type
      *
-     * @return string
+     * @return int|null
      */
-    public function getBase64Img()
+    public function getType()
     {
-        return $this->container['base64_img'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets base64_img
+     * Sets type
      *
-     * @param string $base64_img File content (base64 encoded)
+     * @param int|null $type 0=Text, 1=File (video or image), default is 0 if not provided
      *
      * @return $this
      */
-    public function setBase64Img($base64_img)
+    public function setType($type)
     {
-        $this->container['base64_img'] = $base64_img;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message Message content
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
 
         return $this;
     }

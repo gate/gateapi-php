@@ -60,21 +60,21 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
         'position_side' => 'string',
         'initial_margin' => 'string',
         'maintenance_margin' => 'string',
-        'asset_qty' => 'string',
-        'asset_coin' => 'string',
+        'position_qty' => 'string',
         'position_value' => 'string',
-        'liability' => 'string',
-        'liability_coin' => 'string',
-        'interest' => 'string',
-        'max_position_qty' => 'string',
-        'entry_price' => 'string',
-        'index_price' => 'string',
         'upnl' => 'string',
         'upnl_rate' => 'string',
+        'entry_price' => 'string',
+        'mark_price' => 'string',
         'leverage' => 'string',
         'max_leverage' => 'string',
+        'risk_limit' => 'string',
+        'fee' => 'string',
+        'funding_fee' => 'string',
+        'funding_time' => 'string',
         'create_time' => 'string',
-        'update_time' => 'string'
+        'update_time' => 'string',
+        'closed_pnl' => 'string'
     ];
 
     /**
@@ -89,21 +89,21 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
         'position_side' => null,
         'initial_margin' => null,
         'maintenance_margin' => null,
-        'asset_qty' => null,
-        'asset_coin' => null,
+        'position_qty' => null,
         'position_value' => null,
-        'liability' => null,
-        'liability_coin' => null,
-        'interest' => null,
-        'max_position_qty' => null,
-        'entry_price' => null,
-        'index_price' => null,
         'upnl' => null,
         'upnl_rate' => null,
+        'entry_price' => null,
+        'mark_price' => null,
         'leverage' => null,
         'max_leverage' => null,
+        'risk_limit' => null,
+        'fee' => null,
+        'funding_fee' => null,
+        'funding_time' => null,
         'create_time' => null,
-        'update_time' => null
+        'update_time' => null,
+        'closed_pnl' => null
     ];
 
     /**
@@ -139,21 +139,21 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
         'position_side' => 'position_side',
         'initial_margin' => 'initial_margin',
         'maintenance_margin' => 'maintenance_margin',
-        'asset_qty' => 'asset_qty',
-        'asset_coin' => 'asset_coin',
+        'position_qty' => 'position_qty',
         'position_value' => 'position_value',
-        'liability' => 'liability',
-        'liability_coin' => 'liability_coin',
-        'interest' => 'interest',
-        'max_position_qty' => 'max_position_qty',
-        'entry_price' => 'entry_price',
-        'index_price' => 'index_price',
         'upnl' => 'upnl',
         'upnl_rate' => 'upnl_rate',
+        'entry_price' => 'entry_price',
+        'mark_price' => 'mark_price',
         'leverage' => 'leverage',
         'max_leverage' => 'max_leverage',
+        'risk_limit' => 'risk_limit',
+        'fee' => 'fee',
+        'funding_fee' => 'funding_fee',
+        'funding_time' => 'funding_time',
         'create_time' => 'create_time',
-        'update_time' => 'update_time'
+        'update_time' => 'update_time',
+        'closed_pnl' => 'closed_pnl'
     ];
 
     /**
@@ -168,21 +168,21 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
         'position_side' => 'setPositionSide',
         'initial_margin' => 'setInitialMargin',
         'maintenance_margin' => 'setMaintenanceMargin',
-        'asset_qty' => 'setAssetQty',
-        'asset_coin' => 'setAssetCoin',
+        'position_qty' => 'setPositionQty',
         'position_value' => 'setPositionValue',
-        'liability' => 'setLiability',
-        'liability_coin' => 'setLiabilityCoin',
-        'interest' => 'setInterest',
-        'max_position_qty' => 'setMaxPositionQty',
-        'entry_price' => 'setEntryPrice',
-        'index_price' => 'setIndexPrice',
         'upnl' => 'setUpnl',
         'upnl_rate' => 'setUpnlRate',
+        'entry_price' => 'setEntryPrice',
+        'mark_price' => 'setMarkPrice',
         'leverage' => 'setLeverage',
         'max_leverage' => 'setMaxLeverage',
+        'risk_limit' => 'setRiskLimit',
+        'fee' => 'setFee',
+        'funding_fee' => 'setFundingFee',
+        'funding_time' => 'setFundingTime',
         'create_time' => 'setCreateTime',
-        'update_time' => 'setUpdateTime'
+        'update_time' => 'setUpdateTime',
+        'closed_pnl' => 'setClosedPnl'
     ];
 
     /**
@@ -197,21 +197,21 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
         'position_side' => 'getPositionSide',
         'initial_margin' => 'getInitialMargin',
         'maintenance_margin' => 'getMaintenanceMargin',
-        'asset_qty' => 'getAssetQty',
-        'asset_coin' => 'getAssetCoin',
+        'position_qty' => 'getPositionQty',
         'position_value' => 'getPositionValue',
-        'liability' => 'getLiability',
-        'liability_coin' => 'getLiabilityCoin',
-        'interest' => 'getInterest',
-        'max_position_qty' => 'getMaxPositionQty',
-        'entry_price' => 'getEntryPrice',
-        'index_price' => 'getIndexPrice',
         'upnl' => 'getUpnl',
         'upnl_rate' => 'getUpnlRate',
+        'entry_price' => 'getEntryPrice',
+        'mark_price' => 'getMarkPrice',
         'leverage' => 'getLeverage',
         'max_leverage' => 'getMaxLeverage',
+        'risk_limit' => 'getRiskLimit',
+        'fee' => 'getFee',
+        'funding_fee' => 'getFundingFee',
+        'funding_time' => 'getFundingTime',
         'create_time' => 'getCreateTime',
-        'update_time' => 'getUpdateTime'
+        'update_time' => 'getUpdateTime',
+        'closed_pnl' => 'getClosedPnl'
     ];
 
     /**
@@ -280,21 +280,21 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
         $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
-        $this->container['asset_qty'] = isset($data['asset_qty']) ? $data['asset_qty'] : null;
-        $this->container['asset_coin'] = isset($data['asset_coin']) ? $data['asset_coin'] : null;
+        $this->container['position_qty'] = isset($data['position_qty']) ? $data['position_qty'] : null;
         $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
-        $this->container['liability'] = isset($data['liability']) ? $data['liability'] : null;
-        $this->container['liability_coin'] = isset($data['liability_coin']) ? $data['liability_coin'] : null;
-        $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
-        $this->container['max_position_qty'] = isset($data['max_position_qty']) ? $data['max_position_qty'] : null;
-        $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
-        $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
         $this->container['upnl'] = isset($data['upnl']) ? $data['upnl'] : null;
         $this->container['upnl_rate'] = isset($data['upnl_rate']) ? $data['upnl_rate'] : null;
+        $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
         $this->container['max_leverage'] = isset($data['max_leverage']) ? $data['max_leverage'] : null;
+        $this->container['risk_limit'] = isset($data['risk_limit']) ? $data['risk_limit'] : null;
+        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        $this->container['funding_fee'] = isset($data['funding_fee']) ? $data['funding_fee'] : null;
+        $this->container['funding_time'] = isset($data['funding_time']) ? $data['funding_time'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        $this->container['closed_pnl'] = isset($data['closed_pnl']) ? $data['closed_pnl'] : null;
     }
 
     /**
@@ -306,69 +306,6 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['user_id'] === null) {
-            $invalidProperties[] = "'user_id' can't be null";
-        }
-        if ($this->container['position_id'] === null) {
-            $invalidProperties[] = "'position_id' can't be null";
-        }
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
-        }
-        if ($this->container['position_side'] === null) {
-            $invalidProperties[] = "'position_side' can't be null";
-        }
-        if ($this->container['initial_margin'] === null) {
-            $invalidProperties[] = "'initial_margin' can't be null";
-        }
-        if ($this->container['maintenance_margin'] === null) {
-            $invalidProperties[] = "'maintenance_margin' can't be null";
-        }
-        if ($this->container['asset_qty'] === null) {
-            $invalidProperties[] = "'asset_qty' can't be null";
-        }
-        if ($this->container['asset_coin'] === null) {
-            $invalidProperties[] = "'asset_coin' can't be null";
-        }
-        if ($this->container['position_value'] === null) {
-            $invalidProperties[] = "'position_value' can't be null";
-        }
-        if ($this->container['liability'] === null) {
-            $invalidProperties[] = "'liability' can't be null";
-        }
-        if ($this->container['liability_coin'] === null) {
-            $invalidProperties[] = "'liability_coin' can't be null";
-        }
-        if ($this->container['interest'] === null) {
-            $invalidProperties[] = "'interest' can't be null";
-        }
-        if ($this->container['max_position_qty'] === null) {
-            $invalidProperties[] = "'max_position_qty' can't be null";
-        }
-        if ($this->container['entry_price'] === null) {
-            $invalidProperties[] = "'entry_price' can't be null";
-        }
-        if ($this->container['index_price'] === null) {
-            $invalidProperties[] = "'index_price' can't be null";
-        }
-        if ($this->container['upnl'] === null) {
-            $invalidProperties[] = "'upnl' can't be null";
-        }
-        if ($this->container['upnl_rate'] === null) {
-            $invalidProperties[] = "'upnl_rate' can't be null";
-        }
-        if ($this->container['leverage'] === null) {
-            $invalidProperties[] = "'leverage' can't be null";
-        }
-        if ($this->container['max_leverage'] === null) {
-            $invalidProperties[] = "'max_leverage' can't be null";
-        }
-        if ($this->container['create_time'] === null) {
-            $invalidProperties[] = "'create_time' can't be null";
-        }
-        if ($this->container['update_time'] === null) {
-            $invalidProperties[] = "'update_time' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -387,7 +324,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return string
+     * @return string|null
      */
     public function getUserId()
     {
@@ -397,7 +334,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param string $user_id User ID
+     * @param string|null $user_id User ID
      *
      * @return $this
      */
@@ -411,7 +348,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets position_id
      *
-     * @return string
+     * @return string|null
      */
     public function getPositionId()
     {
@@ -421,7 +358,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets position_id
      *
-     * @param string $position_id Leveraged Position ID
+     * @param string|null $position_id Position ID
      *
      * @return $this
      */
@@ -435,7 +372,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets symbol
      *
-     * @return string
+     * @return string|null
      */
     public function getSymbol()
     {
@@ -445,7 +382,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Trading Pair
+     * @param string|null $symbol Currency pair
      *
      * @return $this
      */
@@ -459,7 +396,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets position_side
      *
-     * @return string
+     * @return string|null
      */
     public function getPositionSide()
     {
@@ -469,7 +406,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets position_side
      *
-     * @param string $position_side Position Direction
+     * @param string|null $position_side Position Direction
      *
      * @return $this
      */
@@ -483,7 +420,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets initial_margin
      *
-     * @return string
+     * @return string|null
      */
     public function getInitialMargin()
     {
@@ -493,7 +430,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets initial_margin
      *
-     * @param string $initial_margin Initial position margin
+     * @param string|null $initial_margin Initial Margin
      *
      * @return $this
      */
@@ -507,7 +444,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets maintenance_margin
      *
-     * @return string
+     * @return string|null
      */
     public function getMaintenanceMargin()
     {
@@ -517,7 +454,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets maintenance_margin
      *
-     * @param string $maintenance_margin Position maintenance margin
+     * @param string|null $maintenance_margin Maintenance margin
      *
      * @return $this
      */
@@ -529,49 +466,25 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets asset_qty
+     * Gets position_qty
      *
-     * @return string
+     * @return string|null
      */
-    public function getAssetQty()
+    public function getPositionQty()
     {
-        return $this->container['asset_qty'];
+        return $this->container['position_qty'];
     }
 
     /**
-     * Sets asset_qty
+     * Sets position_qty
      *
-     * @param string $asset_qty Position Asset Quantity
+     * @param string|null $position_qty Position Quantity
      *
      * @return $this
      */
-    public function setAssetQty($asset_qty)
+    public function setPositionQty($position_qty)
     {
-        $this->container['asset_qty'] = $asset_qty;
-
-        return $this;
-    }
-
-    /**
-     * Gets asset_coin
-     *
-     * @return string
-     */
-    public function getAssetCoin()
-    {
-        return $this->container['asset_coin'];
-    }
-
-    /**
-     * Sets asset_coin
-     *
-     * @param string $asset_coin Position Asset Currency
-     *
-     * @return $this
-     */
-    public function setAssetCoin($asset_coin)
-    {
-        $this->container['asset_coin'] = $asset_coin;
+        $this->container['position_qty'] = $position_qty;
 
         return $this;
     }
@@ -579,7 +492,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets position_value
      *
-     * @return string
+     * @return string|null
      */
     public function getPositionValue()
     {
@@ -589,7 +502,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets position_value
      *
-     * @param string $position_value Position Value
+     * @param string|null $position_value Position Value
      *
      * @return $this
      */
@@ -601,153 +514,9 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets liability
-     *
-     * @return string
-     */
-    public function getLiability()
-    {
-        return $this->container['liability'];
-    }
-
-    /**
-     * Sets liability
-     *
-     * @param string $liability Debt Quantity
-     *
-     * @return $this
-     */
-    public function setLiability($liability)
-    {
-        $this->container['liability'] = $liability;
-
-        return $this;
-    }
-
-    /**
-     * Gets liability_coin
-     *
-     * @return string
-     */
-    public function getLiabilityCoin()
-    {
-        return $this->container['liability_coin'];
-    }
-
-    /**
-     * Sets liability_coin
-     *
-     * @param string $liability_coin Debt Currency
-     *
-     * @return $this
-     */
-    public function setLiabilityCoin($liability_coin)
-    {
-        $this->container['liability_coin'] = $liability_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets interest
-     *
-     * @return string
-     */
-    public function getInterest()
-    {
-        return $this->container['interest'];
-    }
-
-    /**
-     * Sets interest
-     *
-     * @param string $interest Deducted Interest
-     *
-     * @return $this
-     */
-    public function setInterest($interest)
-    {
-        $this->container['interest'] = $interest;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_position_qty
-     *
-     * @return string
-     */
-    public function getMaxPositionQty()
-    {
-        return $this->container['max_position_qty'];
-    }
-
-    /**
-     * Sets max_position_qty
-     *
-     * @param string $max_position_qty Max Trade Size
-     *
-     * @return $this
-     */
-    public function setMaxPositionQty($max_position_qty)
-    {
-        $this->container['max_position_qty'] = $max_position_qty;
-
-        return $this;
-    }
-
-    /**
-     * Gets entry_price
-     *
-     * @return string
-     */
-    public function getEntryPrice()
-    {
-        return $this->container['entry_price'];
-    }
-
-    /**
-     * Sets entry_price
-     *
-     * @param string $entry_price Position Cost Price (Average Opening Price)
-     *
-     * @return $this
-     */
-    public function setEntryPrice($entry_price)
-    {
-        $this->container['entry_price'] = $entry_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets index_price
-     *
-     * @return string
-     */
-    public function getIndexPrice()
-    {
-        return $this->container['index_price'];
-    }
-
-    /**
-     * Sets index_price
-     *
-     * @param string $index_price Index price
-     *
-     * @return $this
-     */
-    public function setIndexPrice($index_price)
-    {
-        $this->container['index_price'] = $index_price;
-
-        return $this;
-    }
-
-    /**
      * Gets upnl
      *
-     * @return string
+     * @return string|null
      */
     public function getUpnl()
     {
@@ -757,7 +526,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets upnl
      *
-     * @param string $upnl Unrealized P&L
+     * @param string|null $upnl Unrealized P&L
      *
      * @return $this
      */
@@ -771,7 +540,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets upnl_rate
      *
-     * @return string
+     * @return string|null
      */
     public function getUpnlRate()
     {
@@ -781,7 +550,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets upnl_rate
      *
-     * @param string $upnl_rate Unrealized P&L Ratio
+     * @param string|null $upnl_rate Unrealized P&L Ratio
      *
      * @return $this
      */
@@ -793,9 +562,57 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets entry_price
+     *
+     * @return string|null
+     */
+    public function getEntryPrice()
+    {
+        return $this->container['entry_price'];
+    }
+
+    /**
+     * Sets entry_price
+     *
+     * @param string|null $entry_price Position Average Entry Price
+     *
+     * @return $this
+     */
+    public function setEntryPrice($entry_price)
+    {
+        $this->container['entry_price'] = $entry_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets mark_price
+     *
+     * @return string|null
+     */
+    public function getMarkPrice()
+    {
+        return $this->container['mark_price'];
+    }
+
+    /**
+     * Sets mark_price
+     *
+     * @param string|null $mark_price Mark price
+     *
+     * @return $this
+     */
+    public function setMarkPrice($mark_price)
+    {
+        $this->container['mark_price'] = $mark_price;
+
+        return $this;
+    }
+
+    /**
      * Gets leverage
      *
-     * @return string
+     * @return string|null
      */
     public function getLeverage()
     {
@@ -805,7 +622,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string $leverage Opening Leverage
+     * @param string|null $leverage Position Leverage
      *
      * @return $this
      */
@@ -819,7 +636,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets max_leverage
      *
-     * @return string
+     * @return string|null
      */
     public function getMaxLeverage()
     {
@@ -829,7 +646,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets max_leverage
      *
-     * @param string $max_leverage Maximum leverage
+     * @param string|null $max_leverage Maximum leverage
      *
      * @return $this
      */
@@ -841,9 +658,105 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets risk_limit
+     *
+     * @return string|null
+     */
+    public function getRiskLimit()
+    {
+        return $this->container['risk_limit'];
+    }
+
+    /**
+     * Sets risk_limit
+     *
+     * @param string|null $risk_limit Position risk limit
+     *
+     * @return $this
+     */
+    public function setRiskLimit($risk_limit)
+    {
+        $this->container['risk_limit'] = $risk_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets fee
+     *
+     * @return string|null
+     */
+    public function getFee()
+    {
+        return $this->container['fee'];
+    }
+
+    /**
+     * Sets fee
+     *
+     * @param string|null $fee Position Fee
+     *
+     * @return $this
+     */
+    public function setFee($fee)
+    {
+        $this->container['fee'] = $fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_fee
+     *
+     * @return string|null
+     */
+    public function getFundingFee()
+    {
+        return $this->container['funding_fee'];
+    }
+
+    /**
+     * Sets funding_fee
+     *
+     * @param string|null $funding_fee Position Funding Fee
+     *
+     * @return $this
+     */
+    public function setFundingFee($funding_fee)
+    {
+        $this->container['funding_fee'] = $funding_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_time
+     *
+     * @return string|null
+     */
+    public function getFundingTime()
+    {
+        return $this->container['funding_time'];
+    }
+
+    /**
+     * Sets funding_time
+     *
+     * @param string|null $funding_time Position funding fee collection time (0 indicates it has not been collected yet)
+     *
+     * @return $this
+     */
+    public function setFundingTime($funding_time)
+    {
+        $this->container['funding_time'] = $funding_time;
+
+        return $this;
+    }
+
+    /**
      * Gets create_time
      *
-     * @return string
+     * @return string|null
      */
     public function getCreateTime()
     {
@@ -853,7 +766,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets create_time
      *
-     * @param string $create_time Created time
+     * @param string|null $create_time Position Creation Time
      *
      * @return $this
      */
@@ -867,7 +780,7 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Gets update_time
      *
-     * @return string
+     * @return string|null
      */
     public function getUpdateTime()
     {
@@ -877,13 +790,37 @@ class InlineResponse20038 implements ModelInterface, ArrayAccess
     /**
      * Sets update_time
      *
-     * @param string $update_time Update time
+     * @param string|null $update_time Position Update Time
      *
      * @return $this
      */
     public function setUpdateTime($update_time)
     {
         $this->container['update_time'] = $update_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets closed_pnl
+     *
+     * @return string|null
+     */
+    public function getClosedPnl()
+    {
+        return $this->container['closed_pnl'];
+    }
+
+    /**
+     * Sets closed_pnl
+     *
+     * @param string|null $closed_pnl Realized PnL
+     *
+     * @return $this
+     */
+    public function setClosedPnl($closed_pnl)
+    {
+        $this->container['closed_pnl'] = $closed_pnl;
 
         return $this;
     }

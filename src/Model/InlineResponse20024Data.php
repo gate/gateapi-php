@@ -54,7 +54,7 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'file_key' => 'string'
+        'srvtm' => 'int'
     ];
 
     /**
@@ -63,7 +63,7 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'file_key' => null
+        'srvtm' => null
     ];
 
     /**
@@ -93,7 +93,7 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'file_key' => 'file_key'
+        'srvtm' => 'SRVTM'
     ];
 
     /**
@@ -102,7 +102,7 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'file_key' => 'setFileKey'
+        'srvtm' => 'setSrvtm'
     ];
 
     /**
@@ -111,7 +111,7 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'file_key' => 'getFileKey'
+        'srvtm' => 'getSrvtm'
     ];
 
     /**
@@ -174,7 +174,7 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
+        $this->container['srvtm'] = isset($data['srvtm']) ? $data['srvtm'] : null;
     }
 
     /**
@@ -186,8 +186,8 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['file_key'] === null) {
-            $invalidProperties[] = "'file_key' can't be null";
+        if ($this->container['srvtm'] === null) {
+            $invalidProperties[] = "'srvtm' can't be null";
         }
         return $invalidProperties;
     }
@@ -205,25 +205,25 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets file_key
+     * Gets srvtm
      *
-     * @return string
+     * @return int
      */
-    public function getFileKey()
+    public function getSrvtm()
     {
-        return $this->container['file_key'];
+        return $this->container['srvtm'];
     }
 
     /**
-     * Sets file_key
+     * Sets srvtm
      *
-     * @param string $file_key File key
+     * @param int $srvtm Timestamp when message was successfully sent (current timestamp)
      *
      * @return $this
      */
-    public function setFileKey($file_key)
+    public function setSrvtm($srvtm)
     {
-        $this->container['file_key'] = $file_key;
+        $this->container['srvtm'] = $srvtm;
 
         return $this;
     }

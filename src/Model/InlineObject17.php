@@ -54,9 +54,9 @@ class InlineObject17 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'txid' => 'int',
-        'lastreceived' => 'int',
-        'firstreceived' => 'int'
+        'asset' => 'string',
+        'fiat_unit' => 'string',
+        'trade_type' => 'string'
     ];
 
     /**
@@ -65,9 +65,9 @@ class InlineObject17 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'txid' => null,
-        'lastreceived' => null,
-        'firstreceived' => null
+        'asset' => null,
+        'fiat_unit' => null,
+        'trade_type' => null
     ];
 
     /**
@@ -97,9 +97,9 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'txid' => 'txid',
-        'lastreceived' => 'lastreceived',
-        'firstreceived' => 'firstreceived'
+        'asset' => 'asset',
+        'fiat_unit' => 'fiat_unit',
+        'trade_type' => 'trade_type'
     ];
 
     /**
@@ -108,9 +108,9 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'txid' => 'setTxid',
-        'lastreceived' => 'setLastreceived',
-        'firstreceived' => 'setFirstreceived'
+        'asset' => 'setAsset',
+        'fiat_unit' => 'setFiatUnit',
+        'trade_type' => 'setTradeType'
     ];
 
     /**
@@ -119,9 +119,9 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'txid' => 'getTxid',
-        'lastreceived' => 'getLastreceived',
-        'firstreceived' => 'getFirstreceived'
+        'asset' => 'getAsset',
+        'fiat_unit' => 'getFiatUnit',
+        'trade_type' => 'getTradeType'
     ];
 
     /**
@@ -184,9 +184,9 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['lastreceived'] = isset($data['lastreceived']) ? $data['lastreceived'] : null;
-        $this->container['firstreceived'] = isset($data['firstreceived']) ? $data['firstreceived'] : null;
+        $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        $this->container['fiat_unit'] = isset($data['fiat_unit']) ? $data['fiat_unit'] : null;
+        $this->container['trade_type'] = isset($data['trade_type']) ? $data['trade_type'] : null;
     }
 
     /**
@@ -198,8 +198,14 @@ class InlineObject17 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['txid'] === null) {
-            $invalidProperties[] = "'txid' can't be null";
+        if ($this->container['asset'] === null) {
+            $invalidProperties[] = "'asset' can't be null";
+        }
+        if ($this->container['fiat_unit'] === null) {
+            $invalidProperties[] = "'fiat_unit' can't be null";
+        }
+        if ($this->container['trade_type'] === null) {
+            $invalidProperties[] = "'trade_type' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,73 +223,73 @@ class InlineObject17 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets txid
+     * Gets asset
      *
-     * @return int
+     * @return string
      */
-    public function getTxid()
+    public function getAsset()
     {
-        return $this->container['txid'];
+        return $this->container['asset'];
     }
 
     /**
-     * Sets txid
+     * Sets asset
      *
-     * @param int $txid Order ID
+     * @param string $asset Cryptocurrency
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setAsset($asset)
     {
-        $this->container['txid'] = $txid;
+        $this->container['asset'] = $asset;
 
         return $this;
     }
 
     /**
-     * Gets lastreceived
+     * Gets fiat_unit
      *
-     * @return int|null
+     * @return string
      */
-    public function getLastreceived()
+    public function getFiatUnit()
     {
-        return $this->container['lastreceived'];
+        return $this->container['fiat_unit'];
     }
 
     /**
-     * Sets lastreceived
+     * Sets fiat_unit
      *
-     * @param int|null $lastreceived Pagination timestamp (forward)
+     * @param string $fiat_unit Fiat currency
      *
      * @return $this
      */
-    public function setLastreceived($lastreceived)
+    public function setFiatUnit($fiat_unit)
     {
-        $this->container['lastreceived'] = $lastreceived;
+        $this->container['fiat_unit'] = $fiat_unit;
 
         return $this;
     }
 
     /**
-     * Gets firstreceived
+     * Gets trade_type
      *
-     * @return int|null
+     * @return string
      */
-    public function getFirstreceived()
+    public function getTradeType()
     {
-        return $this->container['firstreceived'];
+        return $this->container['trade_type'];
     }
 
     /**
-     * Sets firstreceived
+     * Sets trade_type
      *
-     * @param int|null $firstreceived Pagination timestamp (backward)
+     * @param string $trade_type Buy/Sell, sell/buy
      *
      * @return $this
      */
-    public function setFirstreceived($firstreceived)
+    public function setTradeType($trade_type)
     {
-        $this->container['firstreceived'] = $firstreceived;
+        $this->container['trade_type'] = $trade_type;
 
         return $this;
     }

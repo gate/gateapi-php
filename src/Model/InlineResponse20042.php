@@ -65,10 +65,12 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
         'max_position_qty' => 'string',
         'closed_qty' => 'string',
         'closed_value' => 'string',
+        'fee' => 'string',
         'liq_fee' => 'string',
+        'funding_fee' => 'string',
         'position_side' => 'string',
+        'position_mode' => 'string',
         'leverage' => 'string',
-        'interest' => 'string',
         'business_type' => 'string',
         'create_time' => 'string',
         'update_time' => 'string'
@@ -91,10 +93,12 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
         'max_position_qty' => null,
         'closed_qty' => null,
         'closed_value' => null,
+        'fee' => null,
         'liq_fee' => null,
+        'funding_fee' => null,
         'position_side' => null,
+        'position_mode' => null,
         'leverage' => null,
-        'interest' => null,
         'business_type' => null,
         'create_time' => null,
         'update_time' => null
@@ -138,10 +142,12 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
         'max_position_qty' => 'max_position_qty',
         'closed_qty' => 'closed_qty',
         'closed_value' => 'closed_value',
+        'fee' => 'fee',
         'liq_fee' => 'liq_fee',
+        'funding_fee' => 'funding_fee',
         'position_side' => 'position_side',
+        'position_mode' => 'position_mode',
         'leverage' => 'leverage',
-        'interest' => 'interest',
         'business_type' => 'business_type',
         'create_time' => 'create_time',
         'update_time' => 'update_time'
@@ -164,10 +170,12 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
         'max_position_qty' => 'setMaxPositionQty',
         'closed_qty' => 'setClosedQty',
         'closed_value' => 'setClosedValue',
+        'fee' => 'setFee',
         'liq_fee' => 'setLiqFee',
+        'funding_fee' => 'setFundingFee',
         'position_side' => 'setPositionSide',
+        'position_mode' => 'setPositionMode',
         'leverage' => 'setLeverage',
-        'interest' => 'setInterest',
         'business_type' => 'setBusinessType',
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime'
@@ -190,10 +198,12 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
         'max_position_qty' => 'getMaxPositionQty',
         'closed_qty' => 'getClosedQty',
         'closed_value' => 'getClosedValue',
+        'fee' => 'getFee',
         'liq_fee' => 'getLiqFee',
+        'funding_fee' => 'getFundingFee',
         'position_side' => 'getPositionSide',
+        'position_mode' => 'getPositionMode',
         'leverage' => 'getLeverage',
-        'interest' => 'getInterest',
         'business_type' => 'getBusinessType',
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime'
@@ -270,10 +280,12 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
         $this->container['max_position_qty'] = isset($data['max_position_qty']) ? $data['max_position_qty'] : null;
         $this->container['closed_qty'] = isset($data['closed_qty']) ? $data['closed_qty'] : null;
         $this->container['closed_value'] = isset($data['closed_value']) ? $data['closed_value'] : null;
+        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
         $this->container['liq_fee'] = isset($data['liq_fee']) ? $data['liq_fee'] : null;
+        $this->container['funding_fee'] = isset($data['funding_fee']) ? $data['funding_fee'] : null;
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
-        $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
@@ -288,9 +300,6 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['interest'] === null) {
-            $invalidProperties[] = "'interest' can't be null";
-        }
         if ($this->container['business_type'] === null) {
             $invalidProperties[] = "'business_type' can't be null";
         }
@@ -574,6 +583,30 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets fee
+     *
+     * @return string|null
+     */
+    public function getFee()
+    {
+        return $this->container['fee'];
+    }
+
+    /**
+     * Sets fee
+     *
+     * @param string|null $fee Position Accumulated Fees
+     *
+     * @return $this
+     */
+    public function setFee($fee)
+    {
+        $this->container['fee'] = $fee;
+
+        return $this;
+    }
+
+    /**
      * Gets liq_fee
      *
      * @return string|null
@@ -593,6 +626,30 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
     public function setLiqFee($liq_fee)
     {
         $this->container['liq_fee'] = $liq_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_fee
+     *
+     * @return string|null
+     */
+    public function getFundingFee()
+    {
+        return $this->container['funding_fee'];
+    }
+
+    /**
+     * Sets funding_fee
+     *
+     * @param string|null $funding_fee Funding Fee
+     *
+     * @return $this
+     */
+    public function setFundingFee($funding_fee)
+    {
+        $this->container['funding_fee'] = $funding_fee;
 
         return $this;
     }
@@ -622,6 +679,30 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets position_mode
+     *
+     * @return string|null
+     */
+    public function getPositionMode()
+    {
+        return $this->container['position_mode'];
+    }
+
+    /**
+     * Sets position_mode
+     *
+     * @param string|null $position_mode Position Mode at Close
+     *
+     * @return $this
+     */
+    public function setPositionMode($position_mode)
+    {
+        $this->container['position_mode'] = $position_mode;
+
+        return $this;
+    }
+
+    /**
      * Gets leverage
      *
      * @return string|null
@@ -646,30 +727,6 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets interest
-     *
-     * @return string
-     */
-    public function getInterest()
-    {
-        return $this->container['interest'];
-    }
-
-    /**
-     * Sets interest
-     *
-     * @param string $interest Total Deducted Interest
-     *
-     * @return $this
-     */
-    public function setInterest($interest)
-    {
-        $this->container['interest'] = $interest;
-
-        return $this;
-    }
-
-    /**
      * Gets business_type
      *
      * @return string
@@ -682,7 +739,7 @@ class InlineResponse20042 implements ModelInterface, ArrayAccess
     /**
      * Sets business_type
      *
-     * @param string $business_type Position Business Type
+     * @param string $business_type Business Type
      *
      * @return $this
      */

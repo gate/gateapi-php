@@ -54,8 +54,9 @@ class InlineObject26 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'leverage' => 'string'
+        'position_mode' => 'string',
+        'account_mode' => 'string',
+        'exchange_type' => 'string'
     ];
 
     /**
@@ -64,8 +65,9 @@ class InlineObject26 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'leverage' => null
+        'position_mode' => null,
+        'account_mode' => null,
+        'exchange_type' => null
     ];
 
     /**
@@ -95,8 +97,9 @@ class InlineObject26 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'leverage' => 'leverage'
+        'position_mode' => 'position_mode',
+        'account_mode' => 'account_mode',
+        'exchange_type' => 'exchange_type'
     ];
 
     /**
@@ -105,8 +108,9 @@ class InlineObject26 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'leverage' => 'setLeverage'
+        'position_mode' => 'setPositionMode',
+        'account_mode' => 'setAccountMode',
+        'exchange_type' => 'setExchangeType'
     ];
 
     /**
@@ -115,8 +119,9 @@ class InlineObject26 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'leverage' => 'getLeverage'
+        'position_mode' => 'getPositionMode',
+        'account_mode' => 'getAccountMode',
+        'exchange_type' => 'getExchangeType'
     ];
 
     /**
@@ -179,8 +184,9 @@ class InlineObject26 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
     }
 
     /**
@@ -192,12 +198,6 @@ class InlineObject26 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
-        }
-        if ($this->container['leverage'] === null) {
-            $invalidProperties[] = "'leverage' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -214,49 +214,73 @@ class InlineObject26 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets symbol
+     * Gets position_mode
      *
-     * @return string
+     * @return string|null
      */
-    public function getSymbol()
+    public function getPositionMode()
     {
-        return $this->container['symbol'];
+        return $this->container['position_mode'];
     }
 
     /**
-     * Sets symbol
+     * Sets position_mode
      *
-     * @param string $symbol Currency pair
+     * @param string|null $position_mode Futures position mode (SINGLE/DUAL)
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setPositionMode($position_mode)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['position_mode'] = $position_mode;
 
         return $this;
     }
 
     /**
-     * Gets leverage
+     * Gets account_mode
      *
-     * @return string
+     * @return string|null
      */
-    public function getLeverage()
+    public function getAccountMode()
     {
-        return $this->container['leverage'];
+        return $this->container['account_mode'];
     }
 
     /**
-     * Sets leverage
+     * Sets account_mode
      *
-     * @param string $leverage leverage
+     * @param string|null $account_mode Account mode (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
      *
      * @return $this
      */
-    public function setLeverage($leverage)
+    public function setAccountMode($account_mode)
     {
-        $this->container['leverage'] = $leverage;
+        $this->container['account_mode'] = $account_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_type
+     *
+     * @return string|null
+     */
+    public function getExchangeType()
+    {
+        return $this->container['exchange_type'];
+    }
+
+    /**
+     * Sets exchange_type
+     *
+     * @param string|null $exchange_type Exchange (BINANCE/OKX/GATE/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     *
+     * @return $this
+     */
+    public function setExchangeType($exchange_type)
+    {
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }

@@ -54,10 +54,8 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
-        'exchange_type' => 'string',
-        'hour_interest_rate' => 'string',
-        'time' => 'string'
+        'symbol' => 'string',
+        'leverage' => 'string'
     ];
 
     /**
@@ -66,10 +64,8 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
-        'exchange_type' => null,
-        'hour_interest_rate' => null,
-        'time' => null
+        'symbol' => null,
+        'leverage' => null
     ];
 
     /**
@@ -99,10 +95,8 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
-        'exchange_type' => 'exchange_type',
-        'hour_interest_rate' => 'hour_interest_rate',
-        'time' => 'time'
+        'symbol' => 'symbol',
+        'leverage' => 'leverage'
     ];
 
     /**
@@ -111,10 +105,8 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
-        'exchange_type' => 'setExchangeType',
-        'hour_interest_rate' => 'setHourInterestRate',
-        'time' => 'setTime'
+        'symbol' => 'setSymbol',
+        'leverage' => 'setLeverage'
     ];
 
     /**
@@ -123,10 +115,8 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
-        'exchange_type' => 'getExchangeType',
-        'hour_interest_rate' => 'getHourInterestRate',
-        'time' => 'getTime'
+        'symbol' => 'getSymbol',
+        'leverage' => 'getLeverage'
     ];
 
     /**
@@ -189,10 +179,8 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['hour_interest_rate'] = isset($data['hour_interest_rate']) ? $data['hour_interest_rate'] : null;
-        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
     }
 
     /**
@@ -204,17 +192,11 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
         }
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
-        }
-        if ($this->container['hour_interest_rate'] === null) {
-            $invalidProperties[] = "'hour_interest_rate' can't be null";
-        }
-        if ($this->container['time'] === null) {
-            $invalidProperties[] = "'time' can't be null";
+        if ($this->container['leverage'] === null) {
+            $invalidProperties[] = "'leverage' can't be null";
         }
         return $invalidProperties;
     }
@@ -232,97 +214,49 @@ class InlineResponse20035 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
+     * Gets symbol
      *
      * @return string
      */
-    public function getCoin()
+    public function getSymbol()
     {
-        return $this->container['coin'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets coin
+     * Sets symbol
      *
-     * @param string $coin Currency
+     * @param string $symbol Currency pair
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setSymbol($symbol)
     {
-        $this->container['coin'] = $coin;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets exchange_type
+     * Gets leverage
      *
      * @return string
      */
-    public function getExchangeType()
+    public function getLeverage()
     {
-        return $this->container['exchange_type'];
+        return $this->container['leverage'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets leverage
      *
-     * @param string $exchange_type Exchange
+     * @param string $leverage leverage
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setLeverage($leverage)
     {
-        $this->container['exchange_type'] = $exchange_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets hour_interest_rate
-     *
-     * @return string
-     */
-    public function getHourInterestRate()
-    {
-        return $this->container['hour_interest_rate'];
-    }
-
-    /**
-     * Sets hour_interest_rate
-     *
-     * @param string $hour_interest_rate Hourly Interest Rate
-     *
-     * @return $this
-     */
-    public function setHourInterestRate($hour_interest_rate)
-    {
-        $this->container['hour_interest_rate'] = $hour_interest_rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets time
-     *
-     * @return string
-     */
-    public function getTime()
-    {
-        return $this->container['time'];
-    }
-
-    /**
-     * Sets time
-     *
-     * @param string $time Millisecond Timestamp
-     *
-     * @return $this
-     */
-    public function setTime($time)
-    {
-        $this->container['time'] = $time;
+        $this->container['leverage'] = $leverage;
 
         return $this;
     }

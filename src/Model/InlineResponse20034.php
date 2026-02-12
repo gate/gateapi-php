@@ -54,8 +54,20 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'leverage' => 'string'
+        'user_id' => 'string',
+        'available_margin' => 'string',
+        'margin_balance' => 'string',
+        'initial_margin' => 'string',
+        'maintenance_margin' => 'string',
+        'initial_margin_rate' => 'string',
+        'maintenance_margin_rate' => 'string',
+        'position_mode' => 'string',
+        'account_limit' => 'string',
+        'create_time' => 'string',
+        'update_time' => 'string',
+        'account_mode' => 'string',
+        'exchange_type' => 'string',
+        'assets' => '\GateApi\Model\InlineResponse20034Assets[]'
     ];
 
     /**
@@ -64,8 +76,20 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'leverage' => null
+        'user_id' => null,
+        'available_margin' => null,
+        'margin_balance' => null,
+        'initial_margin' => null,
+        'maintenance_margin' => null,
+        'initial_margin_rate' => null,
+        'maintenance_margin_rate' => null,
+        'position_mode' => null,
+        'account_limit' => null,
+        'create_time' => null,
+        'update_time' => null,
+        'account_mode' => null,
+        'exchange_type' => null,
+        'assets' => null
     ];
 
     /**
@@ -95,8 +119,20 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'leverage' => 'leverage'
+        'user_id' => 'user_id',
+        'available_margin' => 'available_margin',
+        'margin_balance' => 'margin_balance',
+        'initial_margin' => 'initial_margin',
+        'maintenance_margin' => 'maintenance_margin',
+        'initial_margin_rate' => 'initial_margin_rate',
+        'maintenance_margin_rate' => 'maintenance_margin_rate',
+        'position_mode' => 'position_mode',
+        'account_limit' => 'account_limit',
+        'create_time' => 'create_time',
+        'update_time' => 'update_time',
+        'account_mode' => 'account_mode',
+        'exchange_type' => 'exchange_type',
+        'assets' => 'assets'
     ];
 
     /**
@@ -105,8 +141,20 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'leverage' => 'setLeverage'
+        'user_id' => 'setUserId',
+        'available_margin' => 'setAvailableMargin',
+        'margin_balance' => 'setMarginBalance',
+        'initial_margin' => 'setInitialMargin',
+        'maintenance_margin' => 'setMaintenanceMargin',
+        'initial_margin_rate' => 'setInitialMarginRate',
+        'maintenance_margin_rate' => 'setMaintenanceMarginRate',
+        'position_mode' => 'setPositionMode',
+        'account_limit' => 'setAccountLimit',
+        'create_time' => 'setCreateTime',
+        'update_time' => 'setUpdateTime',
+        'account_mode' => 'setAccountMode',
+        'exchange_type' => 'setExchangeType',
+        'assets' => 'setAssets'
     ];
 
     /**
@@ -115,8 +163,20 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'leverage' => 'getLeverage'
+        'user_id' => 'getUserId',
+        'available_margin' => 'getAvailableMargin',
+        'margin_balance' => 'getMarginBalance',
+        'initial_margin' => 'getInitialMargin',
+        'maintenance_margin' => 'getMaintenanceMargin',
+        'initial_margin_rate' => 'getInitialMarginRate',
+        'maintenance_margin_rate' => 'getMaintenanceMarginRate',
+        'position_mode' => 'getPositionMode',
+        'account_limit' => 'getAccountLimit',
+        'create_time' => 'getCreateTime',
+        'update_time' => 'getUpdateTime',
+        'account_mode' => 'getAccountMode',
+        'exchange_type' => 'getExchangeType',
+        'assets' => 'getAssets'
     ];
 
     /**
@@ -179,8 +239,20 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['available_margin'] = isset($data['available_margin']) ? $data['available_margin'] : null;
+        $this->container['margin_balance'] = isset($data['margin_balance']) ? $data['margin_balance'] : null;
+        $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
+        $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
+        $this->container['initial_margin_rate'] = isset($data['initial_margin_rate']) ? $data['initial_margin_rate'] : null;
+        $this->container['maintenance_margin_rate'] = isset($data['maintenance_margin_rate']) ? $data['maintenance_margin_rate'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        $this->container['account_limit'] = isset($data['account_limit']) ? $data['account_limit'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['assets'] = isset($data['assets']) ? $data['assets'] : null;
     }
 
     /**
@@ -192,11 +264,38 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
         }
-        if ($this->container['leverage'] === null) {
-            $invalidProperties[] = "'leverage' can't be null";
+        if ($this->container['available_margin'] === null) {
+            $invalidProperties[] = "'available_margin' can't be null";
+        }
+        if ($this->container['margin_balance'] === null) {
+            $invalidProperties[] = "'margin_balance' can't be null";
+        }
+        if ($this->container['initial_margin'] === null) {
+            $invalidProperties[] = "'initial_margin' can't be null";
+        }
+        if ($this->container['maintenance_margin'] === null) {
+            $invalidProperties[] = "'maintenance_margin' can't be null";
+        }
+        if ($this->container['initial_margin_rate'] === null) {
+            $invalidProperties[] = "'initial_margin_rate' can't be null";
+        }
+        if ($this->container['maintenance_margin_rate'] === null) {
+            $invalidProperties[] = "'maintenance_margin_rate' can't be null";
+        }
+        if ($this->container['position_mode'] === null) {
+            $invalidProperties[] = "'position_mode' can't be null";
+        }
+        if ($this->container['create_time'] === null) {
+            $invalidProperties[] = "'create_time' can't be null";
+        }
+        if ($this->container['update_time'] === null) {
+            $invalidProperties[] = "'update_time' can't be null";
+        }
+        if ($this->container['assets'] === null) {
+            $invalidProperties[] = "'assets' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +313,337 @@ class InlineResponse20034 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets symbol
+     * Gets user_id
      *
      * @return string
      */
-    public function getSymbol()
+    public function getUserId()
     {
-        return $this->container['symbol'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets symbol
+     * Sets user_id
      *
-     * @param string $symbol Currency pair
+     * @param string $user_id User ID
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setUserId($user_id)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }
 
     /**
-     * Gets leverage
+     * Gets available_margin
      *
      * @return string
      */
-    public function getLeverage()
+    public function getAvailableMargin()
     {
-        return $this->container['leverage'];
+        return $this->container['available_margin'];
     }
 
     /**
-     * Sets leverage
+     * Sets available_margin
      *
-     * @param string $leverage leverage
+     * @param string $available_margin Available Margin
      *
      * @return $this
      */
-    public function setLeverage($leverage)
+    public function setAvailableMargin($available_margin)
     {
-        $this->container['leverage'] = $leverage;
+        $this->container['available_margin'] = $available_margin;
+
+        return $this;
+    }
+
+    /**
+     * Gets margin_balance
+     *
+     * @return string
+     */
+    public function getMarginBalance()
+    {
+        return $this->container['margin_balance'];
+    }
+
+    /**
+     * Sets margin_balance
+     *
+     * @param string $margin_balance marginbalance
+     *
+     * @return $this
+     */
+    public function setMarginBalance($margin_balance)
+    {
+        $this->container['margin_balance'] = $margin_balance;
+
+        return $this;
+    }
+
+    /**
+     * Gets initial_margin
+     *
+     * @return string
+     */
+    public function getInitialMargin()
+    {
+        return $this->container['initial_margin'];
+    }
+
+    /**
+     * Sets initial_margin
+     *
+     * @param string $initial_margin Initial Margin
+     *
+     * @return $this
+     */
+    public function setInitialMargin($initial_margin)
+    {
+        $this->container['initial_margin'] = $initial_margin;
+
+        return $this;
+    }
+
+    /**
+     * Gets maintenance_margin
+     *
+     * @return string
+     */
+    public function getMaintenanceMargin()
+    {
+        return $this->container['maintenance_margin'];
+    }
+
+    /**
+     * Sets maintenance_margin
+     *
+     * @param string $maintenance_margin Maintenance margin
+     *
+     * @return $this
+     */
+    public function setMaintenanceMargin($maintenance_margin)
+    {
+        $this->container['maintenance_margin'] = $maintenance_margin;
+
+        return $this;
+    }
+
+    /**
+     * Gets initial_margin_rate
+     *
+     * @return string
+     */
+    public function getInitialMarginRate()
+    {
+        return $this->container['initial_margin_rate'];
+    }
+
+    /**
+     * Sets initial_margin_rate
+     *
+     * @param string $initial_margin_rate Initial margin rate
+     *
+     * @return $this
+     */
+    public function setInitialMarginRate($initial_margin_rate)
+    {
+        $this->container['initial_margin_rate'] = $initial_margin_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets maintenance_margin_rate
+     *
+     * @return string
+     */
+    public function getMaintenanceMarginRate()
+    {
+        return $this->container['maintenance_margin_rate'];
+    }
+
+    /**
+     * Sets maintenance_margin_rate
+     *
+     * @param string $maintenance_margin_rate Maintenance margin rate
+     *
+     * @return $this
+     */
+    public function setMaintenanceMarginRate($maintenance_margin_rate)
+    {
+        $this->container['maintenance_margin_rate'] = $maintenance_margin_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets position_mode
+     *
+     * @return string
+     */
+    public function getPositionMode()
+    {
+        return $this->container['position_mode'];
+    }
+
+    /**
+     * Sets position_mode
+     *
+     * @param string $position_mode Contract Position Mode
+     *
+     * @return $this
+     */
+    public function setPositionMode($position_mode)
+    {
+        $this->container['position_mode'] = $position_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_limit
+     *
+     * @return string|null
+     */
+    public function getAccountLimit()
+    {
+        return $this->container['account_limit'];
+    }
+
+    /**
+     * Sets account_limit
+     *
+     * @param string|null $account_limit Account limit
+     *
+     * @return $this
+     */
+    public function setAccountLimit($account_limit)
+    {
+        $this->container['account_limit'] = $account_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_time
+     *
+     * @return string
+     */
+    public function getCreateTime()
+    {
+        return $this->container['create_time'];
+    }
+
+    /**
+     * Sets create_time
+     *
+     * @param string $create_time Created time
+     *
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->container['create_time'] = $create_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_time
+     *
+     * @return string
+     */
+    public function getUpdateTime()
+    {
+        return $this->container['update_time'];
+    }
+
+    /**
+     * Sets update_time
+     *
+     * @param string $update_time Update time
+     *
+     * @return $this
+     */
+    public function setUpdateTime($update_time)
+    {
+        $this->container['update_time'] = $update_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_mode
+     *
+     * @return string|null
+     */
+    public function getAccountMode()
+    {
+        return $this->container['account_mode'];
+    }
+
+    /**
+     * Sets account_mode
+     *
+     * @param string|null $account_mode Account Mode. CROSS_EXCHANGE: Cross-Exchange Mode; ISOLATED_EXCHANGE: Split-Exchange Mode
+     *
+     * @return $this
+     */
+    public function setAccountMode($account_mode)
+    {
+        $this->container['account_mode'] = $account_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_type
+     *
+     * @return string|null
+     */
+    public function getExchangeType()
+    {
+        return $this->container['exchange_type'];
+    }
+
+    /**
+     * Sets exchange_type
+     *
+     * @param string|null $exchange_type Exchange Type. When account_mode is CROSS_EXCHANGE, it must be CROSSEX; otherwise, it is another exchange.
+     *
+     * @return $this
+     */
+    public function setExchangeType($exchange_type)
+    {
+        $this->container['exchange_type'] = $exchange_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets assets
+     *
+     * @return \GateApi\Model\InlineResponse20034Assets[]
+     */
+    public function getAssets()
+    {
+        return $this->container['assets'];
+    }
+
+    /**
+     * Sets assets
+     *
+     * @param \GateApi\Model\InlineResponse20034Assets[] $assets assets
+     *
+     * @return $this
+     */
+    public function setAssets($assets)
+    {
+        $this->container['assets'] = $assets;
 
         return $this;
     }

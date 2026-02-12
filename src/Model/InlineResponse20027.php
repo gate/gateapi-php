@@ -54,17 +54,11 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'text' => 'string',
-        'from_account_type' => 'string',
-        'to_account_type' => 'string',
         'coin' => 'string',
-        'amount' => 'string',
-        'actual_receive' => 'string',
-        'status' => 'string',
-        'fail_reason' => 'string',
-        'create_time' => 'int',
-        'update_time' => 'int'
+        'min_trans_amount' => 'float',
+        'est_fee' => 'float',
+        'precision' => 'int',
+        'is_disabled' => 'int'
     ];
 
     /**
@@ -73,17 +67,11 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'text' => null,
-        'from_account_type' => null,
-        'to_account_type' => null,
         'coin' => null,
-        'amount' => null,
-        'actual_receive' => null,
-        'status' => null,
-        'fail_reason' => null,
-        'create_time' => null,
-        'update_time' => null
+        'min_trans_amount' => null,
+        'est_fee' => null,
+        'precision' => null,
+        'is_disabled' => null
     ];
 
     /**
@@ -113,17 +101,11 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'text' => 'text',
-        'from_account_type' => 'from_account_type',
-        'to_account_type' => 'to_account_type',
         'coin' => 'coin',
-        'amount' => 'amount',
-        'actual_receive' => 'actual_receive',
-        'status' => 'status',
-        'fail_reason' => 'fail_reason',
-        'create_time' => 'create_time',
-        'update_time' => 'update_time'
+        'min_trans_amount' => 'min_trans_amount',
+        'est_fee' => 'est_fee',
+        'precision' => 'precision',
+        'is_disabled' => 'is_disabled'
     ];
 
     /**
@@ -132,17 +114,11 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'text' => 'setText',
-        'from_account_type' => 'setFromAccountType',
-        'to_account_type' => 'setToAccountType',
         'coin' => 'setCoin',
-        'amount' => 'setAmount',
-        'actual_receive' => 'setActualReceive',
-        'status' => 'setStatus',
-        'fail_reason' => 'setFailReason',
-        'create_time' => 'setCreateTime',
-        'update_time' => 'setUpdateTime'
+        'min_trans_amount' => 'setMinTransAmount',
+        'est_fee' => 'setEstFee',
+        'precision' => 'setPrecision',
+        'is_disabled' => 'setIsDisabled'
     ];
 
     /**
@@ -151,17 +127,11 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'text' => 'getText',
-        'from_account_type' => 'getFromAccountType',
-        'to_account_type' => 'getToAccountType',
         'coin' => 'getCoin',
-        'amount' => 'getAmount',
-        'actual_receive' => 'getActualReceive',
-        'status' => 'getStatus',
-        'fail_reason' => 'getFailReason',
-        'create_time' => 'getCreateTime',
-        'update_time' => 'getUpdateTime'
+        'min_trans_amount' => 'getMinTransAmount',
+        'est_fee' => 'getEstFee',
+        'precision' => 'getPrecision',
+        'is_disabled' => 'getIsDisabled'
     ];
 
     /**
@@ -224,17 +194,11 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
-        $this->container['from_account_type'] = isset($data['from_account_type']) ? $data['from_account_type'] : null;
-        $this->container['to_account_type'] = isset($data['to_account_type']) ? $data['to_account_type'] : null;
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['actual_receive'] = isset($data['actual_receive']) ? $data['actual_receive'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['fail_reason'] = isset($data['fail_reason']) ? $data['fail_reason'] : null;
-        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
-        $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        $this->container['min_trans_amount'] = isset($data['min_trans_amount']) ? $data['min_trans_amount'] : null;
+        $this->container['est_fee'] = isset($data['est_fee']) ? $data['est_fee'] : null;
+        $this->container['precision'] = isset($data['precision']) ? $data['precision'] : null;
+        $this->container['is_disabled'] = isset($data['is_disabled']) ? $data['is_disabled'] : null;
     }
 
     /**
@@ -246,32 +210,20 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
-        }
-        if ($this->container['from_account_type'] === null) {
-            $invalidProperties[] = "'from_account_type' can't be null";
-        }
-        if ($this->container['to_account_type'] === null) {
-            $invalidProperties[] = "'to_account_type' can't be null";
-        }
         if ($this->container['coin'] === null) {
             $invalidProperties[] = "'coin' can't be null";
         }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
+        if ($this->container['min_trans_amount'] === null) {
+            $invalidProperties[] = "'min_trans_amount' can't be null";
         }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['est_fee'] === null) {
+            $invalidProperties[] = "'est_fee' can't be null";
         }
-        if ($this->container['create_time'] === null) {
-            $invalidProperties[] = "'create_time' can't be null";
+        if ($this->container['precision'] === null) {
+            $invalidProperties[] = "'precision' can't be null";
         }
-        if ($this->container['update_time'] === null) {
-            $invalidProperties[] = "'update_time' can't be null";
+        if ($this->container['is_disabled'] === null) {
+            $invalidProperties[] = "'is_disabled' can't be null";
         }
         return $invalidProperties;
     }
@@ -287,102 +239,6 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id Order ID
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string $text Client Custom ID
-     *
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->container['text'] = $text;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_account_type
-     *
-     * @return string
-     */
-    public function getFromAccountType()
-    {
-        return $this->container['from_account_type'];
-    }
-
-    /**
-     * Sets from_account_type
-     *
-     * @param string $from_account_type Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
-     *
-     * @return $this
-     */
-    public function setFromAccountType($from_account_type)
-    {
-        $this->container['from_account_type'] = $from_account_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets to_account_type
-     *
-     * @return string
-     */
-    public function getToAccountType()
-    {
-        return $this->container['to_account_type'];
-    }
-
-    /**
-     * Sets to_account_type
-     *
-     * @param string $to_account_type to_account_type
-     *
-     * @return $this
-     */
-    public function setToAccountType($to_account_type)
-    {
-        $this->container['to_account_type'] = $to_account_type;
-
-        return $this;
-    }
 
     /**
      * Gets coin
@@ -409,145 +265,97 @@ class InlineResponse20027 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets amount
+     * Gets min_trans_amount
      *
-     * @return string
+     * @return float
      */
-    public function getAmount()
+    public function getMinTransAmount()
     {
-        return $this->container['amount'];
+        return $this->container['min_trans_amount'];
     }
 
     /**
-     * Sets amount
+     * Sets min_trans_amount
      *
-     * @param string $amount Transfer amount, the amount requested for the transfer
+     * @param float $min_trans_amount Minimum Transfer Quantity (including estimated fees)
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setMinTransAmount($min_trans_amount)
     {
-        $this->container['amount'] = $amount;
+        $this->container['min_trans_amount'] = $min_trans_amount;
 
         return $this;
     }
 
     /**
-     * Gets actual_receive
+     * Gets est_fee
      *
-     * @return string|null
+     * @return float
      */
-    public function getActualReceive()
+    public function getEstFee()
     {
-        return $this->container['actual_receive'];
+        return $this->container['est_fee'];
     }
 
     /**
-     * Sets actual_receive
+     * Sets est_fee
      *
-     * @param string|null $actual_receive Actual credited amount (has a value when status = SUCCESS; empty for other statuses)
+     * @param float $est_fee Estimated Fee
      *
      * @return $this
      */
-    public function setActualReceive($actual_receive)
+    public function setEstFee($est_fee)
     {
-        $this->container['actual_receive'] = $actual_receive;
+        $this->container['est_fee'] = $est_fee;
 
         return $this;
     }
 
     /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status Transfer Status - `FAIL`: Failed - `SUCCESS`: Successful - `PENDING`: Transfer in Progress
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets fail_reason
-     *
-     * @return string|null
-     */
-    public function getFailReason()
-    {
-        return $this->container['fail_reason'];
-    }
-
-    /**
-     * Sets fail_reason
-     *
-     * @param string|null $fail_reason Failure reason (has a value when status = FAIL; empty for other statuses)
-     *
-     * @return $this
-     */
-    public function setFailReason($fail_reason)
-    {
-        $this->container['fail_reason'] = $fail_reason;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_time
+     * Gets precision
      *
      * @return int
      */
-    public function getCreateTime()
+    public function getPrecision()
     {
-        return $this->container['create_time'];
+        return $this->container['precision'];
     }
 
     /**
-     * Sets create_time
+     * Sets precision
      *
-     * @param int $create_time Creation time of order
+     * @param int $precision Precision
      *
      * @return $this
      */
-    public function setCreateTime($create_time)
+    public function setPrecision($precision)
     {
-        $this->container['create_time'] = $create_time;
+        $this->container['precision'] = $precision;
 
         return $this;
     }
 
     /**
-     * Gets update_time
+     * Gets is_disabled
      *
      * @return int
      */
-    public function getUpdateTime()
+    public function getIsDisabled()
     {
-        return $this->container['update_time'];
+        return $this->container['is_disabled'];
     }
 
     /**
-     * Sets update_time
+     * Sets is_disabled
      *
-     * @param int $update_time OrderUpdateTime
+     * @param int $is_disabled If it is disabled. 0 means NOT being disabled
      *
      * @return $this
      */
-    public function setUpdateTime($update_time)
+    public function setIsDisabled($is_disabled)
     {
-        $this->container['update_time'] = $update_time;
+        $this->container['is_disabled'] = $is_disabled;
 
         return $this;
     }

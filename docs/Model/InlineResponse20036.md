@@ -4,10 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**spot_maker_fee** | **string** | spotMakerfee rate | 
-**spot_taker_fee** | **string** | spotTakerfee rate | 
-**future_maker_fee** | **string** | contractMakerfee rate | 
-**future_taker_fee** | **string** | contractTakerfee rate | 
-**special_fee_list** | [**\GateApi\Model\InlineResponse20036SpecialFeeList[]**](InlineResponse20036SpecialFeeList.md) |  | 
+**coin** | **string** | Currency | 
+**exchange_type** | **string** | Exchange | 
+**hour_interest_rate** | **string** | Hourly Interest Rate | 
+**time** | **string** | Millisecond Timestamp | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

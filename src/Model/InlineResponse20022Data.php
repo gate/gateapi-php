@@ -54,12 +54,14 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\GateApi\Model\InlineResponse20022DataMessages[]',
-        'memo' => 'string',
-        'has_history' => 'bool',
-        'txid' => 'int',
-        'srvtm' => 'int',
-        'order_status' => 'string'
+        'index' => 'int',
+        'asset' => 'string',
+        'fiat_unit' => 'string',
+        'adv_no' => 'int',
+        'price' => 'string',
+        'max_single_trans_amount' => 'string',
+        'min_single_trans_amount' => 'string',
+        'nick_name' => 'string'
     ];
 
     /**
@@ -68,12 +70,14 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'messages' => null,
-        'memo' => null,
-        'has_history' => null,
-        'txid' => null,
-        'srvtm' => null,
-        'order_status' => null
+        'index' => null,
+        'asset' => null,
+        'fiat_unit' => null,
+        'adv_no' => null,
+        'price' => null,
+        'max_single_trans_amount' => null,
+        'min_single_trans_amount' => null,
+        'nick_name' => null
     ];
 
     /**
@@ -103,12 +107,14 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages',
-        'memo' => 'memo',
-        'has_history' => 'has_history',
-        'txid' => 'txid',
-        'srvtm' => 'SRVTM',
-        'order_status' => 'order_status'
+        'index' => 'index',
+        'asset' => 'asset',
+        'fiat_unit' => 'fiat_unit',
+        'adv_no' => 'adv_no',
+        'price' => 'price',
+        'max_single_trans_amount' => 'max_single_trans_amount',
+        'min_single_trans_amount' => 'min_single_trans_amount',
+        'nick_name' => 'nick_name'
     ];
 
     /**
@@ -117,12 +123,14 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages',
-        'memo' => 'setMemo',
-        'has_history' => 'setHasHistory',
-        'txid' => 'setTxid',
-        'srvtm' => 'setSrvtm',
-        'order_status' => 'setOrderStatus'
+        'index' => 'setIndex',
+        'asset' => 'setAsset',
+        'fiat_unit' => 'setFiatUnit',
+        'adv_no' => 'setAdvNo',
+        'price' => 'setPrice',
+        'max_single_trans_amount' => 'setMaxSingleTransAmount',
+        'min_single_trans_amount' => 'setMinSingleTransAmount',
+        'nick_name' => 'setNickName'
     ];
 
     /**
@@ -131,12 +139,14 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages',
-        'memo' => 'getMemo',
-        'has_history' => 'getHasHistory',
-        'txid' => 'getTxid',
-        'srvtm' => 'getSrvtm',
-        'order_status' => 'getOrderStatus'
+        'index' => 'getIndex',
+        'asset' => 'getAsset',
+        'fiat_unit' => 'getFiatUnit',
+        'adv_no' => 'getAdvNo',
+        'price' => 'getPrice',
+        'max_single_trans_amount' => 'getMaxSingleTransAmount',
+        'min_single_trans_amount' => 'getMinSingleTransAmount',
+        'nick_name' => 'getNickName'
     ];
 
     /**
@@ -199,12 +209,14 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = isset($data['messages']) ? $data['messages'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['has_history'] = isset($data['has_history']) ? $data['has_history'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['srvtm'] = isset($data['srvtm']) ? $data['srvtm'] : null;
-        $this->container['order_status'] = isset($data['order_status']) ? $data['order_status'] : null;
+        $this->container['index'] = isset($data['index']) ? $data['index'] : null;
+        $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        $this->container['fiat_unit'] = isset($data['fiat_unit']) ? $data['fiat_unit'] : null;
+        $this->container['adv_no'] = isset($data['adv_no']) ? $data['adv_no'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['max_single_trans_amount'] = isset($data['max_single_trans_amount']) ? $data['max_single_trans_amount'] : null;
+        $this->container['min_single_trans_amount'] = isset($data['min_single_trans_amount']) ? $data['min_single_trans_amount'] : null;
+        $this->container['nick_name'] = isset($data['nick_name']) ? $data['nick_name'] : null;
     }
 
     /**
@@ -216,23 +228,29 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['messages'] === null) {
-            $invalidProperties[] = "'messages' can't be null";
+        if ($this->container['index'] === null) {
+            $invalidProperties[] = "'index' can't be null";
         }
-        if ($this->container['memo'] === null) {
-            $invalidProperties[] = "'memo' can't be null";
+        if ($this->container['asset'] === null) {
+            $invalidProperties[] = "'asset' can't be null";
         }
-        if ($this->container['has_history'] === null) {
-            $invalidProperties[] = "'has_history' can't be null";
+        if ($this->container['fiat_unit'] === null) {
+            $invalidProperties[] = "'fiat_unit' can't be null";
         }
-        if ($this->container['txid'] === null) {
-            $invalidProperties[] = "'txid' can't be null";
+        if ($this->container['adv_no'] === null) {
+            $invalidProperties[] = "'adv_no' can't be null";
         }
-        if ($this->container['srvtm'] === null) {
-            $invalidProperties[] = "'srvtm' can't be null";
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
         }
-        if ($this->container['order_status'] === null) {
-            $invalidProperties[] = "'order_status' can't be null";
+        if ($this->container['max_single_trans_amount'] === null) {
+            $invalidProperties[] = "'max_single_trans_amount' can't be null";
+        }
+        if ($this->container['min_single_trans_amount'] === null) {
+            $invalidProperties[] = "'min_single_trans_amount' can't be null";
+        }
+        if ($this->container['nick_name'] === null) {
+            $invalidProperties[] = "'nick_name' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,145 +268,193 @@ class InlineResponse20022Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets messages
-     *
-     * @return \GateApi\Model\InlineResponse20022DataMessages[]
-     */
-    public function getMessages()
-    {
-        return $this->container['messages'];
-    }
-
-    /**
-     * Sets messages
-     *
-     * @param \GateApi\Model\InlineResponse20022DataMessages[] $messages Message List
-     *
-     * @return $this
-     */
-    public function setMessages($messages)
-    {
-        $this->container['messages'] = $messages;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string $memo Payment tip (displayed on homepage only)
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_history
-     *
-     * @return bool
-     */
-    public function getHasHistory()
-    {
-        return $this->container['has_history'];
-    }
-
-    /**
-     * Sets has_history
-     *
-     * @param bool $has_history Whether historical records exist
-     *
-     * @return $this
-     */
-    public function setHasHistory($has_history)
-    {
-        $this->container['has_history'] = $has_history;
-
-        return $this;
-    }
-
-    /**
-     * Gets txid
+     * Gets index
      *
      * @return int
      */
-    public function getTxid()
+    public function getIndex()
     {
-        return $this->container['txid'];
+        return $this->container['index'];
     }
 
     /**
-     * Sets txid
+     * Sets index
      *
-     * @param int $txid Order ID
+     * @param int $index Serial number
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setIndex($index)
     {
-        $this->container['txid'] = $txid;
+        $this->container['index'] = $index;
 
         return $this;
     }
 
     /**
-     * Gets srvtm
-     *
-     * @return int
-     */
-    public function getSrvtm()
-    {
-        return $this->container['srvtm'];
-    }
-
-    /**
-     * Sets srvtm
-     *
-     * @param int $srvtm Timestamp of the latest message
-     *
-     * @return $this
-     */
-    public function setSrvtm($srvtm)
-    {
-        $this->container['srvtm'] = $srvtm;
-
-        return $this;
-    }
-
-    /**
-     * Gets order_status
+     * Gets asset
      *
      * @return string
      */
-    public function getOrderStatus()
+    public function getAsset()
     {
-        return $this->container['order_status'];
+        return $this->container['asset'];
     }
 
     /**
-     * Sets order_status
+     * Sets asset
      *
-     * @param string $order_status Order Status
+     * @param string $asset Cryptocurrency
      *
      * @return $this
      */
-    public function setOrderStatus($order_status)
+    public function setAsset($asset)
     {
-        $this->container['order_status'] = $order_status;
+        $this->container['asset'] = $asset;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_unit
+     *
+     * @return string
+     */
+    public function getFiatUnit()
+    {
+        return $this->container['fiat_unit'];
+    }
+
+    /**
+     * Sets fiat_unit
+     *
+     * @param string $fiat_unit Fiat currency
+     *
+     * @return $this
+     */
+    public function setFiatUnit($fiat_unit)
+    {
+        $this->container['fiat_unit'] = $fiat_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets adv_no
+     *
+     * @return int
+     */
+    public function getAdvNo()
+    {
+        return $this->container['adv_no'];
+    }
+
+    /**
+     * Sets adv_no
+     *
+     * @param int $adv_no 广告id
+     *
+     * @return $this
+     */
+    public function setAdvNo($adv_no)
+    {
+        $this->container['adv_no'] = $adv_no;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param string $price Price
+     *
+     * @return $this
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_single_trans_amount
+     *
+     * @return string
+     */
+    public function getMaxSingleTransAmount()
+    {
+        return $this->container['max_single_trans_amount'];
+    }
+
+    /**
+     * Sets max_single_trans_amount
+     *
+     * @param string $max_single_trans_amount Maximum Cryptocurrency Amount
+     *
+     * @return $this
+     */
+    public function setMaxSingleTransAmount($max_single_trans_amount)
+    {
+        $this->container['max_single_trans_amount'] = $max_single_trans_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_single_trans_amount
+     *
+     * @return string
+     */
+    public function getMinSingleTransAmount()
+    {
+        return $this->container['min_single_trans_amount'];
+    }
+
+    /**
+     * Sets min_single_trans_amount
+     *
+     * @param string $min_single_trans_amount Minimum Cryptocurrency Amount
+     *
+     * @return $this
+     */
+    public function setMinSingleTransAmount($min_single_trans_amount)
+    {
+        $this->container['min_single_trans_amount'] = $min_single_trans_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets nick_name
+     *
+     * @return string
+     */
+    public function getNickName()
+    {
+        return $this->container['nick_name'];
+    }
+
+    /**
+     * Sets nick_name
+     *
+     * @param string $nick_name Advertiser Nickname
+     *
+     * @return $this
+     */
+    public function setNickName($nick_name)
+    {
+        $this->container['nick_name'] = $nick_name;
 
         return $this;
     }

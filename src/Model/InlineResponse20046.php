@@ -54,12 +54,15 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
+        'id' => 'string',
+        'user_id' => 'string',
+        'business_id' => 'string',
+        'type' => 'string',
         'exchange_type' => 'string',
-        'tier' => 'string',
-        'min_value' => 'string',
-        'max_value' => 'string',
-        'discount_rate' => 'string'
+        'coin' => 'string',
+        'change' => 'string',
+        'balance' => 'string',
+        'create_time' => 'string'
     ];
 
     /**
@@ -68,12 +71,15 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
+        'id' => null,
+        'user_id' => null,
+        'business_id' => null,
+        'type' => null,
         'exchange_type' => null,
-        'tier' => null,
-        'min_value' => null,
-        'max_value' => null,
-        'discount_rate' => null
+        'coin' => null,
+        'change' => null,
+        'balance' => null,
+        'create_time' => null
     ];
 
     /**
@@ -103,12 +109,15 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
+        'id' => 'id',
+        'user_id' => 'user_id',
+        'business_id' => 'business_id',
+        'type' => 'type',
         'exchange_type' => 'exchange_type',
-        'tier' => 'tier',
-        'min_value' => 'min_value',
-        'max_value' => 'max_value',
-        'discount_rate' => 'discount_rate'
+        'coin' => 'coin',
+        'change' => 'change',
+        'balance' => 'balance',
+        'create_time' => 'create_time'
     ];
 
     /**
@@ -117,12 +126,15 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
+        'id' => 'setId',
+        'user_id' => 'setUserId',
+        'business_id' => 'setBusinessId',
+        'type' => 'setType',
         'exchange_type' => 'setExchangeType',
-        'tier' => 'setTier',
-        'min_value' => 'setMinValue',
-        'max_value' => 'setMaxValue',
-        'discount_rate' => 'setDiscountRate'
+        'coin' => 'setCoin',
+        'change' => 'setChange',
+        'balance' => 'setBalance',
+        'create_time' => 'setCreateTime'
     ];
 
     /**
@@ -131,12 +143,15 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
+        'id' => 'getId',
+        'user_id' => 'getUserId',
+        'business_id' => 'getBusinessId',
+        'type' => 'getType',
         'exchange_type' => 'getExchangeType',
-        'tier' => 'getTier',
-        'min_value' => 'getMinValue',
-        'max_value' => 'getMaxValue',
-        'discount_rate' => 'getDiscountRate'
+        'coin' => 'getCoin',
+        'change' => 'getChange',
+        'balance' => 'getBalance',
+        'create_time' => 'getCreateTime'
     ];
 
     /**
@@ -199,12 +214,15 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['business_id'] = isset($data['business_id']) ? $data['business_id'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
-        $this->container['min_value'] = isset($data['min_value']) ? $data['min_value'] : null;
-        $this->container['max_value'] = isset($data['max_value']) ? $data['max_value'] : null;
-        $this->container['discount_rate'] = isset($data['discount_rate']) ? $data['discount_rate'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
     }
 
     /**
@@ -216,23 +234,32 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['business_id'] === null) {
+            $invalidProperties[] = "'business_id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
         if ($this->container['exchange_type'] === null) {
             $invalidProperties[] = "'exchange_type' can't be null";
         }
-        if ($this->container['tier'] === null) {
-            $invalidProperties[] = "'tier' can't be null";
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
         }
-        if ($this->container['min_value'] === null) {
-            $invalidProperties[] = "'min_value' can't be null";
+        if ($this->container['change'] === null) {
+            $invalidProperties[] = "'change' can't be null";
         }
-        if ($this->container['max_value'] === null) {
-            $invalidProperties[] = "'max_value' can't be null";
+        if ($this->container['balance'] === null) {
+            $invalidProperties[] = "'balance' can't be null";
         }
-        if ($this->container['discount_rate'] === null) {
-            $invalidProperties[] = "'discount_rate' can't be null";
+        if ($this->container['create_time'] === null) {
+            $invalidProperties[] = "'create_time' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,25 +277,97 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
+     * Gets id
      *
      * @return string
      */
-    public function getCoin()
+    public function getId()
     {
-        return $this->container['coin'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets coin
+     * Sets id
      *
-     * @param string $coin Currency
+     * @param string $id Account Change Record ID
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setId($id)
     {
-        $this->container['coin'] = $coin;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     *
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param string $user_id User ID
+     *
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_id
+     *
+     * @return string
+     */
+    public function getBusinessId()
+    {
+        return $this->container['business_id'];
+    }
+
+    /**
+     * Sets business_id
+     *
+     * @param string $business_id Business ID
+     *
+     * @return $this
+     */
+    public function setBusinessId($business_id)
+    {
+        $this->container['business_id'] = $business_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type 变更类型| `TRANSACTION` 成交 `TRADING_FEE` 手续费 `FUNDING_FEE` 合约资金费 `LIQUIDATION_FEE` 强平费 `TRANSFER_IN` 资金转入 `TRANSFER_OUT` 资金转出 `BANKRUPT_COMPENSATION` 穿仓补贴 `AUTO_REPAY` 杠杆仓位自动还负债
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }
@@ -298,97 +397,97 @@ class InlineResponse20046 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets tier
+     * Gets coin
      *
      * @return string
      */
-    public function getTier()
+    public function getCoin()
     {
-        return $this->container['tier'];
+        return $this->container['coin'];
     }
 
     /**
-     * Sets tier
+     * Sets coin
      *
-     * @param string $tier Tier
+     * @param string $coin Currency
      *
      * @return $this
      */
-    public function setTier($tier)
+    public function setCoin($coin)
     {
-        $this->container['tier'] = $tier;
+        $this->container['coin'] = $coin;
 
         return $this;
     }
 
     /**
-     * Gets min_value
+     * Gets change
      *
      * @return string
      */
-    public function getMinValue()
+    public function getChange()
     {
-        return $this->container['min_value'];
+        return $this->container['change'];
     }
 
     /**
-     * Sets min_value
+     * Sets change
      *
-     * @param string $min_value Minimum value
+     * @param string $change Change amount (positive indicates transfer in; negative indicates transfer out)
      *
      * @return $this
      */
-    public function setMinValue($min_value)
+    public function setChange($change)
     {
-        $this->container['min_value'] = $min_value;
+        $this->container['change'] = $change;
 
         return $this;
     }
 
     /**
-     * Gets max_value
+     * Gets balance
      *
      * @return string
      */
-    public function getMaxValue()
+    public function getBalance()
     {
-        return $this->container['max_value'];
+        return $this->container['balance'];
     }
 
     /**
-     * Sets max_value
+     * Sets balance
      *
-     * @param string $max_value Maximum value
+     * @param string $balance Balance after change
      *
      * @return $this
      */
-    public function setMaxValue($max_value)
+    public function setBalance($balance)
     {
-        $this->container['max_value'] = $max_value;
+        $this->container['balance'] = $balance;
 
         return $this;
     }
 
     /**
-     * Gets discount_rate
+     * Gets create_time
      *
      * @return string
      */
-    public function getDiscountRate()
+    public function getCreateTime()
     {
-        return $this->container['discount_rate'];
+        return $this->container['create_time'];
     }
 
     /**
-     * Sets discount_rate
+     * Sets create_time
      *
-     * @param string $discount_rate Discount rate
+     * @param string $create_time Created time
      *
      * @return $this
      */
-    public function setDiscountRate($discount_rate)
+    public function setCreateTime($create_time)
     {
-        $this->container['discount_rate'] = $discount_rate;
+        $this->container['create_time'] = $create_time;
 
         return $this;
     }

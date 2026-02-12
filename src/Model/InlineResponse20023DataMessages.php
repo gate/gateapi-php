@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20022DataMessages
+ * InlineResponse20023DataMessages
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20022DataMessages Class Doc Comment
+ * InlineResponse20023DataMessages Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20022DataMessages implements ModelInterface, ArrayAccess
+class InlineResponse20023DataMessages implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse20022DataMessages implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_22_data_messages';
+    protected static $openAPIModelName = 'inline_response_200_23_data_messages';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class InlineResponse20022DataMessages implements ModelInterface, ArrayAccess
         'msg' => 'string',
         'username' => 'string',
         'timest' => 'int',
-        'msg_obj' => '\GateApi\Model\InlineResponse20022DataMsgObj',
+        'msg_obj' => '\GateApi\Model\InlineResponse20023DataMsgObj',
         'uid' => 'string',
         'type' => 'int',
         'pic' => 'string',
@@ -435,7 +435,7 @@ class InlineResponse20022DataMessages implements ModelInterface, ArrayAccess
     /**
      * Gets msg_obj
      *
-     * @return \GateApi\Model\InlineResponse20022DataMsgObj
+     * @return \GateApi\Model\InlineResponse20023DataMsgObj
      */
     public function getMsgObj()
     {
@@ -445,7 +445,7 @@ class InlineResponse20022DataMessages implements ModelInterface, ArrayAccess
     /**
      * Sets msg_obj
      *
-     * @param \GateApi\Model\InlineResponse20022DataMsgObj $msg_obj msg_obj
+     * @param \GateApi\Model\InlineResponse20023DataMsgObj $msg_obj msg_obj
      *
      * @return $this
      */

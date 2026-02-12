@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject28
+ * InlineResponse20037SpecialFeeList
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject28 Class Doc Comment
+ * InlineResponse20037SpecialFeeList Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject28 implements ModelInterface, ArrayAccess
+class InlineResponse20037SpecialFeeList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_28';
+    protected static $openAPIModelName = 'inline_response_200_37_special_fee_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,7 +55,8 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'leverage' => 'string'
+        'taker_fee_rate' => 'string',
+        'maker_fee_rate' => 'string'
     ];
 
     /**
@@ -65,7 +66,8 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'leverage' => null
+        'taker_fee_rate' => null,
+        'maker_fee_rate' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'leverage' => 'leverage'
+        'taker_fee_rate' => 'taker_fee_rate',
+        'maker_fee_rate' => 'maker_fee_rate'
     ];
 
     /**
@@ -106,7 +109,8 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'leverage' => 'setLeverage'
+        'taker_fee_rate' => 'setTakerFeeRate',
+        'maker_fee_rate' => 'setMakerFeeRate'
     ];
 
     /**
@@ -116,7 +120,8 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'leverage' => 'getLeverage'
+        'taker_fee_rate' => 'getTakerFeeRate',
+        'maker_fee_rate' => 'getMakerFeeRate'
     ];
 
     /**
@@ -180,7 +185,8 @@ class InlineObject28 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['taker_fee_rate'] = isset($data['taker_fee_rate']) ? $data['taker_fee_rate'] : null;
+        $this->container['maker_fee_rate'] = isset($data['maker_fee_rate']) ? $data['maker_fee_rate'] : null;
     }
 
     /**
@@ -195,8 +201,11 @@ class InlineObject28 implements ModelInterface, ArrayAccess
         if ($this->container['symbol'] === null) {
             $invalidProperties[] = "'symbol' can't be null";
         }
-        if ($this->container['leverage'] === null) {
-            $invalidProperties[] = "'leverage' can't be null";
+        if ($this->container['taker_fee_rate'] === null) {
+            $invalidProperties[] = "'taker_fee_rate' can't be null";
+        }
+        if ($this->container['maker_fee_rate'] === null) {
+            $invalidProperties[] = "'maker_fee_rate' can't be null";
         }
         return $invalidProperties;
     }
@@ -238,25 +247,49 @@ class InlineObject28 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets leverage
+     * Gets taker_fee_rate
      *
      * @return string
      */
-    public function getLeverage()
+    public function getTakerFeeRate()
     {
-        return $this->container['leverage'];
+        return $this->container['taker_fee_rate'];
     }
 
     /**
-     * Sets leverage
+     * Sets taker_fee_rate
      *
-     * @param string $leverage leverage
+     * @param string $taker_fee_rate Taker fee rate
      *
      * @return $this
      */
-    public function setLeverage($leverage)
+    public function setTakerFeeRate($taker_fee_rate)
     {
-        $this->container['leverage'] = $leverage;
+        $this->container['taker_fee_rate'] = $taker_fee_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets maker_fee_rate
+     *
+     * @return string
+     */
+    public function getMakerFeeRate()
+    {
+        return $this->container['maker_fee_rate'];
+    }
+
+    /**
+     * Sets maker_fee_rate
+     *
+     * @param string $maker_fee_rate Maker fee rate
+     *
+     * @return $this
+     */
+    public function setMakerFeeRate($maker_fee_rate)
+    {
+        $this->container['maker_fee_rate'] = $maker_fee_rate;
 
         return $this;
     }

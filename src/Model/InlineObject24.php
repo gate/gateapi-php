@@ -54,7 +54,10 @@ class InlineObject24 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'quote_id' => 'string'
+        'exchange_type' => 'string',
+        'from_coin' => 'string',
+        'to_coin' => 'string',
+        'from_amount' => 'string'
     ];
 
     /**
@@ -63,7 +66,10 @@ class InlineObject24 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'quote_id' => null
+        'exchange_type' => null,
+        'from_coin' => null,
+        'to_coin' => null,
+        'from_amount' => null
     ];
 
     /**
@@ -93,7 +99,10 @@ class InlineObject24 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'quote_id' => 'quote_id'
+        'exchange_type' => 'exchange_type',
+        'from_coin' => 'from_coin',
+        'to_coin' => 'to_coin',
+        'from_amount' => 'from_amount'
     ];
 
     /**
@@ -102,7 +111,10 @@ class InlineObject24 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'quote_id' => 'setQuoteId'
+        'exchange_type' => 'setExchangeType',
+        'from_coin' => 'setFromCoin',
+        'to_coin' => 'setToCoin',
+        'from_amount' => 'setFromAmount'
     ];
 
     /**
@@ -111,7 +123,10 @@ class InlineObject24 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'quote_id' => 'getQuoteId'
+        'exchange_type' => 'getExchangeType',
+        'from_coin' => 'getFromCoin',
+        'to_coin' => 'getToCoin',
+        'from_amount' => 'getFromAmount'
     ];
 
     /**
@@ -174,7 +189,10 @@ class InlineObject24 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
+        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
+        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
     }
 
     /**
@@ -186,8 +204,17 @@ class InlineObject24 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['quote_id'] === null) {
-            $invalidProperties[] = "'quote_id' can't be null";
+        if ($this->container['exchange_type'] === null) {
+            $invalidProperties[] = "'exchange_type' can't be null";
+        }
+        if ($this->container['from_coin'] === null) {
+            $invalidProperties[] = "'from_coin' can't be null";
+        }
+        if ($this->container['to_coin'] === null) {
+            $invalidProperties[] = "'to_coin' can't be null";
+        }
+        if ($this->container['from_amount'] === null) {
+            $invalidProperties[] = "'from_amount' can't be null";
         }
         return $invalidProperties;
     }
@@ -205,25 +232,97 @@ class InlineObject24 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets quote_id
+     * Gets exchange_type
      *
      * @return string
      */
-    public function getQuoteId()
+    public function getExchangeType()
     {
-        return $this->container['quote_id'];
+        return $this->container['exchange_type'];
     }
 
     /**
-     * Sets quote_id
+     * Sets exchange_type
      *
-     * @param string $quote_id Inquiry ID
+     * @param string $exchange_type Exchange Type
      *
      * @return $this
      */
-    public function setQuoteId($quote_id)
+    public function setExchangeType($exchange_type)
     {
-        $this->container['quote_id'] = $quote_id;
+        $this->container['exchange_type'] = $exchange_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_coin
+     *
+     * @return string
+     */
+    public function getFromCoin()
+    {
+        return $this->container['from_coin'];
+    }
+
+    /**
+     * Sets from_coin
+     *
+     * @param string $from_coin Asset Sold
+     *
+     * @return $this
+     */
+    public function setFromCoin($from_coin)
+    {
+        $this->container['from_coin'] = $from_coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_coin
+     *
+     * @return string
+     */
+    public function getToCoin()
+    {
+        return $this->container['to_coin'];
+    }
+
+    /**
+     * Sets to_coin
+     *
+     * @param string $to_coin Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+     *
+     * @return $this
+     */
+    public function setToCoin($to_coin)
+    {
+        $this->container['to_coin'] = $to_coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_amount
+     *
+     * @return string
+     */
+    public function getFromAmount()
+    {
+        return $this->container['from_amount'];
+    }
+
+    /**
+     * Sets from_amount
+     *
+     * @param string $from_amount Amount to sell
+     *
+     * @return $this
+     */
+    public function setFromAmount($from_amount)
+    {
+        $this->container['from_amount'] = $from_amount;
 
         return $this;
     }

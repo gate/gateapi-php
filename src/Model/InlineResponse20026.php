@@ -54,11 +54,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
-        'min_trans_amount' => 'float',
-        'est_fee' => 'float',
-        'precision' => 'int',
-        'is_disabled' => 'int'
+        'symbol' => 'string',
+        'tiers' => '\GateApi\Model\RuleRiskLimitsTiers[]'
     ];
 
     /**
@@ -67,11 +64,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
-        'min_trans_amount' => null,
-        'est_fee' => null,
-        'precision' => null,
-        'is_disabled' => null
+        'symbol' => null,
+        'tiers' => null
     ];
 
     /**
@@ -101,11 +95,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
-        'min_trans_amount' => 'min_trans_amount',
-        'est_fee' => 'est_fee',
-        'precision' => 'precision',
-        'is_disabled' => 'is_disabled'
+        'symbol' => 'symbol',
+        'tiers' => 'tiers'
     ];
 
     /**
@@ -114,11 +105,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
-        'min_trans_amount' => 'setMinTransAmount',
-        'est_fee' => 'setEstFee',
-        'precision' => 'setPrecision',
-        'is_disabled' => 'setIsDisabled'
+        'symbol' => 'setSymbol',
+        'tiers' => 'setTiers'
     ];
 
     /**
@@ -127,11 +115,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
-        'min_trans_amount' => 'getMinTransAmount',
-        'est_fee' => 'getEstFee',
-        'precision' => 'getPrecision',
-        'is_disabled' => 'getIsDisabled'
+        'symbol' => 'getSymbol',
+        'tiers' => 'getTiers'
     ];
 
     /**
@@ -194,11 +179,8 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['min_trans_amount'] = isset($data['min_trans_amount']) ? $data['min_trans_amount'] : null;
-        $this->container['est_fee'] = isset($data['est_fee']) ? $data['est_fee'] : null;
-        $this->container['precision'] = isset($data['precision']) ? $data['precision'] : null;
-        $this->container['is_disabled'] = isset($data['is_disabled']) ? $data['is_disabled'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['tiers'] = isset($data['tiers']) ? $data['tiers'] : null;
     }
 
     /**
@@ -210,21 +192,6 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
-        }
-        if ($this->container['min_trans_amount'] === null) {
-            $invalidProperties[] = "'min_trans_amount' can't be null";
-        }
-        if ($this->container['est_fee'] === null) {
-            $invalidProperties[] = "'est_fee' can't be null";
-        }
-        if ($this->container['precision'] === null) {
-            $invalidProperties[] = "'precision' can't be null";
-        }
-        if ($this->container['is_disabled'] === null) {
-            $invalidProperties[] = "'is_disabled' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -241,121 +208,49 @@ class InlineResponse20026 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
+     * Gets symbol
      *
-     * @return string
+     * @return string|null
      */
-    public function getCoin()
+    public function getSymbol()
     {
-        return $this->container['coin'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets coin
+     * Sets symbol
      *
-     * @param string $coin Currency
+     * @param string|null $symbol symbol
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setSymbol($symbol)
     {
-        $this->container['coin'] = $coin;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets min_trans_amount
+     * Gets tiers
      *
-     * @return float
+     * @return \GateApi\Model\RuleRiskLimitsTiers[]|null
      */
-    public function getMinTransAmount()
+    public function getTiers()
     {
-        return $this->container['min_trans_amount'];
+        return $this->container['tiers'];
     }
 
     /**
-     * Sets min_trans_amount
+     * Sets tiers
      *
-     * @param float $min_trans_amount Minimum Transfer Quantity (including estimated fees)
+     * @param \GateApi\Model\RuleRiskLimitsTiers[]|null $tiers tiers
      *
      * @return $this
      */
-    public function setMinTransAmount($min_trans_amount)
+    public function setTiers($tiers)
     {
-        $this->container['min_trans_amount'] = $min_trans_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets est_fee
-     *
-     * @return float
-     */
-    public function getEstFee()
-    {
-        return $this->container['est_fee'];
-    }
-
-    /**
-     * Sets est_fee
-     *
-     * @param float $est_fee Estimated Fee
-     *
-     * @return $this
-     */
-    public function setEstFee($est_fee)
-    {
-        $this->container['est_fee'] = $est_fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets precision
-     *
-     * @return int
-     */
-    public function getPrecision()
-    {
-        return $this->container['precision'];
-    }
-
-    /**
-     * Sets precision
-     *
-     * @param int $precision Precision
-     *
-     * @return $this
-     */
-    public function setPrecision($precision)
-    {
-        $this->container['precision'] = $precision;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_disabled
-     *
-     * @return int
-     */
-    public function getIsDisabled()
-    {
-        return $this->container['is_disabled'];
-    }
-
-    /**
-     * Sets is_disabled
-     *
-     * @param int $is_disabled If it is disabled. 0 means NOT being disabled
-     *
-     * @return $this
-     */
-    public function setIsDisabled($is_disabled)
-    {
-        $this->container['is_disabled'] = $is_disabled;
+        $this->container['tiers'] = $tiers;
 
         return $this;
     }

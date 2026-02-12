@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject28
+ * InlineResponse20025Data
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject28 Class Doc Comment
+ * InlineResponse20025Data Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject28 implements ModelInterface, ArrayAccess
+class InlineResponse20025Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_28';
+    protected static $openAPIModelName = 'inline_response_200_25_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,8 +54,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'leverage' => 'string'
+        'file_key' => 'string'
     ];
 
     /**
@@ -64,8 +63,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'leverage' => null
+        'file_key' => null
     ];
 
     /**
@@ -95,8 +93,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'leverage' => 'leverage'
+        'file_key' => 'file_key'
     ];
 
     /**
@@ -105,8 +102,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'leverage' => 'setLeverage'
+        'file_key' => 'setFileKey'
     ];
 
     /**
@@ -115,8 +111,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'leverage' => 'getLeverage'
+        'file_key' => 'getFileKey'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineObject28 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
     }
 
     /**
@@ -192,11 +186,8 @@ class InlineObject28 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
-        }
-        if ($this->container['leverage'] === null) {
-            $invalidProperties[] = "'leverage' can't be null";
+        if ($this->container['file_key'] === null) {
+            $invalidProperties[] = "'file_key' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +205,25 @@ class InlineObject28 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets symbol
+     * Gets file_key
      *
      * @return string
      */
-    public function getSymbol()
+    public function getFileKey()
     {
-        return $this->container['symbol'];
+        return $this->container['file_key'];
     }
 
     /**
-     * Sets symbol
+     * Sets file_key
      *
-     * @param string $symbol Currency pair
+     * @param string $file_key File key
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setFileKey($file_key)
     {
-        $this->container['symbol'] = $symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets leverage
-     *
-     * @return string
-     */
-    public function getLeverage()
-    {
-        return $this->container['leverage'];
-    }
-
-    /**
-     * Sets leverage
-     *
-     * @param string $leverage leverage
-     *
-     * @return $this
-     */
-    public function setLeverage($leverage)
-    {
-        $this->container['leverage'] = $leverage;
+        $this->container['file_key'] = $file_key;
 
         return $this;
     }
