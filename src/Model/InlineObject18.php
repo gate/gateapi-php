@@ -54,9 +54,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'txid' => 'int',
-        'lastreceived' => 'int',
-        'firstreceived' => 'int'
+        'symbol' => 'string',
+        'position_side' => 'string'
     ];
 
     /**
@@ -65,9 +64,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'txid' => null,
-        'lastreceived' => null,
-        'firstreceived' => null
+        'symbol' => null,
+        'position_side' => null
     ];
 
     /**
@@ -97,9 +95,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'txid' => 'txid',
-        'lastreceived' => 'lastreceived',
-        'firstreceived' => 'firstreceived'
+        'symbol' => 'symbol',
+        'position_side' => 'position_side'
     ];
 
     /**
@@ -108,9 +105,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'txid' => 'setTxid',
-        'lastreceived' => 'setLastreceived',
-        'firstreceived' => 'setFirstreceived'
+        'symbol' => 'setSymbol',
+        'position_side' => 'setPositionSide'
     ];
 
     /**
@@ -119,9 +115,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'txid' => 'getTxid',
-        'lastreceived' => 'getLastreceived',
-        'firstreceived' => 'getFirstreceived'
+        'symbol' => 'getSymbol',
+        'position_side' => 'getPositionSide'
     ];
 
     /**
@@ -184,9 +179,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['lastreceived'] = isset($data['lastreceived']) ? $data['lastreceived'] : null;
-        $this->container['firstreceived'] = isset($data['firstreceived']) ? $data['firstreceived'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
     }
 
     /**
@@ -198,8 +192,8 @@ class InlineObject18 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['txid'] === null) {
-            $invalidProperties[] = "'txid' can't be null";
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
         }
         return $invalidProperties;
     }
@@ -217,73 +211,49 @@ class InlineObject18 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets txid
+     * Gets symbol
      *
-     * @return int
+     * @return string
      */
-    public function getTxid()
+    public function getSymbol()
     {
-        return $this->container['txid'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets txid
+     * Sets symbol
      *
-     * @param int $txid Order ID
+     * @param string $symbol Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setSymbol($symbol)
     {
-        $this->container['txid'] = $txid;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets lastreceived
+     * Gets position_side
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getLastreceived()
+    public function getPositionSide()
     {
-        return $this->container['lastreceived'];
+        return $this->container['position_side'];
     }
 
     /**
-     * Sets lastreceived
+     * Sets position_side
      *
-     * @param int|null $lastreceived Pagination timestamp (forward)
+     * @param string|null $position_side Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method
      *
      * @return $this
      */
-    public function setLastreceived($lastreceived)
+    public function setPositionSide($position_side)
     {
-        $this->container['lastreceived'] = $lastreceived;
-
-        return $this;
-    }
-
-    /**
-     * Gets firstreceived
-     *
-     * @return int|null
-     */
-    public function getFirstreceived()
-    {
-        return $this->container['firstreceived'];
-    }
-
-    /**
-     * Sets firstreceived
-     *
-     * @param int|null $firstreceived Pagination timestamp (backward)
-     *
-     * @return $this
-     */
-    public function setFirstreceived($firstreceived)
-    {
-        $this->container['firstreceived'] = $firstreceived;
+        $this->container['position_side'] = $position_side;
 
         return $this;
     }

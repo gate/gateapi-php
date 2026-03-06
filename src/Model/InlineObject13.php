@@ -54,33 +54,10 @@ class InlineObject13 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency_type' => 'string',
         'exchange_type' => 'string',
-        'type' => 'string',
-        'unit_price' => 'string',
-        'number' => 'string',
-        'pay_type' => 'string',
-        'pay_type_json' => 'string',
-        'rate_fixed' => 'string',
-        'oid' => 'string',
-        'min_amount' => 'string',
-        'max_amount' => 'string',
-        'tier_limit' => 'string',
-        'verified_limit' => 'string',
-        'reg_time_limit' => 'string',
-        'advertisers_limit' => 'string',
-        'hide_payment' => 'string',
-        'expire_min' => 'string',
-        'trade_tips' => 'string',
-        'auto_reply' => 'string',
-        'min_completed_limit' => 'string',
-        'max_completed_limit' => 'string',
-        'completed_rate_limit' => 'string',
-        'user_country_limit' => 'string',
-        'user_order_limit' => 'string',
-        'rate_reference_id' => 'string',
-        'rate_offset' => 'string',
-        'float_trend' => 'string'
+        'from_coin' => 'string',
+        'to_coin' => 'string',
+        'from_amount' => 'string'
     ];
 
     /**
@@ -89,33 +66,10 @@ class InlineObject13 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'currency_type' => null,
         'exchange_type' => null,
-        'type' => null,
-        'unit_price' => null,
-        'number' => null,
-        'pay_type' => null,
-        'pay_type_json' => null,
-        'rate_fixed' => null,
-        'oid' => null,
-        'min_amount' => null,
-        'max_amount' => null,
-        'tier_limit' => null,
-        'verified_limit' => null,
-        'reg_time_limit' => null,
-        'advertisers_limit' => null,
-        'hide_payment' => null,
-        'expire_min' => null,
-        'trade_tips' => null,
-        'auto_reply' => null,
-        'min_completed_limit' => null,
-        'max_completed_limit' => null,
-        'completed_rate_limit' => null,
-        'user_country_limit' => null,
-        'user_order_limit' => null,
-        'rate_reference_id' => null,
-        'rate_offset' => null,
-        'float_trend' => null
+        'from_coin' => null,
+        'to_coin' => null,
+        'from_amount' => null
     ];
 
     /**
@@ -145,33 +99,10 @@ class InlineObject13 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency_type' => 'currencyType',
-        'exchange_type' => 'exchangeType',
-        'type' => 'type',
-        'unit_price' => 'unitPrice',
-        'number' => 'number',
-        'pay_type' => 'payType',
-        'pay_type_json' => 'pay_type_json',
-        'rate_fixed' => 'rateFixed',
-        'oid' => 'oid',
-        'min_amount' => 'minAmount',
-        'max_amount' => 'maxAmount',
-        'tier_limit' => 'tierLimit',
-        'verified_limit' => 'verifiedLimit',
-        'reg_time_limit' => 'regTimeLimit',
-        'advertisers_limit' => 'advertisersLimit',
-        'hide_payment' => 'hide_payment',
-        'expire_min' => 'expire_min',
-        'trade_tips' => 'trade_tips',
-        'auto_reply' => 'auto_reply',
-        'min_completed_limit' => 'min_completed_limit',
-        'max_completed_limit' => 'max_completed_limit',
-        'completed_rate_limit' => 'completed_rate_limit',
-        'user_country_limit' => 'user_country_limit',
-        'user_order_limit' => 'user_order_limit',
-        'rate_reference_id' => 'rateReferenceId',
-        'rate_offset' => 'rateOffset',
-        'float_trend' => 'float_trend'
+        'exchange_type' => 'exchange_type',
+        'from_coin' => 'from_coin',
+        'to_coin' => 'to_coin',
+        'from_amount' => 'from_amount'
     ];
 
     /**
@@ -180,33 +111,10 @@ class InlineObject13 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'currency_type' => 'setCurrencyType',
         'exchange_type' => 'setExchangeType',
-        'type' => 'setType',
-        'unit_price' => 'setUnitPrice',
-        'number' => 'setNumber',
-        'pay_type' => 'setPayType',
-        'pay_type_json' => 'setPayTypeJson',
-        'rate_fixed' => 'setRateFixed',
-        'oid' => 'setOid',
-        'min_amount' => 'setMinAmount',
-        'max_amount' => 'setMaxAmount',
-        'tier_limit' => 'setTierLimit',
-        'verified_limit' => 'setVerifiedLimit',
-        'reg_time_limit' => 'setRegTimeLimit',
-        'advertisers_limit' => 'setAdvertisersLimit',
-        'hide_payment' => 'setHidePayment',
-        'expire_min' => 'setExpireMin',
-        'trade_tips' => 'setTradeTips',
-        'auto_reply' => 'setAutoReply',
-        'min_completed_limit' => 'setMinCompletedLimit',
-        'max_completed_limit' => 'setMaxCompletedLimit',
-        'completed_rate_limit' => 'setCompletedRateLimit',
-        'user_country_limit' => 'setUserCountryLimit',
-        'user_order_limit' => 'setUserOrderLimit',
-        'rate_reference_id' => 'setRateReferenceId',
-        'rate_offset' => 'setRateOffset',
-        'float_trend' => 'setFloatTrend'
+        'from_coin' => 'setFromCoin',
+        'to_coin' => 'setToCoin',
+        'from_amount' => 'setFromAmount'
     ];
 
     /**
@@ -215,33 +123,10 @@ class InlineObject13 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'currency_type' => 'getCurrencyType',
         'exchange_type' => 'getExchangeType',
-        'type' => 'getType',
-        'unit_price' => 'getUnitPrice',
-        'number' => 'getNumber',
-        'pay_type' => 'getPayType',
-        'pay_type_json' => 'getPayTypeJson',
-        'rate_fixed' => 'getRateFixed',
-        'oid' => 'getOid',
-        'min_amount' => 'getMinAmount',
-        'max_amount' => 'getMaxAmount',
-        'tier_limit' => 'getTierLimit',
-        'verified_limit' => 'getVerifiedLimit',
-        'reg_time_limit' => 'getRegTimeLimit',
-        'advertisers_limit' => 'getAdvertisersLimit',
-        'hide_payment' => 'getHidePayment',
-        'expire_min' => 'getExpireMin',
-        'trade_tips' => 'getTradeTips',
-        'auto_reply' => 'getAutoReply',
-        'min_completed_limit' => 'getMinCompletedLimit',
-        'max_completed_limit' => 'getMaxCompletedLimit',
-        'completed_rate_limit' => 'getCompletedRateLimit',
-        'user_country_limit' => 'getUserCountryLimit',
-        'user_order_limit' => 'getUserOrderLimit',
-        'rate_reference_id' => 'getRateReferenceId',
-        'rate_offset' => 'getRateOffset',
-        'float_trend' => 'getFloatTrend'
+        'from_coin' => 'getFromCoin',
+        'to_coin' => 'getToCoin',
+        'from_amount' => 'getFromAmount'
     ];
 
     /**
@@ -304,33 +189,10 @@ class InlineObject13 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['unit_price'] = isset($data['unit_price']) ? $data['unit_price'] : null;
-        $this->container['number'] = isset($data['number']) ? $data['number'] : null;
-        $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
-        $this->container['pay_type_json'] = isset($data['pay_type_json']) ? $data['pay_type_json'] : null;
-        $this->container['rate_fixed'] = isset($data['rate_fixed']) ? $data['rate_fixed'] : null;
-        $this->container['oid'] = isset($data['oid']) ? $data['oid'] : null;
-        $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
-        $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
-        $this->container['tier_limit'] = isset($data['tier_limit']) ? $data['tier_limit'] : null;
-        $this->container['verified_limit'] = isset($data['verified_limit']) ? $data['verified_limit'] : null;
-        $this->container['reg_time_limit'] = isset($data['reg_time_limit']) ? $data['reg_time_limit'] : null;
-        $this->container['advertisers_limit'] = isset($data['advertisers_limit']) ? $data['advertisers_limit'] : null;
-        $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
-        $this->container['expire_min'] = isset($data['expire_min']) ? $data['expire_min'] : null;
-        $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
-        $this->container['auto_reply'] = isset($data['auto_reply']) ? $data['auto_reply'] : null;
-        $this->container['min_completed_limit'] = isset($data['min_completed_limit']) ? $data['min_completed_limit'] : null;
-        $this->container['max_completed_limit'] = isset($data['max_completed_limit']) ? $data['max_completed_limit'] : null;
-        $this->container['completed_rate_limit'] = isset($data['completed_rate_limit']) ? $data['completed_rate_limit'] : null;
-        $this->container['user_country_limit'] = isset($data['user_country_limit']) ? $data['user_country_limit'] : null;
-        $this->container['user_order_limit'] = isset($data['user_order_limit']) ? $data['user_order_limit'] : null;
-        $this->container['rate_reference_id'] = isset($data['rate_reference_id']) ? $data['rate_reference_id'] : null;
-        $this->container['rate_offset'] = isset($data['rate_offset']) ? $data['rate_offset'] : null;
-        $this->container['float_trend'] = isset($data['float_trend']) ? $data['float_trend'] : null;
+        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
+        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
+        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
     }
 
     /**
@@ -342,26 +204,17 @@ class InlineObject13 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['currency_type'] === null) {
-            $invalidProperties[] = "'currency_type' can't be null";
-        }
         if ($this->container['exchange_type'] === null) {
             $invalidProperties[] = "'exchange_type' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['from_coin'] === null) {
+            $invalidProperties[] = "'from_coin' can't be null";
         }
-        if ($this->container['unit_price'] === null) {
-            $invalidProperties[] = "'unit_price' can't be null";
+        if ($this->container['to_coin'] === null) {
+            $invalidProperties[] = "'to_coin' can't be null";
         }
-        if ($this->container['number'] === null) {
-            $invalidProperties[] = "'number' can't be null";
-        }
-        if ($this->container['min_amount'] === null) {
-            $invalidProperties[] = "'min_amount' can't be null";
-        }
-        if ($this->container['max_amount'] === null) {
-            $invalidProperties[] = "'max_amount' can't be null";
+        if ($this->container['from_amount'] === null) {
+            $invalidProperties[] = "'from_amount' can't be null";
         }
         return $invalidProperties;
     }
@@ -379,30 +232,6 @@ class InlineObject13 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets currency_type
-     *
-     * @return string
-     */
-    public function getCurrencyType()
-    {
-        return $this->container['currency_type'];
-    }
-
-    /**
-     * Sets currency_type
-     *
-     * @param string $currency_type Cryptocurrency
-     *
-     * @return $this
-     */
-    public function setCurrencyType($currency_type)
-    {
-        $this->container['currency_type'] = $currency_type;
-
-        return $this;
-    }
-
-    /**
      * Gets exchange_type
      *
      * @return string
@@ -415,7 +244,7 @@ class InlineObject13 implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Fiat currency
+     * @param string $exchange_type Exchange Type
      *
      * @return $this
      */
@@ -427,601 +256,73 @@ class InlineObject13 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets type
+     * Gets from_coin
      *
      * @return string
      */
-    public function getType()
+    public function getFromCoin()
     {
-        return $this->container['type'];
+        return $this->container['from_coin'];
     }
 
     /**
-     * Sets type
+     * Sets from_coin
      *
-     * @param string $type Ad type: 0=Sell, 1=Buy, 2=Edit sell, 3=Edit buy
+     * @param string $from_coin Asset Sold
      *
      * @return $this
      */
-    public function setType($type)
+    public function setFromCoin($from_coin)
     {
-        $this->container['type'] = $type;
+        $this->container['from_coin'] = $from_coin;
 
         return $this;
     }
 
     /**
-     * Gets unit_price
+     * Gets to_coin
      *
      * @return string
      */
-    public function getUnitPrice()
+    public function getToCoin()
     {
-        return $this->container['unit_price'];
+        return $this->container['to_coin'];
     }
 
     /**
-     * Sets unit_price
+     * Sets to_coin
      *
-     * @param string $unit_price Unit price
+     * @param string $to_coin Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
      *
      * @return $this
      */
-    public function setUnitPrice($unit_price)
+    public function setToCoin($to_coin)
     {
-        $this->container['unit_price'] = $unit_price;
+        $this->container['to_coin'] = $to_coin;
 
         return $this;
     }
 
     /**
-     * Gets number
+     * Gets from_amount
      *
      * @return string
      */
-    public function getNumber()
+    public function getFromAmount()
     {
-        return $this->container['number'];
+        return $this->container['from_amount'];
     }
 
     /**
-     * Sets number
+     * Sets from_amount
      *
-     * @param string $number Size
+     * @param string $from_amount Amount to sell
      *
      * @return $this
      */
-    public function setNumber($number)
+    public function setFromAmount($from_amount)
     {
-        $this->container['number'] = $number;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_type
-     *
-     * @return string|null
-     */
-    public function getPayType()
-    {
-        return $this->container['pay_type'];
-    }
-
-    /**
-     * Sets pay_type
-     *
-     * @param string|null $pay_type Payment method
-     *
-     * @return $this
-     */
-    public function setPayType($pay_type)
-    {
-        $this->container['pay_type'] = $pay_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_type_json
-     *
-     * @return string|null
-     */
-    public function getPayTypeJson()
-    {
-        return $this->container['pay_type_json'];
-    }
-
-    /**
-     * Sets pay_type_json
-     *
-     * @param string|null $pay_type_json Payment method JSON string
-     *
-     * @return $this
-     */
-    public function setPayTypeJson($pay_type_json)
-    {
-        $this->container['pay_type_json'] = $pay_type_json;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate_fixed
-     *
-     * @return string|null
-     */
-    public function getRateFixed()
-    {
-        return $this->container['rate_fixed'];
-    }
-
-    /**
-     * Sets rate_fixed
-     *
-     * @param string|null $rate_fixed Price type: 0-Floating price, 1-Fixed price
-     *
-     * @return $this
-     */
-    public function setRateFixed($rate_fixed)
-    {
-        $this->container['rate_fixed'] = $rate_fixed;
-
-        return $this;
-    }
-
-    /**
-     * Gets oid
-     *
-     * @return string|null
-     */
-    public function getOid()
-    {
-        return $this->container['oid'];
-    }
-
-    /**
-     * Sets oid
-     *
-     * @param string|null $oid Ad ID when editing
-     *
-     * @return $this
-     */
-    public function setOid($oid)
-    {
-        $this->container['oid'] = $oid;
-
-        return $this;
-    }
-
-    /**
-     * Gets min_amount
-     *
-     * @return string
-     */
-    public function getMinAmount()
-    {
-        return $this->container['min_amount'];
-    }
-
-    /**
-     * Sets min_amount
-     *
-     * @param string $min_amount Minimum transaction amount per order
-     *
-     * @return $this
-     */
-    public function setMinAmount($min_amount)
-    {
-        $this->container['min_amount'] = $min_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_amount
-     *
-     * @return string
-     */
-    public function getMaxAmount()
-    {
-        return $this->container['max_amount'];
-    }
-
-    /**
-     * Sets max_amount
-     *
-     * @param string $max_amount Maximum transaction amount per order
-     *
-     * @return $this
-     */
-    public function setMaxAmount($max_amount)
-    {
-        $this->container['max_amount'] = $max_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets tier_limit
-     *
-     * @return string|null
-     */
-    public function getTierLimit()
-    {
-        return $this->container['tier_limit'];
-    }
-
-    /**
-     * Sets tier_limit
-     *
-     * @param string|null $tier_limit Order tier limit
-     *
-     * @return $this
-     */
-    public function setTierLimit($tier_limit)
-    {
-        $this->container['tier_limit'] = $tier_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets verified_limit
-     *
-     * @return string|null
-     */
-    public function getVerifiedLimit()
-    {
-        return $this->container['verified_limit'];
-    }
-
-    /**
-     * Sets verified_limit
-     *
-     * @param string|null $verified_limit Verification level limit
-     *
-     * @return $this
-     */
-    public function setVerifiedLimit($verified_limit)
-    {
-        $this->container['verified_limit'] = $verified_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets reg_time_limit
-     *
-     * @return string|null
-     */
-    public function getRegTimeLimit()
-    {
-        return $this->container['reg_time_limit'];
-    }
-
-    /**
-     * Sets reg_time_limit
-     *
-     * @param string|null $reg_time_limit Registration time limit
-     *
-     * @return $this
-     */
-    public function setRegTimeLimit($reg_time_limit)
-    {
-        $this->container['reg_time_limit'] = $reg_time_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets advertisers_limit
-     *
-     * @return string|null
-     */
-    public function getAdvertisersLimit()
-    {
-        return $this->container['advertisers_limit'];
-    }
-
-    /**
-     * Sets advertisers_limit
-     *
-     * @param string|null $advertisers_limit Advertiser restriction
-     *
-     * @return $this
-     */
-    public function setAdvertisersLimit($advertisers_limit)
-    {
-        $this->container['advertisers_limit'] = $advertisers_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets hide_payment
-     *
-     * @return string|null
-     */
-    public function getHidePayment()
-    {
-        return $this->container['hide_payment'];
-    }
-
-    /**
-     * Sets hide_payment
-     *
-     * @param string|null $hide_payment Whether to hide payment method: 1=Yes, 0=No
-     *
-     * @return $this
-     */
-    public function setHidePayment($hide_payment)
-    {
-        $this->container['hide_payment'] = $hide_payment;
-
-        return $this;
-    }
-
-    /**
-     * Gets expire_min
-     *
-     * @return string|null
-     */
-    public function getExpireMin()
-    {
-        return $this->container['expire_min'];
-    }
-
-    /**
-     * Sets expire_min
-     *
-     * @param string|null $expire_min Ad expiration time (minutes)
-     *
-     * @return $this
-     */
-    public function setExpireMin($expire_min)
-    {
-        $this->container['expire_min'] = $expire_min;
-
-        return $this;
-    }
-
-    /**
-     * Gets trade_tips
-     *
-     * @return string|null
-     */
-    public function getTradeTips()
-    {
-        return $this->container['trade_tips'];
-    }
-
-    /**
-     * Sets trade_tips
-     *
-     * @param string|null $trade_tips Trading terms
-     *
-     * @return $this
-     */
-    public function setTradeTips($trade_tips)
-    {
-        $this->container['trade_tips'] = $trade_tips;
-
-        return $this;
-    }
-
-    /**
-     * Gets auto_reply
-     *
-     * @return string|null
-     */
-    public function getAutoReply()
-    {
-        return $this->container['auto_reply'];
-    }
-
-    /**
-     * Sets auto_reply
-     *
-     * @param string|null $auto_reply Auto reply
-     *
-     * @return $this
-     */
-    public function setAutoReply($auto_reply)
-    {
-        $this->container['auto_reply'] = $auto_reply;
-
-        return $this;
-    }
-
-    /**
-     * Gets min_completed_limit
-     *
-     * @return string|null
-     */
-    public function getMinCompletedLimit()
-    {
-        return $this->container['min_completed_limit'];
-    }
-
-    /**
-     * Sets min_completed_limit
-     *
-     * @param string|null $min_completed_limit Minimum limit of completed orders
-     *
-     * @return $this
-     */
-    public function setMinCompletedLimit($min_completed_limit)
-    {
-        $this->container['min_completed_limit'] = $min_completed_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_completed_limit
-     *
-     * @return string|null
-     */
-    public function getMaxCompletedLimit()
-    {
-        return $this->container['max_completed_limit'];
-    }
-
-    /**
-     * Sets max_completed_limit
-     *
-     * @param string|null $max_completed_limit Maximum limit of completed orders
-     *
-     * @return $this
-     */
-    public function setMaxCompletedLimit($max_completed_limit)
-    {
-        $this->container['max_completed_limit'] = $max_completed_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets completed_rate_limit
-     *
-     * @return string|null
-     */
-    public function getCompletedRateLimit()
-    {
-        return $this->container['completed_rate_limit'];
-    }
-
-    /**
-     * Sets completed_rate_limit
-     *
-     * @param string|null $completed_rate_limit 30-day completion rate limit
-     *
-     * @return $this
-     */
-    public function setCompletedRateLimit($completed_rate_limit)
-    {
-        $this->container['completed_rate_limit'] = $completed_rate_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_country_limit
-     *
-     * @return string|null
-     */
-    public function getUserCountryLimit()
-    {
-        return $this->container['user_country_limit'];
-    }
-
-    /**
-     * Sets user_country_limit
-     *
-     * @param string|null $user_country_limit KYC nationality restriction
-     *
-     * @return $this
-     */
-    public function setUserCountryLimit($user_country_limit)
-    {
-        $this->container['user_country_limit'] = $user_country_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_order_limit
-     *
-     * @return string|null
-     */
-    public function getUserOrderLimit()
-    {
-        return $this->container['user_order_limit'];
-    }
-
-    /**
-     * Sets user_order_limit
-     *
-     * @param string|null $user_order_limit Order count limit
-     *
-     * @return $this
-     */
-    public function setUserOrderLimit($user_order_limit)
-    {
-        $this->container['user_order_limit'] = $user_order_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate_reference_id
-     *
-     * @return string|null
-     */
-    public function getRateReferenceId()
-    {
-        return $this->container['rate_reference_id'];
-    }
-
-    /**
-     * Sets rate_reference_id
-     *
-     * @param string|null $rate_reference_id Reference exchange rate ID
-     *
-     * @return $this
-     */
-    public function setRateReferenceId($rate_reference_id)
-    {
-        $this->container['rate_reference_id'] = $rate_reference_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets rate_offset
-     *
-     * @return string|null
-     */
-    public function getRateOffset()
-    {
-        return $this->container['rate_offset'];
-    }
-
-    /**
-     * Sets rate_offset
-     *
-     * @param string|null $rate_offset Reference exchange rate offset
-     *
-     * @return $this
-     */
-    public function setRateOffset($rate_offset)
-    {
-        $this->container['rate_offset'] = $rate_offset;
-
-        return $this;
-    }
-
-    /**
-     * Gets float_trend
-     *
-     * @return string|null
-     */
-    public function getFloatTrend()
-    {
-        return $this->container['float_trend'];
-    }
-
-    /**
-     * Sets float_trend
-     *
-     * @param string|null $float_trend 444
-     *
-     * @return $this
-     */
-    public function setFloatTrend($float_trend)
-    {
-        $this->container['float_trend'] = $float_trend;
+        $this->container['from_amount'] = $from_amount;
 
         return $this;
     }

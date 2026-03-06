@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineObject5 Class Doc Comment
  *
  * @category Class
+ * @description Close position request parameters
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -54,7 +55,8 @@ class InlineObject5 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'biz_uid' => 'string'
+        'close_type' => 'int',
+        'close_volume' => 'string'
     ];
 
     /**
@@ -63,7 +65,8 @@ class InlineObject5 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'biz_uid' => null
+        'close_type' => null,
+        'close_volume' => null
     ];
 
     /**
@@ -93,7 +96,8 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'biz_uid' => 'biz_uid'
+        'close_type' => 'close_type',
+        'close_volume' => 'close_volume'
     ];
 
     /**
@@ -102,7 +106,8 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'biz_uid' => 'setBizUid'
+        'close_type' => 'setCloseType',
+        'close_volume' => 'setCloseVolume'
     ];
 
     /**
@@ -111,7 +116,8 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'biz_uid' => 'getBizUid'
+        'close_type' => 'getCloseType',
+        'close_volume' => 'getCloseVolume'
     ];
 
     /**
@@ -155,8 +161,23 @@ class InlineObject5 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const CLOSE_TYPE_1 = 1;
+    const CLOSE_TYPE_2 = 2;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCloseTypeAllowableValues()
+    {
+        return [
+            self::CLOSE_TYPE_1,
+            self::CLOSE_TYPE_2,
+        ];
+    }
     
 
     /**
@@ -174,7 +195,8 @@ class InlineObject5 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['biz_uid'] = isset($data['biz_uid']) ? $data['biz_uid'] : null;
+        $this->container['close_type'] = isset($data['close_type']) ? $data['close_type'] : null;
+        $this->container['close_volume'] = isset($data['close_volume']) ? $data['close_volume'] : null;
     }
 
     /**
@@ -186,9 +208,17 @@ class InlineObject5 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['biz_uid'] === null) {
-            $invalidProperties[] = "'biz_uid' can't be null";
+        if ($this->container['close_type'] === null) {
+            $invalidProperties[] = "'close_type' can't be null";
         }
+        $allowedValues = $this->getCloseTypeAllowableValues();
+        if (!is_null($this->container['close_type']) && !in_array($this->container['close_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'close_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -205,25 +235,58 @@ class InlineObject5 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets biz_uid
+     * Gets close_type
      *
-     * @return string
+     * @return int
      */
-    public function getBizUid()
+    public function getCloseType()
     {
-        return $this->container['biz_uid'];
+        return $this->container['close_type'];
     }
 
     /**
-     * Sets biz_uid
+     * Sets close_type
      *
-     * @param string $biz_uid Counterparty UID (encrypted)
+     * @param int $close_type 平仓类型  说明： - 1：部分平仓（必须传 close_volume） - 2：全平（无需传 close_volume）
      *
      * @return $this
      */
-    public function setBizUid($biz_uid)
+    public function setCloseType($close_type)
     {
-        $this->container['biz_uid'] = $biz_uid;
+        $allowedValues = $this->getCloseTypeAllowableValues();
+        if (!in_array($close_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'close_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['close_type'] = $close_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets close_volume
+     *
+     * @return string|null
+     */
+    public function getCloseVolume()
+    {
+        return $this->container['close_volume'];
+    }
+
+    /**
+     * Sets close_volume
+     *
+     * @param string|null $close_volume 平仓数量  说明： - 当 close_type = 1 时必传 - 当 close_type = 2 时忽略该字段
+     *
+     * @return $this
+     */
+    public function setCloseVolume($close_volume)
+    {
+        $this->container['close_volume'] = $close_volume;
 
         return $this;
     }

@@ -204,18 +204,6 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
-        }
-        if ($this->container['trans_time'] === null) {
-            $invalidProperties[] = "'trans_time' can't be null";
-        }
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
-        }
-        if ($this->container['exported_num'] === null) {
-            $invalidProperties[] = "'exported_num' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -234,7 +222,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Gets list
      *
-     * @return \GateApi\Model\InlineResponse20017DataList[]
+     * @return \GateApi\Model\InlineResponse20017DataList[]|null
      */
     public function getList()
     {
@@ -244,7 +232,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \GateApi\Model\InlineResponse20017DataList[] $list list
+     * @param \GateApi\Model\InlineResponse20017DataList[]|null $list list
      *
      * @return $this
      */
@@ -258,7 +246,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Gets trans_time
      *
-     * @return \GateApi\Model\InlineResponse20017DataTransTime[]
+     * @return \GateApi\Model\InlineResponse20017DataTransTime[]|null
      */
     public function getTransTime()
     {
@@ -268,7 +256,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Sets trans_time
      *
-     * @param \GateApi\Model\InlineResponse20017DataTransTime[] $trans_time Countdown time
+     * @param \GateApi\Model\InlineResponse20017DataTransTime[]|null $trans_time Countdown time
      *
      * @return $this
      */
@@ -282,7 +270,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Gets count
      *
-     * @return int
+     * @return int|null
      */
     public function getCount()
     {
@@ -292,7 +280,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Sets count
      *
-     * @param int $count Number of orders
+     * @param int|null $count Number of orders
      *
      * @return $this
      */
@@ -306,7 +294,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Gets exported_num
      *
-     * @return int
+     * @return int|null
      */
     public function getExportedNum()
     {
@@ -316,7 +304,7 @@ class InlineResponse20017Data implements ModelInterface, ArrayAccess
     /**
      * Sets exported_num
      *
-     * @param int $exported_num Export count
+     * @param int|null $exported_num Export count
      *
      * @return $this
      */

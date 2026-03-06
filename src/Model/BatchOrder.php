@@ -363,8 +363,16 @@ class BatchOrder implements ModelInterface, ArrayAccess
     const FINISH_AS_OPEN = 'open';
     const FINISH_AS_FILLED = 'filled';
     const FINISH_AS_CANCELLED = 'cancelled';
+    const FINISH_AS_LIQUIDATE_CANCELLED = 'liquidate_cancelled';
+    const FINISH_AS_DEPTH_NOT_ENOUGH = 'depth_not_enough';
+    const FINISH_AS_TRADER_NOT_ENOUGH = 'trader_not_enough';
+    const FINISH_AS_SMALL = 'small';
     const FINISH_AS_IOC = 'ioc';
+    const FINISH_AS_POC = 'poc';
+    const FINISH_AS_FOK = 'fok';
     const FINISH_AS_STP = 'stp';
+    const FINISH_AS_PRICE_PROTECT_CANCELLED = 'price_protect_cancelled';
+    const FINISH_AS_UNKNOWN = 'unknown';
     
 
     
@@ -464,8 +472,16 @@ class BatchOrder implements ModelInterface, ArrayAccess
             self::FINISH_AS_OPEN,
             self::FINISH_AS_FILLED,
             self::FINISH_AS_CANCELLED,
+            self::FINISH_AS_LIQUIDATE_CANCELLED,
+            self::FINISH_AS_DEPTH_NOT_ENOUGH,
+            self::FINISH_AS_TRADER_NOT_ENOUGH,
+            self::FINISH_AS_SMALL,
             self::FINISH_AS_IOC,
+            self::FINISH_AS_POC,
+            self::FINISH_AS_FOK,
             self::FINISH_AS_STP,
+            self::FINISH_AS_PRICE_PROTECT_CANCELLED,
+            self::FINISH_AS_UNKNOWN,
         ];
     }
     
@@ -1536,7 +1552,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Sets finish_as
      *
-     * @param string|null $finish_as How the order was finished.  - open: processing - filled: filled totally - cancelled: manually cancelled - ioc: time in force is `IOC`, finish immediately - stp: cancelled because self trade prevention
+     * @param string|null $finish_as 订单结束方式，包括：  - open: 等待处理 - filled: 完全成交 - cancelled: 用户撤销 - liquidate_cancelled: 爆仓撤销 - small: 订单数量太小 - depth_not_enough: 深度不足导致撤单 - trader_not_enough: 对手方不足导致撤单 - ioc: 未立即成交，因为 tif 设置为 poc/rvt/rat/rpi表示只想成为maker, 经检查会成为taker被拒绝 - poc: 未满足挂单策略，因为 tif 设置为 poc - fok: 未立即完全成交，因为 tif 设置为 fok - stp: 订单发生自成交限制而被撤销 - price_protect_cancelled: 价格保护导致撤单 - unknown: 未知
      *
      * @return $this
      */

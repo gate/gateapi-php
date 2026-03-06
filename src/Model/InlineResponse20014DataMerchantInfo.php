@@ -193,12 +193,6 @@ class InlineResponse20014DataMerchantInfo implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['market'] === null) {
-            $invalidProperties[] = "'market' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -217,7 +211,7 @@ class InlineResponse20014DataMerchantInfo implements ModelInterface, ArrayAccess
     /**
      * Gets type
      *
-     * @return string
+     * @return string|null
      */
     public function getType()
     {
@@ -227,7 +221,7 @@ class InlineResponse20014DataMerchantInfo implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string|null $type type
      *
      * @return $this
      */
@@ -241,7 +235,7 @@ class InlineResponse20014DataMerchantInfo implements ModelInterface, ArrayAccess
     /**
      * Gets market
      *
-     * @return string
+     * @return string|null
      */
     public function getMarket()
     {
@@ -251,7 +245,7 @@ class InlineResponse20014DataMerchantInfo implements ModelInterface, ArrayAccess
     /**
      * Sets market
      *
-     * @param string $market market
+     * @param string|null $market market
      *
      * @return $this
      */

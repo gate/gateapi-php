@@ -54,9 +54,8 @@ class InlineObject12 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trade_id' => 'string',
-        'reason_id' => 'string',
-        'reason_memo' => 'string'
+        'qty' => 'string',
+        'price' => 'string'
     ];
 
     /**
@@ -65,9 +64,8 @@ class InlineObject12 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'trade_id' => null,
-        'reason_id' => null,
-        'reason_memo' => null
+        'qty' => null,
+        'price' => null
     ];
 
     /**
@@ -97,9 +95,8 @@ class InlineObject12 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'trade_id' => 'trade_id',
-        'reason_id' => 'reason_id',
-        'reason_memo' => 'reason_memo'
+        'qty' => 'qty',
+        'price' => 'price'
     ];
 
     /**
@@ -108,9 +105,8 @@ class InlineObject12 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'trade_id' => 'setTradeId',
-        'reason_id' => 'setReasonId',
-        'reason_memo' => 'setReasonMemo'
+        'qty' => 'setQty',
+        'price' => 'setPrice'
     ];
 
     /**
@@ -119,9 +115,8 @@ class InlineObject12 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'trade_id' => 'getTradeId',
-        'reason_id' => 'getReasonId',
-        'reason_memo' => 'getReasonMemo'
+        'qty' => 'getQty',
+        'price' => 'getPrice'
     ];
 
     /**
@@ -184,9 +179,8 @@ class InlineObject12 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
-        $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
-        $this->container['reason_memo'] = isset($data['reason_memo']) ? $data['reason_memo'] : null;
+        $this->container['qty'] = isset($data['qty']) ? $data['qty'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
     }
 
     /**
@@ -198,15 +192,6 @@ class InlineObject12 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['trade_id'] === null) {
-            $invalidProperties[] = "'trade_id' can't be null";
-        }
-        if ($this->container['reason_id'] === null) {
-            $invalidProperties[] = "'reason_id' can't be null";
-        }
-        if ($this->container['reason_memo'] === null) {
-            $invalidProperties[] = "'reason_memo' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -223,73 +208,49 @@ class InlineObject12 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets trade_id
+     * Gets qty
      *
-     * @return string
+     * @return string|null
      */
-    public function getTradeId()
+    public function getQty()
     {
-        return $this->container['trade_id'];
+        return $this->container['qty'];
     }
 
     /**
-     * Sets trade_id
+     * Sets qty
      *
-     * @param string $trade_id trade_id
+     * @param string|null $qty modify amount
      *
      * @return $this
      */
-    public function setTradeId($trade_id)
+    public function setQty($qty)
     {
-        $this->container['trade_id'] = $trade_id;
+        $this->container['qty'] = $qty;
 
         return $this;
     }
 
     /**
-     * Gets reason_id
+     * Gets price
      *
-     * @return string
+     * @return string|null
      */
-    public function getReasonId()
+    public function getPrice()
     {
-        return $this->container['reason_id'];
+        return $this->container['price'];
     }
 
     /**
-     * Sets reason_id
+     * Sets price
      *
-     * @param string $reason_id reason_id
+     * @param string|null $price modify price
      *
      * @return $this
      */
-    public function setReasonId($reason_id)
+    public function setPrice($price)
     {
-        $this->container['reason_id'] = $reason_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason_memo
-     *
-     * @return string
-     */
-    public function getReasonMemo()
-    {
-        return $this->container['reason_memo'];
-    }
-
-    /**
-     * Sets reason_memo
-     *
-     * @param string $reason_memo reason_memo
-     *
-     * @return $this
-     */
-    public function setReasonMemo($reason_memo)
-    {
-        $this->container['reason_memo'] = $reason_memo;
+        $this->container['price'] = $price;
 
         return $this;
     }

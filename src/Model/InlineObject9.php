@@ -54,8 +54,7 @@ class InlineObject9 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'txid' => 'int',
-        'channel' => 'string'
+        'order_id' => 'string'
     ];
 
     /**
@@ -64,8 +63,7 @@ class InlineObject9 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'txid' => null,
-        'channel' => null
+        'order_id' => null
     ];
 
     /**
@@ -95,8 +93,7 @@ class InlineObject9 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'txid' => 'txid',
-        'channel' => 'channel'
+        'order_id' => 'order_id'
     ];
 
     /**
@@ -105,8 +102,7 @@ class InlineObject9 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'txid' => 'setTxid',
-        'channel' => 'setChannel'
+        'order_id' => 'setOrderId'
     ];
 
     /**
@@ -115,8 +111,7 @@ class InlineObject9 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'txid' => 'getTxid',
-        'channel' => 'getChannel'
+        'order_id' => 'getOrderId'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineObject9 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['channel'] = isset($data['channel']) ? $data['channel'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
     }
 
     /**
@@ -192,8 +186,8 @@ class InlineObject9 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['txid'] === null) {
-            $invalidProperties[] = "'txid' can't be null";
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -211,49 +205,25 @@ class InlineObject9 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets txid
+     * Gets order_id
      *
-     * @return int
+     * @return string
      */
-    public function getTxid()
+    public function getOrderId()
     {
-        return $this->container['txid'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets txid
+     * Sets order_id
      *
-     * @param int $txid Order ID
+     * @param string $order_id Order ID
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setOrderId($order_id)
     {
-        $this->container['txid'] = $txid;
-
-        return $this;
-    }
-
-    /**
-     * Gets channel
-     *
-     * @return string|null
-     */
-    public function getChannel()
-    {
-        return $this->container['channel'];
-    }
-
-    /**
-     * Sets channel
-     *
-     * @param string|null $channel Empty or web3
-     *
-     * @return $this
-     */
-    public function setChannel($channel)
-    {
-        $this->container['channel'] = $channel;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }

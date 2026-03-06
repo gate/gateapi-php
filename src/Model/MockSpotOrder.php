@@ -299,7 +299,7 @@ class MockSpotOrder implements ModelInterface, ArrayAccess
     /**
      * Sets count
      *
-     * @param string|null $count Initial order quantity for spot trading pairs, not involved in actual calculation. Currently only supports BTC and ETH Currently only supports three currencies: BTC, ETH
+     * @param string|null $count Initial order quantity for spot trading pairs, not involved in actual calculation.
      *
      * @return $this
      */

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **string** | Currency name | 
-**equity** | **string** | Currency equity, where equity &#x3D; balance - borrowed, represents the net delta exposure of your spot positions, which can be negative. Currently only supports BTC and ETH | 
+**equity** | **string** | Currency equity, where equity &#x3D; balance - borrowed, represents the net delta exposure of your spot positions | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

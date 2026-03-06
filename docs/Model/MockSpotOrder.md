@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency_pairs** | **string** | Market | 
 **order_price** | **string** | Price | 
-**count** | **string** | Initial order quantity for spot trading pairs, not involved in actual calculation. Currently only supports BTC and ETH Currently only supports three currencies: BTC, ETH | [optional] 
+**count** | **string** | Initial order quantity for spot trading pairs, not involved in actual calculation. | [optional] 
 **left** | **string** | Unfilled quantity, involved in actual calculation | 
 **type** | **string** | Order type, sell - sell order, buy - buy order | 
 

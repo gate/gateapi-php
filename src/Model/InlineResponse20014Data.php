@@ -68,8 +68,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         'transactions_used_time' => 'string',
         'cancelled_used_time_month' => 'string',
         'complete_transactions_month' => 'string',
-        'complete_rate_month' => 'int',
-        'orders_buy_rate_month' => 'int',
+        'complete_rate_month' => 'float',
+        'orders_buy_rate_month' => 'float',
         'is_black' => 'int',
         'is_follow' => 'int',
         'have_traded' => 'int',
@@ -82,8 +82,8 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
         'merchant_info' => '\GateApi\Model\InlineResponse20014DataMerchantInfo',
         'online_status' => 'int',
         'work_hours' => 'object',
-        'transactions_month' => 'int',
-        'transactions_all' => 'int',
+        'transactions_month' => 'float',
+        'transactions_all' => 'float',
         'trade_versatile' => 'bool'
     ];
 
@@ -366,99 +366,6 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['is_self'] === null) {
-            $invalidProperties[] = "'is_self' can't be null";
-        }
-        if ($this->container['user_timest'] === null) {
-            $invalidProperties[] = "'user_timest' can't be null";
-        }
-        if ($this->container['counterparties_num'] === null) {
-            $invalidProperties[] = "'counterparties_num' can't be null";
-        }
-        if ($this->container['email_verified'] === null) {
-            $invalidProperties[] = "'email_verified' can't be null";
-        }
-        if ($this->container['verified'] === null) {
-            $invalidProperties[] = "'verified' can't be null";
-        }
-        if ($this->container['has_phone'] === null) {
-            $invalidProperties[] = "'has_phone' can't be null";
-        }
-        if ($this->container['user_name'] === null) {
-            $invalidProperties[] = "'user_name' can't be null";
-        }
-        if ($this->container['user_note'] === null) {
-            $invalidProperties[] = "'user_note' can't be null";
-        }
-        if ($this->container['complete_transactions'] === null) {
-            $invalidProperties[] = "'complete_transactions' can't be null";
-        }
-        if ($this->container['paid_transactions'] === null) {
-            $invalidProperties[] = "'paid_transactions' can't be null";
-        }
-        if ($this->container['accepted_transactions'] === null) {
-            $invalidProperties[] = "'accepted_transactions' can't be null";
-        }
-        if ($this->container['transactions_used_time'] === null) {
-            $invalidProperties[] = "'transactions_used_time' can't be null";
-        }
-        if ($this->container['cancelled_used_time_month'] === null) {
-            $invalidProperties[] = "'cancelled_used_time_month' can't be null";
-        }
-        if ($this->container['complete_transactions_month'] === null) {
-            $invalidProperties[] = "'complete_transactions_month' can't be null";
-        }
-        if ($this->container['complete_rate_month'] === null) {
-            $invalidProperties[] = "'complete_rate_month' can't be null";
-        }
-        if ($this->container['orders_buy_rate_month'] === null) {
-            $invalidProperties[] = "'orders_buy_rate_month' can't be null";
-        }
-        if ($this->container['is_black'] === null) {
-            $invalidProperties[] = "'is_black' can't be null";
-        }
-        if ($this->container['is_follow'] === null) {
-            $invalidProperties[] = "'is_follow' can't be null";
-        }
-        if ($this->container['have_traded'] === null) {
-            $invalidProperties[] = "'have_traded' can't be null";
-        }
-        if ($this->container['biz_uid'] === null) {
-            $invalidProperties[] = "'biz_uid' can't be null";
-        }
-        if ($this->container['blue_vip'] === null) {
-            $invalidProperties[] = "'blue_vip' can't be null";
-        }
-        if ($this->container['work_status'] === null) {
-            $invalidProperties[] = "'work_status' can't be null";
-        }
-        if ($this->container['registration_days'] === null) {
-            $invalidProperties[] = "'registration_days' can't be null";
-        }
-        if ($this->container['first_trade_days'] === null) {
-            $invalidProperties[] = "'first_trade_days' can't be null";
-        }
-        if ($this->container['need_replenish'] === null) {
-            $invalidProperties[] = "'need_replenish' can't be null";
-        }
-        if ($this->container['merchant_info'] === null) {
-            $invalidProperties[] = "'merchant_info' can't be null";
-        }
-        if ($this->container['online_status'] === null) {
-            $invalidProperties[] = "'online_status' can't be null";
-        }
-        if ($this->container['work_hours'] === null) {
-            $invalidProperties[] = "'work_hours' can't be null";
-        }
-        if ($this->container['transactions_month'] === null) {
-            $invalidProperties[] = "'transactions_month' can't be null";
-        }
-        if ($this->container['transactions_all'] === null) {
-            $invalidProperties[] = "'transactions_all' can't be null";
-        }
-        if ($this->container['trade_versatile'] === null) {
-            $invalidProperties[] = "'trade_versatile' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -477,7 +384,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_self
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsSelf()
     {
@@ -487,7 +394,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_self
      *
-     * @param bool $is_self Whether self
+     * @param bool|null $is_self Whether self
      *
      * @return $this
      */
@@ -501,7 +408,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets user_timest
      *
-     * @return string
+     * @return string|null
      */
     public function getUserTimest()
     {
@@ -511,7 +418,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets user_timest
      *
-     * @param string $user_timest User registration time (formatted string)
+     * @param string|null $user_timest User registration time (formatted string)
      *
      * @return $this
      */
@@ -525,7 +432,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets counterparties_num
      *
-     * @return int
+     * @return int|null
      */
     public function getCounterpartiesNum()
     {
@@ -535,7 +442,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets counterparties_num
      *
-     * @param int $counterparties_num Number of counterparties
+     * @param int|null $counterparties_num Number of counterparties
      *
      * @return $this
      */
@@ -549,7 +456,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets email_verified
      *
-     * @return string
+     * @return string|null
      */
     public function getEmailVerified()
     {
@@ -559,7 +466,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets email_verified
      *
-     * @param string $email_verified Whether email is verified
+     * @param string|null $email_verified Whether email is verified
      *
      * @return $this
      */
@@ -573,7 +480,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets verified
      *
-     * @return string
+     * @return string|null
      */
     public function getVerified()
     {
@@ -583,7 +490,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets verified
      *
-     * @param string $verified Whether KYC verification is completed
+     * @param string|null $verified Whether KYC verification is completed
      *
      * @return $this
      */
@@ -597,7 +504,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets has_phone
      *
-     * @return string
+     * @return string|null
      */
     public function getHasPhone()
     {
@@ -607,7 +514,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets has_phone
      *
-     * @param string $has_phone Whether phone is bound
+     * @param string|null $has_phone Whether phone is bound
      *
      * @return $this
      */
@@ -621,7 +528,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets user_name
      *
-     * @return string
+     * @return string|null
      */
     public function getUserName()
     {
@@ -631,7 +538,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets user_name
      *
-     * @param string $user_name Username
+     * @param string|null $user_name Username
      *
      * @return $this
      */
@@ -645,7 +552,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets user_note
      *
-     * @return string
+     * @return string|null
      */
     public function getUserNote()
     {
@@ -655,7 +562,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets user_note
      *
-     * @param string $user_note User note information
+     * @param string|null $user_note User note information
      *
      * @return $this
      */
@@ -669,7 +576,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_transactions
      *
-     * @return string
+     * @return string|null
      */
     public function getCompleteTransactions()
     {
@@ -679,7 +586,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_transactions
      *
-     * @param string $complete_transactions Total completed orders
+     * @param string|null $complete_transactions Total completed orders
      *
      * @return $this
      */
@@ -693,7 +600,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets paid_transactions
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidTransactions()
     {
@@ -703,7 +610,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets paid_transactions
      *
-     * @param string $paid_transactions Number of completed buy orders
+     * @param string|null $paid_transactions Number of completed buy orders
      *
      * @return $this
      */
@@ -717,7 +624,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets accepted_transactions
      *
-     * @return string
+     * @return string|null
      */
     public function getAcceptedTransactions()
     {
@@ -727,7 +634,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets accepted_transactions
      *
-     * @param string $accepted_transactions Number of completed sell orders
+     * @param string|null $accepted_transactions Number of completed sell orders
      *
      * @return $this
      */
@@ -741,7 +648,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets transactions_used_time
      *
-     * @return string
+     * @return string|null
      */
     public function getTransactionsUsedTime()
     {
@@ -751,7 +658,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets transactions_used_time
      *
-     * @param string $transactions_used_time Average time to confirm receipt
+     * @param string|null $transactions_used_time Average time to confirm receipt
      *
      * @return $this
      */
@@ -765,7 +672,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets cancelled_used_time_month
      *
-     * @return string
+     * @return string|null
      */
     public function getCancelledUsedTimeMonth()
     {
@@ -775,7 +682,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets cancelled_used_time_month
      *
-     * @param string $cancelled_used_time_month Cancellation time in last 30 days
+     * @param string|null $cancelled_used_time_month Cancellation time in last 30 days
      *
      * @return $this
      */
@@ -789,7 +696,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_transactions_month
      *
-     * @return string
+     * @return string|null
      */
     public function getCompleteTransactionsMonth()
     {
@@ -799,7 +706,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_transactions_month
      *
-     * @param string $complete_transactions_month Number of completed orders in last 30 days
+     * @param string|null $complete_transactions_month Number of completed orders in last 30 days
      *
      * @return $this
      */
@@ -813,7 +720,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_rate_month
      *
-     * @return int
+     * @return float|null
      */
     public function getCompleteRateMonth()
     {
@@ -823,7 +730,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_rate_month
      *
-     * @param int $complete_rate_month Completion rate in last 30 days
+     * @param float|null $complete_rate_month Completion rate in last 30 days
      *
      * @return $this
      */
@@ -837,7 +744,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets orders_buy_rate_month
      *
-     * @return int
+     * @return float|null
      */
     public function getOrdersBuyRateMonth()
     {
@@ -847,7 +754,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets orders_buy_rate_month
      *
-     * @param int $orders_buy_rate_month Buy order ratio in last 30 days
+     * @param float|null $orders_buy_rate_month Buy order ratio in last 30 days
      *
      * @return $this
      */
@@ -861,7 +768,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_black
      *
-     * @return int
+     * @return int|null
      */
     public function getIsBlack()
     {
@@ -871,7 +778,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_black
      *
-     * @param int $is_black Whether blocked
+     * @param int|null $is_black Whether blocked
      *
      * @return $this
      */
@@ -885,7 +792,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_follow
      *
-     * @return int
+     * @return int|null
      */
     public function getIsFollow()
     {
@@ -895,7 +802,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_follow
      *
-     * @param int $is_follow Whether following
+     * @param int|null $is_follow Whether following
      *
      * @return $this
      */
@@ -909,7 +816,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets have_traded
      *
-     * @return int
+     * @return int|null
      */
     public function getHaveTraded()
     {
@@ -919,7 +826,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets have_traded
      *
-     * @param int $have_traded Whether traded with self
+     * @param int|null $have_traded Whether traded with self
      *
      * @return $this
      */
@@ -933,7 +840,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets biz_uid
      *
-     * @return string
+     * @return string|null
      */
     public function getBizUid()
     {
@@ -943,7 +850,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets biz_uid
      *
-     * @param string $biz_uid Encrypted UID
+     * @param string|null $biz_uid Encrypted UID
      *
      * @return $this
      */
@@ -957,7 +864,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets blue_vip
      *
-     * @return int
+     * @return int|null
      */
     public function getBlueVip()
     {
@@ -967,7 +874,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets blue_vip
      *
-     * @param int $blue_vip Blue V Crown Shield
+     * @param int|null $blue_vip Blue V Crown Shield
      *
      * @return $this
      */
@@ -981,7 +888,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets work_status
      *
-     * @return int
+     * @return int|null
      */
     public function getWorkStatus()
     {
@@ -991,7 +898,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets work_status
      *
-     * @param int $work_status Merchant work status
+     * @param int|null $work_status Merchant work status
      *
      * @return $this
      */
@@ -1005,7 +912,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets registration_days
      *
-     * @return int
+     * @return int|null
      */
     public function getRegistrationDays()
     {
@@ -1015,7 +922,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets registration_days
      *
-     * @param int $registration_days Registration days
+     * @param int|null $registration_days Registration days
      *
      * @return $this
      */
@@ -1029,7 +936,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets first_trade_days
      *
-     * @return int
+     * @return int|null
      */
     public function getFirstTradeDays()
     {
@@ -1039,7 +946,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets first_trade_days
      *
-     * @param int $first_trade_days Days since first trade
+     * @param int|null $first_trade_days Days since first trade
      *
      * @return $this
      */
@@ -1053,7 +960,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets need_replenish
      *
-     * @return int
+     * @return int|null
      */
     public function getNeedReplenish()
     {
@@ -1063,7 +970,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets need_replenish
      *
-     * @param int $need_replenish Whether margin replenishment is needed
+     * @param int|null $need_replenish Whether margin replenishment is needed
      *
      * @return $this
      */
@@ -1077,7 +984,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets merchant_info
      *
-     * @return \GateApi\Model\InlineResponse20014DataMerchantInfo
+     * @return \GateApi\Model\InlineResponse20014DataMerchantInfo|null
      */
     public function getMerchantInfo()
     {
@@ -1087,7 +994,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets merchant_info
      *
-     * @param \GateApi\Model\InlineResponse20014DataMerchantInfo $merchant_info merchant_info
+     * @param \GateApi\Model\InlineResponse20014DataMerchantInfo|null $merchant_info merchant_info
      *
      * @return $this
      */
@@ -1101,7 +1008,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets online_status
      *
-     * @return int
+     * @return int|null
      */
     public function getOnlineStatus()
     {
@@ -1111,7 +1018,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets online_status
      *
-     * @param int $online_status Merchant online status
+     * @param int|null $online_status Merchant online status
      *
      * @return $this
      */
@@ -1125,7 +1032,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets work_hours
      *
-     * @return object
+     * @return object|null
      */
     public function getWorkHours()
     {
@@ -1135,7 +1042,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets work_hours
      *
-     * @param object $work_hours Merchant online status details
+     * @param object|null $work_hours Merchant online status details
      *
      * @return $this
      */
@@ -1149,7 +1056,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets transactions_month
      *
-     * @return int
+     * @return float|null
      */
     public function getTransactionsMonth()
     {
@@ -1159,7 +1066,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets transactions_month
      *
-     * @param int $transactions_month 30-day transaction volume
+     * @param float|null $transactions_month 30-day transaction volume
      *
      * @return $this
      */
@@ -1173,7 +1080,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets transactions_all
      *
-     * @return int
+     * @return float|null
      */
     public function getTransactionsAll()
     {
@@ -1183,7 +1090,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets transactions_all
      *
-     * @param int $transactions_all Total transaction volume
+     * @param float|null $transactions_all Total transaction volume
      *
      * @return $this
      */
@@ -1197,7 +1104,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Gets trade_versatile
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTradeVersatile()
     {
@@ -1207,7 +1114,7 @@ class InlineResponse20014Data implements ModelInterface, ArrayAccess
     /**
      * Sets trade_versatile
      *
-     * @param bool $trade_versatile Single user or composite user
+     * @param bool|null $trade_versatile Single user or composite user
      *
      * @return $this
      */

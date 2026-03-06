@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timestamp** | **float** |  | 
-**method** | **string** |  | 
-**code** | **int** |  | 
-**message** | **string** |  | 
-**data** | [**\GateApi\Model\InlineResponse20021Data**](InlineResponse20021Data.md) |  | 
-**version** | **string** | Version number | 
+**timestamp** | **float** |  | [optional] 
+**method** | **string** |  | [optional] 
+**code** | **int** |  | [optional] 
+**message** | **string** |  | [optional] 
+**data** | [**\GateApi\Model\InlineResponse20021Data**](InlineResponse20021Data.md) |  | [optional] 
+**version** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

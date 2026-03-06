@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**crypto_currency** | **string** | Cryptocurrency | 
-**fiat_currency** | **string** | Fiat currency | 
-**order_tab** | **string** | Order tab, default: pending (pending: In Progress (pending: AND status in (&#39;OPEN&#39;,&#39;PAID&#39;, &#39;LOCKED&#39;, &#39;TEMP&#39;)); dispute: In Dispute (status in (&#39;ACCEPT&#39;,&#39;BCLOSED&#39;, &#39;CANCEL&#39;, &#39;BECANCEL&#39;, &#39;SCLOSED&#39;, &#39;SCANCEL&#39;))) | [optional] 
-**select_type** | **string** | Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional] 
-**status** | **string** | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional] 
-**txid** | **int** | Order ID | [optional] 
-**start_time** | **int** | Start timestamp, default is 00:00 89 days ago | [optional] 
-**end_time** | **int** | End timestamp, default is 23:59:59 today | [optional] 
+**type** | **string** | BUY for on-ramp, SELL for off-ramp | 
+**side** | **string** | Quote direction returned by the quote API (used for order validation) | 
+**crypto_currency** | **string** | Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page) | 
+**fiat_currency** | **string** | Fiat currency (supported currencies can be queried from the OTC web fiat quote page) | 
+**crypto_amount** | **string** | Amount of cryptocurrency | 
+**fiat_amount** | **string** | Fiat amount | 
+**promotion_code** | **string** | Promotion code | [optional] 
+**quote_token** | **string** | Parameter returned by the quote API | 
+**bank_id** | **string** | Bank card ID used for the order (retrieved via the default bank card API) | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

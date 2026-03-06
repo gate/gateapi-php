@@ -54,13 +54,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'side' => 'string',
-        'pay_coin' => 'string',
-        'get_coin' => 'string',
-        'pay_amount' => 'string',
-        'get_amount' => 'string',
-        'create_quote_token' => 'string',
-        'promotion_code' => 'string'
+        'asset' => 'string',
+        'change' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -69,13 +65,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'side' => null,
-        'pay_coin' => null,
-        'get_coin' => null,
-        'pay_amount' => null,
-        'get_amount' => null,
-        'create_quote_token' => null,
-        'promotion_code' => null
+        'asset' => null,
+        'change' => null,
+        'type' => null
     ];
 
     /**
@@ -105,13 +97,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'side' => 'side',
-        'pay_coin' => 'pay_coin',
-        'get_coin' => 'get_coin',
-        'pay_amount' => 'pay_amount',
-        'get_amount' => 'get_amount',
-        'create_quote_token' => 'create_quote_token',
-        'promotion_code' => 'promotion_code'
+        'asset' => 'asset',
+        'change' => 'change',
+        'type' => 'type'
     ];
 
     /**
@@ -120,13 +108,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'side' => 'setSide',
-        'pay_coin' => 'setPayCoin',
-        'get_coin' => 'setGetCoin',
-        'pay_amount' => 'setPayAmount',
-        'get_amount' => 'setGetAmount',
-        'create_quote_token' => 'setCreateQuoteToken',
-        'promotion_code' => 'setPromotionCode'
+        'asset' => 'setAsset',
+        'change' => 'setChange',
+        'type' => 'setType'
     ];
 
     /**
@@ -135,13 +119,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'side' => 'getSide',
-        'pay_coin' => 'getPayCoin',
-        'get_coin' => 'getGetCoin',
-        'pay_amount' => 'getPayAmount',
-        'get_amount' => 'getGetAmount',
-        'create_quote_token' => 'getCreateQuoteToken',
-        'promotion_code' => 'getPromotionCode'
+        'asset' => 'getAsset',
+        'change' => 'getChange',
+        'type' => 'getType'
     ];
 
     /**
@@ -185,8 +165,23 @@ class InlineObject1 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const TYPE_DEPOSIT = 'deposit';
+    const TYPE_WITHDRAW = 'withdraw';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_DEPOSIT,
+            self::TYPE_WITHDRAW,
+        ];
+    }
     
 
     /**
@@ -204,13 +199,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
-        $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
-        $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
-        $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
-        $this->container['create_quote_token'] = isset($data['create_quote_token']) ? $data['create_quote_token'] : null;
-        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -222,15 +213,23 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['side'] === null) {
-            $invalidProperties[] = "'side' can't be null";
+        if ($this->container['asset'] === null) {
+            $invalidProperties[] = "'asset' can't be null";
         }
-        if ($this->container['pay_coin'] === null) {
-            $invalidProperties[] = "'pay_coin' can't be null";
+        if ($this->container['change'] === null) {
+            $invalidProperties[] = "'change' can't be null";
         }
-        if ($this->container['get_coin'] === null) {
-            $invalidProperties[] = "'get_coin' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -247,169 +246,82 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets side
+     * Gets asset
      *
      * @return string
      */
-    public function getSide()
+    public function getAsset()
     {
-        return $this->container['side'];
+        return $this->container['asset'];
     }
 
     /**
-     * Sets side
+     * Sets asset
      *
-     * @param string $side PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
+     * @param string $asset Asset type, e.g., USDT, currently only USDT is supported
      *
      * @return $this
      */
-    public function setSide($side)
+    public function setAsset($asset)
     {
-        $this->container['side'] = $side;
+        $this->container['asset'] = $asset;
 
         return $this;
     }
 
     /**
-     * Gets pay_coin
+     * Gets change
      *
      * @return string
      */
-    public function getPayCoin()
+    public function getChange()
     {
-        return $this->container['pay_coin'];
+        return $this->container['change'];
     }
 
     /**
-     * Sets pay_coin
+     * Sets change
      *
-     * @param string $pay_coin Currency the user pays. Supported currencies can be found on the OTC web quote page.
+     * @param string $change Change Quantity, supports up to two decimal places
      *
      * @return $this
      */
-    public function setPayCoin($pay_coin)
+    public function setChange($change)
     {
-        $this->container['pay_coin'] = $pay_coin;
+        $this->container['change'] = $change;
 
         return $this;
     }
 
     /**
-     * Gets get_coin
+     * Gets type
      *
      * @return string
      */
-    public function getGetCoin()
+    public function getType()
     {
-        return $this->container['get_coin'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets get_coin
+     * Sets type
      *
-     * @param string $get_coin Currency the user receives. Supported currencies can be found on the OTC web quote page.
+     * @param string $type Transaction Type (deposit - transfer in, withdraw - transfer out)
      *
      * @return $this
      */
-    public function setGetCoin($get_coin)
+    public function setType($type)
     {
-        $this->container['get_coin'] = $get_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_amount
-     *
-     * @return string|null
-     */
-    public function getPayAmount()
-    {
-        return $this->container['pay_amount'];
-    }
-
-    /**
-     * Sets pay_amount
-     *
-     * @param string|null $pay_amount User payment currency amount
-     *
-     * @return $this
-     */
-    public function setPayAmount($pay_amount)
-    {
-        $this->container['pay_amount'] = $pay_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets get_amount
-     *
-     * @return string|null
-     */
-    public function getGetAmount()
-    {
-        return $this->container['get_amount'];
-    }
-
-    /**
-     * Sets get_amount
-     *
-     * @param string|null $get_amount Amount of currency received by the user
-     *
-     * @return $this
-     */
-    public function setGetAmount($get_amount)
-    {
-        $this->container['get_amount'] = $get_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_quote_token
-     *
-     * @return string|null
-     */
-    public function getCreateQuoteToken()
-    {
-        return $this->container['create_quote_token'];
-    }
-
-    /**
-     * Sets create_quote_token
-     *
-     * @param string|null $create_quote_token Create quote token: 0: quote preview only; 1: generate quote token for order placement.
-     *
-     * @return $this
-     */
-    public function setCreateQuoteToken($create_quote_token)
-    {
-        $this->container['create_quote_token'] = $create_quote_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_code
-     *
-     * @return string|null
-     */
-    public function getPromotionCode()
-    {
-        return $this->container['promotion_code'];
-    }
-
-    /**
-     * Sets promotion_code
-     *
-     * @param string|null $promotion_code Promotion code (optional)
-     *
-     * @return $this
-     */
-    public function setPromotionCode($promotion_code)
-    {
-        $this->container['promotion_code'] = $promotion_code;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

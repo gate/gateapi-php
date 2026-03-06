@@ -14,5 +14,7 @@ Name | Type | Description | Notes
 **fixed_rate** | **string** | Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies | [optional] 
 **chain** | **string** | The main chain corresponding to the coin | [optional] 
 **chains** | [**\GateApi\Model\SpotCurrencyChain[]**](SpotCurrencyChain.md) | All links corresponding to coins | [optional] 
+**total_supply** | **string** | Total supply | [optional] 
+**market_cap** | **string** | Market cap | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

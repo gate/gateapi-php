@@ -63,7 +63,9 @@ class Currency implements ModelInterface, ArrayAccess
         'trade_disabled' => 'bool',
         'fixed_rate' => 'string',
         'chain' => 'string',
-        'chains' => '\GateApi\Model\SpotCurrencyChain[]'
+        'chains' => '\GateApi\Model\SpotCurrencyChain[]',
+        'total_supply' => 'string',
+        'market_cap' => 'string'
     ];
 
     /**
@@ -81,7 +83,9 @@ class Currency implements ModelInterface, ArrayAccess
         'trade_disabled' => null,
         'fixed_rate' => null,
         'chain' => null,
-        'chains' => null
+        'chains' => null,
+        'total_supply' => null,
+        'market_cap' => null
     ];
 
     /**
@@ -120,7 +124,9 @@ class Currency implements ModelInterface, ArrayAccess
         'trade_disabled' => 'trade_disabled',
         'fixed_rate' => 'fixed_rate',
         'chain' => 'chain',
-        'chains' => 'chains'
+        'chains' => 'chains',
+        'total_supply' => 'total_supply',
+        'market_cap' => 'market_cap'
     ];
 
     /**
@@ -138,7 +144,9 @@ class Currency implements ModelInterface, ArrayAccess
         'trade_disabled' => 'setTradeDisabled',
         'fixed_rate' => 'setFixedRate',
         'chain' => 'setChain',
-        'chains' => 'setChains'
+        'chains' => 'setChains',
+        'total_supply' => 'setTotalSupply',
+        'market_cap' => 'setMarketCap'
     ];
 
     /**
@@ -156,7 +164,9 @@ class Currency implements ModelInterface, ArrayAccess
         'trade_disabled' => 'getTradeDisabled',
         'fixed_rate' => 'getFixedRate',
         'chain' => 'getChain',
-        'chains' => 'getChains'
+        'chains' => 'getChains',
+        'total_supply' => 'getTotalSupply',
+        'market_cap' => 'getMarketCap'
     ];
 
     /**
@@ -229,6 +239,8 @@ class Currency implements ModelInterface, ArrayAccess
         $this->container['fixed_rate'] = isset($data['fixed_rate']) ? $data['fixed_rate'] : null;
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
         $this->container['chains'] = isset($data['chains']) ? $data['chains'] : null;
+        $this->container['total_supply'] = isset($data['total_supply']) ? $data['total_supply'] : null;
+        $this->container['market_cap'] = isset($data['market_cap']) ? $data['market_cap'] : null;
     }
 
     /**
@@ -491,6 +503,54 @@ class Currency implements ModelInterface, ArrayAccess
     public function setChains($chains)
     {
         $this->container['chains'] = $chains;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_supply
+     *
+     * @return string|null
+     */
+    public function getTotalSupply()
+    {
+        return $this->container['total_supply'];
+    }
+
+    /**
+     * Sets total_supply
+     *
+     * @param string|null $total_supply Total supply
+     *
+     * @return $this
+     */
+    public function setTotalSupply($total_supply)
+    {
+        $this->container['total_supply'] = $total_supply;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_cap
+     *
+     * @return string|null
+     */
+    public function getMarketCap()
+    {
+        return $this->container['market_cap'];
+    }
+
+    /**
+     * Sets market_cap
+     *
+     * @param string|null $market_cap Market cap
+     *
+     * @return $this
+     */
+    public function setMarketCap($market_cap)
+    {
+        $this->container['market_cap'] = $market_cap;
 
         return $this;
     }

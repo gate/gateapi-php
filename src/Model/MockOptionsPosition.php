@@ -227,7 +227,7 @@ class MockOptionsPosition implements ModelInterface, ArrayAccess
     /**
      * Sets options_name
      *
-     * @param string $options_name Option name, currently only supports USDT options for BTC and ETH
+     * @param string $options_name Options contract name. Currently supports all options contract markets.
      *
      * @return $this
      */

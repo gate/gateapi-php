@@ -118,15 +118,15 @@ class OTCApi
      *
      * Fiat and stablecoin quote
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 inline_object1 (required)
+     * @param  \GateApi\Model\InlineObject6 $inline_object6 inline_object6 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse2006
      */
-    public function createOtcQuote($inline_object1)
+    public function createOtcQuote($inline_object6)
     {
-        list($response) = $this->createOtcQuoteWithHttpInfo($inline_object1);
+        list($response) = $this->createOtcQuoteWithHttpInfo($inline_object6);
         return $response;
     }
 
@@ -135,15 +135,15 @@ class OTCApi
      *
      * Fiat and stablecoin quote
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOtcQuoteWithHttpInfo($inline_object1)
+    public function createOtcQuoteWithHttpInfo($inline_object6)
     {
-        $request = $this->createOtcQuoteRequest($inline_object1);
+        $request = $this->createOtcQuoteRequest($inline_object6);
 
         $options = $this->createHttpClientOption();
         try {
@@ -189,14 +189,14 @@ class OTCApi
      *
      * Fiat and stablecoin quote
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOtcQuoteAsync($inline_object1)
+    public function createOtcQuoteAsync($inline_object6)
     {
-        return $this->createOtcQuoteAsyncWithHttpInfo($inline_object1)
+        return $this->createOtcQuoteAsyncWithHttpInfo($inline_object6)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -209,15 +209,15 @@ class OTCApi
      *
      * Fiat and stablecoin quote
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOtcQuoteAsyncWithHttpInfo($inline_object1)
+    public function createOtcQuoteAsyncWithHttpInfo($inline_object6)
     {
         $returnType = '\GateApi\Model\InlineResponse2006';
-        $request = $this->createOtcQuoteRequest($inline_object1);
+        $request = $this->createOtcQuoteRequest($inline_object6);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -256,17 +256,17 @@ class OTCApi
     /**
      * Create request for operation 'createOtcQuote'
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createOtcQuoteRequest($inline_object1)
+    protected function createOtcQuoteRequest($inline_object6)
     {
-        // verify the required parameter 'inline_object1' is set
-        if ($inline_object1 === null || (is_array($inline_object1) && count($inline_object1) === 0)) {
+        // verify the required parameter 'inline_object6' is set
+        if ($inline_object6 === null || (is_array($inline_object6) && count($inline_object6) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object1 when calling createOtcQuote'
+                'Missing the required parameter $inline_object6 when calling createOtcQuote'
             );
         }
 
@@ -279,8 +279,8 @@ class OTCApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object1)) {
-            $_tempBody = $inline_object1;
+        if (isset($inline_object6)) {
+            $_tempBody = $inline_object6;
         }
 
         if ($multipart) {
@@ -354,15 +354,15 @@ class OTCApi
      *
      * Create fiat order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 inline_object2 (required)
+     * @param  \GateApi\Model\InlineObject7 $inline_object7 inline_object7 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse2007
      */
-    public function createOtcOrder($inline_object2)
+    public function createOtcOrder($inline_object7)
     {
-        list($response) = $this->createOtcOrderWithHttpInfo($inline_object2);
+        list($response) = $this->createOtcOrderWithHttpInfo($inline_object7);
         return $response;
     }
 
@@ -371,15 +371,15 @@ class OTCApi
      *
      * Create fiat order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\InlineObject7 $inline_object7 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOtcOrderWithHttpInfo($inline_object2)
+    public function createOtcOrderWithHttpInfo($inline_object7)
     {
-        $request = $this->createOtcOrderRequest($inline_object2);
+        $request = $this->createOtcOrderRequest($inline_object7);
 
         $options = $this->createHttpClientOption();
         try {
@@ -425,14 +425,14 @@ class OTCApi
      *
      * Create fiat order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\InlineObject7 $inline_object7 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOtcOrderAsync($inline_object2)
+    public function createOtcOrderAsync($inline_object7)
     {
-        return $this->createOtcOrderAsyncWithHttpInfo($inline_object2)
+        return $this->createOtcOrderAsyncWithHttpInfo($inline_object7)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -445,15 +445,15 @@ class OTCApi
      *
      * Create fiat order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\InlineObject7 $inline_object7 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOtcOrderAsyncWithHttpInfo($inline_object2)
+    public function createOtcOrderAsyncWithHttpInfo($inline_object7)
     {
         $returnType = '\GateApi\Model\InlineResponse2007';
-        $request = $this->createOtcOrderRequest($inline_object2);
+        $request = $this->createOtcOrderRequest($inline_object7);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -492,17 +492,17 @@ class OTCApi
     /**
      * Create request for operation 'createOtcOrder'
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\InlineObject7 $inline_object7 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createOtcOrderRequest($inline_object2)
+    protected function createOtcOrderRequest($inline_object7)
     {
-        // verify the required parameter 'inline_object2' is set
-        if ($inline_object2 === null || (is_array($inline_object2) && count($inline_object2) === 0)) {
+        // verify the required parameter 'inline_object7' is set
+        if ($inline_object7 === null || (is_array($inline_object7) && count($inline_object7) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object2 when calling createOtcOrder'
+                'Missing the required parameter $inline_object7 when calling createOtcOrder'
             );
         }
 
@@ -515,8 +515,8 @@ class OTCApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object2)) {
-            $_tempBody = $inline_object2;
+        if (isset($inline_object7)) {
+            $_tempBody = $inline_object7;
         }
 
         if ($multipart) {
@@ -590,15 +590,15 @@ class OTCApi
      *
      * Create stablecoin order
      *
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 inline_object3 (required)
+     * @param  \GateApi\Model\InlineObject8 $inline_object8 inline_object8 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse2008
      */
-    public function createStableCoinOrder($inline_object3)
+    public function createStableCoinOrder($inline_object8)
     {
-        list($response) = $this->createStableCoinOrderWithHttpInfo($inline_object3);
+        list($response) = $this->createStableCoinOrderWithHttpInfo($inline_object8);
         return $response;
     }
 
@@ -607,15 +607,15 @@ class OTCApi
      *
      * Create stablecoin order
      *
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\InlineObject8 $inline_object8 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createStableCoinOrderWithHttpInfo($inline_object3)
+    public function createStableCoinOrderWithHttpInfo($inline_object8)
     {
-        $request = $this->createStableCoinOrderRequest($inline_object3);
+        $request = $this->createStableCoinOrderRequest($inline_object8);
 
         $options = $this->createHttpClientOption();
         try {
@@ -661,14 +661,14 @@ class OTCApi
      *
      * Create stablecoin order
      *
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\InlineObject8 $inline_object8 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createStableCoinOrderAsync($inline_object3)
+    public function createStableCoinOrderAsync($inline_object8)
     {
-        return $this->createStableCoinOrderAsyncWithHttpInfo($inline_object3)
+        return $this->createStableCoinOrderAsyncWithHttpInfo($inline_object8)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -681,15 +681,15 @@ class OTCApi
      *
      * Create stablecoin order
      *
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\InlineObject8 $inline_object8 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createStableCoinOrderAsyncWithHttpInfo($inline_object3)
+    public function createStableCoinOrderAsyncWithHttpInfo($inline_object8)
     {
         $returnType = '\GateApi\Model\InlineResponse2008';
-        $request = $this->createStableCoinOrderRequest($inline_object3);
+        $request = $this->createStableCoinOrderRequest($inline_object8);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -728,17 +728,17 @@ class OTCApi
     /**
      * Create request for operation 'createStableCoinOrder'
      *
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\InlineObject8 $inline_object8 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createStableCoinOrderRequest($inline_object3)
+    protected function createStableCoinOrderRequest($inline_object8)
     {
-        // verify the required parameter 'inline_object3' is set
-        if ($inline_object3 === null || (is_array($inline_object3) && count($inline_object3) === 0)) {
+        // verify the required parameter 'inline_object8' is set
+        if ($inline_object8 === null || (is_array($inline_object8) && count($inline_object8) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object3 when calling createStableCoinOrder'
+                'Missing the required parameter $inline_object8 when calling createStableCoinOrder'
             );
         }
 
@@ -751,8 +751,8 @@ class OTCApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object3)) {
-            $_tempBody = $inline_object3;
+        if (isset($inline_object8)) {
+            $_tempBody = $inline_object8;
         }
 
         if ($multipart) {
@@ -1270,15 +1270,15 @@ class OTCApi
      *
      * Mark fiat order as paid
      *
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 inline_object4 (required)
+     * @param  \GateApi\Model\InlineObject9 $inline_object9 inline_object9 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse2007
      */
-    public function markOtcOrderPaid($inline_object4)
+    public function markOtcOrderPaid($inline_object9)
     {
-        list($response) = $this->markOtcOrderPaidWithHttpInfo($inline_object4);
+        list($response) = $this->markOtcOrderPaidWithHttpInfo($inline_object9);
         return $response;
     }
 
@@ -1287,15 +1287,15 @@ class OTCApi
      *
      * Mark fiat order as paid
      *
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\InlineObject9 $inline_object9 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
-    public function markOtcOrderPaidWithHttpInfo($inline_object4)
+    public function markOtcOrderPaidWithHttpInfo($inline_object9)
     {
-        $request = $this->markOtcOrderPaidRequest($inline_object4);
+        $request = $this->markOtcOrderPaidRequest($inline_object9);
 
         $options = $this->createHttpClientOption();
         try {
@@ -1341,14 +1341,14 @@ class OTCApi
      *
      * Mark fiat order as paid
      *
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\InlineObject9 $inline_object9 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function markOtcOrderPaidAsync($inline_object4)
+    public function markOtcOrderPaidAsync($inline_object9)
     {
-        return $this->markOtcOrderPaidAsyncWithHttpInfo($inline_object4)
+        return $this->markOtcOrderPaidAsyncWithHttpInfo($inline_object9)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1361,15 +1361,15 @@ class OTCApi
      *
      * Mark fiat order as paid
      *
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\InlineObject9 $inline_object9 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function markOtcOrderPaidAsyncWithHttpInfo($inline_object4)
+    public function markOtcOrderPaidAsyncWithHttpInfo($inline_object9)
     {
         $returnType = '\GateApi\Model\InlineResponse2007';
-        $request = $this->markOtcOrderPaidRequest($inline_object4);
+        $request = $this->markOtcOrderPaidRequest($inline_object9);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1408,17 +1408,17 @@ class OTCApi
     /**
      * Create request for operation 'markOtcOrderPaid'
      *
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\InlineObject9 $inline_object9 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function markOtcOrderPaidRequest($inline_object4)
+    protected function markOtcOrderPaidRequest($inline_object9)
     {
-        // verify the required parameter 'inline_object4' is set
-        if ($inline_object4 === null || (is_array($inline_object4) && count($inline_object4) === 0)) {
+        // verify the required parameter 'inline_object9' is set
+        if ($inline_object9 === null || (is_array($inline_object9) && count($inline_object9) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object4 when calling markOtcOrderPaid'
+                'Missing the required parameter $inline_object9 when calling markOtcOrderPaid'
             );
         }
 
@@ -1431,8 +1431,8 @@ class OTCApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object4)) {
-            $_tempBody = $inline_object4;
+        if (isset($inline_object9)) {
+            $_tempBody = $inline_object9;
         }
 
         if ($multipart) {

@@ -241,36 +241,6 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['convert_type'] === null) {
-            $invalidProperties[] = "'convert_type' can't be null";
-        }
-        if ($this->container['convert_status'] === null) {
-            $invalidProperties[] = "'convert_status' can't be null";
-        }
-        if ($this->container['pre_rate'] === null) {
-            $invalidProperties[] = "'pre_rate' can't be null";
-        }
-        if ($this->container['rate'] === null) {
-            $invalidProperties[] = "'rate' can't be null";
-        }
-        if ($this->container['pre_fiat_rate'] === null) {
-            $invalidProperties[] = "'pre_fiat_rate' can't be null";
-        }
-        if ($this->container['fiat_rate'] === null) {
-            $invalidProperties[] = "'fiat_rate' can't be null";
-        }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['convert_amount'] === null) {
-            $invalidProperties[] = "'convert_amount' can't be null";
-        }
-        if ($this->container['slippage'] === null) {
-            $invalidProperties[] = "'slippage' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -289,7 +259,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets convert_type
      *
-     * @return string
+     * @return string|null
      */
     public function getConvertType()
     {
@@ -299,7 +269,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets convert_type
      *
-     * @param string $convert_type Flash swap target currency
+     * @param string|null $convert_type Flash swap target currency
      *
      * @return $this
      */
@@ -313,7 +283,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets convert_status
      *
-     * @return string
+     * @return string|null
      */
     public function getConvertStatus()
     {
@@ -323,7 +293,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets convert_status
      *
-     * @param string $convert_status Flash swap order status
+     * @param string|null $convert_status Flash swap order status
      *
      * @return $this
      */
@@ -337,7 +307,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets pre_rate
      *
-     * @return string
+     * @return string|null
      */
     public function getPreRate()
     {
@@ -347,7 +317,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets pre_rate
      *
-     * @param string $pre_rate Expected price when placing order
+     * @param string|null $pre_rate Expected price when placing order
      *
      * @return $this
      */
@@ -361,7 +331,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets rate
      *
-     * @return string
+     * @return string|null
      */
     public function getRate()
     {
@@ -371,7 +341,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets rate
      *
-     * @param string $rate Execution price
+     * @param string|null $rate Execution price
      *
      * @return $this
      */
@@ -385,7 +355,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets pre_fiat_rate
      *
-     * @return string
+     * @return string|null
      */
     public function getPreFiatRate()
     {
@@ -395,7 +365,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets pre_fiat_rate
      *
-     * @param string $pre_fiat_rate Expected fiat price when placing order
+     * @param string|null $pre_fiat_rate Expected fiat price when placing order
      *
      * @return $this
      */
@@ -409,7 +379,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets fiat_rate
      *
-     * @return string
+     * @return string|null
      */
     public function getFiatRate()
     {
@@ -419,7 +389,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets fiat_rate
      *
-     * @param string $fiat_rate Fiat price at execution
+     * @param string|null $fiat_rate Fiat price at execution
      *
      * @return $this
      */
@@ -433,7 +403,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets amount
      *
-     * @return string
+     * @return string|null
      */
     public function getAmount()
     {
@@ -443,7 +413,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Size
+     * @param string|null $amount Size
      *
      * @return $this
      */
@@ -457,7 +427,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets convert_amount
      *
-     * @return string
+     * @return string|null
      */
     public function getConvertAmount()
     {
@@ -467,7 +437,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets convert_amount
      *
-     * @param string $convert_amount Swap Amount
+     * @param string|null $convert_amount Swap Amount
      *
      * @return $this
      */
@@ -481,7 +451,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets slippage
      *
-     * @return string
+     * @return string|null
      */
     public function getSlippage()
     {
@@ -491,7 +461,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets slippage
      *
-     * @param string $slippage Slippage calculation: slippage = (expected price when placing order - real-time price during auto swap) / expected price when placing order
+     * @param string|null $slippage Slippage calculation: slippage = (expected price when placing order - real-time price during auto swap) / expected price when placing order
      *
      * @return $this
      */
@@ -505,7 +475,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -515,7 +485,7 @@ class InlineResponse20017DataConvertInfo implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status Flash swap order display status
+     * @param string|null $status Flash swap order display status
      *
      * @return $this
      */

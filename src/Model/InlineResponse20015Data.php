@@ -66,7 +66,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
         'transactions_used_time' => 'string',
         'cancelled_used_time_month' => 'string',
         'complete_transactions_month' => 'string',
-        'complete_rate_month' => 'int',
+        'complete_rate_month' => 'float',
         'is_follow' => 'int',
         'have_traded' => 'int',
         'biz_uid' => 'string',
@@ -294,63 +294,6 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['user_timest'] === null) {
-            $invalidProperties[] = "'user_timest' can't be null";
-        }
-        if ($this->container['email_verified'] === null) {
-            $invalidProperties[] = "'email_verified' can't be null";
-        }
-        if ($this->container['verified'] === null) {
-            $invalidProperties[] = "'verified' can't be null";
-        }
-        if ($this->container['has_phone'] === null) {
-            $invalidProperties[] = "'has_phone' can't be null";
-        }
-        if ($this->container['user_name'] === null) {
-            $invalidProperties[] = "'user_name' can't be null";
-        }
-        if ($this->container['user_note'] === null) {
-            $invalidProperties[] = "'user_note' can't be null";
-        }
-        if ($this->container['complete_transactions'] === null) {
-            $invalidProperties[] = "'complete_transactions' can't be null";
-        }
-        if ($this->container['paid_transactions'] === null) {
-            $invalidProperties[] = "'paid_transactions' can't be null";
-        }
-        if ($this->container['accepted_transactions'] === null) {
-            $invalidProperties[] = "'accepted_transactions' can't be null";
-        }
-        if ($this->container['transactions_used_time'] === null) {
-            $invalidProperties[] = "'transactions_used_time' can't be null";
-        }
-        if ($this->container['cancelled_used_time_month'] === null) {
-            $invalidProperties[] = "'cancelled_used_time_month' can't be null";
-        }
-        if ($this->container['complete_transactions_month'] === null) {
-            $invalidProperties[] = "'complete_transactions_month' can't be null";
-        }
-        if ($this->container['complete_rate_month'] === null) {
-            $invalidProperties[] = "'complete_rate_month' can't be null";
-        }
-        if ($this->container['is_follow'] === null) {
-            $invalidProperties[] = "'is_follow' can't be null";
-        }
-        if ($this->container['have_traded'] === null) {
-            $invalidProperties[] = "'have_traded' can't be null";
-        }
-        if ($this->container['biz_uid'] === null) {
-            $invalidProperties[] = "'biz_uid' can't be null";
-        }
-        if ($this->container['registration_days'] === null) {
-            $invalidProperties[] = "'registration_days' can't be null";
-        }
-        if ($this->container['first_trade_days'] === null) {
-            $invalidProperties[] = "'first_trade_days' can't be null";
-        }
-        if ($this->container['trade_versatile'] === null) {
-            $invalidProperties[] = "'trade_versatile' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -369,7 +312,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets user_timest
      *
-     * @return string
+     * @return string|null
      */
     public function getUserTimest()
     {
@@ -379,7 +322,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets user_timest
      *
-     * @param string $user_timest User registration time (formatted string)
+     * @param string|null $user_timest User registration time (formatted string)
      *
      * @return $this
      */
@@ -393,7 +336,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets email_verified
      *
-     * @return string
+     * @return string|null
      */
     public function getEmailVerified()
     {
@@ -403,7 +346,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets email_verified
      *
-     * @param string $email_verified Whether email is verified
+     * @param string|null $email_verified Whether email is verified
      *
      * @return $this
      */
@@ -417,7 +360,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets verified
      *
-     * @return string
+     * @return string|null
      */
     public function getVerified()
     {
@@ -427,7 +370,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets verified
      *
-     * @param string $verified Whether KYC verification is completed
+     * @param string|null $verified Whether KYC verification is completed
      *
      * @return $this
      */
@@ -441,7 +384,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets has_phone
      *
-     * @return string
+     * @return string|null
      */
     public function getHasPhone()
     {
@@ -451,7 +394,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets has_phone
      *
-     * @param string $has_phone Whether phone is bound
+     * @param string|null $has_phone Whether phone is bound
      *
      * @return $this
      */
@@ -465,7 +408,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets user_name
      *
-     * @return string
+     * @return string|null
      */
     public function getUserName()
     {
@@ -475,7 +418,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets user_name
      *
-     * @param string $user_name Username
+     * @param string|null $user_name Username
      *
      * @return $this
      */
@@ -489,7 +432,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets user_note
      *
-     * @return string
+     * @return string|null
      */
     public function getUserNote()
     {
@@ -499,7 +442,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets user_note
      *
-     * @param string $user_note User note information
+     * @param string|null $user_note User note information
      *
      * @return $this
      */
@@ -513,7 +456,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_transactions
      *
-     * @return string
+     * @return string|null
      */
     public function getCompleteTransactions()
     {
@@ -523,7 +466,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_transactions
      *
-     * @param string $complete_transactions Total completed orders
+     * @param string|null $complete_transactions Total completed orders
      *
      * @return $this
      */
@@ -537,7 +480,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets paid_transactions
      *
-     * @return string
+     * @return string|null
      */
     public function getPaidTransactions()
     {
@@ -547,7 +490,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets paid_transactions
      *
-     * @param string $paid_transactions Number of completed buy orders
+     * @param string|null $paid_transactions Number of completed buy orders
      *
      * @return $this
      */
@@ -561,7 +504,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets accepted_transactions
      *
-     * @return string
+     * @return string|null
      */
     public function getAcceptedTransactions()
     {
@@ -571,7 +514,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets accepted_transactions
      *
-     * @param string $accepted_transactions Number of completed sell orders
+     * @param string|null $accepted_transactions Number of completed sell orders
      *
      * @return $this
      */
@@ -585,7 +528,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets transactions_used_time
      *
-     * @return string
+     * @return string|null
      */
     public function getTransactionsUsedTime()
     {
@@ -595,7 +538,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets transactions_used_time
      *
-     * @param string $transactions_used_time Average time to confirm receipt
+     * @param string|null $transactions_used_time Average time to confirm receipt
      *
      * @return $this
      */
@@ -609,7 +552,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets cancelled_used_time_month
      *
-     * @return string
+     * @return string|null
      */
     public function getCancelledUsedTimeMonth()
     {
@@ -619,7 +562,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets cancelled_used_time_month
      *
-     * @param string $cancelled_used_time_month Cancellation time in last 30 days
+     * @param string|null $cancelled_used_time_month Cancellation time in last 30 days
      *
      * @return $this
      */
@@ -633,7 +576,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_transactions_month
      *
-     * @return string
+     * @return string|null
      */
     public function getCompleteTransactionsMonth()
     {
@@ -643,7 +586,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_transactions_month
      *
-     * @param string $complete_transactions_month Number of completed orders in last 30 days
+     * @param string|null $complete_transactions_month Number of completed orders in last 30 days
      *
      * @return $this
      */
@@ -657,7 +600,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_rate_month
      *
-     * @return int
+     * @return float|null
      */
     public function getCompleteRateMonth()
     {
@@ -667,7 +610,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_rate_month
      *
-     * @param int $complete_rate_month Completion rate in last 30 days
+     * @param float|null $complete_rate_month Completion rate in last 30 days
      *
      * @return $this
      */
@@ -681,7 +624,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_follow
      *
-     * @return int
+     * @return int|null
      */
     public function getIsFollow()
     {
@@ -691,7 +634,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_follow
      *
-     * @param int $is_follow Whether following
+     * @param int|null $is_follow Whether following
      *
      * @return $this
      */
@@ -705,7 +648,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets have_traded
      *
-     * @return int
+     * @return int|null
      */
     public function getHaveTraded()
     {
@@ -715,7 +658,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets have_traded
      *
-     * @param int $have_traded Whether traded with self
+     * @param int|null $have_traded Whether traded with self
      *
      * @return $this
      */
@@ -729,7 +672,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets biz_uid
      *
-     * @return string
+     * @return string|null
      */
     public function getBizUid()
     {
@@ -739,7 +682,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets biz_uid
      *
-     * @param string $biz_uid Encrypted UID
+     * @param string|null $biz_uid Encrypted UID
      *
      * @return $this
      */
@@ -753,7 +696,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets registration_days
      *
-     * @return int
+     * @return int|null
      */
     public function getRegistrationDays()
     {
@@ -763,7 +706,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets registration_days
      *
-     * @param int $registration_days Registration days
+     * @param int|null $registration_days Registration days
      *
      * @return $this
      */
@@ -777,7 +720,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets first_trade_days
      *
-     * @return int
+     * @return int|null
      */
     public function getFirstTradeDays()
     {
@@ -787,7 +730,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets first_trade_days
      *
-     * @param int $first_trade_days Days since first trade
+     * @param int|null $first_trade_days Days since first trade
      *
      * @return $this
      */
@@ -801,7 +744,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Gets trade_versatile
      *
-     * @return bool
+     * @return bool|null
      */
     public function getTradeVersatile()
     {
@@ -811,7 +754,7 @@ class InlineResponse20015Data implements ModelInterface, ArrayAccess
     /**
      * Sets trade_versatile
      *
-     * @param bool $trade_versatile Single user or composite user
+     * @param bool|null $trade_versatile Single user or composite user
      *
      * @return $this
      */

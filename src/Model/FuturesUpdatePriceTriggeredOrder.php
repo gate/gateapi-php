@@ -56,7 +56,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'settle' => 'string',
-        'order_id' => 'string',
+        'order_id' => 'int',
         'size' => 'int',
         'price' => 'string',
         'trigger_price' => 'string',
@@ -299,7 +299,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     /**
      * Gets order_id
      *
-     * @return string
+     * @return int
      */
     public function getOrderId()
     {
@@ -309,7 +309,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     /**
      * Sets order_id
      *
-     * @param string $order_id The order ID of the modified price-triggered order. This ID is returned upon successful creation of the price-triggered order. Note: This ID must be passed in both the request path and request body.
+     * @param int $order_id ID of the Pending Take-Profit/Stop-Loss Trigger Order
      *
      * @return $this
      */

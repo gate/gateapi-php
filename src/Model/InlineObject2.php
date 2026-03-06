@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineObject2 Class Doc Comment
  *
  * @category Class
+ * @description Place order request parameters
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -54,15 +55,13 @@ class InlineObject2 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'side' => 'string',
-        'crypto_currency' => 'string',
-        'fiat_currency' => 'string',
-        'crypto_amount' => 'string',
-        'fiat_amount' => 'string',
-        'promotion_code' => 'string',
-        'quote_token' => 'string',
-        'bank_id' => 'string'
+        'price' => 'string',
+        'price_type' => 'string',
+        'side' => 'int',
+        'symbol' => 'string',
+        'volume' => 'string',
+        'price_tp' => 'string',
+        'price_sl' => 'string'
     ];
 
     /**
@@ -71,15 +70,13 @@ class InlineObject2 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'type' => null,
+        'price' => null,
+        'price_type' => null,
         'side' => null,
-        'crypto_currency' => null,
-        'fiat_currency' => null,
-        'crypto_amount' => null,
-        'fiat_amount' => null,
-        'promotion_code' => null,
-        'quote_token' => null,
-        'bank_id' => null
+        'symbol' => null,
+        'volume' => null,
+        'price_tp' => null,
+        'price_sl' => null
     ];
 
     /**
@@ -109,15 +106,13 @@ class InlineObject2 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
+        'price' => 'price',
+        'price_type' => 'price_type',
         'side' => 'side',
-        'crypto_currency' => 'crypto_currency',
-        'fiat_currency' => 'fiat_currency',
-        'crypto_amount' => 'crypto_amount',
-        'fiat_amount' => 'fiat_amount',
-        'promotion_code' => 'promotion_code',
-        'quote_token' => 'quote_token',
-        'bank_id' => 'bank_id'
+        'symbol' => 'symbol',
+        'volume' => 'volume',
+        'price_tp' => 'price_tp',
+        'price_sl' => 'price_sl'
     ];
 
     /**
@@ -126,15 +121,13 @@ class InlineObject2 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
+        'price' => 'setPrice',
+        'price_type' => 'setPriceType',
         'side' => 'setSide',
-        'crypto_currency' => 'setCryptoCurrency',
-        'fiat_currency' => 'setFiatCurrency',
-        'crypto_amount' => 'setCryptoAmount',
-        'fiat_amount' => 'setFiatAmount',
-        'promotion_code' => 'setPromotionCode',
-        'quote_token' => 'setQuoteToken',
-        'bank_id' => 'setBankId'
+        'symbol' => 'setSymbol',
+        'volume' => 'setVolume',
+        'price_tp' => 'setPriceTp',
+        'price_sl' => 'setPriceSl'
     ];
 
     /**
@@ -143,15 +136,13 @@ class InlineObject2 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
+        'price' => 'getPrice',
+        'price_type' => 'getPriceType',
         'side' => 'getSide',
-        'crypto_currency' => 'getCryptoCurrency',
-        'fiat_currency' => 'getFiatCurrency',
-        'crypto_amount' => 'getCryptoAmount',
-        'fiat_amount' => 'getFiatAmount',
-        'promotion_code' => 'getPromotionCode',
-        'quote_token' => 'getQuoteToken',
-        'bank_id' => 'getBankId'
+        'symbol' => 'getSymbol',
+        'volume' => 'getVolume',
+        'price_tp' => 'getPriceTp',
+        'price_sl' => 'getPriceSl'
     ];
 
     /**
@@ -195,8 +186,38 @@ class InlineObject2 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const PRICE_TYPE_TRIGGER = 'trigger';
+    const PRICE_TYPE_MARKET = 'market';
+    const SIDE_1 = 1;
+    const SIDE_2 = 2;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPriceTypeAllowableValues()
+    {
+        return [
+            self::PRICE_TYPE_TRIGGER,
+            self::PRICE_TYPE_MARKET,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSideAllowableValues()
+    {
+        return [
+            self::SIDE_1,
+            self::SIDE_2,
+        ];
+    }
     
 
     /**
@@ -214,15 +235,13 @@ class InlineObject2 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
-        $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
-        $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
-        $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
-        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
-        $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
-        $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
+        $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
     }
 
     /**
@@ -234,29 +253,36 @@ class InlineObject2 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
         }
+        if ($this->container['price_type'] === null) {
+            $invalidProperties[] = "'price_type' can't be null";
+        }
+        $allowedValues = $this->getPriceTypeAllowableValues();
+        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'price_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['side'] === null) {
             $invalidProperties[] = "'side' can't be null";
         }
-        if ($this->container['crypto_currency'] === null) {
-            $invalidProperties[] = "'crypto_currency' can't be null";
+        $allowedValues = $this->getSideAllowableValues();
+        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'side', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['fiat_currency'] === null) {
-            $invalidProperties[] = "'fiat_currency' can't be null";
+
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
         }
-        if ($this->container['crypto_amount'] === null) {
-            $invalidProperties[] = "'crypto_amount' can't be null";
-        }
-        if ($this->container['fiat_amount'] === null) {
-            $invalidProperties[] = "'fiat_amount' can't be null";
-        }
-        if ($this->container['quote_token'] === null) {
-            $invalidProperties[] = "'quote_token' can't be null";
-        }
-        if ($this->container['bank_id'] === null) {
-            $invalidProperties[] = "'bank_id' can't be null";
+        if ($this->container['volume'] === null) {
+            $invalidProperties[] = "'volume' can't be null";
         }
         return $invalidProperties;
     }
@@ -274,25 +300,58 @@ class InlineObject2 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets type
+     * Gets price
      *
      * @return string
      */
-    public function getType()
+    public function getPrice()
     {
-        return $this->container['type'];
+        return $this->container['price'];
     }
 
     /**
-     * Sets type
+     * Sets price
      *
-     * @param string $type BUY for on-ramp, SELL for off-ramp
+     * @param string $price Order price
      *
      * @return $this
      */
-    public function setType($type)
+    public function setPrice($price)
     {
-        $this->container['type'] = $type;
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_type
+     *
+     * @return string
+     */
+    public function getPriceType()
+    {
+        return $this->container['price_type'];
+    }
+
+    /**
+     * Sets price_type
+     *
+     * @param string $price_type Price type (trigger=trigger price, market=market price)
+     *
+     * @return $this
+     */
+    public function setPriceType($price_type)
+    {
+        $allowedValues = $this->getPriceTypeAllowableValues();
+        if (!in_array($price_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'price_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['price_type'] = $price_type;
 
         return $this;
     }
@@ -300,7 +359,7 @@ class InlineObject2 implements ModelInterface, ArrayAccess
     /**
      * Gets side
      *
-     * @return string
+     * @return int
      */
     public function getSide()
     {
@@ -310,181 +369,118 @@ class InlineObject2 implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param string $side Quote direction returned by the quote API (used for order validation)
+     * @param int $side Order side (1=sell, 2=buy)
      *
      * @return $this
      */
     public function setSide($side)
     {
+        $allowedValues = $this->getSideAllowableValues();
+        if (!in_array($side, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'side', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['side'] = $side;
 
         return $this;
     }
 
     /**
-     * Gets crypto_currency
+     * Gets symbol
      *
      * @return string
      */
-    public function getCryptoCurrency()
+    public function getSymbol()
     {
-        return $this->container['crypto_currency'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets crypto_currency
+     * Sets symbol
      *
-     * @param string $crypto_currency Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
+     * @param string $symbol Trading symbol code
      *
      * @return $this
      */
-    public function setCryptoCurrency($crypto_currency)
+    public function setSymbol($symbol)
     {
-        $this->container['crypto_currency'] = $crypto_currency;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets fiat_currency
+     * Gets volume
      *
      * @return string
      */
-    public function getFiatCurrency()
+    public function getVolume()
     {
-        return $this->container['fiat_currency'];
+        return $this->container['volume'];
     }
 
     /**
-     * Sets fiat_currency
+     * Sets volume
      *
-     * @param string $fiat_currency Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
+     * @param string $volume Order volume
      *
      * @return $this
      */
-    public function setFiatCurrency($fiat_currency)
+    public function setVolume($volume)
     {
-        $this->container['fiat_currency'] = $fiat_currency;
+        $this->container['volume'] = $volume;
 
         return $this;
     }
 
     /**
-     * Gets crypto_amount
-     *
-     * @return string
-     */
-    public function getCryptoAmount()
-    {
-        return $this->container['crypto_amount'];
-    }
-
-    /**
-     * Sets crypto_amount
-     *
-     * @param string $crypto_amount Amount of cryptocurrency
-     *
-     * @return $this
-     */
-    public function setCryptoAmount($crypto_amount)
-    {
-        $this->container['crypto_amount'] = $crypto_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets fiat_amount
-     *
-     * @return string
-     */
-    public function getFiatAmount()
-    {
-        return $this->container['fiat_amount'];
-    }
-
-    /**
-     * Sets fiat_amount
-     *
-     * @param string $fiat_amount Fiat amount
-     *
-     * @return $this
-     */
-    public function setFiatAmount($fiat_amount)
-    {
-        $this->container['fiat_amount'] = $fiat_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_code
+     * Gets price_tp
      *
      * @return string|null
      */
-    public function getPromotionCode()
+    public function getPriceTp()
     {
-        return $this->container['promotion_code'];
+        return $this->container['price_tp'];
     }
 
     /**
-     * Sets promotion_code
+     * Sets price_tp
      *
-     * @param string|null $promotion_code Promotion code
+     * @param string|null $price_tp Take profit price (optional)
      *
      * @return $this
      */
-    public function setPromotionCode($promotion_code)
+    public function setPriceTp($price_tp)
     {
-        $this->container['promotion_code'] = $promotion_code;
+        $this->container['price_tp'] = $price_tp;
 
         return $this;
     }
 
     /**
-     * Gets quote_token
+     * Gets price_sl
      *
-     * @return string
+     * @return string|null
      */
-    public function getQuoteToken()
+    public function getPriceSl()
     {
-        return $this->container['quote_token'];
+        return $this->container['price_sl'];
     }
 
     /**
-     * Sets quote_token
+     * Sets price_sl
      *
-     * @param string $quote_token Parameter returned by the quote API
+     * @param string|null $price_sl Stop loss price (optional)
      *
      * @return $this
      */
-    public function setQuoteToken($quote_token)
+    public function setPriceSl($price_sl)
     {
-        $this->container['quote_token'] = $quote_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_id
-     *
-     * @return string
-     */
-    public function getBankId()
-    {
-        return $this->container['bank_id'];
-    }
-
-    /**
-     * Sets bank_id
-     *
-     * @param string $bank_id Bank card ID used for the order (retrieved via the default bank card API)
-     *
-     * @return $this
-     */
-    public function setBankId($bank_id)
-    {
-        $this->container['bank_id'] = $bank_id;
+        $this->container['price_sl'] = $price_sl;
 
         return $this;
     }

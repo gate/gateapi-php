@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineObject4 Class Doc Comment
  *
  * @category Class
+ * @description Modify position take profit/stop loss parameters
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -54,7 +55,8 @@ class InlineObject4 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_id' => 'string'
+        'price_tp' => 'string',
+        'price_sl' => 'string'
     ];
 
     /**
@@ -63,7 +65,8 @@ class InlineObject4 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null
+        'price_tp' => null,
+        'price_sl' => null
     ];
 
     /**
@@ -93,7 +96,8 @@ class InlineObject4 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'order_id'
+        'price_tp' => 'price_tp',
+        'price_sl' => 'price_sl'
     ];
 
     /**
@@ -102,7 +106,8 @@ class InlineObject4 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId'
+        'price_tp' => 'setPriceTp',
+        'price_sl' => 'setPriceSl'
     ];
 
     /**
@@ -111,7 +116,8 @@ class InlineObject4 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId'
+        'price_tp' => 'getPriceTp',
+        'price_sl' => 'getPriceSl'
     ];
 
     /**
@@ -174,7 +180,8 @@ class InlineObject4 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
+        $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
     }
 
     /**
@@ -186,9 +193,6 @@ class InlineObject4 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['order_id'] === null) {
-            $invalidProperties[] = "'order_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -205,25 +209,49 @@ class InlineObject4 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets order_id
+     * Gets price_tp
      *
-     * @return string
+     * @return string|null
      */
-    public function getOrderId()
+    public function getPriceTp()
     {
-        return $this->container['order_id'];
+        return $this->container['price_tp'];
     }
 
     /**
-     * Sets order_id
+     * Sets price_tp
      *
-     * @param string $order_id Order ID
+     * @param string|null $price_tp 止盈价格  说明： - 不传 或 传 \"0\"：将清空原有止盈价 - 如不希望清空，请传接口返回的原止盈价
      *
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setPriceTp($price_tp)
     {
-        $this->container['order_id'] = $order_id;
+        $this->container['price_tp'] = $price_tp;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_sl
+     *
+     * @return string|null
+     */
+    public function getPriceSl()
+    {
+        return $this->container['price_sl'];
+    }
+
+    /**
+     * Sets price_sl
+     *
+     * @param string|null $price_sl 止损价格  说明： - 不传 或 传 \"0\"：将清空原有止损价 - 如不希望清空，请传接口返回的原止损价
+     *
+     * @return $this
+     */
+    public function setPriceSl($price_sl)
+    {
+        $this->container['price_sl'] = $price_sl;
 
         return $this;
     }

@@ -4,14 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | BUY for on-ramp, SELL for off-ramp | 
-**side** | **string** | Quote direction returned by the quote API (used for order validation) | 
-**crypto_currency** | **string** | Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page) | 
-**fiat_currency** | **string** | Fiat currency (supported currencies can be queried from the OTC web fiat quote page) | 
-**crypto_amount** | **string** | Amount of cryptocurrency | 
-**fiat_amount** | **string** | Fiat amount | 
-**promotion_code** | **string** | Promotion code | [optional] 
-**quote_token** | **string** | Parameter returned by the quote API | 
-**bank_id** | **string** | Bank card ID used for the order (retrieved via the default bank card API) | 
+**price** | **string** | Order price | 
+**price_type** | **string** | Price type (trigger&#x3D;trigger price, market&#x3D;market price) | 
+**side** | **int** | Order side (1&#x3D;sell, 2&#x3D;buy) | 
+**symbol** | **string** | Trading symbol code | 
+**volume** | **string** | Order volume | 
+**price_tp** | **string** | Take profit price (optional) | [optional] 
+**price_sl** | **string** | Stop loss price (optional) | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

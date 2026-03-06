@@ -4,37 +4,37 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /rule/symbols | [Public Interface] Query Trading Pair Information
-[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /rule/risk_limits | [Public Interface] Query Risk Limit Information
-[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /transfers/coin | [Public Interface] Query Supported Transfer Currencies
-[**listCrossexTransfers**](CrossExApi.md#listCrossexTransfers) | **GET** /transfers | Query Fund Transfer History
-[**createCrossexTransfer**](CrossExApi.md#createCrossexTransfer) | **POST** /transfers | Fund Transfer
-[**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /orders | Create an order
-[**getCrossexOrder**](CrossExApi.md#getCrossexOrder) | **GET** /orders/{order_id} | Query order details
-[**updateCrossexOrder**](CrossExApi.md#updateCrossexOrder) | **PUT** /orders/{order_id} | Modify Order
-[**cancelCrossexOrder**](CrossExApi.md#cancelCrossexOrder) | **DELETE** /orders/{order_id} | Cancel Order
-[**createCrossexConvertQuote**](CrossExApi.md#createCrossexConvertQuote) | **POST** /convert/quote | Flash Swap Inquiry
-[**createCrossexConvertOrder**](CrossExApi.md#createCrossexConvertOrder) | **POST** /convert/orders | Flash Swap Transaction
-[**getCrossexAccount**](CrossExApi.md#getCrossexAccount) | **GET** /accounts | Query Account Assets
-[**updateCrossexAccount**](CrossExApi.md#updateCrossexAccount) | **PUT** /accounts | Modify Account Contract Position Mode and Account Mode
-[**getCrossexPositionsLeverage**](CrossExApi.md#getCrossexPositionsLeverage) | **GET** /positions/leverage | Query Contract Trading Pair Leverage Multiplier
-[**updateCrossexPositionsLeverage**](CrossExApi.md#updateCrossexPositionsLeverage) | **POST** /positions/leverage | Modify Contract Trading Pair Leverage Multiplier
-[**getCrossexMarginPositionsLeverage**](CrossExApi.md#getCrossexMarginPositionsLeverage) | **GET** /margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
-[**updateCrossexMarginPositionsLeverage**](CrossExApi.md#updateCrossexMarginPositionsLeverage) | **POST** /margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
-[**closeCrossexPosition**](CrossExApi.md#closeCrossexPosition) | **DELETE** /position | Full Close Position
-[**getCrossexInterestRate**](CrossExApi.md#getCrossexInterestRate) | **GET** /interest_rate | Query margin asset interest rates
-[**getCrossexFee**](CrossExApi.md#getCrossexFee) | **GET** /fee | Query User Fee Rates
-[**listCrossexPositions**](CrossExApi.md#listCrossexPositions) | **GET** /positions | Query Contract Positions
-[**listCrossexMarginPositions**](CrossExApi.md#listCrossexMarginPositions) | **GET** /margin_positions | Query Leveraged Positions
-[**listCrossexAdlRank**](CrossExApi.md#listCrossexAdlRank) | **GET** /adl_rank | Query ADL Position Reduction Ranking
-[**listCrossexOpenOrders**](CrossExApi.md#listCrossexOpenOrders) | **GET** /open_orders | Query All Current Open Orders
-[**listCrossexHistoryOrders**](CrossExApi.md#listCrossexHistoryOrders) | **GET** /history_orders | queryorderhistory
-[**listCrossexHistoryPositions**](CrossExApi.md#listCrossexHistoryPositions) | **GET** /history_positions | Query Contract Position History
-[**listCrossexHistoryMarginPositions**](CrossExApi.md#listCrossexHistoryMarginPositions) | **GET** /history_margin_positions | Query Leveraged Position History
-[**listCrossexHistoryMarginInterests**](CrossExApi.md#listCrossexHistoryMarginInterests) | **GET** /history_margin_interests | Query Leveraged Interest Deduction History
-[**listCrossexHistoryTrades**](CrossExApi.md#listCrossexHistoryTrades) | **GET** /history_trades | queryfilledhistory
-[**listCrossexAccountBook**](CrossExApi.md#listCrossexAccountBook) | **GET** /account_book | Query Account Asset Change History
-[**listCrossexCoinDiscountRate**](CrossExApi.md#listCrossexCoinDiscountRate) | **GET** /coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /crossex/rule/symbols | [Public Interface] Query Trading Pair Information
+[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /crossex/rule/risk_limits | [Public Interface] Query Risk Limit Information
+[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /crossex/transfers/coin | [Public Interface] Query Supported Transfer Currencies
+[**listCrossexTransfers**](CrossExApi.md#listCrossexTransfers) | **GET** /crossex/transfers | Query Fund Transfer History
+[**createCrossexTransfer**](CrossExApi.md#createCrossexTransfer) | **POST** /crossex/transfers | Fund Transfer
+[**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /crossex/orders | Create an order
+[**getCrossexOrder**](CrossExApi.md#getCrossexOrder) | **GET** /crossex/orders/{order_id} | Query order details
+[**updateCrossexOrder**](CrossExApi.md#updateCrossexOrder) | **PUT** /crossex/orders/{order_id} | Modify Order
+[**cancelCrossexOrder**](CrossExApi.md#cancelCrossexOrder) | **DELETE** /crossex/orders/{order_id} | Cancel Order
+[**createCrossexConvertQuote**](CrossExApi.md#createCrossexConvertQuote) | **POST** /crossex/convert/quote | Flash Swap Inquiry
+[**createCrossexConvertOrder**](CrossExApi.md#createCrossexConvertOrder) | **POST** /crossex/convert/orders | Flash Swap Transaction
+[**getCrossexAccount**](CrossExApi.md#getCrossexAccount) | **GET** /crossex/accounts | Query Account Assets
+[**updateCrossexAccount**](CrossExApi.md#updateCrossexAccount) | **PUT** /crossex/accounts | Modify Account Contract Position Mode and Account Mode
+[**getCrossexPositionsLeverage**](CrossExApi.md#getCrossexPositionsLeverage) | **GET** /crossex/positions/leverage | Query Contract Trading Pair Leverage Multiplier
+[**updateCrossexPositionsLeverage**](CrossExApi.md#updateCrossexPositionsLeverage) | **POST** /crossex/positions/leverage | Modify Contract Trading Pair Leverage Multiplier
+[**getCrossexMarginPositionsLeverage**](CrossExApi.md#getCrossexMarginPositionsLeverage) | **GET** /crossex/margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
+[**updateCrossexMarginPositionsLeverage**](CrossExApi.md#updateCrossexMarginPositionsLeverage) | **POST** /crossex/margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
+[**closeCrossexPosition**](CrossExApi.md#closeCrossexPosition) | **POST** /crossex/position | Full Close Position
+[**getCrossexInterestRate**](CrossExApi.md#getCrossexInterestRate) | **GET** /crossex/interest_rate | Query margin asset interest rates
+[**getCrossexFee**](CrossExApi.md#getCrossexFee) | **GET** /crossex/fee | Query User Fee Rates
+[**listCrossexPositions**](CrossExApi.md#listCrossexPositions) | **GET** /crossex/positions | Query Contract Positions
+[**listCrossexMarginPositions**](CrossExApi.md#listCrossexMarginPositions) | **GET** /crossex/margin_positions | Query Leveraged Positions
+[**listCrossexAdlRank**](CrossExApi.md#listCrossexAdlRank) | **GET** /crossex/adl_rank | Query ADL Position Reduction Ranking
+[**listCrossexOpenOrders**](CrossExApi.md#listCrossexOpenOrders) | **GET** /crossex/open_orders | Query All Current Open Orders
+[**listCrossexHistoryOrders**](CrossExApi.md#listCrossexHistoryOrders) | **GET** /crossex/history_orders | queryorderhistory
+[**listCrossexHistoryPositions**](CrossExApi.md#listCrossexHistoryPositions) | **GET** /crossex/history_positions | Query Contract Position History
+[**listCrossexHistoryMarginPositions**](CrossExApi.md#listCrossexHistoryMarginPositions) | **GET** /crossex/history_margin_positions | Query Leveraged Position History
+[**listCrossexHistoryMarginInterests**](CrossExApi.md#listCrossexHistoryMarginInterests) | **GET** /crossex/history_margin_interests | Query Leveraged Interest Deduction History
+[**listCrossexHistoryTrades**](CrossExApi.md#listCrossexHistoryTrades) | **GET** /crossex/history_trades | queryfilledhistory
+[**listCrossexAccountBook**](CrossExApi.md#listCrossexAccountBook) | **GET** /crossex/account_book | Query Account Asset Change History
+[**listCrossexCoinDiscountRate**](CrossExApi.md#listCrossexCoinDiscountRate) | **GET** /crossex/coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
 
 
 ## listCrossexRuleSymbols
@@ -99,7 +99,7 @@ No authorization required
 
 ## listCrossexRuleRiskLimits
 
-> \GateApi\Model\InlineResponse20026[] listCrossexRuleRiskLimits($symbols)
+> \GateApi\Model\InlineResponse20027[] listCrossexRuleRiskLimits($symbols)
 
 [Public Interface] Query Risk Limit Information
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20026[]**](../Model/InlineResponse20026.md)
+[**\GateApi\Model\InlineResponse20027[]**](../Model/InlineResponse20027.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ No authorization required
 
 ## listCrossexTransferCoins
 
-> \GateApi\Model\InlineResponse20027[] listCrossexTransferCoins($coin)
+> \GateApi\Model\InlineResponse20028[] listCrossexTransferCoins($coin)
 
 [Public Interface] Query Supported Transfer Currencies
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20027[]**](../Model/InlineResponse20027.md)
+[**\GateApi\Model\InlineResponse20028[]**](../Model/InlineResponse20028.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ No authorization required
 
 ## listCrossexTransfers
 
-> \GateApi\Model\InlineResponse20028[] listCrossexTransfers($coin, $order_id, $from, $to, $page, $limit)
+> \GateApi\Model\InlineResponse20029[] listCrossexTransfers($coin, $order_id, $from, $to, $page, $limit)
 
 Query Fund Transfer History
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20028[]**](../Model/InlineResponse20028.md)
+[**\GateApi\Model\InlineResponse20029[]**](../Model/InlineResponse20029.md)
 
 ### Authorization
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexTransfer
 
-> \GateApi\Model\InlineResponse20029 createCrossexTransfer($inline_object21)
+> \GateApi\Model\InlineResponse20030 createCrossexTransfer($inline_object10)
 
 Fund Transfer
 
@@ -313,10 +313,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object21 = new \GateApi\Model\InlineObject21(); // \GateApi\Model\InlineObject21 | 
+$inline_object10 = new \GateApi\Model\InlineObject10(); // \GateApi\Model\InlineObject10 | 
 
 try {
-    $result = $apiInstance->createCrossexTransfer($inline_object21);
+    $result = $apiInstance->createCrossexTransfer($inline_object10);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -331,69 +331,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object21** | [**\GateApi\Model\InlineObject21**](../Model/InlineObject21.md)|  | [optional]
-
-### Return type
-
-[**\GateApi\Model\InlineResponse20029**](../Model/InlineResponse20029.md)
-
-### Authorization
-
-[apiv4](../../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
-
-
-## createCrossexOrder
-
-> \GateApi\Model\InlineResponse20030 createCrossexOrder($inline_object22)
-
-Create an order
-
-Rate Limit: 100 requests per 10 seconds
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Gate APIv4 authorization: apiv4
-$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
-
-
-$apiInstance = new GateApi\Api\CrossExApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$inline_object22 = new \GateApi\Model\InlineObject22(); // \GateApi\Model\InlineObject22 | 
-
-try {
-    $result = $apiInstance->createCrossexOrder($inline_object22);
-    print_r($result);
-} catch (GateApi\GateApiException $e) {
-    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
-} catch (Exception $e) {
-    echo 'Exception when calling CrossExApi->createCrossexOrder: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **inline_object22** | [**\GateApi\Model\InlineObject22**](../Model/InlineObject22.md)|  | [optional]
+ **inline_object10** | [**\GateApi\Model\InlineObject10**](../Model/InlineObject10.md)|  | [optional]
 
 ### Return type
 
@@ -413,9 +351,71 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## createCrossexOrder
+
+> \GateApi\Model\InlineResponse20031 createCrossexOrder($inline_object11)
+
+Create an order
+
+Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$inline_object11 = new \GateApi\Model\InlineObject11(); // \GateApi\Model\InlineObject11 | 
+
+try {
+    $result = $apiInstance->createCrossexOrder($inline_object11);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->createCrossexOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inline_object11** | [**\GateApi\Model\InlineObject11**](../Model/InlineObject11.md)|  | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse20031**](../Model/InlineResponse20031.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## getCrossexOrder
 
-> \GateApi\Model\InlineResponse20031 getCrossexOrder($order_id)
+> \GateApi\Model\InlineResponse20032 getCrossexOrder($order_id)
 
 Query order details
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20031**](../Model/InlineResponse20031.md)
+[**\GateApi\Model\InlineResponse20032**](../Model/InlineResponse20032.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexOrder
 
-> \GateApi\Model\InlineResponse20032 updateCrossexOrder($order_id, $inline_object23)
+> \GateApi\Model\InlineResponse20033 updateCrossexOrder($order_id, $inline_object12)
 
 Modify Order
 
@@ -500,10 +500,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $order_id = 'order_id_example'; // string | Support Order ID or Text for Modify Order
-$inline_object23 = new \GateApi\Model\InlineObject23(); // \GateApi\Model\InlineObject23 | 
+$inline_object12 = new \GateApi\Model\InlineObject12(); // \GateApi\Model\InlineObject12 | 
 
 try {
-    $result = $apiInstance->updateCrossexOrder($order_id, $inline_object23);
+    $result = $apiInstance->updateCrossexOrder($order_id, $inline_object12);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -519,11 +519,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **string**| Support Order ID or Text for Modify Order |
- **inline_object23** | [**\GateApi\Model\InlineObject23**](../Model/InlineObject23.md)|  | [optional]
+ **inline_object12** | [**\GateApi\Model\InlineObject12**](../Model/InlineObject12.md)|  | [optional]
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20032**](../Model/InlineResponse20032.md)
+[**\GateApi\Model\InlineResponse20033**](../Model/InlineResponse20033.md)
 
 ### Authorization
 
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
 
 ## cancelCrossexOrder
 
-> object cancelCrossexOrder($order_id, $body)
+> object cancelCrossexOrder($order_id)
 
 Cancel Order
 
@@ -564,10 +564,9 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $order_id = 'order_id_example'; // string | Support Order ID or Text for Cancel Order
-$body = new \stdClass; // object | 
 
 try {
-    $result = $apiInstance->cancelCrossexOrder($order_id, $body);
+    $result = $apiInstance->cancelCrossexOrder($order_id);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -583,7 +582,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **string**| Support Order ID or Text for Cancel Order |
- **body** | **object**|  | [optional]
 
 ### Return type
 
@@ -595,7 +593,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
@@ -605,7 +603,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexConvertQuote
 
-> \GateApi\Model\InlineResponse20033 createCrossexConvertQuote($inline_object24)
+> \GateApi\Model\InlineResponse20034 createCrossexConvertQuote($inline_object13)
 
 Flash Swap Inquiry
 
@@ -627,10 +625,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object24 = new \GateApi\Model\InlineObject24(); // \GateApi\Model\InlineObject24 | 
+$inline_object13 = new \GateApi\Model\InlineObject13(); // \GateApi\Model\InlineObject13 | 
 
 try {
-    $result = $apiInstance->createCrossexConvertQuote($inline_object24);
+    $result = $apiInstance->createCrossexConvertQuote($inline_object13);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -645,11 +643,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object24** | [**\GateApi\Model\InlineObject24**](../Model/InlineObject24.md)|  | [optional]
+ **inline_object13** | [**\GateApi\Model\InlineObject13**](../Model/InlineObject13.md)|  | [optional]
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20033**](../Model/InlineResponse20033.md)
+[**\GateApi\Model\InlineResponse20034**](../Model/InlineResponse20034.md)
 
 ### Authorization
 
@@ -667,7 +665,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexConvertOrder
 
-> object createCrossexConvertOrder($inline_object25)
+> object createCrossexConvertOrder($inline_object14)
 
 Flash Swap Transaction
 
@@ -689,10 +687,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object25 = new \GateApi\Model\InlineObject25(); // \GateApi\Model\InlineObject25 | 
+$inline_object14 = new \GateApi\Model\InlineObject14(); // \GateApi\Model\InlineObject14 | 
 
 try {
-    $result = $apiInstance->createCrossexConvertOrder($inline_object25);
+    $result = $apiInstance->createCrossexConvertOrder($inline_object14);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -707,7 +705,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object25** | [**\GateApi\Model\InlineObject25**](../Model/InlineObject25.md)|  | [optional]
+ **inline_object14** | [**\GateApi\Model\InlineObject14**](../Model/InlineObject14.md)|  | [optional]
 
 ### Return type
 
@@ -729,7 +727,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexAccount
 
-> \GateApi\Model\InlineResponse20034 getCrossexAccount($exchange_type)
+> \GateApi\Model\InlineResponse20035 getCrossexAccount($exchange_type)
 
 Query Account Assets
 
@@ -775,7 +773,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20034**](../Model/InlineResponse20034.md)
+[**\GateApi\Model\InlineResponse20035**](../Model/InlineResponse20035.md)
 
 ### Authorization
 
@@ -793,7 +791,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexAccount
 
-> \GateApi\Model\InlineResponse202 updateCrossexAccount($inline_object26)
+> \GateApi\Model\InlineResponse202 updateCrossexAccount($inline_object15)
 
 Modify Account Contract Position Mode and Account Mode
 
@@ -815,10 +813,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object26 = new \GateApi\Model\InlineObject26(); // \GateApi\Model\InlineObject26 | 
+$inline_object15 = new \GateApi\Model\InlineObject15(); // \GateApi\Model\InlineObject15 | 
 
 try {
-    $result = $apiInstance->updateCrossexAccount($inline_object26);
+    $result = $apiInstance->updateCrossexAccount($inline_object15);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -833,7 +831,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object26** | [**\GateApi\Model\InlineObject26**](../Model/InlineObject26.md)|  | [optional]
+ **inline_object15** | [**\GateApi\Model\InlineObject15**](../Model/InlineObject15.md)|  | [optional]
 
 ### Return type
 
@@ -855,7 +853,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexPositionsLeverage
 
-> \GateApi\Model\InlineResponse20035[] getCrossexPositionsLeverage($symbols)
+> map[string,string] getCrossexPositionsLeverage($symbols)
 
 Query Contract Trading Pair Leverage Multiplier
 
@@ -877,7 +875,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['symbols'] = 'BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT'; // string | Trading Pair List, multiple separated by commas
+$associate_array['symbols'] = 'BINANCE_FUTURE_BTC_USDT,OKX_FUTURE_BTC_USDT,GATE_FUTURE_BTC_USDT'; // string | Trading Pair List, multiple separated by commas
 
 try {
     $result = $apiInstance->getCrossexPositionsLeverage($associate_array);
@@ -901,7 +899,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20035[]**](../Model/InlineResponse20035.md)
+**map[string,string]**
 
 ### Authorization
 
@@ -919,7 +917,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexPositionsLeverage
 
-> \GateApi\Model\InlineResponse2021 updateCrossexPositionsLeverage($inline_object27)
+> \GateApi\Model\InlineResponse2021 updateCrossexPositionsLeverage($inline_object16)
 
 Modify Contract Trading Pair Leverage Multiplier
 
@@ -941,10 +939,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object27 = new \GateApi\Model\InlineObject27(); // \GateApi\Model\InlineObject27 | 
+$inline_object16 = new \GateApi\Model\InlineObject16(); // \GateApi\Model\InlineObject16 | 
 
 try {
-    $result = $apiInstance->updateCrossexPositionsLeverage($inline_object27);
+    $result = $apiInstance->updateCrossexPositionsLeverage($inline_object16);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -959,7 +957,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object27** | [**\GateApi\Model\InlineObject27**](../Model/InlineObject27.md)|  | [optional]
+ **inline_object16** | [**\GateApi\Model\InlineObject16**](../Model/InlineObject16.md)|  | [optional]
 
 ### Return type
 
@@ -981,7 +979,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexMarginPositionsLeverage
 
-> \GateApi\Model\InlineResponse20035[] getCrossexMarginPositionsLeverage($symbols)
+> map[string,string] getCrossexMarginPositionsLeverage($symbols)
 
 Query Leveraged Trading Pair Leverage Multiplier
 
@@ -1003,7 +1001,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['symbols'] = 'BINANCE_MARGIN_ADA_USDT,OKX_FUTURE_ADA_USDT'; // string | Trading Pair List, multiple separated by commas
+$associate_array['symbols'] = 'BINANCE_MARGIN_BTC_USDT,OKX_MARGIN_BTC_USDT,GATE_MARGIN_BTC_USDT'; // string | Trading Pair List, multiple separated by commas
 
 try {
     $result = $apiInstance->getCrossexMarginPositionsLeverage($associate_array);
@@ -1027,7 +1025,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20035[]**](../Model/InlineResponse20035.md)
+**map[string,string]**
 
 ### Authorization
 
@@ -1045,7 +1043,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexMarginPositionsLeverage
 
-> \GateApi\Model\InlineResponse2021 updateCrossexMarginPositionsLeverage($inline_object28)
+> \GateApi\Model\InlineResponse2021 updateCrossexMarginPositionsLeverage($inline_object17)
 
 Modify Leveraged Trading Pair Leverage Multiplier
 
@@ -1067,10 +1065,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object28 = new \GateApi\Model\InlineObject28(); // \GateApi\Model\InlineObject28 | 
+$inline_object17 = new \GateApi\Model\InlineObject17(); // \GateApi\Model\InlineObject17 | 
 
 try {
-    $result = $apiInstance->updateCrossexMarginPositionsLeverage($inline_object28);
+    $result = $apiInstance->updateCrossexMarginPositionsLeverage($inline_object17);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1085,7 +1083,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object28** | [**\GateApi\Model\InlineObject28**](../Model/InlineObject28.md)|  | [optional]
+ **inline_object17** | [**\GateApi\Model\InlineObject17**](../Model/InlineObject17.md)|  | [optional]
 
 ### Return type
 
@@ -1107,7 +1105,7 @@ Name | Type | Description  | Notes
 
 ## closeCrossexPosition
 
-> \GateApi\Model\InlineResponse20030 closeCrossexPosition($inline_object29)
+> \GateApi\Model\InlineResponse20031 closeCrossexPosition($inline_object18)
 
 Full Close Position
 
@@ -1129,10 +1127,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object29 = new \GateApi\Model\InlineObject29(); // \GateApi\Model\InlineObject29 | 
+$inline_object18 = new \GateApi\Model\InlineObject18(); // \GateApi\Model\InlineObject18 | 
 
 try {
-    $result = $apiInstance->closeCrossexPosition($inline_object29);
+    $result = $apiInstance->closeCrossexPosition($inline_object18);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1147,11 +1145,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object29** | [**\GateApi\Model\InlineObject29**](../Model/InlineObject29.md)|  | [optional]
+ **inline_object18** | [**\GateApi\Model\InlineObject18**](../Model/InlineObject18.md)|  | [optional]
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20030**](../Model/InlineResponse20030.md)
+[**\GateApi\Model\InlineResponse20031**](../Model/InlineResponse20031.md)
 
 ### Authorization
 
@@ -1487,7 +1485,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexOpenOrders
 
-> \GateApi\Model\InlineResponse20031[] listCrossexOpenOrders($symbol, $exchange_type, $business_type)
+> \GateApi\Model\InlineResponse20032[] listCrossexOpenOrders($symbol, $exchange_type, $business_type)
 
 Query All Current Open Orders
 
@@ -1537,7 +1535,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20031[]**](../Model/InlineResponse20031.md)
+[**\GateApi\Model\InlineResponse20032[]**](../Model/InlineResponse20032.md)
 
 ### Authorization
 

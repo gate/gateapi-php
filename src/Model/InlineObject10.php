@@ -54,8 +54,11 @@ class InlineObject10 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trade_id' => 'string',
-        'payment_method' => 'string'
+        'coin' => 'string',
+        'amount' => 'string',
+        'from' => 'string',
+        'to' => 'string',
+        'text' => 'string'
     ];
 
     /**
@@ -64,8 +67,11 @@ class InlineObject10 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'trade_id' => null,
-        'payment_method' => null
+        'coin' => null,
+        'amount' => null,
+        'from' => null,
+        'to' => null,
+        'text' => null
     ];
 
     /**
@@ -95,8 +101,11 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'trade_id' => 'trade_id',
-        'payment_method' => 'payment_method'
+        'coin' => 'coin',
+        'amount' => 'amount',
+        'from' => 'from',
+        'to' => 'to',
+        'text' => 'text'
     ];
 
     /**
@@ -105,8 +114,11 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'trade_id' => 'setTradeId',
-        'payment_method' => 'setPaymentMethod'
+        'coin' => 'setCoin',
+        'amount' => 'setAmount',
+        'from' => 'setFrom',
+        'to' => 'setTo',
+        'text' => 'setText'
     ];
 
     /**
@@ -115,8 +127,11 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'trade_id' => 'getTradeId',
-        'payment_method' => 'getPaymentMethod'
+        'coin' => 'getCoin',
+        'amount' => 'getAmount',
+        'from' => 'getFrom',
+        'to' => 'getTo',
+        'text' => 'getText'
     ];
 
     /**
@@ -179,8 +194,11 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
-        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['from'] = isset($data['from']) ? $data['from'] : null;
+        $this->container['to'] = isset($data['to']) ? $data['to'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -192,11 +210,17 @@ class InlineObject10 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['trade_id'] === null) {
-            $invalidProperties[] = "'trade_id' can't be null";
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
         }
-        if ($this->container['payment_method'] === null) {
-            $invalidProperties[] = "'payment_method' can't be null";
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['from'] === null) {
+            $invalidProperties[] = "'from' can't be null";
+        }
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +238,121 @@ class InlineObject10 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets trade_id
+     * Gets coin
      *
      * @return string
      */
-    public function getTradeId()
+    public function getCoin()
     {
-        return $this->container['trade_id'];
+        return $this->container['coin'];
     }
 
     /**
-     * Sets trade_id
+     * Sets coin
      *
-     * @param string $trade_id trade_id
+     * @param string $coin Currency
      *
      * @return $this
      */
-    public function setTradeId($trade_id)
+    public function setCoin($coin)
     {
-        $this->container['trade_id'] = $trade_id;
+        $this->container['coin'] = $coin;
 
         return $this;
     }
 
     /**
-     * Gets payment_method
+     * Gets amount
      *
      * @return string
      */
-    public function getPaymentMethod()
+    public function getAmount()
     {
-        return $this->container['payment_method'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets payment_method
+     * Sets amount
      *
-     * @param string $payment_method payment_method
+     * @param string $amount Transfer amount
      *
      * @return $this
      */
-    public function setPaymentMethod($payment_method)
+    public function setAmount($amount)
     {
-        $this->container['payment_method'] = $payment_method;
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets from
+     *
+     * @return string
+     */
+    public function getFrom()
+    {
+        return $this->container['from'];
+    }
+
+    /**
+     * Sets from
+     *
+     * @param string $from Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+     *
+     * @return $this
+     */
+    public function setFrom($from)
+    {
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return string
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param string $to Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+     *
+     * @return $this
+     */
+    public function setTo($to)
+    {
+        $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string|null
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string|null $text User-defined ID
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
 
         return $this;
     }

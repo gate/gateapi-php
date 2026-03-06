@@ -54,7 +54,12 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'srvtm' => 'int'
+        'messages' => '\GateApi\Model\InlineResponse20024DataMessages[]',
+        'memo' => 'string',
+        'has_history' => 'bool',
+        'txid' => 'int',
+        'srvtm' => 'int',
+        'order_status' => 'string'
     ];
 
     /**
@@ -63,7 +68,12 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'srvtm' => null
+        'messages' => null,
+        'memo' => null,
+        'has_history' => null,
+        'txid' => null,
+        'srvtm' => null,
+        'order_status' => null
     ];
 
     /**
@@ -93,7 +103,12 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'srvtm' => 'SRVTM'
+        'messages' => 'messages',
+        'memo' => 'memo',
+        'has_history' => 'has_history',
+        'txid' => 'txid',
+        'srvtm' => 'SRVTM',
+        'order_status' => 'order_status'
     ];
 
     /**
@@ -102,7 +117,12 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'srvtm' => 'setSrvtm'
+        'messages' => 'setMessages',
+        'memo' => 'setMemo',
+        'has_history' => 'setHasHistory',
+        'txid' => 'setTxid',
+        'srvtm' => 'setSrvtm',
+        'order_status' => 'setOrderStatus'
     ];
 
     /**
@@ -111,7 +131,12 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'srvtm' => 'getSrvtm'
+        'messages' => 'getMessages',
+        'memo' => 'getMemo',
+        'has_history' => 'getHasHistory',
+        'txid' => 'getTxid',
+        'srvtm' => 'getSrvtm',
+        'order_status' => 'getOrderStatus'
     ];
 
     /**
@@ -174,7 +199,12 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['messages'] = isset($data['messages']) ? $data['messages'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        $this->container['has_history'] = isset($data['has_history']) ? $data['has_history'] : null;
+        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
         $this->container['srvtm'] = isset($data['srvtm']) ? $data['srvtm'] : null;
+        $this->container['order_status'] = isset($data['order_status']) ? $data['order_status'] : null;
     }
 
     /**
@@ -186,9 +216,6 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['srvtm'] === null) {
-            $invalidProperties[] = "'srvtm' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -205,9 +232,105 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets messages
+     *
+     * @return \GateApi\Model\InlineResponse20024DataMessages[]|null
+     */
+    public function getMessages()
+    {
+        return $this->container['messages'];
+    }
+
+    /**
+     * Sets messages
+     *
+     * @param \GateApi\Model\InlineResponse20024DataMessages[]|null $messages Message List
+     *
+     * @return $this
+     */
+    public function setMessages($messages)
+    {
+        $this->container['messages'] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string|null
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string|null $memo Payment tip (displayed on homepage only)
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_history
+     *
+     * @return bool|null
+     */
+    public function getHasHistory()
+    {
+        return $this->container['has_history'];
+    }
+
+    /**
+     * Sets has_history
+     *
+     * @param bool|null $has_history Whether historical records exist
+     *
+     * @return $this
+     */
+    public function setHasHistory($has_history)
+    {
+        $this->container['has_history'] = $has_history;
+
+        return $this;
+    }
+
+    /**
+     * Gets txid
+     *
+     * @return int|null
+     */
+    public function getTxid()
+    {
+        return $this->container['txid'];
+    }
+
+    /**
+     * Sets txid
+     *
+     * @param int|null $txid Order ID
+     *
+     * @return $this
+     */
+    public function setTxid($txid)
+    {
+        $this->container['txid'] = $txid;
+
+        return $this;
+    }
+
+    /**
      * Gets srvtm
      *
-     * @return int
+     * @return int|null
      */
     public function getSrvtm()
     {
@@ -217,13 +340,37 @@ class InlineResponse20024Data implements ModelInterface, ArrayAccess
     /**
      * Sets srvtm
      *
-     * @param int $srvtm Timestamp when message was successfully sent (current timestamp)
+     * @param int|null $srvtm Timestamp of the latest message
      *
      * @return $this
      */
     public function setSrvtm($srvtm)
     {
         $this->container['srvtm'] = $srvtm;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_status
+     *
+     * @return string|null
+     */
+    public function getOrderStatus()
+    {
+        return $this->container['order_status'];
+    }
+
+    /**
+     * Sets order_status
+     *
+     * @param string|null $order_status Order Status
+     *
+     * @return $this
+     */
+    public function setOrderStatus($order_status)
+    {
+        $this->container['order_status'] = $order_status;
 
         return $this;
     }

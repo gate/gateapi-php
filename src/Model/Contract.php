@@ -98,7 +98,8 @@ class Contract implements ModelInterface, ArrayAccess
         'delisted_time' => 'int',
         'market_order_slip_ratio' => 'string',
         'market_order_size_max' => 'string',
-        'funding_rate_limit' => 'string'
+        'funding_rate_limit' => 'string',
+        'funding_impact_value' => 'string'
     ];
 
     /**
@@ -150,7 +151,8 @@ class Contract implements ModelInterface, ArrayAccess
         'delisted_time' => 'int64',
         'market_order_slip_ratio' => null,
         'market_order_size_max' => null,
-        'funding_rate_limit' => null
+        'funding_rate_limit' => null,
+        'funding_impact_value' => null
     ];
 
     /**
@@ -223,7 +225,8 @@ class Contract implements ModelInterface, ArrayAccess
         'delisted_time' => 'delisted_time',
         'market_order_slip_ratio' => 'market_order_slip_ratio',
         'market_order_size_max' => 'market_order_size_max',
-        'funding_rate_limit' => 'funding_rate_limit'
+        'funding_rate_limit' => 'funding_rate_limit',
+        'funding_impact_value' => 'funding_impact_value'
     ];
 
     /**
@@ -275,7 +278,8 @@ class Contract implements ModelInterface, ArrayAccess
         'delisted_time' => 'setDelistedTime',
         'market_order_slip_ratio' => 'setMarketOrderSlipRatio',
         'market_order_size_max' => 'setMarketOrderSizeMax',
-        'funding_rate_limit' => 'setFundingRateLimit'
+        'funding_rate_limit' => 'setFundingRateLimit',
+        'funding_impact_value' => 'setFundingImpactValue'
     ];
 
     /**
@@ -327,7 +331,8 @@ class Contract implements ModelInterface, ArrayAccess
         'delisted_time' => 'getDelistedTime',
         'market_order_slip_ratio' => 'getMarketOrderSlipRatio',
         'market_order_size_max' => 'getMarketOrderSizeMax',
-        'funding_rate_limit' => 'getFundingRateLimit'
+        'funding_rate_limit' => 'getFundingRateLimit',
+        'funding_impact_value' => 'getFundingImpactValue'
     ];
 
     /**
@@ -464,6 +469,7 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
         $this->container['market_order_size_max'] = isset($data['market_order_size_max']) ? $data['market_order_size_max'] : null;
         $this->container['funding_rate_limit'] = isset($data['funding_rate_limit']) ? $data['funding_rate_limit'] : null;
+        $this->container['funding_impact_value'] = isset($data['funding_impact_value']) ? $data['funding_impact_value'] : null;
     }
 
     /**
@@ -1576,6 +1582,30 @@ class Contract implements ModelInterface, ArrayAccess
     public function setFundingRateLimit($funding_rate_limit)
     {
         $this->container['funding_rate_limit'] = $funding_rate_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_impact_value
+     *
+     * @return string|null
+     */
+    public function getFundingImpactValue()
+    {
+        return $this->container['funding_impact_value'];
+    }
+
+    /**
+     * Sets funding_impact_value
+     *
+     * @param string|null $funding_impact_value Funding rate depth impact value
+     *
+     * @return $this
+     */
+    public function setFundingImpactValue($funding_impact_value)
+    {
+        $this->container['funding_impact_value'] = $funding_impact_value;
 
         return $this;
     }

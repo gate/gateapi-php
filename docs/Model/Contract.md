@@ -48,5 +48,6 @@ Name | Type | Description | Notes
 **market_order_slip_ratio** | **string** | The maximum slippage allowed for market orders, with the slippage rate calculated based on the latest market price | [optional] 
 **market_order_size_max** | **string** | The maximum number of contracts supported for market orders, with a default value of 0. When the default value is used, the maximum number of contracts is limited by the &#x60;order_size_max&#x60; field | [optional] 
 **funding_rate_limit** | **string** | Upper and lower limits of funding rate | [optional] 
+**funding_impact_value** | **string** | Funding rate depth impact value | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

@@ -612,222 +612,6 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['is_sell'] === null) {
-            $invalidProperties[] = "'is_sell' can't be null";
-        }
-        if ($this->container['txid'] === null) {
-            $invalidProperties[] = "'txid' can't be null";
-        }
-        if ($this->container['orderid'] === null) {
-            $invalidProperties[] = "'orderid' can't be null";
-        }
-        if ($this->container['timest'] === null) {
-            $invalidProperties[] = "'timest' can't be null";
-        }
-        if ($this->container['last_pay_time'] === null) {
-            $invalidProperties[] = "'last_pay_time' can't be null";
-        }
-        if ($this->container['remain_pay_time'] === null) {
-            $invalidProperties[] = "'remain_pay_time' can't be null";
-        }
-        if ($this->container['currency_type'] === null) {
-            $invalidProperties[] = "'currency_type' can't be null";
-        }
-        if ($this->container['want_type'] === null) {
-            $invalidProperties[] = "'want_type' can't be null";
-        }
-        if ($this->container['rate'] === null) {
-            $invalidProperties[] = "'rate' can't be null";
-        }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['total'] === null) {
-            $invalidProperties[] = "'total' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['reason_id'] === null) {
-            $invalidProperties[] = "'reason_id' can't be null";
-        }
-        if ($this->container['reason_desc'] === null) {
-            $invalidProperties[] = "'reason_desc' can't be null";
-        }
-        if ($this->container['toast_id'] === null) {
-            $invalidProperties[] = "'toast_id' can't be null";
-        }
-        if ($this->container['cancel_time'] === null) {
-            $invalidProperties[] = "'cancel_time' can't be null";
-        }
-        if ($this->container['seller_confirm'] === null) {
-            $invalidProperties[] = "'seller_confirm' can't be null";
-        }
-        if ($this->container['in_appeal'] === null) {
-            $invalidProperties[] = "'in_appeal' can't be null";
-        }
-        if ($this->container['dispute_time'] === null) {
-            $invalidProperties[] = "'dispute_time' can't be null";
-        }
-        if ($this->container['cancelable'] === null) {
-            $invalidProperties[] = "'cancelable' can't be null";
-        }
-        if ($this->container['hide_payment'] === null) {
-            $invalidProperties[] = "'hide_payment' can't be null";
-        }
-        if ($this->container['trade_tips'] === null) {
-            $invalidProperties[] = "'trade_tips' can't be null";
-        }
-        if ($this->container['show_bank'] === null) {
-            $invalidProperties[] = "'show_bank' can't be null";
-        }
-        if ($this->container['bankname'] === null) {
-            $invalidProperties[] = "'bankname' can't be null";
-        }
-        if ($this->container['bankbranch'] === null) {
-            $invalidProperties[] = "'bankbranch' can't be null";
-        }
-        if ($this->container['bankid'] === null) {
-            $invalidProperties[] = "'bankid' can't be null";
-        }
-        if ($this->container['bank_holder_realname'] === null) {
-            $invalidProperties[] = "'bank_holder_realname' can't be null";
-        }
-        if ($this->container['show_ali'] === null) {
-            $invalidProperties[] = "'show_ali' can't be null";
-        }
-        if ($this->container['aliname'] === null) {
-            $invalidProperties[] = "'aliname' can't be null";
-        }
-        if ($this->container['is_alicode'] === null) {
-            $invalidProperties[] = "'is_alicode' can't be null";
-        }
-        if ($this->container['show_wechat'] === null) {
-            $invalidProperties[] = "'show_wechat' can't be null";
-        }
-        if ($this->container['wename'] === null) {
-            $invalidProperties[] = "'wename' can't be null";
-        }
-        if ($this->container['show_others'] === null) {
-            $invalidProperties[] = "'show_others' can't be null";
-        }
-        if ($this->container['pay_others'] === null) {
-            $invalidProperties[] = "'pay_others' can't be null";
-        }
-        if ($this->container['sel_paytype'] === null) {
-            $invalidProperties[] = "'sel_paytype' can't be null";
-        }
-        if ($this->container['its_uid'] === null) {
-            $invalidProperties[] = "'its_uid' can't be null";
-        }
-        if ($this->container['its_is_blue_vip'] === null) {
-            $invalidProperties[] = "'its_is_blue_vip' can't be null";
-        }
-        if ($this->container['its_tier'] === null) {
-            $invalidProperties[] = "'its_tier' can't be null";
-        }
-        if ($this->container['its_avatar'] === null) {
-            $invalidProperties[] = "'its_avatar' can't be null";
-        }
-        if ($this->container['its_nickname'] === null) {
-            $invalidProperties[] = "'its_nickname' can't be null";
-        }
-        if ($this->container['its_realname'] === null) {
-            $invalidProperties[] = "'its_realname' can't be null";
-        }
-        if ($this->container['is_follow'] === null) {
-            $invalidProperties[] = "'is_follow' can't be null";
-        }
-        if ($this->container['is_black'] === null) {
-            $invalidProperties[] = "'is_black' can't be null";
-        }
-        if ($this->container['have_traded'] === null) {
-            $invalidProperties[] = "'have_traded' can't be null";
-        }
-        if ($this->container['appeal_unread'] === null) {
-            $invalidProperties[] = "'appeal_unread' can't be null";
-        }
-        if ($this->container['appeal_allow_cancel'] === null) {
-            $invalidProperties[] = "'appeal_allow_cancel' can't be null";
-        }
-        if ($this->container['appeal_verdict_has_open'] === null) {
-            $invalidProperties[] = "'appeal_verdict_has_open' can't be null";
-        }
-        if ($this->container['im_unread'] === null) {
-            $invalidProperties[] = "'im_unread' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['score'] === null) {
-            $invalidProperties[] = "'score' can't be null";
-        }
-        if ($this->container['payment_voucher_url'] === null) {
-            $invalidProperties[] = "'payment_voucher_url' can't be null";
-        }
-        if ($this->container['complete_number'] === null) {
-            $invalidProperties[] = "'complete_number' can't be null";
-        }
-        if ($this->container['complete_rate_month'] === null) {
-            $invalidProperties[] = "'complete_rate_month' can't be null";
-        }
-        if ($this->container['check_journal_account'] === null) {
-            $invalidProperties[] = "'check_journal_account' can't be null";
-        }
-        if ($this->container['show_journal_account'] === null) {
-            $invalidProperties[] = "'show_journal_account' can't be null";
-        }
-        if ($this->container['is_freeze_guarantee'] === null) {
-            $invalidProperties[] = "'is_freeze_guarantee' can't be null";
-        }
-        if ($this->container['usdt_left_guarantee'] === null) {
-            $invalidProperties[] = "'usdt_left_guarantee' can't be null";
-        }
-        if ($this->container['guarantee_curr_type'] === null) {
-            $invalidProperties[] = "'guarantee_curr_type' can't be null";
-        }
-        if ($this->container['timest_paid'] === null) {
-            $invalidProperties[] = "'timest_paid' can't be null";
-        }
-        if ($this->container['state'] === null) {
-            $invalidProperties[] = "'state' can't be null";
-        }
-        if ($this->container['release_coin_switch'] === null) {
-            $invalidProperties[] = "'release_coin_switch' can't be null";
-        }
-        if ($this->container['own_realname'] === null) {
-            $invalidProperties[] = "'own_realname' can't be null";
-        }
-        if ($this->container['confirmation_use_time_month'] === null) {
-            $invalidProperties[] = "'confirmation_use_time_month' can't be null";
-        }
-        if ($this->container['is_risk_user'] === null) {
-            $invalidProperties[] = "'is_risk_user' can't be null";
-        }
-        if ($this->container['is_xt'] === null) {
-            $invalidProperties[] = "'is_xt' can't be null";
-        }
-        if ($this->container['order_type'] === null) {
-            $invalidProperties[] = "'order_type' can't be null";
-        }
-        if ($this->container['symbol'] === null) {
-            $invalidProperties[] = "'symbol' can't be null";
-        }
-        if ($this->container['is_show_receive'] === null) {
-            $invalidProperties[] = "'is_show_receive' can't be null";
-        }
-        if ($this->container['is_taker'] === null) {
-            $invalidProperties[] = "'is_taker' can't be null";
-        }
-        if ($this->container['is_online'] === null) {
-            $invalidProperties[] = "'is_online' can't be null";
-        }
-        if ($this->container['show_seller_contact_info'] === null) {
-            $invalidProperties[] = "'show_seller_contact_info' can't be null";
-        }
-        if ($this->container['supported_pay_types'] === null) {
-            $invalidProperties[] = "'supported_pay_types' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -846,7 +630,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_sell
      *
-     * @return int
+     * @return int|null
      */
     public function getIsSell()
     {
@@ -856,7 +640,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_sell
      *
-     * @param int $is_sell Whether sell order
+     * @param int|null $is_sell Whether sell order
      *
      * @return $this
      */
@@ -870,7 +654,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets txid
      *
-     * @return int
+     * @return int|null
      */
     public function getTxid()
     {
@@ -880,7 +664,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets txid
      *
-     * @param int $txid Order ID
+     * @param int|null $txid Order ID
      *
      * @return $this
      */
@@ -894,7 +678,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets orderid
      *
-     * @return int
+     * @return int|null
      */
     public function getOrderid()
     {
@@ -904,7 +688,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets orderid
      *
-     * @param int $orderid Order ID
+     * @param int|null $orderid Order ID
      *
      * @return $this
      */
@@ -918,7 +702,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets timest
      *
-     * @return int
+     * @return int|null
      */
     public function getTimest()
     {
@@ -928,7 +712,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets timest
      *
-     * @param int $timest Order creation timestamp
+     * @param int|null $timest Order creation timestamp
      *
      * @return $this
      */
@@ -942,7 +726,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets last_pay_time
      *
-     * @return int
+     * @return int|null
      */
     public function getLastPayTime()
     {
@@ -952,7 +736,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets last_pay_time
      *
-     * @param int $last_pay_time Payment deadline
+     * @param int|null $last_pay_time Payment deadline
      *
      * @return $this
      */
@@ -966,7 +750,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets remain_pay_time
      *
-     * @return int
+     * @return int|null
      */
     public function getRemainPayTime()
     {
@@ -976,7 +760,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets remain_pay_time
      *
-     * @param int $remain_pay_time Remaining payment time
+     * @param int|null $remain_pay_time Remaining payment time
      *
      * @return $this
      */
@@ -990,7 +774,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets currency_type
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrencyType()
     {
@@ -1000,7 +784,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets currency_type
      *
-     * @param string $currency_type Cryptocurrency type
+     * @param string|null $currency_type Cryptocurrency type
      *
      * @return $this
      */
@@ -1014,7 +798,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets want_type
      *
-     * @return string
+     * @return string|null
      */
     public function getWantType()
     {
@@ -1024,7 +808,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets want_type
      *
-     * @param string $want_type Fiat currency type
+     * @param string|null $want_type Fiat currency type
      *
      * @return $this
      */
@@ -1038,7 +822,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets rate
      *
-     * @return string
+     * @return string|null
      */
     public function getRate()
     {
@@ -1048,7 +832,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets rate
      *
-     * @param string $rate Price
+     * @param string|null $rate Price
      *
      * @return $this
      */
@@ -1062,7 +846,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets amount
      *
-     * @return string
+     * @return string|null
      */
     public function getAmount()
     {
@@ -1072,7 +856,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Size
+     * @param string|null $amount Size
      *
      * @return $this
      */
@@ -1086,7 +870,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets total
      *
-     * @return string
+     * @return string|null
      */
     public function getTotal()
     {
@@ -1096,7 +880,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets total
      *
-     * @param string $total Fiat amount
+     * @param string|null $total Fiat amount
      *
      * @return $this
      */
@@ -1110,7 +894,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -1120,7 +904,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status Order Status
+     * @param string|null $status Order Status
      *
      * @return $this
      */
@@ -1134,7 +918,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets reason_id
      *
-     * @return string
+     * @return string|null
      */
     public function getReasonId()
     {
@@ -1144,7 +928,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets reason_id
      *
-     * @param string $reason_id Cancellation reason ID
+     * @param string|null $reason_id Cancellation reason ID
      *
      * @return $this
      */
@@ -1158,7 +942,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets reason_desc
      *
-     * @return string
+     * @return string|null
      */
     public function getReasonDesc()
     {
@@ -1168,7 +952,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets reason_desc
      *
-     * @param string $reason_desc Cancellation reason
+     * @param string|null $reason_desc Cancellation reason
      *
      * @return $this
      */
@@ -1182,7 +966,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets toast_id
      *
-     * @return int
+     * @return int|null
      */
     public function getToastId()
     {
@@ -1192,7 +976,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets toast_id
      *
-     * @param int $toast_id Popup ID
+     * @param int|null $toast_id Popup ID
      *
      * @return $this
      */
@@ -1206,7 +990,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets cancel_time
      *
-     * @return string
+     * @return string|null
      */
     public function getCancelTime()
     {
@@ -1216,7 +1000,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets cancel_time
      *
-     * @param string $cancel_time Cancellation time
+     * @param string|null $cancel_time Cancellation time
      *
      * @return $this
      */
@@ -1230,7 +1014,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets seller_confirm
      *
-     * @return int
+     * @return int|null
      */
     public function getSellerConfirm()
     {
@@ -1240,7 +1024,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets seller_confirm
      *
-     * @param int $seller_confirm Whether seller confirmed the reason
+     * @param int|null $seller_confirm Whether seller confirmed the reason
      *
      * @return $this
      */
@@ -1254,7 +1038,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets in_appeal
      *
-     * @return int
+     * @return int|null
      */
     public function getInAppeal()
     {
@@ -1264,7 +1048,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets in_appeal
      *
-     * @param int $in_appeal Whether in dispute
+     * @param int|null $in_appeal Whether in dispute
      *
      * @return $this
      */
@@ -1278,7 +1062,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets dispute_time
      *
-     * @return int
+     * @return int|null
      */
     public function getDisputeTime()
     {
@@ -1288,7 +1072,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets dispute_time
      *
-     * @param int $dispute_time Appeal time limit
+     * @param int|null $dispute_time Appeal time limit
      *
      * @return $this
      */
@@ -1302,7 +1086,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets cancelable
      *
-     * @return int
+     * @return int|null
      */
     public function getCancelable()
     {
@@ -1312,7 +1096,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets cancelable
      *
-     * @param int $cancelable Whether order cancellation is allowed
+     * @param int|null $cancelable Whether order cancellation is allowed
      *
      * @return $this
      */
@@ -1326,7 +1110,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets hide_payment
      *
-     * @return int
+     * @return int|null
      */
     public function getHidePayment()
     {
@@ -1336,7 +1120,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets hide_payment
      *
-     * @param int $hide_payment Whether to hide payment method
+     * @param int|null $hide_payment Whether to hide payment method
      *
      * @return $this
      */
@@ -1350,7 +1134,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets trade_tips
      *
-     * @return string
+     * @return string|null
      */
     public function getTradeTips()
     {
@@ -1360,7 +1144,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets trade_tips
      *
-     * @param string $trade_tips Trading terms
+     * @param string|null $trade_tips Trading terms
      *
      * @return $this
      */
@@ -1374,7 +1158,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets show_bank
      *
-     * @return string
+     * @return string|null
      */
     public function getShowBank()
     {
@@ -1384,7 +1168,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets show_bank
      *
-     * @param string $show_bank Whether to display bank
+     * @param string|null $show_bank Whether to display bank
      *
      * @return $this
      */
@@ -1398,7 +1182,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets bankname
      *
-     * @return string
+     * @return string|null
      */
     public function getBankname()
     {
@@ -1408,7 +1192,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets bankname
      *
-     * @param string $bankname Bank name
+     * @param string|null $bankname Bank name
      *
      * @return $this
      */
@@ -1422,7 +1206,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets bankbranch
      *
-     * @return string
+     * @return string|null
      */
     public function getBankbranch()
     {
@@ -1432,7 +1216,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets bankbranch
      *
-     * @param string $bankbranch Bank branch name
+     * @param string|null $bankbranch Bank branch name
      *
      * @return $this
      */
@@ -1446,7 +1230,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets bankid
      *
-     * @return string
+     * @return string|null
      */
     public function getBankid()
     {
@@ -1456,7 +1240,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets bankid
      *
-     * @param string $bankid Bank ID
+     * @param string|null $bankid Bank ID
      *
      * @return $this
      */
@@ -1470,7 +1254,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets bank_holder_realname
      *
-     * @return string
+     * @return string|null
      */
     public function getBankHolderRealname()
     {
@@ -1480,7 +1264,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets bank_holder_realname
      *
-     * @param string $bank_holder_realname Bank cardholder name
+     * @param string|null $bank_holder_realname Bank cardholder name
      *
      * @return $this
      */
@@ -1494,7 +1278,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets show_ali
      *
-     * @return string
+     * @return string|null
      */
     public function getShowAli()
     {
@@ -1504,7 +1288,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets show_ali
      *
-     * @param string $show_ali Whether to display Alipay
+     * @param string|null $show_ali Whether to display Alipay
      *
      * @return $this
      */
@@ -1518,7 +1302,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets aliname
      *
-     * @return string
+     * @return string|null
      */
     public function getAliname()
     {
@@ -1528,7 +1312,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets aliname
      *
-     * @param string $aliname Alipay account name
+     * @param string|null $aliname Alipay account name
      *
      * @return $this
      */
@@ -1542,7 +1326,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_alicode
      *
-     * @return int
+     * @return int|null
      */
     public function getIsAlicode()
     {
@@ -1552,7 +1336,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_alicode
      *
-     * @param int $is_alicode Whether Alipay QR code exists
+     * @param int|null $is_alicode Whether Alipay QR code exists
      *
      * @return $this
      */
@@ -1566,7 +1350,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets show_wechat
      *
-     * @return string
+     * @return string|null
      */
     public function getShowWechat()
     {
@@ -1576,7 +1360,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets show_wechat
      *
-     * @param string $show_wechat Whether to display WeChat
+     * @param string|null $show_wechat Whether to display WeChat
      *
      * @return $this
      */
@@ -1590,7 +1374,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets wename
      *
-     * @return string
+     * @return string|null
      */
     public function getWename()
     {
@@ -1600,7 +1384,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets wename
      *
-     * @param string $wename WeChat account name
+     * @param string|null $wename WeChat account name
      *
      * @return $this
      */
@@ -1614,7 +1398,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets show_others
      *
-     * @return string
+     * @return string|null
      */
     public function getShowOthers()
     {
@@ -1624,7 +1408,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets show_others
      *
-     * @param string $show_others Whether to display other payment methods
+     * @param string|null $show_others Whether to display other payment methods
      *
      * @return $this
      */
@@ -1638,7 +1422,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets pay_others
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getPayOthers()
     {
@@ -1648,7 +1432,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets pay_others
      *
-     * @param string[] $pay_others Other payment methods
+     * @param string[]|null $pay_others Other payment methods
      *
      * @return $this
      */
@@ -1662,7 +1446,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets sel_paytype
      *
-     * @return string
+     * @return string|null
      */
     public function getSelPaytype()
     {
@@ -1672,7 +1456,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets sel_paytype
      *
-     * @param string $sel_paytype Payment type
+     * @param string|null $sel_paytype Payment type
      *
      * @return $this
      */
@@ -1686,7 +1470,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets its_uid
      *
-     * @return string
+     * @return string|null
      */
     public function getItsUid()
     {
@@ -1696,7 +1480,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets its_uid
      *
-     * @param string $its_uid Counterparty UID
+     * @param string|null $its_uid Counterparty UID
      *
      * @return $this
      */
@@ -1710,7 +1494,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets its_is_blue_vip
      *
-     * @return int
+     * @return int|null
      */
     public function getItsIsBlueVip()
     {
@@ -1720,7 +1504,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets its_is_blue_vip
      *
-     * @param int $its_is_blue_vip Whether counterparty is Blue V
+     * @param int|null $its_is_blue_vip Whether counterparty is Blue V
      *
      * @return $this
      */
@@ -1734,7 +1518,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets its_tier
      *
-     * @return int
+     * @return int|null
      */
     public function getItsTier()
     {
@@ -1744,7 +1528,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets its_tier
      *
-     * @param int $its_tier Counterparty VIP tier
+     * @param int|null $its_tier Counterparty VIP tier
      *
      * @return $this
      */
@@ -1758,7 +1542,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets its_avatar
      *
-     * @return string
+     * @return string|null
      */
     public function getItsAvatar()
     {
@@ -1768,7 +1552,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets its_avatar
      *
-     * @param string $its_avatar Counterparty avatar
+     * @param string|null $its_avatar Counterparty avatar
      *
      * @return $this
      */
@@ -1782,7 +1566,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets its_nickname
      *
-     * @return string
+     * @return string|null
      */
     public function getItsNickname()
     {
@@ -1792,7 +1576,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets its_nickname
      *
-     * @param string $its_nickname Counterparty nickname
+     * @param string|null $its_nickname Counterparty nickname
      *
      * @return $this
      */
@@ -1806,7 +1590,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets its_realname
      *
-     * @return string
+     * @return string|null
      */
     public function getItsRealname()
     {
@@ -1816,7 +1600,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets its_realname
      *
-     * @param string $its_realname Counterparty username
+     * @param string|null $its_realname Counterparty username
      *
      * @return $this
      */
@@ -1830,7 +1614,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_follow
      *
-     * @return int
+     * @return int|null
      */
     public function getIsFollow()
     {
@@ -1840,7 +1624,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_follow
      *
-     * @param int $is_follow Whether following
+     * @param int|null $is_follow Whether following
      *
      * @return $this
      */
@@ -1854,7 +1638,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_black
      *
-     * @return int
+     * @return int|null
      */
     public function getIsBlack()
     {
@@ -1864,7 +1648,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_black
      *
-     * @param int $is_black Whether blocked
+     * @param int|null $is_black Whether blocked
      *
      * @return $this
      */
@@ -1878,7 +1662,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets have_traded
      *
-     * @return int
+     * @return int|null
      */
     public function getHaveTraded()
     {
@@ -1888,7 +1672,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets have_traded
      *
-     * @param int $have_traded Whether traded before
+     * @param int|null $have_traded Whether traded before
      *
      * @return $this
      */
@@ -1902,7 +1686,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets appeal_unread
      *
-     * @return int
+     * @return int|null
      */
     public function getAppealUnread()
     {
@@ -1912,7 +1696,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets appeal_unread
      *
-     * @param int $appeal_unread Unread appeals
+     * @param int|null $appeal_unread Unread appeals
      *
      * @return $this
      */
@@ -1926,7 +1710,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets appeal_allow_cancel
      *
-     * @return int
+     * @return int|null
      */
     public function getAppealAllowCancel()
     {
@@ -1936,7 +1720,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets appeal_allow_cancel
      *
-     * @param int $appeal_allow_cancel Whether appeal cancellation is allowed
+     * @param int|null $appeal_allow_cancel Whether appeal cancellation is allowed
      *
      * @return $this
      */
@@ -1950,7 +1734,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets appeal_verdict_has_open
      *
-     * @return string
+     * @return string|null
      */
     public function getAppealVerdictHasOpen()
     {
@@ -1960,7 +1744,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets appeal_verdict_has_open
      *
-     * @param string $appeal_verdict_has_open Appeal result (including pending appeals)
+     * @param string|null $appeal_verdict_has_open Appeal result (including pending appeals)
      *
      * @return $this
      */
@@ -1974,7 +1758,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets im_unread
      *
-     * @return int
+     * @return int|null
      */
     public function getImUnread()
     {
@@ -1984,7 +1768,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets im_unread
      *
-     * @param int $im_unread IM unread
+     * @param int|null $im_unread IM unread
      *
      * @return $this
      */
@@ -1998,7 +1782,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
@@ -2008,7 +1792,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message Review content
+     * @param string|null $message Review content
      *
      * @return $this
      */
@@ -2022,7 +1806,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets score
      *
-     * @return string
+     * @return string|null
      */
     public function getScore()
     {
@@ -2032,7 +1816,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets score
      *
-     * @param string $score Rating
+     * @param string|null $score Rating
      *
      * @return $this
      */
@@ -2046,7 +1830,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets payment_voucher_url
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getPaymentVoucherUrl()
     {
@@ -2056,7 +1840,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets payment_voucher_url
      *
-     * @param string[] $payment_voucher_url Payment voucher
+     * @param string[]|null $payment_voucher_url Payment voucher
      *
      * @return $this
      */
@@ -2070,7 +1854,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_number
      *
-     * @return int
+     * @return int|null
      */
     public function getCompleteNumber()
     {
@@ -2080,7 +1864,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_number
      *
-     * @param int $complete_number Counterparty transaction volume
+     * @param int|null $complete_number Counterparty transaction volume
      *
      * @return $this
      */
@@ -2094,7 +1878,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets complete_rate_month
      *
-     * @return string
+     * @return string|null
      */
     public function getCompleteRateMonth()
     {
@@ -2104,7 +1888,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets complete_rate_month
      *
-     * @param string $complete_rate_month Counterparty completion rate
+     * @param string|null $complete_rate_month Counterparty completion rate
      *
      * @return $this
      */
@@ -2118,7 +1902,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets check_journal_account
      *
-     * @return bool
+     * @return bool|null
      */
     public function getCheckJournalAccount()
     {
@@ -2128,7 +1912,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets check_journal_account
      *
-     * @param bool $check_journal_account Whether transaction record is verified
+     * @param bool|null $check_journal_account Whether transaction record is verified
      *
      * @return $this
      */
@@ -2142,7 +1926,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets show_journal_account
      *
-     * @return bool
+     * @return bool|null
      */
     public function getShowJournalAccount()
     {
@@ -2152,7 +1936,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets show_journal_account
      *
-     * @param bool $show_journal_account Whether to display transaction records
+     * @param bool|null $show_journal_account Whether to display transaction records
      *
      * @return $this
      */
@@ -2166,7 +1950,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_freeze_guarantee
      *
-     * @return int
+     * @return int|null
      */
     public function getIsFreezeGuarantee()
     {
@@ -2176,7 +1960,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_freeze_guarantee
      *
-     * @param int $is_freeze_guarantee Whether margin is frozen
+     * @param int|null $is_freeze_guarantee Whether margin is frozen
      *
      * @return $this
      */
@@ -2190,7 +1974,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets usdt_left_guarantee
      *
-     * @return string
+     * @return string|null
      */
     public function getUsdtLeftGuarantee()
     {
@@ -2200,7 +1984,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets usdt_left_guarantee
      *
-     * @param string $usdt_left_guarantee Remaining USDT margin
+     * @param string|null $usdt_left_guarantee Remaining USDT margin
      *
      * @return $this
      */
@@ -2214,7 +1998,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets guarantee_curr_type
      *
-     * @return string
+     * @return string|null
      */
     public function getGuaranteeCurrType()
     {
@@ -2224,7 +2008,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets guarantee_curr_type
      *
-     * @param string $guarantee_curr_type Margin currency type
+     * @param string|null $guarantee_curr_type Margin currency type
      *
      * @return $this
      */
@@ -2238,7 +2022,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets timest_paid
      *
-     * @return int
+     * @return int|null
      */
     public function getTimestPaid()
     {
@@ -2248,7 +2032,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets timest_paid
      *
-     * @param int $timest_paid Payment time
+     * @param int|null $timest_paid Payment time
      *
      * @return $this
      */
@@ -2262,7 +2046,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets state
      *
-     * @return string
+     * @return string|null
      */
     public function getState()
     {
@@ -2272,7 +2056,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param string $state Order Status
+     * @param string|null $state Order Status
      *
      * @return $this
      */
@@ -2286,7 +2070,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets release_coin_switch
      *
-     * @return int
+     * @return int|null
      */
     public function getReleaseCoinSwitch()
     {
@@ -2296,7 +2080,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets release_coin_switch
      *
-     * @param int $release_coin_switch Coin release switch configuration
+     * @param int|null $release_coin_switch Coin release switch configuration
      *
      * @return $this
      */
@@ -2310,7 +2094,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets own_realname
      *
-     * @return string
+     * @return string|null
      */
     public function getOwnRealname()
     {
@@ -2320,7 +2104,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets own_realname
      *
-     * @param string $own_realname Username
+     * @param string|null $own_realname Username
      *
      * @return $this
      */
@@ -2334,7 +2118,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets confirmation_use_time_month
      *
-     * @return int
+     * @return int|null
      */
     public function getConfirmationUseTimeMonth()
     {
@@ -2344,7 +2128,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets confirmation_use_time_month
      *
-     * @param int $confirmation_use_time_month Average confirmation time in last 30 days
+     * @param int|null $confirmation_use_time_month Average confirmation time in last 30 days
      *
      * @return $this
      */
@@ -2358,7 +2142,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_risk_user
      *
-     * @return int
+     * @return int|null
      */
     public function getIsRiskUser()
     {
@@ -2368,7 +2152,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_risk_user
      *
-     * @param int $is_risk_user Whether risk user
+     * @param int|null $is_risk_user Whether risk user
      *
      * @return $this
      */
@@ -2382,7 +2166,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_xt
      *
-     * @return int
+     * @return int|null
      */
     public function getIsXt()
     {
@@ -2392,7 +2176,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_xt
      *
-     * @param int $is_xt Whether XT order
+     * @param int|null $is_xt Whether XT order
      *
      * @return $this
      */
@@ -2406,7 +2190,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets order_type
      *
-     * @return int
+     * @return int|null
      */
     public function getOrderType()
     {
@@ -2416,7 +2200,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets order_type
      *
-     * @param int $order_type Order Type
+     * @param int|null $order_type Order Type
      *
      * @return $this
      */
@@ -2430,7 +2214,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets symbol
      *
-     * @return string
+     * @return string|null
      */
     public function getSymbol()
     {
@@ -2440,7 +2224,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Fiat currency symbol
+     * @param string|null $symbol Fiat currency symbol
      *
      * @return $this
      */
@@ -2454,7 +2238,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_show_receive
      *
-     * @return int
+     * @return int|null
      */
     public function getIsShowReceive()
     {
@@ -2464,7 +2248,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_show_receive
      *
-     * @param int $is_show_receive Whether to show confirm receipt during appeal
+     * @param int|null $is_show_receive Whether to show confirm receipt during appeal
      *
      * @return $this
      */
@@ -2478,7 +2262,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_taker
      *
-     * @return int
+     * @return int|null
      */
     public function getIsTaker()
     {
@@ -2488,7 +2272,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_taker
      *
-     * @param int $is_taker Whether regular user
+     * @param int|null $is_taker Whether regular user
      *
      * @return $this
      */
@@ -2502,7 +2286,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets is_online
      *
-     * @return int
+     * @return int|null
      */
     public function getIsOnline()
     {
@@ -2512,7 +2296,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets is_online
      *
-     * @param int $is_online Merchant online status
+     * @param int|null $is_online Merchant online status
      *
      * @return $this
      */
@@ -2526,7 +2310,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets show_seller_contact_info
      *
-     * @return bool
+     * @return bool|null
      */
     public function getShowSellerContactInfo()
     {
@@ -2536,7 +2320,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets show_seller_contact_info
      *
-     * @param bool $show_seller_contact_info Whether to display seller contact information
+     * @param bool|null $show_seller_contact_info Whether to display seller contact information
      *
      * @return $this
      */
@@ -2550,7 +2334,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Gets supported_pay_types
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getSupportedPayTypes()
     {
@@ -2560,7 +2344,7 @@ class InlineResponse20018Data implements ModelInterface, ArrayAccess
     /**
      * Sets supported_pay_types
      *
-     * @param string[] $supported_pay_types Payment methods supported by current order
+     * @param string[]|null $supported_pay_types Payment methods supported by current order
      *
      * @return $this
      */

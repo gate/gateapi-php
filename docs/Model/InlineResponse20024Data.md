@@ -4,6 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**srvtm** | **int** | Timestamp when message was successfully sent (current timestamp) | 
+**messages** | [**\GateApi\Model\InlineResponse20024DataMessages[]**](InlineResponse20024DataMessages.md) | Message List | [optional] 
+**memo** | **string** | Payment tip (displayed on homepage only) | [optional] 
+**has_history** | **bool** | Whether historical records exist | [optional] 
+**txid** | **int** | Order ID | [optional] 
+**srvtm** | **int** | Timestamp of the latest message | [optional] 
+**order_status** | **string** | Order Status | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

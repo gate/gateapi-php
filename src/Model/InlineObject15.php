@@ -54,7 +54,9 @@ class InlineObject15 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'adv_no' => 'string'
+        'position_mode' => 'string',
+        'account_mode' => 'string',
+        'exchange_type' => 'string'
     ];
 
     /**
@@ -63,7 +65,9 @@ class InlineObject15 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'adv_no' => null
+        'position_mode' => null,
+        'account_mode' => null,
+        'exchange_type' => null
     ];
 
     /**
@@ -93,7 +97,9 @@ class InlineObject15 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'adv_no' => 'adv_no'
+        'position_mode' => 'position_mode',
+        'account_mode' => 'account_mode',
+        'exchange_type' => 'exchange_type'
     ];
 
     /**
@@ -102,7 +108,9 @@ class InlineObject15 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'adv_no' => 'setAdvNo'
+        'position_mode' => 'setPositionMode',
+        'account_mode' => 'setAccountMode',
+        'exchange_type' => 'setExchangeType'
     ];
 
     /**
@@ -111,7 +119,9 @@ class InlineObject15 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'adv_no' => 'getAdvNo'
+        'position_mode' => 'getPositionMode',
+        'account_mode' => 'getAccountMode',
+        'exchange_type' => 'getExchangeType'
     ];
 
     /**
@@ -174,7 +184,9 @@ class InlineObject15 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['adv_no'] = isset($data['adv_no']) ? $data['adv_no'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
     }
 
     /**
@@ -186,9 +198,6 @@ class InlineObject15 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['adv_no'] === null) {
-            $invalidProperties[] = "'adv_no' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -205,25 +214,73 @@ class InlineObject15 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets adv_no
+     * Gets position_mode
      *
-     * @return string
+     * @return string|null
      */
-    public function getAdvNo()
+    public function getPositionMode()
     {
-        return $this->container['adv_no'];
+        return $this->container['position_mode'];
     }
 
     /**
-     * Sets adv_no
+     * Sets position_mode
      *
-     * @param string $adv_no adv_no
+     * @param string|null $position_mode Futures position mode (SINGLE/DUAL)
      *
      * @return $this
      */
-    public function setAdvNo($adv_no)
+    public function setPositionMode($position_mode)
     {
-        $this->container['adv_no'] = $adv_no;
+        $this->container['position_mode'] = $position_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_mode
+     *
+     * @return string|null
+     */
+    public function getAccountMode()
+    {
+        return $this->container['account_mode'];
+    }
+
+    /**
+     * Sets account_mode
+     *
+     * @param string|null $account_mode Account mode (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
+     *
+     * @return $this
+     */
+    public function setAccountMode($account_mode)
+    {
+        $this->container['account_mode'] = $account_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_type
+     *
+     * @return string|null
+     */
+    public function getExchangeType()
+    {
+        return $this->container['exchange_type'];
+    }
+
+    /**
+     * Sets exchange_type
+     *
+     * @param string|null $exchange_type Exchange (BINANCE/OKX/GATE/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     *
+     * @return $this
+     */
+    public function setExchangeType($exchange_type)
+    {
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }

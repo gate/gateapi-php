@@ -54,8 +54,7 @@ class InlineObject14 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'adv_no' => 'int',
-        'adv_status' => 'int'
+        'quote_id' => 'string'
     ];
 
     /**
@@ -64,8 +63,7 @@ class InlineObject14 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'adv_no' => null,
-        'adv_status' => null
+        'quote_id' => null
     ];
 
     /**
@@ -95,8 +93,7 @@ class InlineObject14 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'adv_no' => 'adv_no',
-        'adv_status' => 'adv_status'
+        'quote_id' => 'quote_id'
     ];
 
     /**
@@ -105,8 +102,7 @@ class InlineObject14 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'adv_no' => 'setAdvNo',
-        'adv_status' => 'setAdvStatus'
+        'quote_id' => 'setQuoteId'
     ];
 
     /**
@@ -115,8 +111,7 @@ class InlineObject14 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'adv_no' => 'getAdvNo',
-        'adv_status' => 'getAdvStatus'
+        'quote_id' => 'getQuoteId'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineObject14 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['adv_no'] = isset($data['adv_no']) ? $data['adv_no'] : null;
-        $this->container['adv_status'] = isset($data['adv_status']) ? $data['adv_status'] : null;
+        $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
     }
 
     /**
@@ -192,11 +186,8 @@ class InlineObject14 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['adv_no'] === null) {
-            $invalidProperties[] = "'adv_no' can't be null";
-        }
-        if ($this->container['adv_status'] === null) {
-            $invalidProperties[] = "'adv_status' can't be null";
+        if ($this->container['quote_id'] === null) {
+            $invalidProperties[] = "'quote_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +205,25 @@ class InlineObject14 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets adv_no
+     * Gets quote_id
      *
-     * @return int
+     * @return string
      */
-    public function getAdvNo()
+    public function getQuoteId()
     {
-        return $this->container['adv_no'];
+        return $this->container['quote_id'];
     }
 
     /**
-     * Sets adv_no
+     * Sets quote_id
      *
-     * @param int $adv_no Ad ID
+     * @param string $quote_id Inquiry ID
      *
      * @return $this
      */
-    public function setAdvNo($adv_no)
+    public function setQuoteId($quote_id)
     {
-        $this->container['adv_no'] = $adv_no;
-
-        return $this;
-    }
-
-    /**
-     * Gets adv_status
-     *
-     * @return int
-     */
-    public function getAdvStatus()
-    {
-        return $this->container['adv_status'];
-    }
-
-    /**
-     * Sets adv_status
-     *
-     * @param int $adv_status Ad status: 1=Active, 3=Inactive, 4=Closed
-     *
-     * @return $this
-     */
-    public function setAdvStatus($adv_status)
-    {
-        $this->container['adv_status'] = $adv_status;
+        $this->container['quote_id'] = $quote_id;
 
         return $this;
     }

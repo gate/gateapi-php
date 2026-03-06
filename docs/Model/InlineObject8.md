@@ -4,15 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**crypto_currency** | **string** | Cryptocurrency | 
-**fiat_currency** | **string** | Fiat currency | 
-**select_type** | **string** | Buy/Sell (sell&#x3D;Sell, buy&#x3D;Buy, others&#x3D;All) | [optional] 
-**status** | **string** | Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED) | [optional] 
-**txid** | **int** | Order ID | [optional] 
-**start_time** | **int** | Start timestamp, default is 00:00 89 days ago | [optional] 
-**end_time** | **int** | End timestamp, default is 23:59:59 today | [optional] 
-**query_dispute** | **int** | 1: Include appeal status, 0: None | [optional] 
-**page** | **int** | page number | [optional] 
-**per_page** | **int** | Number of orders per page | [optional] 
+**pay_coin** | **string** | Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] 
+**get_coin** | **string** | Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page. | [optional] 
+**pay_amount** | **string** | User payment currency amount | [optional] 
+**get_amount** | **string** | Amount of currency received by the user | [optional] 
+**side** | **string** | Quote direction returned by the quote API (used for order validation) | [optional] 
+**promotion_code** | **string** | promotion code | [optional] 
+**quote_token** | **string** | Parameter returned by the quote API | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

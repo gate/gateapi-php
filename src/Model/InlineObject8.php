@@ -54,16 +54,13 @@ class InlineObject8 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'crypto_currency' => 'string',
-        'fiat_currency' => 'string',
-        'select_type' => 'string',
-        'status' => 'string',
-        'txid' => 'int',
-        'start_time' => 'int',
-        'end_time' => 'int',
-        'query_dispute' => 'int',
-        'page' => 'int',
-        'per_page' => 'int'
+        'pay_coin' => 'string',
+        'get_coin' => 'string',
+        'pay_amount' => 'string',
+        'get_amount' => 'string',
+        'side' => 'string',
+        'promotion_code' => 'string',
+        'quote_token' => 'string'
     ];
 
     /**
@@ -72,16 +69,13 @@ class InlineObject8 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'crypto_currency' => null,
-        'fiat_currency' => null,
-        'select_type' => null,
-        'status' => null,
-        'txid' => null,
-        'start_time' => null,
-        'end_time' => null,
-        'query_dispute' => null,
-        'page' => null,
-        'per_page' => null
+        'pay_coin' => null,
+        'get_coin' => null,
+        'pay_amount' => null,
+        'get_amount' => null,
+        'side' => null,
+        'promotion_code' => null,
+        'quote_token' => null
     ];
 
     /**
@@ -111,16 +105,13 @@ class InlineObject8 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'crypto_currency' => 'crypto_currency',
-        'fiat_currency' => 'fiat_currency',
-        'select_type' => 'select_type',
-        'status' => 'status',
-        'txid' => 'txid',
-        'start_time' => 'start_time',
-        'end_time' => 'end_time',
-        'query_dispute' => 'query_dispute',
-        'page' => 'page',
-        'per_page' => 'per_page'
+        'pay_coin' => 'pay_coin',
+        'get_coin' => 'get_coin',
+        'pay_amount' => 'pay_amount',
+        'get_amount' => 'get_amount',
+        'side' => 'side',
+        'promotion_code' => 'promotion_code',
+        'quote_token' => 'quote_token'
     ];
 
     /**
@@ -129,16 +120,13 @@ class InlineObject8 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'crypto_currency' => 'setCryptoCurrency',
-        'fiat_currency' => 'setFiatCurrency',
-        'select_type' => 'setSelectType',
-        'status' => 'setStatus',
-        'txid' => 'setTxid',
-        'start_time' => 'setStartTime',
-        'end_time' => 'setEndTime',
-        'query_dispute' => 'setQueryDispute',
-        'page' => 'setPage',
-        'per_page' => 'setPerPage'
+        'pay_coin' => 'setPayCoin',
+        'get_coin' => 'setGetCoin',
+        'pay_amount' => 'setPayAmount',
+        'get_amount' => 'setGetAmount',
+        'side' => 'setSide',
+        'promotion_code' => 'setPromotionCode',
+        'quote_token' => 'setQuoteToken'
     ];
 
     /**
@@ -147,16 +135,13 @@ class InlineObject8 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'crypto_currency' => 'getCryptoCurrency',
-        'fiat_currency' => 'getFiatCurrency',
-        'select_type' => 'getSelectType',
-        'status' => 'getStatus',
-        'txid' => 'getTxid',
-        'start_time' => 'getStartTime',
-        'end_time' => 'getEndTime',
-        'query_dispute' => 'getQueryDispute',
-        'page' => 'getPage',
-        'per_page' => 'getPerPage'
+        'pay_coin' => 'getPayCoin',
+        'get_coin' => 'getGetCoin',
+        'pay_amount' => 'getPayAmount',
+        'get_amount' => 'getGetAmount',
+        'side' => 'getSide',
+        'promotion_code' => 'getPromotionCode',
+        'quote_token' => 'getQuoteToken'
     ];
 
     /**
@@ -219,16 +204,13 @@ class InlineObject8 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
-        $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
-        $this->container['select_type'] = isset($data['select_type']) ? $data['select_type'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
-        $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
-        $this->container['query_dispute'] = isset($data['query_dispute']) ? $data['query_dispute'] : null;
-        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
-        $this->container['per_page'] = isset($data['per_page']) ? $data['per_page'] : null;
+        $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
+        $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
+        $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
+        $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
+        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
     }
 
     /**
@@ -240,12 +222,6 @@ class InlineObject8 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['crypto_currency'] === null) {
-            $invalidProperties[] = "'crypto_currency' can't be null";
-        }
-        if ($this->container['fiat_currency'] === null) {
-            $invalidProperties[] = "'fiat_currency' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -262,241 +238,169 @@ class InlineObject8 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets crypto_currency
-     *
-     * @return string
-     */
-    public function getCryptoCurrency()
-    {
-        return $this->container['crypto_currency'];
-    }
-
-    /**
-     * Sets crypto_currency
-     *
-     * @param string $crypto_currency Cryptocurrency
-     *
-     * @return $this
-     */
-    public function setCryptoCurrency($crypto_currency)
-    {
-        $this->container['crypto_currency'] = $crypto_currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets fiat_currency
-     *
-     * @return string
-     */
-    public function getFiatCurrency()
-    {
-        return $this->container['fiat_currency'];
-    }
-
-    /**
-     * Sets fiat_currency
-     *
-     * @param string $fiat_currency Fiat currency
-     *
-     * @return $this
-     */
-    public function setFiatCurrency($fiat_currency)
-    {
-        $this->container['fiat_currency'] = $fiat_currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets select_type
+     * Gets pay_coin
      *
      * @return string|null
      */
-    public function getSelectType()
+    public function getPayCoin()
     {
-        return $this->container['select_type'];
+        return $this->container['pay_coin'];
     }
 
     /**
-     * Sets select_type
+     * Sets pay_coin
      *
-     * @param string|null $select_type Buy/Sell (sell=Sell, buy=Buy, others=All)
+     * @param string|null $pay_coin Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      *
      * @return $this
      */
-    public function setSelectType($select_type)
+    public function setPayCoin($pay_coin)
     {
-        $this->container['select_type'] = $select_type;
+        $this->container['pay_coin'] = $pay_coin;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets get_coin
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getGetCoin()
     {
-        return $this->container['status'];
+        return $this->container['get_coin'];
     }
 
     /**
-     * Sets status
+     * Sets get_coin
      *
-     * @param string|null $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
+     * @param string|null $get_coin Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setGetCoin($get_coin)
     {
-        $this->container['status'] = $status;
+        $this->container['get_coin'] = $get_coin;
 
         return $this;
     }
 
     /**
-     * Gets txid
+     * Gets pay_amount
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getTxid()
+    public function getPayAmount()
     {
-        return $this->container['txid'];
+        return $this->container['pay_amount'];
     }
 
     /**
-     * Sets txid
+     * Sets pay_amount
      *
-     * @param int|null $txid Order ID
+     * @param string|null $pay_amount User payment currency amount
      *
      * @return $this
      */
-    public function setTxid($txid)
+    public function setPayAmount($pay_amount)
     {
-        $this->container['txid'] = $txid;
+        $this->container['pay_amount'] = $pay_amount;
 
         return $this;
     }
 
     /**
-     * Gets start_time
+     * Gets get_amount
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getStartTime()
+    public function getGetAmount()
     {
-        return $this->container['start_time'];
+        return $this->container['get_amount'];
     }
 
     /**
-     * Sets start_time
+     * Sets get_amount
      *
-     * @param int|null $start_time Start timestamp, default is 00:00 89 days ago
+     * @param string|null $get_amount Amount of currency received by the user
      *
      * @return $this
      */
-    public function setStartTime($start_time)
+    public function setGetAmount($get_amount)
     {
-        $this->container['start_time'] = $start_time;
+        $this->container['get_amount'] = $get_amount;
 
         return $this;
     }
 
     /**
-     * Gets end_time
+     * Gets side
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getEndTime()
+    public function getSide()
     {
-        return $this->container['end_time'];
+        return $this->container['side'];
     }
 
     /**
-     * Sets end_time
+     * Sets side
      *
-     * @param int|null $end_time End timestamp, default is 23:59:59 today
+     * @param string|null $side Quote direction returned by the quote API (used for order validation)
      *
      * @return $this
      */
-    public function setEndTime($end_time)
+    public function setSide($side)
     {
-        $this->container['end_time'] = $end_time;
+        $this->container['side'] = $side;
 
         return $this;
     }
 
     /**
-     * Gets query_dispute
+     * Gets promotion_code
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getQueryDispute()
+    public function getPromotionCode()
     {
-        return $this->container['query_dispute'];
+        return $this->container['promotion_code'];
     }
 
     /**
-     * Sets query_dispute
+     * Sets promotion_code
      *
-     * @param int|null $query_dispute 1: Include appeal status, 0: None
+     * @param string|null $promotion_code promotion code
      *
      * @return $this
      */
-    public function setQueryDispute($query_dispute)
+    public function setPromotionCode($promotion_code)
     {
-        $this->container['query_dispute'] = $query_dispute;
+        $this->container['promotion_code'] = $promotion_code;
 
         return $this;
     }
 
     /**
-     * Gets page
+     * Gets quote_token
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getPage()
+    public function getQuoteToken()
     {
-        return $this->container['page'];
+        return $this->container['quote_token'];
     }
 
     /**
-     * Sets page
+     * Sets quote_token
      *
-     * @param int|null $page page number
+     * @param string|null $quote_token Parameter returned by the quote API
      *
      * @return $this
      */
-    public function setPage($page)
+    public function setQuoteToken($quote_token)
     {
-        $this->container['page'] = $page;
-
-        return $this;
-    }
-
-    /**
-     * Gets per_page
-     *
-     * @return int|null
-     */
-    public function getPerPage()
-    {
-        return $this->container['per_page'];
-    }
-
-    /**
-     * Sets per_page
-     *
-     * @param int|null $per_page Number of orders per page
-     *
-     * @return $this
-     */
-    public function setPerPage($per_page)
-    {
-        $this->container['per_page'] = $per_page;
+        $this->container['quote_token'] = $quote_token;
 
         return $this;
     }

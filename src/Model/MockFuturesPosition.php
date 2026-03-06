@@ -227,7 +227,7 @@ class MockFuturesPosition implements ModelInterface, ArrayAccess
     /**
      * Sets contract
      *
-     * @param string $contract Futures name, currently only supports USDT perpetual contracts for BTC and ETH
+     * @param string $contract Perpetual contract name. Only USDT perpetual contracts for underlying currencies with active options trading are supported.
      *
      * @return $this
      */

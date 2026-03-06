@@ -54,12 +54,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'timestamp' => 'float',
-        'method' => 'string',
         'code' => 'int',
         'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse20019Data',
-        'version' => 'string'
+        'timestamp' => 'int'
     ];
 
     /**
@@ -68,12 +65,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'timestamp' => null,
-        'method' => null,
         'code' => null,
         'message' => null,
-        'data' => null,
-        'version' => null
+        'timestamp' => null
     ];
 
     /**
@@ -103,12 +97,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'timestamp' => 'timestamp',
-        'method' => 'method',
         'code' => 'code',
         'message' => 'message',
-        'data' => 'data',
-        'version' => 'version'
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -117,12 +108,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'timestamp' => 'setTimestamp',
-        'method' => 'setMethod',
         'code' => 'setCode',
         'message' => 'setMessage',
-        'data' => 'setData',
-        'version' => 'setVersion'
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -131,12 +119,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'timestamp' => 'getTimestamp',
-        'method' => 'getMethod',
         'code' => 'getCode',
         'message' => 'getMessage',
-        'data' => 'getData',
-        'version' => 'getVersion'
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -199,12 +184,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
-        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -216,24 +198,6 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
-        if ($this->container['method'] === null) {
-            $invalidProperties[] = "'method' can't be null";
-        }
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['version'] === null) {
-            $invalidProperties[] = "'version' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -250,57 +214,9 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets timestamp
-     *
-     * @return float
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param float $timestamp timestamp
-     *
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
-
-        return $this;
-    }
-
-    /**
-     * Gets method
-     *
-     * @return string
-     */
-    public function getMethod()
-    {
-        return $this->container['method'];
-    }
-
-    /**
-     * Sets method
-     *
-     * @param string $method method
-     *
-     * @return $this
-     */
-    public function setMethod($method)
-    {
-        $this->container['method'] = $method;
-
-        return $this;
-    }
-
-    /**
      * Gets code
      *
-     * @return int
+     * @return int|null
      */
     public function getCode()
     {
@@ -310,7 +226,7 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int|null $code code
      *
      * @return $this
      */
@@ -324,7 +240,7 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
@@ -334,7 +250,7 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string|null $message message
      *
      * @return $this
      */
@@ -346,49 +262,25 @@ class InlineResponse20019 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets data
+     * Gets timestamp
      *
-     * @return \GateApi\Model\InlineResponse20019Data
+     * @return int|null
      */
-    public function getData()
+    public function getTimestamp()
     {
-        return $this->container['data'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets data
+     * Sets timestamp
      *
-     * @param \GateApi\Model\InlineResponse20019Data $data data
+     * @param int|null $timestamp timestamp
      *
      * @return $this
      */
-    public function setData($data)
+    public function setTimestamp($timestamp)
     {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets version
-     *
-     * @return string
-     */
-    public function getVersion()
-    {
-        return $this->container['version'];
-    }
-
-    /**
-     * Sets version
-     *
-     * @param string $version version
-     *
-     * @return $this
-     */
-    public function setVersion($version)
-    {
-        $this->container['version'] = $version;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

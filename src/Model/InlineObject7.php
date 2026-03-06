@@ -54,14 +54,15 @@ class InlineObject7 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'type' => 'string',
+        'side' => 'string',
         'crypto_currency' => 'string',
         'fiat_currency' => 'string',
-        'order_tab' => 'string',
-        'select_type' => 'string',
-        'status' => 'string',
-        'txid' => 'int',
-        'start_time' => 'int',
-        'end_time' => 'int'
+        'crypto_amount' => 'string',
+        'fiat_amount' => 'string',
+        'promotion_code' => 'string',
+        'quote_token' => 'string',
+        'bank_id' => 'string'
     ];
 
     /**
@@ -70,14 +71,15 @@ class InlineObject7 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'type' => null,
+        'side' => null,
         'crypto_currency' => null,
         'fiat_currency' => null,
-        'order_tab' => null,
-        'select_type' => null,
-        'status' => null,
-        'txid' => null,
-        'start_time' => null,
-        'end_time' => null
+        'crypto_amount' => null,
+        'fiat_amount' => null,
+        'promotion_code' => null,
+        'quote_token' => null,
+        'bank_id' => null
     ];
 
     /**
@@ -107,14 +109,15 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
+        'side' => 'side',
         'crypto_currency' => 'crypto_currency',
         'fiat_currency' => 'fiat_currency',
-        'order_tab' => 'order_tab',
-        'select_type' => 'select_type',
-        'status' => 'status',
-        'txid' => 'txid',
-        'start_time' => 'start_time',
-        'end_time' => 'end_time'
+        'crypto_amount' => 'crypto_amount',
+        'fiat_amount' => 'fiat_amount',
+        'promotion_code' => 'promotion_code',
+        'quote_token' => 'quote_token',
+        'bank_id' => 'bank_id'
     ];
 
     /**
@@ -123,14 +126,15 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
+        'side' => 'setSide',
         'crypto_currency' => 'setCryptoCurrency',
         'fiat_currency' => 'setFiatCurrency',
-        'order_tab' => 'setOrderTab',
-        'select_type' => 'setSelectType',
-        'status' => 'setStatus',
-        'txid' => 'setTxid',
-        'start_time' => 'setStartTime',
-        'end_time' => 'setEndTime'
+        'crypto_amount' => 'setCryptoAmount',
+        'fiat_amount' => 'setFiatAmount',
+        'promotion_code' => 'setPromotionCode',
+        'quote_token' => 'setQuoteToken',
+        'bank_id' => 'setBankId'
     ];
 
     /**
@@ -139,14 +143,15 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
+        'side' => 'getSide',
         'crypto_currency' => 'getCryptoCurrency',
         'fiat_currency' => 'getFiatCurrency',
-        'order_tab' => 'getOrderTab',
-        'select_type' => 'getSelectType',
-        'status' => 'getStatus',
-        'txid' => 'getTxid',
-        'start_time' => 'getStartTime',
-        'end_time' => 'getEndTime'
+        'crypto_amount' => 'getCryptoAmount',
+        'fiat_amount' => 'getFiatAmount',
+        'promotion_code' => 'getPromotionCode',
+        'quote_token' => 'getQuoteToken',
+        'bank_id' => 'getBankId'
     ];
 
     /**
@@ -209,14 +214,15 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
         $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
         $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
-        $this->container['order_tab'] = isset($data['order_tab']) ? $data['order_tab'] : null;
-        $this->container['select_type'] = isset($data['select_type']) ? $data['select_type'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
-        $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
-        $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
+        $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
+        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
+        $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
     }
 
     /**
@@ -228,11 +234,29 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['side'] === null) {
+            $invalidProperties[] = "'side' can't be null";
+        }
         if ($this->container['crypto_currency'] === null) {
             $invalidProperties[] = "'crypto_currency' can't be null";
         }
         if ($this->container['fiat_currency'] === null) {
             $invalidProperties[] = "'fiat_currency' can't be null";
+        }
+        if ($this->container['crypto_amount'] === null) {
+            $invalidProperties[] = "'crypto_amount' can't be null";
+        }
+        if ($this->container['fiat_amount'] === null) {
+            $invalidProperties[] = "'fiat_amount' can't be null";
+        }
+        if ($this->container['quote_token'] === null) {
+            $invalidProperties[] = "'quote_token' can't be null";
+        }
+        if ($this->container['bank_id'] === null) {
+            $invalidProperties[] = "'bank_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -250,6 +274,54 @@ class InlineObject7 implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type BUY for on-ramp, SELL for off-ramp
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets side
+     *
+     * @return string
+     */
+    public function getSide()
+    {
+        return $this->container['side'];
+    }
+
+    /**
+     * Sets side
+     *
+     * @param string $side Quote direction returned by the quote API (used for order validation)
+     *
+     * @return $this
+     */
+    public function setSide($side)
+    {
+        $this->container['side'] = $side;
+
+        return $this;
+    }
+
+    /**
      * Gets crypto_currency
      *
      * @return string
@@ -262,7 +334,7 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     /**
      * Sets crypto_currency
      *
-     * @param string $crypto_currency Cryptocurrency
+     * @param string $crypto_currency Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
      *
      * @return $this
      */
@@ -286,7 +358,7 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     /**
      * Sets fiat_currency
      *
-     * @param string $fiat_currency Fiat currency
+     * @param string $fiat_currency Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
      *
      * @return $this
      */
@@ -298,145 +370,121 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets order_tab
+     * Gets crypto_amount
+     *
+     * @return string
+     */
+    public function getCryptoAmount()
+    {
+        return $this->container['crypto_amount'];
+    }
+
+    /**
+     * Sets crypto_amount
+     *
+     * @param string $crypto_amount Amount of cryptocurrency
+     *
+     * @return $this
+     */
+    public function setCryptoAmount($crypto_amount)
+    {
+        $this->container['crypto_amount'] = $crypto_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_amount
+     *
+     * @return string
+     */
+    public function getFiatAmount()
+    {
+        return $this->container['fiat_amount'];
+    }
+
+    /**
+     * Sets fiat_amount
+     *
+     * @param string $fiat_amount Fiat amount
+     *
+     * @return $this
+     */
+    public function setFiatAmount($fiat_amount)
+    {
+        $this->container['fiat_amount'] = $fiat_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets promotion_code
      *
      * @return string|null
      */
-    public function getOrderTab()
+    public function getPromotionCode()
     {
-        return $this->container['order_tab'];
+        return $this->container['promotion_code'];
     }
 
     /**
-     * Sets order_tab
+     * Sets promotion_code
      *
-     * @param string|null $order_tab Order tab, default: pending (pending: In Progress (pending: AND status in ('OPEN','PAID', 'LOCKED', 'TEMP')); dispute: In Dispute (status in ('ACCEPT','BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
+     * @param string|null $promotion_code Promotion code
      *
      * @return $this
      */
-    public function setOrderTab($order_tab)
+    public function setPromotionCode($promotion_code)
     {
-        $this->container['order_tab'] = $order_tab;
+        $this->container['promotion_code'] = $promotion_code;
 
         return $this;
     }
 
     /**
-     * Gets select_type
+     * Gets quote_token
      *
-     * @return string|null
+     * @return string
      */
-    public function getSelectType()
+    public function getQuoteToken()
     {
-        return $this->container['select_type'];
+        return $this->container['quote_token'];
     }
 
     /**
-     * Sets select_type
+     * Sets quote_token
      *
-     * @param string|null $select_type Buy/Sell (sell=Sell, buy=Buy, others=All)
+     * @param string $quote_token Parameter returned by the quote API
      *
      * @return $this
      */
-    public function setSelectType($select_type)
+    public function setQuoteToken($quote_token)
     {
-        $this->container['select_type'] = $select_type;
+        $this->container['quote_token'] = $quote_token;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets bank_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getStatus()
+    public function getBankId()
     {
-        return $this->container['status'];
+        return $this->container['bank_id'];
     }
 
     /**
-     * Sets status
+     * Sets bank_id
      *
-     * @param string|null $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
+     * @param string $bank_id Bank card ID used for the order (retrieved via the default bank card API)
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setBankId($bank_id)
     {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets txid
-     *
-     * @return int|null
-     */
-    public function getTxid()
-    {
-        return $this->container['txid'];
-    }
-
-    /**
-     * Sets txid
-     *
-     * @param int|null $txid Order ID
-     *
-     * @return $this
-     */
-    public function setTxid($txid)
-    {
-        $this->container['txid'] = $txid;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_time
-     *
-     * @return int|null
-     */
-    public function getStartTime()
-    {
-        return $this->container['start_time'];
-    }
-
-    /**
-     * Sets start_time
-     *
-     * @param int|null $start_time Start timestamp, default is 00:00 89 days ago
-     *
-     * @return $this
-     */
-    public function setStartTime($start_time)
-    {
-        $this->container['start_time'] = $start_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_time
-     *
-     * @return int|null
-     */
-    public function getEndTime()
-    {
-        return $this->container['end_time'];
-    }
-
-    /**
-     * Sets end_time
-     *
-     * @param int|null $end_time End timestamp, default is 23:59:59 today
-     *
-     * @return $this
-     */
-    public function setEndTime($end_time)
-    {
-        $this->container['end_time'] = $end_time;
+        $this->container['bank_id'] = $bank_id;
 
         return $this;
     }

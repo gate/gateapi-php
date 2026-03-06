@@ -54,9 +54,8 @@ class InlineObject17 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'asset' => 'string',
-        'fiat_unit' => 'string',
-        'trade_type' => 'string'
+        'symbol' => 'string',
+        'leverage' => 'string'
     ];
 
     /**
@@ -65,9 +64,8 @@ class InlineObject17 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'asset' => null,
-        'fiat_unit' => null,
-        'trade_type' => null
+        'symbol' => null,
+        'leverage' => null
     ];
 
     /**
@@ -97,9 +95,8 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'asset' => 'asset',
-        'fiat_unit' => 'fiat_unit',
-        'trade_type' => 'trade_type'
+        'symbol' => 'symbol',
+        'leverage' => 'leverage'
     ];
 
     /**
@@ -108,9 +105,8 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'asset' => 'setAsset',
-        'fiat_unit' => 'setFiatUnit',
-        'trade_type' => 'setTradeType'
+        'symbol' => 'setSymbol',
+        'leverage' => 'setLeverage'
     ];
 
     /**
@@ -119,9 +115,8 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'asset' => 'getAsset',
-        'fiat_unit' => 'getFiatUnit',
-        'trade_type' => 'getTradeType'
+        'symbol' => 'getSymbol',
+        'leverage' => 'getLeverage'
     ];
 
     /**
@@ -184,9 +179,8 @@ class InlineObject17 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
-        $this->container['fiat_unit'] = isset($data['fiat_unit']) ? $data['fiat_unit'] : null;
-        $this->container['trade_type'] = isset($data['trade_type']) ? $data['trade_type'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
     }
 
     /**
@@ -198,14 +192,11 @@ class InlineObject17 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['asset'] === null) {
-            $invalidProperties[] = "'asset' can't be null";
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
         }
-        if ($this->container['fiat_unit'] === null) {
-            $invalidProperties[] = "'fiat_unit' can't be null";
-        }
-        if ($this->container['trade_type'] === null) {
-            $invalidProperties[] = "'trade_type' can't be null";
+        if ($this->container['leverage'] === null) {
+            $invalidProperties[] = "'leverage' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,73 +214,49 @@ class InlineObject17 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets asset
+     * Gets symbol
      *
      * @return string
      */
-    public function getAsset()
+    public function getSymbol()
     {
-        return $this->container['asset'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets asset
+     * Sets symbol
      *
-     * @param string $asset Cryptocurrency
+     * @param string $symbol Currency pair
      *
      * @return $this
      */
-    public function setAsset($asset)
+    public function setSymbol($symbol)
     {
-        $this->container['asset'] = $asset;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets fiat_unit
+     * Gets leverage
      *
      * @return string
      */
-    public function getFiatUnit()
+    public function getLeverage()
     {
-        return $this->container['fiat_unit'];
+        return $this->container['leverage'];
     }
 
     /**
-     * Sets fiat_unit
+     * Sets leverage
      *
-     * @param string $fiat_unit Fiat currency
+     * @param string $leverage leverage
      *
      * @return $this
      */
-    public function setFiatUnit($fiat_unit)
+    public function setLeverage($leverage)
     {
-        $this->container['fiat_unit'] = $fiat_unit;
-
-        return $this;
-    }
-
-    /**
-     * Gets trade_type
-     *
-     * @return string
-     */
-    public function getTradeType()
-    {
-        return $this->container['trade_type'];
-    }
-
-    /**
-     * Sets trade_type
-     *
-     * @param string $trade_type Buy/Sell, sell/buy
-     *
-     * @return $this
-     */
-    public function setTradeType($trade_type)
-    {
-        $this->container['trade_type'] = $trade_type;
+        $this->container['leverage'] = $leverage;
 
         return $this;
     }

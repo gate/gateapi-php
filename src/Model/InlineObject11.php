@@ -54,7 +54,16 @@ class InlineObject11 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trade_id' => 'string'
+        'text' => 'string',
+        'symbol' => 'string',
+        'side' => 'string',
+        'type' => 'string',
+        'time_in_force' => 'string',
+        'qty' => 'string',
+        'price' => 'string',
+        'quote_qty' => 'string',
+        'reduce_only' => 'string',
+        'position_side' => 'string'
     ];
 
     /**
@@ -63,7 +72,16 @@ class InlineObject11 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'trade_id' => null
+        'text' => null,
+        'symbol' => null,
+        'side' => null,
+        'type' => null,
+        'time_in_force' => null,
+        'qty' => null,
+        'price' => null,
+        'quote_qty' => null,
+        'reduce_only' => null,
+        'position_side' => null
     ];
 
     /**
@@ -93,7 +111,16 @@ class InlineObject11 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'trade_id' => 'trade_id'
+        'text' => 'text',
+        'symbol' => 'symbol',
+        'side' => 'side',
+        'type' => 'type',
+        'time_in_force' => 'time_in_force',
+        'qty' => 'qty',
+        'price' => 'price',
+        'quote_qty' => 'quote_qty',
+        'reduce_only' => 'reduce_only',
+        'position_side' => 'position_side'
     ];
 
     /**
@@ -102,7 +129,16 @@ class InlineObject11 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'trade_id' => 'setTradeId'
+        'text' => 'setText',
+        'symbol' => 'setSymbol',
+        'side' => 'setSide',
+        'type' => 'setType',
+        'time_in_force' => 'setTimeInForce',
+        'qty' => 'setQty',
+        'price' => 'setPrice',
+        'quote_qty' => 'setQuoteQty',
+        'reduce_only' => 'setReduceOnly',
+        'position_side' => 'setPositionSide'
     ];
 
     /**
@@ -111,7 +147,16 @@ class InlineObject11 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'trade_id' => 'getTradeId'
+        'text' => 'getText',
+        'symbol' => 'getSymbol',
+        'side' => 'getSide',
+        'type' => 'getType',
+        'time_in_force' => 'getTimeInForce',
+        'qty' => 'getQty',
+        'price' => 'getPrice',
+        'quote_qty' => 'getQuoteQty',
+        'reduce_only' => 'getReduceOnly',
+        'position_side' => 'getPositionSide'
     ];
 
     /**
@@ -155,8 +200,89 @@ class InlineObject11 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const SIDE_BUY = 'BUY';
+    const SIDE_SELL = 'SELL';
+    const TYPE_LIMIT = 'LIMIT';
+    const TYPE_MARKET = 'MARKET';
+    const TIME_IN_FORCE_GTC = 'GTC';
+    const TIME_IN_FORCE_IOC = 'IOC';
+    const TIME_IN_FORCE_FOK = 'FOK';
+    const TIME_IN_FORCE_POC = 'POC';
+    const REDUCE_ONLY_TRUE = 'true';
+    const REDUCE_ONLY_FALSE = 'false';
+    const POSITION_SIDE_LONG = 'LONG';
+    const POSITION_SIDE_SHORT = 'SHORT';
+    const POSITION_SIDE_NONE = 'NONE';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSideAllowableValues()
+    {
+        return [
+            self::SIDE_BUY,
+            self::SIDE_SELL,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_LIMIT,
+            self::TYPE_MARKET,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTimeInForceAllowableValues()
+    {
+        return [
+            self::TIME_IN_FORCE_GTC,
+            self::TIME_IN_FORCE_IOC,
+            self::TIME_IN_FORCE_FOK,
+            self::TIME_IN_FORCE_POC,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReduceOnlyAllowableValues()
+    {
+        return [
+            self::REDUCE_ONLY_TRUE,
+            self::REDUCE_ONLY_FALSE,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPositionSideAllowableValues()
+    {
+        return [
+            self::POSITION_SIDE_LONG,
+            self::POSITION_SIDE_SHORT,
+            self::POSITION_SIDE_NONE,
+        ];
+    }
     
 
     /**
@@ -174,7 +300,16 @@ class InlineObject11 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : 'LIMIT';
+        $this->container['time_in_force'] = isset($data['time_in_force']) ? $data['time_in_force'] : 'GTC';
+        $this->container['qty'] = isset($data['qty']) ? $data['qty'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['quote_qty'] = isset($data['quote_qty']) ? $data['quote_qty'] : null;
+        $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : null;
+        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
     }
 
     /**
@@ -186,9 +321,52 @@ class InlineObject11 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['trade_id'] === null) {
-            $invalidProperties[] = "'trade_id' can't be null";
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
         }
+        if ($this->container['side'] === null) {
+            $invalidProperties[] = "'side' can't be null";
+        }
+        $allowedValues = $this->getSideAllowableValues();
+        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'side', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTimeInForceAllowableValues();
+        if (!is_null($this->container['time_in_force']) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'time_in_force', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getReduceOnlyAllowableValues();
+        if (!is_null($this->container['reduce_only']) && !in_array($this->container['reduce_only'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'reduce_only', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getPositionSideAllowableValues();
+        if (!is_null($this->container['position_side']) && !in_array($this->container['position_side'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'position_side', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -205,25 +383,286 @@ class InlineObject11 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets trade_id
+     * Gets text
      *
-     * @return string
+     * @return string|null
      */
-    public function getTradeId()
+    public function getText()
     {
-        return $this->container['trade_id'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets trade_id
+     * Sets text
      *
-     * @param string $trade_id trade_id
+     * @param string|null $text Client-defined Order ID, supports letters (a-z), numbers (0-9), symbols (-, _) only
      *
      * @return $this
      */
-    public function setTradeId($trade_id)
+    public function setText($text)
     {
-        $this->container['trade_id'] = $trade_id;
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol
+     *
+     * @return string
+     */
+    public function getSymbol()
+    {
+        return $this->container['symbol'];
+    }
+
+    /**
+     * Sets symbol
+     *
+     * @param string $symbol Unique Identifier for Exchange_Business_Base_Counter Examples: - To place a spot order for ADA/USDT on Binance: Use unique identifier `BINANCE_SPOT_ADA_USDT`; - To place a USDT-margin perpetual contract order for ADA/USDT on OKX: Use unique identifier `OKX_FUTURE_ADA_USDT`; - To place a spot margin order for ADA/USDT on Gate.io: Use unique identifier `GATE_MARGIN_ADA_USDT`; Currently supports three order types: Spot Orders, USDT-margin Perpetual Contract Orders, and Spot Margin Orders
+     *
+     * @return $this
+     */
+    public function setSymbol($symbol)
+    {
+        $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets side
+     *
+     * @return string
+     */
+    public function getSide()
+    {
+        return $this->container['side'];
+    }
+
+    /**
+     * Sets side
+     *
+     * @param string $side BUY, SELL
+     *
+     * @return $this
+     */
+    public function setSide($side)
+    {
+        $allowedValues = $this->getSideAllowableValues();
+        if (!in_array($side, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'side', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['side'] = $side;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Order type (default: `LIMIT`; supported types: `LIMIT`, `MARKET`)
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_in_force
+     *
+     * @return string|null
+     */
+    public function getTimeInForce()
+    {
+        return $this->container['time_in_force'];
+    }
+
+    /**
+     * Sets time_in_force
+     *
+     * @param string|null $time_in_force Default GTC, supports enumerated types: GTC, IOC, FOK, POC GTC: GoodTillCancelled IOC: ImmediateOrCancelled FOK: FillOrKill POC: PendingOrCancelled or PostOnly
+     *
+     * @return $this
+     */
+    public function setTimeInForce($time_in_force)
+    {
+        $allowedValues = $this->getTimeInForceAllowableValues();
+        if (!is_null($time_in_force) && !in_array($time_in_force, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'time_in_force', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['time_in_force'] = $time_in_force;
+
+        return $this;
+    }
+
+    /**
+     * Gets qty
+     *
+     * @return string|null
+     */
+    public function getQty()
+    {
+        return $this->container['qty'];
+    }
+
+    /**
+     * Sets qty
+     *
+     * @param string|null $qty Order quantity (required unless spot market buy)
+     *
+     * @return $this
+     */
+    public function setQty($qty)
+    {
+        $this->container['qty'] = $qty;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return string|null
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param string|null $price Limit Order Price (Required for Limit Orders)
+     *
+     * @return $this
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets quote_qty
+     *
+     * @return string|null
+     */
+    public function getQuoteQty()
+    {
+        return $this->container['quote_qty'];
+    }
+
+    /**
+     * Sets quote_qty
+     *
+     * @param string|null $quote_qty Order quote quantity; required for spot and margin market buy orders
+     *
+     * @return $this
+     */
+    public function setQuoteQty($quote_qty)
+    {
+        $this->container['quote_qty'] = $quote_qty;
+
+        return $this;
+    }
+
+    /**
+     * Gets reduce_only
+     *
+     * @return string|null
+     */
+    public function getReduceOnly()
+    {
+        return $this->container['reduce_only'];
+    }
+
+    /**
+     * Sets reduce_only
+     *
+     * @param string|null $reduce_only Reduce-only: `true` or `false`
+     *
+     * @return $this
+     */
+    public function setReduceOnly($reduce_only)
+    {
+        $allowedValues = $this->getReduceOnlyAllowableValues();
+        if (!is_null($reduce_only) && !in_array($reduce_only, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'reduce_only', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['reduce_only'] = $reduce_only;
+
+        return $this;
+    }
+
+    /**
+     * Gets position_side
+     *
+     * @return string|null
+     */
+    public function getPositionSide()
+    {
+        return $this->container['position_side'];
+    }
+
+    /**
+     * Sets position_side
+     *
+     * @param string|null $position_side Position side: `NONE`, `LONG`, `SHORT` Defaults to `NONE` (single position mode) if not specified
+     *
+     * @return $this
+     */
+    public function setPositionSide($position_side)
+    {
+        $allowedValues = $this->getPositionSideAllowableValues();
+        if (!is_null($position_side) && !in_array($position_side, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'position_side', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['position_side'] = $position_side;
 
         return $this;
     }

@@ -216,24 +216,6 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
-        if ($this->container['method'] === null) {
-            $invalidProperties[] = "'method' can't be null";
-        }
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['version'] === null) {
-            $invalidProperties[] = "'version' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -252,7 +234,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Gets timestamp
      *
-     * @return float
+     * @return float|null
      */
     public function getTimestamp()
     {
@@ -262,7 +244,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Sets timestamp
      *
-     * @param float $timestamp timestamp
+     * @param float|null $timestamp timestamp
      *
      * @return $this
      */
@@ -276,7 +258,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Gets method
      *
-     * @return string
+     * @return string|null
      */
     public function getMethod()
     {
@@ -286,7 +268,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Sets method
      *
-     * @param string $method method
+     * @param string|null $method method
      *
      * @return $this
      */
@@ -300,7 +282,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int
+     * @return int|null
      */
     public function getCode()
     {
@@ -310,7 +292,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int|null $code code
      *
      * @return $this
      */
@@ -324,7 +306,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
@@ -334,7 +316,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string|null $message message
      *
      * @return $this
      */
@@ -348,7 +330,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \GateApi\Model\InlineResponse20021Data
+     * @return \GateApi\Model\InlineResponse20021Data|null
      */
     public function getData()
     {
@@ -358,7 +340,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \GateApi\Model\InlineResponse20021Data $data data
+     * @param \GateApi\Model\InlineResponse20021Data|null $data data
      *
      * @return $this
      */
@@ -372,7 +354,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Gets version
      *
-     * @return string
+     * @return string|null
      */
     public function getVersion()
     {
@@ -382,7 +364,7 @@ class InlineResponse20021 implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param string $version Version number
+     * @param string|null $version version
      *
      * @return $this
      */
