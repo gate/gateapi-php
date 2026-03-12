@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse202
+ * QuoteRequest
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse202 Class Doc Comment
+ * QuoteRequest Class Doc Comment
  *
  * @category Class
+ * @description Quote Request
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse202 implements ModelInterface, ArrayAccess
+class QuoteRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_202';
+    protected static $openAPIModelName = 'QuoteRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +55,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'position_mode' => 'string',
-        'account_mode' => 'string',
-        'exchange_type' => 'string'
+        'currency' => 'string',
+        'side' => 'string',
+        'amount' => 'string',
+        'gas_mode' => 'string',
+        'slippage' => 'string'
     ];
 
     /**
@@ -65,9 +68,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'position_mode' => null,
-        'account_mode' => null,
-        'exchange_type' => null
+        'currency' => null,
+        'side' => null,
+        'amount' => null,
+        'gas_mode' => null,
+        'slippage' => null
     ];
 
     /**
@@ -97,9 +102,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'position_mode' => 'position_mode',
-        'account_mode' => 'account_mode',
-        'exchange_type' => 'exchange_type'
+        'currency' => 'currency',
+        'side' => 'side',
+        'amount' => 'amount',
+        'gas_mode' => 'gas_mode',
+        'slippage' => 'slippage'
     ];
 
     /**
@@ -108,9 +115,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'position_mode' => 'setPositionMode',
-        'account_mode' => 'setAccountMode',
-        'exchange_type' => 'setExchangeType'
+        'currency' => 'setCurrency',
+        'side' => 'setSide',
+        'amount' => 'setAmount',
+        'gas_mode' => 'setGasMode',
+        'slippage' => 'setSlippage'
     ];
 
     /**
@@ -119,9 +128,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'position_mode' => 'getPositionMode',
-        'account_mode' => 'getAccountMode',
-        'exchange_type' => 'getExchangeType'
+        'currency' => 'getCurrency',
+        'side' => 'getSide',
+        'amount' => 'getAmount',
+        'gas_mode' => 'getGasMode',
+        'slippage' => 'getSlippage'
     ];
 
     /**
@@ -184,9 +195,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
-        $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['gas_mode'] = isset($data['gas_mode']) ? $data['gas_mode'] : null;
+        $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
     }
 
     /**
@@ -198,6 +211,18 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
+        }
+        if ($this->container['side'] === null) {
+            $invalidProperties[] = "'side' can't be null";
+        }
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['gas_mode'] === null) {
+            $invalidProperties[] = "'gas_mode' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -214,73 +239,121 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets position_mode
+     * Gets currency
      *
-     * @return string|null
+     * @return string
      */
-    public function getPositionMode()
+    public function getCurrency()
     {
-        return $this->container['position_mode'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets position_mode
+     * Sets currency
      *
-     * @param string|null $position_mode Requested futures position mode to modify (SINGLE/DUAL)
+     * @param string $currency Trading symbol
      *
      * @return $this
      */
-    public function setPositionMode($position_mode)
+    public function setCurrency($currency)
     {
-        $this->container['position_mode'] = $position_mode;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets account_mode
+     * Gets side
      *
-     * @return string|null
+     * @return string
      */
-    public function getAccountMode()
+    public function getSide()
     {
-        return $this->container['account_mode'];
+        return $this->container['side'];
     }
 
     /**
-     * Sets account_mode
+     * Sets side
      *
-     * @param string|null $account_mode Requested account mode to modify (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
+     * @param string $side Buy or sell orders - buy - sell
      *
      * @return $this
      */
-    public function setAccountMode($account_mode)
+    public function setSide($side)
     {
-        $this->container['account_mode'] = $account_mode;
+        $this->container['side'] = $side;
 
         return $this;
     }
 
     /**
-     * Gets exchange_type
+     * Gets amount
      *
-     * @return string|null
+     * @return string
      */
-    public function getExchangeType()
+    public function getAmount()
     {
-        return $this->container['exchange_type'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets amount
      *
-     * @param string|null $exchange_type Requested exchange to modify (BINANCE/OKX/GATE/BYBIT/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     * @param string $amount Trade Quantity - `side` : `buy` refers to the quote currency, i.e., `USDT` - `side` : `sell` refers to the base currency
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setAmount($amount)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets gas_mode
+     *
+     * @return string
+     */
+    public function getGasMode()
+    {
+        return $this->container['gas_mode'];
+    }
+
+    /**
+     * Sets gas_mode
+     *
+     * @param string $gas_mode Trading mode affects slippage selection - `speed` : Smart mode - `custom` : Custom mode, uses `slippage` parameter
+     *
+     * @return $this
+     */
+    public function setGasMode($gas_mode)
+    {
+        $this->container['gas_mode'] = $gas_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets slippage
+     *
+     * @return string|null
+     */
+    public function getSlippage()
+    {
+        return $this->container['slippage'];
+    }
+
+    /**
+     * Sets slippage
+     *
+     * @param string|null $slippage Slippage tolerance (10 means 10% tolerance)
+     *
+     * @return $this
+     */
+    public function setSlippage($slippage)
+    {
+        $this->container['slippage'] = $slippage;
 
         return $this;
     }

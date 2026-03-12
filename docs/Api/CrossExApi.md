@@ -57,7 +57,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['symbols'] = 'symbols_example'; // string | Trading Pair List, multiple separated by commas  Example values: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+$associate_array['symbols'] = 'symbols_example'; // string | 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
 
 try {
     $result = $apiInstance->listCrossexRuleSymbols($associate_array);
@@ -77,7 +77,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbols** | **string**| Trading Pair List, multiple separated by commas  Example values: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional]
+ **symbols** | **string**| 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional]
 
 ### Return type
 
@@ -749,7 +749,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE'; // string | Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE)
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT'; // string | Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT)
 
 try {
     $result = $apiInstance->getCrossexAccount($associate_array);
@@ -769,7 +769,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_type** | **string**| Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE) | [optional]
+ **exchange_type** | **string**| Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) | [optional]
 
 ### Return type
 
@@ -1190,7 +1190,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['coin'] = 'SOL'; // string | Currency
-$associate_array['exchange_type'] = 'OKX'; // string | Exchange
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT'; // string | Exchange
 
 try {
     $result = $apiInstance->getCrossexInterestRate($associate_array);
@@ -1314,7 +1314,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['symbol'] = 'BINANCE_FUTURE_ADA_USDT'; // string | Trading Pair
-$associate_array['exchange_type'] = 'BINANCE'; // string | Exchange
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT'; // string | Exchange
 
 try {
     $result = $apiInstance->listCrossexPositions($associate_array);
@@ -2010,7 +2010,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['coin'] = 'SOL'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE
+$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE/BYBIT
 
 try {
     $result = $apiInstance->listCrossexCoinDiscountRate($associate_array);
@@ -2031,7 +2031,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coin** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
- **exchange_type** | **string**| OKX/GATE/BINANCE | [optional]
+ **exchange_type** | **string**| OKX/GATE/BINANCE/BYBIT | [optional]
 
 ### Return type
 

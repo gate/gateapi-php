@@ -442,7 +442,7 @@ class BrokerCommission1 implements ModelInterface, ArrayAccess
     /**
      * Sets source
      *
-     * @param string|null $source Commission transaction type: Spot, Futures, Options, Alpha
+     * @param string|null $source Commission transaction type: Spot, Futures, Options, Alpha、TradFi
      *
      * @return $this
      */

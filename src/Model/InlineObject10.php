@@ -298,7 +298,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
     /**
      * Sets from
      *
-     * @param string $from Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+     * @param string $from Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
      *
      * @return $this
      */
@@ -322,7 +322,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
     /**
      * Sets to
      *
-     * @param string $to Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT
+     * @param string $to Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
      *
      * @return $this
      */

@@ -358,7 +358,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type BINANCE,OKX,GATE,CROSSEX
+     * @param string $exchange_type BINANCE,OKX,GATE,BYBIT,CROSSEX
      *
      * @return $this
      */

@@ -349,7 +349,7 @@ class InlineResponse20029 implements ModelInterface, ArrayAccess
     /**
      * Sets from_account_type
      *
-     * @param string $from_account_type Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX, SPOT)
+     * @param string $from_account_type Source `from` account (CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT)
      *
      * @return $this
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse202
+ * Tokens
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse202 Class Doc Comment
+ * Tokens Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse202 implements ModelInterface, ArrayAccess
+class Tokens implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_202';
+    protected static $openAPIModelName = 'Tokens';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +54,13 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'position_mode' => 'string',
-        'account_mode' => 'string',
-        'exchange_type' => 'string'
+        'currency' => 'string',
+        'name' => 'string',
+        'chain' => 'string',
+        'address' => 'string',
+        'amount_precision' => 'int',
+        'precision' => 'int',
+        'status' => 'int'
     ];
 
     /**
@@ -65,9 +69,13 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'position_mode' => null,
-        'account_mode' => null,
-        'exchange_type' => null
+        'currency' => null,
+        'name' => null,
+        'chain' => null,
+        'address' => null,
+        'amount_precision' => 'int32',
+        'precision' => 'int32',
+        'status' => 'int32'
     ];
 
     /**
@@ -97,9 +105,13 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'position_mode' => 'position_mode',
-        'account_mode' => 'account_mode',
-        'exchange_type' => 'exchange_type'
+        'currency' => 'currency',
+        'name' => 'name',
+        'chain' => 'chain',
+        'address' => 'address',
+        'amount_precision' => 'amount_precision',
+        'precision' => 'precision',
+        'status' => 'status'
     ];
 
     /**
@@ -108,9 +120,13 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'position_mode' => 'setPositionMode',
-        'account_mode' => 'setAccountMode',
-        'exchange_type' => 'setExchangeType'
+        'currency' => 'setCurrency',
+        'name' => 'setName',
+        'chain' => 'setChain',
+        'address' => 'setAddress',
+        'amount_precision' => 'setAmountPrecision',
+        'precision' => 'setPrecision',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -119,9 +135,13 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'position_mode' => 'getPositionMode',
-        'account_mode' => 'getAccountMode',
-        'exchange_type' => 'getExchangeType'
+        'currency' => 'getCurrency',
+        'name' => 'getName',
+        'chain' => 'getChain',
+        'address' => 'getAddress',
+        'amount_precision' => 'getAmountPrecision',
+        'precision' => 'getPrecision',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -184,9 +204,13 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
-        $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['amount_precision'] = isset($data['amount_precision']) ? $data['amount_precision'] : null;
+        $this->container['precision'] = isset($data['precision']) ? $data['precision'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
     }
 
     /**
@@ -214,73 +238,169 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets position_mode
+     * Gets currency
      *
      * @return string|null
      */
-    public function getPositionMode()
+    public function getCurrency()
     {
-        return $this->container['position_mode'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets position_mode
+     * Sets currency
      *
-     * @param string|null $position_mode Requested futures position mode to modify (SINGLE/DUAL)
+     * @param string|null $currency Currency symbol
      *
      * @return $this
      */
-    public function setPositionMode($position_mode)
+    public function setCurrency($currency)
     {
-        $this->container['position_mode'] = $position_mode;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets account_mode
+     * Gets name
      *
      * @return string|null
      */
-    public function getAccountMode()
+    public function getName()
     {
-        return $this->container['account_mode'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets account_mode
+     * Sets name
      *
-     * @param string|null $account_mode Requested account mode to modify (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
+     * @param string|null $name Currency name
      *
      * @return $this
      */
-    public function setAccountMode($account_mode)
+    public function setName($name)
     {
-        $this->container['account_mode'] = $account_mode;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets exchange_type
+     * Gets chain
      *
      * @return string|null
      */
-    public function getExchangeType()
+    public function getChain()
     {
-        return $this->container['exchange_type'];
+        return $this->container['chain'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets chain
      *
-     * @param string|null $exchange_type Requested exchange to modify (BINANCE/OKX/GATE/BYBIT/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     * @param string|null $chain The main chain corresponding to the coin
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setChain($chain)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['chain'] = $chain;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return string|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param string|null $address Contract Address
+     *
+     * @return $this
+     */
+    public function setAddress($address)
+    {
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_precision
+     *
+     * @return int|null
+     */
+    public function getAmountPrecision()
+    {
+        return $this->container['amount_precision'];
+    }
+
+    /**
+     * Sets amount_precision
+     *
+     * @param int|null $amount_precision Amount scale
+     *
+     * @return $this
+     */
+    public function setAmountPrecision($amount_precision)
+    {
+        $this->container['amount_precision'] = $amount_precision;
+
+        return $this;
+    }
+
+    /**
+     * Gets precision
+     *
+     * @return int|null
+     */
+    public function getPrecision()
+    {
+        return $this->container['precision'];
+    }
+
+    /**
+     * Sets precision
+     *
+     * @param int|null $precision Price scale
+     *
+     * @return $this
+     */
+    public function setPrecision($precision)
+    {
+        $this->container['precision'] = $precision;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status Currency Trading Status - `1` : Normal trading - `2` : Suspended trading - `3` : Delisted
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }

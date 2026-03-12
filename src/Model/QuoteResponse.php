@@ -1,6 +1,6 @@
 <?php
 /**
- * BrokerTransaction1
+ * QuoteResponse
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * BrokerTransaction1 Class Doc Comment
+ * QuoteResponse Class Doc Comment
  *
  * @category Class
+ * @description Quote Response
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class BrokerTransaction1 implements ModelInterface, ArrayAccess
+class QuoteResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BrokerTransaction_1';
+    protected static $openAPIModelName = 'QuoteResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,16 +55,16 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'transaction_time' => 'int',
-        'user_id' => 'int',
-        'group_name' => 'string',
-        'fee' => 'string',
-        'currency_pair' => 'string',
-        'amount' => 'string',
-        'fee_asset' => 'string',
-        'source' => 'string',
-        'sub_broker_info' => '\GateApi\Model\BrokerCommissionSubBrokerInfo',
-        'alpha_contract_addr' => 'string'
+        'quote_id' => 'string',
+        'min_amount' => 'string',
+        'max_amount' => 'string',
+        'price' => 'string',
+        'slippage' => 'string',
+        'estimate_gas_fee_amount_usdt' => 'string',
+        'order_fee' => 'string',
+        'target_token_min_amount' => 'string',
+        'target_token_max_amount' => 'string',
+        'error_type' => 'int'
     ];
 
     /**
@@ -72,16 +73,16 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'transaction_time' => 'int64',
-        'user_id' => 'int64',
-        'group_name' => null,
-        'fee' => null,
-        'currency_pair' => null,
-        'amount' => null,
-        'fee_asset' => null,
-        'source' => null,
-        'sub_broker_info' => null,
-        'alpha_contract_addr' => null
+        'quote_id' => null,
+        'min_amount' => null,
+        'max_amount' => null,
+        'price' => null,
+        'slippage' => null,
+        'estimate_gas_fee_amount_usdt' => null,
+        'order_fee' => null,
+        'target_token_min_amount' => null,
+        'target_token_max_amount' => null,
+        'error_type' => 'int32'
     ];
 
     /**
@@ -111,16 +112,16 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'transaction_time' => 'transaction_time',
-        'user_id' => 'user_id',
-        'group_name' => 'group_name',
-        'fee' => 'fee',
-        'currency_pair' => 'currency_pair',
-        'amount' => 'amount',
-        'fee_asset' => 'fee_asset',
-        'source' => 'source',
-        'sub_broker_info' => 'sub_broker_info',
-        'alpha_contract_addr' => 'alpha_contract_addr'
+        'quote_id' => 'quote_id',
+        'min_amount' => 'min_amount',
+        'max_amount' => 'max_amount',
+        'price' => 'price',
+        'slippage' => 'slippage',
+        'estimate_gas_fee_amount_usdt' => 'estimate_gas_fee_amount_usdt',
+        'order_fee' => 'order_fee',
+        'target_token_min_amount' => 'target_token_min_amount',
+        'target_token_max_amount' => 'target_token_max_amount',
+        'error_type' => 'error_type'
     ];
 
     /**
@@ -129,16 +130,16 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'transaction_time' => 'setTransactionTime',
-        'user_id' => 'setUserId',
-        'group_name' => 'setGroupName',
-        'fee' => 'setFee',
-        'currency_pair' => 'setCurrencyPair',
-        'amount' => 'setAmount',
-        'fee_asset' => 'setFeeAsset',
-        'source' => 'setSource',
-        'sub_broker_info' => 'setSubBrokerInfo',
-        'alpha_contract_addr' => 'setAlphaContractAddr'
+        'quote_id' => 'setQuoteId',
+        'min_amount' => 'setMinAmount',
+        'max_amount' => 'setMaxAmount',
+        'price' => 'setPrice',
+        'slippage' => 'setSlippage',
+        'estimate_gas_fee_amount_usdt' => 'setEstimateGasFeeAmountUsdt',
+        'order_fee' => 'setOrderFee',
+        'target_token_min_amount' => 'setTargetTokenMinAmount',
+        'target_token_max_amount' => 'setTargetTokenMaxAmount',
+        'error_type' => 'setErrorType'
     ];
 
     /**
@@ -147,16 +148,16 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'transaction_time' => 'getTransactionTime',
-        'user_id' => 'getUserId',
-        'group_name' => 'getGroupName',
-        'fee' => 'getFee',
-        'currency_pair' => 'getCurrencyPair',
-        'amount' => 'getAmount',
-        'fee_asset' => 'getFeeAsset',
-        'source' => 'getSource',
-        'sub_broker_info' => 'getSubBrokerInfo',
-        'alpha_contract_addr' => 'getAlphaContractAddr'
+        'quote_id' => 'getQuoteId',
+        'min_amount' => 'getMinAmount',
+        'max_amount' => 'getMaxAmount',
+        'price' => 'getPrice',
+        'slippage' => 'getSlippage',
+        'estimate_gas_fee_amount_usdt' => 'getEstimateGasFeeAmountUsdt',
+        'order_fee' => 'getOrderFee',
+        'target_token_min_amount' => 'getTargetTokenMinAmount',
+        'target_token_max_amount' => 'getTargetTokenMaxAmount',
+        'error_type' => 'getErrorType'
     ];
 
     /**
@@ -219,16 +220,16 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['transaction_time'] = isset($data['transaction_time']) ? $data['transaction_time'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
-        $this->container['group_name'] = isset($data['group_name']) ? $data['group_name'] : null;
-        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
-        $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['fee_asset'] = isset($data['fee_asset']) ? $data['fee_asset'] : null;
-        $this->container['source'] = isset($data['source']) ? $data['source'] : null;
-        $this->container['sub_broker_info'] = isset($data['sub_broker_info']) ? $data['sub_broker_info'] : null;
-        $this->container['alpha_contract_addr'] = isset($data['alpha_contract_addr']) ? $data['alpha_contract_addr'] : null;
+        $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
+        $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
+        $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        $this->container['estimate_gas_fee_amount_usdt'] = isset($data['estimate_gas_fee_amount_usdt']) ? $data['estimate_gas_fee_amount_usdt'] : null;
+        $this->container['order_fee'] = isset($data['order_fee']) ? $data['order_fee'] : null;
+        $this->container['target_token_min_amount'] = isset($data['target_token_min_amount']) ? $data['target_token_min_amount'] : null;
+        $this->container['target_token_max_amount'] = isset($data['target_token_max_amount']) ? $data['target_token_max_amount'] : null;
+        $this->container['error_type'] = isset($data['error_type']) ? $data['error_type'] : null;
     }
 
     /**
@@ -256,241 +257,241 @@ class BrokerTransaction1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets transaction_time
+     * Gets quote_id
+     *
+     * @return string|null
+     */
+    public function getQuoteId()
+    {
+        return $this->container['quote_id'];
+    }
+
+    /**
+     * Sets quote_id
+     *
+     * @param string|null $quote_id Quote ID for order placement, valid for 1 minute
+     *
+     * @return $this
+     */
+    public function setQuoteId($quote_id)
+    {
+        $this->container['quote_id'] = $quote_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_amount
+     *
+     * @return string|null
+     */
+    public function getMinAmount()
+    {
+        return $this->container['min_amount'];
+    }
+
+    /**
+     * Sets min_amount
+     *
+     * @param string|null $min_amount Minimum order size
+     *
+     * @return $this
+     */
+    public function setMinAmount($min_amount)
+    {
+        $this->container['min_amount'] = $min_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_amount
+     *
+     * @return string|null
+     */
+    public function getMaxAmount()
+    {
+        return $this->container['max_amount'];
+    }
+
+    /**
+     * Sets max_amount
+     *
+     * @param string|null $max_amount Maximum order size
+     *
+     * @return $this
+     */
+    public function setMaxAmount($max_amount)
+    {
+        $this->container['max_amount'] = $max_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return string|null
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param string|null $price Token Price (USDT-based)
+     *
+     * @return $this
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets slippage
+     *
+     * @return string|null
+     */
+    public function getSlippage()
+    {
+        return $this->container['slippage'];
+    }
+
+    /**
+     * Sets slippage
+     *
+     * @param string|null $slippage Slippage
+     *
+     * @return $this
+     */
+    public function setSlippage($slippage)
+    {
+        $this->container['slippage'] = $slippage;
+
+        return $this;
+    }
+
+    /**
+     * Gets estimate_gas_fee_amount_usdt
+     *
+     * @return string|null
+     */
+    public function getEstimateGasFeeAmountUsdt()
+    {
+        return $this->container['estimate_gas_fee_amount_usdt'];
+    }
+
+    /**
+     * Sets estimate_gas_fee_amount_usdt
+     *
+     * @param string|null $estimate_gas_fee_amount_usdt Estimated Gas Fee (USDT-based)
+     *
+     * @return $this
+     */
+    public function setEstimateGasFeeAmountUsdt($estimate_gas_fee_amount_usdt)
+    {
+        $this->container['estimate_gas_fee_amount_usdt'] = $estimate_gas_fee_amount_usdt;
+
+        return $this;
+    }
+
+    /**
+     * Gets order_fee
+     *
+     * @return string|null
+     */
+    public function getOrderFee()
+    {
+        return $this->container['order_fee'];
+    }
+
+    /**
+     * Sets order_fee
+     *
+     * @param string|null $order_fee Slippage tolerance (10 means 10% tolerance)
+     *
+     * @return $this
+     */
+    public function setOrderFee($order_fee)
+    {
+        $this->container['order_fee'] = $order_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_token_min_amount
+     *
+     * @return string|null
+     */
+    public function getTargetTokenMinAmount()
+    {
+        return $this->container['target_token_min_amount'];
+    }
+
+    /**
+     * Sets target_token_min_amount
+     *
+     * @param string|null $target_token_min_amount Minimum received amount
+     *
+     * @return $this
+     */
+    public function setTargetTokenMinAmount($target_token_min_amount)
+    {
+        $this->container['target_token_min_amount'] = $target_token_min_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_token_max_amount
+     *
+     * @return string|null
+     */
+    public function getTargetTokenMaxAmount()
+    {
+        return $this->container['target_token_max_amount'];
+    }
+
+    /**
+     * Sets target_token_max_amount
+     *
+     * @param string|null $target_token_max_amount Maximum received amount
+     *
+     * @return $this
+     */
+    public function setTargetTokenMaxAmount($target_token_max_amount)
+    {
+        $this->container['target_token_max_amount'] = $target_token_max_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_type
      *
      * @return int|null
      */
-    public function getTransactionTime()
+    public function getErrorType()
     {
-        return $this->container['transaction_time'];
+        return $this->container['error_type'];
     }
 
     /**
-     * Sets transaction_time
+     * Sets error_type
      *
-     * @param int|null $transaction_time Transaction Time. (unix timestamp)
+     * @param int|null $error_type Failure Type - `0` : Success - `1` : Exceeds maximum value - `2` : Below minimum value
      *
      * @return $this
      */
-    public function setTransactionTime($transaction_time)
+    public function setErrorType($error_type)
     {
-        $this->container['transaction_time'] = $transaction_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return int|null
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param int|null $user_id User ID
-     *
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets group_name
-     *
-     * @return string|null
-     */
-    public function getGroupName()
-    {
-        return $this->container['group_name'];
-    }
-
-    /**
-     * Sets group_name
-     *
-     * @param string|null $group_name Group name
-     *
-     * @return $this
-     */
-    public function setGroupName($group_name)
-    {
-        $this->container['group_name'] = $group_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee
-     *
-     * @return string|null
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee
-     *
-     * @param string|null $fee Fee amount (USDT)
-     *
-     * @return $this
-     */
-    public function setFee($fee)
-    {
-        $this->container['fee'] = $fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency_pair
-     *
-     * @return string|null
-     */
-    public function getCurrencyPair()
-    {
-        return $this->container['currency_pair'];
-    }
-
-    /**
-     * Sets currency_pair
-     *
-     * @param string|null $currency_pair Currency pair
-     *
-     * @return $this
-     */
-    public function setCurrencyPair($currency_pair)
-    {
-        $this->container['currency_pair'] = $currency_pair;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return string|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param string|null $amount Transaction amount
-     *
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee_asset
-     *
-     * @return string|null
-     */
-    public function getFeeAsset()
-    {
-        return $this->container['fee_asset'];
-    }
-
-    /**
-     * Sets fee_asset
-     *
-     * @param string|null $fee_asset Fee currency
-     *
-     * @return $this
-     */
-    public function setFeeAsset($fee_asset)
-    {
-        $this->container['fee_asset'] = $fee_asset;
-
-        return $this;
-    }
-
-    /**
-     * Gets source
-     *
-     * @return string|null
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param string|null $source Commission transaction type: Spot, Futures, Options, Alpha、TradFi
-     *
-     * @return $this
-     */
-    public function setSource($source)
-    {
-        $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
-     * Gets sub_broker_info
-     *
-     * @return \GateApi\Model\BrokerCommissionSubBrokerInfo|null
-     */
-    public function getSubBrokerInfo()
-    {
-        return $this->container['sub_broker_info'];
-    }
-
-    /**
-     * Sets sub_broker_info
-     *
-     * @param \GateApi\Model\BrokerCommissionSubBrokerInfo|null $sub_broker_info sub_broker_info
-     *
-     * @return $this
-     */
-    public function setSubBrokerInfo($sub_broker_info)
-    {
-        $this->container['sub_broker_info'] = $sub_broker_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets alpha_contract_addr
-     *
-     * @return string|null
-     */
-    public function getAlphaContractAddr()
-    {
-        return $this->container['alpha_contract_addr'];
-    }
-
-    /**
-     * Sets alpha_contract_addr
-     *
-     * @param string|null $alpha_contract_addr Alpha contract address
-     *
-     * @return $this
-     */
-    public function setAlphaContractAddr($alpha_contract_addr)
-    {
-        $this->container['alpha_contract_addr'] = $alpha_contract_addr;
+        $this->container['error_type'] = $error_type;
 
         return $this;
     }

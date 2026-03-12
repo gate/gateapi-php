@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse202
+ * AccountBookResponse
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse202 Class Doc Comment
+ * AccountBookResponse Class Doc Comment
  *
  * @category Class
+ * @description Query Asset Flow Return
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse202 implements ModelInterface, ArrayAccess
+class AccountBookResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_202';
+    protected static $openAPIModelName = 'AccountBookResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +55,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'position_mode' => 'string',
-        'account_mode' => 'string',
-        'exchange_type' => 'string'
+        'id' => 'int',
+        'time' => 'int',
+        'currency' => 'string',
+        'change' => 'string',
+        'balance' => 'string'
     ];
 
     /**
@@ -65,9 +68,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'position_mode' => null,
-        'account_mode' => null,
-        'exchange_type' => null
+        'id' => 'int64',
+        'time' => 'int64',
+        'currency' => 'string',
+        'change' => 'string',
+        'balance' => 'string'
     ];
 
     /**
@@ -97,9 +102,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'position_mode' => 'position_mode',
-        'account_mode' => 'account_mode',
-        'exchange_type' => 'exchange_type'
+        'id' => 'id',
+        'time' => 'time',
+        'currency' => 'currency',
+        'change' => 'change',
+        'balance' => 'balance'
     ];
 
     /**
@@ -108,9 +115,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'position_mode' => 'setPositionMode',
-        'account_mode' => 'setAccountMode',
-        'exchange_type' => 'setExchangeType'
+        'id' => 'setId',
+        'time' => 'setTime',
+        'currency' => 'setCurrency',
+        'change' => 'setChange',
+        'balance' => 'setBalance'
     ];
 
     /**
@@ -119,9 +128,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'position_mode' => 'getPositionMode',
-        'account_mode' => 'getAccountMode',
-        'exchange_type' => 'getExchangeType'
+        'id' => 'getId',
+        'time' => 'getTime',
+        'currency' => 'getCurrency',
+        'change' => 'getChange',
+        'balance' => 'getBalance'
     ];
 
     /**
@@ -184,9 +195,11 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
-        $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
     }
 
     /**
@@ -214,73 +227,121 @@ class InlineResponse202 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets position_mode
+     * Gets id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getPositionMode()
+    public function getId()
     {
-        return $this->container['position_mode'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets position_mode
+     * Sets id
      *
-     * @param string|null $position_mode Requested futures position mode to modify (SINGLE/DUAL)
+     * @param int|null $id Order ID
      *
      * @return $this
      */
-    public function setPositionMode($position_mode)
+    public function setId($id)
     {
-        $this->container['position_mode'] = $position_mode;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets account_mode
+     * Gets time
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getAccountMode()
+    public function getTime()
     {
-        return $this->container['account_mode'];
+        return $this->container['time'];
     }
 
     /**
-     * Sets account_mode
+     * Sets time
      *
-     * @param string|null $account_mode Requested account mode to modify (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
+     * @param int|null $time Operation timestamp
      *
      * @return $this
      */
-    public function setAccountMode($account_mode)
+    public function setTime($time)
     {
-        $this->container['account_mode'] = $account_mode;
+        $this->container['time'] = $time;
 
         return $this;
     }
 
     /**
-     * Gets exchange_type
+     * Gets currency
      *
      * @return string|null
      */
-    public function getExchangeType()
+    public function getCurrency()
     {
-        return $this->container['exchange_type'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets currency
      *
-     * @param string|null $exchange_type Requested exchange to modify (BINANCE/OKX/GATE/BYBIT/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     * @param string|null $currency Currency name
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setCurrency($currency)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets change
+     *
+     * @return string|null
+     */
+    public function getChange()
+    {
+        return $this->container['change'];
+    }
+
+    /**
+     * Sets change
+     *
+     * @param string|null $change Change amount
+     *
+     * @return $this
+     */
+    public function setChange($change)
+    {
+        $this->container['change'] = $change;
+
+        return $this;
+    }
+
+    /**
+     * Gets balance
+     *
+     * @return string|null
+     */
+    public function getBalance()
+    {
+        return $this->container['balance'];
+    }
+
+    /**
+     * Sets balance
+     *
+     * @param string|null $balance Balance after change
+     *
+     * @return $this
+     */
+    public function setBalance($balance)
+    {
+        $this->container['balance'] = $balance;
 
         return $this;
     }
