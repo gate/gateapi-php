@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * CrossexLeverageRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * CrossexLeverageRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description 更改杠杆请求体（合约/杠杆通用）
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class CrossexLeverageRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'CrossexLeverageRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'symbol' => 'string',
+        'leverage' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'symbol' => null,
+        'leverage' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'symbol' => 'symbol',
+        'leverage' => 'leverage'
     ];
 
     /**
@@ -106,8 +106,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'symbol' => 'setSymbol',
+        'leverage' => 'setLeverage'
     ];
 
     /**
@@ -116,8 +116,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'symbol' => 'getSymbol',
+        'leverage' => 'getLeverage'
     ];
 
     /**
@@ -180,8 +180,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
     }
 
     /**
@@ -193,11 +193,11 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
         }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
+        if ($this->container['leverage'] === null) {
+            $invalidProperties[] = "'leverage' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,49 +215,49 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets symbol
      *
      * @return string
      */
-    public function getPrice()
+    public function getSymbol()
     {
-        return $this->container['price'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets price
+     * Sets symbol
      *
-     * @param string $price Order Price
+     * @param string $symbol Currency pair
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setSymbol($symbol)
     {
-        $this->container['price'] = $price;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets leverage
      *
-     * @return int
+     * @return string
      */
-    public function getSize()
+    public function getLeverage()
     {
-        return $this->container['size'];
+        return $this->container['leverage'];
     }
 
     /**
-     * Sets size
+     * Sets leverage
      *
-     * @param int $size Trade amount
+     * @param string $leverage leverage
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setLeverage($leverage)
     {
-        $this->container['size'] = $size;
+        $this->container['leverage'] = $leverage;
 
         return $this;
     }

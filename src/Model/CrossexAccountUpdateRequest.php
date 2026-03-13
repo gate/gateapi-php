@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * CrossexAccountUpdateRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * CrossexAccountUpdateRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description 更改账户请求体
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class CrossexAccountUpdateRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'CrossexAccountUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'position_mode' => 'string',
+        'account_mode' => 'string',
+        'exchange_type' => 'string'
     ];
 
     /**
@@ -65,8 +66,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'position_mode' => null,
+        'account_mode' => null,
+        'exchange_type' => null
     ];
 
     /**
@@ -96,8 +98,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'position_mode' => 'position_mode',
+        'account_mode' => 'account_mode',
+        'exchange_type' => 'exchange_type'
     ];
 
     /**
@@ -106,8 +109,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'position_mode' => 'setPositionMode',
+        'account_mode' => 'setAccountMode',
+        'exchange_type' => 'setExchangeType'
     ];
 
     /**
@@ -116,8 +120,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'position_mode' => 'getPositionMode',
+        'account_mode' => 'getAccountMode',
+        'exchange_type' => 'getExchangeType'
     ];
 
     /**
@@ -180,8 +185,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
     }
 
     /**
@@ -193,12 +199,6 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,49 +215,73 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets position_mode
      *
-     * @return string
+     * @return string|null
      */
-    public function getPrice()
+    public function getPositionMode()
     {
-        return $this->container['price'];
+        return $this->container['position_mode'];
     }
 
     /**
-     * Sets price
+     * Sets position_mode
      *
-     * @param string $price Order Price
+     * @param string|null $position_mode Futures position mode (SINGLE/DUAL)
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setPositionMode($position_mode)
     {
-        $this->container['price'] = $price;
+        $this->container['position_mode'] = $position_mode;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets account_mode
      *
-     * @return int
+     * @return string|null
      */
-    public function getSize()
+    public function getAccountMode()
     {
-        return $this->container['size'];
+        return $this->container['account_mode'];
     }
 
     /**
-     * Sets size
+     * Sets account_mode
      *
-     * @param int $size Trade amount
+     * @param string|null $account_mode Account mode (CROSS_EXCHANGE/ISOLATED_EXCHANGE, default: CROSS_EXCHANGE)
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setAccountMode($account_mode)
     {
-        $this->container['size'] = $size;
+        $this->container['account_mode'] = $account_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets exchange_type
+     *
+     * @return string|null
+     */
+    public function getExchangeType()
+    {
+        return $this->container['exchange_type'];
+    }
+
+    /**
+     * Sets exchange_type
+     *
+     * @param string|null $exchange_type Exchange (BINANCE/OKX/GATE/BYBIT/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     *
+     * @return $this
+     */
+    public function setExchangeType($exchange_type)
+    {
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }

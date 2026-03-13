@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * TradFiClosePositionRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * TradFiClosePositionRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description Close position request parameters
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'TradFiClosePositionRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'close_type' => 'int',
+        'close_volume' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'close_type' => null,
+        'close_volume' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'close_type' => 'close_type',
+        'close_volume' => 'close_volume'
     ];
 
     /**
@@ -106,8 +106,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'close_type' => 'setCloseType',
+        'close_volume' => 'setCloseVolume'
     ];
 
     /**
@@ -116,8 +116,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'close_type' => 'getCloseType',
+        'close_volume' => 'getCloseVolume'
     ];
 
     /**
@@ -161,8 +161,23 @@ class InlineObject1 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const CLOSE_TYPE_1 = 1;
+    const CLOSE_TYPE_2 = 2;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCloseTypeAllowableValues()
+    {
+        return [
+            self::CLOSE_TYPE_1,
+            self::CLOSE_TYPE_2,
+        ];
+    }
     
 
     /**
@@ -180,8 +195,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['close_type'] = isset($data['close_type']) ? $data['close_type'] : null;
+        $this->container['close_volume'] = isset($data['close_volume']) ? $data['close_volume'] : null;
     }
 
     /**
@@ -193,12 +208,17 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
+        if ($this->container['close_type'] === null) {
+            $invalidProperties[] = "'close_type' can't be null";
         }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
+        $allowedValues = $this->getCloseTypeAllowableValues();
+        if (!is_null($this->container['close_type']) && !in_array($this->container['close_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'close_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -215,49 +235,58 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets close_type
      *
-     * @return string
+     * @return int
      */
-    public function getPrice()
+    public function getCloseType()
     {
-        return $this->container['price'];
+        return $this->container['close_type'];
     }
 
     /**
-     * Sets price
+     * Sets close_type
      *
-     * @param string $price Order Price
+     * @param int $close_type 平仓类型  说明： - 1：部分平仓（必须传 close_volume） - 2：全平（无需传 close_volume）
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setCloseType($close_type)
     {
-        $this->container['price'] = $price;
+        $allowedValues = $this->getCloseTypeAllowableValues();
+        if (!in_array($close_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'close_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['close_type'] = $close_type;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets close_volume
      *
-     * @return int
+     * @return string|null
      */
-    public function getSize()
+    public function getCloseVolume()
     {
-        return $this->container['size'];
+        return $this->container['close_volume'];
     }
 
     /**
-     * Sets size
+     * Sets close_volume
      *
-     * @param int $size Trade amount
+     * @param string|null $close_volume 平仓数量  说明： - 当 close_type = 1 时必传 - 当 close_type = 2 时忽略该字段
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setCloseVolume($close_volume)
     {
-        $this->container['size'] = $size;
+        $this->container['close_volume'] = $close_volume;
 
         return $this;
     }

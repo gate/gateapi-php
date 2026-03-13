@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## createOtcQuote
 
-> \GateApi\Model\InlineResponse2006 createOtcQuote($inline_object7)
+> \GateApi\Model\InlineResponse2006 createOtcQuote($otc_quote_request)
 
 Fiat and stablecoin quote
 
@@ -40,10 +40,10 @@ $apiInstance = new GateApi\Api\OTCApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object7 = new \GateApi\Model\InlineObject7(); // \GateApi\Model\InlineObject7 | 
+$otc_quote_request = new \GateApi\Model\OtcQuoteRequest(); // \GateApi\Model\OtcQuoteRequest | 
 
 try {
-    $result = $apiInstance->createOtcQuote($inline_object7);
+    $result = $apiInstance->createOtcQuote($otc_quote_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -58,7 +58,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object7** | [**\GateApi\Model\InlineObject7**](../Model/InlineObject7.md)|  |
+ **otc_quote_request** | [**\GateApi\Model\OtcQuoteRequest**](../Model/OtcQuoteRequest.md)|  |
 
 ### Return type
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## createOtcOrder
 
-> \GateApi\Model\InlineResponse2007 createOtcOrder($inline_object8)
+> \GateApi\Model\InlineResponse2007 createOtcOrder($otc_order_request)
 
 Create fiat order
 
@@ -102,10 +102,10 @@ $apiInstance = new GateApi\Api\OTCApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object8 = new \GateApi\Model\InlineObject8(); // \GateApi\Model\InlineObject8 | 
+$otc_order_request = new \GateApi\Model\OtcOrderRequest(); // \GateApi\Model\OtcOrderRequest | 
 
 try {
-    $result = $apiInstance->createOtcOrder($inline_object8);
+    $result = $apiInstance->createOtcOrder($otc_order_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -120,7 +120,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object8** | [**\GateApi\Model\InlineObject8**](../Model/InlineObject8.md)|  |
+ **otc_order_request** | [**\GateApi\Model\OtcOrderRequest**](../Model/OtcOrderRequest.md)|  |
 
 ### Return type
 
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ## createStableCoinOrder
 
-> \GateApi\Model\InlineResponse2008 createStableCoinOrder($inline_object9)
+> \GateApi\Model\InlineResponse2008 createStableCoinOrder($otc_stable_coin_order_request)
 
 Create stablecoin order
 
@@ -164,10 +164,10 @@ $apiInstance = new GateApi\Api\OTCApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object9 = new \GateApi\Model\InlineObject9(); // \GateApi\Model\InlineObject9 | 
+$otc_stable_coin_order_request = new \GateApi\Model\OtcStableCoinOrderRequest(); // \GateApi\Model\OtcStableCoinOrderRequest | 
 
 try {
-    $result = $apiInstance->createStableCoinOrder($inline_object9);
+    $result = $apiInstance->createStableCoinOrder($otc_stable_coin_order_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -182,7 +182,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object9** | [**\GateApi\Model\InlineObject9**](../Model/InlineObject9.md)|  |
+ **otc_stable_coin_order_request** | [**\GateApi\Model\OtcStableCoinOrderRequest**](../Model/OtcStableCoinOrderRequest.md)|  |
 
 ### Return type
 
@@ -320,7 +320,7 @@ This endpoint does not need any parameter.
 
 ## markOtcOrderPaid
 
-> \GateApi\Model\InlineResponse2007 markOtcOrderPaid($inline_object10)
+> \GateApi\Model\InlineResponse2007 markOtcOrderPaid($otc_mark_order_paid_request)
 
 Mark fiat order as paid
 
@@ -342,10 +342,10 @@ $apiInstance = new GateApi\Api\OTCApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object10 = new \GateApi\Model\InlineObject10(); // \GateApi\Model\InlineObject10 | 
+$otc_mark_order_paid_request = new \GateApi\Model\OtcMarkOrderPaidRequest(); // \GateApi\Model\OtcMarkOrderPaidRequest | 
 
 try {
-    $result = $apiInstance->markOtcOrderPaid($inline_object10);
+    $result = $apiInstance->markOtcOrderPaid($otc_mark_order_paid_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -360,7 +360,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object10** | [**\GateApi\Model\InlineObject10**](../Model/InlineObject10.md)|  |
+ **otc_mark_order_paid_request** | [**\GateApi\Model\OtcMarkOrderPaidRequest**](../Model/OtcMarkOrderPaidRequest.md)|  |
 
 ### Return type
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * TradFiOrderUpdateRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * TradFiOrderUpdateRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description Modify order price and take profit/stop loss parameters
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class TradFiOrderUpdateRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'TradFiOrderUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,7 +56,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'price' => 'string',
-        'size' => 'int'
+        'price_tp' => 'string',
+        'price_sl' => 'string'
     ];
 
     /**
@@ -66,7 +67,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'price' => null,
-        'size' => 'int64'
+        'price_tp' => null,
+        'price_sl' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'price' => 'price',
-        'size' => 'size'
+        'price_tp' => 'price_tp',
+        'price_sl' => 'price_sl'
     ];
 
     /**
@@ -107,7 +110,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'price' => 'setPrice',
-        'size' => 'setSize'
+        'price_tp' => 'setPriceTp',
+        'price_sl' => 'setPriceSl'
     ];
 
     /**
@@ -117,7 +121,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'price' => 'getPrice',
-        'size' => 'getSize'
+        'price_tp' => 'getPriceTp',
+        'price_sl' => 'getPriceSl'
     ];
 
     /**
@@ -181,7 +186,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
+        $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
     }
 
     /**
@@ -195,9 +201,6 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -227,7 +230,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string $price Order Price
+     * @param string $price Price Description: - Required
      *
      * @return $this
      */
@@ -239,25 +242,49 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets size
+     * Gets price_tp
      *
-     * @return int
+     * @return string|null
      */
-    public function getSize()
+    public function getPriceTp()
     {
-        return $this->container['size'];
+        return $this->container['price_tp'];
     }
 
     /**
-     * Sets size
+     * Sets price_tp
      *
-     * @param int $size Trade amount
+     * @param string|null $price_tp Take Profit Price Description: - If not provided or set to \"0\": The original take profit price will be cleared - If you do not want to clear it, pass the original take profit price returned by the interface
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setPriceTp($price_tp)
     {
-        $this->container['size'] = $size;
+        $this->container['price_tp'] = $price_tp;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_sl
+     *
+     * @return string|null
+     */
+    public function getPriceSl()
+    {
+        return $this->container['price_sl'];
+    }
+
+    /**
+     * Sets price_sl
+     *
+     * @param string|null $price_sl Stop Loss Price Description: - If not provided or set to \"0\": The original stop loss price will be cleared - If you do not want to clear it, pass the original stop loss price returned by the interface
+     *
+     * @return $this
+     */
+    public function setPriceSl($price_sl)
+    {
+        $this->container['price_sl'] = $price_sl;
 
         return $this;
     }

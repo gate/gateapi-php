@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 
 ## createTransaction
 
-> \GateApi\Model\CreateTransaction createTransaction($inline_object1)
+> \GateApi\Model\CreateTransaction createTransaction($trad_fi_transaction_request)
 
 Fund Deposit and Withdrawal
 
@@ -569,10 +569,10 @@ $apiInstance = new GateApi\Api\TradFiApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object1 = new \GateApi\Model\InlineObject1(); // \GateApi\Model\InlineObject1 | 
+$trad_fi_transaction_request = new \GateApi\Model\TradFiTransactionRequest(); // \GateApi\Model\TradFiTransactionRequest | 
 
 try {
-    $result = $apiInstance->createTransaction($inline_object1);
+    $result = $apiInstance->createTransaction($trad_fi_transaction_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -587,7 +587,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object1** | [**\GateApi\Model\InlineObject1**](../Model/InlineObject1.md)|  |
+ **trad_fi_transaction_request** | [**\GateApi\Model\TradFiTransactionRequest**](../Model/TradFiTransactionRequest.md)|  |
 
 ### Return type
 
@@ -665,7 +665,7 @@ This endpoint does not need any parameter.
 
 ## createTradFiOrder
 
-> \GateApi\Model\CreateOrder createTradFiOrder($inline_object2)
+> \GateApi\Model\CreateOrder createTradFiOrder($trad_fi_order_request)
 
 Create an order
 
@@ -685,10 +685,10 @@ $apiInstance = new GateApi\Api\TradFiApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object2 = new \GateApi\Model\InlineObject2(); // \GateApi\Model\InlineObject2 | 
+$trad_fi_order_request = new \GateApi\Model\TradFiOrderRequest(); // \GateApi\Model\TradFiOrderRequest | 
 
 try {
-    $result = $apiInstance->createTradFiOrder($inline_object2);
+    $result = $apiInstance->createTradFiOrder($trad_fi_order_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -703,7 +703,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object2** | [**\GateApi\Model\InlineObject2**](../Model/InlineObject2.md)|  |
+ **trad_fi_order_request** | [**\GateApi\Model\TradFiOrderRequest**](../Model/TradFiOrderRequest.md)|  |
 
 ### Return type
 
@@ -725,7 +725,7 @@ Name | Type | Description  | Notes
 
 ## updateOrder
 
-> \GateApi\Model\UpdateOrder updateOrder($order_id, $inline_object3)
+> \GateApi\Model\UpdateOrder updateOrder($order_id, $trad_fi_order_update_request)
 
 Modify order
 
@@ -746,10 +746,10 @@ $apiInstance = new GateApi\Api\TradFiApi(
     $config
 );
 $order_id = 1223; // int | Order ID
-$inline_object3 = new \GateApi\Model\InlineObject3(); // \GateApi\Model\InlineObject3 | 
+$trad_fi_order_update_request = new \GateApi\Model\TradFiOrderUpdateRequest(); // \GateApi\Model\TradFiOrderUpdateRequest | 
 
 try {
-    $result = $apiInstance->updateOrder($order_id, $inline_object3);
+    $result = $apiInstance->updateOrder($order_id, $trad_fi_order_update_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -765,7 +765,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **int**| Order ID |
- **inline_object3** | [**\GateApi\Model\InlineObject3**](../Model/InlineObject3.md)|  |
+ **trad_fi_order_update_request** | [**\GateApi\Model\TradFiOrderUpdateRequest**](../Model/TradFiOrderUpdateRequest.md)|  |
 
 ### Return type
 
@@ -971,7 +971,7 @@ This endpoint does not need any parameter.
 
 ## updatePosition
 
-> \GateApi\Model\UpdatePosition updatePosition($position_id, $inline_object4)
+> \GateApi\Model\UpdatePosition updatePosition($position_id, $trad_fi_position_update_request)
 
 Modify position
 
@@ -992,10 +992,10 @@ $apiInstance = new GateApi\Api\TradFiApi(
     $config
 );
 $position_id = 1223; // int | Position ID
-$inline_object4 = new \GateApi\Model\InlineObject4(); // \GateApi\Model\InlineObject4 | 
+$trad_fi_position_update_request = new \GateApi\Model\TradFiPositionUpdateRequest(); // \GateApi\Model\TradFiPositionUpdateRequest | 
 
 try {
-    $result = $apiInstance->updatePosition($position_id, $inline_object4);
+    $result = $apiInstance->updatePosition($position_id, $trad_fi_position_update_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1011,7 +1011,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **position_id** | **int**| Position ID |
- **inline_object4** | [**\GateApi\Model\InlineObject4**](../Model/InlineObject4.md)|  |
+ **trad_fi_position_update_request** | [**\GateApi\Model\TradFiPositionUpdateRequest**](../Model/TradFiPositionUpdateRequest.md)|  |
 
 ### Return type
 
@@ -1033,7 +1033,7 @@ Name | Type | Description  | Notes
 
 ## closePosition
 
-> \GateApi\Model\DeletePosition closePosition($position_id, $inline_object5)
+> \GateApi\Model\DeletePosition closePosition($position_id, $trad_fi_close_position_request)
 
 Close position
 
@@ -1054,10 +1054,10 @@ $apiInstance = new GateApi\Api\TradFiApi(
     $config
 );
 $position_id = 1223; // int | Position ID
-$inline_object5 = new \GateApi\Model\InlineObject5(); // \GateApi\Model\InlineObject5 | 
+$trad_fi_close_position_request = new \GateApi\Model\TradFiClosePositionRequest(); // \GateApi\Model\TradFiClosePositionRequest | 
 
 try {
-    $result = $apiInstance->closePosition($position_id, $inline_object5);
+    $result = $apiInstance->closePosition($position_id, $trad_fi_close_position_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1073,7 +1073,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **position_id** | **int**| Position ID |
- **inline_object5** | [**\GateApi\Model\InlineObject5**](../Model/InlineObject5.md)|  |
+ **trad_fi_close_position_request** | [**\GateApi\Model\TradFiClosePositionRequest**](../Model/TradFiClosePositionRequest.md)|  |
 
 ### Return type
 

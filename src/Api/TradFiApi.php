@@ -2364,15 +2364,15 @@ class TradFiApi
      *
      * Fund Deposit and Withdrawal
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 inline_object1 (required)
+     * @param  \GateApi\Model\TradFiTransactionRequest $trad_fi_transaction_request trad_fi_transaction_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\CreateTransaction|\GateApi\Model\Error
      */
-    public function createTransaction($inline_object1)
+    public function createTransaction($trad_fi_transaction_request)
     {
-        list($response) = $this->createTransactionWithHttpInfo($inline_object1);
+        list($response) = $this->createTransactionWithHttpInfo($trad_fi_transaction_request);
         return $response;
     }
 
@@ -2381,15 +2381,15 @@ class TradFiApi
      *
      * Fund Deposit and Withdrawal
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\TradFiTransactionRequest $trad_fi_transaction_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\CreateTransaction|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTransactionWithHttpInfo($inline_object1)
+    public function createTransactionWithHttpInfo($trad_fi_transaction_request)
     {
-        $request = $this->createTransactionRequest($inline_object1);
+        $request = $this->createTransactionRequest($trad_fi_transaction_request);
 
         $options = $this->createHttpClientOption();
         try {
@@ -2435,14 +2435,14 @@ class TradFiApi
      *
      * Fund Deposit and Withdrawal
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\TradFiTransactionRequest $trad_fi_transaction_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTransactionAsync($inline_object1)
+    public function createTransactionAsync($trad_fi_transaction_request)
     {
-        return $this->createTransactionAsyncWithHttpInfo($inline_object1)
+        return $this->createTransactionAsyncWithHttpInfo($trad_fi_transaction_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2455,15 +2455,15 @@ class TradFiApi
      *
      * Fund Deposit and Withdrawal
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\TradFiTransactionRequest $trad_fi_transaction_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTransactionAsyncWithHttpInfo($inline_object1)
+    public function createTransactionAsyncWithHttpInfo($trad_fi_transaction_request)
     {
         $returnType = '\GateApi\Model\CreateTransaction';
-        $request = $this->createTransactionRequest($inline_object1);
+        $request = $this->createTransactionRequest($trad_fi_transaction_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2502,17 +2502,17 @@ class TradFiApi
     /**
      * Create request for operation 'createTransaction'
      *
-     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
+     * @param  \GateApi\Model\TradFiTransactionRequest $trad_fi_transaction_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createTransactionRequest($inline_object1)
+    protected function createTransactionRequest($trad_fi_transaction_request)
     {
-        // verify the required parameter 'inline_object1' is set
-        if ($inline_object1 === null || (is_array($inline_object1) && count($inline_object1) === 0)) {
+        // verify the required parameter 'trad_fi_transaction_request' is set
+        if ($trad_fi_transaction_request === null || (is_array($trad_fi_transaction_request) && count($trad_fi_transaction_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object1 when calling createTransaction'
+                'Missing the required parameter $trad_fi_transaction_request when calling createTransaction'
             );
         }
 
@@ -2525,8 +2525,8 @@ class TradFiApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object1)) {
-            $_tempBody = $inline_object1;
+        if (isset($trad_fi_transaction_request)) {
+            $_tempBody = $trad_fi_transaction_request;
         }
 
         if ($multipart) {
@@ -2822,15 +2822,15 @@ class TradFiApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 inline_object2 (required)
+     * @param  \GateApi\Model\TradFiOrderRequest $trad_fi_order_request trad_fi_order_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\CreateOrder|\GateApi\Model\Error
      */
-    public function createTradFiOrder($inline_object2)
+    public function createTradFiOrder($trad_fi_order_request)
     {
-        list($response) = $this->createTradFiOrderWithHttpInfo($inline_object2);
+        list($response) = $this->createTradFiOrderWithHttpInfo($trad_fi_order_request);
         return $response;
     }
 
@@ -2839,15 +2839,15 @@ class TradFiApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\TradFiOrderRequest $trad_fi_order_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\CreateOrder|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTradFiOrderWithHttpInfo($inline_object2)
+    public function createTradFiOrderWithHttpInfo($trad_fi_order_request)
     {
-        $request = $this->createTradFiOrderRequest($inline_object2);
+        $request = $this->createTradFiOrderRequest($trad_fi_order_request);
 
         $options = $this->createHttpClientOption();
         try {
@@ -2893,14 +2893,14 @@ class TradFiApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\TradFiOrderRequest $trad_fi_order_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTradFiOrderAsync($inline_object2)
+    public function createTradFiOrderAsync($trad_fi_order_request)
     {
-        return $this->createTradFiOrderAsyncWithHttpInfo($inline_object2)
+        return $this->createTradFiOrderAsyncWithHttpInfo($trad_fi_order_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2913,15 +2913,15 @@ class TradFiApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\TradFiOrderRequest $trad_fi_order_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTradFiOrderAsyncWithHttpInfo($inline_object2)
+    public function createTradFiOrderAsyncWithHttpInfo($trad_fi_order_request)
     {
         $returnType = '\GateApi\Model\CreateOrder';
-        $request = $this->createTradFiOrderRequest($inline_object2);
+        $request = $this->createTradFiOrderRequest($trad_fi_order_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2960,17 +2960,17 @@ class TradFiApi
     /**
      * Create request for operation 'createTradFiOrder'
      *
-     * @param  \GateApi\Model\InlineObject2 $inline_object2 (required)
+     * @param  \GateApi\Model\TradFiOrderRequest $trad_fi_order_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createTradFiOrderRequest($inline_object2)
+    protected function createTradFiOrderRequest($trad_fi_order_request)
     {
-        // verify the required parameter 'inline_object2' is set
-        if ($inline_object2 === null || (is_array($inline_object2) && count($inline_object2) === 0)) {
+        // verify the required parameter 'trad_fi_order_request' is set
+        if ($trad_fi_order_request === null || (is_array($trad_fi_order_request) && count($trad_fi_order_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object2 when calling createTradFiOrder'
+                'Missing the required parameter $trad_fi_order_request when calling createTradFiOrder'
             );
         }
 
@@ -2983,8 +2983,8 @@ class TradFiApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object2)) {
-            $_tempBody = $inline_object2;
+        if (isset($trad_fi_order_request)) {
+            $_tempBody = $trad_fi_order_request;
         }
 
         if ($multipart) {
@@ -3059,15 +3059,15 @@ class TradFiApi
      * Modify order
      *
      * @param  int $order_id Order ID (required)
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 inline_object3 (required)
+     * @param  \GateApi\Model\TradFiOrderUpdateRequest $trad_fi_order_update_request trad_fi_order_update_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\UpdateOrder|\GateApi\Model\Error
      */
-    public function updateOrder($order_id, $inline_object3)
+    public function updateOrder($order_id, $trad_fi_order_update_request)
     {
-        list($response) = $this->updateOrderWithHttpInfo($order_id, $inline_object3);
+        list($response) = $this->updateOrderWithHttpInfo($order_id, $trad_fi_order_update_request);
         return $response;
     }
 
@@ -3077,15 +3077,15 @@ class TradFiApi
      * Modify order
      *
      * @param  int $order_id Order ID (required)
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\TradFiOrderUpdateRequest $trad_fi_order_update_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\UpdateOrder|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateOrderWithHttpInfo($order_id, $inline_object3)
+    public function updateOrderWithHttpInfo($order_id, $trad_fi_order_update_request)
     {
-        $request = $this->updateOrderRequest($order_id, $inline_object3);
+        $request = $this->updateOrderRequest($order_id, $trad_fi_order_update_request);
 
         $options = $this->createHttpClientOption();
         try {
@@ -3132,14 +3132,14 @@ class TradFiApi
      * Modify order
      *
      * @param  int $order_id Order ID (required)
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\TradFiOrderUpdateRequest $trad_fi_order_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOrderAsync($order_id, $inline_object3)
+    public function updateOrderAsync($order_id, $trad_fi_order_update_request)
     {
-        return $this->updateOrderAsyncWithHttpInfo($order_id, $inline_object3)
+        return $this->updateOrderAsyncWithHttpInfo($order_id, $trad_fi_order_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3153,15 +3153,15 @@ class TradFiApi
      * Modify order
      *
      * @param  int $order_id Order ID (required)
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\TradFiOrderUpdateRequest $trad_fi_order_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateOrderAsyncWithHttpInfo($order_id, $inline_object3)
+    public function updateOrderAsyncWithHttpInfo($order_id, $trad_fi_order_update_request)
     {
         $returnType = '\GateApi\Model\UpdateOrder';
-        $request = $this->updateOrderRequest($order_id, $inline_object3);
+        $request = $this->updateOrderRequest($order_id, $trad_fi_order_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3201,12 +3201,12 @@ class TradFiApi
      * Create request for operation 'updateOrder'
      *
      * @param  int $order_id Order ID (required)
-     * @param  \GateApi\Model\InlineObject3 $inline_object3 (required)
+     * @param  \GateApi\Model\TradFiOrderUpdateRequest $trad_fi_order_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateOrderRequest($order_id, $inline_object3)
+    protected function updateOrderRequest($order_id, $trad_fi_order_update_request)
     {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
@@ -3214,10 +3214,10 @@ class TradFiApi
                 'Missing the required parameter $order_id when calling updateOrder'
             );
         }
-        // verify the required parameter 'inline_object3' is set
-        if ($inline_object3 === null || (is_array($inline_object3) && count($inline_object3) === 0)) {
+        // verify the required parameter 'trad_fi_order_update_request' is set
+        if ($trad_fi_order_update_request === null || (is_array($trad_fi_order_update_request) && count($trad_fi_order_update_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object3 when calling updateOrder'
+                'Missing the required parameter $trad_fi_order_update_request when calling updateOrder'
             );
         }
 
@@ -3239,8 +3239,8 @@ class TradFiApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object3)) {
-            $_tempBody = $inline_object3;
+        if (isset($trad_fi_order_update_request)) {
+            $_tempBody = $trad_fi_order_update_request;
         }
 
         if ($multipart) {
@@ -4085,15 +4085,15 @@ class TradFiApi
      * Modify position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 inline_object4 (required)
+     * @param  \GateApi\Model\TradFiPositionUpdateRequest $trad_fi_position_update_request trad_fi_position_update_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\UpdatePosition|\GateApi\Model\Error
      */
-    public function updatePosition($position_id, $inline_object4)
+    public function updatePosition($position_id, $trad_fi_position_update_request)
     {
-        list($response) = $this->updatePositionWithHttpInfo($position_id, $inline_object4);
+        list($response) = $this->updatePositionWithHttpInfo($position_id, $trad_fi_position_update_request);
         return $response;
     }
 
@@ -4103,15 +4103,15 @@ class TradFiApi
      * Modify position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\TradFiPositionUpdateRequest $trad_fi_position_update_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\UpdatePosition|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePositionWithHttpInfo($position_id, $inline_object4)
+    public function updatePositionWithHttpInfo($position_id, $trad_fi_position_update_request)
     {
-        $request = $this->updatePositionRequest($position_id, $inline_object4);
+        $request = $this->updatePositionRequest($position_id, $trad_fi_position_update_request);
 
         $options = $this->createHttpClientOption();
         try {
@@ -4158,14 +4158,14 @@ class TradFiApi
      * Modify position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\TradFiPositionUpdateRequest $trad_fi_position_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePositionAsync($position_id, $inline_object4)
+    public function updatePositionAsync($position_id, $trad_fi_position_update_request)
     {
-        return $this->updatePositionAsyncWithHttpInfo($position_id, $inline_object4)
+        return $this->updatePositionAsyncWithHttpInfo($position_id, $trad_fi_position_update_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4179,15 +4179,15 @@ class TradFiApi
      * Modify position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\TradFiPositionUpdateRequest $trad_fi_position_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePositionAsyncWithHttpInfo($position_id, $inline_object4)
+    public function updatePositionAsyncWithHttpInfo($position_id, $trad_fi_position_update_request)
     {
         $returnType = '\GateApi\Model\UpdatePosition';
-        $request = $this->updatePositionRequest($position_id, $inline_object4);
+        $request = $this->updatePositionRequest($position_id, $trad_fi_position_update_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4227,12 +4227,12 @@ class TradFiApi
      * Create request for operation 'updatePosition'
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject4 $inline_object4 (required)
+     * @param  \GateApi\Model\TradFiPositionUpdateRequest $trad_fi_position_update_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updatePositionRequest($position_id, $inline_object4)
+    protected function updatePositionRequest($position_id, $trad_fi_position_update_request)
     {
         // verify the required parameter 'position_id' is set
         if ($position_id === null || (is_array($position_id) && count($position_id) === 0)) {
@@ -4240,10 +4240,10 @@ class TradFiApi
                 'Missing the required parameter $position_id when calling updatePosition'
             );
         }
-        // verify the required parameter 'inline_object4' is set
-        if ($inline_object4 === null || (is_array($inline_object4) && count($inline_object4) === 0)) {
+        // verify the required parameter 'trad_fi_position_update_request' is set
+        if ($trad_fi_position_update_request === null || (is_array($trad_fi_position_update_request) && count($trad_fi_position_update_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object4 when calling updatePosition'
+                'Missing the required parameter $trad_fi_position_update_request when calling updatePosition'
             );
         }
 
@@ -4265,8 +4265,8 @@ class TradFiApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object4)) {
-            $_tempBody = $inline_object4;
+        if (isset($trad_fi_position_update_request)) {
+            $_tempBody = $trad_fi_position_update_request;
         }
 
         if ($multipart) {
@@ -4341,15 +4341,15 @@ class TradFiApi
      * Close position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject5 $inline_object5 inline_object5 (required)
+     * @param  \GateApi\Model\TradFiClosePositionRequest $trad_fi_close_position_request trad_fi_close_position_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\DeletePosition|\GateApi\Model\Error
      */
-    public function closePosition($position_id, $inline_object5)
+    public function closePosition($position_id, $trad_fi_close_position_request)
     {
-        list($response) = $this->closePositionWithHttpInfo($position_id, $inline_object5);
+        list($response) = $this->closePositionWithHttpInfo($position_id, $trad_fi_close_position_request);
         return $response;
     }
 
@@ -4359,15 +4359,15 @@ class TradFiApi
      * Close position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject5 $inline_object5 (required)
+     * @param  \GateApi\Model\TradFiClosePositionRequest $trad_fi_close_position_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\DeletePosition|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function closePositionWithHttpInfo($position_id, $inline_object5)
+    public function closePositionWithHttpInfo($position_id, $trad_fi_close_position_request)
     {
-        $request = $this->closePositionRequest($position_id, $inline_object5);
+        $request = $this->closePositionRequest($position_id, $trad_fi_close_position_request);
 
         $options = $this->createHttpClientOption();
         try {
@@ -4414,14 +4414,14 @@ class TradFiApi
      * Close position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject5 $inline_object5 (required)
+     * @param  \GateApi\Model\TradFiClosePositionRequest $trad_fi_close_position_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function closePositionAsync($position_id, $inline_object5)
+    public function closePositionAsync($position_id, $trad_fi_close_position_request)
     {
-        return $this->closePositionAsyncWithHttpInfo($position_id, $inline_object5)
+        return $this->closePositionAsyncWithHttpInfo($position_id, $trad_fi_close_position_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4435,15 +4435,15 @@ class TradFiApi
      * Close position
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject5 $inline_object5 (required)
+     * @param  \GateApi\Model\TradFiClosePositionRequest $trad_fi_close_position_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function closePositionAsyncWithHttpInfo($position_id, $inline_object5)
+    public function closePositionAsyncWithHttpInfo($position_id, $trad_fi_close_position_request)
     {
         $returnType = '\GateApi\Model\DeletePosition';
-        $request = $this->closePositionRequest($position_id, $inline_object5);
+        $request = $this->closePositionRequest($position_id, $trad_fi_close_position_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4483,12 +4483,12 @@ class TradFiApi
      * Create request for operation 'closePosition'
      *
      * @param  int $position_id Position ID (required)
-     * @param  \GateApi\Model\InlineObject5 $inline_object5 (required)
+     * @param  \GateApi\Model\TradFiClosePositionRequest $trad_fi_close_position_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function closePositionRequest($position_id, $inline_object5)
+    protected function closePositionRequest($position_id, $trad_fi_close_position_request)
     {
         // verify the required parameter 'position_id' is set
         if ($position_id === null || (is_array($position_id) && count($position_id) === 0)) {
@@ -4496,10 +4496,10 @@ class TradFiApi
                 'Missing the required parameter $position_id when calling closePosition'
             );
         }
-        // verify the required parameter 'inline_object5' is set
-        if ($inline_object5 === null || (is_array($inline_object5) && count($inline_object5) === 0)) {
+        // verify the required parameter 'trad_fi_close_position_request' is set
+        if ($trad_fi_close_position_request === null || (is_array($trad_fi_close_position_request) && count($trad_fi_close_position_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object5 when calling closePosition'
+                'Missing the required parameter $trad_fi_close_position_request when calling closePosition'
             );
         }
 
@@ -4521,8 +4521,8 @@ class TradFiApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object5)) {
-            $_tempBody = $inline_object5;
+        if (isset($trad_fi_close_position_request)) {
+            $_tempBody = $trad_fi_close_position_request;
         }
 
         if ($multipart) {

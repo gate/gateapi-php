@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * TradFiTransactionRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * TradFiTransactionRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description 资金转入转出请求体
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class TradFiTransactionRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'TradFiTransactionRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'asset' => 'string',
+        'change' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -65,8 +66,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'asset' => null,
+        'change' => null,
+        'type' => null
     ];
 
     /**
@@ -96,8 +98,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'asset' => 'asset',
+        'change' => 'change',
+        'type' => 'type'
     ];
 
     /**
@@ -106,8 +109,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'asset' => 'setAsset',
+        'change' => 'setChange',
+        'type' => 'setType'
     ];
 
     /**
@@ -116,8 +120,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'asset' => 'getAsset',
+        'change' => 'getChange',
+        'type' => 'getType'
     ];
 
     /**
@@ -161,8 +166,23 @@ class InlineObject1 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const TYPE_DEPOSIT = 'deposit';
+    const TYPE_WITHDRAW = 'withdraw';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_DEPOSIT,
+            self::TYPE_WITHDRAW,
+        ];
+    }
     
 
     /**
@@ -180,8 +200,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -193,12 +214,23 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
+        if ($this->container['asset'] === null) {
+            $invalidProperties[] = "'asset' can't be null";
         }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
+        if ($this->container['change'] === null) {
+            $invalidProperties[] = "'change' can't be null";
         }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -215,49 +247,82 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets asset
      *
      * @return string
      */
-    public function getPrice()
+    public function getAsset()
     {
-        return $this->container['price'];
+        return $this->container['asset'];
     }
 
     /**
-     * Sets price
+     * Sets asset
      *
-     * @param string $price Order Price
+     * @param string $asset Asset type, e.g., USDT, currently only USDT is supported
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setAsset($asset)
     {
-        $this->container['price'] = $price;
+        $this->container['asset'] = $asset;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets change
      *
-     * @return int
+     * @return string
      */
-    public function getSize()
+    public function getChange()
     {
-        return $this->container['size'];
+        return $this->container['change'];
     }
 
     /**
-     * Sets size
+     * Sets change
      *
-     * @param int $size Trade amount
+     * @param string $change Change Quantity, supports up to two decimal places
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setChange($change)
     {
-        $this->container['size'] = $size;
+        $this->container['change'] = $change;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Transaction Type (deposit - transfer in, withdraw - transfer out)
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

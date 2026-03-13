@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * CrossexConvertQuoteRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * CrossexConvertQuoteRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description 闪兑询价请求体
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'CrossexConvertQuoteRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,10 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'exchange_type' => 'string',
+        'from_coin' => 'string',
+        'to_coin' => 'string',
+        'from_amount' => 'string'
     ];
 
     /**
@@ -65,8 +67,10 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'exchange_type' => null,
+        'from_coin' => null,
+        'to_coin' => null,
+        'from_amount' => null
     ];
 
     /**
@@ -96,8 +100,10 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'exchange_type' => 'exchange_type',
+        'from_coin' => 'from_coin',
+        'to_coin' => 'to_coin',
+        'from_amount' => 'from_amount'
     ];
 
     /**
@@ -106,8 +112,10 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'exchange_type' => 'setExchangeType',
+        'from_coin' => 'setFromCoin',
+        'to_coin' => 'setToCoin',
+        'from_amount' => 'setFromAmount'
     ];
 
     /**
@@ -116,8 +124,10 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'exchange_type' => 'getExchangeType',
+        'from_coin' => 'getFromCoin',
+        'to_coin' => 'getToCoin',
+        'from_amount' => 'getFromAmount'
     ];
 
     /**
@@ -180,8 +190,10 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
+        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
+        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
     }
 
     /**
@@ -193,11 +205,17 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
+        if ($this->container['exchange_type'] === null) {
+            $invalidProperties[] = "'exchange_type' can't be null";
         }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
+        if ($this->container['from_coin'] === null) {
+            $invalidProperties[] = "'from_coin' can't be null";
+        }
+        if ($this->container['to_coin'] === null) {
+            $invalidProperties[] = "'to_coin' can't be null";
+        }
+        if ($this->container['from_amount'] === null) {
+            $invalidProperties[] = "'from_amount' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,49 +233,97 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets exchange_type
      *
      * @return string
      */
-    public function getPrice()
+    public function getExchangeType()
     {
-        return $this->container['price'];
+        return $this->container['exchange_type'];
     }
 
     /**
-     * Sets price
+     * Sets exchange_type
      *
-     * @param string $price Order Price
+     * @param string $exchange_type Exchange Type
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setExchangeType($exchange_type)
     {
-        $this->container['price'] = $price;
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets from_coin
      *
-     * @return int
+     * @return string
      */
-    public function getSize()
+    public function getFromCoin()
     {
-        return $this->container['size'];
+        return $this->container['from_coin'];
     }
 
     /**
-     * Sets size
+     * Sets from_coin
      *
-     * @param int $size Trade amount
+     * @param string $from_coin Asset Sold
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setFromCoin($from_coin)
     {
-        $this->container['size'] = $size;
+        $this->container['from_coin'] = $from_coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_coin
+     *
+     * @return string
+     */
+    public function getToCoin()
+    {
+        return $this->container['to_coin'];
+    }
+
+    /**
+     * Sets to_coin
+     *
+     * @param string $to_coin Asset name to buy (OKX and GATE only allow BTC, ETH, USDT; BN only allows USDT)
+     *
+     * @return $this
+     */
+    public function setToCoin($to_coin)
+    {
+        $this->container['to_coin'] = $to_coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_amount
+     *
+     * @return string
+     */
+    public function getFromAmount()
+    {
+        return $this->container['from_amount'];
+    }
+
+    /**
+     * Sets from_amount
+     *
+     * @param string $from_amount Amount to sell
+     *
+     * @return $this
+     */
+    public function setFromAmount($from_amount)
+    {
+        $this->container['from_amount'] = $from_amount;
 
         return $this;
     }

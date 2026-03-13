@@ -6344,15 +6344,15 @@ class OptionsApi
      * Option Order Modification
      *
      * @param  int $order_id Order ID returned when order is successfully created (required)
-     * @param  \GateApi\Model\InlineObject6 $inline_object6 inline_object6 (required)
+     * @param  \GateApi\Model\InlineObject1 $inline_object1 inline_object1 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\OptionsOrder
      */
-    public function amendOptionsOrder($order_id, $inline_object6)
+    public function amendOptionsOrder($order_id, $inline_object1)
     {
-        list($response) = $this->amendOptionsOrderWithHttpInfo($order_id, $inline_object6);
+        list($response) = $this->amendOptionsOrderWithHttpInfo($order_id, $inline_object1);
         return $response;
     }
 
@@ -6362,15 +6362,15 @@ class OptionsApi
      * Option Order Modification
      *
      * @param  int $order_id Order ID returned when order is successfully created (required)
-     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
+     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\OptionsOrder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function amendOptionsOrderWithHttpInfo($order_id, $inline_object6)
+    public function amendOptionsOrderWithHttpInfo($order_id, $inline_object1)
     {
-        $request = $this->amendOptionsOrderRequest($order_id, $inline_object6);
+        $request = $this->amendOptionsOrderRequest($order_id, $inline_object1);
 
         $options = $this->createHttpClientOption();
         try {
@@ -6417,14 +6417,14 @@ class OptionsApi
      * Option Order Modification
      *
      * @param  int $order_id Order ID returned when order is successfully created (required)
-     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
+     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function amendOptionsOrderAsync($order_id, $inline_object6)
+    public function amendOptionsOrderAsync($order_id, $inline_object1)
     {
-        return $this->amendOptionsOrderAsyncWithHttpInfo($order_id, $inline_object6)
+        return $this->amendOptionsOrderAsyncWithHttpInfo($order_id, $inline_object1)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6438,15 +6438,15 @@ class OptionsApi
      * Option Order Modification
      *
      * @param  int $order_id Order ID returned when order is successfully created (required)
-     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
+     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function amendOptionsOrderAsyncWithHttpInfo($order_id, $inline_object6)
+    public function amendOptionsOrderAsyncWithHttpInfo($order_id, $inline_object1)
     {
         $returnType = '\GateApi\Model\OptionsOrder';
-        $request = $this->amendOptionsOrderRequest($order_id, $inline_object6);
+        $request = $this->amendOptionsOrderRequest($order_id, $inline_object1);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6486,12 +6486,12 @@ class OptionsApi
      * Create request for operation 'amendOptionsOrder'
      *
      * @param  int $order_id Order ID returned when order is successfully created (required)
-     * @param  \GateApi\Model\InlineObject6 $inline_object6 (required)
+     * @param  \GateApi\Model\InlineObject1 $inline_object1 (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function amendOptionsOrderRequest($order_id, $inline_object6)
+    protected function amendOptionsOrderRequest($order_id, $inline_object1)
     {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
@@ -6499,10 +6499,10 @@ class OptionsApi
                 'Missing the required parameter $order_id when calling amendOptionsOrder'
             );
         }
-        // verify the required parameter 'inline_object6' is set
-        if ($inline_object6 === null || (is_array($inline_object6) && count($inline_object6) === 0)) {
+        // verify the required parameter 'inline_object1' is set
+        if ($inline_object1 === null || (is_array($inline_object1) && count($inline_object1) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object6 when calling amendOptionsOrder'
+                'Missing the required parameter $inline_object1 when calling amendOptionsOrder'
             );
         }
 
@@ -6524,8 +6524,8 @@ class OptionsApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object6)) {
-            $_tempBody = $inline_object6;
+        if (isset($inline_object1)) {
+            $_tempBody = $inline_object1;
         }
 
         if ($multipart) {

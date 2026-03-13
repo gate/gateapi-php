@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * CrossexTransferRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * CrossexTransferRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description 资金划转请求体
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class CrossexTransferRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'CrossexTransferRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,11 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'coin' => 'string',
+        'amount' => 'string',
+        'from' => 'string',
+        'to' => 'string',
+        'text' => 'string'
     ];
 
     /**
@@ -65,8 +68,11 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'coin' => null,
+        'amount' => null,
+        'from' => null,
+        'to' => null,
+        'text' => null
     ];
 
     /**
@@ -96,8 +102,11 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'coin' => 'coin',
+        'amount' => 'amount',
+        'from' => 'from',
+        'to' => 'to',
+        'text' => 'text'
     ];
 
     /**
@@ -106,8 +115,11 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'coin' => 'setCoin',
+        'amount' => 'setAmount',
+        'from' => 'setFrom',
+        'to' => 'setTo',
+        'text' => 'setText'
     ];
 
     /**
@@ -116,8 +128,11 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'coin' => 'getCoin',
+        'amount' => 'getAmount',
+        'from' => 'getFrom',
+        'to' => 'getTo',
+        'text' => 'getText'
     ];
 
     /**
@@ -180,8 +195,11 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['from'] = isset($data['from']) ? $data['from'] : null;
+        $this->container['to'] = isset($data['to']) ? $data['to'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -193,11 +211,17 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
+        if ($this->container['coin'] === null) {
+            $invalidProperties[] = "'coin' can't be null";
         }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['from'] === null) {
+            $invalidProperties[] = "'from' can't be null";
+        }
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,49 +239,121 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets coin
      *
      * @return string
      */
-    public function getPrice()
+    public function getCoin()
     {
-        return $this->container['price'];
+        return $this->container['coin'];
     }
 
     /**
-     * Sets price
+     * Sets coin
      *
-     * @param string $price Order Price
+     * @param string $coin Currency
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setCoin($coin)
     {
-        $this->container['price'] = $price;
+        $this->container['coin'] = $coin;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets amount
      *
-     * @return int
+     * @return string
      */
-    public function getSize()
+    public function getAmount()
     {
-        return $this->container['size'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets size
+     * Sets amount
      *
-     * @param int $size Trade amount
+     * @param string $amount Transfer amount
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setAmount($amount)
     {
-        $this->container['size'] = $size;
+        $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets from
+     *
+     * @return string
+     */
+    public function getFrom()
+    {
+        return $this->container['from'];
+    }
+
+    /**
+     * Sets from
+     *
+     * @param string $from Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     *
+     * @return $this
+     */
+    public function setFrom($from)
+    {
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return string
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param string $to Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     *
+     * @return $this
+     */
+    public function setTo($to)
+    {
+        $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string|null
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string|null $text User-defined ID
+     *
+     * @return $this
+     */
+    public function setText($text)
+    {
+        $this->container['text'] = $text;
 
         return $this;
     }

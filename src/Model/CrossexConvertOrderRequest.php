@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * CrossexConvertOrderRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * CrossexConvertOrderRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description 闪兑交易请求体
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class CrossexConvertOrderRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'CrossexConvertOrderRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'quote_id' => 'string'
     ];
 
     /**
@@ -65,8 +64,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'quote_id' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'quote_id' => 'quote_id'
     ];
 
     /**
@@ -106,8 +103,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'quote_id' => 'setQuoteId'
     ];
 
     /**
@@ -116,8 +112,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'quote_id' => 'getQuoteId'
     ];
 
     /**
@@ -180,8 +175,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
     }
 
     /**
@@ -193,11 +187,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
+        if ($this->container['quote_id'] === null) {
+            $invalidProperties[] = "'quote_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -215,49 +206,25 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets quote_id
      *
      * @return string
      */
-    public function getPrice()
+    public function getQuoteId()
     {
-        return $this->container['price'];
+        return $this->container['quote_id'];
     }
 
     /**
-     * Sets price
+     * Sets quote_id
      *
-     * @param string $price Order Price
+     * @param string $quote_id Inquiry ID
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setQuoteId($quote_id)
     {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int $size Trade amount
-     *
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        $this->container['size'] = $size;
+        $this->container['quote_id'] = $quote_id;
 
         return $this;
     }

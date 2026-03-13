@@ -1,10 +1,9 @@
-# # InlineObject1
+# # CrossexConvertOrderRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**price** | **string** | Order Price | 
-**size** | **int** | Trade amount | 
+**quote_id** | **string** | Inquiry ID | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

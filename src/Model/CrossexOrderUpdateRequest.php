@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * CrossexOrderUpdateRequest
  *
  * PHP version 7
  *
@@ -30,7 +30,7 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * CrossexOrderUpdateRequest Class Doc Comment
  *
  * @category Class
  * @description Order Modification Request Body
@@ -38,7 +38,7 @@ use \GateApi\ObjectSerializer;
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class CrossexOrderUpdateRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'CrossexOrderUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'qty' => 'string',
+        'price' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'qty' => null,
+        'price' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'qty' => 'qty',
+        'price' => 'price'
     ];
 
     /**
@@ -106,8 +106,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'qty' => 'setQty',
+        'price' => 'setPrice'
     ];
 
     /**
@@ -116,8 +116,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'qty' => 'getQty',
+        'price' => 'getPrice'
     ];
 
     /**
@@ -180,8 +180,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['qty'] = isset($data['qty']) ? $data['qty'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
     }
 
     /**
@@ -193,12 +193,6 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,9 +209,33 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets qty
+     *
+     * @return string|null
+     */
+    public function getQty()
+    {
+        return $this->container['qty'];
+    }
+
+    /**
+     * Sets qty
+     *
+     * @param string|null $qty modify amount
+     *
+     * @return $this
+     */
+    public function setQty($qty)
+    {
+        $this->container['qty'] = $qty;
+
+        return $this;
+    }
+
+    /**
      * Gets price
      *
-     * @return string
+     * @return string|null
      */
     public function getPrice()
     {
@@ -227,37 +245,13 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string $price Order Price
+     * @param string|null $price modify price
      *
      * @return $this
      */
     public function setPrice($price)
     {
         $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int $size Trade amount
-     *
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        $this->container['size'] = $size;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineObject1
+ * TradFiPositionUpdateRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineObject1 Class Doc Comment
+ * TradFiPositionUpdateRequest Class Doc Comment
  *
  * @category Class
- * @description Order Modification Request Body
+ * @description Modify position take profit/stop loss parameters
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineObject1 implements ModelInterface, ArrayAccess
+class TradFiPositionUpdateRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_object_1';
+    protected static $openAPIModelName = 'TradFiPositionUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => 'string',
-        'size' => 'int'
+        'price_tp' => 'string',
+        'price_sl' => 'string'
     ];
 
     /**
@@ -65,8 +65,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'price' => null,
-        'size' => 'int64'
+        'price_tp' => null,
+        'price_sl' => null
     ];
 
     /**
@@ -96,8 +96,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'price' => 'price',
-        'size' => 'size'
+        'price_tp' => 'price_tp',
+        'price_sl' => 'price_sl'
     ];
 
     /**
@@ -106,8 +106,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'price' => 'setPrice',
-        'size' => 'setSize'
+        'price_tp' => 'setPriceTp',
+        'price_sl' => 'setPriceSl'
     ];
 
     /**
@@ -116,8 +116,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'price' => 'getPrice',
-        'size' => 'getSize'
+        'price_tp' => 'getPriceTp',
+        'price_sl' => 'getPriceSl'
     ];
 
     /**
@@ -180,8 +180,8 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
+        $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
     }
 
     /**
@@ -193,12 +193,6 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -215,49 +209,49 @@ class InlineObject1 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets price
+     * Gets price_tp
      *
-     * @return string
+     * @return string|null
      */
-    public function getPrice()
+    public function getPriceTp()
     {
-        return $this->container['price'];
+        return $this->container['price_tp'];
     }
 
     /**
-     * Sets price
+     * Sets price_tp
      *
-     * @param string $price Order Price
+     * @param string|null $price_tp 止盈价格  说明： - 不传 或 传 \"0\"：将清空原有止盈价 - 如不希望清空，请传接口返回的原止盈价
      *
      * @return $this
      */
-    public function setPrice($price)
+    public function setPriceTp($price_tp)
     {
-        $this->container['price'] = $price;
+        $this->container['price_tp'] = $price_tp;
 
         return $this;
     }
 
     /**
-     * Gets size
+     * Gets price_sl
      *
-     * @return int
+     * @return string|null
      */
-    public function getSize()
+    public function getPriceSl()
     {
-        return $this->container['size'];
+        return $this->container['price_sl'];
     }
 
     /**
-     * Sets size
+     * Sets price_sl
      *
-     * @param int $size Trade amount
+     * @param string|null $price_sl 止损价格  说明： - 不传 或 传 \"0\"：将清空原有止损价 - 如不希望清空，请传接口返回的原止损价
      *
      * @return $this
      */
-    public function setSize($size)
+    public function setPriceSl($price_sl)
     {
-        $this->container['size'] = $size;
+        $this->container['price_sl'] = $price_sl;
 
         return $this;
     }
