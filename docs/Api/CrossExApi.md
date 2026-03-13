@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexTransfer
 
-> \GateApi\Model\InlineResponse20030 createCrossexTransfer($inline_object10)
+> \GateApi\Model\InlineResponse20030 createCrossexTransfer($inline_object11)
 
 Fund Transfer
 
@@ -313,10 +313,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object10 = new \GateApi\Model\InlineObject10(); // \GateApi\Model\InlineObject10 | 
+$inline_object11 = new \GateApi\Model\InlineObject11(); // \GateApi\Model\InlineObject11 | 
 
 try {
-    $result = $apiInstance->createCrossexTransfer($inline_object10);
+    $result = $apiInstance->createCrossexTransfer($inline_object11);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -331,7 +331,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object10** | [**\GateApi\Model\InlineObject10**](../Model/InlineObject10.md)|  | [optional]
+ **inline_object11** | [**\GateApi\Model\InlineObject11**](../Model/InlineObject11.md)|  | [optional]
 
 ### Return type
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexOrder
 
-> \GateApi\Model\InlineResponse20031 createCrossexOrder($inline_object11)
+> \GateApi\Model\InlineResponse20031 createCrossexOrder($inline_object12)
 
 Create an order
 
@@ -375,10 +375,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object11 = new \GateApi\Model\InlineObject11(); // \GateApi\Model\InlineObject11 | 
+$inline_object12 = new \GateApi\Model\InlineObject12(); // \GateApi\Model\InlineObject12 | 
 
 try {
-    $result = $apiInstance->createCrossexOrder($inline_object11);
+    $result = $apiInstance->createCrossexOrder($inline_object12);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -393,7 +393,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object11** | [**\GateApi\Model\InlineObject11**](../Model/InlineObject11.md)|  | [optional]
+ **inline_object12** | [**\GateApi\Model\InlineObject12**](../Model/InlineObject12.md)|  | [optional]
 
 ### Return type
 
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexOrder
 
-> \GateApi\Model\InlineResponse20033 updateCrossexOrder($order_id, $inline_object12)
+> \GateApi\Model\InlineResponse20033 updateCrossexOrder($order_id, $inline_object13)
 
 Modify Order
 
@@ -500,10 +500,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $order_id = 'order_id_example'; // string | Support Order ID or Text for Modify Order
-$inline_object12 = new \GateApi\Model\InlineObject12(); // \GateApi\Model\InlineObject12 | 
+$inline_object13 = new \GateApi\Model\InlineObject13(); // \GateApi\Model\InlineObject13 | 
 
 try {
-    $result = $apiInstance->updateCrossexOrder($order_id, $inline_object12);
+    $result = $apiInstance->updateCrossexOrder($order_id, $inline_object13);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -519,7 +519,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **string**| Support Order ID or Text for Modify Order |
- **inline_object12** | [**\GateApi\Model\InlineObject12**](../Model/InlineObject12.md)|  | [optional]
+ **inline_object13** | [**\GateApi\Model\InlineObject13**](../Model/InlineObject13.md)|  | [optional]
 
 ### Return type
 
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexConvertQuote
 
-> \GateApi\Model\InlineResponse20034 createCrossexConvertQuote($inline_object13)
+> \GateApi\Model\InlineResponse20034 createCrossexConvertQuote($inline_object14)
 
 Flash Swap Inquiry
 
@@ -625,10 +625,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object13 = new \GateApi\Model\InlineObject13(); // \GateApi\Model\InlineObject13 | 
+$inline_object14 = new \GateApi\Model\InlineObject14(); // \GateApi\Model\InlineObject14 | 
 
 try {
-    $result = $apiInstance->createCrossexConvertQuote($inline_object13);
+    $result = $apiInstance->createCrossexConvertQuote($inline_object14);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -643,7 +643,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object13** | [**\GateApi\Model\InlineObject13**](../Model/InlineObject13.md)|  | [optional]
+ **inline_object14** | [**\GateApi\Model\InlineObject14**](../Model/InlineObject14.md)|  | [optional]
 
 ### Return type
 
@@ -665,7 +665,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexConvertOrder
 
-> object createCrossexConvertOrder($inline_object14)
+> object createCrossexConvertOrder($inline_object15)
 
 Flash Swap Transaction
 
@@ -687,10 +687,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object14 = new \GateApi\Model\InlineObject14(); // \GateApi\Model\InlineObject14 | 
+$inline_object15 = new \GateApi\Model\InlineObject15(); // \GateApi\Model\InlineObject15 | 
 
 try {
-    $result = $apiInstance->createCrossexConvertOrder($inline_object14);
+    $result = $apiInstance->createCrossexConvertOrder($inline_object15);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -705,7 +705,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object14** | [**\GateApi\Model\InlineObject14**](../Model/InlineObject14.md)|  | [optional]
+ **inline_object15** | [**\GateApi\Model\InlineObject15**](../Model/InlineObject15.md)|  | [optional]
 
 ### Return type
 
@@ -791,7 +791,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexAccount
 
-> \GateApi\Model\InlineResponse202 updateCrossexAccount($inline_object15)
+> \GateApi\Model\InlineResponse202 updateCrossexAccount($inline_object16)
 
 Modify Account Contract Position Mode and Account Mode
 
@@ -813,10 +813,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object15 = new \GateApi\Model\InlineObject15(); // \GateApi\Model\InlineObject15 | 
+$inline_object16 = new \GateApi\Model\InlineObject16(); // \GateApi\Model\InlineObject16 | 
 
 try {
-    $result = $apiInstance->updateCrossexAccount($inline_object15);
+    $result = $apiInstance->updateCrossexAccount($inline_object16);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -831,7 +831,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object15** | [**\GateApi\Model\InlineObject15**](../Model/InlineObject15.md)|  | [optional]
+ **inline_object16** | [**\GateApi\Model\InlineObject16**](../Model/InlineObject16.md)|  | [optional]
 
 ### Return type
 
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexPositionsLeverage
 
-> \GateApi\Model\InlineResponse2021 updateCrossexPositionsLeverage($inline_object16)
+> \GateApi\Model\InlineResponse2021 updateCrossexPositionsLeverage($inline_object17)
 
 Modify Contract Trading Pair Leverage Multiplier
 
@@ -939,10 +939,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object16 = new \GateApi\Model\InlineObject16(); // \GateApi\Model\InlineObject16 | 
+$inline_object17 = new \GateApi\Model\InlineObject17(); // \GateApi\Model\InlineObject17 | 
 
 try {
-    $result = $apiInstance->updateCrossexPositionsLeverage($inline_object16);
+    $result = $apiInstance->updateCrossexPositionsLeverage($inline_object17);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -957,7 +957,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object16** | [**\GateApi\Model\InlineObject16**](../Model/InlineObject16.md)|  | [optional]
+ **inline_object17** | [**\GateApi\Model\InlineObject17**](../Model/InlineObject17.md)|  | [optional]
 
 ### Return type
 
@@ -1043,7 +1043,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexMarginPositionsLeverage
 
-> \GateApi\Model\InlineResponse2021 updateCrossexMarginPositionsLeverage($inline_object17)
+> \GateApi\Model\InlineResponse2021 updateCrossexMarginPositionsLeverage($inline_object18)
 
 Modify Leveraged Trading Pair Leverage Multiplier
 
@@ -1065,10 +1065,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object17 = new \GateApi\Model\InlineObject17(); // \GateApi\Model\InlineObject17 | 
+$inline_object18 = new \GateApi\Model\InlineObject18(); // \GateApi\Model\InlineObject18 | 
 
 try {
-    $result = $apiInstance->updateCrossexMarginPositionsLeverage($inline_object17);
+    $result = $apiInstance->updateCrossexMarginPositionsLeverage($inline_object18);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1083,7 +1083,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object17** | [**\GateApi\Model\InlineObject17**](../Model/InlineObject17.md)|  | [optional]
+ **inline_object18** | [**\GateApi\Model\InlineObject18**](../Model/InlineObject18.md)|  | [optional]
 
 ### Return type
 
@@ -1105,7 +1105,7 @@ Name | Type | Description  | Notes
 
 ## closeCrossexPosition
 
-> \GateApi\Model\InlineResponse20031 closeCrossexPosition($inline_object18)
+> \GateApi\Model\InlineResponse20031 closeCrossexPosition($inline_object19)
 
 Full Close Position
 
@@ -1127,10 +1127,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object18 = new \GateApi\Model\InlineObject18(); // \GateApi\Model\InlineObject18 | 
+$inline_object19 = new \GateApi\Model\InlineObject19(); // \GateApi\Model\InlineObject19 | 
 
 try {
-    $result = $apiInstance->closeCrossexPosition($inline_object18);
+    $result = $apiInstance->closeCrossexPosition($inline_object19);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1145,7 +1145,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object18** | [**\GateApi\Model\InlineObject18**](../Model/InlineObject18.md)|  | [optional]
+ **inline_object19** | [**\GateApi\Model\InlineObject19**](../Model/InlineObject19.md)|  | [optional]
 
 ### Return type
 

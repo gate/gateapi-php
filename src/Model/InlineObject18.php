@@ -55,7 +55,7 @@ class InlineObject18 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'position_side' => 'string'
+        'leverage' => 'string'
     ];
 
     /**
@@ -65,7 +65,7 @@ class InlineObject18 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'position_side' => null
+        'leverage' => null
     ];
 
     /**
@@ -96,7 +96,7 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'position_side' => 'position_side'
+        'leverage' => 'leverage'
     ];
 
     /**
@@ -106,7 +106,7 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'position_side' => 'setPositionSide'
+        'leverage' => 'setLeverage'
     ];
 
     /**
@@ -116,7 +116,7 @@ class InlineObject18 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'position_side' => 'getPositionSide'
+        'leverage' => 'getLeverage'
     ];
 
     /**
@@ -180,7 +180,7 @@ class InlineObject18 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
     }
 
     /**
@@ -194,6 +194,9 @@ class InlineObject18 implements ModelInterface, ArrayAccess
 
         if ($this->container['symbol'] === null) {
             $invalidProperties[] = "'symbol' can't be null";
+        }
+        if ($this->container['leverage'] === null) {
+            $invalidProperties[] = "'leverage' can't be null";
         }
         return $invalidProperties;
     }
@@ -223,7 +226,7 @@ class InlineObject18 implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Trading Pair 1. Supports leveraged trading pairs, e.g., BINANCE_MARGIN_SOL_USDT 2. Supports contract trading pairs, e.g., OKX_FUTURE_ETH_USDT
+     * @param string $symbol Currency pair
      *
      * @return $this
      */
@@ -235,25 +238,25 @@ class InlineObject18 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets position_side
+     * Gets leverage
      *
-     * @return string|null
+     * @return string
      */
-    public function getPositionSide()
+    public function getLeverage()
     {
-        return $this->container['position_side'];
+        return $this->container['leverage'];
     }
 
     /**
-     * Sets position_side
+     * Sets leverage
      *
-     * @param string|null $position_side Position Direction 1. For leveraged positions, this parameter must be passed 2. For contract positions, pass selectively based on your contract holding method
+     * @param string $leverage leverage
      *
      * @return $this
      */
-    public function setPositionSide($position_side)
+    public function setLeverage($leverage)
     {
-        $this->container['position_side'] = $position_side;
+        $this->container['leverage'] = $leverage;
 
         return $this;
     }

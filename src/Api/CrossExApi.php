@@ -1200,15 +1200,15 @@ class CrossExApi
      *
      * Fund Transfer
      *
-     * @param  \GateApi\Model\InlineObject10 $inline_object10 inline_object10 (optional)
+     * @param  \GateApi\Model\InlineObject11 $inline_object11 inline_object11 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse20030
      */
-    public function createCrossexTransfer($inline_object10 = null)
+    public function createCrossexTransfer($inline_object11 = null)
     {
-        list($response) = $this->createCrossexTransferWithHttpInfo($inline_object10);
+        list($response) = $this->createCrossexTransferWithHttpInfo($inline_object11);
         return $response;
     }
 
@@ -1217,15 +1217,15 @@ class CrossExApi
      *
      * Fund Transfer
      *
-     * @param  \GateApi\Model\InlineObject10 $inline_object10 (optional)
+     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse20030, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCrossexTransferWithHttpInfo($inline_object10 = null)
+    public function createCrossexTransferWithHttpInfo($inline_object11 = null)
     {
-        $request = $this->createCrossexTransferRequest($inline_object10);
+        $request = $this->createCrossexTransferRequest($inline_object11);
 
         $options = $this->createHttpClientOption();
         try {
@@ -1271,14 +1271,14 @@ class CrossExApi
      *
      * Fund Transfer
      *
-     * @param  \GateApi\Model\InlineObject10 $inline_object10 (optional)
+     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexTransferAsync($inline_object10 = null)
+    public function createCrossexTransferAsync($inline_object11 = null)
     {
-        return $this->createCrossexTransferAsyncWithHttpInfo($inline_object10)
+        return $this->createCrossexTransferAsyncWithHttpInfo($inline_object11)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1291,15 +1291,15 @@ class CrossExApi
      *
      * Fund Transfer
      *
-     * @param  \GateApi\Model\InlineObject10 $inline_object10 (optional)
+     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexTransferAsyncWithHttpInfo($inline_object10 = null)
+    public function createCrossexTransferAsyncWithHttpInfo($inline_object11 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse20030';
-        $request = $this->createCrossexTransferRequest($inline_object10);
+        $request = $this->createCrossexTransferRequest($inline_object11);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1338,12 +1338,12 @@ class CrossExApi
     /**
      * Create request for operation 'createCrossexTransfer'
      *
-     * @param  \GateApi\Model\InlineObject10 $inline_object10 (optional)
+     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createCrossexTransferRequest($inline_object10 = null)
+    protected function createCrossexTransferRequest($inline_object11 = null)
     {
 
         $resourcePath = '/crossex/transfers';
@@ -1355,8 +1355,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object10)) {
-            $_tempBody = $inline_object10;
+        if (isset($inline_object11)) {
+            $_tempBody = $inline_object11;
         }
 
         if ($multipart) {
@@ -1430,15 +1430,15 @@ class CrossExApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject11 $inline_object11 inline_object11 (optional)
+     * @param  \GateApi\Model\InlineObject12 $inline_object12 inline_object12 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse20031
      */
-    public function createCrossexOrder($inline_object11 = null)
+    public function createCrossexOrder($inline_object12 = null)
     {
-        list($response) = $this->createCrossexOrderWithHttpInfo($inline_object11);
+        list($response) = $this->createCrossexOrderWithHttpInfo($inline_object12);
         return $response;
     }
 
@@ -1447,15 +1447,15 @@ class CrossExApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
+     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse20031, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCrossexOrderWithHttpInfo($inline_object11 = null)
+    public function createCrossexOrderWithHttpInfo($inline_object12 = null)
     {
-        $request = $this->createCrossexOrderRequest($inline_object11);
+        $request = $this->createCrossexOrderRequest($inline_object12);
 
         $options = $this->createHttpClientOption();
         try {
@@ -1501,14 +1501,14 @@ class CrossExApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
+     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexOrderAsync($inline_object11 = null)
+    public function createCrossexOrderAsync($inline_object12 = null)
     {
-        return $this->createCrossexOrderAsyncWithHttpInfo($inline_object11)
+        return $this->createCrossexOrderAsyncWithHttpInfo($inline_object12)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1521,15 +1521,15 @@ class CrossExApi
      *
      * Create an order
      *
-     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
+     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexOrderAsyncWithHttpInfo($inline_object11 = null)
+    public function createCrossexOrderAsyncWithHttpInfo($inline_object12 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse20031';
-        $request = $this->createCrossexOrderRequest($inline_object11);
+        $request = $this->createCrossexOrderRequest($inline_object12);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1568,12 +1568,12 @@ class CrossExApi
     /**
      * Create request for operation 'createCrossexOrder'
      *
-     * @param  \GateApi\Model\InlineObject11 $inline_object11 (optional)
+     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createCrossexOrderRequest($inline_object11 = null)
+    protected function createCrossexOrderRequest($inline_object12 = null)
     {
 
         $resourcePath = '/crossex/orders';
@@ -1585,8 +1585,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object11)) {
-            $_tempBody = $inline_object11;
+        if (isset($inline_object12)) {
+            $_tempBody = $inline_object12;
         }
 
         if ($multipart) {
@@ -1903,15 +1903,15 @@ class CrossExApi
      * Modify Order
      *
      * @param  string $order_id Support Order ID or Text for Modify Order (required)
-     * @param  \GateApi\Model\InlineObject12 $inline_object12 inline_object12 (optional)
+     * @param  \GateApi\Model\InlineObject13 $inline_object13 inline_object13 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse20033
      */
-    public function updateCrossexOrder($order_id, $inline_object12 = null)
+    public function updateCrossexOrder($order_id, $inline_object13 = null)
     {
-        list($response) = $this->updateCrossexOrderWithHttpInfo($order_id, $inline_object12);
+        list($response) = $this->updateCrossexOrderWithHttpInfo($order_id, $inline_object13);
         return $response;
     }
 
@@ -1921,15 +1921,15 @@ class CrossExApi
      * Modify Order
      *
      * @param  string $order_id Support Order ID or Text for Modify Order (required)
-     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
+     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse20033, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCrossexOrderWithHttpInfo($order_id, $inline_object12 = null)
+    public function updateCrossexOrderWithHttpInfo($order_id, $inline_object13 = null)
     {
-        $request = $this->updateCrossexOrderRequest($order_id, $inline_object12);
+        $request = $this->updateCrossexOrderRequest($order_id, $inline_object13);
 
         $options = $this->createHttpClientOption();
         try {
@@ -1976,14 +1976,14 @@ class CrossExApi
      * Modify Order
      *
      * @param  string $order_id Support Order ID or Text for Modify Order (required)
-     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
+     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexOrderAsync($order_id, $inline_object12 = null)
+    public function updateCrossexOrderAsync($order_id, $inline_object13 = null)
     {
-        return $this->updateCrossexOrderAsyncWithHttpInfo($order_id, $inline_object12)
+        return $this->updateCrossexOrderAsyncWithHttpInfo($order_id, $inline_object13)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1997,15 +1997,15 @@ class CrossExApi
      * Modify Order
      *
      * @param  string $order_id Support Order ID or Text for Modify Order (required)
-     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
+     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexOrderAsyncWithHttpInfo($order_id, $inline_object12 = null)
+    public function updateCrossexOrderAsyncWithHttpInfo($order_id, $inline_object13 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse20033';
-        $request = $this->updateCrossexOrderRequest($order_id, $inline_object12);
+        $request = $this->updateCrossexOrderRequest($order_id, $inline_object13);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2045,12 +2045,12 @@ class CrossExApi
      * Create request for operation 'updateCrossexOrder'
      *
      * @param  string $order_id Support Order ID or Text for Modify Order (required)
-     * @param  \GateApi\Model\InlineObject12 $inline_object12 (optional)
+     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateCrossexOrderRequest($order_id, $inline_object12 = null)
+    protected function updateCrossexOrderRequest($order_id, $inline_object13 = null)
     {
         // verify the required parameter 'order_id' is set
         if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
@@ -2077,8 +2077,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object12)) {
-            $_tempBody = $inline_object12;
+        if (isset($inline_object13)) {
+            $_tempBody = $inline_object13;
         }
 
         if ($multipart) {
@@ -2394,15 +2394,15 @@ class CrossExApi
      *
      * Flash Swap Inquiry
      *
-     * @param  \GateApi\Model\InlineObject13 $inline_object13 inline_object13 (optional)
+     * @param  \GateApi\Model\InlineObject14 $inline_object14 inline_object14 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse20034
      */
-    public function createCrossexConvertQuote($inline_object13 = null)
+    public function createCrossexConvertQuote($inline_object14 = null)
     {
-        list($response) = $this->createCrossexConvertQuoteWithHttpInfo($inline_object13);
+        list($response) = $this->createCrossexConvertQuoteWithHttpInfo($inline_object14);
         return $response;
     }
 
@@ -2411,15 +2411,15 @@ class CrossExApi
      *
      * Flash Swap Inquiry
      *
-     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
+     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse20034, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCrossexConvertQuoteWithHttpInfo($inline_object13 = null)
+    public function createCrossexConvertQuoteWithHttpInfo($inline_object14 = null)
     {
-        $request = $this->createCrossexConvertQuoteRequest($inline_object13);
+        $request = $this->createCrossexConvertQuoteRequest($inline_object14);
 
         $options = $this->createHttpClientOption();
         try {
@@ -2465,14 +2465,14 @@ class CrossExApi
      *
      * Flash Swap Inquiry
      *
-     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
+     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexConvertQuoteAsync($inline_object13 = null)
+    public function createCrossexConvertQuoteAsync($inline_object14 = null)
     {
-        return $this->createCrossexConvertQuoteAsyncWithHttpInfo($inline_object13)
+        return $this->createCrossexConvertQuoteAsyncWithHttpInfo($inline_object14)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2485,15 +2485,15 @@ class CrossExApi
      *
      * Flash Swap Inquiry
      *
-     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
+     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexConvertQuoteAsyncWithHttpInfo($inline_object13 = null)
+    public function createCrossexConvertQuoteAsyncWithHttpInfo($inline_object14 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse20034';
-        $request = $this->createCrossexConvertQuoteRequest($inline_object13);
+        $request = $this->createCrossexConvertQuoteRequest($inline_object14);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2532,12 +2532,12 @@ class CrossExApi
     /**
      * Create request for operation 'createCrossexConvertQuote'
      *
-     * @param  \GateApi\Model\InlineObject13 $inline_object13 (optional)
+     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createCrossexConvertQuoteRequest($inline_object13 = null)
+    protected function createCrossexConvertQuoteRequest($inline_object14 = null)
     {
 
         $resourcePath = '/crossex/convert/quote';
@@ -2549,8 +2549,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object13)) {
-            $_tempBody = $inline_object13;
+        if (isset($inline_object14)) {
+            $_tempBody = $inline_object14;
         }
 
         if ($multipart) {
@@ -2624,15 +2624,15 @@ class CrossExApi
      *
      * Flash Swap Transaction
      *
-     * @param  \GateApi\Model\InlineObject14 $inline_object14 inline_object14 (optional)
+     * @param  \GateApi\Model\InlineObject15 $inline_object15 inline_object15 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function createCrossexConvertOrder($inline_object14 = null)
+    public function createCrossexConvertOrder($inline_object15 = null)
     {
-        list($response) = $this->createCrossexConvertOrderWithHttpInfo($inline_object14);
+        list($response) = $this->createCrossexConvertOrderWithHttpInfo($inline_object15);
         return $response;
     }
 
@@ -2641,15 +2641,15 @@ class CrossExApi
      *
      * Flash Swap Transaction
      *
-     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
+     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCrossexConvertOrderWithHttpInfo($inline_object14 = null)
+    public function createCrossexConvertOrderWithHttpInfo($inline_object15 = null)
     {
-        $request = $this->createCrossexConvertOrderRequest($inline_object14);
+        $request = $this->createCrossexConvertOrderRequest($inline_object15);
 
         $options = $this->createHttpClientOption();
         try {
@@ -2695,14 +2695,14 @@ class CrossExApi
      *
      * Flash Swap Transaction
      *
-     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
+     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexConvertOrderAsync($inline_object14 = null)
+    public function createCrossexConvertOrderAsync($inline_object15 = null)
     {
-        return $this->createCrossexConvertOrderAsyncWithHttpInfo($inline_object14)
+        return $this->createCrossexConvertOrderAsyncWithHttpInfo($inline_object15)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2715,15 +2715,15 @@ class CrossExApi
      *
      * Flash Swap Transaction
      *
-     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
+     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCrossexConvertOrderAsyncWithHttpInfo($inline_object14 = null)
+    public function createCrossexConvertOrderAsyncWithHttpInfo($inline_object15 = null)
     {
         $returnType = 'object';
-        $request = $this->createCrossexConvertOrderRequest($inline_object14);
+        $request = $this->createCrossexConvertOrderRequest($inline_object15);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2762,12 +2762,12 @@ class CrossExApi
     /**
      * Create request for operation 'createCrossexConvertOrder'
      *
-     * @param  \GateApi\Model\InlineObject14 $inline_object14 (optional)
+     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createCrossexConvertOrderRequest($inline_object14 = null)
+    protected function createCrossexConvertOrderRequest($inline_object15 = null)
     {
 
         $resourcePath = '/crossex/convert/orders';
@@ -2779,8 +2779,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object14)) {
-            $_tempBody = $inline_object14;
+        if (isset($inline_object15)) {
+            $_tempBody = $inline_object15;
         }
 
         if ($multipart) {
@@ -3106,15 +3106,15 @@ class CrossExApi
      *
      * Modify Account Contract Position Mode and Account Mode
      *
-     * @param  \GateApi\Model\InlineObject15 $inline_object15 inline_object15 (optional)
+     * @param  \GateApi\Model\InlineObject16 $inline_object16 inline_object16 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse202
      */
-    public function updateCrossexAccount($inline_object15 = null)
+    public function updateCrossexAccount($inline_object16 = null)
     {
-        list($response) = $this->updateCrossexAccountWithHttpInfo($inline_object15);
+        list($response) = $this->updateCrossexAccountWithHttpInfo($inline_object16);
         return $response;
     }
 
@@ -3123,15 +3123,15 @@ class CrossExApi
      *
      * Modify Account Contract Position Mode and Account Mode
      *
-     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
+     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse202, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCrossexAccountWithHttpInfo($inline_object15 = null)
+    public function updateCrossexAccountWithHttpInfo($inline_object16 = null)
     {
-        $request = $this->updateCrossexAccountRequest($inline_object15);
+        $request = $this->updateCrossexAccountRequest($inline_object16);
 
         $options = $this->createHttpClientOption();
         try {
@@ -3177,14 +3177,14 @@ class CrossExApi
      *
      * Modify Account Contract Position Mode and Account Mode
      *
-     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
+     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexAccountAsync($inline_object15 = null)
+    public function updateCrossexAccountAsync($inline_object16 = null)
     {
-        return $this->updateCrossexAccountAsyncWithHttpInfo($inline_object15)
+        return $this->updateCrossexAccountAsyncWithHttpInfo($inline_object16)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3197,15 +3197,15 @@ class CrossExApi
      *
      * Modify Account Contract Position Mode and Account Mode
      *
-     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
+     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexAccountAsyncWithHttpInfo($inline_object15 = null)
+    public function updateCrossexAccountAsyncWithHttpInfo($inline_object16 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse202';
-        $request = $this->updateCrossexAccountRequest($inline_object15);
+        $request = $this->updateCrossexAccountRequest($inline_object16);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3244,12 +3244,12 @@ class CrossExApi
     /**
      * Create request for operation 'updateCrossexAccount'
      *
-     * @param  \GateApi\Model\InlineObject15 $inline_object15 (optional)
+     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateCrossexAccountRequest($inline_object15 = null)
+    protected function updateCrossexAccountRequest($inline_object16 = null)
     {
 
         $resourcePath = '/crossex/accounts';
@@ -3261,8 +3261,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object15)) {
-            $_tempBody = $inline_object15;
+        if (isset($inline_object16)) {
+            $_tempBody = $inline_object16;
         }
 
         if ($multipart) {
@@ -3588,15 +3588,15 @@ class CrossExApi
      *
      * Modify Contract Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject16 $inline_object16 inline_object16 (optional)
+     * @param  \GateApi\Model\InlineObject17 $inline_object17 inline_object17 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse2021
      */
-    public function updateCrossexPositionsLeverage($inline_object16 = null)
+    public function updateCrossexPositionsLeverage($inline_object17 = null)
     {
-        list($response) = $this->updateCrossexPositionsLeverageWithHttpInfo($inline_object16);
+        list($response) = $this->updateCrossexPositionsLeverageWithHttpInfo($inline_object17);
         return $response;
     }
 
@@ -3605,15 +3605,15 @@ class CrossExApi
      *
      * Modify Contract Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
+     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse2021, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCrossexPositionsLeverageWithHttpInfo($inline_object16 = null)
+    public function updateCrossexPositionsLeverageWithHttpInfo($inline_object17 = null)
     {
-        $request = $this->updateCrossexPositionsLeverageRequest($inline_object16);
+        $request = $this->updateCrossexPositionsLeverageRequest($inline_object17);
 
         $options = $this->createHttpClientOption();
         try {
@@ -3659,14 +3659,14 @@ class CrossExApi
      *
      * Modify Contract Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
+     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexPositionsLeverageAsync($inline_object16 = null)
+    public function updateCrossexPositionsLeverageAsync($inline_object17 = null)
     {
-        return $this->updateCrossexPositionsLeverageAsyncWithHttpInfo($inline_object16)
+        return $this->updateCrossexPositionsLeverageAsyncWithHttpInfo($inline_object17)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3679,15 +3679,15 @@ class CrossExApi
      *
      * Modify Contract Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
+     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexPositionsLeverageAsyncWithHttpInfo($inline_object16 = null)
+    public function updateCrossexPositionsLeverageAsyncWithHttpInfo($inline_object17 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse2021';
-        $request = $this->updateCrossexPositionsLeverageRequest($inline_object16);
+        $request = $this->updateCrossexPositionsLeverageRequest($inline_object17);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3726,12 +3726,12 @@ class CrossExApi
     /**
      * Create request for operation 'updateCrossexPositionsLeverage'
      *
-     * @param  \GateApi\Model\InlineObject16 $inline_object16 (optional)
+     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateCrossexPositionsLeverageRequest($inline_object16 = null)
+    protected function updateCrossexPositionsLeverageRequest($inline_object17 = null)
     {
 
         $resourcePath = '/crossex/positions/leverage';
@@ -3743,8 +3743,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object16)) {
-            $_tempBody = $inline_object16;
+        if (isset($inline_object17)) {
+            $_tempBody = $inline_object17;
         }
 
         if ($multipart) {
@@ -4070,15 +4070,15 @@ class CrossExApi
      *
      * Modify Leveraged Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject17 $inline_object17 inline_object17 (optional)
+     * @param  \GateApi\Model\InlineObject18 $inline_object18 inline_object18 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse2021
      */
-    public function updateCrossexMarginPositionsLeverage($inline_object17 = null)
+    public function updateCrossexMarginPositionsLeverage($inline_object18 = null)
     {
-        list($response) = $this->updateCrossexMarginPositionsLeverageWithHttpInfo($inline_object17);
+        list($response) = $this->updateCrossexMarginPositionsLeverageWithHttpInfo($inline_object18);
         return $response;
     }
 
@@ -4087,15 +4087,15 @@ class CrossExApi
      *
      * Modify Leveraged Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
+     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse2021, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCrossexMarginPositionsLeverageWithHttpInfo($inline_object17 = null)
+    public function updateCrossexMarginPositionsLeverageWithHttpInfo($inline_object18 = null)
     {
-        $request = $this->updateCrossexMarginPositionsLeverageRequest($inline_object17);
+        $request = $this->updateCrossexMarginPositionsLeverageRequest($inline_object18);
 
         $options = $this->createHttpClientOption();
         try {
@@ -4141,14 +4141,14 @@ class CrossExApi
      *
      * Modify Leveraged Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
+     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexMarginPositionsLeverageAsync($inline_object17 = null)
+    public function updateCrossexMarginPositionsLeverageAsync($inline_object18 = null)
     {
-        return $this->updateCrossexMarginPositionsLeverageAsyncWithHttpInfo($inline_object17)
+        return $this->updateCrossexMarginPositionsLeverageAsyncWithHttpInfo($inline_object18)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4161,15 +4161,15 @@ class CrossExApi
      *
      * Modify Leveraged Trading Pair Leverage Multiplier
      *
-     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
+     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCrossexMarginPositionsLeverageAsyncWithHttpInfo($inline_object17 = null)
+    public function updateCrossexMarginPositionsLeverageAsyncWithHttpInfo($inline_object18 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse2021';
-        $request = $this->updateCrossexMarginPositionsLeverageRequest($inline_object17);
+        $request = $this->updateCrossexMarginPositionsLeverageRequest($inline_object18);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4208,12 +4208,12 @@ class CrossExApi
     /**
      * Create request for operation 'updateCrossexMarginPositionsLeverage'
      *
-     * @param  \GateApi\Model\InlineObject17 $inline_object17 (optional)
+     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateCrossexMarginPositionsLeverageRequest($inline_object17 = null)
+    protected function updateCrossexMarginPositionsLeverageRequest($inline_object18 = null)
     {
 
         $resourcePath = '/crossex/margin_positions/leverage';
@@ -4225,8 +4225,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object17)) {
-            $_tempBody = $inline_object17;
+        if (isset($inline_object18)) {
+            $_tempBody = $inline_object18;
         }
 
         if ($multipart) {
@@ -4300,15 +4300,15 @@ class CrossExApi
      *
      * Full Close Position
      *
-     * @param  \GateApi\Model\InlineObject18 $inline_object18 inline_object18 (optional)
+     * @param  \GateApi\Model\InlineObject19 $inline_object19 inline_object19 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\InlineResponse20031
      */
-    public function closeCrossexPosition($inline_object18 = null)
+    public function closeCrossexPosition($inline_object19 = null)
     {
-        list($response) = $this->closeCrossexPositionWithHttpInfo($inline_object18);
+        list($response) = $this->closeCrossexPositionWithHttpInfo($inline_object19);
         return $response;
     }
 
@@ -4317,15 +4317,15 @@ class CrossExApi
      *
      * Full Close Position
      *
-     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
+     * @param  \GateApi\Model\InlineObject19 $inline_object19 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\InlineResponse20031, HTTP status code, HTTP response headers (array of strings)
      */
-    public function closeCrossexPositionWithHttpInfo($inline_object18 = null)
+    public function closeCrossexPositionWithHttpInfo($inline_object19 = null)
     {
-        $request = $this->closeCrossexPositionRequest($inline_object18);
+        $request = $this->closeCrossexPositionRequest($inline_object19);
 
         $options = $this->createHttpClientOption();
         try {
@@ -4371,14 +4371,14 @@ class CrossExApi
      *
      * Full Close Position
      *
-     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
+     * @param  \GateApi\Model\InlineObject19 $inline_object19 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function closeCrossexPositionAsync($inline_object18 = null)
+    public function closeCrossexPositionAsync($inline_object19 = null)
     {
-        return $this->closeCrossexPositionAsyncWithHttpInfo($inline_object18)
+        return $this->closeCrossexPositionAsyncWithHttpInfo($inline_object19)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4391,15 +4391,15 @@ class CrossExApi
      *
      * Full Close Position
      *
-     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
+     * @param  \GateApi\Model\InlineObject19 $inline_object19 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function closeCrossexPositionAsyncWithHttpInfo($inline_object18 = null)
+    public function closeCrossexPositionAsyncWithHttpInfo($inline_object19 = null)
     {
         $returnType = '\GateApi\Model\InlineResponse20031';
-        $request = $this->closeCrossexPositionRequest($inline_object18);
+        $request = $this->closeCrossexPositionRequest($inline_object19);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4438,12 +4438,12 @@ class CrossExApi
     /**
      * Create request for operation 'closeCrossexPosition'
      *
-     * @param  \GateApi\Model\InlineObject18 $inline_object18 (optional)
+     * @param  \GateApi\Model\InlineObject19 $inline_object19 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function closeCrossexPositionRequest($inline_object18 = null)
+    protected function closeCrossexPositionRequest($inline_object19 = null)
     {
 
         $resourcePath = '/crossex/position';
@@ -4455,8 +4455,8 @@ class CrossExApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object18)) {
-            $_tempBody = $inline_object18;
+        if (isset($inline_object19)) {
+            $_tempBody = $inline_object19;
         }
 
         if ($multipart) {

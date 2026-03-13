@@ -54,11 +54,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'coin' => 'string',
-        'amount' => 'string',
-        'from' => 'string',
-        'to' => 'string',
-        'text' => 'string'
+        'order_id' => 'string'
     ];
 
     /**
@@ -67,11 +63,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'coin' => null,
-        'amount' => null,
-        'from' => null,
-        'to' => null,
-        'text' => null
+        'order_id' => null
     ];
 
     /**
@@ -101,11 +93,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'coin' => 'coin',
-        'amount' => 'amount',
-        'from' => 'from',
-        'to' => 'to',
-        'text' => 'text'
+        'order_id' => 'order_id'
     ];
 
     /**
@@ -114,11 +102,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'coin' => 'setCoin',
-        'amount' => 'setAmount',
-        'from' => 'setFrom',
-        'to' => 'setTo',
-        'text' => 'setText'
+        'order_id' => 'setOrderId'
     ];
 
     /**
@@ -127,11 +111,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'coin' => 'getCoin',
-        'amount' => 'getAmount',
-        'from' => 'getFrom',
-        'to' => 'getTo',
-        'text' => 'getText'
+        'order_id' => 'getOrderId'
     ];
 
     /**
@@ -194,11 +174,7 @@ class InlineObject10 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['from'] = isset($data['from']) ? $data['from'] : null;
-        $this->container['to'] = isset($data['to']) ? $data['to'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
     }
 
     /**
@@ -210,17 +186,8 @@ class InlineObject10 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['coin'] === null) {
-            $invalidProperties[] = "'coin' can't be null";
-        }
-        if ($this->container['amount'] === null) {
-            $invalidProperties[] = "'amount' can't be null";
-        }
-        if ($this->container['from'] === null) {
-            $invalidProperties[] = "'from' can't be null";
-        }
-        if ($this->container['to'] === null) {
-            $invalidProperties[] = "'to' can't be null";
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -238,121 +205,25 @@ class InlineObject10 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets coin
+     * Gets order_id
      *
      * @return string
      */
-    public function getCoin()
+    public function getOrderId()
     {
-        return $this->container['coin'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets coin
+     * Sets order_id
      *
-     * @param string $coin Currency
+     * @param string $order_id Order ID
      *
      * @return $this
      */
-    public function setCoin($coin)
+    public function setOrderId($order_id)
     {
-        $this->container['coin'] = $coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return string
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param string $amount Transfer amount
-     *
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets from
-     *
-     * @return string
-     */
-    public function getFrom()
-    {
-        return $this->container['from'];
-    }
-
-    /**
-     * Sets from
-     *
-     * @param string $from Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
-     *
-     * @return $this
-     */
-    public function setFrom($from)
-    {
-        $this->container['from'] = $from;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
-     *
-     * @return string
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param string $to Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
-     *
-     * @return $this
-     */
-    public function setTo($to)
-    {
-        $this->container['to'] = $to;
-
-        return $this;
-    }
-
-    /**
-     * Gets text
-     *
-     * @return string|null
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string|null $text User-defined ID
-     *
-     * @return $this
-     */
-    public function setText($text)
-    {
-        $this->container['text'] = $text;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }

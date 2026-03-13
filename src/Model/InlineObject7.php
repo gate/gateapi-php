@@ -54,15 +54,13 @@ class InlineObject7 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
         'side' => 'string',
-        'crypto_currency' => 'string',
-        'fiat_currency' => 'string',
-        'crypto_amount' => 'string',
-        'fiat_amount' => 'string',
-        'promotion_code' => 'string',
-        'quote_token' => 'string',
-        'bank_id' => 'string'
+        'pay_coin' => 'string',
+        'get_coin' => 'string',
+        'pay_amount' => 'string',
+        'get_amount' => 'string',
+        'create_quote_token' => 'string',
+        'promotion_code' => 'string'
     ];
 
     /**
@@ -71,15 +69,13 @@ class InlineObject7 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'type' => null,
         'side' => null,
-        'crypto_currency' => null,
-        'fiat_currency' => null,
-        'crypto_amount' => null,
-        'fiat_amount' => null,
-        'promotion_code' => null,
-        'quote_token' => null,
-        'bank_id' => null
+        'pay_coin' => null,
+        'get_coin' => null,
+        'pay_amount' => null,
+        'get_amount' => null,
+        'create_quote_token' => null,
+        'promotion_code' => null
     ];
 
     /**
@@ -109,15 +105,13 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
         'side' => 'side',
-        'crypto_currency' => 'crypto_currency',
-        'fiat_currency' => 'fiat_currency',
-        'crypto_amount' => 'crypto_amount',
-        'fiat_amount' => 'fiat_amount',
-        'promotion_code' => 'promotion_code',
-        'quote_token' => 'quote_token',
-        'bank_id' => 'bank_id'
+        'pay_coin' => 'pay_coin',
+        'get_coin' => 'get_coin',
+        'pay_amount' => 'pay_amount',
+        'get_amount' => 'get_amount',
+        'create_quote_token' => 'create_quote_token',
+        'promotion_code' => 'promotion_code'
     ];
 
     /**
@@ -126,15 +120,13 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
         'side' => 'setSide',
-        'crypto_currency' => 'setCryptoCurrency',
-        'fiat_currency' => 'setFiatCurrency',
-        'crypto_amount' => 'setCryptoAmount',
-        'fiat_amount' => 'setFiatAmount',
-        'promotion_code' => 'setPromotionCode',
-        'quote_token' => 'setQuoteToken',
-        'bank_id' => 'setBankId'
+        'pay_coin' => 'setPayCoin',
+        'get_coin' => 'setGetCoin',
+        'pay_amount' => 'setPayAmount',
+        'get_amount' => 'setGetAmount',
+        'create_quote_token' => 'setCreateQuoteToken',
+        'promotion_code' => 'setPromotionCode'
     ];
 
     /**
@@ -143,15 +135,13 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
         'side' => 'getSide',
-        'crypto_currency' => 'getCryptoCurrency',
-        'fiat_currency' => 'getFiatCurrency',
-        'crypto_amount' => 'getCryptoAmount',
-        'fiat_amount' => 'getFiatAmount',
-        'promotion_code' => 'getPromotionCode',
-        'quote_token' => 'getQuoteToken',
-        'bank_id' => 'getBankId'
+        'pay_coin' => 'getPayCoin',
+        'get_coin' => 'getGetCoin',
+        'pay_amount' => 'getPayAmount',
+        'get_amount' => 'getGetAmount',
+        'create_quote_token' => 'getCreateQuoteToken',
+        'promotion_code' => 'getPromotionCode'
     ];
 
     /**
@@ -214,15 +204,13 @@ class InlineObject7 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
-        $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
-        $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
-        $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
+        $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
+        $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
+        $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
+        $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
+        $this->container['create_quote_token'] = isset($data['create_quote_token']) ? $data['create_quote_token'] : null;
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
-        $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
-        $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
     }
 
     /**
@@ -234,29 +222,14 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         if ($this->container['side'] === null) {
             $invalidProperties[] = "'side' can't be null";
         }
-        if ($this->container['crypto_currency'] === null) {
-            $invalidProperties[] = "'crypto_currency' can't be null";
+        if ($this->container['pay_coin'] === null) {
+            $invalidProperties[] = "'pay_coin' can't be null";
         }
-        if ($this->container['fiat_currency'] === null) {
-            $invalidProperties[] = "'fiat_currency' can't be null";
-        }
-        if ($this->container['crypto_amount'] === null) {
-            $invalidProperties[] = "'crypto_amount' can't be null";
-        }
-        if ($this->container['fiat_amount'] === null) {
-            $invalidProperties[] = "'fiat_amount' can't be null";
-        }
-        if ($this->container['quote_token'] === null) {
-            $invalidProperties[] = "'quote_token' can't be null";
-        }
-        if ($this->container['bank_id'] === null) {
-            $invalidProperties[] = "'bank_id' can't be null";
+        if ($this->container['get_coin'] === null) {
+            $invalidProperties[] = "'get_coin' can't be null";
         }
         return $invalidProperties;
     }
@@ -274,30 +247,6 @@ class InlineObject7 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type BUY for on-ramp, SELL for off-ramp
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets side
      *
      * @return string
@@ -310,7 +259,7 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param string $side Quote direction returned by the quote API (used for order validation)
+     * @param string $side PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
      *
      * @return $this
      */
@@ -322,97 +271,121 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets crypto_currency
+     * Gets pay_coin
      *
      * @return string
      */
-    public function getCryptoCurrency()
+    public function getPayCoin()
     {
-        return $this->container['crypto_currency'];
+        return $this->container['pay_coin'];
     }
 
     /**
-     * Sets crypto_currency
+     * Sets pay_coin
      *
-     * @param string $crypto_currency Cryptocurrency (supported currencies can be queried from the OTC web fiat quote page)
+     * @param string $pay_coin Currency the user pays. Supported currencies can be found on the OTC web quote page.
      *
      * @return $this
      */
-    public function setCryptoCurrency($crypto_currency)
+    public function setPayCoin($pay_coin)
     {
-        $this->container['crypto_currency'] = $crypto_currency;
+        $this->container['pay_coin'] = $pay_coin;
 
         return $this;
     }
 
     /**
-     * Gets fiat_currency
+     * Gets get_coin
      *
      * @return string
      */
-    public function getFiatCurrency()
+    public function getGetCoin()
     {
-        return $this->container['fiat_currency'];
+        return $this->container['get_coin'];
     }
 
     /**
-     * Sets fiat_currency
+     * Sets get_coin
      *
-     * @param string $fiat_currency Fiat currency (supported currencies can be queried from the OTC web fiat quote page)
+     * @param string $get_coin Currency the user receives. Supported currencies can be found on the OTC web quote page.
      *
      * @return $this
      */
-    public function setFiatCurrency($fiat_currency)
+    public function setGetCoin($get_coin)
     {
-        $this->container['fiat_currency'] = $fiat_currency;
+        $this->container['get_coin'] = $get_coin;
 
         return $this;
     }
 
     /**
-     * Gets crypto_amount
+     * Gets pay_amount
      *
-     * @return string
+     * @return string|null
      */
-    public function getCryptoAmount()
+    public function getPayAmount()
     {
-        return $this->container['crypto_amount'];
+        return $this->container['pay_amount'];
     }
 
     /**
-     * Sets crypto_amount
+     * Sets pay_amount
      *
-     * @param string $crypto_amount Amount of cryptocurrency
+     * @param string|null $pay_amount User payment currency amount
      *
      * @return $this
      */
-    public function setCryptoAmount($crypto_amount)
+    public function setPayAmount($pay_amount)
     {
-        $this->container['crypto_amount'] = $crypto_amount;
+        $this->container['pay_amount'] = $pay_amount;
 
         return $this;
     }
 
     /**
-     * Gets fiat_amount
+     * Gets get_amount
      *
-     * @return string
+     * @return string|null
      */
-    public function getFiatAmount()
+    public function getGetAmount()
     {
-        return $this->container['fiat_amount'];
+        return $this->container['get_amount'];
     }
 
     /**
-     * Sets fiat_amount
+     * Sets get_amount
      *
-     * @param string $fiat_amount Fiat amount
+     * @param string|null $get_amount Amount of currency received by the user
      *
      * @return $this
      */
-    public function setFiatAmount($fiat_amount)
+    public function setGetAmount($get_amount)
     {
-        $this->container['fiat_amount'] = $fiat_amount;
+        $this->container['get_amount'] = $get_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_quote_token
+     *
+     * @return string|null
+     */
+    public function getCreateQuoteToken()
+    {
+        return $this->container['create_quote_token'];
+    }
+
+    /**
+     * Sets create_quote_token
+     *
+     * @param string|null $create_quote_token Create quote token: 0: quote preview only; 1: generate quote token for order placement.
+     *
+     * @return $this
+     */
+    public function setCreateQuoteToken($create_quote_token)
+    {
+        $this->container['create_quote_token'] = $create_quote_token;
 
         return $this;
     }
@@ -430,61 +403,13 @@ class InlineObject7 implements ModelInterface, ArrayAccess
     /**
      * Sets promotion_code
      *
-     * @param string|null $promotion_code Promotion code
+     * @param string|null $promotion_code Promotion code (optional)
      *
      * @return $this
      */
     public function setPromotionCode($promotion_code)
     {
         $this->container['promotion_code'] = $promotion_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets quote_token
-     *
-     * @return string
-     */
-    public function getQuoteToken()
-    {
-        return $this->container['quote_token'];
-    }
-
-    /**
-     * Sets quote_token
-     *
-     * @param string $quote_token Parameter returned by the quote API
-     *
-     * @return $this
-     */
-    public function setQuoteToken($quote_token)
-    {
-        $this->container['quote_token'] = $quote_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_id
-     *
-     * @return string
-     */
-    public function getBankId()
-    {
-        return $this->container['bank_id'];
-    }
-
-    /**
-     * Sets bank_id
-     *
-     * @param string $bank_id Bank card ID used for the order (retrieved via the default bank card API)
-     *
-     * @return $this
-     */
-    public function setBankId($bank_id)
-    {
-        $this->container['bank_id'] = $bank_id;
 
         return $this;
     }

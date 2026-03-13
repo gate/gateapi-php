@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineObject6 Class Doc Comment
  *
  * @category Class
+ * @description Order Modification Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -54,13 +55,8 @@ class InlineObject6 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'side' => 'string',
-        'pay_coin' => 'string',
-        'get_coin' => 'string',
-        'pay_amount' => 'string',
-        'get_amount' => 'string',
-        'create_quote_token' => 'string',
-        'promotion_code' => 'string'
+        'price' => 'string',
+        'size' => 'int'
     ];
 
     /**
@@ -69,13 +65,8 @@ class InlineObject6 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'side' => null,
-        'pay_coin' => null,
-        'get_coin' => null,
-        'pay_amount' => null,
-        'get_amount' => null,
-        'create_quote_token' => null,
-        'promotion_code' => null
+        'price' => null,
+        'size' => 'int64'
     ];
 
     /**
@@ -105,13 +96,8 @@ class InlineObject6 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'side' => 'side',
-        'pay_coin' => 'pay_coin',
-        'get_coin' => 'get_coin',
-        'pay_amount' => 'pay_amount',
-        'get_amount' => 'get_amount',
-        'create_quote_token' => 'create_quote_token',
-        'promotion_code' => 'promotion_code'
+        'price' => 'price',
+        'size' => 'size'
     ];
 
     /**
@@ -120,13 +106,8 @@ class InlineObject6 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'side' => 'setSide',
-        'pay_coin' => 'setPayCoin',
-        'get_coin' => 'setGetCoin',
-        'pay_amount' => 'setPayAmount',
-        'get_amount' => 'setGetAmount',
-        'create_quote_token' => 'setCreateQuoteToken',
-        'promotion_code' => 'setPromotionCode'
+        'price' => 'setPrice',
+        'size' => 'setSize'
     ];
 
     /**
@@ -135,13 +116,8 @@ class InlineObject6 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'side' => 'getSide',
-        'pay_coin' => 'getPayCoin',
-        'get_coin' => 'getGetCoin',
-        'pay_amount' => 'getPayAmount',
-        'get_amount' => 'getGetAmount',
-        'create_quote_token' => 'getCreateQuoteToken',
-        'promotion_code' => 'getPromotionCode'
+        'price' => 'getPrice',
+        'size' => 'getSize'
     ];
 
     /**
@@ -204,13 +180,8 @@ class InlineObject6 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
-        $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
-        $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
-        $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
-        $this->container['create_quote_token'] = isset($data['create_quote_token']) ? $data['create_quote_token'] : null;
-        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
     }
 
     /**
@@ -222,14 +193,11 @@ class InlineObject6 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['side'] === null) {
-            $invalidProperties[] = "'side' can't be null";
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
         }
-        if ($this->container['pay_coin'] === null) {
-            $invalidProperties[] = "'pay_coin' can't be null";
-        }
-        if ($this->container['get_coin'] === null) {
-            $invalidProperties[] = "'get_coin' can't be null";
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -247,169 +215,49 @@ class InlineObject6 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets side
+     * Gets price
      *
      * @return string
      */
-    public function getSide()
+    public function getPrice()
     {
-        return $this->container['side'];
+        return $this->container['price'];
     }
 
     /**
-     * Sets side
+     * Sets price
      *
-     * @param string $side PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
+     * @param string $price Order Price
      *
      * @return $this
      */
-    public function setSide($side)
+    public function setPrice($price)
     {
-        $this->container['side'] = $side;
+        $this->container['price'] = $price;
 
         return $this;
     }
 
     /**
-     * Gets pay_coin
+     * Gets size
      *
-     * @return string
+     * @return int
      */
-    public function getPayCoin()
+    public function getSize()
     {
-        return $this->container['pay_coin'];
+        return $this->container['size'];
     }
 
     /**
-     * Sets pay_coin
+     * Sets size
      *
-     * @param string $pay_coin Currency the user pays. Supported currencies can be found on the OTC web quote page.
+     * @param int $size Trade amount
      *
      * @return $this
      */
-    public function setPayCoin($pay_coin)
+    public function setSize($size)
     {
-        $this->container['pay_coin'] = $pay_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets get_coin
-     *
-     * @return string
-     */
-    public function getGetCoin()
-    {
-        return $this->container['get_coin'];
-    }
-
-    /**
-     * Sets get_coin
-     *
-     * @param string $get_coin Currency the user receives. Supported currencies can be found on the OTC web quote page.
-     *
-     * @return $this
-     */
-    public function setGetCoin($get_coin)
-    {
-        $this->container['get_coin'] = $get_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_amount
-     *
-     * @return string|null
-     */
-    public function getPayAmount()
-    {
-        return $this->container['pay_amount'];
-    }
-
-    /**
-     * Sets pay_amount
-     *
-     * @param string|null $pay_amount User payment currency amount
-     *
-     * @return $this
-     */
-    public function setPayAmount($pay_amount)
-    {
-        $this->container['pay_amount'] = $pay_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets get_amount
-     *
-     * @return string|null
-     */
-    public function getGetAmount()
-    {
-        return $this->container['get_amount'];
-    }
-
-    /**
-     * Sets get_amount
-     *
-     * @param string|null $get_amount Amount of currency received by the user
-     *
-     * @return $this
-     */
-    public function setGetAmount($get_amount)
-    {
-        $this->container['get_amount'] = $get_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets create_quote_token
-     *
-     * @return string|null
-     */
-    public function getCreateQuoteToken()
-    {
-        return $this->container['create_quote_token'];
-    }
-
-    /**
-     * Sets create_quote_token
-     *
-     * @param string|null $create_quote_token Create quote token: 0: quote preview only; 1: generate quote token for order placement.
-     *
-     * @return $this
-     */
-    public function setCreateQuoteToken($create_quote_token)
-    {
-        $this->container['create_quote_token'] = $create_quote_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_code
-     *
-     * @return string|null
-     */
-    public function getPromotionCode()
-    {
-        return $this->container['promotion_code'];
-    }
-
-    /**
-     * Sets promotion_code
-     *
-     * @param string|null $promotion_code Promotion code (optional)
-     *
-     * @return $this
-     */
-    public function setPromotionCode($promotion_code)
-    {
-        $this->container['promotion_code'] = $promotion_code;
+        $this->container['size'] = $size;
 
         return $this;
     }
