@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * OtcOrderRequest Class Doc Comment
  *
  * @category Class
- * @description 法币下单请求体
+ * @description Fiat Order Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

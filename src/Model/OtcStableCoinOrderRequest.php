@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * OtcStableCoinOrderRequest Class Doc Comment
  *
  * @category Class
- * @description 稳定币下单请求体
+ * @description Stablecoin Order Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

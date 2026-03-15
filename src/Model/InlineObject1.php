@@ -55,6 +55,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'contract' => 'string',
         'price' => 'string',
         'size' => 'int'
     ];
@@ -65,6 +66,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'contract' => null,
         'price' => null,
         'size' => 'int64'
     ];
@@ -96,6 +98,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'contract' => 'contract',
         'price' => 'price',
         'size' => 'size'
     ];
@@ -106,6 +109,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'contract' => 'setContract',
         'price' => 'setPrice',
         'size' => 'setSize'
     ];
@@ -116,6 +120,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'contract' => 'getContract',
         'price' => 'getPrice',
         'size' => 'getSize'
     ];
@@ -180,6 +185,7 @@ class InlineObject1 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
     }
@@ -193,6 +199,9 @@ class InlineObject1 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['contract'] === null) {
+            $invalidProperties[] = "'contract' can't be null";
+        }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
         }
@@ -213,6 +222,30 @@ class InlineObject1 implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets contract
+     *
+     * @return string
+     */
+    public function getContract()
+    {
+        return $this->container['contract'];
+    }
+
+    /**
+     * Sets contract
+     *
+     * @param string $contract Options contract name
+     *
+     * @return $this
+     */
+    public function setContract($contract)
+    {
+        $this->container['contract'] = $contract;
+
+        return $this;
+    }
 
     /**
      * Gets price

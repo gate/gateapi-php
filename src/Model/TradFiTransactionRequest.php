@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * TradFiTransactionRequest Class Doc Comment
  *
  * @category Class
- * @description 资金转入转出请求体
+ * @description Fund Transfer Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * CrossexLeverageRequest Class Doc Comment
  *
  * @category Class
- * @description 更改杠杆请求体（合约/杠杆通用）
+ * @description Change Leverage Request Body (for futures/margin)
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

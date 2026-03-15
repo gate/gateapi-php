@@ -2044,7 +2044,7 @@ class AlphaApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Ticker2[]
+     * @return \GateApi\Model\AlphaTicker[]
      */
     public function listAlphaTickers($associative_array)
     {
@@ -2065,7 +2065,7 @@ class AlphaApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Ticker2[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\AlphaTicker[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listAlphaTickersWithHttpInfo($associative_array)
     {
@@ -2095,7 +2095,7 @@ class AlphaApi
             );
         }
 
-        $returnType = '\GateApi\Model\Ticker2[]';
+        $returnType = '\GateApi\Model\AlphaTicker[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2150,7 +2150,7 @@ class AlphaApi
      */
     public function listAlphaTickersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\Ticker2[]';
+        $returnType = '\GateApi\Model\AlphaTicker[]';
         $request = $this->listAlphaTickersRequest($associative_array);
 
         return $this->client

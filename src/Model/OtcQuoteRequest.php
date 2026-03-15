@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * OtcQuoteRequest Class Doc Comment
  *
  * @category Class
- * @description 法币和稳定币询价请求体
+ * @description Fiat and Stablecoin Quote Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

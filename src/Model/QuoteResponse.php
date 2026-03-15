@@ -413,7 +413,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
     /**
      * Sets order_fee
      *
-     * @param string|null $order_fee Slippage tolerance (10 means 10% tolerance)
+     * @param string|null $order_fee Trading fee
      *
      * @return $this
      */

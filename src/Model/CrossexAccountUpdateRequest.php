@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * CrossexAccountUpdateRequest Class Doc Comment
  *
  * @category Class
- * @description 更改账户请求体
+ * @description Change Account Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

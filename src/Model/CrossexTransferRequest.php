@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * CrossexTransferRequest Class Doc Comment
  *
  * @category Class
- * @description 资金划转请求体
+ * @description Fund Transfer Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

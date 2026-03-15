@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**contract** | **string** | Options contract name | 
 **price** | **string** | Order Price | 
 **size** | **int** | Trade amount | 
 

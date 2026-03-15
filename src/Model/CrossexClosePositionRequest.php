@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * CrossexClosePositionRequest Class Doc Comment
  *
  * @category Class
- * @description 完全平仓请求体
+ * @description Full Close Position Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

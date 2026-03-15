@@ -467,7 +467,7 @@ No authorization required
 
 ## listAlphaTickers
 
-> \GateApi\Model\Ticker2[] listAlphaTickers($currency, $limit, $page)
+> \GateApi\Model\AlphaTicker[] listAlphaTickers($currency, $limit, $page)
 
 Query currency ticker
 
@@ -513,7 +513,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Ticker2[]**](../Model/Ticker2.md)
+[**\GateApi\Model\AlphaTicker[]**](../Model/AlphaTicker.md)
 
 ### Authorization
 
