@@ -7554,7 +7554,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\TriggerOrderResponse
+     * @return \GateApi\Model\TriggerOrderResponse1
      */
     public function createPriceTriggeredDeliveryOrder($settle, $futures_price_triggered_order)
     {
@@ -7572,7 +7572,7 @@ class DeliveryApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\TriggerOrderResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TriggerOrderResponse1, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPriceTriggeredDeliveryOrderWithHttpInfo($settle, $futures_price_triggered_order)
     {
@@ -7602,7 +7602,7 @@ class DeliveryApi
             );
         }
 
-        $returnType = '\GateApi\Model\TriggerOrderResponse';
+        $returnType = '\GateApi\Model\TriggerOrderResponse1';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -7651,7 +7651,7 @@ class DeliveryApi
      */
     public function createPriceTriggeredDeliveryOrderAsyncWithHttpInfo($settle, $futures_price_triggered_order)
     {
-        $returnType = '\GateApi\Model\TriggerOrderResponse';
+        $returnType = '\GateApi\Model\TriggerOrderResponse1';
         $request = $this->createPriceTriggeredDeliveryOrderRequest($settle, $futures_price_triggered_order);
 
         return $this->client
