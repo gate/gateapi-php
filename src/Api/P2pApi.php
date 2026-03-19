@@ -121,7 +121,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20014
+     * @return \GateApi\Model\P2pMerchantUserInfoResponse
      */
     public function p2pMerchantAccountGetUserInfo()
     {
@@ -137,7 +137,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20014, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pMerchantUserInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantAccountGetUserInfoWithHttpInfo()
     {
@@ -167,7 +167,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20014';
+        $returnType = '\GateApi\Model\P2pMerchantUserInfoResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -212,7 +212,7 @@ class P2pApi
      */
     public function p2pMerchantAccountGetUserInfoAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse20014';
+        $returnType = '\GateApi\Model\P2pMerchantUserInfoResponse';
         $request = $this->p2pMerchantAccountGetUserInfoRequest();
 
         return $this->client
@@ -344,7 +344,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20015
+     * @return \GateApi\Model\P2pCounterpartyUserInfoResponse
      */
     public function p2pMerchantAccountGetCounterpartyUserInfo($get_counterparty_user_info_request)
     {
@@ -361,7 +361,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20015, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pCounterpartyUserInfoResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantAccountGetCounterpartyUserInfoWithHttpInfo($get_counterparty_user_info_request)
     {
@@ -391,7 +391,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20015';
+        $returnType = '\GateApi\Model\P2pCounterpartyUserInfoResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -438,7 +438,7 @@ class P2pApi
      */
     public function p2pMerchantAccountGetCounterpartyUserInfoAsyncWithHttpInfo($get_counterparty_user_info_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20015';
+        $returnType = '\GateApi\Model\P2pCounterpartyUserInfoResponse';
         $request = $this->p2pMerchantAccountGetCounterpartyUserInfoRequest($get_counterparty_user_info_request);
 
         return $this->client
@@ -580,7 +580,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20016
+     * @return \GateApi\Model\P2pPaymentMethodsResponse
      */
     public function p2pMerchantAccountGetMyselfPayment($get_myself_payment_request = null)
     {
@@ -597,7 +597,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20016, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pPaymentMethodsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantAccountGetMyselfPaymentWithHttpInfo($get_myself_payment_request = null)
     {
@@ -627,7 +627,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20016';
+        $returnType = '\GateApi\Model\P2pPaymentMethodsResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -674,7 +674,7 @@ class P2pApi
      */
     public function p2pMerchantAccountGetMyselfPaymentAsyncWithHttpInfo($get_myself_payment_request = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20016';
+        $returnType = '\GateApi\Model\P2pPaymentMethodsResponse';
         $request = $this->p2pMerchantAccountGetMyselfPaymentRequest($get_myself_payment_request);
 
         return $this->client
@@ -810,7 +810,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20017
+     * @return \GateApi\Model\P2pTransactionListResponse
      */
     public function p2pMerchantTransactionGetPendingTransactionList($get_pending_transaction_list_request)
     {
@@ -827,7 +827,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20017, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pTransactionListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantTransactionGetPendingTransactionListWithHttpInfo($get_pending_transaction_list_request)
     {
@@ -857,7 +857,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20017';
+        $returnType = '\GateApi\Model\P2pTransactionListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -904,7 +904,7 @@ class P2pApi
      */
     public function p2pMerchantTransactionGetPendingTransactionListAsyncWithHttpInfo($get_pending_transaction_list_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20017';
+        $returnType = '\GateApi\Model\P2pTransactionListResponse';
         $request = $this->p2pMerchantTransactionGetPendingTransactionListRequest($get_pending_transaction_list_request);
 
         return $this->client
@@ -1046,7 +1046,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20017
+     * @return \GateApi\Model\P2pTransactionListResponse
      */
     public function p2pMerchantTransactionGetCompletedTransactionList($get_completed_transaction_list_request)
     {
@@ -1063,7 +1063,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20017, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pTransactionListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantTransactionGetCompletedTransactionListWithHttpInfo($get_completed_transaction_list_request)
     {
@@ -1093,7 +1093,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20017';
+        $returnType = '\GateApi\Model\P2pTransactionListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1140,7 +1140,7 @@ class P2pApi
      */
     public function p2pMerchantTransactionGetCompletedTransactionListAsyncWithHttpInfo($get_completed_transaction_list_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20017';
+        $returnType = '\GateApi\Model\P2pTransactionListResponse';
         $request = $this->p2pMerchantTransactionGetCompletedTransactionListRequest($get_completed_transaction_list_request);
 
         return $this->client
@@ -1282,7 +1282,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20018
+     * @return \GateApi\Model\P2pTransactionDetailResponse
      */
     public function p2pMerchantTransactionGetTransactionDetails($get_transaction_details_request)
     {
@@ -1299,7 +1299,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20018, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pTransactionDetailResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantTransactionGetTransactionDetailsWithHttpInfo($get_transaction_details_request)
     {
@@ -1329,7 +1329,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20018';
+        $returnType = '\GateApi\Model\P2pTransactionDetailResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1376,7 +1376,7 @@ class P2pApi
      */
     public function p2pMerchantTransactionGetTransactionDetailsAsyncWithHttpInfo($get_transaction_details_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20018';
+        $returnType = '\GateApi\Model\P2pTransactionDetailResponse';
         $request = $this->p2pMerchantTransactionGetTransactionDetailsRequest($get_transaction_details_request);
 
         return $this->client
@@ -1518,7 +1518,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20019
+     * @return \GateApi\Model\P2pTransactionActionResponse
      */
     public function p2pMerchantTransactionConfirmPayment($confirm_payment)
     {
@@ -1535,7 +1535,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20019, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pTransactionActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantTransactionConfirmPaymentWithHttpInfo($confirm_payment)
     {
@@ -1565,7 +1565,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20019';
+        $returnType = '\GateApi\Model\P2pTransactionActionResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1612,7 +1612,7 @@ class P2pApi
      */
     public function p2pMerchantTransactionConfirmPaymentAsyncWithHttpInfo($confirm_payment)
     {
-        $returnType = '\GateApi\Model\InlineResponse20019';
+        $returnType = '\GateApi\Model\P2pTransactionActionResponse';
         $request = $this->p2pMerchantTransactionConfirmPaymentRequest($confirm_payment);
 
         return $this->client
@@ -1754,7 +1754,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20019
+     * @return \GateApi\Model\P2pTransactionActionResponse
      */
     public function p2pMerchantTransactionConfirmReceipt($confirm_receipt)
     {
@@ -1771,7 +1771,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20019, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pTransactionActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantTransactionConfirmReceiptWithHttpInfo($confirm_receipt)
     {
@@ -1801,7 +1801,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20019';
+        $returnType = '\GateApi\Model\P2pTransactionActionResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1848,7 +1848,7 @@ class P2pApi
      */
     public function p2pMerchantTransactionConfirmReceiptAsyncWithHttpInfo($confirm_receipt)
     {
-        $returnType = '\GateApi\Model\InlineResponse20019';
+        $returnType = '\GateApi\Model\P2pTransactionActionResponse';
         $request = $this->p2pMerchantTransactionConfirmReceiptRequest($confirm_receipt);
 
         return $this->client
@@ -1990,7 +1990,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20019
+     * @return \GateApi\Model\P2pTransactionActionResponse
      */
     public function p2pMerchantTransactionCancel($cancel_order)
     {
@@ -2007,7 +2007,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20019, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pTransactionActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantTransactionCancelWithHttpInfo($cancel_order)
     {
@@ -2037,7 +2037,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20019';
+        $returnType = '\GateApi\Model\P2pTransactionActionResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2084,7 +2084,7 @@ class P2pApi
      */
     public function p2pMerchantTransactionCancelAsyncWithHttpInfo($cancel_order)
     {
-        $returnType = '\GateApi\Model\InlineResponse20019';
+        $returnType = '\GateApi\Model\P2pTransactionActionResponse';
         $request = $this->p2pMerchantTransactionCancelRequest($cancel_order);
 
         return $this->client
@@ -2463,7 +2463,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20020
+     * @return \GateApi\Model\P2pAdsUpdateStatusResponse
      */
     public function p2pMerchantBooksAdsUpdateStatus($ads_update_status, $trade_type = null)
     {
@@ -2481,7 +2481,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20020, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pAdsUpdateStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantBooksAdsUpdateStatusWithHttpInfo($ads_update_status, $trade_type = null)
     {
@@ -2511,7 +2511,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20020';
+        $returnType = '\GateApi\Model\P2pAdsUpdateStatusResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2560,7 +2560,7 @@ class P2pApi
      */
     public function p2pMerchantBooksAdsUpdateStatusAsyncWithHttpInfo($ads_update_status, $trade_type = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20020';
+        $returnType = '\GateApi\Model\P2pAdsUpdateStatusResponse';
         $request = $this->p2pMerchantBooksAdsUpdateStatusRequest($ads_update_status, $trade_type);
 
         return $this->client
@@ -2715,7 +2715,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20021
+     * @return \GateApi\Model\P2pAdDetailResponse
      */
     public function p2pMerchantBooksAdsDetail($ads_detail_request)
     {
@@ -2732,7 +2732,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20021, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pAdDetailResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantBooksAdsDetailWithHttpInfo($ads_detail_request)
     {
@@ -2762,7 +2762,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20021';
+        $returnType = '\GateApi\Model\P2pAdDetailResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2809,7 +2809,7 @@ class P2pApi
      */
     public function p2pMerchantBooksAdsDetailAsyncWithHttpInfo($ads_detail_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20021';
+        $returnType = '\GateApi\Model\P2pAdDetailResponse';
         $request = $this->p2pMerchantBooksAdsDetailRequest($ads_detail_request);
 
         return $this->client
@@ -2951,7 +2951,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20022
+     * @return \GateApi\Model\P2pMyAdsListResponse
      */
     public function p2pMerchantBooksMyAdsList($my_ads_list_request = null)
     {
@@ -2968,7 +2968,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20022, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pMyAdsListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantBooksMyAdsListWithHttpInfo($my_ads_list_request = null)
     {
@@ -2998,7 +2998,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20022';
+        $returnType = '\GateApi\Model\P2pMyAdsListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3045,7 +3045,7 @@ class P2pApi
      */
     public function p2pMerchantBooksMyAdsListAsyncWithHttpInfo($my_ads_list_request = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse20022';
+        $returnType = '\GateApi\Model\P2pMyAdsListResponse';
         $request = $this->p2pMerchantBooksMyAdsListRequest($my_ads_list_request);
 
         return $this->client
@@ -3181,7 +3181,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20023
+     * @return \GateApi\Model\P2pAdsListResponse
      */
     public function p2pMerchantBooksAdsList($ads_list_request)
     {
@@ -3198,7 +3198,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20023, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pAdsListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantBooksAdsListWithHttpInfo($ads_list_request)
     {
@@ -3228,7 +3228,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20023';
+        $returnType = '\GateApi\Model\P2pAdsListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3275,7 +3275,7 @@ class P2pApi
      */
     public function p2pMerchantBooksAdsListAsyncWithHttpInfo($ads_list_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20023';
+        $returnType = '\GateApi\Model\P2pAdsListResponse';
         $request = $this->p2pMerchantBooksAdsListRequest($ads_list_request);
 
         return $this->client
@@ -3417,7 +3417,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20024
+     * @return \GateApi\Model\P2pChatListResponse
      */
     public function p2pMerchantChatGetChatsList($get_chats_list_request)
     {
@@ -3434,7 +3434,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20024, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pChatListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantChatGetChatsListWithHttpInfo($get_chats_list_request)
     {
@@ -3464,7 +3464,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20024';
+        $returnType = '\GateApi\Model\P2pChatListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3511,7 +3511,7 @@ class P2pApi
      */
     public function p2pMerchantChatGetChatsListAsyncWithHttpInfo($get_chats_list_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20024';
+        $returnType = '\GateApi\Model\P2pChatListResponse';
         $request = $this->p2pMerchantChatGetChatsListRequest($get_chats_list_request);
 
         return $this->client
@@ -3653,7 +3653,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20025
+     * @return \GateApi\Model\P2pSendChatMessageResponse
      */
     public function p2pMerchantChatSendChatMessage($send_chat_message_request)
     {
@@ -3670,7 +3670,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20025, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pSendChatMessageResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantChatSendChatMessageWithHttpInfo($send_chat_message_request)
     {
@@ -3700,7 +3700,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20025';
+        $returnType = '\GateApi\Model\P2pSendChatMessageResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3747,7 +3747,7 @@ class P2pApi
      */
     public function p2pMerchantChatSendChatMessageAsyncWithHttpInfo($send_chat_message_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse20025';
+        $returnType = '\GateApi\Model\P2pSendChatMessageResponse';
         $request = $this->p2pMerchantChatSendChatMessageRequest($send_chat_message_request);
 
         return $this->client
@@ -3889,7 +3889,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20026
+     * @return \GateApi\Model\P2pUploadChatFileResponse
      */
     public function p2pMerchantChatUploadChatFile($upload_chat_file)
     {
@@ -3906,7 +3906,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20026, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pUploadChatFileResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantChatUploadChatFileWithHttpInfo($upload_chat_file)
     {
@@ -3936,7 +3936,7 @@ class P2pApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20026';
+        $returnType = '\GateApi\Model\P2pUploadChatFileResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3983,7 +3983,7 @@ class P2pApi
      */
     public function p2pMerchantChatUploadChatFileAsyncWithHttpInfo($upload_chat_file)
     {
-        $returnType = '\GateApi\Model\InlineResponse20026';
+        $returnType = '\GateApi\Model\P2pUploadChatFileResponse';
         $request = $this->p2pMerchantChatUploadChatFileRequest($upload_chat_file);
 
         return $this->client

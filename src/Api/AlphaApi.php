@@ -1748,7 +1748,7 @@ class AlphaApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Currency2[]
+     * @return \GateApi\Model\AlphaCurrency[]
      */
     public function listAlphaCurrencies($associative_array)
     {
@@ -1769,7 +1769,7 @@ class AlphaApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Currency2[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\AlphaCurrency[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listAlphaCurrenciesWithHttpInfo($associative_array)
     {
@@ -1799,7 +1799,7 @@ class AlphaApi
             );
         }
 
-        $returnType = '\GateApi\Model\Currency2[]';
+        $returnType = '\GateApi\Model\AlphaCurrency[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1854,7 +1854,7 @@ class AlphaApi
      */
     public function listAlphaCurrenciesAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\Currency2[]';
+        $returnType = '\GateApi\Model\AlphaCurrency[]';
         $request = $this->listAlphaCurrenciesRequest($associative_array);
 
         return $this->client

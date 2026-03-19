@@ -55,7 +55,9 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'code' => 'int',
-        'message' => 'string'
+        'label' => 'string',
+        'msg' => 'string',
+        'data' => '\GateApi\Model\InlineResponse2008Data'
     ];
 
     /**
@@ -65,7 +67,9 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'code' => null,
-        'message' => null
+        'label' => null,
+        'msg' => null,
+        'data' => null
     ];
 
     /**
@@ -96,7 +100,9 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'code' => 'code',
-        'message' => 'message'
+        'label' => 'label',
+        'msg' => 'msg',
+        'data' => 'data'
     ];
 
     /**
@@ -106,7 +112,9 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'code' => 'setCode',
-        'message' => 'setMessage'
+        'label' => 'setLabel',
+        'msg' => 'setMsg',
+        'data' => 'setData'
     ];
 
     /**
@@ -116,7 +124,9 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'code' => 'getCode',
-        'message' => 'getMessage'
+        'label' => 'getLabel',
+        'msg' => 'getMsg',
+        'data' => 'getData'
     ];
 
     /**
@@ -180,7 +190,9 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['msg'] = isset($data['msg']) ? $data['msg'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -192,12 +204,6 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -216,7 +222,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int
+     * @return int|null
      */
     public function getCode()
     {
@@ -226,7 +232,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int|null $code Status code, 0 = success
      *
      * @return $this
      */
@@ -238,25 +244,73 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets message
+     * Gets label
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage()
+    public function getLabel()
     {
-        return $this->container['message'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets message
+     * Sets label
      *
-     * @param string $message message
+     * @param string|null $label Error identifier code. Empty string on success, machine-readable error label on error
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setLabel($label)
     {
-        $this->container['message'] = $message;
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets msg
+     *
+     * @return string|null
+     */
+    public function getMsg()
+    {
+        return $this->container['msg'];
+    }
+
+    /**
+     * Sets msg
+     *
+     * @param string|null $msg Status message
+     *
+     * @return $this
+     */
+    public function setMsg($msg)
+    {
+        $this->container['msg'] = $msg;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \GateApi\Model\InlineResponse2008Data|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \GateApi\Model\InlineResponse2008Data|null $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

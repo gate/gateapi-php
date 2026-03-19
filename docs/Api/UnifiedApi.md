@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ## getUnifiedBorrowableList
 
-> \GateApi\Model\UnifiedBorrowable1[] getUnifiedBorrowableList($currencies)
+> \GateApi\Model\UnifiedBorrowable[] getUnifiedBorrowableList($currencies)
 
 Batch query unified account maximum borrowable amount
 
@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\UnifiedBorrowable1[]**](../Model/UnifiedBorrowable1.md)
+[**\GateApi\Model\UnifiedBorrowable[]**](../Model/UnifiedBorrowable.md)
 
 ### Authorization
 

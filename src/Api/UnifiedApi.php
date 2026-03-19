@@ -1127,7 +1127,7 @@ class UnifiedApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\UnifiedBorrowable1[]
+     * @return \GateApi\Model\UnifiedBorrowable[]
      */
     public function getUnifiedBorrowableList($currencies)
     {
@@ -1144,7 +1144,7 @@ class UnifiedApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\UnifiedBorrowable1[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\UnifiedBorrowable[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getUnifiedBorrowableListWithHttpInfo($currencies)
     {
@@ -1174,7 +1174,7 @@ class UnifiedApi
             );
         }
 
-        $returnType = '\GateApi\Model\UnifiedBorrowable1[]';
+        $returnType = '\GateApi\Model\UnifiedBorrowable[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1221,7 +1221,7 @@ class UnifiedApi
      */
     public function getUnifiedBorrowableListAsyncWithHttpInfo($currencies)
     {
-        $returnType = '\GateApi\Model\UnifiedBorrowable1[]';
+        $returnType = '\GateApi\Model\UnifiedBorrowable[]';
         $request = $this->getUnifiedBorrowableListRequest($currencies);
 
         return $this->client

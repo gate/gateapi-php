@@ -121,7 +121,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Mt5Account|\GateApi\Model\Error
+     * @return \GateApi\Model\Mt5Account|\GateApi\Model\TradFiError
      */
     public function queryMt5AccountInfo()
     {
@@ -137,7 +137,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Mt5Account|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\Mt5Account|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryMt5AccountInfoWithHttpInfo()
     {
@@ -343,7 +343,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Categories|\GateApi\Model\Error
+     * @return \GateApi\Model\Categories|\GateApi\Model\TradFiError
      */
     public function queryCategories()
     {
@@ -359,7 +359,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Categories|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\Categories|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryCategoriesWithHttpInfo()
     {
@@ -562,7 +562,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Symbols|\GateApi\Model\Error
+     * @return \GateApi\Model\Symbols|\GateApi\Model\TradFiError
      */
     public function querySymbols()
     {
@@ -578,7 +578,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Symbols|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\Symbols|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function querySymbolsWithHttpInfo()
     {
@@ -782,7 +782,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\ContractDetail|\GateApi\Model\Error
+     * @return \GateApi\Model\ContractDetail|\GateApi\Model\TradFiError
      */
     public function querySymbolDetail($symbols)
     {
@@ -799,7 +799,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\ContractDetail|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ContractDetail|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function querySymbolDetailWithHttpInfo($symbols)
     {
@@ -1030,7 +1030,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Klines|\GateApi\Model\Error
+     * @return \GateApi\Model\Klines|\GateApi\Model\TradFiError
      */
     public function querySymbolKline($associative_array)
     {
@@ -1053,7 +1053,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Klines|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\Klines|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function querySymbolKlineWithHttpInfo($associative_array)
     {
@@ -1361,7 +1361,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\Ticker2|\GateApi\Model\Error
+     * @return \GateApi\Model\TradFiTicker|\GateApi\Model\TradFiError
      */
     public function querySymbolTicker($symbol)
     {
@@ -1378,7 +1378,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\Ticker2|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TradFiTicker|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function querySymbolTickerWithHttpInfo($symbol)
     {
@@ -1408,7 +1408,7 @@ class TradFiApi
             );
         }
 
-        $returnType = '\GateApi\Model\Ticker2';
+        $returnType = '\GateApi\Model\TradFiTicker';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1455,7 +1455,7 @@ class TradFiApi
      */
     public function querySymbolTickerAsyncWithHttpInfo($symbol)
     {
-        $returnType = '\GateApi\Model\Ticker2';
+        $returnType = '\GateApi\Model\TradFiTicker';
         $request = $this->querySymbolTickerRequest($symbol);
 
         return $this->client
@@ -1599,7 +1599,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\CreateUserResp|\GateApi\Model\Error
+     * @return \GateApi\Model\CreateUserResp|\GateApi\Model\TradFiError
      */
     public function createTradFiUser()
     {
@@ -1615,7 +1615,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\CreateUserResp|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CreateUserResp|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTradFiUserWithHttpInfo()
     {
@@ -1821,7 +1821,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\UserAssetResp|\GateApi\Model\Error
+     * @return \GateApi\Model\UserAssetResp|\GateApi\Model\TradFiError
      */
     public function queryUserAssets()
     {
@@ -1837,7 +1837,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\UserAssetResp|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\UserAssetResp|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryUserAssetsWithHttpInfo()
     {
@@ -2050,7 +2050,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\TransactionList|\GateApi\Model\Error
+     * @return \GateApi\Model\TransactionList|\GateApi\Model\TradFiError
      */
     public function queryTransaction($associative_array)
     {
@@ -2073,7 +2073,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\TransactionList|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TransactionList|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryTransactionWithHttpInfo($associative_array)
     {
@@ -2368,7 +2368,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\CreateTransaction|\GateApi\Model\Error
+     * @return \GateApi\Model\CreateTransaction|\GateApi\Model\TradFiError
      */
     public function createTransaction($trad_fi_transaction_request)
     {
@@ -2385,7 +2385,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\CreateTransaction|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CreateTransaction|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTransactionWithHttpInfo($trad_fi_transaction_request)
     {
@@ -2603,7 +2603,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\OrderList|\GateApi\Model\Error
+     * @return \GateApi\Model\OrderList|\GateApi\Model\TradFiError
      */
     public function queryOrderList()
     {
@@ -2619,7 +2619,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\OrderList|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OrderList|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryOrderListWithHttpInfo()
     {
@@ -2826,7 +2826,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\CreateOrder|\GateApi\Model\Error
+     * @return \GateApi\Model\CreateOrder|\GateApi\Model\TradFiError
      */
     public function createTradFiOrder($trad_fi_order_request)
     {
@@ -2843,7 +2843,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\CreateOrder|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CreateOrder|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTradFiOrderWithHttpInfo($trad_fi_order_request)
     {
@@ -3063,7 +3063,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\UpdateOrder|\GateApi\Model\Error
+     * @return \GateApi\Model\UpdateOrder|\GateApi\Model\TradFiError
      */
     public function updateOrder($order_id, $trad_fi_order_update_request)
     {
@@ -3081,7 +3081,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\UpdateOrder|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\UpdateOrder|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateOrderWithHttpInfo($order_id, $trad_fi_order_update_request)
     {
@@ -3318,7 +3318,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object|\GateApi\Model\Error
+     * @return object|\GateApi\Model\TradFiError
      */
     public function deleteOrder($order_id)
     {
@@ -3335,7 +3335,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteOrderWithHttpInfo($order_id)
     {
@@ -3565,7 +3565,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\OrderHistoryList|\GateApi\Model\Error
+     * @return \GateApi\Model\OrderHistoryList|\GateApi\Model\TradFiError
      */
     public function queryOrderHistoryList($associative_array)
     {
@@ -3587,7 +3587,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\OrderHistoryList|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OrderHistoryList|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryOrderHistoryListWithHttpInfo($associative_array)
     {
@@ -3865,7 +3865,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\PositionList|\GateApi\Model\Error
+     * @return \GateApi\Model\PositionList|\GateApi\Model\TradFiError
      */
     public function queryPositionList()
     {
@@ -3881,7 +3881,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\PositionList|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\PositionList|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryPositionListWithHttpInfo()
     {
@@ -4089,7 +4089,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\UpdatePosition|\GateApi\Model\Error
+     * @return \GateApi\Model\UpdatePosition|\GateApi\Model\TradFiError
      */
     public function updatePosition($position_id, $trad_fi_position_update_request)
     {
@@ -4107,7 +4107,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\UpdatePosition|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\UpdatePosition|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updatePositionWithHttpInfo($position_id, $trad_fi_position_update_request)
     {
@@ -4345,7 +4345,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\DeletePosition|\GateApi\Model\Error
+     * @return \GateApi\Model\DeletePosition|\GateApi\Model\TradFiError
      */
     public function closePosition($position_id, $trad_fi_close_position_request)
     {
@@ -4363,7 +4363,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\DeletePosition|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\DeletePosition|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function closePositionWithHttpInfo($position_id, $trad_fi_close_position_request)
     {
@@ -4605,7 +4605,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\PositionHistoryList|\GateApi\Model\Error
+     * @return \GateApi\Model\PositionHistoryList|\GateApi\Model\TradFiError
      */
     public function queryPositionHistoryList($associative_array)
     {
@@ -4627,7 +4627,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\PositionHistoryList|\GateApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\PositionHistoryList|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryPositionHistoryListWithHttpInfo($associative_array)
     {

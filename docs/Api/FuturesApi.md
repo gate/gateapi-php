@@ -1340,13 +1340,13 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
-$associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
-$associate_array['pos_margin_mode'] = 'isolated'; // string | Position Margin Mode, required for split position mode, values: isolated/cross.
-$associate_array['dual_side'] = 'dual_long'; // string | dual_long - Long, dual_short - Short
+$settle = 'usdt'; // string | Settle currency
+$contract = 'BTC_USDT'; // string | Futures contract
+$pos_margin_mode = 'isolated'; // string | Position Margin Mode, required for split position mode, values: isolated/cross.
+$dual_side = 'dual_long'; // string | dual_long - Long, dual_short - Short
 
 try {
-    $result = $apiInstance->getLeverage($associate_array);
+    $result = $apiInstance->getLeverage($settle, $contract, $pos_margin_mode, $dual_side);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1358,15 +1358,13 @@ try {
 
 ### Parameters
 
-Note: the input parameter is an associative array with the keys listed as the parameter name below.
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Settle currency |
  **contract** | **string**| Futures contract |
- **pos_margin_mode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. | [optional]
- **dual_side** | **string**| dual_long - Long, dual_short - Short | [optional]
+ **pos_margin_mode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. |
+ **dual_side** | **string**| dual_long - Long, dual_short - Short |
 
 ### Return type
 
@@ -1656,7 +1654,7 @@ Name | Type | Description  | Notes
 
 ## updateDualCompPositionCrossMode
 
-> \GateApi\Model\Position[] updateDualCompPositionCrossMode($settle, $inline_object)
+> \GateApi\Model\Position[] updateDualCompPositionCrossMode($settle, $update_dual_comp_position_cross_mode_request)
 
 Switch Between Cross and Isolated Margin Modes Under Hedge Mode
 
@@ -1677,10 +1675,10 @@ $apiInstance = new GateApi\Api\FuturesApi(
     $config
 );
 $settle = 'usdt'; // string | Settle currency
-$inline_object = new \GateApi\Model\InlineObject(); // \GateApi\Model\InlineObject | 
+$update_dual_comp_position_cross_mode_request = new \GateApi\Model\UpdateDualCompPositionCrossModeRequest(); // \GateApi\Model\UpdateDualCompPositionCrossModeRequest | 
 
 try {
-    $result = $apiInstance->updateDualCompPositionCrossMode($settle, $inline_object);
+    $result = $apiInstance->updateDualCompPositionCrossMode($settle, $update_dual_comp_position_cross_mode_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1696,7 +1694,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Settle currency |
- **inline_object** | [**\GateApi\Model\InlineObject**](../Model/InlineObject.md)|  |
+ **update_dual_comp_position_cross_mode_request** | [**\GateApi\Model\UpdateDualCompPositionCrossModeRequest**](../Model/UpdateDualCompPositionCrossModeRequest.md)|  |
 
 ### Return type
 
@@ -3476,7 +3474,7 @@ Name | Type | Description  | Notes
 
 ## createTrailOrder
 
-> \GateApi\Model\InlineResponse201 createTrailOrder($settle, $create_trail_order)
+> \GateApi\Model\CreateTrailOrderResponse createTrailOrder($settle, $create_trail_order)
 
 Create trail order
 
@@ -3520,7 +3518,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse201**](../Model/InlineResponse201.md)
+[**\GateApi\Model\CreateTrailOrderResponse**](../Model/CreateTrailOrderResponse.md)
 
 ### Authorization
 
@@ -3538,7 +3536,7 @@ Name | Type | Description  | Notes
 
 ## stopTrailOrder
 
-> \GateApi\Model\InlineResponse200 stopTrailOrder($settle, $stop_trail_order)
+> \GateApi\Model\TrailOrderResponse stopTrailOrder($settle, $stop_trail_order)
 
 Terminate trail order
 
@@ -3582,7 +3580,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\GateApi\Model\TrailOrderResponse**](../Model/TrailOrderResponse.md)
 
 ### Authorization
 
@@ -3600,7 +3598,7 @@ Name | Type | Description  | Notes
 
 ## stopAllTrailOrders
 
-> \GateApi\Model\InlineResponse2001 stopAllTrailOrders($settle, $stop_all_trail_orders)
+> \GateApi\Model\TrailOrderListResponse stopAllTrailOrders($settle, $stop_all_trail_orders)
 
 Batch terminate trail orders
 
@@ -3644,7 +3642,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\GateApi\Model\TrailOrderListResponse**](../Model/TrailOrderListResponse.md)
 
 ### Authorization
 
@@ -3662,7 +3660,7 @@ Name | Type | Description  | Notes
 
 ## getTrailOrders
 
-> \GateApi\Model\InlineResponse2001 getTrailOrders($settle, $contract, $is_finished, $start_at, $end_at, $page_num, $page_size, $sort_by, $hide_cancel, $related_position, $sort_by_trigger, $reduce_only, $side)
+> \GateApi\Model\TrailOrderListResponse getTrailOrders($settle, $contract, $is_finished, $start_at, $end_at, $page_num, $page_size, $sort_by, $hide_cancel, $related_position, $sort_by_trigger, $reduce_only, $side)
 
 Get trail order list
 
@@ -3730,7 +3728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\GateApi\Model\TrailOrderListResponse**](../Model/TrailOrderListResponse.md)
 
 ### Authorization
 
@@ -3748,7 +3746,7 @@ Name | Type | Description  | Notes
 
 ## getTrailOrderDetail
 
-> \GateApi\Model\InlineResponse2002 getTrailOrderDetail($settle, $id)
+> \GateApi\Model\TrailOrderDetailResponse getTrailOrderDetail($settle, $id)
 
 Get trail order details
 
@@ -3792,7 +3790,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\GateApi\Model\TrailOrderDetailResponse**](../Model/TrailOrderDetailResponse.md)
 
 ### Authorization
 
@@ -3810,7 +3808,7 @@ Name | Type | Description  | Notes
 
 ## updateTrailOrder
 
-> \GateApi\Model\InlineResponse200 updateTrailOrder($settle, $update_trail_order)
+> \GateApi\Model\TrailOrderResponse updateTrailOrder($settle, $update_trail_order)
 
 Update trail order
 
@@ -3854,7 +3852,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\GateApi\Model\TrailOrderResponse**](../Model/TrailOrderResponse.md)
 
 ### Authorization
 
@@ -3872,7 +3870,7 @@ Name | Type | Description  | Notes
 
 ## getTrailOrderChangeLog
 
-> \GateApi\Model\InlineResponse2003 getTrailOrderChangeLog($settle, $id, $page_num, $page_size)
+> \GateApi\Model\TrailOrderChangeLogResponse getTrailOrderChangeLog($settle, $id, $page_num, $page_size)
 
 Get trail order user modification records
 
@@ -3922,7 +3920,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\GateApi\Model\TrailOrderChangeLogResponse**](../Model/TrailOrderChangeLogResponse.md)
 
 ### Authorization
 

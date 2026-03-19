@@ -1409,7 +1409,7 @@ Name | Type | Description  | Notes
 
 ## amendOptionsOrder
 
-> \GateApi\Model\OptionsOrder amendOptionsOrder($order_id, $inline_object1)
+> \GateApi\Model\OptionsOrder amendOptionsOrder($order_id, $amend_options_order_request)
 
 Option Order Modification
 
@@ -1432,10 +1432,10 @@ $apiInstance = new GateApi\Api\OptionsApi(
     $config
 );
 $order_id = 12345; // int | Order ID returned when order is successfully created
-$inline_object1 = new \GateApi\Model\InlineObject1(); // \GateApi\Model\InlineObject1 | 
+$amend_options_order_request = new \GateApi\Model\AmendOptionsOrderRequest(); // \GateApi\Model\AmendOptionsOrderRequest | 
 
 try {
-    $result = $apiInstance->amendOptionsOrder($order_id, $inline_object1);
+    $result = $apiInstance->amendOptionsOrder($order_id, $amend_options_order_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1451,7 +1451,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **int**| Order ID returned when order is successfully created |
- **inline_object1** | [**\GateApi\Model\InlineObject1**](../Model/InlineObject1.md)|  |
+ **amend_options_order_request** | [**\GateApi\Model\AmendOptionsOrderRequest**](../Model/AmendOptionsOrderRequest.md)|  |
 
 ### Return type
 

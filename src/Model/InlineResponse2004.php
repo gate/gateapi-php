@@ -54,8 +54,10 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'time' => 'int',
-        'value' => 'string'
+        'code' => 'int',
+        'message' => 'string',
+        'data' => 'object',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -64,8 +66,10 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'time' => 'int64',
-        'value' => null
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'timestamp' => null
     ];
 
     /**
@@ -95,8 +99,10 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'time' => 'time',
-        'value' => 'value'
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -105,8 +111,10 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'time' => 'setTime',
-        'value' => 'setValue'
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -115,8 +123,10 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'time' => 'getTime',
-        'value' => 'getValue'
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -179,8 +189,10 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['time'] = isset($data['time']) ? $data['time'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -208,49 +220,97 @@ class InlineResponse2004 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets time
+     * Gets code
      *
      * @return int|null
      */
-    public function getTime()
+    public function getCode()
     {
-        return $this->container['time'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets time
+     * Sets code
      *
-     * @param int|null $time time
+     * @param int|null $code Return code, 0 means success
      *
      * @return $this
      */
-    public function setTime($time)
+    public function setCode($code)
     {
-        $this->container['time'] = $time;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets message
      *
      * @return string|null
      */
-    public function getValue()
+    public function getMessage()
     {
-        return $this->container['value'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets value
+     * Sets message
      *
-     * @param string|null $value value
+     * @param string|null $message Response message
      *
      * @return $this
      */
-    public function setValue($value)
+    public function setMessage($message)
     {
-        $this->container['value'] = $value;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return object|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param object|null $data Redemption result (empty object on success)
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int|null $timestamp Response timestamp (in seconds)
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 ## p2pMerchantAccountGetUserInfo
 
-> \GateApi\Model\InlineResponse20014 p2pMerchantAccountGetUserInfo()
+> \GateApi\Model\P2pMerchantUserInfoResponse p2pMerchantAccountGetUserInfo()
 
 Get account information
 
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
+[**\GateApi\Model\P2pMerchantUserInfoResponse**](../Model/P2pMerchantUserInfoResponse.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ This endpoint does not need any parameter.
 
 ## p2pMerchantAccountGetCounterpartyUserInfo
 
-> \GateApi\Model\InlineResponse20015 p2pMerchantAccountGetCounterpartyUserInfo($get_counterparty_user_info_request)
+> \GateApi\Model\P2pCounterpartyUserInfoResponse p2pMerchantAccountGetCounterpartyUserInfo($get_counterparty_user_info_request)
 
 Get counterparty information
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20015**](../Model/InlineResponse20015.md)
+[**\GateApi\Model\P2pCounterpartyUserInfoResponse**](../Model/P2pCounterpartyUserInfoResponse.md)
 
 ### Authorization
 
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantAccountGetMyselfPayment
 
-> \GateApi\Model\InlineResponse20016 p2pMerchantAccountGetMyselfPayment($get_myself_payment_request)
+> \GateApi\Model\P2pPaymentMethodsResponse p2pMerchantAccountGetMyselfPayment($get_myself_payment_request)
 
 Get payment method list
 
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20016**](../Model/InlineResponse20016.md)
+[**\GateApi\Model\P2pPaymentMethodsResponse**](../Model/P2pPaymentMethodsResponse.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantTransactionGetPendingTransactionList
 
-> \GateApi\Model\InlineResponse20017 p2pMerchantTransactionGetPendingTransactionList($get_pending_transaction_list_request)
+> \GateApi\Model\P2pTransactionListResponse p2pMerchantTransactionGetPendingTransactionList($get_pending_transaction_list_request)
 
 Get pending orders
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20017**](../Model/InlineResponse20017.md)
+[**\GateApi\Model\P2pTransactionListResponse**](../Model/P2pTransactionListResponse.md)
 
 ### Authorization
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantTransactionGetCompletedTransactionList
 
-> \GateApi\Model\InlineResponse20017 p2pMerchantTransactionGetCompletedTransactionList($get_completed_transaction_list_request)
+> \GateApi\Model\P2pTransactionListResponse p2pMerchantTransactionGetCompletedTransactionList($get_completed_transaction_list_request)
 
 Get all/historical orders
 
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20017**](../Model/InlineResponse20017.md)
+[**\GateApi\Model\P2pTransactionListResponse**](../Model/P2pTransactionListResponse.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantTransactionGetTransactionDetails
 
-> \GateApi\Model\InlineResponse20018 p2pMerchantTransactionGetTransactionDetails($get_transaction_details_request)
+> \GateApi\Model\P2pTransactionDetailResponse p2pMerchantTransactionGetTransactionDetails($get_transaction_details_request)
 
 Query order details
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20018**](../Model/InlineResponse20018.md)
+[**\GateApi\Model\P2pTransactionDetailResponse**](../Model/P2pTransactionDetailResponse.md)
 
 ### Authorization
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantTransactionConfirmPayment
 
-> \GateApi\Model\InlineResponse20019 p2pMerchantTransactionConfirmPayment($confirm_payment)
+> \GateApi\Model\P2pTransactionActionResponse p2pMerchantTransactionConfirmPayment($confirm_payment)
 
 Confirm payment
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
+[**\GateApi\Model\P2pTransactionActionResponse**](../Model/P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantTransactionConfirmReceipt
 
-> \GateApi\Model\InlineResponse20019 p2pMerchantTransactionConfirmReceipt($confirm_receipt)
+> \GateApi\Model\P2pTransactionActionResponse p2pMerchantTransactionConfirmReceipt($confirm_receipt)
 
 Confirm receipt
 
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
+[**\GateApi\Model\P2pTransactionActionResponse**](../Model/P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -501,7 +501,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantTransactionCancel
 
-> \GateApi\Model\InlineResponse20019 p2pMerchantTransactionCancel($cancel_order)
+> \GateApi\Model\P2pTransactionActionResponse p2pMerchantTransactionCancel($cancel_order)
 
 Cancel order
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20019**](../Model/InlineResponse20019.md)
+[**\GateApi\Model\P2pTransactionActionResponse**](../Model/P2pTransactionActionResponse.md)
 
 ### Authorization
 
@@ -621,7 +621,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantBooksAdsUpdateStatus
 
-> \GateApi\Model\InlineResponse20020 p2pMerchantBooksAdsUpdateStatus($ads_update_status, $trade_type)
+> \GateApi\Model\P2pAdsUpdateStatusResponse p2pMerchantBooksAdsUpdateStatus($ads_update_status, $trade_type)
 
 Update ad status
 
@@ -665,7 +665,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20020**](../Model/InlineResponse20020.md)
+[**\GateApi\Model\P2pAdsUpdateStatusResponse**](../Model/P2pAdsUpdateStatusResponse.md)
 
 ### Authorization
 
@@ -683,7 +683,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantBooksAdsDetail
 
-> \GateApi\Model\InlineResponse20021 p2pMerchantBooksAdsDetail($ads_detail_request)
+> \GateApi\Model\P2pAdDetailResponse p2pMerchantBooksAdsDetail($ads_detail_request)
 
 Query ad details
 
@@ -725,7 +725,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20021**](../Model/InlineResponse20021.md)
+[**\GateApi\Model\P2pAdDetailResponse**](../Model/P2pAdDetailResponse.md)
 
 ### Authorization
 
@@ -743,7 +743,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantBooksMyAdsList
 
-> \GateApi\Model\InlineResponse20022 p2pMerchantBooksMyAdsList($my_ads_list_request)
+> \GateApi\Model\P2pMyAdsListResponse p2pMerchantBooksMyAdsList($my_ads_list_request)
 
 Get my ad list
 
@@ -785,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20022**](../Model/InlineResponse20022.md)
+[**\GateApi\Model\P2pMyAdsListResponse**](../Model/P2pMyAdsListResponse.md)
 
 ### Authorization
 
@@ -803,7 +803,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantBooksAdsList
 
-> \GateApi\Model\InlineResponse20023 p2pMerchantBooksAdsList($ads_list_request)
+> \GateApi\Model\P2pAdsListResponse p2pMerchantBooksAdsList($ads_list_request)
 
 Get Advertisement List
 
@@ -847,7 +847,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20023**](../Model/InlineResponse20023.md)
+[**\GateApi\Model\P2pAdsListResponse**](../Model/P2pAdsListResponse.md)
 
 ### Authorization
 
@@ -865,7 +865,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantChatGetChatsList
 
-> \GateApi\Model\InlineResponse20024 p2pMerchantChatGetChatsList($get_chats_list_request)
+> \GateApi\Model\P2pChatListResponse p2pMerchantChatGetChatsList($get_chats_list_request)
 
 Get chat history
 
@@ -907,7 +907,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20024**](../Model/InlineResponse20024.md)
+[**\GateApi\Model\P2pChatListResponse**](../Model/P2pChatListResponse.md)
 
 ### Authorization
 
@@ -925,7 +925,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantChatSendChatMessage
 
-> \GateApi\Model\InlineResponse20025 p2pMerchantChatSendChatMessage($send_chat_message_request)
+> \GateApi\Model\P2pSendChatMessageResponse p2pMerchantChatSendChatMessage($send_chat_message_request)
 
 Send text message
 
@@ -967,7 +967,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20025**](../Model/InlineResponse20025.md)
+[**\GateApi\Model\P2pSendChatMessageResponse**](../Model/P2pSendChatMessageResponse.md)
 
 ### Authorization
 
@@ -985,7 +985,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantChatUploadChatFile
 
-> \GateApi\Model\InlineResponse20026 p2pMerchantChatUploadChatFile($upload_chat_file)
+> \GateApi\Model\P2pUploadChatFileResponse p2pMerchantChatUploadChatFile($upload_chat_file)
 
 Upload chat file
 
@@ -1027,7 +1027,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20026**](../Model/InlineResponse20026.md)
+[**\GateApi\Model\P2pUploadChatFileResponse**](../Model/P2pUploadChatFileResponse.md)
 
 ### Authorization
 

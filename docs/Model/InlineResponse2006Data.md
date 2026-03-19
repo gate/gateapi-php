@@ -4,16 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | BUY (on-ramp) or SELL (off-ramp) | 
-**pay_coin** | **string** | Payment currency | 
-**get_coin** | **string** | Currency | 
-**pay_amount** | **string** | Payment amount | 
-**get_amount** | **string** | Redemption Amount | 
-**rate** | **string** | Exchange rate | 
-**rate_reci** | **string** | Reciprocal of the exchange rate | 
-**promotion_code** | **string** | Promotion code | 
-**side** | **string** | Quote method | 
-**order_type** | **string** | Order type: FIAT (fiat) / STABLE (stablecoin) | 
-**quote_token** | **string** | Quote token required when placing an order | 
+**next_page** | **bool** | Whether there is a next page. &#x60;true&#x60; means more data is available. Pass the &#x60;id&#x60; of the last record as &#x60;last_id&#x60; and &#x60;expire_time_order_by&#x60; as &#x60;expire_time&#x60; in the next request | [optional] 
+**list** | [**\GateApi\Model\InlineResponse2006DataList[]**](InlineResponse2006DataList.md) | Coupon object array, see field details below | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

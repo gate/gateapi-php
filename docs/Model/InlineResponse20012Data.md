@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**total** | **int** |  | 
-**page_size** | **int** |  | 
-**page_number** | **int** |  | 
-**total_page** | **int** |  | 
-**list** | [**\GateApi\Model\InlineResponse20012DataList[]**](InlineResponse20012DataList.md) |  | 
+**list** | [**\GateApi\Model\InlineResponse20012DataList[]**](InlineResponse20012DataList.md) | Activity list | 
+**page** | **int** | Current page number | 
+**page_size** | **int** | Items per page | 
+**page_count** | **int** | Total pages | 
+**total_count** | **int** | Total Records | 
+**url** | **string** | Activity Center page link | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

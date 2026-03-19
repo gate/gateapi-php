@@ -3747,6 +3747,1879 @@ class EarnApi
     }
 
     /**
+     * Operation listEarnFixedTermProducts
+     *
+     * Get product list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  string $asset Currency (optional)
+     * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse200
+     */
+    public function listEarnFixedTermProducts($associative_array)
+    {
+        list($response) = $this->listEarnFixedTermProductsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listEarnFixedTermProductsWithHttpInfo
+     *
+     * Get product list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  string $asset Currency (optional)
+     * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listEarnFixedTermProductsWithHttpInfo($associative_array)
+    {
+        $request = $this->listEarnFixedTermProductsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse200';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listEarnFixedTermProductsAsync
+     *
+     * Get product list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  string $asset Currency (optional)
+     * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermProductsAsync($associative_array)
+    {
+        return $this->listEarnFixedTermProductsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listEarnFixedTermProductsAsyncWithHttpInfo
+     *
+     * Get product list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  string $asset Currency (optional)
+     * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermProductsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse200';
+        $request = $this->listEarnFixedTermProductsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listEarnFixedTermProducts'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  string $asset Currency (optional)
+     * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listEarnFixedTermProductsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
+        $asset = array_key_exists('asset', $associative_array) ? $associative_array['asset'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+
+        // verify the required parameter 'page' is set
+        if ($page === null || (is_array($page) && count($page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page when calling listEarnFixedTermProducts'
+            );
+        }
+        // verify the required parameter 'limit' is set
+        if ($limit === null || (is_array($limit) && count($limit) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $limit when calling listEarnFixedTermProducts'
+            );
+        }
+
+        $resourcePath = '/earn/fixed-term/product';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($asset !== null) {
+            if('form' === 'form' && is_array($asset)) {
+                foreach($asset as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['asset'] = $asset;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listEarnFixedTermProductsByAsset
+     *
+     * Get product list by single currency
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $asset Currency name, e.g., USDT, BTC (required)
+     * @param  string $type Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2001
+     */
+    public function listEarnFixedTermProductsByAsset($associative_array)
+    {
+        list($response) = $this->listEarnFixedTermProductsByAssetWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listEarnFixedTermProductsByAssetWithHttpInfo
+     *
+     * Get product list by single currency
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $asset Currency name, e.g., USDT, BTC (required)
+     * @param  string $type Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listEarnFixedTermProductsByAssetWithHttpInfo($associative_array)
+    {
+        $request = $this->listEarnFixedTermProductsByAssetRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2001';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listEarnFixedTermProductsByAssetAsync
+     *
+     * Get product list by single currency
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $asset Currency name, e.g., USDT, BTC (required)
+     * @param  string $type Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermProductsByAssetAsync($associative_array)
+    {
+        return $this->listEarnFixedTermProductsByAssetAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listEarnFixedTermProductsByAssetAsyncWithHttpInfo
+     *
+     * Get product list by single currency
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $asset Currency name, e.g., USDT, BTC (required)
+     * @param  string $type Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermProductsByAssetAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2001';
+        $request = $this->listEarnFixedTermProductsByAssetRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listEarnFixedTermProductsByAsset'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $asset Currency name, e.g., USDT, BTC (required)
+     * @param  string $type Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listEarnFixedTermProductsByAssetRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $asset = array_key_exists('asset', $associative_array) ? $associative_array['asset'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+
+        // verify the required parameter 'asset' is set
+        if ($asset === null || (is_array($asset) && count($asset) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $asset when calling listEarnFixedTermProductsByAsset'
+            );
+        }
+
+        $resourcePath = '/earn/fixed-term/product/{asset}/list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // path params
+        if ($asset !== null) {
+            $resourcePath = str_replace(
+                '{' . 'asset' . '}',
+                ObjectSerializer::toPathValue($asset),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listEarnFixedTermLends
+     *
+     * Subscription list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $order_type Order type: 1 for current orders, 2 for historical orders (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  int $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2002
+     */
+    public function listEarnFixedTermLends($associative_array)
+    {
+        list($response) = $this->listEarnFixedTermLendsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listEarnFixedTermLendsWithHttpInfo
+     *
+     * Subscription list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $order_type Order type: 1 for current orders, 2 for historical orders (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  int $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listEarnFixedTermLendsWithHttpInfo($associative_array)
+    {
+        $request = $this->listEarnFixedTermLendsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2002';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listEarnFixedTermLendsAsync
+     *
+     * Subscription list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $order_type Order type: 1 for current orders, 2 for historical orders (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  int $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermLendsAsync($associative_array)
+    {
+        return $this->listEarnFixedTermLendsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listEarnFixedTermLendsAsyncWithHttpInfo
+     *
+     * Subscription list
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $order_type Order type: 1 for current orders, 2 for historical orders (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  int $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermLendsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2002';
+        $request = $this->listEarnFixedTermLendsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listEarnFixedTermLends'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $order_type Order type: 1 for current orders, 2 for historical orders (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  int $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listEarnFixedTermLendsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $order_type = array_key_exists('order_type', $associative_array) ? $associative_array['order_type'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
+        $product_id = array_key_exists('product_id', $associative_array) ? $associative_array['product_id'] : null;
+        $order_id = array_key_exists('order_id', $associative_array) ? $associative_array['order_id'] : null;
+        $asset = array_key_exists('asset', $associative_array) ? $associative_array['asset'] : null;
+        $sub_business = array_key_exists('sub_business', $associative_array) ? $associative_array['sub_business'] : null;
+        $business_filter = array_key_exists('business_filter', $associative_array) ? $associative_array['business_filter'] : null;
+
+        // verify the required parameter 'order_type' is set
+        if ($order_type === null || (is_array($order_type) && count($order_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_type when calling listEarnFixedTermLends'
+            );
+        }
+        // verify the required parameter 'page' is set
+        if ($page === null || (is_array($page) && count($page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page when calling listEarnFixedTermLends'
+            );
+        }
+        // verify the required parameter 'limit' is set
+        if ($limit === null || (is_array($limit) && count($limit) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $limit when calling listEarnFixedTermLends'
+            );
+        }
+
+        $resourcePath = '/earn/fixed-term/user/lend';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($product_id !== null) {
+            if('form' === 'form' && is_array($product_id)) {
+                foreach($product_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['product_id'] = $product_id;
+            }
+        }
+
+        // query params
+        if ($order_id !== null) {
+            if('form' === 'form' && is_array($order_id)) {
+                foreach($order_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['order_id'] = $order_id;
+            }
+        }
+
+        // query params
+        if ($asset !== null) {
+            if('form' === 'form' && is_array($asset)) {
+                foreach($asset as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['asset'] = $asset;
+            }
+        }
+
+        // query params
+        if ($order_type !== null) {
+            if('form' === 'form' && is_array($order_type)) {
+                foreach($order_type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['order_type'] = $order_type;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // query params
+        if ($sub_business !== null) {
+            if('form' === 'form' && is_array($sub_business)) {
+                foreach($sub_business as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sub_business'] = $sub_business;
+            }
+        }
+
+        // query params
+        if ($business_filter !== null) {
+            if('form' === 'form' && is_array($business_filter)) {
+                foreach($business_filter as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['business_filter'] = $business_filter;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createEarnFixedTermLend
+     *
+     * Subscription
+     *
+     * @param  \GateApi\Model\FixedTermLendRequest $fixed_term_lend_request fixed_term_lend_request (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2003
+     */
+    public function createEarnFixedTermLend($fixed_term_lend_request = null)
+    {
+        list($response) = $this->createEarnFixedTermLendWithHttpInfo($fixed_term_lend_request);
+        return $response;
+    }
+
+    /**
+     * Operation createEarnFixedTermLendWithHttpInfo
+     *
+     * Subscription
+     *
+     * @param  \GateApi\Model\FixedTermLendRequest $fixed_term_lend_request (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createEarnFixedTermLendWithHttpInfo($fixed_term_lend_request = null)
+    {
+        $request = $this->createEarnFixedTermLendRequest($fixed_term_lend_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2003';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createEarnFixedTermLendAsync
+     *
+     * Subscription
+     *
+     * @param  \GateApi\Model\FixedTermLendRequest $fixed_term_lend_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEarnFixedTermLendAsync($fixed_term_lend_request = null)
+    {
+        return $this->createEarnFixedTermLendAsyncWithHttpInfo($fixed_term_lend_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createEarnFixedTermLendAsyncWithHttpInfo
+     *
+     * Subscription
+     *
+     * @param  \GateApi\Model\FixedTermLendRequest $fixed_term_lend_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEarnFixedTermLendAsyncWithHttpInfo($fixed_term_lend_request = null)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2003';
+        $request = $this->createEarnFixedTermLendRequest($fixed_term_lend_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createEarnFixedTermLend'
+     *
+     * @param  \GateApi\Model\FixedTermLendRequest $fixed_term_lend_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createEarnFixedTermLendRequest($fixed_term_lend_request = null)
+    {
+
+        $resourcePath = '/earn/fixed-term/user/lend';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($fixed_term_lend_request)) {
+            $_tempBody = $fixed_term_lend_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createEarnFixedTermPreRedeem
+     *
+     * Redeem
+     *
+     * @param  \GateApi\Model\InlineObject $inline_object inline_object (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2004
+     */
+    public function createEarnFixedTermPreRedeem($inline_object = null)
+    {
+        list($response) = $this->createEarnFixedTermPreRedeemWithHttpInfo($inline_object);
+        return $response;
+    }
+
+    /**
+     * Operation createEarnFixedTermPreRedeemWithHttpInfo
+     *
+     * Redeem
+     *
+     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createEarnFixedTermPreRedeemWithHttpInfo($inline_object = null)
+    {
+        $request = $this->createEarnFixedTermPreRedeemRequest($inline_object);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2004';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createEarnFixedTermPreRedeemAsync
+     *
+     * Redeem
+     *
+     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEarnFixedTermPreRedeemAsync($inline_object = null)
+    {
+        return $this->createEarnFixedTermPreRedeemAsyncWithHttpInfo($inline_object)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createEarnFixedTermPreRedeemAsyncWithHttpInfo
+     *
+     * Redeem
+     *
+     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEarnFixedTermPreRedeemAsyncWithHttpInfo($inline_object = null)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2004';
+        $request = $this->createEarnFixedTermPreRedeemRequest($inline_object);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createEarnFixedTermPreRedeem'
+     *
+     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createEarnFixedTermPreRedeemRequest($inline_object = null)
+    {
+
+        $resourcePath = '/earn/fixed-term/user/pre-redeem';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($inline_object)) {
+            $_tempBody = $inline_object;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listEarnFixedTermHistory
+     *
+     * Subscription history
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  string $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $start_at Start timestamp (optional)
+     * @param  int $end_at End Timestamp (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2005
+     */
+    public function listEarnFixedTermHistory($associative_array)
+    {
+        list($response) = $this->listEarnFixedTermHistoryWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listEarnFixedTermHistoryWithHttpInfo
+     *
+     * Subscription history
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  string $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $start_at Start timestamp (optional)
+     * @param  int $end_at End Timestamp (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listEarnFixedTermHistoryWithHttpInfo($associative_array)
+    {
+        $request = $this->listEarnFixedTermHistoryRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2005';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listEarnFixedTermHistoryAsync
+     *
+     * Subscription history
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  string $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $start_at Start timestamp (optional)
+     * @param  int $end_at End Timestamp (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermHistoryAsync($associative_array)
+    {
+        return $this->listEarnFixedTermHistoryAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listEarnFixedTermHistoryAsyncWithHttpInfo
+     *
+     * Subscription history
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  string $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $start_at Start timestamp (optional)
+     * @param  int $end_at End Timestamp (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listEarnFixedTermHistoryAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2005';
+        $request = $this->listEarnFixedTermHistoryRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listEarnFixedTermHistory'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward (required)
+     * @param  int $page Page number (required)
+     * @param  int $limit Page size (required)
+     * @param  int $product_id Product ID (optional)
+     * @param  string $order_id Order ID (optional)
+     * @param  string $asset Currency (optional)
+     * @param  int $start_at Start timestamp (optional)
+     * @param  int $end_at End Timestamp (optional)
+     * @param  int $sub_business Sub-business (optional)
+     * @param  string $business_filter Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listEarnFixedTermHistoryRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
+        $product_id = array_key_exists('product_id', $associative_array) ? $associative_array['product_id'] : null;
+        $order_id = array_key_exists('order_id', $associative_array) ? $associative_array['order_id'] : null;
+        $asset = array_key_exists('asset', $associative_array) ? $associative_array['asset'] : null;
+        $start_at = array_key_exists('start_at', $associative_array) ? $associative_array['start_at'] : null;
+        $end_at = array_key_exists('end_at', $associative_array) ? $associative_array['end_at'] : null;
+        $sub_business = array_key_exists('sub_business', $associative_array) ? $associative_array['sub_business'] : null;
+        $business_filter = array_key_exists('business_filter', $associative_array) ? $associative_array['business_filter'] : null;
+
+        // verify the required parameter 'type' is set
+        if ($type === null || (is_array($type) && count($type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $type when calling listEarnFixedTermHistory'
+            );
+        }
+        // verify the required parameter 'page' is set
+        if ($page === null || (is_array($page) && count($page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $page when calling listEarnFixedTermHistory'
+            );
+        }
+        // verify the required parameter 'limit' is set
+        if ($limit === null || (is_array($limit) && count($limit) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $limit when calling listEarnFixedTermHistory'
+            );
+        }
+
+        $resourcePath = '/earn/fixed-term/user/history';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($product_id !== null) {
+            if('form' === 'form' && is_array($product_id)) {
+                foreach($product_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['product_id'] = $product_id;
+            }
+        }
+
+        // query params
+        if ($order_id !== null) {
+            if('form' === 'form' && is_array($order_id)) {
+                foreach($order_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['order_id'] = $order_id;
+            }
+        }
+
+        // query params
+        if ($asset !== null) {
+            if('form' === 'form' && is_array($asset)) {
+                foreach($asset as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['asset'] = $asset;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // query params
+        if ($start_at !== null) {
+            if('form' === 'form' && is_array($start_at)) {
+                foreach($start_at as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_at'] = $start_at;
+            }
+        }
+
+        // query params
+        if ($end_at !== null) {
+            if('form' === 'form' && is_array($end_at)) {
+                foreach($end_at as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_at'] = $end_at;
+            }
+        }
+
+        // query params
+        if ($sub_business !== null) {
+            if('form' === 'form' && is_array($sub_business)) {
+                foreach($sub_business as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sub_business'] = $sub_business;
+            }
+        }
+
+        // query params
+        if ($business_filter !== null) {
+            if('form' === 'form' && is_array($business_filter)) {
+                foreach($business_filter as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['business_filter'] = $business_filter;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Create http client option
      *
      * @throws \RuntimeException on file opening failure

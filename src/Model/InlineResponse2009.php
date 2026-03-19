@@ -55,9 +55,10 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'code' => 'int',
+        'label' => 'string',
         'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse2009Data',
-        'timestamp' => 'int'
+        'request_id' => 'string',
+        'data' => '\GateApi\Model\InlineResponse2009Data'
     ];
 
     /**
@@ -67,9 +68,10 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'code' => null,
+        'label' => null,
         'message' => null,
-        'data' => null,
-        'timestamp' => null
+        'request_id' => null,
+        'data' => null
     ];
 
     /**
@@ -100,9 +102,10 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'code' => 'code',
+        'label' => 'label',
         'message' => 'message',
-        'data' => 'data',
-        'timestamp' => 'timestamp'
+        'request_id' => 'request_id',
+        'data' => 'data'
     ];
 
     /**
@@ -112,9 +115,10 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'code' => 'setCode',
+        'label' => 'setLabel',
         'message' => 'setMessage',
-        'data' => 'setData',
-        'timestamp' => 'setTimestamp'
+        'request_id' => 'setRequestId',
+        'data' => 'setData'
     ];
 
     /**
@@ -124,9 +128,10 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'code' => 'getCode',
+        'label' => 'getLabel',
         'message' => 'getMessage',
-        'data' => 'getData',
-        'timestamp' => 'getTimestamp'
+        'request_id' => 'getRequestId',
+        'data' => 'getData'
     ];
 
     /**
@@ -190,9 +195,10 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -204,18 +210,6 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -234,7 +228,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int
+     * @return int|null
      */
     public function getCode()
     {
@@ -244,7 +238,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int|null $code Status code, 200 = success
      *
      * @return $this
      */
@@ -256,9 +250,33 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label Status label
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
      * Gets message
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
@@ -268,7 +286,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string|null $message Status message
      *
      * @return $this
      */
@@ -280,9 +298,33 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets request_id
+     *
+     * @return string|null
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string|null $request_id Request ID
+     *
+     * @return $this
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
+
+        return $this;
+    }
+
+    /**
      * Gets data
      *
-     * @return \GateApi\Model\InlineResponse2009Data
+     * @return \GateApi\Model\InlineResponse2009Data|null
      */
     public function getData()
     {
@@ -292,37 +334,13 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \GateApi\Model\InlineResponse2009Data $data data
+     * @param \GateApi\Model\InlineResponse2009Data|null $data data
      *
      * @return $this
      */
     public function setData($data)
     {
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return int
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param int $timestamp timestamp
-     *
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

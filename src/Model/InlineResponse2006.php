@@ -55,6 +55,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'code' => 'int',
+        'label' => 'string',
         'message' => 'string',
         'data' => '\GateApi\Model\InlineResponse2006Data'
     ];
@@ -66,6 +67,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'code' => null,
+        'label' => null,
         'message' => null,
         'data' => null
     ];
@@ -98,6 +100,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'code' => 'code',
+        'label' => 'label',
         'message' => 'message',
         'data' => 'data'
     ];
@@ -109,6 +112,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'code' => 'setCode',
+        'label' => 'setLabel',
         'message' => 'setMessage',
         'data' => 'setData'
     ];
@@ -120,6 +124,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'code' => 'getCode',
+        'label' => 'getLabel',
         'message' => 'getMessage',
         'data' => 'getData'
     ];
@@ -165,8 +170,25 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const CODE_0 = 0;
+    const CODE_2002 = 2002;
+    const CODE_50105 = 50105;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCodeAllowableValues()
+    {
+        return [
+            self::CODE_0,
+            self::CODE_2002,
+            self::CODE_50105,
+        ];
+    }
     
 
     /**
@@ -185,6 +207,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
@@ -198,15 +221,14 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'code', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -225,7 +247,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int
+     * @return int|null
      */
     public function getCode()
     {
@@ -235,13 +257,46 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int|null $code Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
      *
      * @return $this
      */
     public function setCode($code)
     {
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($code) && !in_array($code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'code', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label Error identifier code. Empty string on success, machine-readable error label on error
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }
@@ -249,7 +304,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
@@ -259,7 +314,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string|null $message message
      *
      * @return $this
      */
@@ -273,7 +328,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \GateApi\Model\InlineResponse2006Data
+     * @return \GateApi\Model\InlineResponse2006Data|null
      */
     public function getData()
     {
@@ -283,7 +338,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \GateApi\Model\InlineResponse2006Data $data data
+     * @param \GateApi\Model\InlineResponse2006Data|null $data data
      *
      * @return $this
      */

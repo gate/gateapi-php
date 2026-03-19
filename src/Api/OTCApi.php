@@ -122,7 +122,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2006
+     * @return \GateApi\Model\OtcQuoteResponse
      */
     public function createOtcQuote($otc_quote_request)
     {
@@ -139,7 +139,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcQuoteResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOtcQuoteWithHttpInfo($otc_quote_request)
     {
@@ -169,7 +169,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2006';
+        $returnType = '\GateApi\Model\OtcQuoteResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -216,7 +216,7 @@ class OTCApi
      */
     public function createOtcQuoteAsyncWithHttpInfo($otc_quote_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse2006';
+        $returnType = '\GateApi\Model\OtcQuoteResponse';
         $request = $this->createOtcQuoteRequest($otc_quote_request);
 
         return $this->client
@@ -358,7 +358,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2007
+     * @return \GateApi\Model\OtcActionResponse
      */
     public function createOtcOrder($otc_order_request)
     {
@@ -375,7 +375,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOtcOrderWithHttpInfo($otc_order_request)
     {
@@ -405,7 +405,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\OtcActionResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -452,7 +452,7 @@ class OTCApi
      */
     public function createOtcOrderAsyncWithHttpInfo($otc_order_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\OtcActionResponse';
         $request = $this->createOtcOrderRequest($otc_order_request);
 
         return $this->client
@@ -594,7 +594,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2008
+     * @return \GateApi\Model\OtcStableCoinOrderCreateResponse
      */
     public function createStableCoinOrder($otc_stable_coin_order_request)
     {
@@ -611,7 +611,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcStableCoinOrderCreateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createStableCoinOrderWithHttpInfo($otc_stable_coin_order_request)
     {
@@ -641,7 +641,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2008';
+        $returnType = '\GateApi\Model\OtcStableCoinOrderCreateResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -688,7 +688,7 @@ class OTCApi
      */
     public function createStableCoinOrderAsyncWithHttpInfo($otc_stable_coin_order_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse2008';
+        $returnType = '\GateApi\Model\OtcStableCoinOrderCreateResponse';
         $request = $this->createStableCoinOrderRequest($otc_stable_coin_order_request);
 
         return $this->client
@@ -829,7 +829,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2009
+     * @return \GateApi\Model\OtcUserDefaultBankResponse
      */
     public function getUserDefaultBank()
     {
@@ -845,7 +845,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2009, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcUserDefaultBankResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserDefaultBankWithHttpInfo()
     {
@@ -875,7 +875,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2009';
+        $returnType = '\GateApi\Model\OtcUserDefaultBankResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -920,7 +920,7 @@ class OTCApi
      */
     public function getUserDefaultBankAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse2009';
+        $returnType = '\GateApi\Model\OtcUserDefaultBankResponse';
         $request = $this->getUserDefaultBankRequest();
 
         return $this->client
@@ -1051,7 +1051,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20010
+     * @return \GateApi\Model\OtcBankListResponse
      */
     public function getBankList()
     {
@@ -1067,7 +1067,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20010, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcBankListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBankListWithHttpInfo()
     {
@@ -1097,7 +1097,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20010';
+        $returnType = '\GateApi\Model\OtcBankListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1142,7 +1142,7 @@ class OTCApi
      */
     public function getBankListAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse20010';
+        $returnType = '\GateApi\Model\OtcBankListResponse';
         $request = $this->getBankListRequest();
 
         return $this->client
@@ -1274,7 +1274,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2007
+     * @return \GateApi\Model\OtcActionResponse
      */
     public function markOtcOrderPaid($otc_mark_order_paid_request)
     {
@@ -1291,7 +1291,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function markOtcOrderPaidWithHttpInfo($otc_mark_order_paid_request)
     {
@@ -1321,7 +1321,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\OtcActionResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1368,7 +1368,7 @@ class OTCApi
      */
     public function markOtcOrderPaidAsyncWithHttpInfo($otc_mark_order_paid_request)
     {
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\OtcActionResponse';
         $request = $this->markOtcOrderPaidRequest($otc_mark_order_paid_request);
 
         return $this->client
@@ -1510,7 +1510,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2007
+     * @return \GateApi\Model\OtcActionResponse
      */
     public function cancelOtcOrder($order_id)
     {
@@ -1527,7 +1527,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelOtcOrderWithHttpInfo($order_id)
     {
@@ -1557,7 +1557,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\OtcActionResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1604,7 +1604,7 @@ class OTCApi
      */
     public function cancelOtcOrderAsyncWithHttpInfo($order_id)
     {
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\OtcActionResponse';
         $request = $this->cancelOtcOrderRequest($order_id);
 
         return $this->client
@@ -1764,7 +1764,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20011
+     * @return \GateApi\Model\OtcOrderListResponse
      */
     public function listOtcOrders($associative_array)
     {
@@ -1790,7 +1790,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcOrderListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listOtcOrdersWithHttpInfo($associative_array)
     {
@@ -1820,7 +1820,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20011';
+        $returnType = '\GateApi\Model\OtcOrderListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1885,7 +1885,7 @@ class OTCApi
      */
     public function listOtcOrdersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20011';
+        $returnType = '\GateApi\Model\OtcOrderListResponse';
         $request = $this->listOtcOrdersRequest($associative_array);
 
         return $this->client
@@ -2140,7 +2140,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20012
+     * @return \GateApi\Model\OtcStableCoinOrderListResponse
      */
     public function listStableCoinOrders($associative_array)
     {
@@ -2164,7 +2164,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcStableCoinOrderListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listStableCoinOrdersWithHttpInfo($associative_array)
     {
@@ -2194,7 +2194,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20012';
+        $returnType = '\GateApi\Model\OtcStableCoinOrderListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2255,7 +2255,7 @@ class OTCApi
      */
     public function listStableCoinOrdersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20012';
+        $returnType = '\GateApi\Model\OtcStableCoinOrderListResponse';
         $request = $this->listStableCoinOrdersRequest($associative_array);
 
         return $this->client
@@ -2475,7 +2475,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20013
+     * @return \GateApi\Model\OtcOrderDetailResponse
      */
     public function getOtcOrderDetail($order_id)
     {
@@ -2492,7 +2492,7 @@ class OTCApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\OtcOrderDetailResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOtcOrderDetailWithHttpInfo($order_id)
     {
@@ -2522,7 +2522,7 @@ class OTCApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20013';
+        $returnType = '\GateApi\Model\OtcOrderDetailResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2569,7 +2569,7 @@ class OTCApi
      */
     public function getOtcOrderDetailAsyncWithHttpInfo($order_id)
     {
-        $returnType = '\GateApi\Model\InlineResponse20013';
+        $returnType = '\GateApi\Model\OtcOrderDetailResponse';
         $request = $this->getOtcOrderDetailRequest($order_id);
 
         return $this->client

@@ -46,7 +46,7 @@ class FuturesOrderBookItem implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'futures_order_book_item';
+    protected static $openAPIModelName = 'FuturesOrderBookItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

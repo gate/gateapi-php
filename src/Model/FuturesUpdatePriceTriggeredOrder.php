@@ -72,7 +72,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'settle' => null,
-        'order_id' => null,
+        'order_id' => 'int64',
         'size' => 'int64',
         'price' => null,
         'trigger_price' => null,

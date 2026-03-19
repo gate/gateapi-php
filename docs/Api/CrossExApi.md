@@ -99,7 +99,7 @@ No authorization required
 
 ## listCrossexRuleRiskLimits
 
-> \GateApi\Model\InlineResponse20027[] listCrossexRuleRiskLimits($symbols)
+> \GateApi\Model\CrossexRiskLimit[] listCrossexRuleRiskLimits($symbols)
 
 [Public Interface] Query Risk Limit Information
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20027[]**](../Model/InlineResponse20027.md)
+[**\GateApi\Model\CrossexRiskLimit[]**](../Model/CrossexRiskLimit.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ No authorization required
 
 ## listCrossexTransferCoins
 
-> \GateApi\Model\InlineResponse20028[] listCrossexTransferCoins($coin)
+> \GateApi\Model\CrossexTransferCoin[] listCrossexTransferCoins($coin)
 
 [Public Interface] Query Supported Transfer Currencies
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20028[]**](../Model/InlineResponse20028.md)
+[**\GateApi\Model\CrossexTransferCoin[]**](../Model/CrossexTransferCoin.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ No authorization required
 
 ## listCrossexTransfers
 
-> \GateApi\Model\InlineResponse20029[] listCrossexTransfers($coin, $order_id, $from, $to, $page, $limit)
+> \GateApi\Model\CrossexTransferRecord[] listCrossexTransfers($coin, $order_id, $from, $to, $page, $limit)
 
 Query Fund Transfer History
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20029[]**](../Model/InlineResponse20029.md)
+[**\GateApi\Model\CrossexTransferRecord[]**](../Model/CrossexTransferRecord.md)
 
 ### Authorization
 
@@ -291,7 +291,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexTransfer
 
-> \GateApi\Model\InlineResponse20030 createCrossexTransfer($crossex_transfer_request)
+> \GateApi\Model\CrossexTransferResponse createCrossexTransfer($crossex_transfer_request)
 
 Fund Transfer
 
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20030**](../Model/InlineResponse20030.md)
+[**\GateApi\Model\CrossexTransferResponse**](../Model/CrossexTransferResponse.md)
 
 ### Authorization
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexOrder
 
-> \GateApi\Model\InlineResponse20031 createCrossexOrder($crossex_order_request)
+> \GateApi\Model\CrossexOrderActionResponse createCrossexOrder($crossex_order_request)
 
 Create an order
 
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20031**](../Model/InlineResponse20031.md)
+[**\GateApi\Model\CrossexOrderActionResponse**](../Model/CrossexOrderActionResponse.md)
 
 ### Authorization
 
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexOrder
 
-> \GateApi\Model\InlineResponse20032 getCrossexOrder($order_id)
+> \GateApi\Model\CrossexOrder getCrossexOrder($order_id)
 
 Query order details
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20032**](../Model/InlineResponse20032.md)
+[**\GateApi\Model\CrossexOrder**](../Model/CrossexOrder.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexOrder
 
-> \GateApi\Model\InlineResponse20033 updateCrossexOrder($order_id, $crossex_order_update_request)
+> \GateApi\Model\CrossexOrderActionResponse updateCrossexOrder($order_id, $crossex_order_update_request)
 
 Modify Order
 
@@ -523,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20033**](../Model/InlineResponse20033.md)
+[**\GateApi\Model\CrossexOrderActionResponse**](../Model/CrossexOrderActionResponse.md)
 
 ### Authorization
 
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
 
 ## cancelCrossexOrder
 
-> object cancelCrossexOrder($order_id)
+> \GateApi\Model\CrossexOrderActionResponse cancelCrossexOrder($order_id)
 
 Cancel Order
 
@@ -585,7 +585,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\GateApi\Model\CrossexOrderActionResponse**](../Model/CrossexOrderActionResponse.md)
 
 ### Authorization
 
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexConvertQuote
 
-> \GateApi\Model\InlineResponse20034 createCrossexConvertQuote($crossex_convert_quote_request)
+> \GateApi\Model\CrossexConvertQuoteResponse createCrossexConvertQuote($crossex_convert_quote_request)
 
 Flash Swap Inquiry
 
@@ -647,7 +647,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20034**](../Model/InlineResponse20034.md)
+[**\GateApi\Model\CrossexConvertQuoteResponse**](../Model/CrossexConvertQuoteResponse.md)
 
 ### Authorization
 
@@ -727,7 +727,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexAccount
 
-> \GateApi\Model\InlineResponse20035 getCrossexAccount($exchange_type)
+> \GateApi\Model\CrossexAccount getCrossexAccount($exchange_type)
 
 Query Account Assets
 
@@ -773,7 +773,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20035**](../Model/InlineResponse20035.md)
+[**\GateApi\Model\CrossexAccount**](../Model/CrossexAccount.md)
 
 ### Authorization
 
@@ -791,7 +791,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexAccount
 
-> \GateApi\Model\InlineResponse202 updateCrossexAccount($crossex_account_update_request)
+> \GateApi\Model\CrossexAccountUpdateResponse updateCrossexAccount($crossex_account_update_request)
 
 Modify Account Contract Position Mode and Account Mode
 
@@ -835,7 +835,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse202**](../Model/InlineResponse202.md)
+[**\GateApi\Model\CrossexAccountUpdateResponse**](../Model/CrossexAccountUpdateResponse.md)
 
 ### Authorization
 
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexPositionsLeverage
 
-> \GateApi\Model\InlineResponse2021 updateCrossexPositionsLeverage($crossex_leverage_request)
+> \GateApi\Model\CrossexLeverageResponse updateCrossexPositionsLeverage($crossex_leverage_request)
 
 Modify Contract Trading Pair Leverage Multiplier
 
@@ -961,7 +961,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2021**](../Model/InlineResponse2021.md)
+[**\GateApi\Model\CrossexLeverageResponse**](../Model/CrossexLeverageResponse.md)
 
 ### Authorization
 
@@ -1043,7 +1043,7 @@ Name | Type | Description  | Notes
 
 ## updateCrossexMarginPositionsLeverage
 
-> \GateApi\Model\InlineResponse2021 updateCrossexMarginPositionsLeverage($crossex_leverage_request)
+> \GateApi\Model\CrossexLeverageResponse updateCrossexMarginPositionsLeverage($crossex_leverage_request)
 
 Modify Leveraged Trading Pair Leverage Multiplier
 
@@ -1087,7 +1087,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2021**](../Model/InlineResponse2021.md)
+[**\GateApi\Model\CrossexLeverageResponse**](../Model/CrossexLeverageResponse.md)
 
 ### Authorization
 
@@ -1105,7 +1105,7 @@ Name | Type | Description  | Notes
 
 ## closeCrossexPosition
 
-> \GateApi\Model\InlineResponse20031 closeCrossexPosition($crossex_close_position_request)
+> \GateApi\Model\CrossexOrderActionResponse closeCrossexPosition($crossex_close_position_request)
 
 Full Close Position
 
@@ -1149,7 +1149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20031**](../Model/InlineResponse20031.md)
+[**\GateApi\Model\CrossexOrderActionResponse**](../Model/CrossexOrderActionResponse.md)
 
 ### Authorization
 
@@ -1167,7 +1167,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexInterestRate
 
-> \GateApi\Model\InlineResponse20036[] getCrossexInterestRate($coin, $exchange_type)
+> \GateApi\Model\CrossexInterestRate[] getCrossexInterestRate($coin, $exchange_type)
 
 Query margin asset interest rates
 
@@ -1215,7 +1215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20036[]**](../Model/InlineResponse20036.md)
+[**\GateApi\Model\CrossexInterestRate[]**](../Model/CrossexInterestRate.md)
 
 ### Authorization
 
@@ -1233,7 +1233,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexFee
 
-> \GateApi\Model\InlineResponse20037 getCrossexFee()
+> \GateApi\Model\CrossexFee getCrossexFee()
 
 Query User Fee Rates
 
@@ -1273,7 +1273,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20037**](../Model/InlineResponse20037.md)
+[**\GateApi\Model\CrossexFee**](../Model/CrossexFee.md)
 
 ### Authorization
 
@@ -1291,7 +1291,7 @@ This endpoint does not need any parameter.
 
 ## listCrossexPositions
 
-> \GateApi\Model\InlineResponse20038[] listCrossexPositions($symbol, $exchange_type)
+> \GateApi\Model\CrossexPosition[] listCrossexPositions($symbol, $exchange_type)
 
 Query Contract Positions
 
@@ -1339,7 +1339,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20038[]**](../Model/InlineResponse20038.md)
+[**\GateApi\Model\CrossexPosition[]**](../Model/CrossexPosition.md)
 
 ### Authorization
 
@@ -1357,7 +1357,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexMarginPositions
 
-> \GateApi\Model\InlineResponse20039[] listCrossexMarginPositions($symbol, $exchange_type)
+> \GateApi\Model\CrossexMarginPosition[] listCrossexMarginPositions($symbol, $exchange_type)
 
 Query Leveraged Positions
 
@@ -1405,7 +1405,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20039[]**](../Model/InlineResponse20039.md)
+[**\GateApi\Model\CrossexMarginPosition[]**](../Model/CrossexMarginPosition.md)
 
 ### Authorization
 
@@ -1423,7 +1423,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexAdlRank
 
-> \GateApi\Model\InlineResponse20040[] listCrossexAdlRank($symbol)
+> \GateApi\Model\CrossexAdlRank[] listCrossexAdlRank($symbol)
 
 Query ADL Position Reduction Ranking
 
@@ -1467,7 +1467,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20040[]**](../Model/InlineResponse20040.md)
+[**\GateApi\Model\CrossexAdlRank[]**](../Model/CrossexAdlRank.md)
 
 ### Authorization
 
@@ -1485,7 +1485,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexOpenOrders
 
-> \GateApi\Model\InlineResponse20032[] listCrossexOpenOrders($symbol, $exchange_type, $business_type)
+> \GateApi\Model\CrossexOrder[] listCrossexOpenOrders($symbol, $exchange_type, $business_type)
 
 Query All Current Open Orders
 
@@ -1535,7 +1535,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20032[]**](../Model/InlineResponse20032.md)
+[**\GateApi\Model\CrossexOrder[]**](../Model/CrossexOrder.md)
 
 ### Authorization
 
@@ -1553,7 +1553,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexHistoryOrders
 
-> \GateApi\Model\InlineResponse20041[] listCrossexHistoryOrders($page, $limit, $symbol, $from, $to)
+> \GateApi\Model\CrossexOrder[] listCrossexHistoryOrders($page, $limit, $symbol, $from, $to)
 
 queryorderhistory
 
@@ -1607,7 +1607,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20041[]**](../Model/InlineResponse20041.md)
+[**\GateApi\Model\CrossexOrder[]**](../Model/CrossexOrder.md)
 
 ### Authorization
 
@@ -1625,7 +1625,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexHistoryPositions
 
-> \GateApi\Model\InlineResponse20042[] listCrossexHistoryPositions($page, $limit, $symbol, $from, $to)
+> \GateApi\Model\CrossexHistoricalPosition[] listCrossexHistoryPositions($page, $limit, $symbol, $from, $to)
 
 Query Contract Position History
 
@@ -1679,7 +1679,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20042[]**](../Model/InlineResponse20042.md)
+[**\GateApi\Model\CrossexHistoricalPosition[]**](../Model/CrossexHistoricalPosition.md)
 
 ### Authorization
 
@@ -1697,7 +1697,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexHistoryMarginPositions
 
-> \GateApi\Model\InlineResponse20043[] listCrossexHistoryMarginPositions($page, $limit, $symbol, $from, $to)
+> \GateApi\Model\CrossexHistoricalMarginPosition[] listCrossexHistoryMarginPositions($page, $limit, $symbol, $from, $to)
 
 Query Leveraged Position History
 
@@ -1751,7 +1751,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20043[]**](../Model/InlineResponse20043.md)
+[**\GateApi\Model\CrossexHistoricalMarginPosition[]**](../Model/CrossexHistoricalMarginPosition.md)
 
 ### Authorization
 
@@ -1769,7 +1769,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexHistoryMarginInterests
 
-> \GateApi\Model\InlineResponse20044[] listCrossexHistoryMarginInterests($symbol, $from, $to, $page, $limit, $exchange_type)
+> \GateApi\Model\CrossexMarginInterestRecord[] listCrossexHistoryMarginInterests($symbol, $from, $to, $page, $limit, $exchange_type)
 
 Query Leveraged Interest Deduction History
 
@@ -1825,7 +1825,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20044[]**](../Model/InlineResponse20044.md)
+[**\GateApi\Model\CrossexMarginInterestRecord[]**](../Model/CrossexMarginInterestRecord.md)
 
 ### Authorization
 
@@ -1843,7 +1843,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexHistoryTrades
 
-> \GateApi\Model\InlineResponse20045[] listCrossexHistoryTrades($page, $limit, $symbol, $from, $to)
+> \GateApi\Model\CrossexTrade[] listCrossexHistoryTrades($page, $limit, $symbol, $from, $to)
 
 queryfilledhistory
 
@@ -1897,7 +1897,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20045[]**](../Model/InlineResponse20045.md)
+[**\GateApi\Model\CrossexTrade[]**](../Model/CrossexTrade.md)
 
 ### Authorization
 
@@ -1915,7 +1915,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexAccountBook
 
-> \GateApi\Model\InlineResponse20046[] listCrossexAccountBook($page, $limit, $coin, $from, $to)
+> \GateApi\Model\CrossexAccountBookRecord[] listCrossexAccountBook($page, $limit, $coin, $from, $to)
 
 Query Account Asset Change History
 
@@ -1969,7 +1969,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20046[]**](../Model/InlineResponse20046.md)
+[**\GateApi\Model\CrossexAccountBookRecord[]**](../Model/CrossexAccountBookRecord.md)
 
 ### Authorization
 
@@ -1987,7 +1987,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexCoinDiscountRate
 
-> \GateApi\Model\InlineResponse20047[] listCrossexCoinDiscountRate($coin, $exchange_type)
+> \GateApi\Model\CrossexCoinDiscountRate[] listCrossexCoinDiscountRate($coin, $exchange_type)
 
 Query currency discount rate (discount rate of margin currency in isolated exchange mode)
 
@@ -2035,7 +2035,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20047[]**](../Model/InlineResponse20047.md)
+[**\GateApi\Model\CrossexCoinDiscountRate[]**](../Model/CrossexCoinDiscountRate.md)
 
 ### Authorization
 

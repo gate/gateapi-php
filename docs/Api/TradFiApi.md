@@ -309,7 +309,7 @@ No authorization required
 
 ## querySymbolTicker
 
-> \GateApi\Model\Ticker2 querySymbolTicker($symbol)
+> \GateApi\Model\TradFiTicker querySymbolTicker($symbol)
 
 Query trading symbol ticker
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Ticker2**](../Model/Ticker2.md)
+[**\GateApi\Model\TradFiTicker**](../Model/TradFiTicker.md)
 
 ### Authorization
 

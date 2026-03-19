@@ -9,6 +9,12 @@ Method | HTTP request | Description
 [**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order
 [**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Query single flash swap order
 [**previewFlashSwapOrder**](FlashSwapApi.md#previewFlashSwapOrder) | **POST** /flash_swap/orders/preview | Flash swap order preview
+[**createFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#createFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash-swap/multi-currency/many-to-one/order/create | Flash Swap - Multi-currency exchange - Place order (many-to-one)
+[**previewFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#previewFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash-swap/multi-currency/many-to-one/order/preview | Flash Swap - Multi-currency exchange - Preview (many-to-one)
+[**createFlashSwapOrderV1**](FlashSwapApi.md#createFlashSwapOrderV1) | **POST** /flash-swap/order/create | Flash Swap - Place order (one-to-one)
+[**createFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#createFlashSwapMultiCurrencyOneToManyOrder) | **POST** /flash-swap/multi-currency/one-to-many/order/create | Flash Swap - Multi-currency exchange - Place order (one-to-many)
+[**previewFlashSwapMultiCurrencyOneToManyOrder**](FlashSwapApi.md#previewFlashSwapMultiCurrencyOneToManyOrder) | **POST** /flash-swap/multi-currency/one-to-many/order/preview | Flash Swap - Multi-currency exchange - Preview (one-to-many)
+[**previewFlashSwapOrderV1**](FlashSwapApi.md#previewFlashSwapOrderV1) | **GET** /flash-swap/order/preview | Flash Swap - Preview (one-to-one)
 
 
 ## listFlashSwapCurrencyPair
@@ -322,6 +328,386 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createFlashSwapMultiCurrencyManyToOneOrder
+
+> \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateResp createFlashSwapMultiCurrencyManyToOneOrder($flash_swap_multi_currency_many_to_one_order_create_req)
+
+Flash Swap - Multi-currency exchange - Place order (many-to-one)
+
+Create a multi-currency to single target currency exchange order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FlashSwapApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$flash_swap_multi_currency_many_to_one_order_create_req = new \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq(); // \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq | 
+
+try {
+    $result = $apiInstance->createFlashSwapMultiCurrencyManyToOneOrder($flash_swap_multi_currency_many_to_one_order_create_req);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FlashSwapApi->createFlashSwapMultiCurrencyManyToOneOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flash_swap_multi_currency_many_to_one_order_create_req** | [**\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq**](../Model/FlashSwapMultiCurrencyManyToOneOrderCreateReq.md)|  |
+
+### Return type
+
+[**\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateResp**](../Model/FlashSwapMultiCurrencyManyToOneOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## previewFlashSwapMultiCurrencyManyToOneOrder
+
+> \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewResp previewFlashSwapMultiCurrencyManyToOneOrder($flash_swap_multi_currency_many_to_one_order_preview_req)
+
+Flash Swap - Multi-currency exchange - Preview (many-to-one)
+
+Preview quote for multi-currency to single target currency exchange
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FlashSwapApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$flash_swap_multi_currency_many_to_one_order_preview_req = new \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq(); // \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq | 
+
+try {
+    $result = $apiInstance->previewFlashSwapMultiCurrencyManyToOneOrder($flash_swap_multi_currency_many_to_one_order_preview_req);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FlashSwapApi->previewFlashSwapMultiCurrencyManyToOneOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flash_swap_multi_currency_many_to_one_order_preview_req** | [**\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq**](../Model/FlashSwapMultiCurrencyManyToOneOrderPreviewReq.md)|  |
+
+### Return type
+
+[**\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewResp**](../Model/FlashSwapMultiCurrencyManyToOneOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createFlashSwapOrderV1
+
+> \GateApi\Model\FlashSwapOrderCreateResp createFlashSwapOrderV1($flash_swap_order_create_req)
+
+Flash Swap - Place order (one-to-one)
+
+Submit a one-to-one flash swap order. A quote_id must be obtained from the preview endpoint first
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FlashSwapApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$flash_swap_order_create_req = new \GateApi\Model\FlashSwapOrderCreateReq(); // \GateApi\Model\FlashSwapOrderCreateReq | 
+
+try {
+    $result = $apiInstance->createFlashSwapOrderV1($flash_swap_order_create_req);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FlashSwapApi->createFlashSwapOrderV1: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flash_swap_order_create_req** | [**\GateApi\Model\FlashSwapOrderCreateReq**](../Model/FlashSwapOrderCreateReq.md)|  |
+
+### Return type
+
+[**\GateApi\Model\FlashSwapOrderCreateResp**](../Model/FlashSwapOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createFlashSwapMultiCurrencyOneToManyOrder
+
+> \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateResp createFlashSwapMultiCurrencyOneToManyOrder($flash_swap_multi_currency_one_to_many_order_create_req)
+
+Flash Swap - Multi-currency exchange - Place order (one-to-many)
+
+Create a single currency to multiple target currencies exchange order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FlashSwapApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$flash_swap_multi_currency_one_to_many_order_create_req = new \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq(); // \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq | 
+
+try {
+    $result = $apiInstance->createFlashSwapMultiCurrencyOneToManyOrder($flash_swap_multi_currency_one_to_many_order_create_req);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FlashSwapApi->createFlashSwapMultiCurrencyOneToManyOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flash_swap_multi_currency_one_to_many_order_create_req** | [**\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq**](../Model/FlashSwapMultiCurrencyOneToManyOrderCreateReq.md)|  |
+
+### Return type
+
+[**\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateResp**](../Model/FlashSwapMultiCurrencyOneToManyOrderCreateResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## previewFlashSwapMultiCurrencyOneToManyOrder
+
+> \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewResp previewFlashSwapMultiCurrencyOneToManyOrder($flash_swap_multi_currency_one_to_many_order_preview_req)
+
+Flash Swap - Multi-currency exchange - Preview (one-to-many)
+
+Preview quote for single currency to multiple target currencies exchange
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FlashSwapApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$flash_swap_multi_currency_one_to_many_order_preview_req = new \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq(); // \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq | 
+
+try {
+    $result = $apiInstance->previewFlashSwapMultiCurrencyOneToManyOrder($flash_swap_multi_currency_one_to_many_order_preview_req);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FlashSwapApi->previewFlashSwapMultiCurrencyOneToManyOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flash_swap_multi_currency_one_to_many_order_preview_req** | [**\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq**](../Model/FlashSwapMultiCurrencyOneToManyOrderPreviewReq.md)|  |
+
+### Return type
+
+[**\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewResp**](../Model/FlashSwapMultiCurrencyOneToManyOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## previewFlashSwapOrderV1
+
+> \GateApi\Model\FlashSwapOrderPreviewResp previewFlashSwapOrderV1($sell_asset, $buy_asset, $sell_amount, $buy_amount)
+
+Flash Swap - Preview (one-to-one)
+
+Get one-to-one flash swap quote. Either sell_amount or buy_amount must be specified
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FlashSwapApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['sell_asset'] = 'sell_asset_example'; // string | Currency to sell
+$associate_array['buy_asset'] = 'buy_asset_example'; // string | Currency to buy
+$associate_array['sell_amount'] = 'sell_amount_example'; // string | Sell amount, either this or buy_amount must be specified
+$associate_array['buy_amount'] = 'buy_amount_example'; // string | Buy amount, either this or sell_amount must be specified
+
+try {
+    $result = $apiInstance->previewFlashSwapOrderV1($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FlashSwapApi->previewFlashSwapOrderV1: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sell_asset** | **string**| Currency to sell |
+ **buy_asset** | **string**| Currency to buy |
+ **sell_amount** | **string**| Sell amount, either this or buy_amount must be specified | [optional]
+ **buy_amount** | **string**| Buy amount, either this or sell_amount must be specified | [optional]
+
+### Return type
+
+[**\GateApi\Model\FlashSwapOrderPreviewResp**](../Model/FlashSwapOrderPreviewResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)

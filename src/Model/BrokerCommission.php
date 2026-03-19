@@ -55,7 +55,7 @@ class BrokerCommission implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'list' => '\GateApi\Model\BrokerCommission1[]'
+        'list' => '\GateApi\Model\BrokerCommissionItem[]'
     ];
 
     /**
@@ -234,7 +234,7 @@ class BrokerCommission implements ModelInterface, ArrayAccess
     /**
      * Gets list
      *
-     * @return \GateApi\Model\BrokerCommission1[]|null
+     * @return \GateApi\Model\BrokerCommissionItem[]|null
      */
     public function getList()
     {
@@ -244,7 +244,7 @@ class BrokerCommission implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \GateApi\Model\BrokerCommission1[]|null $list List of commission history
+     * @param \GateApi\Model\BrokerCommissionItem[]|null $list List of commission history
      *
      * @return $this
      */

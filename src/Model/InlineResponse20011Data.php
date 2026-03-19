@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineResponse20011Data Class Doc Comment
  *
  * @category Class
+ * @description Activity entry data
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -54,11 +55,12 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pn' => 'int',
-        'ps' => 'int',
-        'total_pn' => 'int',
-        'count' => 'int',
-        'list' => '\GateApi\Model\InlineResponse20011DataList[]'
+        'icon_url' => 'string',
+        'icon_url_dark' => 'string',
+        'source_type' => 'string',
+        'title' => 'string',
+        'url_type' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -67,11 +69,12 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'pn' => null,
-        'ps' => null,
-        'total_pn' => null,
-        'count' => null,
-        'list' => null
+        'icon_url' => null,
+        'icon_url_dark' => null,
+        'source_type' => null,
+        'title' => null,
+        'url_type' => null,
+        'url' => null
     ];
 
     /**
@@ -101,11 +104,12 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'pn' => 'pn',
-        'ps' => 'ps',
-        'total_pn' => 'total_pn',
-        'count' => 'count',
-        'list' => 'list'
+        'icon_url' => 'icon_url',
+        'icon_url_dark' => 'icon_url_dark',
+        'source_type' => 'source_type',
+        'title' => 'title',
+        'url_type' => 'url_type',
+        'url' => 'url'
     ];
 
     /**
@@ -114,11 +118,12 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'pn' => 'setPn',
-        'ps' => 'setPs',
-        'total_pn' => 'setTotalPn',
-        'count' => 'setCount',
-        'list' => 'setList'
+        'icon_url' => 'setIconUrl',
+        'icon_url_dark' => 'setIconUrlDark',
+        'source_type' => 'setSourceType',
+        'title' => 'setTitle',
+        'url_type' => 'setUrlType',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -127,11 +132,12 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'pn' => 'getPn',
-        'ps' => 'getPs',
-        'total_pn' => 'getTotalPn',
-        'count' => 'getCount',
-        'list' => 'getList'
+        'icon_url' => 'getIconUrl',
+        'icon_url_dark' => 'getIconUrlDark',
+        'source_type' => 'getSourceType',
+        'title' => 'getTitle',
+        'url_type' => 'getUrlType',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -194,11 +200,12 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['pn'] = isset($data['pn']) ? $data['pn'] : null;
-        $this->container['ps'] = isset($data['ps']) ? $data['ps'] : null;
-        $this->container['total_pn'] = isset($data['total_pn']) ? $data['total_pn'] : null;
-        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['icon_url'] = isset($data['icon_url']) ? $data['icon_url'] : null;
+        $this->container['icon_url_dark'] = isset($data['icon_url_dark']) ? $data['icon_url_dark'] : null;
+        $this->container['source_type'] = isset($data['source_type']) ? $data['source_type'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['url_type'] = isset($data['url_type']) ? $data['url_type'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
     /**
@@ -210,20 +217,23 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['pn'] === null) {
-            $invalidProperties[] = "'pn' can't be null";
+        if ($this->container['icon_url'] === null) {
+            $invalidProperties[] = "'icon_url' can't be null";
         }
-        if ($this->container['ps'] === null) {
-            $invalidProperties[] = "'ps' can't be null";
+        if ($this->container['icon_url_dark'] === null) {
+            $invalidProperties[] = "'icon_url_dark' can't be null";
         }
-        if ($this->container['total_pn'] === null) {
-            $invalidProperties[] = "'total_pn' can't be null";
+        if ($this->container['source_type'] === null) {
+            $invalidProperties[] = "'source_type' can't be null";
         }
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['url_type'] === null) {
+            $invalidProperties[] = "'url_type' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -241,121 +251,145 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets pn
+     * Gets icon_url
      *
-     * @return int
+     * @return string
      */
-    public function getPn()
+    public function getIconUrl()
     {
-        return $this->container['pn'];
+        return $this->container['icon_url'];
     }
 
     /**
-     * Sets pn
+     * Sets icon_url
      *
-     * @param int $pn pn
+     * @param string $icon_url Activity entry icon URL (light mode)
      *
      * @return $this
      */
-    public function setPn($pn)
+    public function setIconUrl($icon_url)
     {
-        $this->container['pn'] = $pn;
+        $this->container['icon_url'] = $icon_url;
 
         return $this;
     }
 
     /**
-     * Gets ps
+     * Gets icon_url_dark
      *
-     * @return int
+     * @return string
      */
-    public function getPs()
+    public function getIconUrlDark()
     {
-        return $this->container['ps'];
+        return $this->container['icon_url_dark'];
     }
 
     /**
-     * Sets ps
+     * Sets icon_url_dark
      *
-     * @param int $ps ps
+     * @param string $icon_url_dark Activity entry icon URL (dark mode)
      *
      * @return $this
      */
-    public function setPs($ps)
+    public function setIconUrlDark($icon_url_dark)
     {
-        $this->container['ps'] = $ps;
+        $this->container['icon_url_dark'] = $icon_url_dark;
 
         return $this;
     }
 
     /**
-     * Gets total_pn
+     * Gets source_type
      *
-     * @return int
+     * @return string
      */
-    public function getTotalPn()
+    public function getSourceType()
     {
-        return $this->container['total_pn'];
+        return $this->container['source_type'];
     }
 
     /**
-     * Sets total_pn
+     * Sets source_type
      *
-     * @param int $total_pn total_pn
+     * @param string $source_type Source type, e.g., activity for campaign
      *
      * @return $this
      */
-    public function setTotalPn($total_pn)
+    public function setSourceType($source_type)
     {
-        $this->container['total_pn'] = $total_pn;
+        $this->container['source_type'] = $source_type;
 
         return $this;
     }
 
     /**
-     * Gets count
+     * Gets title
      *
-     * @return int
+     * @return string
      */
-    public function getCount()
+    public function getTitle()
     {
-        return $this->container['count'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets count
+     * Sets title
      *
-     * @param int $count count
+     * @param string $title Activity entry title
      *
      * @return $this
      */
-    public function setCount($count)
+    public function setTitle($title)
     {
-        $this->container['count'] = $count;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets url_type
      *
-     * @return \GateApi\Model\InlineResponse20011DataList[]
+     * @return string
      */
-    public function getList()
+    public function getUrlType()
     {
-        return $this->container['list'];
+        return $this->container['url_type'];
     }
 
     /**
-     * Sets list
+     * Sets url_type
      *
-     * @param \GateApi\Model\InlineResponse20011DataList[] $list list
+     * @param string $url_type Redirect link type, e.g., h5 for H5 page
      *
      * @return $this
      */
-    public function setList($list)
+    public function setUrlType($url_type)
     {
-        $this->container['list'] = $list;
+        $this->container['url_type'] = $url_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url Activity entry redirect URL
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

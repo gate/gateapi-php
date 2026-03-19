@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**time** | **int** |  | [optional] 
-**value** | **string** |  | [optional] 
+**code** | **int** | Return code, 0 means success | [optional] 
+**message** | **string** | Response message | [optional] 
+**data** | [**object**](.md) | Redemption result (empty object on success) | [optional] 
+**timestamp** | **int** | Response timestamp (in seconds) | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

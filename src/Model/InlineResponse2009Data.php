@@ -54,13 +54,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'bank_account_name' => 'string',
-        'bank_name' => 'string',
-        'bank_country' => 'string',
-        'bank_address' => 'string',
-        'bank_code' => 'string',
-        'branch_code' => 'string'
+        'list' => '\GateApi\Model\InlineResponse2009DataList[]'
     ];
 
     /**
@@ -69,13 +63,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'bank_account_name' => null,
-        'bank_name' => null,
-        'bank_country' => null,
-        'bank_address' => null,
-        'bank_code' => null,
-        'branch_code' => null
+        'list' => null
     ];
 
     /**
@@ -105,13 +93,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'bank_account_name' => 'bank_account_name',
-        'bank_name' => 'bank_name',
-        'bank_country' => 'bank_country',
-        'bank_address' => 'bank_address',
-        'bank_code' => 'bank_code',
-        'branch_code' => 'branch_code'
+        'list' => 'list'
     ];
 
     /**
@@ -120,13 +102,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'bank_account_name' => 'setBankAccountName',
-        'bank_name' => 'setBankName',
-        'bank_country' => 'setBankCountry',
-        'bank_address' => 'setBankAddress',
-        'bank_code' => 'setBankCode',
-        'branch_code' => 'setBranchCode'
+        'list' => 'setList'
     ];
 
     /**
@@ -135,13 +111,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'bank_account_name' => 'getBankAccountName',
-        'bank_name' => 'getBankName',
-        'bank_country' => 'getBankCountry',
-        'bank_address' => 'getBankAddress',
-        'bank_code' => 'getBankCode',
-        'branch_code' => 'getBranchCode'
+        'list' => 'getList'
     ];
 
     /**
@@ -204,13 +174,7 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['bank_account_name'] = isset($data['bank_account_name']) ? $data['bank_account_name'] : null;
-        $this->container['bank_name'] = isset($data['bank_name']) ? $data['bank_name'] : null;
-        $this->container['bank_country'] = isset($data['bank_country']) ? $data['bank_country'] : null;
-        $this->container['bank_address'] = isset($data['bank_address']) ? $data['bank_address'] : null;
-        $this->container['bank_code'] = isset($data['bank_code']) ? $data['bank_code'] : null;
-        $this->container['branch_code'] = isset($data['branch_code']) ? $data['branch_code'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -222,27 +186,6 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['bank_account_name'] === null) {
-            $invalidProperties[] = "'bank_account_name' can't be null";
-        }
-        if ($this->container['bank_name'] === null) {
-            $invalidProperties[] = "'bank_name' can't be null";
-        }
-        if ($this->container['bank_country'] === null) {
-            $invalidProperties[] = "'bank_country' can't be null";
-        }
-        if ($this->container['bank_address'] === null) {
-            $invalidProperties[] = "'bank_address' can't be null";
-        }
-        if ($this->container['bank_code'] === null) {
-            $invalidProperties[] = "'bank_code' can't be null";
-        }
-        if ($this->container['branch_code'] === null) {
-            $invalidProperties[] = "'branch_code' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -259,169 +202,25 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets list
      *
-     * @return string
+     * @return \GateApi\Model\InlineResponse2009DataList[]|null
      */
-    public function getId()
+    public function getList()
     {
-        return $this->container['id'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets id
+     * Sets list
      *
-     * @param string $id Bank ID (required for order placement)
+     * @param \GateApi\Model\InlineResponse2009DataList[]|null $list Live stream/replay list
      *
      * @return $this
      */
-    public function setId($id)
+    public function setList($list)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_account_name
-     *
-     * @return string
-     */
-    public function getBankAccountName()
-    {
-        return $this->container['bank_account_name'];
-    }
-
-    /**
-     * Sets bank_account_name
-     *
-     * @param string $bank_account_name bank_account_name
-     *
-     * @return $this
-     */
-    public function setBankAccountName($bank_account_name)
-    {
-        $this->container['bank_account_name'] = $bank_account_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_name
-     *
-     * @return string
-     */
-    public function getBankName()
-    {
-        return $this->container['bank_name'];
-    }
-
-    /**
-     * Sets bank_name
-     *
-     * @param string $bank_name bank_name
-     *
-     * @return $this
-     */
-    public function setBankName($bank_name)
-    {
-        $this->container['bank_name'] = $bank_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_country
-     *
-     * @return string
-     */
-    public function getBankCountry()
-    {
-        return $this->container['bank_country'];
-    }
-
-    /**
-     * Sets bank_country
-     *
-     * @param string $bank_country bank_country
-     *
-     * @return $this
-     */
-    public function setBankCountry($bank_country)
-    {
-        $this->container['bank_country'] = $bank_country;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_address
-     *
-     * @return string
-     */
-    public function getBankAddress()
-    {
-        return $this->container['bank_address'];
-    }
-
-    /**
-     * Sets bank_address
-     *
-     * @param string $bank_address bank_address
-     *
-     * @return $this
-     */
-    public function setBankAddress($bank_address)
-    {
-        $this->container['bank_address'] = $bank_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_code
-     *
-     * @return string
-     */
-    public function getBankCode()
-    {
-        return $this->container['bank_code'];
-    }
-
-    /**
-     * Sets bank_code
-     *
-     * @param string $bank_code bank_code
-     *
-     * @return $this
-     */
-    public function setBankCode($bank_code)
-    {
-        $this->container['bank_code'] = $bank_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets branch_code
-     *
-     * @return string
-     */
-    public function getBranchCode()
-    {
-        return $this->container['branch_code'];
-    }
-
-    /**
-     * Sets branch_code
-     *
-     * @param string $branch_code branch_code
-     *
-     * @return $this
-     */
-    public function setBranchCode($branch_code)
-    {
-        $this->container['branch_code'] = $branch_code;
+        $this->container['list'] = $list;
 
         return $this;
     }

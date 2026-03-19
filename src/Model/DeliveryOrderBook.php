@@ -57,8 +57,8 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
         'id' => 'int',
         'current' => 'double',
         'update' => 'double',
-        'asks' => '\GateApi\Model\FuturesOrderBookItem1[]',
-        'bids' => '\GateApi\Model\FuturesOrderBookItem1[]'
+        'asks' => '\GateApi\Model\DeliveryOrderBookItem[]',
+        'bids' => '\GateApi\Model\DeliveryOrderBookItem[]'
     ];
 
     /**
@@ -306,7 +306,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
     /**
      * Gets asks
      *
-     * @return \GateApi\Model\FuturesOrderBookItem1[]
+     * @return \GateApi\Model\DeliveryOrderBookItem[]
      */
     public function getAsks()
     {
@@ -316,7 +316,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
     /**
      * Sets asks
      *
-     * @param \GateApi\Model\FuturesOrderBookItem1[] $asks Ask Depth
+     * @param \GateApi\Model\DeliveryOrderBookItem[] $asks Ask Depth
      *
      * @return $this
      */
@@ -330,7 +330,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
     /**
      * Gets bids
      *
-     * @return \GateApi\Model\FuturesOrderBookItem1[]
+     * @return \GateApi\Model\DeliveryOrderBookItem[]
      */
     public function getBids()
     {
@@ -340,7 +340,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
     /**
      * Sets bids
      *
-     * @param \GateApi\Model\FuturesOrderBookItem1[] $bids Bid Depth
+     * @param \GateApi\Model\DeliveryOrderBookItem[] $bids Bid Depth
      *
      * @return $this
      */

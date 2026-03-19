@@ -54,7 +54,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order' => '\GateApi\Model\TrailOrder'
+        'code' => 'int',
+        'message' => 'string',
+        'data' => '\GateApi\Model\InlineResponse200Data',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -63,7 +66,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order' => null
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'timestamp' => null
     ];
 
     /**
@@ -93,7 +99,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order' => 'order'
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -102,7 +111,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order' => 'setOrder'
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -111,7 +123,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order' => 'getOrder'
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -174,7 +189,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['order'] = isset($data['order']) ? $data['order'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -186,6 +204,18 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -202,25 +232,97 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets order
+     * Gets code
      *
-     * @return \GateApi\Model\TrailOrder|null
+     * @return int
      */
-    public function getOrder()
+    public function getCode()
     {
-        return $this->container['order'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets order
+     * Sets code
      *
-     * @param \GateApi\Model\TrailOrder|null $order order
+     * @param int $code Return code, 0 means success
      *
      * @return $this
      */
-    public function setOrder($order)
+    public function setCode($code)
     {
-        $this->container['order'] = $order;
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message Response message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \GateApi\Model\InlineResponse200Data
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \GateApi\Model\InlineResponse200Data $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int $timestamp Response timestamp (in seconds)
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

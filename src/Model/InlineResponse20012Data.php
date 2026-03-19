@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineResponse20012Data Class Doc Comment
  *
  * @category Class
+ * @description Activity list data
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -54,11 +55,12 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total' => 'int',
+        'list' => '\GateApi\Model\InlineResponse20012DataList[]',
+        'page' => 'int',
         'page_size' => 'int',
-        'page_number' => 'int',
-        'total_page' => 'int',
-        'list' => '\GateApi\Model\InlineResponse20012DataList[]'
+        'page_count' => 'int',
+        'total_count' => 'int',
+        'url' => 'string'
     ];
 
     /**
@@ -67,11 +69,12 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'total' => null,
+        'list' => null,
+        'page' => null,
         'page_size' => null,
-        'page_number' => null,
-        'total_page' => null,
-        'list' => null
+        'page_count' => null,
+        'total_count' => null,
+        'url' => null
     ];
 
     /**
@@ -101,11 +104,12 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'total' => 'total',
-        'page_size' => 'page_size',
-        'page_number' => 'page_number',
-        'total_page' => 'total_page',
-        'list' => 'list'
+        'list' => 'list',
+        'page' => 'page',
+        'page_size' => 'pageSize',
+        'page_count' => 'pageCount',
+        'total_count' => 'totalCount',
+        'url' => 'url'
     ];
 
     /**
@@ -114,11 +118,12 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'total' => 'setTotal',
+        'list' => 'setList',
+        'page' => 'setPage',
         'page_size' => 'setPageSize',
-        'page_number' => 'setPageNumber',
-        'total_page' => 'setTotalPage',
-        'list' => 'setList'
+        'page_count' => 'setPageCount',
+        'total_count' => 'setTotalCount',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -127,11 +132,12 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'total' => 'getTotal',
+        'list' => 'getList',
+        'page' => 'getPage',
         'page_size' => 'getPageSize',
-        'page_number' => 'getPageNumber',
-        'total_page' => 'getTotalPage',
-        'list' => 'getList'
+        'page_count' => 'getPageCount',
+        'total_count' => 'getTotalCount',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -194,11 +200,12 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
-        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
-        $this->container['page_number'] = isset($data['page_number']) ? $data['page_number'] : null;
-        $this->container['total_page'] = isset($data['total_page']) ? $data['total_page'] : null;
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
     /**
@@ -210,20 +217,23 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['total'] === null) {
-            $invalidProperties[] = "'total' can't be null";
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
+        }
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
         }
         if ($this->container['page_size'] === null) {
             $invalidProperties[] = "'page_size' can't be null";
         }
-        if ($this->container['page_number'] === null) {
-            $invalidProperties[] = "'page_number' can't be null";
+        if ($this->container['page_count'] === null) {
+            $invalidProperties[] = "'page_count' can't be null";
         }
-        if ($this->container['total_page'] === null) {
-            $invalidProperties[] = "'total_page' can't be null";
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -241,25 +251,49 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets total
+     * Gets list
      *
-     * @return int
+     * @return \GateApi\Model\InlineResponse20012DataList[]
      */
-    public function getTotal()
+    public function getList()
     {
-        return $this->container['total'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets total
+     * Sets list
      *
-     * @param int $total total
+     * @param \GateApi\Model\InlineResponse20012DataList[] $list Activity list
      *
      * @return $this
      */
-    public function setTotal($total)
+    public function setList($list)
     {
-        $this->container['total'] = $total;
+        $this->container['list'] = $list;
+
+        return $this;
+    }
+
+    /**
+     * Gets page
+     *
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->container['page'];
+    }
+
+    /**
+     * Sets page
+     *
+     * @param int $page Current page number
+     *
+     * @return $this
+     */
+    public function setPage($page)
+    {
+        $this->container['page'] = $page;
 
         return $this;
     }
@@ -277,7 +311,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     /**
      * Sets page_size
      *
-     * @param int $page_size page_size
+     * @param int $page_size Items per page
      *
      * @return $this
      */
@@ -289,73 +323,73 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets page_number
+     * Gets page_count
      *
      * @return int
      */
-    public function getPageNumber()
+    public function getPageCount()
     {
-        return $this->container['page_number'];
+        return $this->container['page_count'];
     }
 
     /**
-     * Sets page_number
+     * Sets page_count
      *
-     * @param int $page_number page_number
+     * @param int $page_count Total pages
      *
      * @return $this
      */
-    public function setPageNumber($page_number)
+    public function setPageCount($page_count)
     {
-        $this->container['page_number'] = $page_number;
+        $this->container['page_count'] = $page_count;
 
         return $this;
     }
 
     /**
-     * Gets total_page
+     * Gets total_count
      *
      * @return int
      */
-    public function getTotalPage()
+    public function getTotalCount()
     {
-        return $this->container['total_page'];
+        return $this->container['total_count'];
     }
 
     /**
-     * Sets total_page
+     * Sets total_count
      *
-     * @param int $total_page total_page
+     * @param int $total_count Total Records
      *
      * @return $this
      */
-    public function setTotalPage($total_page)
+    public function setTotalCount($total_count)
     {
-        $this->container['total_page'] = $total_page;
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets url
      *
-     * @return \GateApi\Model\InlineResponse20012DataList[]
+     * @return string
      */
-    public function getList()
+    public function getUrl()
     {
-        return $this->container['list'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets list
+     * Sets url
      *
-     * @param \GateApi\Model\InlineResponse20012DataList[] $list list
+     * @param string $url Activity Center page link
      *
      * @return $this
      */
-    public function setList($list)
+    public function setUrl($url)
     {
-        $this->container['list'] = $list;
+        $this->container['url'] = $url;
 
         return $this;
     }

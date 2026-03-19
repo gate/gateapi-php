@@ -55,8 +55,9 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'code' => 'int',
+        'label' => 'string',
         'message' => 'string',
-        'timestamp' => 'int'
+        'data' => '\GateApi\Model\InlineResponse2007Data'
     ];
 
     /**
@@ -66,8 +67,9 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'code' => null,
+        'label' => null,
         'message' => null,
-        'timestamp' => null
+        'data' => null
     ];
 
     /**
@@ -98,8 +100,9 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'code' => 'code',
+        'label' => 'label',
         'message' => 'message',
-        'timestamp' => 'timestamp'
+        'data' => 'data'
     ];
 
     /**
@@ -109,8 +112,9 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'code' => 'setCode',
+        'label' => 'setLabel',
         'message' => 'setMessage',
-        'timestamp' => 'setTimestamp'
+        'data' => 'setData'
     ];
 
     /**
@@ -120,8 +124,9 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'code' => 'getCode',
+        'label' => 'getLabel',
         'message' => 'getMessage',
-        'timestamp' => 'getTimestamp'
+        'data' => 'getData'
     ];
 
     /**
@@ -165,8 +170,29 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const CODE_0 = 0;
+    const CODE_2002 = 2002;
+    const CODE_50105 = 50105;
+    const CODE_10001 = 10001;
+    const CODE_10000 = 10000;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCodeAllowableValues()
+    {
+        return [
+            self::CODE_0,
+            self::CODE_2002,
+            self::CODE_50105,
+            self::CODE_10001,
+            self::CODE_10000,
+        ];
+    }
     
 
     /**
@@ -185,8 +211,9 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -198,15 +225,14 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'code', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -225,7 +251,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int
+     * @return int|null
      */
     public function getCode()
     {
@@ -235,13 +261,46 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int|null $code Response code. `0` = success; `2002` = user not logged in; `50105` = parameter validation failed; `10001` = coupon record does not exist or does not belong to current user; `10000` = invalid parameter (e.g., task coupon missing coupon_info)
      *
      * @return $this
      */
     public function setCode($code)
     {
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($code) && !in_array($code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'code', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label Error identifier code. Empty string on success, machine-readable error label on error
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }
@@ -249,7 +308,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return string
+     * @return string|null
      */
     public function getMessage()
     {
@@ -259,7 +318,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string|null $message message
      *
      * @return $this
      */
@@ -271,25 +330,25 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets timestamp
+     * Gets data
      *
-     * @return int
+     * @return \GateApi\Model\InlineResponse2007Data|null
      */
-    public function getTimestamp()
+    public function getData()
     {
-        return $this->container['timestamp'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets timestamp
+     * Sets data
      *
-     * @param int $timestamp timestamp
+     * @param \GateApi\Model\InlineResponse2007Data|null $data data
      *
      * @return $this
      */
-    public function setTimestamp($timestamp)
+    public function setData($data)
     {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['data'] = $data;
 
         return $this;
     }

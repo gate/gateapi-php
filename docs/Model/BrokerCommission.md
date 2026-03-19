@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **int** | Total | [optional] 
-**list** | [**\GateApi\Model\BrokerCommission1[]**](BrokerCommission1.md) | List of commission history | [optional] 
+**list** | [**\GateApi\Model\BrokerCommissionItem[]**](BrokerCommissionItem.md) | List of commission history | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

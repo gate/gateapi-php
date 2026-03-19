@@ -54,8 +54,7 @@ class InlineObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'mode' => 'string',
-        'contract' => 'string'
+        'order_id' => 'string'
     ];
 
     /**
@@ -64,8 +63,7 @@ class InlineObject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'mode' => null,
-        'contract' => null
+        'order_id' => null
     ];
 
     /**
@@ -95,8 +93,7 @@ class InlineObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'mode' => 'mode',
-        'contract' => 'contract'
+        'order_id' => 'order_id'
     ];
 
     /**
@@ -105,8 +102,7 @@ class InlineObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'mode' => 'setMode',
-        'contract' => 'setContract'
+        'order_id' => 'setOrderId'
     ];
 
     /**
@@ -115,8 +111,7 @@ class InlineObject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'mode' => 'getMode',
-        'contract' => 'getContract'
+        'order_id' => 'getOrderId'
     ];
 
     /**
@@ -179,8 +174,7 @@ class InlineObject implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['mode'] = isset($data['mode']) ? $data['mode'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
     }
 
     /**
@@ -192,11 +186,8 @@ class InlineObject implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['mode'] === null) {
-            $invalidProperties[] = "'mode' can't be null";
-        }
-        if ($this->container['contract'] === null) {
-            $invalidProperties[] = "'contract' can't be null";
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,49 +205,25 @@ class InlineObject implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets mode
+     * Gets order_id
      *
      * @return string
      */
-    public function getMode()
+    public function getOrderId()
     {
-        return $this->container['mode'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets mode
+     * Sets order_id
      *
-     * @param string $mode Cross/isolated margin mode. ISOLATED - isolated margin, CROSS - cross margin
+     * @param string $order_id Order ID
      *
      * @return $this
      */
-    public function setMode($mode)
+    public function setOrderId($order_id)
     {
-        $this->container['mode'] = $mode;
-
-        return $this;
-    }
-
-    /**
-     * Gets contract
-     *
-     * @return string
-     */
-    public function getContract()
-    {
-        return $this->container['contract'];
-    }
-
-    /**
-     * Sets contract
-     *
-     * @param string $contract Futures market
-     *
-     * @return $this
-     */
-    public function setContract($contract)
-    {
-        $this->container['contract'] = $contract;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }

@@ -6067,20 +6067,18 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
-     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\FuturesLeverage
      */
-    public function getLeverage($associative_array)
+    public function getLeverage($settle, $contract, $pos_margin_mode, $dual_side)
     {
-        list($response) = $this->getLeverageWithHttpInfo($associative_array);
+        list($response) = $this->getLeverageWithHttpInfo($settle, $contract, $pos_margin_mode, $dual_side);
         return $response;
     }
 
@@ -6089,20 +6087,18 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
-     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\FuturesLeverage, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLeverageWithHttpInfo($associative_array)
+    public function getLeverageWithHttpInfo($settle, $contract, $pos_margin_mode, $dual_side)
     {
-        $request = $this->getLeverageRequest($associative_array);
+        $request = $this->getLeverageRequest($settle, $contract, $pos_margin_mode, $dual_side);
 
         $options = $this->createHttpClientOption();
         try {
@@ -6148,19 +6144,17 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
-     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLeverageAsync($associative_array)
+    public function getLeverageAsync($settle, $contract, $pos_margin_mode, $dual_side)
     {
-        return $this->getLeverageAsyncWithHttpInfo($associative_array)
+        return $this->getLeverageAsyncWithHttpInfo($settle, $contract, $pos_margin_mode, $dual_side)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6173,20 +6167,18 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
-     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLeverageAsyncWithHttpInfo($associative_array)
+    public function getLeverageAsyncWithHttpInfo($settle, $contract, $pos_margin_mode, $dual_side)
     {
         $returnType = '\GateApi\Model\FuturesLeverage';
-        $request = $this->getLeverageRequest($associative_array);
+        $request = $this->getLeverageRequest($settle, $contract, $pos_margin_mode, $dual_side);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6225,24 +6217,16 @@ class FuturesApi
     /**
      * Create request for operation 'getLeverage'
      *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
      * @param  string $settle Settle currency (required)
      * @param  string $contract Futures contract (required)
-     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (optional)
-     * @param  string $dual_side dual_long - Long, dual_short - Short (optional)
+     * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
+     * @param  string $dual_side dual_long - Long, dual_short - Short (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getLeverageRequest($associative_array)
+    protected function getLeverageRequest($settle, $contract, $pos_margin_mode, $dual_side)
     {
-        // unbox the parameters from the associative array
-        $settle = array_key_exists('settle', $associative_array) ? $associative_array['settle'] : null;
-        $contract = array_key_exists('contract', $associative_array) ? $associative_array['contract'] : null;
-        $pos_margin_mode = array_key_exists('pos_margin_mode', $associative_array) ? $associative_array['pos_margin_mode'] : null;
-        $dual_side = array_key_exists('dual_side', $associative_array) ? $associative_array['dual_side'] : null;
-
         // verify the required parameter 'settle' is set
         if ($settle === null || (is_array($settle) && count($settle) === 0)) {
             throw new \InvalidArgumentException(
@@ -6253,6 +6237,18 @@ class FuturesApi
         if ($contract === null || (is_array($contract) && count($contract) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $contract when calling getLeverage'
+            );
+        }
+        // verify the required parameter 'pos_margin_mode' is set
+        if ($pos_margin_mode === null || (is_array($pos_margin_mode) && count($pos_margin_mode) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $pos_margin_mode when calling getLeverage'
+            );
+        }
+        // verify the required parameter 'dual_side' is set
+        if ($dual_side === null || (is_array($dual_side) && count($dual_side) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dual_side when calling getLeverage'
             );
         }
 
@@ -7565,15 +7561,15 @@ class FuturesApi
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\InlineObject $inline_object inline_object (required)
+     * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\Position[]
      */
-    public function updateDualCompPositionCrossMode($settle, $inline_object)
+    public function updateDualCompPositionCrossMode($settle, $update_dual_comp_position_cross_mode_request)
     {
-        list($response) = $this->updateDualCompPositionCrossModeWithHttpInfo($settle, $inline_object);
+        list($response) = $this->updateDualCompPositionCrossModeWithHttpInfo($settle, $update_dual_comp_position_cross_mode_request);
         return $response;
     }
 
@@ -7583,15 +7579,15 @@ class FuturesApi
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\InlineObject $inline_object (required)
+     * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\Position[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateDualCompPositionCrossModeWithHttpInfo($settle, $inline_object)
+    public function updateDualCompPositionCrossModeWithHttpInfo($settle, $update_dual_comp_position_cross_mode_request)
     {
-        $request = $this->updateDualCompPositionCrossModeRequest($settle, $inline_object);
+        $request = $this->updateDualCompPositionCrossModeRequest($settle, $update_dual_comp_position_cross_mode_request);
 
         $options = $this->createHttpClientOption();
         try {
@@ -7638,14 +7634,14 @@ class FuturesApi
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\InlineObject $inline_object (required)
+     * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDualCompPositionCrossModeAsync($settle, $inline_object)
+    public function updateDualCompPositionCrossModeAsync($settle, $update_dual_comp_position_cross_mode_request)
     {
-        return $this->updateDualCompPositionCrossModeAsyncWithHttpInfo($settle, $inline_object)
+        return $this->updateDualCompPositionCrossModeAsyncWithHttpInfo($settle, $update_dual_comp_position_cross_mode_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7659,15 +7655,15 @@ class FuturesApi
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\InlineObject $inline_object (required)
+     * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateDualCompPositionCrossModeAsyncWithHttpInfo($settle, $inline_object)
+    public function updateDualCompPositionCrossModeAsyncWithHttpInfo($settle, $update_dual_comp_position_cross_mode_request)
     {
         $returnType = '\GateApi\Model\Position[]';
-        $request = $this->updateDualCompPositionCrossModeRequest($settle, $inline_object);
+        $request = $this->updateDualCompPositionCrossModeRequest($settle, $update_dual_comp_position_cross_mode_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7707,12 +7703,12 @@ class FuturesApi
      * Create request for operation 'updateDualCompPositionCrossMode'
      *
      * @param  string $settle Settle currency (required)
-     * @param  \GateApi\Model\InlineObject $inline_object (required)
+     * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateDualCompPositionCrossModeRequest($settle, $inline_object)
+    protected function updateDualCompPositionCrossModeRequest($settle, $update_dual_comp_position_cross_mode_request)
     {
         // verify the required parameter 'settle' is set
         if ($settle === null || (is_array($settle) && count($settle) === 0)) {
@@ -7720,10 +7716,10 @@ class FuturesApi
                 'Missing the required parameter $settle when calling updateDualCompPositionCrossMode'
             );
         }
-        // verify the required parameter 'inline_object' is set
-        if ($inline_object === null || (is_array($inline_object) && count($inline_object) === 0)) {
+        // verify the required parameter 'update_dual_comp_position_cross_mode_request' is set
+        if ($update_dual_comp_position_cross_mode_request === null || (is_array($update_dual_comp_position_cross_mode_request) && count($update_dual_comp_position_cross_mode_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object when calling updateDualCompPositionCrossMode'
+                'Missing the required parameter $update_dual_comp_position_cross_mode_request when calling updateDualCompPositionCrossMode'
             );
         }
 
@@ -7745,8 +7741,8 @@ class FuturesApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object)) {
-            $_tempBody = $inline_object;
+        if (isset($update_dual_comp_position_cross_mode_request)) {
+            $_tempBody = $update_dual_comp_position_cross_mode_request;
         }
 
         if ($multipart) {
@@ -15660,7 +15656,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse201
+     * @return \GateApi\Model\CreateTrailOrderResponse
      */
     public function createTrailOrder($settle, $create_trail_order)
     {
@@ -15678,7 +15674,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse201, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CreateTrailOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTrailOrderWithHttpInfo($settle, $create_trail_order)
     {
@@ -15708,7 +15704,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse201';
+        $returnType = '\GateApi\Model\CreateTrailOrderResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -15757,7 +15753,7 @@ class FuturesApi
      */
     public function createTrailOrderAsyncWithHttpInfo($settle, $create_trail_order)
     {
-        $returnType = '\GateApi\Model\InlineResponse201';
+        $returnType = '\GateApi\Model\CreateTrailOrderResponse';
         $request = $this->createTrailOrderRequest($settle, $create_trail_order);
 
         return $this->client
@@ -15916,7 +15912,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse200
+     * @return \GateApi\Model\TrailOrderResponse
      */
     public function stopTrailOrder($settle, $stop_trail_order)
     {
@@ -15934,7 +15930,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function stopTrailOrderWithHttpInfo($settle, $stop_trail_order)
     {
@@ -15964,7 +15960,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse200';
+        $returnType = '\GateApi\Model\TrailOrderResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -16013,7 +16009,7 @@ class FuturesApi
      */
     public function stopTrailOrderAsyncWithHttpInfo($settle, $stop_trail_order)
     {
-        $returnType = '\GateApi\Model\InlineResponse200';
+        $returnType = '\GateApi\Model\TrailOrderResponse';
         $request = $this->stopTrailOrderRequest($settle, $stop_trail_order);
 
         return $this->client
@@ -16172,7 +16168,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2001
+     * @return \GateApi\Model\TrailOrderListResponse
      */
     public function stopAllTrailOrders($settle, $stop_all_trail_orders)
     {
@@ -16190,7 +16186,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function stopAllTrailOrdersWithHttpInfo($settle, $stop_all_trail_orders)
     {
@@ -16220,7 +16216,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2001';
+        $returnType = '\GateApi\Model\TrailOrderListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -16269,7 +16265,7 @@ class FuturesApi
      */
     public function stopAllTrailOrdersAsyncWithHttpInfo($settle, $stop_all_trail_orders)
     {
-        $returnType = '\GateApi\Model\InlineResponse2001';
+        $returnType = '\GateApi\Model\TrailOrderListResponse';
         $request = $this->stopAllTrailOrdersRequest($settle, $stop_all_trail_orders);
 
         return $this->client
@@ -16441,7 +16437,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2001
+     * @return \GateApi\Model\TrailOrderListResponse
      */
     public function getTrailOrders($associative_array)
     {
@@ -16472,7 +16468,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderListResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrailOrdersWithHttpInfo($associative_array)
     {
@@ -16502,7 +16498,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2001';
+        $returnType = '\GateApi\Model\TrailOrderListResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -16577,7 +16573,7 @@ class FuturesApi
      */
     public function getTrailOrdersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2001';
+        $returnType = '\GateApi\Model\TrailOrderListResponse';
         $request = $this->getTrailOrdersRequest($associative_array);
 
         return $this->client
@@ -16899,7 +16895,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2002
+     * @return \GateApi\Model\TrailOrderDetailResponse
      */
     public function getTrailOrderDetail($settle, $id)
     {
@@ -16917,7 +16913,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderDetailResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrailOrderDetailWithHttpInfo($settle, $id)
     {
@@ -16947,7 +16943,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2002';
+        $returnType = '\GateApi\Model\TrailOrderDetailResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -16996,7 +16992,7 @@ class FuturesApi
      */
     public function getTrailOrderDetailAsyncWithHttpInfo($settle, $id)
     {
-        $returnType = '\GateApi\Model\InlineResponse2002';
+        $returnType = '\GateApi\Model\TrailOrderDetailResponse';
         $request = $this->getTrailOrderDetailRequest($settle, $id);
 
         return $this->client
@@ -17164,7 +17160,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse200
+     * @return \GateApi\Model\TrailOrderResponse
      */
     public function updateTrailOrder($settle, $update_trail_order)
     {
@@ -17182,7 +17178,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTrailOrderWithHttpInfo($settle, $update_trail_order)
     {
@@ -17212,7 +17208,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse200';
+        $returnType = '\GateApi\Model\TrailOrderResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -17261,7 +17257,7 @@ class FuturesApi
      */
     public function updateTrailOrderAsyncWithHttpInfo($settle, $update_trail_order)
     {
-        $returnType = '\GateApi\Model\InlineResponse200';
+        $returnType = '\GateApi\Model\TrailOrderResponse';
         $request = $this->updateTrailOrderRequest($settle, $update_trail_order);
 
         return $this->client
@@ -17424,7 +17420,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2003
+     * @return \GateApi\Model\TrailOrderChangeLogResponse
      */
     public function getTrailOrderChangeLog($associative_array)
     {
@@ -17446,7 +17442,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderChangeLogResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrailOrderChangeLogWithHttpInfo($associative_array)
     {
@@ -17476,7 +17472,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2003';
+        $returnType = '\GateApi\Model\TrailOrderChangeLogResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -17533,7 +17529,7 @@ class FuturesApi
      */
     public function getTrailOrderChangeLogAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2003';
+        $returnType = '\GateApi\Model\TrailOrderChangeLogResponse';
         $request = $this->getTrailOrderChangeLogRequest($associative_array);
 
         return $this->client

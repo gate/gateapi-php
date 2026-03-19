@@ -577,7 +577,7 @@ Name | Type | Description  | Notes
 
 ## listUniChart
 
-> \GateApi\Model\InlineResponse2004[] listUniChart($from, $to, $asset)
+> \GateApi\Model\UniChartPoint[] listUniChart($from, $to, $asset)
 
 UniLoan currency annualized trend chart
 
@@ -623,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2004[]**](../Model/InlineResponse2004.md)
+[**\GateApi\Model\UniChartPoint[]**](../Model/UniChartPoint.md)
 
 ### Authorization
 
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 ## listUniRate
 
-> \GateApi\Model\InlineResponse2005[] listUniRate()
+> \GateApi\Model\UniEstimatedRate[] listUniRate()
 
 Currency estimated annualized interest rate
 
@@ -679,7 +679,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2005[]**](../Model/InlineResponse2005.md)
+[**\GateApi\Model\UniEstimatedRate[]**](../Model/UniEstimatedRate.md)
 
 ### Authorization
 

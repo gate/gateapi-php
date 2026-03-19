@@ -1477,6 +1477,1504 @@ class FlashSwapApi
     }
 
     /**
+     * Operation createFlashSwapMultiCurrencyManyToOneOrder
+     *
+     * Flash Swap - Multi-currency exchange - Place order (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq $flash_swap_multi_currency_many_to_one_order_create_req flash_swap_multi_currency_many_to_one_order_create_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse
+     */
+    public function createFlashSwapMultiCurrencyManyToOneOrder($flash_swap_multi_currency_many_to_one_order_create_req)
+    {
+        list($response) = $this->createFlashSwapMultiCurrencyManyToOneOrderWithHttpInfo($flash_swap_multi_currency_many_to_one_order_create_req);
+        return $response;
+    }
+
+    /**
+     * Operation createFlashSwapMultiCurrencyManyToOneOrderWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Place order (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq $flash_swap_multi_currency_many_to_one_order_create_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createFlashSwapMultiCurrencyManyToOneOrderWithHttpInfo($flash_swap_multi_currency_many_to_one_order_create_req)
+    {
+        $request = $this->createFlashSwapMultiCurrencyManyToOneOrderRequest($flash_swap_multi_currency_many_to_one_order_create_req);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createFlashSwapMultiCurrencyManyToOneOrderAsync
+     *
+     * Flash Swap - Multi-currency exchange - Place order (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq $flash_swap_multi_currency_many_to_one_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFlashSwapMultiCurrencyManyToOneOrderAsync($flash_swap_multi_currency_many_to_one_order_create_req)
+    {
+        return $this->createFlashSwapMultiCurrencyManyToOneOrderAsyncWithHttpInfo($flash_swap_multi_currency_many_to_one_order_create_req)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createFlashSwapMultiCurrencyManyToOneOrderAsyncWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Place order (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq $flash_swap_multi_currency_many_to_one_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFlashSwapMultiCurrencyManyToOneOrderAsyncWithHttpInfo($flash_swap_multi_currency_many_to_one_order_create_req)
+    {
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateResp';
+        $request = $this->createFlashSwapMultiCurrencyManyToOneOrderRequest($flash_swap_multi_currency_many_to_one_order_create_req);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createFlashSwapMultiCurrencyManyToOneOrder'
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderCreateReq $flash_swap_multi_currency_many_to_one_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createFlashSwapMultiCurrencyManyToOneOrderRequest($flash_swap_multi_currency_many_to_one_order_create_req)
+    {
+        // verify the required parameter 'flash_swap_multi_currency_many_to_one_order_create_req' is set
+        if ($flash_swap_multi_currency_many_to_one_order_create_req === null || (is_array($flash_swap_multi_currency_many_to_one_order_create_req) && count($flash_swap_multi_currency_many_to_one_order_create_req) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $flash_swap_multi_currency_many_to_one_order_create_req when calling createFlashSwapMultiCurrencyManyToOneOrder'
+            );
+        }
+
+        $resourcePath = '/flash-swap/multi-currency/many-to-one/order/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($flash_swap_multi_currency_many_to_one_order_create_req)) {
+            $_tempBody = $flash_swap_multi_currency_many_to_one_order_create_req;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyManyToOneOrder
+     *
+     * Flash Swap - Multi-currency exchange - Preview (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq $flash_swap_multi_currency_many_to_one_order_preview_req flash_swap_multi_currency_many_to_one_order_preview_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse
+     */
+    public function previewFlashSwapMultiCurrencyManyToOneOrder($flash_swap_multi_currency_many_to_one_order_preview_req)
+    {
+        list($response) = $this->previewFlashSwapMultiCurrencyManyToOneOrderWithHttpInfo($flash_swap_multi_currency_many_to_one_order_preview_req);
+        return $response;
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyManyToOneOrderWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Preview (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq $flash_swap_multi_currency_many_to_one_order_preview_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function previewFlashSwapMultiCurrencyManyToOneOrderWithHttpInfo($flash_swap_multi_currency_many_to_one_order_preview_req)
+    {
+        $request = $this->previewFlashSwapMultiCurrencyManyToOneOrderRequest($flash_swap_multi_currency_many_to_one_order_preview_req);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyManyToOneOrderAsync
+     *
+     * Flash Swap - Multi-currency exchange - Preview (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq $flash_swap_multi_currency_many_to_one_order_preview_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewFlashSwapMultiCurrencyManyToOneOrderAsync($flash_swap_multi_currency_many_to_one_order_preview_req)
+    {
+        return $this->previewFlashSwapMultiCurrencyManyToOneOrderAsyncWithHttpInfo($flash_swap_multi_currency_many_to_one_order_preview_req)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyManyToOneOrderAsyncWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Preview (many-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq $flash_swap_multi_currency_many_to_one_order_preview_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewFlashSwapMultiCurrencyManyToOneOrderAsyncWithHttpInfo($flash_swap_multi_currency_many_to_one_order_preview_req)
+    {
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewResp';
+        $request = $this->previewFlashSwapMultiCurrencyManyToOneOrderRequest($flash_swap_multi_currency_many_to_one_order_preview_req);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'previewFlashSwapMultiCurrencyManyToOneOrder'
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyManyToOneOrderPreviewReq $flash_swap_multi_currency_many_to_one_order_preview_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function previewFlashSwapMultiCurrencyManyToOneOrderRequest($flash_swap_multi_currency_many_to_one_order_preview_req)
+    {
+        // verify the required parameter 'flash_swap_multi_currency_many_to_one_order_preview_req' is set
+        if ($flash_swap_multi_currency_many_to_one_order_preview_req === null || (is_array($flash_swap_multi_currency_many_to_one_order_preview_req) && count($flash_swap_multi_currency_many_to_one_order_preview_req) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $flash_swap_multi_currency_many_to_one_order_preview_req when calling previewFlashSwapMultiCurrencyManyToOneOrder'
+            );
+        }
+
+        $resourcePath = '/flash-swap/multi-currency/many-to-one/order/preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($flash_swap_multi_currency_many_to_one_order_preview_req)) {
+            $_tempBody = $flash_swap_multi_currency_many_to_one_order_preview_req;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createFlashSwapOrderV1
+     *
+     * Flash Swap - Place order (one-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapOrderCreateReq $flash_swap_order_create_req flash_swap_order_create_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FlashSwapOrderCreateResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse
+     */
+    public function createFlashSwapOrderV1($flash_swap_order_create_req)
+    {
+        list($response) = $this->createFlashSwapOrderV1WithHttpInfo($flash_swap_order_create_req);
+        return $response;
+    }
+
+    /**
+     * Operation createFlashSwapOrderV1WithHttpInfo
+     *
+     * Flash Swap - Place order (one-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapOrderCreateReq $flash_swap_order_create_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FlashSwapOrderCreateResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createFlashSwapOrderV1WithHttpInfo($flash_swap_order_create_req)
+    {
+        $request = $this->createFlashSwapOrderV1Request($flash_swap_order_create_req);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FlashSwapOrderCreateResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createFlashSwapOrderV1Async
+     *
+     * Flash Swap - Place order (one-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapOrderCreateReq $flash_swap_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFlashSwapOrderV1Async($flash_swap_order_create_req)
+    {
+        return $this->createFlashSwapOrderV1AsyncWithHttpInfo($flash_swap_order_create_req)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createFlashSwapOrderV1AsyncWithHttpInfo
+     *
+     * Flash Swap - Place order (one-to-one)
+     *
+     * @param  \GateApi\Model\FlashSwapOrderCreateReq $flash_swap_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFlashSwapOrderV1AsyncWithHttpInfo($flash_swap_order_create_req)
+    {
+        $returnType = '\GateApi\Model\FlashSwapOrderCreateResp';
+        $request = $this->createFlashSwapOrderV1Request($flash_swap_order_create_req);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createFlashSwapOrderV1'
+     *
+     * @param  \GateApi\Model\FlashSwapOrderCreateReq $flash_swap_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createFlashSwapOrderV1Request($flash_swap_order_create_req)
+    {
+        // verify the required parameter 'flash_swap_order_create_req' is set
+        if ($flash_swap_order_create_req === null || (is_array($flash_swap_order_create_req) && count($flash_swap_order_create_req) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $flash_swap_order_create_req when calling createFlashSwapOrderV1'
+            );
+        }
+
+        $resourcePath = '/flash-swap/order/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($flash_swap_order_create_req)) {
+            $_tempBody = $flash_swap_order_create_req;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createFlashSwapMultiCurrencyOneToManyOrder
+     *
+     * Flash Swap - Multi-currency exchange - Place order (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq $flash_swap_multi_currency_one_to_many_order_create_req flash_swap_multi_currency_one_to_many_order_create_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse
+     */
+    public function createFlashSwapMultiCurrencyOneToManyOrder($flash_swap_multi_currency_one_to_many_order_create_req)
+    {
+        list($response) = $this->createFlashSwapMultiCurrencyOneToManyOrderWithHttpInfo($flash_swap_multi_currency_one_to_many_order_create_req);
+        return $response;
+    }
+
+    /**
+     * Operation createFlashSwapMultiCurrencyOneToManyOrderWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Place order (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq $flash_swap_multi_currency_one_to_many_order_create_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createFlashSwapMultiCurrencyOneToManyOrderWithHttpInfo($flash_swap_multi_currency_one_to_many_order_create_req)
+    {
+        $request = $this->createFlashSwapMultiCurrencyOneToManyOrderRequest($flash_swap_multi_currency_one_to_many_order_create_req);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createFlashSwapMultiCurrencyOneToManyOrderAsync
+     *
+     * Flash Swap - Multi-currency exchange - Place order (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq $flash_swap_multi_currency_one_to_many_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFlashSwapMultiCurrencyOneToManyOrderAsync($flash_swap_multi_currency_one_to_many_order_create_req)
+    {
+        return $this->createFlashSwapMultiCurrencyOneToManyOrderAsyncWithHttpInfo($flash_swap_multi_currency_one_to_many_order_create_req)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createFlashSwapMultiCurrencyOneToManyOrderAsyncWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Place order (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq $flash_swap_multi_currency_one_to_many_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createFlashSwapMultiCurrencyOneToManyOrderAsyncWithHttpInfo($flash_swap_multi_currency_one_to_many_order_create_req)
+    {
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateResp';
+        $request = $this->createFlashSwapMultiCurrencyOneToManyOrderRequest($flash_swap_multi_currency_one_to_many_order_create_req);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createFlashSwapMultiCurrencyOneToManyOrder'
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderCreateReq $flash_swap_multi_currency_one_to_many_order_create_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createFlashSwapMultiCurrencyOneToManyOrderRequest($flash_swap_multi_currency_one_to_many_order_create_req)
+    {
+        // verify the required parameter 'flash_swap_multi_currency_one_to_many_order_create_req' is set
+        if ($flash_swap_multi_currency_one_to_many_order_create_req === null || (is_array($flash_swap_multi_currency_one_to_many_order_create_req) && count($flash_swap_multi_currency_one_to_many_order_create_req) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $flash_swap_multi_currency_one_to_many_order_create_req when calling createFlashSwapMultiCurrencyOneToManyOrder'
+            );
+        }
+
+        $resourcePath = '/flash-swap/multi-currency/one-to-many/order/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($flash_swap_multi_currency_one_to_many_order_create_req)) {
+            $_tempBody = $flash_swap_multi_currency_one_to_many_order_create_req;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyOneToManyOrder
+     *
+     * Flash Swap - Multi-currency exchange - Preview (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq $flash_swap_multi_currency_one_to_many_order_preview_req flash_swap_multi_currency_one_to_many_order_preview_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse
+     */
+    public function previewFlashSwapMultiCurrencyOneToManyOrder($flash_swap_multi_currency_one_to_many_order_preview_req)
+    {
+        list($response) = $this->previewFlashSwapMultiCurrencyOneToManyOrderWithHttpInfo($flash_swap_multi_currency_one_to_many_order_preview_req);
+        return $response;
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyOneToManyOrderWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Preview (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq $flash_swap_multi_currency_one_to_many_order_preview_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function previewFlashSwapMultiCurrencyOneToManyOrderWithHttpInfo($flash_swap_multi_currency_one_to_many_order_preview_req)
+    {
+        $request = $this->previewFlashSwapMultiCurrencyOneToManyOrderRequest($flash_swap_multi_currency_one_to_many_order_preview_req);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyOneToManyOrderAsync
+     *
+     * Flash Swap - Multi-currency exchange - Preview (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq $flash_swap_multi_currency_one_to_many_order_preview_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewFlashSwapMultiCurrencyOneToManyOrderAsync($flash_swap_multi_currency_one_to_many_order_preview_req)
+    {
+        return $this->previewFlashSwapMultiCurrencyOneToManyOrderAsyncWithHttpInfo($flash_swap_multi_currency_one_to_many_order_preview_req)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation previewFlashSwapMultiCurrencyOneToManyOrderAsyncWithHttpInfo
+     *
+     * Flash Swap - Multi-currency exchange - Preview (one-to-many)
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq $flash_swap_multi_currency_one_to_many_order_preview_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewFlashSwapMultiCurrencyOneToManyOrderAsyncWithHttpInfo($flash_swap_multi_currency_one_to_many_order_preview_req)
+    {
+        $returnType = '\GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewResp';
+        $request = $this->previewFlashSwapMultiCurrencyOneToManyOrderRequest($flash_swap_multi_currency_one_to_many_order_preview_req);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'previewFlashSwapMultiCurrencyOneToManyOrder'
+     *
+     * @param  \GateApi\Model\FlashSwapMultiCurrencyOneToManyOrderPreviewReq $flash_swap_multi_currency_one_to_many_order_preview_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function previewFlashSwapMultiCurrencyOneToManyOrderRequest($flash_swap_multi_currency_one_to_many_order_preview_req)
+    {
+        // verify the required parameter 'flash_swap_multi_currency_one_to_many_order_preview_req' is set
+        if ($flash_swap_multi_currency_one_to_many_order_preview_req === null || (is_array($flash_swap_multi_currency_one_to_many_order_preview_req) && count($flash_swap_multi_currency_one_to_many_order_preview_req) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $flash_swap_multi_currency_one_to_many_order_preview_req when calling previewFlashSwapMultiCurrencyOneToManyOrder'
+            );
+        }
+
+        $resourcePath = '/flash-swap/multi-currency/one-to-many/order/preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($flash_swap_multi_currency_one_to_many_order_preview_req)) {
+            $_tempBody = $flash_swap_multi_currency_one_to_many_order_preview_req;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation previewFlashSwapOrderV1
+     *
+     * Flash Swap - Preview (one-to-one)
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $sell_asset Currency to sell (required)
+     * @param  string $buy_asset Currency to buy (required)
+     * @param  string $sell_amount Sell amount, either this or buy_amount must be specified (optional)
+     * @param  string $buy_amount Buy amount, either this or sell_amount must be specified (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FlashSwapOrderPreviewResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse
+     */
+    public function previewFlashSwapOrderV1($associative_array)
+    {
+        list($response) = $this->previewFlashSwapOrderV1WithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation previewFlashSwapOrderV1WithHttpInfo
+     *
+     * Flash Swap - Preview (one-to-one)
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $sell_asset Currency to sell (required)
+     * @param  string $buy_asset Currency to buy (required)
+     * @param  string $sell_amount Sell amount, either this or buy_amount must be specified (optional)
+     * @param  string $buy_amount Buy amount, either this or sell_amount must be specified (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FlashSwapOrderPreviewResp|\GateApi\Model\FlashSwapErrorResponse|\GateApi\Model\FlashSwapErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function previewFlashSwapOrderV1WithHttpInfo($associative_array)
+    {
+        $request = $this->previewFlashSwapOrderV1Request($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FlashSwapOrderPreviewResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation previewFlashSwapOrderV1Async
+     *
+     * Flash Swap - Preview (one-to-one)
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $sell_asset Currency to sell (required)
+     * @param  string $buy_asset Currency to buy (required)
+     * @param  string $sell_amount Sell amount, either this or buy_amount must be specified (optional)
+     * @param  string $buy_amount Buy amount, either this or sell_amount must be specified (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewFlashSwapOrderV1Async($associative_array)
+    {
+        return $this->previewFlashSwapOrderV1AsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation previewFlashSwapOrderV1AsyncWithHttpInfo
+     *
+     * Flash Swap - Preview (one-to-one)
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $sell_asset Currency to sell (required)
+     * @param  string $buy_asset Currency to buy (required)
+     * @param  string $sell_amount Sell amount, either this or buy_amount must be specified (optional)
+     * @param  string $buy_amount Buy amount, either this or sell_amount must be specified (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function previewFlashSwapOrderV1AsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\FlashSwapOrderPreviewResp';
+        $request = $this->previewFlashSwapOrderV1Request($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'previewFlashSwapOrderV1'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $sell_asset Currency to sell (required)
+     * @param  string $buy_asset Currency to buy (required)
+     * @param  string $sell_amount Sell amount, either this or buy_amount must be specified (optional)
+     * @param  string $buy_amount Buy amount, either this or sell_amount must be specified (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function previewFlashSwapOrderV1Request($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $sell_asset = array_key_exists('sell_asset', $associative_array) ? $associative_array['sell_asset'] : null;
+        $buy_asset = array_key_exists('buy_asset', $associative_array) ? $associative_array['buy_asset'] : null;
+        $sell_amount = array_key_exists('sell_amount', $associative_array) ? $associative_array['sell_amount'] : null;
+        $buy_amount = array_key_exists('buy_amount', $associative_array) ? $associative_array['buy_amount'] : null;
+
+        // verify the required parameter 'sell_asset' is set
+        if ($sell_asset === null || (is_array($sell_asset) && count($sell_asset) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $sell_asset when calling previewFlashSwapOrderV1'
+            );
+        }
+        // verify the required parameter 'buy_asset' is set
+        if ($buy_asset === null || (is_array($buy_asset) && count($buy_asset) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $buy_asset when calling previewFlashSwapOrderV1'
+            );
+        }
+
+        $resourcePath = '/flash-swap/order/preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($sell_asset !== null) {
+            if('form' === 'form' && is_array($sell_asset)) {
+                foreach($sell_asset as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sell_asset'] = $sell_asset;
+            }
+        }
+
+        // query params
+        if ($sell_amount !== null) {
+            if('form' === 'form' && is_array($sell_amount)) {
+                foreach($sell_amount as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sell_amount'] = $sell_amount;
+            }
+        }
+
+        // query params
+        if ($buy_asset !== null) {
+            if('form' === 'form' && is_array($buy_asset)) {
+                foreach($buy_asset as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['buy_asset'] = $buy_asset;
+            }
+        }
+
+        // query params
+        if ($buy_amount !== null) {
+            if('form' === 'form' && is_array($buy_amount)) {
+                foreach($buy_amount as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['buy_amount'] = $buy_amount;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Create http client option
      *
      * @throws \RuntimeException on file opening failure

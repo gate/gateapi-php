@@ -18,6 +18,12 @@ Method | HTTP request | Description
 [**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
 [**awardList**](EarnApi.md#awardList) | **GET** /earn/staking/award_list | On-chain coin-earning dividend records
 [**assetList**](EarnApi.md#assetList) | **GET** /earn/staking/assets | On-chain coin-earning assets
+[**listEarnFixedTermProducts**](EarnApi.md#listEarnFixedTermProducts) | **GET** /earn/fixed-term/product | Get product list
+[**listEarnFixedTermProductsByAsset**](EarnApi.md#listEarnFixedTermProductsByAsset) | **GET** /earn/fixed-term/product/{asset}/list | Get product list by single currency
+[**listEarnFixedTermLends**](EarnApi.md#listEarnFixedTermLends) | **GET** /earn/fixed-term/user/lend | Subscription list
+[**createEarnFixedTermLend**](EarnApi.md#createEarnFixedTermLend) | **POST** /earn/fixed-term/user/lend | Subscription
+[**createEarnFixedTermPreRedeem**](EarnApi.md#createEarnFixedTermPreRedeem) | **POST** /earn/fixed-term/user/pre-redeem | Redeem
+[**listEarnFixedTermHistory**](EarnApi.md#listEarnFixedTermHistory) | **GET** /earn/fixed-term/user/history | Subscription history
 
 
 ## swapETH2
@@ -871,6 +877,418 @@ Name | Type | Description  | Notes
 ### Return type
 
 **object[]**
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listEarnFixedTermProducts
+
+> \GateApi\Model\InlineResponse200 listEarnFixedTermProducts($page, $limit, $asset, $type)
+
+Get product list
+
+Query fixed-term earn product list. Supports filtering by currency, product type, status, etc. Returns product interest rate, lock-up period, quota, and reward campaign information
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$associate_array['page'] = 1; // int | Page number
+$associate_array['limit'] = 100; // int | Page size
+$associate_array['asset'] = 'USDT'; // string | Currency
+$associate_array['type'] = 1; // int | Product type: 1 for regular, 2 for VIP
+
+try {
+    $result = $apiInstance->listEarnFixedTermProducts($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listEarnFixedTermProducts: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Page number |
+ **limit** | **int**| Page size |
+ **asset** | **string**| Currency | [optional]
+ **type** | **int**| Product type: 1 for regular, 2 for VIP | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listEarnFixedTermProductsByAsset
+
+> \GateApi\Model\InlineResponse2001 listEarnFixedTermProductsByAsset($asset, $type)
+
+Get product list by single currency
+
+Sort by product term in ascending order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$associate_array['asset'] = 'USDT'; // string | Currency name, e.g., USDT, BTC
+$associate_array['type'] = '1'; // string | Product type: \"\" or 1 for regular product list, 2 for VIP product list, 0 for all products
+
+try {
+    $result = $apiInstance->listEarnFixedTermProductsByAsset($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listEarnFixedTermProductsByAsset: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asset** | **string**| Currency name, e.g., USDT, BTC |
+ **type** | **string**| Product type: \&quot;\&quot; or 1 for regular product list, 2 for VIP product list, 0 for all products | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listEarnFixedTermLends
+
+> \GateApi\Model\InlineResponse2002 listEarnFixedTermLends($order_type, $page, $limit, $product_id, $order_id, $asset, $sub_business, $business_filter)
+
+Subscription list
+
+Query the user's fixed-term earn subscription order list. Supports filtering by product, currency, order type, etc. Returns order details, earnings, rewards, and interest rate boost coupon information
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['order_type'] = '1'; // string | Order type: 1 for current orders, 2 for historical orders
+$associate_array['page'] = 1; // int | Page number
+$associate_array['limit'] = 10; // int | Page size
+$associate_array['product_id'] = 56; // int | Product ID
+$associate_array['order_id'] = 56; // int | Order ID
+$associate_array['asset'] = 'asset_example'; // string | Currency
+$associate_array['sub_business'] = 56; // int | Sub-business
+$associate_array['business_filter'] = '[{\"business\":1, \"sub_business\": 0},{\"business\":2, \"sub_business\": 0}]'; // string | Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
+
+try {
+    $result = $apiInstance->listEarnFixedTermLends($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listEarnFixedTermLends: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_type** | **string**| Order type: 1 for current orders, 2 for historical orders |
+ **page** | **int**| Page number |
+ **limit** | **int**| Page size |
+ **product_id** | **int**| Product ID | [optional]
+ **order_id** | **int**| Order ID | [optional]
+ **asset** | **string**| Currency | [optional]
+ **sub_business** | **int**| Sub-business | [optional]
+ **business_filter** | **string**| Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createEarnFixedTermLend
+
+> \GateApi\Model\InlineResponse2003 createEarnFixedTermLend($fixed_term_lend_request)
+
+Subscription
+
+Subscribe to a fixed-term earn product by specifying the product ID and subscription amount. Optionally enable auto-renewal and apply an interest rate boost coupon
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$fixed_term_lend_request = new \GateApi\Model\FixedTermLendRequest(); // \GateApi\Model\FixedTermLendRequest | 
+
+try {
+    $result = $apiInstance->createEarnFixedTermLend($fixed_term_lend_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->createEarnFixedTermLend: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fixed_term_lend_request** | [**\GateApi\Model\FixedTermLendRequest**](../Model/FixedTermLendRequest.md)|  | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createEarnFixedTermPreRedeem
+
+> \GateApi\Model\InlineResponse2004 createEarnFixedTermPreRedeem($inline_object)
+
+Redeem
+
+Early redemption of a fixed-term earn order, order ID is required
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$inline_object = new \GateApi\Model\InlineObject(); // \GateApi\Model\InlineObject | 
+
+try {
+    $result = $apiInstance->createEarnFixedTermPreRedeem($inline_object);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->createEarnFixedTermPreRedeem: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inline_object** | [**\GateApi\Model\InlineObject**](../Model/InlineObject.md)|  | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listEarnFixedTermHistory
+
+> \GateApi\Model\InlineResponse2005 listEarnFixedTermHistory($type, $page, $limit, $product_id, $order_id, $asset, $start_at, $end_at, $sub_business, $business_filter)
+
+Subscription history
+
+Query the user's fixed-term earn history records. Supports filtering by type (subscription, redemption, interest, bonus rewards) and time range
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['type'] = '1'; // string | 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward
+$associate_array['page'] = 1; // int | Page number
+$associate_array['limit'] = 10; // int | Page size
+$associate_array['product_id'] = 56; // int | Product ID
+$associate_array['order_id'] = 'order_id_example'; // string | Order ID
+$associate_array['asset'] = 'asset_example'; // string | Currency
+$associate_array['start_at'] = 56; // int | Start timestamp
+$associate_array['end_at'] = 56; // int | End Timestamp
+$associate_array['sub_business'] = 56; // int | Sub-business
+$associate_array['business_filter'] = '[{\"business\":1, \"sub_business\": 0},{\"business\":2, \"sub_business\": 0}]'; // string | Business filter conditions, JSON array format, e.g., [{\"business\":1, \"sub_business\": 0}]. business: 1 for regular, 2 for VIP
+
+try {
+    $result = $apiInstance->listEarnFixedTermHistory($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listEarnFixedTermHistory: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| 1 for subscription, 2 for redemption, 3 for interest, 4 for bonus reward |
+ **page** | **int**| Page number |
+ **limit** | **int**| Page size |
+ **product_id** | **int**| Product ID | [optional]
+ **order_id** | **string**| Order ID | [optional]
+ **asset** | **string**| Currency | [optional]
+ **start_at** | **int**| Start timestamp | [optional]
+ **end_at** | **int**| End Timestamp | [optional]
+ **sub_business** | **int**| Sub-business | [optional]
+ **business_filter** | **string**| Business filter conditions, JSON array format, e.g., [{\&quot;business\&quot;:1, \&quot;sub_business\&quot;: 0}]. business: 1 for regular, 2 for VIP | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
 
 ### Authorization
 

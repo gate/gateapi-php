@@ -2477,7 +2477,7 @@ class EarnUniApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2004[]
+     * @return \GateApi\Model\UniChartPoint[]
      */
     public function listUniChart($from, $to, $asset)
     {
@@ -2496,7 +2496,7 @@ class EarnUniApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2004[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\UniChartPoint[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listUniChartWithHttpInfo($from, $to, $asset)
     {
@@ -2526,7 +2526,7 @@ class EarnUniApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2004[]';
+        $returnType = '\GateApi\Model\UniChartPoint[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2577,7 +2577,7 @@ class EarnUniApi
      */
     public function listUniChartAsyncWithHttpInfo($from, $to, $asset)
     {
-        $returnType = '\GateApi\Model\InlineResponse2004[]';
+        $returnType = '\GateApi\Model\UniChartPoint[]';
         $request = $this->listUniChartRequest($from, $to, $asset);
 
         return $this->client
@@ -2765,7 +2765,7 @@ class EarnUniApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2005[]
+     * @return \GateApi\Model\UniEstimatedRate[]
      */
     public function listUniRate()
     {
@@ -2781,7 +2781,7 @@ class EarnUniApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2005[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\UniEstimatedRate[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listUniRateWithHttpInfo()
     {
@@ -2811,7 +2811,7 @@ class EarnUniApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2005[]';
+        $returnType = '\GateApi\Model\UniEstimatedRate[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2856,7 +2856,7 @@ class EarnUniApi
      */
     public function listUniRateAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse2005[]';
+        $returnType = '\GateApi\Model\UniEstimatedRate[]';
         $request = $this->listUniRateRequest();
 
         return $this->client

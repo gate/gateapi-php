@@ -54,7 +54,10 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'change_log' => '\GateApi\Model\TrailChangeLog[]'
+        'code' => 'int',
+        'message' => 'string',
+        'data' => '\GateApi\Model\InlineResponse2003Data',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -63,7 +66,10 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'change_log' => null
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'timestamp' => null
     ];
 
     /**
@@ -93,7 +99,10 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'change_log' => 'change_log'
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -102,7 +111,10 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'change_log' => 'setChangeLog'
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -111,7 +123,10 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'change_log' => 'getChangeLog'
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -174,7 +189,10 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['change_log'] = isset($data['change_log']) ? $data['change_log'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -202,25 +220,97 @@ class InlineResponse2003 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets change_log
+     * Gets code
      *
-     * @return \GateApi\Model\TrailChangeLog[]|null
+     * @return int|null
      */
-    public function getChangeLog()
+    public function getCode()
     {
-        return $this->container['change_log'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets change_log
+     * Sets code
      *
-     * @param \GateApi\Model\TrailChangeLog[]|null $change_log change_log
+     * @param int|null $code Return code, 0 means success
      *
      * @return $this
      */
-    public function setChangeLog($change_log)
+    public function setCode($code)
     {
-        $this->container['change_log'] = $change_log;
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message Response message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \GateApi\Model\InlineResponse2003Data|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \GateApi\Model\InlineResponse2003Data|null $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int|null $timestamp Response timestamp (in seconds)
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

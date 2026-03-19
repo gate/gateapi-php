@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**rebateBrokerTransactionHistory**](RebateApi.md#rebateBrokerTransactionHistory) | **GET** /rebate/broker/transaction_history | Broker obtains user&#39;s trading history
 [**rebateUserInfo**](RebateApi.md#rebateUserInfo) | **GET** /rebate/user/info | User obtains rebate information
 [**userSubRelation**](RebateApi.md#userSubRelation) | **GET** /rebate/user/sub_relation | User subordinate relationship
+[**getPartnerApplicationRecent**](RebateApi.md#getPartnerApplicationRecent) | **GET** /rebate/partner/applications/recent | Get recent partner application records
+[**getPartnerEligibility**](RebateApi.md#getPartnerEligibility) | **GET** /rebate/partner/eligibility | Check partner application eligibility
 
 
 ## agencyTransactionHistory
@@ -455,7 +457,7 @@ Name | Type | Description  | Notes
 
 ## rebateBrokerTransactionHistory
 
-> \GateApi\Model\BrokerTransaction[] rebateBrokerTransactionHistory($limit, $offset, $user_id, $from, $to)
+> \GateApi\Model\BrokerTransactionHistory[] rebateBrokerTransactionHistory($limit, $offset, $user_id, $from, $to)
 
 Broker obtains user's trading history
 
@@ -509,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\BrokerTransaction[]**](../Model/BrokerTransaction.md)
+[**\GateApi\Model\BrokerTransactionHistory[]**](../Model/BrokerTransactionHistory.md)
 
 ### Authorization
 
@@ -628,6 +630,122 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\UserSubRelation**](../Model/UserSubRelation.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getPartnerApplicationRecent
+
+> \GateApi\Model\PartnerApplicationResponse getPartnerApplicationRecent()
+
+Get recent partner application records
+
+获取当前用户最近的合伙人申请记录。  此接口返回用户最近 30 天内的申请记录，包括申请状态、审核信息、申请材料等详细信息。
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\RebateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getPartnerApplicationRecent();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling RebateApi->getPartnerApplicationRecent: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\GateApi\Model\PartnerApplicationResponse**](../Model/PartnerApplicationResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getPartnerEligibility
+
+> \GateApi\Model\EligibilityResponse getPartnerEligibility()
+
+Check partner application eligibility
+
+检查当前用户是否有资格申请成为合伙人。  此接口会检查多个条件： - 账户状态（是否被封禁） - 是否为子账号 - 是否已经是合伙人 - KYC 认证状态 - 是否在其他代理商的邀请链下 - 是否在黑名单中 - 其他业务规则限制
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\RebateApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getPartnerEligibility();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling RebateApi->getPartnerEligibility: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\GateApi\Model\EligibilityResponse**](../Model/EligibilityResponse.md)
 
 ### Authorization
 

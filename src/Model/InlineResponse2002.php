@@ -56,7 +56,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'code' => 'int',
         'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse200',
+        'data' => '\GateApi\Model\InlineResponse2002Data',
         'timestamp' => 'int'
     ];
 
@@ -66,10 +66,10 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => 'int32',
+        'code' => null,
         'message' => null,
         'data' => null,
-        'timestamp' => 'int64'
+        'timestamp' => null
     ];
 
     /**
@@ -204,6 +204,18 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -222,7 +234,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets code
      *
-     * @return int|null
+     * @return int
      */
     public function getCode()
     {
@@ -232,7 +244,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int|null $code Status code, 0 means success
+     * @param int $code Return code, 0 means success
      *
      * @return $this
      */
@@ -246,7 +258,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return string|null
+     * @return string
      */
     public function getMessage()
     {
@@ -256,7 +268,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string|null $message Response message
+     * @param string $message Response message
      *
      * @return $this
      */
@@ -270,7 +282,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \GateApi\Model\InlineResponse200|null
+     * @return \GateApi\Model\InlineResponse2002Data
      */
     public function getData()
     {
@@ -280,7 +292,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \GateApi\Model\InlineResponse200|null $data data
+     * @param \GateApi\Model\InlineResponse2002Data $data data
      *
      * @return $this
      */
@@ -294,7 +306,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Gets timestamp
      *
-     * @return int|null
+     * @return int
      */
     public function getTimestamp()
     {
@@ -304,7 +316,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets timestamp
      *
-     * @param int|null $timestamp Response timestamp (milliseconds)
+     * @param int $timestamp Response timestamp (in seconds)
      *
      * @return $this
      */

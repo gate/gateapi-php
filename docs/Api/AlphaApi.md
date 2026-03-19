@@ -403,7 +403,7 @@ Name | Type | Description  | Notes
 
 ## listAlphaCurrencies
 
-> \GateApi\Model\Currency2[] listAlphaCurrencies($currency, $limit, $page)
+> \GateApi\Model\AlphaCurrency[] listAlphaCurrencies($currency, $limit, $page)
 
 Query currency information
 
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\Currency2[]**](../Model/Currency2.md)
+[**\GateApi\Model\AlphaCurrency[]**](../Model/AlphaCurrency.md)
 
 ### Authorization
 
