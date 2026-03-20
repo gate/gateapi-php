@@ -1,6 +1,6 @@
 <?php
 /**
- * CrossexFee
+ * InlineResponse2007DataJumpUrl
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * CrossexFee Class Doc Comment
+ * InlineResponse2007DataJumpUrl Class Doc Comment
  *
  * @category Class
+ * @description Redirect Link
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class CrossexFee implements ModelInterface, ArrayAccess
+class InlineResponse2007DataJumpUrl implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class CrossexFee implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CrossexFee';
+    protected static $openAPIModelName = 'inline_response_200_7_data_jump_url';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,11 +55,9 @@ class CrossexFee implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'spot_maker_fee' => 'string',
-        'spot_taker_fee' => 'string',
-        'future_maker_fee' => 'string',
-        'future_taker_fee' => 'string',
-        'special_fee_list' => '\GateApi\Model\CrossexSpecialFee[]'
+        'web' => 'string',
+        'app' => 'string',
+        'mini_app' => 'string'
     ];
 
     /**
@@ -67,11 +66,9 @@ class CrossexFee implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'spot_maker_fee' => null,
-        'spot_taker_fee' => null,
-        'future_maker_fee' => null,
-        'future_taker_fee' => null,
-        'special_fee_list' => null
+        'web' => null,
+        'app' => null,
+        'mini_app' => null
     ];
 
     /**
@@ -101,11 +98,9 @@ class CrossexFee implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'spot_maker_fee' => 'spot_maker_fee',
-        'spot_taker_fee' => 'spot_taker_fee',
-        'future_maker_fee' => 'future_maker_fee',
-        'future_taker_fee' => 'future_taker_fee',
-        'special_fee_list' => 'special_fee_list'
+        'web' => 'web',
+        'app' => 'app',
+        'mini_app' => 'mini_app'
     ];
 
     /**
@@ -114,11 +109,9 @@ class CrossexFee implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'spot_maker_fee' => 'setSpotMakerFee',
-        'spot_taker_fee' => 'setSpotTakerFee',
-        'future_maker_fee' => 'setFutureMakerFee',
-        'future_taker_fee' => 'setFutureTakerFee',
-        'special_fee_list' => 'setSpecialFeeList'
+        'web' => 'setWeb',
+        'app' => 'setApp',
+        'mini_app' => 'setMiniApp'
     ];
 
     /**
@@ -127,11 +120,9 @@ class CrossexFee implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'spot_maker_fee' => 'getSpotMakerFee',
-        'spot_taker_fee' => 'getSpotTakerFee',
-        'future_maker_fee' => 'getFutureMakerFee',
-        'future_taker_fee' => 'getFutureTakerFee',
-        'special_fee_list' => 'getSpecialFeeList'
+        'web' => 'getWeb',
+        'app' => 'getApp',
+        'mini_app' => 'getMiniApp'
     ];
 
     /**
@@ -194,11 +185,9 @@ class CrossexFee implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['spot_maker_fee'] = isset($data['spot_maker_fee']) ? $data['spot_maker_fee'] : null;
-        $this->container['spot_taker_fee'] = isset($data['spot_taker_fee']) ? $data['spot_taker_fee'] : null;
-        $this->container['future_maker_fee'] = isset($data['future_maker_fee']) ? $data['future_maker_fee'] : null;
-        $this->container['future_taker_fee'] = isset($data['future_taker_fee']) ? $data['future_taker_fee'] : null;
-        $this->container['special_fee_list'] = isset($data['special_fee_list']) ? $data['special_fee_list'] : null;
+        $this->container['web'] = isset($data['web']) ? $data['web'] : null;
+        $this->container['app'] = isset($data['app']) ? $data['app'] : null;
+        $this->container['mini_app'] = isset($data['mini_app']) ? $data['mini_app'] : null;
     }
 
     /**
@@ -210,21 +199,6 @@ class CrossexFee implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['spot_maker_fee'] === null) {
-            $invalidProperties[] = "'spot_maker_fee' can't be null";
-        }
-        if ($this->container['spot_taker_fee'] === null) {
-            $invalidProperties[] = "'spot_taker_fee' can't be null";
-        }
-        if ($this->container['future_maker_fee'] === null) {
-            $invalidProperties[] = "'future_maker_fee' can't be null";
-        }
-        if ($this->container['future_taker_fee'] === null) {
-            $invalidProperties[] = "'future_taker_fee' can't be null";
-        }
-        if ($this->container['special_fee_list'] === null) {
-            $invalidProperties[] = "'special_fee_list' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -241,121 +215,73 @@ class CrossexFee implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets spot_maker_fee
+     * Gets web
      *
-     * @return string
+     * @return string|null
      */
-    public function getSpotMakerFee()
+    public function getWeb()
     {
-        return $this->container['spot_maker_fee'];
+        return $this->container['web'];
     }
 
     /**
-     * Sets spot_maker_fee
+     * Sets web
      *
-     * @param string $spot_maker_fee spotMakerfee rate
+     * @param string|null $web Web Redirect Link
      *
      * @return $this
      */
-    public function setSpotMakerFee($spot_maker_fee)
+    public function setWeb($web)
     {
-        $this->container['spot_maker_fee'] = $spot_maker_fee;
+        $this->container['web'] = $web;
 
         return $this;
     }
 
     /**
-     * Gets spot_taker_fee
+     * Gets app
      *
-     * @return string
+     * @return string|null
      */
-    public function getSpotTakerFee()
+    public function getApp()
     {
-        return $this->container['spot_taker_fee'];
+        return $this->container['app'];
     }
 
     /**
-     * Sets spot_taker_fee
+     * Sets app
      *
-     * @param string $spot_taker_fee spotTakerfee rate
+     * @param string|null $app App Redirect Link
      *
      * @return $this
      */
-    public function setSpotTakerFee($spot_taker_fee)
+    public function setApp($app)
     {
-        $this->container['spot_taker_fee'] = $spot_taker_fee;
+        $this->container['app'] = $app;
 
         return $this;
     }
 
     /**
-     * Gets future_maker_fee
+     * Gets mini_app
      *
-     * @return string
+     * @return string|null
      */
-    public function getFutureMakerFee()
+    public function getMiniApp()
     {
-        return $this->container['future_maker_fee'];
+        return $this->container['mini_app'];
     }
 
     /**
-     * Sets future_maker_fee
+     * Sets mini_app
      *
-     * @param string $future_maker_fee contractMakerfee rate
+     * @param string|null $mini_app Mini Program Redirect Link (empty string for most types)
      *
      * @return $this
      */
-    public function setFutureMakerFee($future_maker_fee)
+    public function setMiniApp($mini_app)
     {
-        $this->container['future_maker_fee'] = $future_maker_fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets future_taker_fee
-     *
-     * @return string
-     */
-    public function getFutureTakerFee()
-    {
-        return $this->container['future_taker_fee'];
-    }
-
-    /**
-     * Sets future_taker_fee
-     *
-     * @param string $future_taker_fee contractTakerfee rate
-     *
-     * @return $this
-     */
-    public function setFutureTakerFee($future_taker_fee)
-    {
-        $this->container['future_taker_fee'] = $future_taker_fee;
-
-        return $this;
-    }
-
-    /**
-     * Gets special_fee_list
-     *
-     * @return \GateApi\Model\CrossexSpecialFee[]
-     */
-    public function getSpecialFeeList()
-    {
-        return $this->container['special_fee_list'];
-    }
-
-    /**
-     * Sets special_fee_list
-     *
-     * @param \GateApi\Model\CrossexSpecialFee[] $special_fee_list special_fee_list
-     *
-     * @return $this
-     */
-    public function setSpecialFeeList($special_fee_list)
-    {
-        $this->container['special_fee_list'] = $special_fee_list;
+        $this->container['mini_app'] = $mini_app;
 
         return $this;
     }

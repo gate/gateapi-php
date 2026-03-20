@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2009DataList
+ * InlineResponse2007DataProgressConfig
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2009DataList Class Doc Comment
+ * InlineResponse2007DataProgressConfig Class Doc Comment
  *
  * @category Class
+ * @description Progress bar configuration. All fields are empty strings when has_progress is false
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2009DataList implements ModelInterface, ArrayAccess
+class InlineResponse2007DataProgressConfig implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_9_data_list';
+    protected static $openAPIModelName = 'inline_response_200_7_data_progress_config';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,9 +55,10 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'content_type' => 'string',
-        'live' => '\GateApi\Model\InlineResponse2009DataLive',
-        'video' => '\GateApi\Model\InlineResponse2009DataVideo'
+        'total_balance' => 'string',
+        'current_used' => 'string',
+        'current_achived' => 'string',
+        'currency' => 'string'
     ];
 
     /**
@@ -65,9 +67,10 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'content_type' => null,
-        'live' => null,
-        'video' => null
+        'total_balance' => null,
+        'current_used' => null,
+        'current_achived' => null,
+        'currency' => null
     ];
 
     /**
@@ -97,9 +100,10 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'content_type' => 'content_type',
-        'live' => 'live',
-        'video' => 'video'
+        'total_balance' => 'total_balance',
+        'current_used' => 'current_used',
+        'current_achived' => 'current_achived',
+        'currency' => 'currency'
     ];
 
     /**
@@ -108,9 +112,10 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'content_type' => 'setContentType',
-        'live' => 'setLive',
-        'video' => 'setVideo'
+        'total_balance' => 'setTotalBalance',
+        'current_used' => 'setCurrentUsed',
+        'current_achived' => 'setCurrentAchived',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -119,9 +124,10 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'content_type' => 'getContentType',
-        'live' => 'getLive',
-        'video' => 'getVideo'
+        'total_balance' => 'getTotalBalance',
+        'current_used' => 'getCurrentUsed',
+        'current_achived' => 'getCurrentAchived',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -184,9 +190,10 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
-        $this->container['live'] = isset($data['live']) ? $data['live'] : null;
-        $this->container['video'] = isset($data['video']) ? $data['video'] : null;
+        $this->container['total_balance'] = isset($data['total_balance']) ? $data['total_balance'] : null;
+        $this->container['current_used'] = isset($data['current_used']) ? $data['current_used'] : null;
+        $this->container['current_achived'] = isset($data['current_achived']) ? $data['current_achived'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
     }
 
     /**
@@ -214,73 +221,97 @@ class InlineResponse2009DataList implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets content_type
+     * Gets total_balance
      *
      * @return string|null
      */
-    public function getContentType()
+    public function getTotalBalance()
     {
-        return $this->container['content_type'];
+        return $this->container['total_balance'];
     }
 
     /**
-     * Sets content_type
+     * Sets total_balance
      *
-     * @param string|null $content_type Content type: streaming = live broadcast, video = replay video
+     * @param string|null $total_balance Total Required Amount
      *
      * @return $this
      */
-    public function setContentType($content_type)
+    public function setTotalBalance($total_balance)
     {
-        $this->container['content_type'] = $content_type;
+        $this->container['total_balance'] = $total_balance;
 
         return $this;
     }
 
     /**
-     * Gets live
+     * Gets current_used
      *
-     * @return \GateApi\Model\InlineResponse2009DataLive|null
+     * @return string|null
      */
-    public function getLive()
+    public function getCurrentUsed()
     {
-        return $this->container['live'];
+        return $this->container['current_used'];
     }
 
     /**
-     * Sets live
+     * Sets current_used
      *
-     * @param \GateApi\Model\InlineResponse2009DataLive|null $live live
+     * @param string|null $current_used Used Amount
      *
      * @return $this
      */
-    public function setLive($live)
+    public function setCurrentUsed($current_used)
     {
-        $this->container['live'] = $live;
+        $this->container['current_used'] = $current_used;
 
         return $this;
     }
 
     /**
-     * Gets video
+     * Gets current_achived
      *
-     * @return \GateApi\Model\InlineResponse2009DataVideo|null
+     * @return string|null
      */
-    public function getVideo()
+    public function getCurrentAchived()
     {
-        return $this->container['video'];
+        return $this->container['current_achived'];
     }
 
     /**
-     * Sets video
+     * Sets current_achived
      *
-     * @param \GateApi\Model\InlineResponse2009DataVideo|null $video video
+     * @param string|null $current_achived Amount achieved (note: field name is spelled as achived)
      *
      * @return $this
      */
-    public function setVideo($video)
+    public function setCurrentAchived($current_achived)
     {
-        $this->container['video'] = $video;
+        $this->container['current_achived'] = $current_achived;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency Progress unit (e.g., 'USDT')
+     *
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
 
         return $this;
     }

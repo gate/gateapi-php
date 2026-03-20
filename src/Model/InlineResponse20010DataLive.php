@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2009DataLive
+ * InlineResponse20010DataLive
  *
  * PHP version 7
  *
@@ -30,7 +30,7 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2009DataLive Class Doc Comment
+ * InlineResponse20010DataLive Class Doc Comment
  *
  * @category Class
  * @description Live stream information (has value when content_type&#x3D;streaming)
@@ -38,7 +38,7 @@ use \GateApi\ObjectSerializer;
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2009DataLive implements ModelInterface, ArrayAccess
+class InlineResponse20010DataLive implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineResponse2009DataLive implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_9_data_live';
+    protected static $openAPIModelName = 'inline_response_200_10_data_live';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -65,7 +65,7 @@ class InlineResponse2009DataLive implements ModelInterface, ArrayAccess
         'hot_weight' => 'int',
         'live_type' => 'int',
         'session_id' => 'string',
-        'host' => '\GateApi\Model\InlineResponse2009DataLiveHost',
+        'host' => '\GateApi\Model\InlineResponse20010DataLiveHost',
         'status' => 'string'
     ];
 
@@ -511,7 +511,7 @@ class InlineResponse2009DataLive implements ModelInterface, ArrayAccess
     /**
      * Gets host
      *
-     * @return \GateApi\Model\InlineResponse2009DataLiveHost|null
+     * @return \GateApi\Model\InlineResponse20010DataLiveHost|null
      */
     public function getHost()
     {
@@ -521,7 +521,7 @@ class InlineResponse2009DataLive implements ModelInterface, ArrayAccess
     /**
      * Sets host
      *
-     * @param \GateApi\Model\InlineResponse2009DataLiveHost|null $host host
+     * @param \GateApi\Model\InlineResponse20010DataLiveHost|null $host host
      *
      * @return $this
      */

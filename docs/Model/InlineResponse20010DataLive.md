@@ -1,4 +1,4 @@
-# # InlineResponse2009DataLive
+# # InlineResponse20010DataLive
 
 ## Properties
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **hot_weight** | **int** | Popularity weight | [optional] 
 **live_type** | **int** | Live stream type | [optional] 
 **session_id** | **string** | Session ID | [optional] 
-**host** | [**\GateApi\Model\InlineResponse2009DataLiveHost**](InlineResponse2009DataLiveHost.md) |  | [optional] 
+**host** | [**\GateApi\Model\InlineResponse20010DataLiveHost**](InlineResponse20010DataLiveHost.md) |  | [optional] 
 **status** | **string** | Live stream status (e.g., streaming) | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

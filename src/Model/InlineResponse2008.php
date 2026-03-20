@@ -56,7 +56,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'code' => 'int',
         'label' => 'string',
-        'msg' => 'string',
+        'message' => 'string',
         'data' => '\GateApi\Model\InlineResponse2008Data'
     ];
 
@@ -68,7 +68,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'code' => null,
         'label' => null,
-        'msg' => null,
+        'message' => null,
         'data' => null
     ];
 
@@ -101,7 +101,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'code' => 'code',
         'label' => 'label',
-        'msg' => 'msg',
+        'message' => 'message',
         'data' => 'data'
     ];
 
@@ -113,7 +113,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     protected static $setters = [
         'code' => 'setCode',
         'label' => 'setLabel',
-        'msg' => 'setMsg',
+        'message' => 'setMessage',
         'data' => 'setData'
     ];
 
@@ -125,7 +125,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     protected static $getters = [
         'code' => 'getCode',
         'label' => 'getLabel',
-        'msg' => 'getMsg',
+        'message' => 'getMessage',
         'data' => 'getData'
     ];
 
@@ -170,8 +170,29 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const CODE_0 = 0;
+    const CODE_2002 = 2002;
+    const CODE_50105 = 50105;
+    const CODE_10001 = 10001;
+    const CODE_10000 = 10000;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCodeAllowableValues()
+    {
+        return [
+            self::CODE_0,
+            self::CODE_2002,
+            self::CODE_50105,
+            self::CODE_10001,
+            self::CODE_10000,
+        ];
+    }
     
 
     /**
@@ -191,7 +212,7 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['msg'] = isset($data['msg']) ? $data['msg'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
@@ -203,6 +224,14 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'code', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -232,12 +261,21 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int|null $code Status code, 0 = success
+     * @param int|null $code Response code. `0` = success; `2002` = user not logged in; `50105` = parameter validation failed; `10001` = coupon record does not exist or does not belong to current user; `10000` = invalid parameter (e.g., task coupon missing coupon_info)
      *
      * @return $this
      */
     public function setCode($code)
     {
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($code) && !in_array($code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'code', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['code'] = $code;
 
         return $this;
@@ -268,25 +306,25 @@ class InlineResponse2008 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets msg
+     * Gets message
      *
      * @return string|null
      */
-    public function getMsg()
+    public function getMessage()
     {
-        return $this->container['msg'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets msg
+     * Sets message
      *
-     * @param string|null $msg Status message
+     * @param string|null $message message
      *
      * @return $this
      */
-    public function setMsg($msg)
+    public function setMessage($message)
     {
-        $this->container['msg'] = $msg;
+        $this->container['message'] = $message;
 
         return $this;
     }

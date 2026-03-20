@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006DataList
+ * InlineResponse2007DataList
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2006DataList Class Doc Comment
+ * InlineResponse2007DataList Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2006DataList implements ModelInterface, ArrayAccess
+class InlineResponse2007DataList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6_data_list';
+    protected static $openAPIModelName = 'inline_response_200_7_data_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -63,14 +63,14 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
         'currency' => 'string',
         'rule_new' => 'string',
         'status' => 'string',
-        'jump_url' => '\GateApi\Model\InlineResponse2006DataJumpUrl',
-        'help_url' => '\GateApi\Model\InlineResponse2006DataHelpUrl',
+        'jump_url' => '\GateApi\Model\InlineResponse2007DataJumpUrl',
+        'help_url' => '\GateApi\Model\InlineResponse2007DataHelpUrl',
         'expire_time' => 'int',
         'expire_time_order_by' => 'int',
         'expire_second' => 'int',
         'has_usage_history' => 'bool',
         'has_progress' => 'bool',
-        'progress_config' => '\GateApi\Model\InlineResponse2006DataProgressConfig',
+        'progress_config' => '\GateApi\Model\InlineResponse2007DataProgressConfig',
         'activation_info' => 'object',
         'is_task_coupon' => 'int',
         'upgrade_toast' => 'bool',
@@ -653,7 +653,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Gets jump_url
      *
-     * @return \GateApi\Model\InlineResponse2006DataJumpUrl|null
+     * @return \GateApi\Model\InlineResponse2007DataJumpUrl|null
      */
     public function getJumpUrl()
     {
@@ -663,7 +663,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Sets jump_url
      *
-     * @param \GateApi\Model\InlineResponse2006DataJumpUrl|null $jump_url jump_url
+     * @param \GateApi\Model\InlineResponse2007DataJumpUrl|null $jump_url jump_url
      *
      * @return $this
      */
@@ -677,7 +677,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Gets help_url
      *
-     * @return \GateApi\Model\InlineResponse2006DataHelpUrl|null
+     * @return \GateApi\Model\InlineResponse2007DataHelpUrl|null
      */
     public function getHelpUrl()
     {
@@ -687,7 +687,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Sets help_url
      *
-     * @param \GateApi\Model\InlineResponse2006DataHelpUrl|null $help_url help_url
+     * @param \GateApi\Model\InlineResponse2007DataHelpUrl|null $help_url help_url
      *
      * @return $this
      */
@@ -821,7 +821,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Gets progress_config
      *
-     * @return \GateApi\Model\InlineResponse2006DataProgressConfig|null
+     * @return \GateApi\Model\InlineResponse2007DataProgressConfig|null
      */
     public function getProgressConfig()
     {
@@ -831,7 +831,7 @@ class InlineResponse2006DataList implements ModelInterface, ArrayAccess
     /**
      * Sets progress_config
      *
-     * @param \GateApi\Model\InlineResponse2006DataProgressConfig|null $progress_config progress_config
+     * @param \GateApi\Model\InlineResponse2007DataProgressConfig|null $progress_config progress_config
      *
      * @return $this
      */

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineResponse20013Data Class Doc Comment
  *
  * @category Class
- * @description Activity type data
+ * @description Activity list data
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -55,7 +55,12 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\GateApi\Model\InlineResponse20013DataList[]'
+        'list' => '\GateApi\Model\InlineResponse20013DataList[]',
+        'page' => 'int',
+        'page_size' => 'int',
+        'page_count' => 'int',
+        'total_count' => 'int',
+        'url' => 'string'
     ];
 
     /**
@@ -64,7 +69,12 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'list' => null
+        'list' => null,
+        'page' => null,
+        'page_size' => null,
+        'page_count' => null,
+        'total_count' => null,
+        'url' => null
     ];
 
     /**
@@ -94,7 +104,12 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list'
+        'list' => 'list',
+        'page' => 'page',
+        'page_size' => 'pageSize',
+        'page_count' => 'pageCount',
+        'total_count' => 'totalCount',
+        'url' => 'url'
     ];
 
     /**
@@ -103,7 +118,12 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList'
+        'list' => 'setList',
+        'page' => 'setPage',
+        'page_size' => 'setPageSize',
+        'page_count' => 'setPageCount',
+        'total_count' => 'setTotalCount',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -112,7 +132,12 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList'
+        'list' => 'getList',
+        'page' => 'getPage',
+        'page_size' => 'getPageSize',
+        'page_count' => 'getPageCount',
+        'total_count' => 'getTotalCount',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -176,6 +201,11 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
     /**
@@ -189,6 +219,21 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
 
         if ($this->container['list'] === null) {
             $invalidProperties[] = "'list' can't be null";
+        }
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
+        }
+        if ($this->container['page_size'] === null) {
+            $invalidProperties[] = "'page_size' can't be null";
+        }
+        if ($this->container['page_count'] === null) {
+            $invalidProperties[] = "'page_count' can't be null";
+        }
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -218,13 +263,133 @@ class InlineResponse20013Data implements ModelInterface, ArrayAccess
     /**
      * Sets list
      *
-     * @param \GateApi\Model\InlineResponse20013DataList[] $list Activity type list
+     * @param \GateApi\Model\InlineResponse20013DataList[] $list Activity list
      *
      * @return $this
      */
     public function setList($list)
     {
         $this->container['list'] = $list;
+
+        return $this;
+    }
+
+    /**
+     * Gets page
+     *
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->container['page'];
+    }
+
+    /**
+     * Sets page
+     *
+     * @param int $page Current page number
+     *
+     * @return $this
+     */
+    public function setPage($page)
+    {
+        $this->container['page'] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_size
+     *
+     * @return int
+     */
+    public function getPageSize()
+    {
+        return $this->container['page_size'];
+    }
+
+    /**
+     * Sets page_size
+     *
+     * @param int $page_size Items per page
+     *
+     * @return $this
+     */
+    public function setPageSize($page_size)
+    {
+        $this->container['page_size'] = $page_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_count
+     *
+     * @return int
+     */
+    public function getPageCount()
+    {
+        return $this->container['page_count'];
+    }
+
+    /**
+     * Sets page_count
+     *
+     * @param int $page_count Total pages
+     *
+     * @return $this
+     */
+    public function setPageCount($page_count)
+    {
+        $this->container['page_count'] = $page_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_count
+     *
+     * @return int
+     */
+    public function getTotalCount()
+    {
+        return $this->container['total_count'];
+    }
+
+    /**
+     * Sets total_count
+     *
+     * @param int $total_count Total Records
+     *
+     * @return $this
+     */
+    public function setTotalCount($total_count)
+    {
+        $this->container['total_count'] = $total_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url Activity Center page link
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }

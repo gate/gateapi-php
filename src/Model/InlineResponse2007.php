@@ -173,8 +173,6 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     const CODE_0 = 0;
     const CODE_2002 = 2002;
     const CODE_50105 = 50105;
-    const CODE_10001 = 10001;
-    const CODE_10000 = 10000;
     
 
     
@@ -189,8 +187,6 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
             self::CODE_0,
             self::CODE_2002,
             self::CODE_50105,
-            self::CODE_10001,
-            self::CODE_10000,
         ];
     }
     
@@ -261,7 +257,7 @@ class InlineResponse2007 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int|null $code Response code. `0` = success; `2002` = user not logged in; `50105` = parameter validation failed; `10001` = coupon record does not exist or does not belong to current user; `10000` = invalid parameter (e.g., task coupon missing coupon_info)
+     * @param int|null $code Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
      *
      * @return $this
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2009DataLiveHost
+ * InlineResponse20014
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2009DataLiveHost Class Doc Comment
+ * InlineResponse20014 Class Doc Comment
  *
  * @category Class
- * @description Streamer information
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
+class InlineResponse20014 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_9_data_live_host';
+    protected static $openAPIModelName = 'inline_response_200_14';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,11 +54,10 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'avatar' => 'string',
-        'fans' => 'int',
-        'tier' => 'int'
+        'code' => 'int',
+        'message' => 'string',
+        'data' => '\GateApi\Model\InlineResponse20014Data',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -68,11 +66,10 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'avatar' => null,
-        'fans' => null,
-        'tier' => null
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'timestamp' => 'int64'
     ];
 
     /**
@@ -102,11 +99,10 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'avatar' => 'avatar',
-        'fans' => 'fans',
-        'tier' => 'tier'
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -115,11 +111,10 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'avatar' => 'setAvatar',
-        'fans' => 'setFans',
-        'tier' => 'setTier'
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -128,11 +123,10 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'avatar' => 'getAvatar',
-        'fans' => 'getFans',
-        'tier' => 'getTier'
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -195,11 +189,10 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
-        $this->container['fans'] = isset($data['fans']) ? $data['fans'] : null;
-        $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -211,6 +204,18 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -227,121 +232,97 @@ class InlineResponse2009DataLiveHost implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets code
      *
-     * @return string|null
+     * @return int
      */
-    public function getId()
+    public function getCode()
     {
-        return $this->container['id'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets id
+     * Sets code
      *
-     * @param string|null $id Streamer ID
+     * @param int $code Response status code, 0 means success
      *
      * @return $this
      */
-    public function setId($id)
+    public function setCode($code)
     {
-        $this->container['id'] = $id;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets message
      *
-     * @return string|null
+     * @return string
      */
-    public function getName()
+    public function getMessage()
     {
-        return $this->container['name'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets name
+     * Sets message
      *
-     * @param string|null $name Streamer nickname
+     * @param string $message 响应消息，成功时为 \"success\"
      *
      * @return $this
      */
-    public function setName($name)
+    public function setMessage($message)
     {
-        $this->container['name'] = $name;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets avatar
+     * Gets data
      *
-     * @return string|null
+     * @return \GateApi\Model\InlineResponse20014Data
      */
-    public function getAvatar()
+    public function getData()
     {
-        return $this->container['avatar'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets avatar
+     * Sets data
      *
-     * @param string|null $avatar Streamer avatar URL
+     * @param \GateApi\Model\InlineResponse20014Data $data data
      *
      * @return $this
      */
-    public function setAvatar($avatar)
+    public function setData($data)
     {
-        $this->container['avatar'] = $avatar;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets fans
+     * Gets timestamp
      *
-     * @return int|null
+     * @return int
      */
-    public function getFans()
+    public function getTimestamp()
     {
-        return $this->container['fans'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets fans
+     * Sets timestamp
      *
-     * @param int|null $fans Follower count
+     * @param int $timestamp Server timestamp (milliseconds)
      *
      * @return $this
      */
-    public function setFans($fans)
+    public function setTimestamp($timestamp)
     {
-        $this->container['fans'] = $fans;
-
-        return $this;
-    }
-
-    /**
-     * Gets tier
-     *
-     * @return int|null
-     */
-    public function getTier()
-    {
-        return $this->container['tier'];
-    }
-
-    /**
-     * Sets tier
-     *
-     * @param int|null $tier Streamer level
-     *
-     * @return $this
-     */
-    public function setTier($tier)
-    {
-        $this->container['tier'] = $tier;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

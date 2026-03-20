@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## redeemLaunchPool
 
-> \GateApi\Model\InlineResponse20010 redeemLaunchPool($redeem_v4)
+> \GateApi\Model\InlineResponse20011 redeemLaunchPool($redeem_v4)
 
 Redeem LaunchPool staked assets
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\GateApi\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
 
 ### Authorization
 

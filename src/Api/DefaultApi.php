@@ -121,7 +121,7 @@ class DefaultApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20011
+     * @return \GateApi\Model\InlineResponse20012
      */
     public function getMyActivityEntry()
     {
@@ -137,7 +137,7 @@ class DefaultApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20011, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyActivityEntryWithHttpInfo()
     {
@@ -167,7 +167,7 @@ class DefaultApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20011';
+        $returnType = '\GateApi\Model\InlineResponse20012';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -212,7 +212,7 @@ class DefaultApi
      */
     public function getMyActivityEntryAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse20011';
+        $returnType = '\GateApi\Model\InlineResponse20012';
         $request = $this->getMyActivityEntryRequest();
 
         return $this->client
@@ -351,7 +351,7 @@ class DefaultApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20012
+     * @return \GateApi\Model\InlineResponse20013
      */
     public function listActivities($associative_array)
     {
@@ -375,7 +375,7 @@ class DefaultApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20012, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
      */
     public function listActivitiesWithHttpInfo($associative_array)
     {
@@ -405,7 +405,7 @@ class DefaultApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20012';
+        $returnType = '\GateApi\Model\InlineResponse20013';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -466,7 +466,7 @@ class DefaultApi
      */
     public function listActivitiesAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse20012';
+        $returnType = '\GateApi\Model\InlineResponse20013';
         $request = $this->listActivitiesRequest($associative_array);
 
         return $this->client
@@ -685,7 +685,7 @@ class DefaultApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20013
+     * @return \GateApi\Model\InlineResponse20014
      */
     public function listActivityTypes()
     {
@@ -701,7 +701,7 @@ class DefaultApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20013, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20014, HTTP status code, HTTP response headers (array of strings)
      */
     public function listActivityTypesWithHttpInfo()
     {
@@ -731,7 +731,7 @@ class DefaultApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20013';
+        $returnType = '\GateApi\Model\InlineResponse20014';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -776,7 +776,7 @@ class DefaultApi
      */
     public function listActivityTypesAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse20013';
+        $returnType = '\GateApi\Model\InlineResponse20014';
         $request = $this->listActivityTypesRequest();
 
         return $this->client

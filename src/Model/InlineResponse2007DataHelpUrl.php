@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006DataJumpUrl
+ * InlineResponse2007DataHelpUrl
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2006DataJumpUrl Class Doc Comment
+ * InlineResponse2007DataHelpUrl Class Doc Comment
  *
  * @category Class
- * @description Redirect Link
+ * @description Help Center Link
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
+class InlineResponse2007DataHelpUrl implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6_data_jump_url';
+    protected static $openAPIModelName = 'inline_response_200_7_data_help_url';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,8 +56,7 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'web' => 'string',
-        'app' => 'string',
-        'mini_app' => 'string'
+        'app' => 'string'
     ];
 
     /**
@@ -67,8 +66,7 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'web' => null,
-        'app' => null,
-        'mini_app' => null
+        'app' => null
     ];
 
     /**
@@ -99,8 +97,7 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'web' => 'web',
-        'app' => 'app',
-        'mini_app' => 'mini_app'
+        'app' => 'app'
     ];
 
     /**
@@ -110,8 +107,7 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'web' => 'setWeb',
-        'app' => 'setApp',
-        'mini_app' => 'setMiniApp'
+        'app' => 'setApp'
     ];
 
     /**
@@ -121,8 +117,7 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'web' => 'getWeb',
-        'app' => 'getApp',
-        'mini_app' => 'getMiniApp'
+        'app' => 'getApp'
     ];
 
     /**
@@ -187,7 +182,6 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
     {
         $this->container['web'] = isset($data['web']) ? $data['web'] : null;
         $this->container['app'] = isset($data['app']) ? $data['app'] : null;
-        $this->container['mini_app'] = isset($data['mini_app']) ? $data['mini_app'] : null;
     }
 
     /**
@@ -227,7 +221,7 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
     /**
      * Sets web
      *
-     * @param string|null $web Web Redirect Link
+     * @param string|null $web Web Help Link
      *
      * @return $this
      */
@@ -251,37 +245,13 @@ class InlineResponse2006DataJumpUrl implements ModelInterface, ArrayAccess
     /**
      * Sets app
      *
-     * @param string|null $app App Redirect Link
+     * @param string|null $app App Help Link
      *
      * @return $this
      */
     public function setApp($app)
     {
         $this->container['app'] = $app;
-
-        return $this;
-    }
-
-    /**
-     * Gets mini_app
-     *
-     * @return string|null
-     */
-    public function getMiniApp()
-    {
-        return $this->container['mini_app'];
-    }
-
-    /**
-     * Sets mini_app
-     *
-     * @param string|null $mini_app Mini Program Redirect Link (empty string for most types)
-     *
-     * @return $this
-     */
-    public function setMiniApp($mini_app)
-    {
-        $this->container['mini_app'] = $mini_app;
 
         return $this;
     }

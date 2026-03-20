@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2009DataVideo
+ * InlineResponse20010DataVideo
  *
  * PHP version 7
  *
@@ -30,7 +30,7 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2009DataVideo Class Doc Comment
+ * InlineResponse20010DataVideo Class Doc Comment
  *
  * @category Class
  * @description Replay video information (has value when content_type&#x3D;video)
@@ -38,7 +38,7 @@ use \GateApi\ObjectSerializer;
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2009DataVideo implements ModelInterface, ArrayAccess
+class InlineResponse20010DataVideo implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineResponse2009DataVideo implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_9_data_video';
+    protected static $openAPIModelName = 'inline_response_200_10_data_video';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

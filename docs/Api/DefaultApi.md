@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## getMyActivityEntry
 
-> \GateApi\Model\InlineResponse20011 getMyActivityEntry()
+> \GateApi\Model\InlineResponse20012 getMyActivityEntry()
 
 My activity entry
 
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20011**](../Model/InlineResponse20011.md)
+[**\GateApi\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 
 ## listActivities
 
-> \GateApi\Model\InlineResponse20012 listActivities($recommend_type, $type_ids, $keywords, $page, $page_size, $sort_by)
+> \GateApi\Model\InlineResponse20013 listActivities($recommend_type, $type_ids, $keywords, $page, $page_size, $sort_by)
 
 Recommended activity list
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20012**](../Model/InlineResponse20012.md)
+[**\GateApi\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ## listActivityTypes
 
-> \GateApi\Model\InlineResponse20013 listActivityTypes()
+> \GateApi\Model\InlineResponse20014 listActivityTypes()
 
 Activity type list
 
@@ -179,7 +179,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20013**](../Model/InlineResponse20013.md)
+[**\GateApi\Model\InlineResponse20014**](../Model/InlineResponse20014.md)
 
 ### Authorization
 

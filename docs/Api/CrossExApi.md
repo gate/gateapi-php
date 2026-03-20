@@ -665,7 +665,7 @@ Name | Type | Description  | Notes
 
 ## createCrossexConvertOrder
 
-> object createCrossexConvertOrder($crossex_convert_order_request)
+> \GateApi\Model\CrossexConvertOrderResponse createCrossexConvertOrder($crossex_convert_order_request)
 
 Flash Swap Transaction
 
@@ -709,7 +709,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\GateApi\Model\CrossexConvertOrderResponse**](../Model/CrossexConvertOrderResponse.md)
 
 ### Authorization
 
@@ -1233,7 +1233,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexFee
 
-> \GateApi\Model\CrossexFee getCrossexFee()
+> \GateApi\Model\InlineResponse2006[] getCrossexFee()
 
 Query User Fee Rates
 
@@ -1273,7 +1273,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\CrossexFee**](../Model/CrossexFee.md)
+[**\GateApi\Model\InlineResponse2006[]**](../Model/InlineResponse2006.md)
 
 ### Authorization
 

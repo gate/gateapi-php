@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**list** | [**\GateApi\Model\InlineResponse2009DataList[]**](InlineResponse2009DataList.md) | Live stream/replay list | [optional] 
+**total** | **int** | Total number of results | [optional] 
+**items** | [**\GateApi\Model\InlineResponse2009DataItems[]**](InlineResponse2009DataItems.md) | Search result list | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

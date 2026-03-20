@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2008DataItems
+ * InlineResponse20010Data
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2008DataItems Class Doc Comment
+ * InlineResponse20010Data Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
+class InlineResponse20010Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_8_data_items';
+    protected static $openAPIModelName = 'inline_response_200_10_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,13 +54,7 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'content' => 'string',
-        'image' => 'string',
-        'avatar' => 'string',
-        'nickname' => 'string',
-        'like_count' => 'int',
-        'page_view' => 'int'
+        'list' => '\GateApi\Model\InlineResponse20010DataList[]'
     ];
 
     /**
@@ -69,13 +63,7 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => 'int64',
-        'content' => null,
-        'image' => null,
-        'avatar' => null,
-        'nickname' => null,
-        'like_count' => 'int64',
-        'page_view' => 'int64'
+        'list' => null
     ];
 
     /**
@@ -105,13 +93,7 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'content' => 'content',
-        'image' => 'image',
-        'avatar' => 'avatar',
-        'nickname' => 'nickname',
-        'like_count' => 'like_count',
-        'page_view' => 'page_view'
+        'list' => 'list'
     ];
 
     /**
@@ -120,13 +102,7 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'content' => 'setContent',
-        'image' => 'setImage',
-        'avatar' => 'setAvatar',
-        'nickname' => 'setNickname',
-        'like_count' => 'setLikeCount',
-        'page_view' => 'setPageView'
+        'list' => 'setList'
     ];
 
     /**
@@ -135,13 +111,7 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'content' => 'getContent',
-        'image' => 'getImage',
-        'avatar' => 'getAvatar',
-        'nickname' => 'getNickname',
-        'like_count' => 'getLikeCount',
-        'page_view' => 'getPageView'
+        'list' => 'getList'
     ];
 
     /**
@@ -204,13 +174,7 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['content'] = isset($data['content']) ? $data['content'] : null;
-        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
-        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
-        $this->container['nickname'] = isset($data['nickname']) ? $data['nickname'] : null;
-        $this->container['like_count'] = isset($data['like_count']) ? $data['like_count'] : null;
-        $this->container['page_view'] = isset($data['page_view']) ? $data['page_view'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -238,169 +202,25 @@ class InlineResponse2008DataItems implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets list
      *
-     * @return int|null
+     * @return \GateApi\Model\InlineResponse20010DataList[]|null
      */
-    public function getId()
+    public function getList()
     {
-        return $this->container['id'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets id
+     * Sets list
      *
-     * @param int|null $id Post ID
+     * @param \GateApi\Model\InlineResponse20010DataList[]|null $list Live stream/replay list
      *
      * @return $this
      */
-    public function setId($id)
+    public function setList($list)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets content
-     *
-     * @return string|null
-     */
-    public function getContent()
-    {
-        return $this->container['content'];
-    }
-
-    /**
-     * Sets content
-     *
-     * @param string|null $content Post content
-     *
-     * @return $this
-     */
-    public function setContent($content)
-    {
-        $this->container['content'] = $content;
-
-        return $this;
-    }
-
-    /**
-     * Gets image
-     *
-     * @return string|null
-     */
-    public function getImage()
-    {
-        return $this->container['image'];
-    }
-
-    /**
-     * Sets image
-     *
-     * @param string|null $image First image URL
-     *
-     * @return $this
-     */
-    public function setImage($image)
-    {
-        $this->container['image'] = $image;
-
-        return $this;
-    }
-
-    /**
-     * Gets avatar
-     *
-     * @return string|null
-     */
-    public function getAvatar()
-    {
-        return $this->container['avatar'];
-    }
-
-    /**
-     * Sets avatar
-     *
-     * @param string|null $avatar Author avatar
-     *
-     * @return $this
-     */
-    public function setAvatar($avatar)
-    {
-        $this->container['avatar'] = $avatar;
-
-        return $this;
-    }
-
-    /**
-     * Gets nickname
-     *
-     * @return string|null
-     */
-    public function getNickname()
-    {
-        return $this->container['nickname'];
-    }
-
-    /**
-     * Sets nickname
-     *
-     * @param string|null $nickname Author nickname
-     *
-     * @return $this
-     */
-    public function setNickname($nickname)
-    {
-        $this->container['nickname'] = $nickname;
-
-        return $this;
-    }
-
-    /**
-     * Gets like_count
-     *
-     * @return int|null
-     */
-    public function getLikeCount()
-    {
-        return $this->container['like_count'];
-    }
-
-    /**
-     * Sets like_count
-     *
-     * @param int|null $like_count Like count
-     *
-     * @return $this
-     */
-    public function setLikeCount($like_count)
-    {
-        $this->container['like_count'] = $like_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_view
-     *
-     * @return int|null
-     */
-    public function getPageView()
-    {
-        return $this->container['page_view'];
-    }
-
-    /**
-     * Sets page_view
-     *
-     * @param int|null $page_view View count
-     *
-     * @return $this
-     */
-    public function setPageView($page_view)
-    {
-        $this->container['page_view'] = $page_view;
+        $this->container['list'] = $list;
 
         return $this;
     }

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineResponse20012Data Class Doc Comment
  *
  * @category Class
- * @description Activity list data
+ * @description Activity entry data
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -55,11 +55,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\GateApi\Model\InlineResponse20012DataList[]',
-        'page' => 'int',
-        'page_size' => 'int',
-        'page_count' => 'int',
-        'total_count' => 'int',
+        'icon_url' => 'string',
+        'icon_url_dark' => 'string',
+        'source_type' => 'string',
+        'title' => 'string',
+        'url_type' => 'string',
         'url' => 'string'
     ];
 
@@ -69,11 +69,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'list' => null,
-        'page' => null,
-        'page_size' => null,
-        'page_count' => null,
-        'total_count' => null,
+        'icon_url' => null,
+        'icon_url_dark' => null,
+        'source_type' => null,
+        'title' => null,
+        'url_type' => null,
         'url' => null
     ];
 
@@ -104,11 +104,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list',
-        'page' => 'page',
-        'page_size' => 'pageSize',
-        'page_count' => 'pageCount',
-        'total_count' => 'totalCount',
+        'icon_url' => 'icon_url',
+        'icon_url_dark' => 'icon_url_dark',
+        'source_type' => 'source_type',
+        'title' => 'title',
+        'url_type' => 'url_type',
         'url' => 'url'
     ];
 
@@ -118,11 +118,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList',
-        'page' => 'setPage',
-        'page_size' => 'setPageSize',
-        'page_count' => 'setPageCount',
-        'total_count' => 'setTotalCount',
+        'icon_url' => 'setIconUrl',
+        'icon_url_dark' => 'setIconUrlDark',
+        'source_type' => 'setSourceType',
+        'title' => 'setTitle',
+        'url_type' => 'setUrlType',
         'url' => 'setUrl'
     ];
 
@@ -132,11 +132,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList',
-        'page' => 'getPage',
-        'page_size' => 'getPageSize',
-        'page_count' => 'getPageCount',
-        'total_count' => 'getTotalCount',
+        'icon_url' => 'getIconUrl',
+        'icon_url_dark' => 'getIconUrlDark',
+        'source_type' => 'getSourceType',
+        'title' => 'getTitle',
+        'url_type' => 'getUrlType',
         'url' => 'getUrl'
     ];
 
@@ -200,11 +200,11 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
-        $this->container['page'] = isset($data['page']) ? $data['page'] : null;
-        $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
-        $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
-        $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
+        $this->container['icon_url'] = isset($data['icon_url']) ? $data['icon_url'] : null;
+        $this->container['icon_url_dark'] = isset($data['icon_url_dark']) ? $data['icon_url_dark'] : null;
+        $this->container['source_type'] = isset($data['source_type']) ? $data['source_type'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['url_type'] = isset($data['url_type']) ? $data['url_type'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
@@ -217,20 +217,20 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['icon_url'] === null) {
+            $invalidProperties[] = "'icon_url' can't be null";
         }
-        if ($this->container['page'] === null) {
-            $invalidProperties[] = "'page' can't be null";
+        if ($this->container['icon_url_dark'] === null) {
+            $invalidProperties[] = "'icon_url_dark' can't be null";
         }
-        if ($this->container['page_size'] === null) {
-            $invalidProperties[] = "'page_size' can't be null";
+        if ($this->container['source_type'] === null) {
+            $invalidProperties[] = "'source_type' can't be null";
         }
-        if ($this->container['page_count'] === null) {
-            $invalidProperties[] = "'page_count' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['total_count'] === null) {
-            $invalidProperties[] = "'total_count' can't be null";
+        if ($this->container['url_type'] === null) {
+            $invalidProperties[] = "'url_type' can't be null";
         }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
@@ -251,121 +251,121 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets list
+     * Gets icon_url
      *
-     * @return \GateApi\Model\InlineResponse20012DataList[]
+     * @return string
      */
-    public function getList()
+    public function getIconUrl()
     {
-        return $this->container['list'];
+        return $this->container['icon_url'];
     }
 
     /**
-     * Sets list
+     * Sets icon_url
      *
-     * @param \GateApi\Model\InlineResponse20012DataList[] $list Activity list
+     * @param string $icon_url Activity entry icon URL (light mode)
      *
      * @return $this
      */
-    public function setList($list)
+    public function setIconUrl($icon_url)
     {
-        $this->container['list'] = $list;
+        $this->container['icon_url'] = $icon_url;
 
         return $this;
     }
 
     /**
-     * Gets page
+     * Gets icon_url_dark
      *
-     * @return int
+     * @return string
      */
-    public function getPage()
+    public function getIconUrlDark()
     {
-        return $this->container['page'];
+        return $this->container['icon_url_dark'];
     }
 
     /**
-     * Sets page
+     * Sets icon_url_dark
      *
-     * @param int $page Current page number
+     * @param string $icon_url_dark Activity entry icon URL (dark mode)
      *
      * @return $this
      */
-    public function setPage($page)
+    public function setIconUrlDark($icon_url_dark)
     {
-        $this->container['page'] = $page;
+        $this->container['icon_url_dark'] = $icon_url_dark;
 
         return $this;
     }
 
     /**
-     * Gets page_size
+     * Gets source_type
      *
-     * @return int
+     * @return string
      */
-    public function getPageSize()
+    public function getSourceType()
     {
-        return $this->container['page_size'];
+        return $this->container['source_type'];
     }
 
     /**
-     * Sets page_size
+     * Sets source_type
      *
-     * @param int $page_size Items per page
+     * @param string $source_type Source type, e.g., activity for campaign
      *
      * @return $this
      */
-    public function setPageSize($page_size)
+    public function setSourceType($source_type)
     {
-        $this->container['page_size'] = $page_size;
+        $this->container['source_type'] = $source_type;
 
         return $this;
     }
 
     /**
-     * Gets page_count
+     * Gets title
      *
-     * @return int
+     * @return string
      */
-    public function getPageCount()
+    public function getTitle()
     {
-        return $this->container['page_count'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets page_count
+     * Sets title
      *
-     * @param int $page_count Total pages
+     * @param string $title Activity entry title
      *
      * @return $this
      */
-    public function setPageCount($page_count)
+    public function setTitle($title)
     {
-        $this->container['page_count'] = $page_count;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets total_count
+     * Gets url_type
      *
-     * @return int
+     * @return string
      */
-    public function getTotalCount()
+    public function getUrlType()
     {
-        return $this->container['total_count'];
+        return $this->container['url_type'];
     }
 
     /**
-     * Sets total_count
+     * Sets url_type
      *
-     * @param int $total_count Total Records
+     * @param string $url_type Redirect link type, e.g., h5 for H5 page
      *
      * @return $this
      */
-    public function setTotalCount($total_count)
+    public function setUrlType($url_type)
     {
-        $this->container['total_count'] = $total_count;
+        $this->container['url_type'] = $url_type;
 
         return $this;
     }
@@ -383,7 +383,7 @@ class InlineResponse20012Data implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string $url Activity Center page link
+     * @param string $url Activity entry redirect URL
      *
      * @return $this
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * UidPushWithdrawalResp
+ * InlineResponse2009DataItems
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * UidPushWithdrawalResp Class Doc Comment
+ * InlineResponse2009DataItems Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
+class InlineResponse2009DataItems implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UidPushWithdrawalResp';
+    protected static $openAPIModelName = 'inline_response_200_9_data_items';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +54,13 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'id' => 'int',
+        'content' => 'string',
+        'image' => 'string',
+        'avatar' => 'string',
+        'nickname' => 'string',
+        'like_count' => 'int',
+        'page_view' => 'int'
     ];
 
     /**
@@ -63,7 +69,13 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'id' => 'int64',
+        'content' => null,
+        'image' => null,
+        'avatar' => null,
+        'nickname' => null,
+        'like_count' => 'int64',
+        'page_view' => 'int64'
     ];
 
     /**
@@ -93,7 +105,13 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'id' => 'id',
+        'content' => 'content',
+        'image' => 'image',
+        'avatar' => 'avatar',
+        'nickname' => 'nickname',
+        'like_count' => 'like_count',
+        'page_view' => 'page_view'
     ];
 
     /**
@@ -102,7 +120,13 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'id' => 'setId',
+        'content' => 'setContent',
+        'image' => 'setImage',
+        'avatar' => 'setAvatar',
+        'nickname' => 'setNickname',
+        'like_count' => 'setLikeCount',
+        'page_view' => 'setPageView'
     ];
 
     /**
@@ -111,7 +135,13 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'id' => 'getId',
+        'content' => 'getContent',
+        'image' => 'getImage',
+        'avatar' => 'getAvatar',
+        'nickname' => 'getNickname',
+        'like_count' => 'getLikeCount',
+        'page_view' => 'getPageView'
     ];
 
     /**
@@ -175,6 +205,12 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['content'] = isset($data['content']) ? $data['content'] : null;
+        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
+        $this->container['nickname'] = isset($data['nickname']) ? $data['nickname'] : null;
+        $this->container['like_count'] = isset($data['like_count']) ? $data['like_count'] : null;
+        $this->container['page_view'] = isset($data['page_view']) ? $data['page_view'] : null;
     }
 
     /**
@@ -204,7 +240,7 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return string|null
+     * @return int|null
      */
     public function getId()
     {
@@ -214,13 +250,157 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id Order ID
+     * @param int|null $id Post ID
      *
      * @return $this
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets content
+     *
+     * @return string|null
+     */
+    public function getContent()
+    {
+        return $this->container['content'];
+    }
+
+    /**
+     * Sets content
+     *
+     * @param string|null $content Post content
+     *
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets image
+     *
+     * @return string|null
+     */
+    public function getImage()
+    {
+        return $this->container['image'];
+    }
+
+    /**
+     * Sets image
+     *
+     * @param string|null $image First image URL
+     *
+     * @return $this
+     */
+    public function setImage($image)
+    {
+        $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar
+     *
+     * @return string|null
+     */
+    public function getAvatar()
+    {
+        return $this->container['avatar'];
+    }
+
+    /**
+     * Sets avatar
+     *
+     * @param string|null $avatar Author avatar
+     *
+     * @return $this
+     */
+    public function setAvatar($avatar)
+    {
+        $this->container['avatar'] = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Gets nickname
+     *
+     * @return string|null
+     */
+    public function getNickname()
+    {
+        return $this->container['nickname'];
+    }
+
+    /**
+     * Sets nickname
+     *
+     * @param string|null $nickname Author nickname
+     *
+     * @return $this
+     */
+    public function setNickname($nickname)
+    {
+        $this->container['nickname'] = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Gets like_count
+     *
+     * @return int|null
+     */
+    public function getLikeCount()
+    {
+        return $this->container['like_count'];
+    }
+
+    /**
+     * Sets like_count
+     *
+     * @param int|null $like_count Like count
+     *
+     * @return $this
+     */
+    public function setLikeCount($like_count)
+    {
+        $this->container['like_count'] = $like_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_view
+     *
+     * @return int|null
+     */
+    public function getPageView()
+    {
+        return $this->container['page_view'];
+    }
+
+    /**
+     * Sets page_view
+     *
+     * @param int|null $page_view View count
+     *
+     * @return $this
+     */
+    public function setPageView($page_view)
+    {
+        $this->container['page_view'] = $page_view;
 
         return $this;
     }

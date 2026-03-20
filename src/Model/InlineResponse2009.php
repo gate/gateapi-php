@@ -56,8 +56,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'code' => 'int',
         'label' => 'string',
-        'message' => 'string',
-        'request_id' => 'string',
+        'msg' => 'string',
         'data' => '\GateApi\Model\InlineResponse2009Data'
     ];
 
@@ -69,8 +68,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'code' => null,
         'label' => null,
-        'message' => null,
-        'request_id' => null,
+        'msg' => null,
         'data' => null
     ];
 
@@ -103,8 +101,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'code' => 'code',
         'label' => 'label',
-        'message' => 'message',
-        'request_id' => 'request_id',
+        'msg' => 'msg',
         'data' => 'data'
     ];
 
@@ -116,8 +113,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     protected static $setters = [
         'code' => 'setCode',
         'label' => 'setLabel',
-        'message' => 'setMessage',
-        'request_id' => 'setRequestId',
+        'msg' => 'setMsg',
         'data' => 'setData'
     ];
 
@@ -129,8 +125,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     protected static $getters = [
         'code' => 'getCode',
         'label' => 'getLabel',
-        'message' => 'getMessage',
-        'request_id' => 'getRequestId',
+        'msg' => 'getMsg',
         'data' => 'getData'
     ];
 
@@ -196,8 +191,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
+        $this->container['msg'] = isset($data['msg']) ? $data['msg'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
@@ -238,7 +232,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int|null $code Status code, 200 = success
+     * @param int|null $code Status code, 0 = success
      *
      * @return $this
      */
@@ -262,7 +256,7 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     /**
      * Sets label
      *
-     * @param string|null $label Status label
+     * @param string|null $label Error identifier code. Empty string on success, machine-readable error label on error
      *
      * @return $this
      */
@@ -274,49 +268,25 @@ class InlineResponse2009 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets message
+     * Gets msg
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getMsg()
     {
-        return $this->container['message'];
+        return $this->container['msg'];
     }
 
     /**
-     * Sets message
+     * Sets msg
      *
-     * @param string|null $message Status message
+     * @param string|null $msg Status message
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setMsg($msg)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_id
-     *
-     * @return string|null
-     */
-    public function getRequestId()
-    {
-        return $this->container['request_id'];
-    }
-
-    /**
-     * Sets request_id
-     *
-     * @param string|null $request_id Request ID
-     *
-     * @return $this
-     */
-    public function setRequestId($request_id)
-    {
-        $this->container['request_id'] = $request_id;
+        $this->container['msg'] = $msg;
 
         return $this;
     }

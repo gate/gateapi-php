@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## listUserCoupons
 
-> \GateApi\Model\InlineResponse2006 listUserCoupons($expired, $limit, $last_id, $expire_time, $order_by, $type, $is_task_coupon)
+> \GateApi\Model\InlineResponse2007 listUserCoupons($expired, $limit, $last_id, $expire_time, $order_by, $type, $is_task_coupon)
 
 Coupon Center list
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\GateApi\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## getUserCouponDetail
 
-> \GateApi\Model\InlineResponse2007 getUserCouponDetail($coupon_type, $detail_id, $is_task_coupon)
+> \GateApi\Model\InlineResponse2008 getUserCouponDetail($coupon_type, $detail_id, $is_task_coupon)
 
 Coupon Center details
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
+[**\GateApi\Model\InlineResponse2008**](../Model/InlineResponse2008.md)
 
 ### Authorization
 

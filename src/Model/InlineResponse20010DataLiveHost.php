@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006DataProgressConfig
+ * InlineResponse20010DataLiveHost
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2006DataProgressConfig Class Doc Comment
+ * InlineResponse20010DataLiveHost Class Doc Comment
  *
  * @category Class
- * @description Progress bar configuration. All fields are empty strings when has_progress is false
+ * @description Streamer information
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAccess
+class InlineResponse20010DataLiveHost implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6_data_progress_config';
+    protected static $openAPIModelName = 'inline_response_200_10_data_live_host';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,10 +55,11 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total_balance' => 'string',
-        'current_used' => 'string',
-        'current_achived' => 'string',
-        'currency' => 'string'
+        'id' => 'string',
+        'name' => 'string',
+        'avatar' => 'string',
+        'fans' => 'int',
+        'tier' => 'int'
     ];
 
     /**
@@ -67,10 +68,11 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'total_balance' => null,
-        'current_used' => null,
-        'current_achived' => null,
-        'currency' => null
+        'id' => null,
+        'name' => null,
+        'avatar' => null,
+        'fans' => null,
+        'tier' => null
     ];
 
     /**
@@ -100,10 +102,11 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'total_balance' => 'total_balance',
-        'current_used' => 'current_used',
-        'current_achived' => 'current_achived',
-        'currency' => 'currency'
+        'id' => 'id',
+        'name' => 'name',
+        'avatar' => 'avatar',
+        'fans' => 'fans',
+        'tier' => 'tier'
     ];
 
     /**
@@ -112,10 +115,11 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'total_balance' => 'setTotalBalance',
-        'current_used' => 'setCurrentUsed',
-        'current_achived' => 'setCurrentAchived',
-        'currency' => 'setCurrency'
+        'id' => 'setId',
+        'name' => 'setName',
+        'avatar' => 'setAvatar',
+        'fans' => 'setFans',
+        'tier' => 'setTier'
     ];
 
     /**
@@ -124,10 +128,11 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'total_balance' => 'getTotalBalance',
-        'current_used' => 'getCurrentUsed',
-        'current_achived' => 'getCurrentAchived',
-        'currency' => 'getCurrency'
+        'id' => 'getId',
+        'name' => 'getName',
+        'avatar' => 'getAvatar',
+        'fans' => 'getFans',
+        'tier' => 'getTier'
     ];
 
     /**
@@ -190,10 +195,11 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_balance'] = isset($data['total_balance']) ? $data['total_balance'] : null;
-        $this->container['current_used'] = isset($data['current_used']) ? $data['current_used'] : null;
-        $this->container['current_achived'] = isset($data['current_achived']) ? $data['current_achived'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
+        $this->container['fans'] = isset($data['fans']) ? $data['fans'] : null;
+        $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
     }
 
     /**
@@ -221,97 +227,121 @@ class InlineResponse2006DataProgressConfig implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets total_balance
+     * Gets id
      *
      * @return string|null
      */
-    public function getTotalBalance()
+    public function getId()
     {
-        return $this->container['total_balance'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets total_balance
+     * Sets id
      *
-     * @param string|null $total_balance Total Required Amount
+     * @param string|null $id Streamer ID
      *
      * @return $this
      */
-    public function setTotalBalance($total_balance)
+    public function setId($id)
     {
-        $this->container['total_balance'] = $total_balance;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets current_used
+     * Gets name
      *
      * @return string|null
      */
-    public function getCurrentUsed()
+    public function getName()
     {
-        return $this->container['current_used'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets current_used
+     * Sets name
      *
-     * @param string|null $current_used Used Amount
+     * @param string|null $name Streamer nickname
      *
      * @return $this
      */
-    public function setCurrentUsed($current_used)
+    public function setName($name)
     {
-        $this->container['current_used'] = $current_used;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets current_achived
+     * Gets avatar
      *
      * @return string|null
      */
-    public function getCurrentAchived()
+    public function getAvatar()
     {
-        return $this->container['current_achived'];
+        return $this->container['avatar'];
     }
 
     /**
-     * Sets current_achived
+     * Sets avatar
      *
-     * @param string|null $current_achived Amount achieved (note: field name is spelled as achived)
+     * @param string|null $avatar Streamer avatar URL
      *
      * @return $this
      */
-    public function setCurrentAchived($current_achived)
+    public function setAvatar($avatar)
     {
-        $this->container['current_achived'] = $current_achived;
+        $this->container['avatar'] = $avatar;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets fans
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getCurrency()
+    public function getFans()
     {
-        return $this->container['currency'];
+        return $this->container['fans'];
     }
 
     /**
-     * Sets currency
+     * Sets fans
      *
-     * @param string|null $currency Progress unit (e.g., 'USDT')
+     * @param int|null $fans Follower count
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setFans($fans)
     {
-        $this->container['currency'] = $currency;
+        $this->container['fans'] = $fans;
+
+        return $this;
+    }
+
+    /**
+     * Gets tier
+     *
+     * @return int|null
+     */
+    public function getTier()
+    {
+        return $this->container['tier'];
+    }
+
+    /**
+     * Sets tier
+     *
+     * @param int|null $tier Streamer level
+     *
+     * @return $this
+     */
+    public function setTier($tier)
+    {
+        $this->container['tier'] = $tier;
 
         return $this;
     }

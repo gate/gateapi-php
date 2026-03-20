@@ -54,10 +54,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'label' => 'string',
-        'message' => 'string',
-        'data' => '\GateApi\Model\InlineResponse2006Data'
+        'exchange_type' => 'string',
+        'spot_maker_fee' => 'string',
+        'spot_taker_fee' => 'string',
+        'future_maker_fee' => 'string',
+        'future_taker_fee' => 'string',
+        'special_fee_list' => '\GateApi\Model\CrossexSpecialFee[]'
     ];
 
     /**
@@ -66,10 +68,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'label' => null,
-        'message' => null,
-        'data' => null
+        'exchange_type' => null,
+        'spot_maker_fee' => null,
+        'spot_taker_fee' => null,
+        'future_maker_fee' => null,
+        'future_taker_fee' => null,
+        'special_fee_list' => null
     ];
 
     /**
@@ -99,10 +103,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'label' => 'label',
-        'message' => 'message',
-        'data' => 'data'
+        'exchange_type' => 'exchange_type',
+        'spot_maker_fee' => 'spot_maker_fee',
+        'spot_taker_fee' => 'spot_taker_fee',
+        'future_maker_fee' => 'future_maker_fee',
+        'future_taker_fee' => 'future_taker_fee',
+        'special_fee_list' => 'special_fee_list'
     ];
 
     /**
@@ -111,10 +117,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'label' => 'setLabel',
-        'message' => 'setMessage',
-        'data' => 'setData'
+        'exchange_type' => 'setExchangeType',
+        'spot_maker_fee' => 'setSpotMakerFee',
+        'spot_taker_fee' => 'setSpotTakerFee',
+        'future_maker_fee' => 'setFutureMakerFee',
+        'future_taker_fee' => 'setFutureTakerFee',
+        'special_fee_list' => 'setSpecialFeeList'
     ];
 
     /**
@@ -123,10 +131,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'label' => 'getLabel',
-        'message' => 'getMessage',
-        'data' => 'getData'
+        'exchange_type' => 'getExchangeType',
+        'spot_maker_fee' => 'getSpotMakerFee',
+        'spot_taker_fee' => 'getSpotTakerFee',
+        'future_maker_fee' => 'getFutureMakerFee',
+        'future_taker_fee' => 'getFutureTakerFee',
+        'special_fee_list' => 'getSpecialFeeList'
     ];
 
     /**
@@ -170,25 +180,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const CODE_0 = 0;
-    const CODE_2002 = 2002;
-    const CODE_50105 = 50105;
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCodeAllowableValues()
-    {
-        return [
-            self::CODE_0,
-            self::CODE_2002,
-            self::CODE_50105,
-        ];
-    }
     
 
     /**
@@ -206,10 +199,12 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        $this->container['spot_maker_fee'] = isset($data['spot_maker_fee']) ? $data['spot_maker_fee'] : null;
+        $this->container['spot_taker_fee'] = isset($data['spot_taker_fee']) ? $data['spot_taker_fee'] : null;
+        $this->container['future_maker_fee'] = isset($data['future_maker_fee']) ? $data['future_maker_fee'] : null;
+        $this->container['future_taker_fee'] = isset($data['future_taker_fee']) ? $data['future_taker_fee'] : null;
+        $this->container['special_fee_list'] = isset($data['special_fee_list']) ? $data['special_fee_list'] : null;
     }
 
     /**
@@ -221,14 +216,21 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'code', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['spot_maker_fee'] === null) {
+            $invalidProperties[] = "'spot_maker_fee' can't be null";
         }
-
+        if ($this->container['spot_taker_fee'] === null) {
+            $invalidProperties[] = "'spot_taker_fee' can't be null";
+        }
+        if ($this->container['future_maker_fee'] === null) {
+            $invalidProperties[] = "'future_maker_fee' can't be null";
+        }
+        if ($this->container['future_taker_fee'] === null) {
+            $invalidProperties[] = "'future_taker_fee' can't be null";
+        }
+        if ($this->container['special_fee_list'] === null) {
+            $invalidProperties[] = "'special_fee_list' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -245,106 +247,145 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
-     *
-     * @return int|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param int|null $code Response Code. `0` = Success; `2002` = User not logged in; `50105` = Input parameter validation failed
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $allowedValues = $this->getCodeAllowableValues();
-        if (!is_null($code) && !in_array($code, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'code', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
+     * Gets exchange_type
      *
      * @return string|null
      */
-    public function getLabel()
+    public function getExchangeType()
     {
-        return $this->container['label'];
+        return $this->container['exchange_type'];
     }
 
     /**
-     * Sets label
+     * Sets exchange_type
      *
-     * @param string|null $label Error identifier code. Empty string on success, machine-readable error label on error
+     * @param string|null $exchange_type Exchange
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setExchangeType($exchange_type)
     {
-        $this->container['label'] = $label;
+        $this->container['exchange_type'] = $exchange_type;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets spot_maker_fee
      *
-     * @return string|null
+     * @return string
      */
-    public function getMessage()
+    public function getSpotMakerFee()
     {
-        return $this->container['message'];
+        return $this->container['spot_maker_fee'];
     }
 
     /**
-     * Sets message
+     * Sets spot_maker_fee
      *
-     * @param string|null $message message
+     * @param string $spot_maker_fee spotMakerfee rate
      *
      * @return $this
      */
-    public function setMessage($message)
+    public function setSpotMakerFee($spot_maker_fee)
     {
-        $this->container['message'] = $message;
+        $this->container['spot_maker_fee'] = $spot_maker_fee;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets spot_taker_fee
      *
-     * @return \GateApi\Model\InlineResponse2006Data|null
+     * @return string
      */
-    public function getData()
+    public function getSpotTakerFee()
     {
-        return $this->container['data'];
+        return $this->container['spot_taker_fee'];
     }
 
     /**
-     * Sets data
+     * Sets spot_taker_fee
      *
-     * @param \GateApi\Model\InlineResponse2006Data|null $data data
+     * @param string $spot_taker_fee spotTakerfee rate
      *
      * @return $this
      */
-    public function setData($data)
+    public function setSpotTakerFee($spot_taker_fee)
     {
-        $this->container['data'] = $data;
+        $this->container['spot_taker_fee'] = $spot_taker_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets future_maker_fee
+     *
+     * @return string
+     */
+    public function getFutureMakerFee()
+    {
+        return $this->container['future_maker_fee'];
+    }
+
+    /**
+     * Sets future_maker_fee
+     *
+     * @param string $future_maker_fee contractMakerfee rate
+     *
+     * @return $this
+     */
+    public function setFutureMakerFee($future_maker_fee)
+    {
+        $this->container['future_maker_fee'] = $future_maker_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets future_taker_fee
+     *
+     * @return string
+     */
+    public function getFutureTakerFee()
+    {
+        return $this->container['future_taker_fee'];
+    }
+
+    /**
+     * Sets future_taker_fee
+     *
+     * @param string $future_taker_fee contractTakerfee rate
+     *
+     * @return $this
+     */
+    public function setFutureTakerFee($future_taker_fee)
+    {
+        $this->container['future_taker_fee'] = $future_taker_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets special_fee_list
+     *
+     * @return \GateApi\Model\CrossexSpecialFee[]
+     */
+    public function getSpecialFeeList()
+    {
+        return $this->container['special_fee_list'];
+    }
+
+    /**
+     * Sets special_fee_list
+     *
+     * @param \GateApi\Model\CrossexSpecialFee[] $special_fee_list special_fee_list
+     *
+     * @return $this
+     */
+    public function setSpecialFeeList($special_fee_list)
+    {
+        $this->container['special_fee_list'] = $special_fee_list;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006DataHelpUrl
+ * InlineResponse20014Data
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2006DataHelpUrl Class Doc Comment
+ * InlineResponse20014Data Class Doc Comment
  *
  * @category Class
- * @description Help Center Link
+ * @description Activity type data
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
+class InlineResponse20014Data implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6_data_help_url';
+    protected static $openAPIModelName = 'inline_response_200_14_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,7 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'web' => 'string',
-        'app' => 'string'
+        'list' => '\GateApi\Model\InlineResponse20014DataList[]'
     ];
 
     /**
@@ -65,8 +64,7 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'web' => null,
-        'app' => null
+        'list' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'web' => 'web',
-        'app' => 'app'
+        'list' => 'list'
     ];
 
     /**
@@ -106,8 +103,7 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'web' => 'setWeb',
-        'app' => 'setApp'
+        'list' => 'setList'
     ];
 
     /**
@@ -116,8 +112,7 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'web' => 'getWeb',
-        'app' => 'getApp'
+        'list' => 'getList'
     ];
 
     /**
@@ -180,8 +175,7 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['web'] = isset($data['web']) ? $data['web'] : null;
-        $this->container['app'] = isset($data['app']) ? $data['app'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -193,6 +187,9 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -209,49 +206,25 @@ class InlineResponse2006DataHelpUrl implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets web
+     * Gets list
      *
-     * @return string|null
+     * @return \GateApi\Model\InlineResponse20014DataList[]
      */
-    public function getWeb()
+    public function getList()
     {
-        return $this->container['web'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets web
+     * Sets list
      *
-     * @param string|null $web Web Help Link
+     * @param \GateApi\Model\InlineResponse20014DataList[] $list Activity type list
      *
      * @return $this
      */
-    public function setWeb($web)
+    public function setList($list)
     {
-        $this->container['web'] = $web;
-
-        return $this;
-    }
-
-    /**
-     * Gets app
-     *
-     * @return string|null
-     */
-    public function getApp()
-    {
-        return $this->container['app'];
-    }
-
-    /**
-     * Sets app
-     *
-     * @param string|null $app App Help Link
-     *
-     * @return $this
-     */
-    public function setApp($app)
-    {
-        $this->container['app'] = $app;
+        $this->container['list'] = $list;
 
         return $this;
     }

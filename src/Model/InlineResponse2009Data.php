@@ -54,7 +54,8 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'list' => '\GateApi\Model\InlineResponse2009DataList[]'
+        'total' => 'int',
+        'items' => '\GateApi\Model\InlineResponse2009DataItems[]'
     ];
 
     /**
@@ -63,7 +64,8 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'list' => null
+        'total' => null,
+        'items' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'list' => 'list'
+        'total' => 'total',
+        'items' => 'items'
     ];
 
     /**
@@ -102,7 +105,8 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'list' => 'setList'
+        'total' => 'setTotal',
+        'items' => 'setItems'
     ];
 
     /**
@@ -111,7 +115,8 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'list' => 'getList'
+        'total' => 'getTotal',
+        'items' => 'getItems'
     ];
 
     /**
@@ -174,7 +179,8 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -202,25 +208,49 @@ class InlineResponse2009Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets list
+     * Gets total
      *
-     * @return \GateApi\Model\InlineResponse2009DataList[]|null
+     * @return int|null
      */
-    public function getList()
+    public function getTotal()
     {
-        return $this->container['list'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets list
+     * Sets total
      *
-     * @param \GateApi\Model\InlineResponse2009DataList[]|null $list Live stream/replay list
+     * @param int|null $total Total number of results
      *
      * @return $this
      */
-    public function setList($list)
+    public function setTotal($total)
     {
-        $this->container['list'] = $list;
+        $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     *
+     * @return \GateApi\Model\InlineResponse2009DataItems[]|null
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     *
+     * @param \GateApi\Model\InlineResponse2009DataItems[]|null $items Search result list
+     *
+     * @return $this
+     */
+    public function setItems($items)
+    {
+        $this->container['items'] = $items;
 
         return $this;
     }

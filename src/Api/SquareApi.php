@@ -129,7 +129,7 @@ class SquareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2008|\GateApi\Model\InlineResponse400
+     * @return \GateApi\Model\InlineResponse2009|\GateApi\Model\InlineResponse400
      */
     public function listSquareAiSearch($associative_array)
     {
@@ -153,7 +153,7 @@ class SquareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2008|\GateApi\Model\InlineResponse400, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse2009|\GateApi\Model\InlineResponse400, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSquareAiSearchWithHttpInfo($associative_array)
     {
@@ -183,7 +183,7 @@ class SquareApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2008';
+        $returnType = '\GateApi\Model\InlineResponse2009';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -244,7 +244,7 @@ class SquareApi
      */
     public function listSquareAiSearchAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2008';
+        $returnType = '\GateApi\Model\InlineResponse2009';
         $request = $this->listSquareAiSearchRequest($associative_array);
 
         return $this->client
@@ -477,7 +477,7 @@ class SquareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2009|\GateApi\Model\InlineResponse400
+     * @return \GateApi\Model\InlineResponse20010|\GateApi\Model\InlineResponse400
      */
     public function listLiveReplay($associative_array)
     {
@@ -499,7 +499,7 @@ class SquareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2009|\GateApi\Model\InlineResponse400, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse20010|\GateApi\Model\InlineResponse400, HTTP status code, HTTP response headers (array of strings)
      */
     public function listLiveReplayWithHttpInfo($associative_array)
     {
@@ -529,7 +529,7 @@ class SquareApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2009';
+        $returnType = '\GateApi\Model\InlineResponse20010';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -586,7 +586,7 @@ class SquareApi
      */
     public function listLiveReplayAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2009';
+        $returnType = '\GateApi\Model\InlineResponse20010';
         $request = $this->listLiveReplayRequest($associative_array);
 
         return $this->client

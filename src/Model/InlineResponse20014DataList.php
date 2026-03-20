@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse2006Data
+ * InlineResponse20014DataList
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse2006Data Class Doc Comment
+ * InlineResponse20014DataList Class Doc Comment
  *
  * @category Class
- * @description Returned when code&#x3D;0; empty object {} otherwise
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse2006Data implements ModelInterface, ArrayAccess
+class InlineResponse20014DataList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_6_data';
+    protected static $openAPIModelName = 'inline_response_200_14_data_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +54,8 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'next_page' => 'bool',
-        'list' => '\GateApi\Model\InlineResponse2006DataList[]'
+        'id' => 'int',
+        'name' => 'string'
     ];
 
     /**
@@ -65,8 +64,8 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'next_page' => null,
-        'list' => null
+        'id' => null,
+        'name' => null
     ];
 
     /**
@@ -96,8 +95,8 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'next_page' => 'next_page',
-        'list' => 'list'
+        'id' => 'id',
+        'name' => 'name'
     ];
 
     /**
@@ -106,8 +105,8 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'next_page' => 'setNextPage',
-        'list' => 'setList'
+        'id' => 'setId',
+        'name' => 'setName'
     ];
 
     /**
@@ -116,8 +115,8 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'next_page' => 'getNextPage',
-        'list' => 'getList'
+        'id' => 'getId',
+        'name' => 'getName'
     ];
 
     /**
@@ -180,8 +179,8 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['next_page'] = isset($data['next_page']) ? $data['next_page'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
     /**
@@ -193,6 +192,12 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -209,49 +214,49 @@ class InlineResponse2006Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets next_page
+     * Gets id
      *
-     * @return bool|null
+     * @return int
      */
-    public function getNextPage()
+    public function getId()
     {
-        return $this->container['next_page'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets next_page
+     * Sets id
      *
-     * @param bool|null $next_page Whether there is a next page. `true` means more data is available. Pass the `id` of the last record as `last_id` and `expire_time_order_by` as `expire_time` in the next request
+     * @param int $id Activity type ID
      *
      * @return $this
      */
-    public function setNextPage($next_page)
+    public function setId($id)
     {
-        $this->container['next_page'] = $next_page;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets list
+     * Gets name
      *
-     * @return \GateApi\Model\InlineResponse2006DataList[]|null
+     * @return string
      */
-    public function getList()
+    public function getName()
     {
-        return $this->container['list'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets list
+     * Sets name
      *
-     * @param \GateApi\Model\InlineResponse2006DataList[]|null $list Coupon object array, see field details below
+     * @param string $name Activity type name
      *
      * @return $this
      */
-    public function setList($list)
+    public function setName($name)
     {
-        $this->container['list'] = $list;
+        $this->container['name'] = $name;
 
         return $this;
     }

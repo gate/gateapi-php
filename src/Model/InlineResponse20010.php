@@ -54,7 +54,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool'
+        'code' => 'int',
+        'label' => 'string',
+        'message' => 'string',
+        'request_id' => 'string',
+        'data' => '\GateApi\Model\InlineResponse20010Data'
     ];
 
     /**
@@ -63,7 +67,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'success' => null
+        'code' => null,
+        'label' => null,
+        'message' => null,
+        'request_id' => null,
+        'data' => null
     ];
 
     /**
@@ -93,7 +101,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success'
+        'code' => 'code',
+        'label' => 'label',
+        'message' => 'message',
+        'request_id' => 'request_id',
+        'data' => 'data'
     ];
 
     /**
@@ -102,7 +114,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess'
+        'code' => 'setCode',
+        'label' => 'setLabel',
+        'message' => 'setMessage',
+        'request_id' => 'setRequestId',
+        'data' => 'setData'
     ];
 
     /**
@@ -111,7 +127,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess'
+        'code' => 'getCode',
+        'label' => 'getLabel',
+        'message' => 'getMessage',
+        'request_id' => 'getRequestId',
+        'data' => 'getData'
     ];
 
     /**
@@ -174,7 +194,11 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['request_id'] = isset($data['request_id']) ? $data['request_id'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
     }
 
     /**
@@ -202,25 +226,121 @@ class InlineResponse20010 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets success
+     * Gets code
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getSuccess()
+    public function getCode()
     {
-        return $this->container['success'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets success
+     * Sets code
      *
-     * @param bool|null $success Whether redemption was successful
+     * @param int|null $code Status code, 200 = success
      *
      * @return $this
      */
-    public function setSuccess($success)
+    public function setCode($code)
     {
-        $this->container['success'] = $success;
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label Status label
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message Status message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_id
+     *
+     * @return string|null
+     */
+    public function getRequestId()
+    {
+        return $this->container['request_id'];
+    }
+
+    /**
+     * Sets request_id
+     *
+     * @param string|null $request_id Request ID
+     *
+     * @return $this
+     */
+    public function setRequestId($request_id)
+    {
+        $this->container['request_id'] = $request_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return \GateApi\Model\InlineResponse20010Data|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \GateApi\Model\InlineResponse20010Data|null $data data
+     *
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

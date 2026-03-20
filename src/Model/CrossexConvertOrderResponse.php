@@ -1,6 +1,6 @@
 <?php
 /**
- * InlineResponse20011Data
+ * CrossexConvertOrderResponse
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * InlineResponse20011Data Class Doc Comment
+ * CrossexConvertOrderResponse Class Doc Comment
  *
  * @category Class
- * @description Activity entry data
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class InlineResponse20011Data implements ModelInterface, ArrayAccess
+class CrossexConvertOrderResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'inline_response_200_11_data';
+    protected static $openAPIModelName = 'CrossexConvertOrderResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,12 +54,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'icon_url' => 'string',
-        'icon_url_dark' => 'string',
-        'source_type' => 'string',
-        'title' => 'string',
-        'url_type' => 'string',
-        'url' => 'string'
+        'order_id' => 'string',
+        'text' => 'string'
     ];
 
     /**
@@ -69,12 +64,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'icon_url' => null,
-        'icon_url_dark' => null,
-        'source_type' => null,
-        'title' => null,
-        'url_type' => null,
-        'url' => null
+        'order_id' => null,
+        'text' => null
     ];
 
     /**
@@ -104,12 +95,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'icon_url' => 'icon_url',
-        'icon_url_dark' => 'icon_url_dark',
-        'source_type' => 'source_type',
-        'title' => 'title',
-        'url_type' => 'url_type',
-        'url' => 'url'
+        'order_id' => 'order_id',
+        'text' => 'text'
     ];
 
     /**
@@ -118,12 +105,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'icon_url' => 'setIconUrl',
-        'icon_url_dark' => 'setIconUrlDark',
-        'source_type' => 'setSourceType',
-        'title' => 'setTitle',
-        'url_type' => 'setUrlType',
-        'url' => 'setUrl'
+        'order_id' => 'setOrderId',
+        'text' => 'setText'
     ];
 
     /**
@@ -132,12 +115,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'icon_url' => 'getIconUrl',
-        'icon_url_dark' => 'getIconUrlDark',
-        'source_type' => 'getSourceType',
-        'title' => 'getTitle',
-        'url_type' => 'getUrlType',
-        'url' => 'getUrl'
+        'order_id' => 'getOrderId',
+        'text' => 'getText'
     ];
 
     /**
@@ -200,12 +179,8 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['icon_url'] = isset($data['icon_url']) ? $data['icon_url'] : null;
-        $this->container['icon_url_dark'] = isset($data['icon_url_dark']) ? $data['icon_url_dark'] : null;
-        $this->container['source_type'] = isset($data['source_type']) ? $data['source_type'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['url_type'] = isset($data['url_type']) ? $data['url_type'] : null;
-        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
     }
 
     /**
@@ -217,23 +192,11 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['icon_url'] === null) {
-            $invalidProperties[] = "'icon_url' can't be null";
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
         }
-        if ($this->container['icon_url_dark'] === null) {
-            $invalidProperties[] = "'icon_url_dark' can't be null";
-        }
-        if ($this->container['source_type'] === null) {
-            $invalidProperties[] = "'source_type' can't be null";
-        }
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ($this->container['url_type'] === null) {
-            $invalidProperties[] = "'url_type' can't be null";
-        }
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
         }
         return $invalidProperties;
     }
@@ -251,145 +214,49 @@ class InlineResponse20011Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets icon_url
+     * Gets order_id
      *
      * @return string
      */
-    public function getIconUrl()
+    public function getOrderId()
     {
-        return $this->container['icon_url'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets icon_url
+     * Sets order_id
      *
-     * @param string $icon_url Activity entry icon URL (light mode)
+     * @param string $order_id Order ID
      *
      * @return $this
      */
-    public function setIconUrl($icon_url)
+    public function setOrderId($order_id)
     {
-        $this->container['icon_url'] = $icon_url;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
 
     /**
-     * Gets icon_url_dark
+     * Gets text
      *
      * @return string
      */
-    public function getIconUrlDark()
+    public function getText()
     {
-        return $this->container['icon_url_dark'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets icon_url_dark
+     * Sets text
      *
-     * @param string $icon_url_dark Activity entry icon URL (dark mode)
+     * @param string $text Order ID (cannot be customized)
      *
      * @return $this
      */
-    public function setIconUrlDark($icon_url_dark)
+    public function setText($text)
     {
-        $this->container['icon_url_dark'] = $icon_url_dark;
-
-        return $this;
-    }
-
-    /**
-     * Gets source_type
-     *
-     * @return string
-     */
-    public function getSourceType()
-    {
-        return $this->container['source_type'];
-    }
-
-    /**
-     * Sets source_type
-     *
-     * @param string $source_type Source type, e.g., activity for campaign
-     *
-     * @return $this
-     */
-    public function setSourceType($source_type)
-    {
-        $this->container['source_type'] = $source_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string $title Activity entry title
-     *
-     * @return $this
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets url_type
-     *
-     * @return string
-     */
-    public function getUrlType()
-    {
-        return $this->container['url_type'];
-    }
-
-    /**
-     * Sets url_type
-     *
-     * @param string $url_type Redirect link type, e.g., h5 for H5 page
-     *
-     * @return $this
-     */
-    public function setUrlType($url_type)
-    {
-        $this->container['url_type'] = $url_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url Activity entry redirect URL
-     *
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        $this->container['url'] = $url;
+        $this->container['text'] = $text;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * UidPushWithdrawalResp
+ * InlineResponse20010DataList
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * UidPushWithdrawalResp Class Doc Comment
+ * InlineResponse20010DataList Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
+class InlineResponse20010DataList implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UidPushWithdrawalResp';
+    protected static $openAPIModelName = 'inline_response_200_10_data_list';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +54,9 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'content_type' => 'string',
+        'live' => '\GateApi\Model\InlineResponse20010DataLive',
+        'video' => '\GateApi\Model\InlineResponse20010DataVideo'
     ];
 
     /**
@@ -63,7 +65,9 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'content_type' => null,
+        'live' => null,
+        'video' => null
     ];
 
     /**
@@ -93,7 +97,9 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'content_type' => 'content_type',
+        'live' => 'live',
+        'video' => 'video'
     ];
 
     /**
@@ -102,7 +108,9 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'content_type' => 'setContentType',
+        'live' => 'setLive',
+        'video' => 'setVideo'
     ];
 
     /**
@@ -111,7 +119,9 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'content_type' => 'getContentType',
+        'live' => 'getLive',
+        'video' => 'getVideo'
     ];
 
     /**
@@ -174,7 +184,9 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        $this->container['live'] = isset($data['live']) ? $data['live'] : null;
+        $this->container['video'] = isset($data['video']) ? $data['video'] : null;
     }
 
     /**
@@ -202,25 +214,73 @@ class UidPushWithdrawalResp implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets content_type
      *
      * @return string|null
      */
-    public function getId()
+    public function getContentType()
     {
-        return $this->container['id'];
+        return $this->container['content_type'];
     }
 
     /**
-     * Sets id
+     * Sets content_type
      *
-     * @param string|null $id Order ID
+     * @param string|null $content_type Content type: streaming = live broadcast, video = replay video
      *
      * @return $this
      */
-    public function setId($id)
+    public function setContentType($content_type)
     {
-        $this->container['id'] = $id;
+        $this->container['content_type'] = $content_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets live
+     *
+     * @return \GateApi\Model\InlineResponse20010DataLive|null
+     */
+    public function getLive()
+    {
+        return $this->container['live'];
+    }
+
+    /**
+     * Sets live
+     *
+     * @param \GateApi\Model\InlineResponse20010DataLive|null $live live
+     *
+     * @return $this
+     */
+    public function setLive($live)
+    {
+        $this->container['live'] = $live;
+
+        return $this;
+    }
+
+    /**
+     * Gets video
+     *
+     * @return \GateApi\Model\InlineResponse20010DataVideo|null
+     */
+    public function getVideo()
+    {
+        return $this->container['video'];
+    }
+
+    /**
+     * Sets video
+     *
+     * @param \GateApi\Model\InlineResponse20010DataVideo|null $video video
+     *
+     * @return $this
+     */
+    public function setVideo($video)
+    {
+        $this->container['video'] = $video;
 
         return $this;
     }

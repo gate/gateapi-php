@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * InlineResponse2007Data Class Doc Comment
  *
  * @category Class
- * @description Returns coupon detail object when code&#x3D;0; empty object {} otherwise
+ * @description Returned when code&#x3D;0; empty object {} otherwise
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -55,33 +55,8 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'details_id' => 'int',
-        'coupon_type' => 'string',
-        'name' => 'string',
-        'amount' => 'string',
-        'origin_amount' => 'string',
-        'currency' => 'string',
-        'rule_new' => 'string',
-        'status' => 'string',
-        'jump_url' => '\GateApi\Model\InlineResponse2006DataJumpUrl',
-        'help_url' => '\GateApi\Model\InlineResponse2006DataHelpUrl',
-        'expire_time' => 'int',
-        'expire_time_order_by' => 'int',
-        'expire_second' => 'int',
-        'has_usage_history' => 'bool',
-        'has_progress' => 'bool',
-        'progress_config' => '\GateApi\Model\InlineResponse2006DataProgressConfig',
-        'activation_info' => 'object',
-        'is_task_coupon' => 'int',
-        'upgrade_toast' => 'bool',
-        'from_task' => 'bool',
-        'task_title' => 'string',
-        'task_desc' => 'string',
-        'task_start_at' => 'int',
-        'task_expire_at' => 'int',
-        'task_completed_at' => 'int',
-        'extra' => 'object[][]'
+        'next_page' => 'bool',
+        'list' => '\GateApi\Model\InlineResponse2007DataList[]'
     ];
 
     /**
@@ -90,33 +65,8 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'details_id' => null,
-        'coupon_type' => null,
-        'name' => null,
-        'amount' => null,
-        'origin_amount' => null,
-        'currency' => null,
-        'rule_new' => null,
-        'status' => null,
-        'jump_url' => null,
-        'help_url' => null,
-        'expire_time' => null,
-        'expire_time_order_by' => null,
-        'expire_second' => null,
-        'has_usage_history' => null,
-        'has_progress' => null,
-        'progress_config' => null,
-        'activation_info' => null,
-        'is_task_coupon' => null,
-        'upgrade_toast' => null,
-        'from_task' => null,
-        'task_title' => null,
-        'task_desc' => null,
-        'task_start_at' => null,
-        'task_expire_at' => null,
-        'task_completed_at' => null,
-        'extra' => null
+        'next_page' => null,
+        'list' => null
     ];
 
     /**
@@ -146,33 +96,8 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'details_id' => 'details_id',
-        'coupon_type' => 'coupon_type',
-        'name' => 'name',
-        'amount' => 'amount',
-        'origin_amount' => 'origin_amount',
-        'currency' => 'currency',
-        'rule_new' => 'rule_new',
-        'status' => 'status',
-        'jump_url' => 'jump_url',
-        'help_url' => 'help_url',
-        'expire_time' => 'expire_time',
-        'expire_time_order_by' => 'expire_time_order_by',
-        'expire_second' => 'expire_second',
-        'has_usage_history' => 'has_usage_history',
-        'has_progress' => 'has_progress',
-        'progress_config' => 'progress_config',
-        'activation_info' => 'activation_info',
-        'is_task_coupon' => 'is_task_coupon',
-        'upgrade_toast' => 'upgrade_toast',
-        'from_task' => 'from_task',
-        'task_title' => 'task_title',
-        'task_desc' => 'task_desc',
-        'task_start_at' => 'task_start_at',
-        'task_expire_at' => 'task_expire_at',
-        'task_completed_at' => 'task_completed_at',
-        'extra' => 'extra'
+        'next_page' => 'next_page',
+        'list' => 'list'
     ];
 
     /**
@@ -181,33 +106,8 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'details_id' => 'setDetailsId',
-        'coupon_type' => 'setCouponType',
-        'name' => 'setName',
-        'amount' => 'setAmount',
-        'origin_amount' => 'setOriginAmount',
-        'currency' => 'setCurrency',
-        'rule_new' => 'setRuleNew',
-        'status' => 'setStatus',
-        'jump_url' => 'setJumpUrl',
-        'help_url' => 'setHelpUrl',
-        'expire_time' => 'setExpireTime',
-        'expire_time_order_by' => 'setExpireTimeOrderBy',
-        'expire_second' => 'setExpireSecond',
-        'has_usage_history' => 'setHasUsageHistory',
-        'has_progress' => 'setHasProgress',
-        'progress_config' => 'setProgressConfig',
-        'activation_info' => 'setActivationInfo',
-        'is_task_coupon' => 'setIsTaskCoupon',
-        'upgrade_toast' => 'setUpgradeToast',
-        'from_task' => 'setFromTask',
-        'task_title' => 'setTaskTitle',
-        'task_desc' => 'setTaskDesc',
-        'task_start_at' => 'setTaskStartAt',
-        'task_expire_at' => 'setTaskExpireAt',
-        'task_completed_at' => 'setTaskCompletedAt',
-        'extra' => 'setExtra'
+        'next_page' => 'setNextPage',
+        'list' => 'setList'
     ];
 
     /**
@@ -216,33 +116,8 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'details_id' => 'getDetailsId',
-        'coupon_type' => 'getCouponType',
-        'name' => 'getName',
-        'amount' => 'getAmount',
-        'origin_amount' => 'getOriginAmount',
-        'currency' => 'getCurrency',
-        'rule_new' => 'getRuleNew',
-        'status' => 'getStatus',
-        'jump_url' => 'getJumpUrl',
-        'help_url' => 'getHelpUrl',
-        'expire_time' => 'getExpireTime',
-        'expire_time_order_by' => 'getExpireTimeOrderBy',
-        'expire_second' => 'getExpireSecond',
-        'has_usage_history' => 'getHasUsageHistory',
-        'has_progress' => 'getHasProgress',
-        'progress_config' => 'getProgressConfig',
-        'activation_info' => 'getActivationInfo',
-        'is_task_coupon' => 'getIsTaskCoupon',
-        'upgrade_toast' => 'getUpgradeToast',
-        'from_task' => 'getFromTask',
-        'task_title' => 'getTaskTitle',
-        'task_desc' => 'getTaskDesc',
-        'task_start_at' => 'getTaskStartAt',
-        'task_expire_at' => 'getTaskExpireAt',
-        'task_completed_at' => 'getTaskCompletedAt',
-        'extra' => 'getExtra'
+        'next_page' => 'getNextPage',
+        'list' => 'getList'
     ];
 
     /**
@@ -286,66 +161,8 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    const STATUS_NOT_ACTIVE = 'NOT_ACTIVE';
-    const STATUS_ACTIVATED = 'ACTIVATED';
-    const STATUS_TO_BE_USED = 'TO_BE_USED';
-    const STATUS_EXPIRED = 'EXPIRED';
-    const STATUS_RECYCLED = 'RECYCLED';
-    const STATUS_INVALID = 'INVALID';
-    const STATUS_USED = 'USED';
-    const STATUS_UNKNOWN = 'UNKNOWN';
-    const STATUS_LOCKED = 'LOCKED';
-    const STATUS_TASK_START = 'TASK_START';
-    const STATUS_TASK_WAIT = 'TASK_WAIT';
-    const STATUS_TASK_DONE = 'TASK_DONE';
-    const STATUS_TASK_EXPIRED = 'TASK_EXPIRED';
-    const STATUS_TASK_NOT_STARTED_EXPIRED = 'TASK_NOT_STARTED_EXPIRED';
-    const STATUS_TASK_RECEIVE_SUCCESS = 'TASK_RECEIVE_SUCCESS';
-    const STATUS_TASK_RECEIVE_FAIL = 'TASK_RECEIVE_FAIL';
-    const IS_TASK_COUPON_0 = 0;
-    const IS_TASK_COUPON_1 = 1;
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_NOT_ACTIVE,
-            self::STATUS_ACTIVATED,
-            self::STATUS_TO_BE_USED,
-            self::STATUS_EXPIRED,
-            self::STATUS_RECYCLED,
-            self::STATUS_INVALID,
-            self::STATUS_USED,
-            self::STATUS_UNKNOWN,
-            self::STATUS_LOCKED,
-            self::STATUS_TASK_START,
-            self::STATUS_TASK_WAIT,
-            self::STATUS_TASK_DONE,
-            self::STATUS_TASK_EXPIRED,
-            self::STATUS_TASK_NOT_STARTED_EXPIRED,
-            self::STATUS_TASK_RECEIVE_SUCCESS,
-            self::STATUS_TASK_RECEIVE_FAIL,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getIsTaskCouponAllowableValues()
-    {
-        return [
-            self::IS_TASK_COUPON_0,
-            self::IS_TASK_COUPON_1,
-        ];
-    }
     
 
     /**
@@ -363,33 +180,8 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['details_id'] = isset($data['details_id']) ? $data['details_id'] : null;
-        $this->container['coupon_type'] = isset($data['coupon_type']) ? $data['coupon_type'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['origin_amount'] = isset($data['origin_amount']) ? $data['origin_amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['rule_new'] = isset($data['rule_new']) ? $data['rule_new'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['jump_url'] = isset($data['jump_url']) ? $data['jump_url'] : null;
-        $this->container['help_url'] = isset($data['help_url']) ? $data['help_url'] : null;
-        $this->container['expire_time'] = isset($data['expire_time']) ? $data['expire_time'] : null;
-        $this->container['expire_time_order_by'] = isset($data['expire_time_order_by']) ? $data['expire_time_order_by'] : null;
-        $this->container['expire_second'] = isset($data['expire_second']) ? $data['expire_second'] : null;
-        $this->container['has_usage_history'] = isset($data['has_usage_history']) ? $data['has_usage_history'] : null;
-        $this->container['has_progress'] = isset($data['has_progress']) ? $data['has_progress'] : null;
-        $this->container['progress_config'] = isset($data['progress_config']) ? $data['progress_config'] : null;
-        $this->container['activation_info'] = isset($data['activation_info']) ? $data['activation_info'] : null;
-        $this->container['is_task_coupon'] = isset($data['is_task_coupon']) ? $data['is_task_coupon'] : null;
-        $this->container['upgrade_toast'] = isset($data['upgrade_toast']) ? $data['upgrade_toast'] : null;
-        $this->container['from_task'] = isset($data['from_task']) ? $data['from_task'] : null;
-        $this->container['task_title'] = isset($data['task_title']) ? $data['task_title'] : null;
-        $this->container['task_desc'] = isset($data['task_desc']) ? $data['task_desc'] : null;
-        $this->container['task_start_at'] = isset($data['task_start_at']) ? $data['task_start_at'] : null;
-        $this->container['task_expire_at'] = isset($data['task_expire_at']) ? $data['task_expire_at'] : null;
-        $this->container['task_completed_at'] = isset($data['task_completed_at']) ? $data['task_completed_at'] : null;
-        $this->container['extra'] = isset($data['extra']) ? $data['extra'] : null;
+        $this->container['next_page'] = isset($data['next_page']) ? $data['next_page'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
     /**
@@ -400,22 +192,6 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'status', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getIsTaskCouponAllowableValues();
-        if (!is_null($this->container['is_task_coupon']) && !in_array($this->container['is_task_coupon'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'is_task_coupon', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -433,667 +209,49 @@ class InlineResponse2007Data implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
-     *
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int|null $id Coupon distribution record ID (coupon_send_issuing_log.id)
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets details_id
-     *
-     * @return int|null
-     */
-    public function getDetailsId()
-    {
-        return $this->container['details_id'];
-    }
-
-    /**
-     * Sets details_id
-     *
-     * @param int|null $details_id User coupon detail table primary key (separate table per type). This field is 0 for task coupons
-     *
-     * @return $this
-     */
-    public function setDetailsId($details_id)
-    {
-        $this->container['details_id'] = $details_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets coupon_type
-     *
-     * @return string|null
-     */
-    public function getCouponType()
-    {
-        return $this->container['coupon_type'];
-    }
-
-    /**
-     * Sets coupon_type
-     *
-     * @param string|null $coupon_type Coupon type, enum values same as the `coupon_type` parameter
-     *
-     * @return $this
-     */
-    public function setCouponType($coupon_type)
-    {
-        $this->container['coupon_type'] = $coupon_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Coupon display name (i18n translated)
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return string|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param string|null $amount Coupon denomination (formatted string with thousand separators). Meaning by type: point card = balance, interest rate boost coupon = rate percentage (e.g., '5%'), VIP trial card = VIP level number, position voucher = face value x leverage, others = face value
-     *
-     * @return $this
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets origin_amount
-     *
-     * @return string|null
-     */
-    public function getOriginAmount()
-    {
-        return $this->container['origin_amount'];
-    }
-
-    /**
-     * Sets origin_amount
-     *
-     * @param string|null $origin_amount Original denomination (string with trailing zeros removed). Only returned for point card type, other types do not have this field
-     *
-     * @return $this
-     */
-    public function setOriginAmount($origin_amount)
-    {
-        $this->container['origin_amount'] = $origin_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency Denomination unit. Point card = 'POINT', interest rate boost coupon = 'APR', VIP trial card = 'VIP', Alpha cash coupon = base currency, others = uppercase currency symbol (e.g., 'USDT'/'GT')
-     *
-     * @return $this
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets rule_new
-     *
-     * @return string|null
-     */
-    public function getRuleNew()
-    {
-        return $this->container['rule_new'];
-    }
-
-    /**
-     * Sets rule_new
-     *
-     * @param string|null $rule_new Coupon usage rule text (i18n translated). Only has value in the detail endpoint, fixed as empty string in the list endpoint
-     *
-     * @return $this
-     */
-    public function setRuleNew($rule_new)
-    {
-        $this->container['rule_new'] = $rule_new;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Coupon status. Regular coupon: NOT_ACTIVE (pending activation), ACTIVATED (activated), TO_BE_USED (to be used), EXPIRED (expired), RECYCLED (recycled), INVALID (invalidated), USED (used), UNKNOWN (unknown), LOCKED (locked, P2P only). Task coupon: TASK_START (task not started), TASK_WAIT (task in progress), TASK_DONE (task completed, processing), TASK_EXPIRED (task not completed, expired), TASK_NOT_STARTED_EXPIRED (not started, expired), TASK_RECEIVE_SUCCESS (reward claimed successfully), TASK_RECEIVE_FAIL (reward claim failed)
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'status', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets jump_url
-     *
-     * @return \GateApi\Model\InlineResponse2006DataJumpUrl|null
-     */
-    public function getJumpUrl()
-    {
-        return $this->container['jump_url'];
-    }
-
-    /**
-     * Sets jump_url
-     *
-     * @param \GateApi\Model\InlineResponse2006DataJumpUrl|null $jump_url jump_url
-     *
-     * @return $this
-     */
-    public function setJumpUrl($jump_url)
-    {
-        $this->container['jump_url'] = $jump_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets help_url
-     *
-     * @return \GateApi\Model\InlineResponse2006DataHelpUrl|null
-     */
-    public function getHelpUrl()
-    {
-        return $this->container['help_url'];
-    }
-
-    /**
-     * Sets help_url
-     *
-     * @param \GateApi\Model\InlineResponse2006DataHelpUrl|null $help_url help_url
-     *
-     * @return $this
-     */
-    public function setHelpUrl($help_url)
-    {
-        $this->container['help_url'] = $help_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets expire_time
-     *
-     * @return int|null
-     */
-    public function getExpireTime()
-    {
-        return $this->container['expire_time'];
-    }
-
-    /**
-     * Sets expire_time
-     *
-     * @param int|null $expire_time Expiration time (Unix timestamp). Some types replace this with actual expiration time after activation/use. Point card type returns 0. Rules by type: cash=not_received_expired_timest; contract_bonus=uses expired_timest after activation/use; contract_bonus_new=always uses expired_timest; position_voucher/tradfi_position_voucher=uses expire_time after use; robot_bonus=not_received_expired_timest; commission_rebate=uses use_deadline after use; crypto_loan_interest=not_using_expired_timest; copy_trading=not_using_expired_timest; alpha_voucher=not_received_expired_timest; etf_voucher=not_using_expired_timest
-     *
-     * @return $this
-     */
-    public function setExpireTime($expire_time)
-    {
-        $this->container['expire_time'] = $expire_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets expire_time_order_by
-     *
-     * @return int|null
-     */
-    public function getExpireTimeOrderBy()
-    {
-        return $this->container['expire_time_order_by'];
-    }
-
-    /**
-     * Sets expire_time_order_by
-     *
-     * @param int|null $expire_time_order_by Sorting expiration time (from the original expiration time of the distribution record, unaffected by activation)
-     *
-     * @return $this
-     */
-    public function setExpireTimeOrderBy($expire_time_order_by)
-    {
-        $this->container['expire_time_order_by'] = $expire_time_order_by;
-
-        return $this;
-    }
-
-    /**
-     * Gets expire_second
-     *
-     * @return int|null
-     */
-    public function getExpireSecond()
-    {
-        return $this->container['expire_second'];
-    }
-
-    /**
-     * Sets expire_second
-     *
-     * @param int|null $expire_second Seconds remaining until expiration, returns 0 if expired or point card type
-     *
-     * @return $this
-     */
-    public function setExpireSecond($expire_second)
-    {
-        $this->container['expire_second'] = $expire_second;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_usage_history
+     * Gets next_page
      *
      * @return bool|null
      */
-    public function getHasUsageHistory()
+    public function getNextPage()
     {
-        return $this->container['has_usage_history'];
+        return $this->container['next_page'];
     }
 
     /**
-     * Sets has_usage_history
+     * Sets next_page
      *
-     * @param bool|null $has_usage_history Whether there is a usage history. Fixed as true for point card type, determined by type for others
+     * @param bool|null $next_page Whether there is a next page. `true` means more data is available. Pass the `id` of the last record as `last_id` and `expire_time_order_by` as `expire_time` in the next request
      *
      * @return $this
      */
-    public function setHasUsageHistory($has_usage_history)
+    public function setNextPage($next_page)
     {
-        $this->container['has_usage_history'] = $has_usage_history;
+        $this->container['next_page'] = $next_page;
 
         return $this;
     }
 
     /**
-     * Gets has_progress
+     * Gets list
      *
-     * @return bool|null
+     * @return \GateApi\Model\InlineResponse2007DataList[]|null
      */
-    public function getHasProgress()
+    public function getList()
     {
-        return $this->container['has_progress'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets has_progress
+     * Sets list
      *
-     * @param bool|null $has_progress Whether to display a progress bar. Only true for commission_rebate, interest_voucher, and qualifying task coupons
+     * @param \GateApi\Model\InlineResponse2007DataList[]|null $list Coupon object array, see field details below
      *
      * @return $this
      */
-    public function setHasProgress($has_progress)
+    public function setList($list)
     {
-        $this->container['has_progress'] = $has_progress;
-
-        return $this;
-    }
-
-    /**
-     * Gets progress_config
-     *
-     * @return \GateApi\Model\InlineResponse2006DataProgressConfig|null
-     */
-    public function getProgressConfig()
-    {
-        return $this->container['progress_config'];
-    }
-
-    /**
-     * Sets progress_config
-     *
-     * @param \GateApi\Model\InlineResponse2006DataProgressConfig|null $progress_config progress_config
-     *
-     * @return $this
-     */
-    public function setProgressConfig($progress_config)
-    {
-        $this->container['progress_config'] = $progress_config;
-
-        return $this;
-    }
-
-    /**
-     * Gets activation_info
-     *
-     * @return object|null
-     */
-    public function getActivationInfo()
-    {
-        return $this->container['activation_info'];
-    }
-
-    /**
-     * Sets activation_info
-     *
-     * @param object|null $activation_info Type-specific activation information. Types without specific fields return empty object {}. Fields by type: interest_voucher={supported_pairs (applicable trading pairs), transaction_type}; contract_bonus_new={received_expired_hour (valid hours after activation)}; contract_bonus={check_unified_account_mode, received_expired_days (valid days after activation), abtest}; commission_rebate={market (spot/margin/futures/alpha/etf/tradfi), market_name (market display name)}; robot_bonus={designated_bots (ENABLED = designated strategies only / DISABLED = unrestricted)}; position_voucher={symbols (applicable trading pairs, empty = unrestricted), leverage, need_user_funds (0 = no user funds required / 1 = user funds required), user_funds_amount, position_bonus (original face value)}; tradfi_position_voucher={symbols, leverage, position_bonus}; etf_voucher={currency_markets (ETF market list, comma-separated), amount (original face value)}
-     *
-     * @return $this
-     */
-    public function setActivationInfo($activation_info)
-    {
-        $this->container['activation_info'] = $activation_info;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_task_coupon
-     *
-     * @return int|null
-     */
-    public function getIsTaskCoupon()
-    {
-        return $this->container['is_task_coupon'];
-    }
-
-    /**
-     * Sets is_task_coupon
-     *
-     * @param int|null $is_task_coupon Whether it is a task coupon. `0` = regular coupon; `1` = task coupon
-     *
-     * @return $this
-     */
-    public function setIsTaskCoupon($is_task_coupon)
-    {
-        $allowedValues = $this->getIsTaskCouponAllowableValues();
-        if (!is_null($is_task_coupon) && !in_array($is_task_coupon, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'is_task_coupon', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['is_task_coupon'] = $is_task_coupon;
-
-        return $this;
-    }
-
-    /**
-     * Gets upgrade_toast
-     *
-     * @return bool|null
-     */
-    public function getUpgradeToast()
-    {
-        return $this->container['upgrade_toast'];
-    }
-
-    /**
-     * Sets upgrade_toast
-     *
-     * @param bool|null $upgrade_toast Whether to prompt the user to upgrade the App (true when the app version is too old to support the coupon)
-     *
-     * @return $this
-     */
-    public function setUpgradeToast($upgrade_toast)
-    {
-        $this->container['upgrade_toast'] = $upgrade_toast;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_task
-     *
-     * @return bool|null
-     */
-    public function getFromTask()
-    {
-        return $this->container['from_task'];
-    }
-
-    /**
-     * Sets from_task
-     *
-     * @param bool|null $from_task [Detail endpoint only] Whether this regular coupon was obtained by completing a task (a sub-coupon automatically issued after task completion). Regular coupons may be true, task coupons are always false
-     *
-     * @return $this
-     */
-    public function setFromTask($from_task)
-    {
-        $this->container['from_task'] = $from_task;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_title
-     *
-     * @return string|null
-     */
-    public function getTaskTitle()
-    {
-        return $this->container['task_title'];
-    }
-
-    /**
-     * Sets task_title
-     *
-     * @param string|null $task_title Task title. Task coupons have value; regular coupons return empty string (but task_title is not assigned when from_task=true)
-     *
-     * @return $this
-     */
-    public function setTaskTitle($task_title)
-    {
-        $this->container['task_title'] = $task_title;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_desc
-     *
-     * @return string|null
-     */
-    public function getTaskDesc()
-    {
-        return $this->container['task_desc'];
-    }
-
-    /**
-     * Sets task_desc
-     *
-     * @param string|null $task_desc Task description. Task coupons have value; regular coupons return empty string
-     *
-     * @return $this
-     */
-    public function setTaskDesc($task_desc)
-    {
-        $this->container['task_desc'] = $task_desc;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_start_at
-     *
-     * @return int|null
-     */
-    public function getTaskStartAt()
-    {
-        return $this->container['task_start_at'];
-    }
-
-    /**
-     * Sets task_start_at
-     *
-     * @param int|null $task_start_at Task start timestamp (Unix). Task coupon: has value when in TASK_EXPIRED status, otherwise 0; regular coupon (from_task=true): start time of the source task
-     *
-     * @return $this
-     */
-    public function setTaskStartAt($task_start_at)
-    {
-        $this->container['task_start_at'] = $task_start_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_expire_at
-     *
-     * @return int|null
-     */
-    public function getTaskExpireAt()
-    {
-        return $this->container['task_expire_at'];
-    }
-
-    /**
-     * Sets task_expire_at
-     *
-     * @param int|null $task_expire_at Task validity expiration timestamp (Unix). Task coupon: claim validity deadline (0 means unlimited); regular coupon: fixed at 0
-     *
-     * @return $this
-     */
-    public function setTaskExpireAt($task_expire_at)
-    {
-        $this->container['task_expire_at'] = $task_expire_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets task_completed_at
-     *
-     * @return int|null
-     */
-    public function getTaskCompletedAt()
-    {
-        return $this->container['task_completed_at'];
-    }
-
-    /**
-     * Sets task_completed_at
-     *
-     * @param int|null $task_completed_at Task completion timestamp (Unix). Task coupon: task completion time (0 means not completed); regular coupon (from_task=true): completion time of the source task
-     *
-     * @return $this
-     */
-    public function setTaskCompletedAt($task_completed_at)
-    {
-        $this->container['task_completed_at'] = $task_completed_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets extra
-     *
-     * @return object[][]|null
-     */
-    public function getExtra()
-    {
-        return $this->container['extra'];
-    }
-
-    /**
-     * Sets extra
-     *
-     * @param object[][]|null $extra [Detail endpoint only] Coupon detail attributes organized by display blocks. The frontend renders them as separate sections. Point card type always returns empty array []. Other types return a 2D array composed of blocks: block 1 = coupon name/source/status, block 2 = coupon core attributes, block 3 = time information. Each item contains: type (display type: string/timestamp/day/hour/status/btn), key (label text, i18n translated), value (string or integer, timestamp type is Unix timestamp)
-     *
-     * @return $this
-     */
-    public function setExtra($extra)
-    {
-        $this->container['extra'] = $extra;
+        $this->container['list'] = $list;
 
         return $this;
     }

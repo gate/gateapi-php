@@ -55,7 +55,25 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'name' => 'string'
+        'type_id' => 'int',
+        'type_name' => 'string',
+        'competition_name' => 'string',
+        'start_at' => 'int',
+        'end_at' => 'int',
+        'img' => 'string',
+        'img_dark' => 'string',
+        'url' => 'string',
+        'hot' => 'int',
+        'master_one_line' => 'string',
+        'master_two_line' => 'string',
+        'slave_one_line' => 'string',
+        'slave_two_line' => 'string',
+        'competition_title' => 'string',
+        'top_id' => 'int',
+        'parent_id' => 'int',
+        'new_img' => 'string',
+        'new_img_dark' => 'string',
+        'tag' => 'string[]'
     ];
 
     /**
@@ -65,7 +83,25 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'name' => null
+        'type_id' => null,
+        'type_name' => null,
+        'competition_name' => null,
+        'start_at' => null,
+        'end_at' => null,
+        'img' => null,
+        'img_dark' => null,
+        'url' => null,
+        'hot' => null,
+        'master_one_line' => null,
+        'master_two_line' => null,
+        'slave_one_line' => null,
+        'slave_two_line' => null,
+        'competition_title' => null,
+        'top_id' => null,
+        'parent_id' => null,
+        'new_img' => null,
+        'new_img_dark' => null,
+        'tag' => null
     ];
 
     /**
@@ -96,7 +132,25 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'name' => 'name'
+        'type_id' => 'type_id',
+        'type_name' => 'type_name',
+        'competition_name' => 'competition_name',
+        'start_at' => 'start_at',
+        'end_at' => 'end_at',
+        'img' => 'img',
+        'img_dark' => 'img_dark',
+        'url' => 'url',
+        'hot' => 'hot',
+        'master_one_line' => 'master_one_line',
+        'master_two_line' => 'master_two_line',
+        'slave_one_line' => 'slave_one_line',
+        'slave_two_line' => 'slave_two_line',
+        'competition_title' => 'competition_title',
+        'top_id' => 'top_id',
+        'parent_id' => 'parent_id',
+        'new_img' => 'new_img',
+        'new_img_dark' => 'new_img_dark',
+        'tag' => 'tag'
     ];
 
     /**
@@ -106,7 +160,25 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'name' => 'setName'
+        'type_id' => 'setTypeId',
+        'type_name' => 'setTypeName',
+        'competition_name' => 'setCompetitionName',
+        'start_at' => 'setStartAt',
+        'end_at' => 'setEndAt',
+        'img' => 'setImg',
+        'img_dark' => 'setImgDark',
+        'url' => 'setUrl',
+        'hot' => 'setHot',
+        'master_one_line' => 'setMasterOneLine',
+        'master_two_line' => 'setMasterTwoLine',
+        'slave_one_line' => 'setSlaveOneLine',
+        'slave_two_line' => 'setSlaveTwoLine',
+        'competition_title' => 'setCompetitionTitle',
+        'top_id' => 'setTopId',
+        'parent_id' => 'setParentId',
+        'new_img' => 'setNewImg',
+        'new_img_dark' => 'setNewImgDark',
+        'tag' => 'setTag'
     ];
 
     /**
@@ -116,7 +188,25 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'name' => 'getName'
+        'type_id' => 'getTypeId',
+        'type_name' => 'getTypeName',
+        'competition_name' => 'getCompetitionName',
+        'start_at' => 'getStartAt',
+        'end_at' => 'getEndAt',
+        'img' => 'getImg',
+        'img_dark' => 'getImgDark',
+        'url' => 'getUrl',
+        'hot' => 'getHot',
+        'master_one_line' => 'getMasterOneLine',
+        'master_two_line' => 'getMasterTwoLine',
+        'slave_one_line' => 'getSlaveOneLine',
+        'slave_two_line' => 'getSlaveTwoLine',
+        'competition_title' => 'getCompetitionTitle',
+        'top_id' => 'getTopId',
+        'parent_id' => 'getParentId',
+        'new_img' => 'getNewImg',
+        'new_img_dark' => 'getNewImgDark',
+        'tag' => 'getTag'
     ];
 
     /**
@@ -180,7 +270,25 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['type_id'] = isset($data['type_id']) ? $data['type_id'] : null;
+        $this->container['type_name'] = isset($data['type_name']) ? $data['type_name'] : null;
+        $this->container['competition_name'] = isset($data['competition_name']) ? $data['competition_name'] : null;
+        $this->container['start_at'] = isset($data['start_at']) ? $data['start_at'] : null;
+        $this->container['end_at'] = isset($data['end_at']) ? $data['end_at'] : null;
+        $this->container['img'] = isset($data['img']) ? $data['img'] : null;
+        $this->container['img_dark'] = isset($data['img_dark']) ? $data['img_dark'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['hot'] = isset($data['hot']) ? $data['hot'] : null;
+        $this->container['master_one_line'] = isset($data['master_one_line']) ? $data['master_one_line'] : null;
+        $this->container['master_two_line'] = isset($data['master_two_line']) ? $data['master_two_line'] : null;
+        $this->container['slave_one_line'] = isset($data['slave_one_line']) ? $data['slave_one_line'] : null;
+        $this->container['slave_two_line'] = isset($data['slave_two_line']) ? $data['slave_two_line'] : null;
+        $this->container['competition_title'] = isset($data['competition_title']) ? $data['competition_title'] : null;
+        $this->container['top_id'] = isset($data['top_id']) ? $data['top_id'] : null;
+        $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
+        $this->container['new_img'] = isset($data['new_img']) ? $data['new_img'] : null;
+        $this->container['new_img_dark'] = isset($data['new_img_dark']) ? $data['new_img_dark'] : null;
+        $this->container['tag'] = isset($data['tag']) ? $data['tag'] : null;
     }
 
     /**
@@ -195,8 +303,62 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['type_id'] === null) {
+            $invalidProperties[] = "'type_id' can't be null";
+        }
+        if ($this->container['type_name'] === null) {
+            $invalidProperties[] = "'type_name' can't be null";
+        }
+        if ($this->container['competition_name'] === null) {
+            $invalidProperties[] = "'competition_name' can't be null";
+        }
+        if ($this->container['start_at'] === null) {
+            $invalidProperties[] = "'start_at' can't be null";
+        }
+        if ($this->container['end_at'] === null) {
+            $invalidProperties[] = "'end_at' can't be null";
+        }
+        if ($this->container['img'] === null) {
+            $invalidProperties[] = "'img' can't be null";
+        }
+        if ($this->container['img_dark'] === null) {
+            $invalidProperties[] = "'img_dark' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['hot'] === null) {
+            $invalidProperties[] = "'hot' can't be null";
+        }
+        if ($this->container['master_one_line'] === null) {
+            $invalidProperties[] = "'master_one_line' can't be null";
+        }
+        if ($this->container['master_two_line'] === null) {
+            $invalidProperties[] = "'master_two_line' can't be null";
+        }
+        if ($this->container['slave_one_line'] === null) {
+            $invalidProperties[] = "'slave_one_line' can't be null";
+        }
+        if ($this->container['slave_two_line'] === null) {
+            $invalidProperties[] = "'slave_two_line' can't be null";
+        }
+        if ($this->container['competition_title'] === null) {
+            $invalidProperties[] = "'competition_title' can't be null";
+        }
+        if ($this->container['top_id'] === null) {
+            $invalidProperties[] = "'top_id' can't be null";
+        }
+        if ($this->container['parent_id'] === null) {
+            $invalidProperties[] = "'parent_id' can't be null";
+        }
+        if ($this->container['new_img'] === null) {
+            $invalidProperties[] = "'new_img' can't be null";
+        }
+        if ($this->container['new_img_dark'] === null) {
+            $invalidProperties[] = "'new_img_dark' can't be null";
+        }
+        if ($this->container['tag'] === null) {
+            $invalidProperties[] = "'tag' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,7 +388,7 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Activity type ID
+     * @param int $id Activity ID
      *
      * @return $this
      */
@@ -238,25 +400,457 @@ class InlineResponse20013DataList implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets name
+     * Gets type_id
      *
-     * @return string
+     * @return int
      */
-    public function getName()
+    public function getTypeId()
     {
-        return $this->container['name'];
+        return $this->container['type_id'];
     }
 
     /**
-     * Sets name
+     * Sets type_id
      *
-     * @param string $name Activity type name
+     * @param int $type_id Activity type ID
      *
      * @return $this
      */
-    public function setName($name)
+    public function setTypeId($type_id)
     {
-        $this->container['name'] = $name;
+        $this->container['type_id'] = $type_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type_name
+     *
+     * @return string
+     */
+    public function getTypeName()
+    {
+        return $this->container['type_name'];
+    }
+
+    /**
+     * Sets type_name
+     *
+     * @param string $type_name Activity type name
+     *
+     * @return $this
+     */
+    public function setTypeName($type_name)
+    {
+        $this->container['type_name'] = $type_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets competition_name
+     *
+     * @return string
+     */
+    public function getCompetitionName()
+    {
+        return $this->container['competition_name'];
+    }
+
+    /**
+     * Sets competition_name
+     *
+     * @param string $competition_name Activity name
+     *
+     * @return $this
+     */
+    public function setCompetitionName($competition_name)
+    {
+        $this->container['competition_name'] = $competition_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_at
+     *
+     * @return int
+     */
+    public function getStartAt()
+    {
+        return $this->container['start_at'];
+    }
+
+    /**
+     * Sets start_at
+     *
+     * @param int $start_at Activity start time (Unix timestamp, in seconds)
+     *
+     * @return $this
+     */
+    public function setStartAt($start_at)
+    {
+        $this->container['start_at'] = $start_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_at
+     *
+     * @return int
+     */
+    public function getEndAt()
+    {
+        return $this->container['end_at'];
+    }
+
+    /**
+     * Sets end_at
+     *
+     * @param int $end_at Activity end time (Unix timestamp, in seconds)
+     *
+     * @return $this
+     */
+    public function setEndAt($end_at)
+    {
+        $this->container['end_at'] = $end_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets img
+     *
+     * @return string
+     */
+    public function getImg()
+    {
+        return $this->container['img'];
+    }
+
+    /**
+     * Sets img
+     *
+     * @param string $img Activity image URL (light mode)
+     *
+     * @return $this
+     */
+    public function setImg($img)
+    {
+        $this->container['img'] = $img;
+
+        return $this;
+    }
+
+    /**
+     * Gets img_dark
+     *
+     * @return string
+     */
+    public function getImgDark()
+    {
+        return $this->container['img_dark'];
+    }
+
+    /**
+     * Sets img_dark
+     *
+     * @param string $img_dark Activity image URL (dark mode)
+     *
+     * @return $this
+     */
+    public function setImgDark($img_dark)
+    {
+        $this->container['img_dark'] = $img_dark;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url Activity redirect link
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets hot
+     *
+     * @return int
+     */
+    public function getHot()
+    {
+        return $this->container['hot'];
+    }
+
+    /**
+     * Sets hot
+     *
+     * @param int $hot Popularity score
+     *
+     * @return $this
+     */
+    public function setHot($hot)
+    {
+        $this->container['hot'] = $hot;
+
+        return $this;
+    }
+
+    /**
+     * Gets master_one_line
+     *
+     * @return string
+     */
+    public function getMasterOneLine()
+    {
+        return $this->container['master_one_line'];
+    }
+
+    /**
+     * Sets master_one_line
+     *
+     * @param string $master_one_line Main title first line
+     *
+     * @return $this
+     */
+    public function setMasterOneLine($master_one_line)
+    {
+        $this->container['master_one_line'] = $master_one_line;
+
+        return $this;
+    }
+
+    /**
+     * Gets master_two_line
+     *
+     * @return string
+     */
+    public function getMasterTwoLine()
+    {
+        return $this->container['master_two_line'];
+    }
+
+    /**
+     * Sets master_two_line
+     *
+     * @param string $master_two_line Main title second line
+     *
+     * @return $this
+     */
+    public function setMasterTwoLine($master_two_line)
+    {
+        $this->container['master_two_line'] = $master_two_line;
+
+        return $this;
+    }
+
+    /**
+     * Gets slave_one_line
+     *
+     * @return string
+     */
+    public function getSlaveOneLine()
+    {
+        return $this->container['slave_one_line'];
+    }
+
+    /**
+     * Sets slave_one_line
+     *
+     * @param string $slave_one_line Subtitle first line
+     *
+     * @return $this
+     */
+    public function setSlaveOneLine($slave_one_line)
+    {
+        $this->container['slave_one_line'] = $slave_one_line;
+
+        return $this;
+    }
+
+    /**
+     * Gets slave_two_line
+     *
+     * @return string
+     */
+    public function getSlaveTwoLine()
+    {
+        return $this->container['slave_two_line'];
+    }
+
+    /**
+     * Sets slave_two_line
+     *
+     * @param string $slave_two_line Subtitle second line
+     *
+     * @return $this
+     */
+    public function setSlaveTwoLine($slave_two_line)
+    {
+        $this->container['slave_two_line'] = $slave_two_line;
+
+        return $this;
+    }
+
+    /**
+     * Gets competition_title
+     *
+     * @return string
+     */
+    public function getCompetitionTitle()
+    {
+        return $this->container['competition_title'];
+    }
+
+    /**
+     * Sets competition_title
+     *
+     * @param string $competition_title Activity title
+     *
+     * @return $this
+     */
+    public function setCompetitionTitle($competition_title)
+    {
+        $this->container['competition_title'] = $competition_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets top_id
+     *
+     * @return int
+     */
+    public function getTopId()
+    {
+        return $this->container['top_id'];
+    }
+
+    /**
+     * Sets top_id
+     *
+     * @param int $top_id Pin ID, 0 means not pinned
+     *
+     * @return $this
+     */
+    public function setTopId($top_id)
+    {
+        $this->container['top_id'] = $top_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     *
+     * @return int
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     *
+     * @param int $parent_id Parent activity ID, 0 means no parent activity
+     *
+     * @return $this
+     */
+    public function setParentId($parent_id)
+    {
+        $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_img
+     *
+     * @return string
+     */
+    public function getNewImg()
+    {
+        return $this->container['new_img'];
+    }
+
+    /**
+     * Sets new_img
+     *
+     * @param string $new_img New activity image URL (light mode)
+     *
+     * @return $this
+     */
+    public function setNewImg($new_img)
+    {
+        $this->container['new_img'] = $new_img;
+
+        return $this;
+    }
+
+    /**
+     * Gets new_img_dark
+     *
+     * @return string
+     */
+    public function getNewImgDark()
+    {
+        return $this->container['new_img_dark'];
+    }
+
+    /**
+     * Sets new_img_dark
+     *
+     * @param string $new_img_dark New activity image URL (dark mode)
+     *
+     * @return $this
+     */
+    public function setNewImgDark($new_img_dark)
+    {
+        $this->container['new_img_dark'] = $new_img_dark;
+
+        return $this;
+    }
+
+    /**
+     * Gets tag
+     *
+     * @return string[]
+     */
+    public function getTag()
+    {
+        return $this->container['tag'];
+    }
+
+    /**
+     * Sets tag
+     *
+     * @param string[] $tag Activity tag list
+     *
+     * @return $this
+     */
+    public function setTag($tag)
+    {
+        $this->container['tag'] = $tag;
 
         return $this;
     }
