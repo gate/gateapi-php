@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * UnifiedBorrowable Class Doc Comment
  *
  * @category Class
- * @description 统一账户最多可借入额度
+ * @description Maximum borrowable amount for unified account
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

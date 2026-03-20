@@ -73,7 +73,8 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
         'mmr' => 'string',
         'margin_balance' => 'string',
         'available_margin' => 'string',
-        'enabled_collateral' => 'bool'
+        'enabled_collateral' => 'bool',
+        'balance_version' => 'float'
     ];
 
     /**
@@ -101,7 +102,8 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
         'mmr' => null,
         'margin_balance' => null,
         'available_margin' => null,
-        'enabled_collateral' => null
+        'enabled_collateral' => null,
+        'balance_version' => 'int64'
     ];
 
     /**
@@ -150,7 +152,8 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
         'mmr' => 'mmr',
         'margin_balance' => 'margin_balance',
         'available_margin' => 'available_margin',
-        'enabled_collateral' => 'enabled_collateral'
+        'enabled_collateral' => 'enabled_collateral',
+        'balance_version' => 'balance_version'
     ];
 
     /**
@@ -178,7 +181,8 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
         'mmr' => 'setMmr',
         'margin_balance' => 'setMarginBalance',
         'available_margin' => 'setAvailableMargin',
-        'enabled_collateral' => 'setEnabledCollateral'
+        'enabled_collateral' => 'setEnabledCollateral',
+        'balance_version' => 'setBalanceVersion'
     ];
 
     /**
@@ -206,7 +210,8 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
         'mmr' => 'getMmr',
         'margin_balance' => 'getMarginBalance',
         'available_margin' => 'getAvailableMargin',
-        'enabled_collateral' => 'getEnabledCollateral'
+        'enabled_collateral' => 'getEnabledCollateral',
+        'balance_version' => 'getBalanceVersion'
     ];
 
     /**
@@ -289,6 +294,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
         $this->container['margin_balance'] = isset($data['margin_balance']) ? $data['margin_balance'] : null;
         $this->container['available_margin'] = isset($data['available_margin']) ? $data['available_margin'] : null;
         $this->container['enabled_collateral'] = isset($data['enabled_collateral']) ? $data['enabled_collateral'] : null;
+        $this->container['balance_version'] = isset($data['balance_version']) ? $data['balance_version'] : null;
     }
 
     /**
@@ -328,7 +334,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets available
      *
-     * @param string|null $available Available balance, valid in single currency margin/cross-currency margin/combined margin mode, calculation varies by mode
+     * @param string|null $available Cross available balance, deducted futures isolated margin occupation and frozen amount (futures isolated occupation, i.e. futures isolated balance), effective in single-currency/multi-currency/portfolio margin mode.
      *
      * @return $this
      */
@@ -352,7 +358,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets freeze
      *
-     * @param string|null $freeze Locked balance, valid in single currency margin/cross-currency margin/combined margin mode
+     * @param string|null $freeze Frozen amount, effective in single-currency/multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -448,7 +454,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets equity
      *
-     * @param string|null $equity Equity, valid in single currency margin/cross currency margin/combined margin mode
+     * @param string|null $equity Currency equity amount (cross), effective in single-currency/multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -616,7 +622,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets iso_balance
      *
-     * @param string|null $iso_balance Isolated Margin Balance applies to Single-Currency Margin Mode and Cross-Currency Margin Mode, and is 0 in other modes such as Portfolio Margin Mode.
+     * @param string|null $iso_balance Futures isolated balance, effective in single-currency and multi-currency margin mode, 0 in portfolio margin mode
      *
      * @return $this
      */
@@ -640,7 +646,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets im
      *
-     * @param string|null $im Full-position initial margin is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+     * @param string|null $im Cross initial margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -664,7 +670,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets mm
      *
-     * @param string|null $mm Cross margin maintenance margin, valid in single-currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
+     * @param string|null $mm Cross maintenance margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -688,7 +694,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets imr
      *
-     * @param string|null $imr Full-position initial margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+     * @param string|null $imr Cross initial margin rate, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -712,7 +718,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets mmr
      *
-     * @param string|null $mmr Full-position maintenance margin rate is valid in single-currency margin mode and is 0 in other modes such as cross-currency margin/combined margin mode
+     * @param string|null $mmr Cross maintenance margin rate, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -736,7 +742,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets margin_balance
      *
-     * @param string|null $margin_balance Full margin balance is valid in single currency margin mode and is 0 in other modes such as cross currency margin/combined margin mode
+     * @param string|null $margin_balance Cross margin balance, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -760,7 +766,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets available_margin
      *
-     * @param string|null $available_margin Cross margin available balance, valid in single currency margin mode, 0 in other modes such as cross-currency margin/combined margin mode
+     * @param string|null $available_margin Cross available margin, only effective for USDT in single-currency margin mode, 0 in multi-currency/portfolio margin mode
      *
      * @return $this
      */
@@ -791,6 +797,30 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     public function setEnabledCollateral($enabled_collateral)
     {
         $this->container['enabled_collateral'] = $enabled_collateral;
+
+        return $this;
+    }
+
+    /**
+     * Gets balance_version
+     *
+     * @return float|null
+     */
+    public function getBalanceVersion()
+    {
+        return $this->container['balance_version'];
+    }
+
+    /**
+     * Sets balance_version
+     *
+     * @param float|null $balance_version Balance version number
+     *
+     * @return $this
+     */
+    public function setBalanceVersion($balance_version)
+    {
+        $this->container['balance_version'] = $balance_version;
 
         return $this;
     }

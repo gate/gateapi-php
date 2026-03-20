@@ -197,11 +197,15 @@ Query trading symbol details
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
 
 $apiInstance = new GateApi\Api\TradFiApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $symbols = 'EURUSD,XAGUSD'; // string | Trading symbol code list (comma-separated, max 10 symbols)
 
@@ -229,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[apiv4](../../README.md#apiv4)
 
 ### HTTP request headers
 
