@@ -3760,7 +3760,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse200
+     * @return \GateApi\Model\ListEarnFixedTermProductsResponse
      */
     public function listEarnFixedTermProducts($associative_array)
     {
@@ -3782,7 +3782,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ListEarnFixedTermProductsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listEarnFixedTermProductsWithHttpInfo($associative_array)
     {
@@ -3812,7 +3812,7 @@ class EarnApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse200';
+        $returnType = '\GateApi\Model\ListEarnFixedTermProductsResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -3869,7 +3869,7 @@ class EarnApi
      */
     public function listEarnFixedTermProductsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse200';
+        $returnType = '\GateApi\Model\ListEarnFixedTermProductsResponse';
         $request = $this->listEarnFixedTermProductsRequest($associative_array);
 
         return $this->client
@@ -4073,7 +4073,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2001
+     * @return \GateApi\Model\ListEarnFixedTermProductsByAssetResponse
      */
     public function listEarnFixedTermProductsByAsset($associative_array)
     {
@@ -4093,7 +4093,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2001, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ListEarnFixedTermProductsByAssetResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listEarnFixedTermProductsByAssetWithHttpInfo($associative_array)
     {
@@ -4123,7 +4123,7 @@ class EarnApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2001';
+        $returnType = '\GateApi\Model\ListEarnFixedTermProductsByAssetResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4176,7 +4176,7 @@ class EarnApi
      */
     public function listEarnFixedTermProductsByAssetAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2001';
+        $returnType = '\GateApi\Model\ListEarnFixedTermProductsByAssetResponse';
         $request = $this->listEarnFixedTermProductsByAssetRequest($associative_array);
 
         return $this->client
@@ -4349,7 +4349,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2002
+     * @return \GateApi\Model\ListEarnFixedTermLendsResponse
      */
     public function listEarnFixedTermLends($associative_array)
     {
@@ -4375,7 +4375,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2002, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ListEarnFixedTermLendsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listEarnFixedTermLendsWithHttpInfo($associative_array)
     {
@@ -4405,7 +4405,7 @@ class EarnApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2002';
+        $returnType = '\GateApi\Model\ListEarnFixedTermLendsResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4470,7 +4470,7 @@ class EarnApi
      */
     public function listEarnFixedTermLendsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2002';
+        $returnType = '\GateApi\Model\ListEarnFixedTermLendsResponse';
         $request = $this->listEarnFixedTermLendsRequest($associative_array);
 
         return $this->client
@@ -4736,7 +4736,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2003
+     * @return \GateApi\Model\CreateEarnFixedTermLendResponse
      */
     public function createEarnFixedTermLend($fixed_term_lend_request = null)
     {
@@ -4753,7 +4753,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2003, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CreateEarnFixedTermLendResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createEarnFixedTermLendWithHttpInfo($fixed_term_lend_request = null)
     {
@@ -4783,7 +4783,7 @@ class EarnApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2003';
+        $returnType = '\GateApi\Model\CreateEarnFixedTermLendResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4830,7 +4830,7 @@ class EarnApi
      */
     public function createEarnFixedTermLendAsyncWithHttpInfo($fixed_term_lend_request = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse2003';
+        $returnType = '\GateApi\Model\CreateEarnFixedTermLendResponse';
         $request = $this->createEarnFixedTermLendRequest($fixed_term_lend_request);
 
         return $this->client
@@ -4962,15 +4962,15 @@ class EarnApi
      *
      * Redeem
      *
-     * @param  \GateApi\Model\InlineObject $inline_object inline_object (optional)
+     * @param  \GateApi\Model\EarnFixedTermPreRedeemRequest $earn_fixed_term_pre_redeem_request earn_fixed_term_pre_redeem_request (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2004
+     * @return \GateApi\Model\CreateEarnFixedTermPreRedeemResponse
      */
-    public function createEarnFixedTermPreRedeem($inline_object = null)
+    public function createEarnFixedTermPreRedeem($earn_fixed_term_pre_redeem_request = null)
     {
-        list($response) = $this->createEarnFixedTermPreRedeemWithHttpInfo($inline_object);
+        list($response) = $this->createEarnFixedTermPreRedeemWithHttpInfo($earn_fixed_term_pre_redeem_request);
         return $response;
     }
 
@@ -4979,15 +4979,15 @@ class EarnApi
      *
      * Redeem
      *
-     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     * @param  \GateApi\Model\EarnFixedTermPreRedeemRequest $earn_fixed_term_pre_redeem_request (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2004, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CreateEarnFixedTermPreRedeemResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createEarnFixedTermPreRedeemWithHttpInfo($inline_object = null)
+    public function createEarnFixedTermPreRedeemWithHttpInfo($earn_fixed_term_pre_redeem_request = null)
     {
-        $request = $this->createEarnFixedTermPreRedeemRequest($inline_object);
+        $request = $this->createEarnFixedTermPreRedeemRequest($earn_fixed_term_pre_redeem_request);
 
         $options = $this->createHttpClientOption();
         try {
@@ -5013,7 +5013,7 @@ class EarnApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2004';
+        $returnType = '\GateApi\Model\CreateEarnFixedTermPreRedeemResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5033,14 +5033,14 @@ class EarnApi
      *
      * Redeem
      *
-     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     * @param  \GateApi\Model\EarnFixedTermPreRedeemRequest $earn_fixed_term_pre_redeem_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createEarnFixedTermPreRedeemAsync($inline_object = null)
+    public function createEarnFixedTermPreRedeemAsync($earn_fixed_term_pre_redeem_request = null)
     {
-        return $this->createEarnFixedTermPreRedeemAsyncWithHttpInfo($inline_object)
+        return $this->createEarnFixedTermPreRedeemAsyncWithHttpInfo($earn_fixed_term_pre_redeem_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5053,15 +5053,15 @@ class EarnApi
      *
      * Redeem
      *
-     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     * @param  \GateApi\Model\EarnFixedTermPreRedeemRequest $earn_fixed_term_pre_redeem_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createEarnFixedTermPreRedeemAsyncWithHttpInfo($inline_object = null)
+    public function createEarnFixedTermPreRedeemAsyncWithHttpInfo($earn_fixed_term_pre_redeem_request = null)
     {
-        $returnType = '\GateApi\Model\InlineResponse2004';
-        $request = $this->createEarnFixedTermPreRedeemRequest($inline_object);
+        $returnType = '\GateApi\Model\CreateEarnFixedTermPreRedeemResponse';
+        $request = $this->createEarnFixedTermPreRedeemRequest($earn_fixed_term_pre_redeem_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5100,12 +5100,12 @@ class EarnApi
     /**
      * Create request for operation 'createEarnFixedTermPreRedeem'
      *
-     * @param  \GateApi\Model\InlineObject $inline_object (optional)
+     * @param  \GateApi\Model\EarnFixedTermPreRedeemRequest $earn_fixed_term_pre_redeem_request (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createEarnFixedTermPreRedeemRequest($inline_object = null)
+    protected function createEarnFixedTermPreRedeemRequest($earn_fixed_term_pre_redeem_request = null)
     {
 
         $resourcePath = '/earn/fixed-term/user/pre-redeem';
@@ -5117,8 +5117,8 @@ class EarnApi
 
         // body params
         $_tempBody = null;
-        if (isset($inline_object)) {
-            $_tempBody = $inline_object;
+        if (isset($earn_fixed_term_pre_redeem_request)) {
+            $_tempBody = $earn_fixed_term_pre_redeem_request;
         }
 
         if ($multipart) {
@@ -5207,7 +5207,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2005
+     * @return \GateApi\Model\ListEarnFixedTermHistoryResponse
      */
     public function listEarnFixedTermHistory($associative_array)
     {
@@ -5235,7 +5235,7 @@ class EarnApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2005, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ListEarnFixedTermHistoryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listEarnFixedTermHistoryWithHttpInfo($associative_array)
     {
@@ -5265,7 +5265,7 @@ class EarnApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2005';
+        $returnType = '\GateApi\Model\ListEarnFixedTermHistoryResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5334,7 +5334,7 @@ class EarnApi
      */
     public function listEarnFixedTermHistoryAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2005';
+        $returnType = '\GateApi\Model\ListEarnFixedTermHistoryResponse';
         $request = $this->listEarnFixedTermHistoryRequest($associative_array);
 
         return $this->client

@@ -4803,7 +4803,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2006[]
+     * @return \GateApi\Model\InlineResponse200[]
      */
     public function getCrossexFee()
     {
@@ -4819,7 +4819,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2006[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\InlineResponse200[], HTTP status code, HTTP response headers (array of strings)
      */
     public function getCrossexFeeWithHttpInfo()
     {
@@ -4849,7 +4849,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2006[]';
+        $returnType = '\GateApi\Model\InlineResponse200[]';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -4894,7 +4894,7 @@ class CrossExApi
      */
     public function getCrossexFeeAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\InlineResponse2006[]';
+        $returnType = '\GateApi\Model\InlineResponse200[]';
         $request = $this->getCrossexFeeRequest();
 
         return $this->client

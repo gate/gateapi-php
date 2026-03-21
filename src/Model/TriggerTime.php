@@ -46,7 +46,7 @@ class TriggerTime implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'triggerTime';
+    protected static $openAPIModelName = 'TriggerTime';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

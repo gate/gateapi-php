@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## listSquareAiSearch
 
-> \GateApi\Model\InlineResponse2009 listSquareAiSearch($keyword, $currency, $time_range, $sort, $limit, $page)
+> \GateApi\Model\ListSquareAiSearchResponse listSquareAiSearch($keyword, $currency, $time_range, $sort, $limit, $page)
 
 AI MCP Dynamic Search
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2009**](../Model/InlineResponse2009.md)
+[**\GateApi\Model\ListSquareAiSearchResponse**](../Model/ListSquareAiSearchResponse.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ No authorization required
 
 ## listLiveReplay
 
-> \GateApi\Model\InlineResponse20010 listLiveReplay($tag, $coin, $sort, $limit)
+> \GateApi\Model\ListLiveReplayResponse listLiveReplay($tag, $coin, $sort, $limit)
 
 Gate AI Assistant live stream data retrieval
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse20010**](../Model/InlineResponse20010.md)
+[**\GateApi\Model\ListLiveReplayResponse**](../Model/ListLiveReplayResponse.md)
 
 ### Authorization
 

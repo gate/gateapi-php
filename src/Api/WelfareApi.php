@@ -121,7 +121,7 @@ class WelfareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\ApiResponseExSkillGetUserIdentityResp|\GateApi\Model\InlineResponse400
+     * @return \GateApi\Model\ApiResponseExSkillGetUserIdentityResp|\GateApi\Model\GetUserIdentityError
      */
     public function getUserIdentity()
     {
@@ -137,7 +137,7 @@ class WelfareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\ApiResponseExSkillGetUserIdentityResp|\GateApi\Model\InlineResponse400, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ApiResponseExSkillGetUserIdentityResp|\GateApi\Model\GetUserIdentityError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserIdentityWithHttpInfo()
     {
@@ -343,7 +343,7 @@ class WelfareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\ApiResponseExSkillGetBeginnerTaskListResp|\GateApi\Model\InlineResponse400
+     * @return \GateApi\Model\ApiResponseExSkillGetBeginnerTaskListResp|\GateApi\Model\GetBeginnerTaskListError
      */
     public function getBeginnerTaskList()
     {
@@ -359,7 +359,7 @@ class WelfareApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\ApiResponseExSkillGetBeginnerTaskListResp|\GateApi\Model\InlineResponse400, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ApiResponseExSkillGetBeginnerTaskListResp|\GateApi\Model\GetBeginnerTaskListError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBeginnerTaskListWithHttpInfo()
     {

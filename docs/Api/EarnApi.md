@@ -894,7 +894,7 @@ Name | Type | Description  | Notes
 
 ## listEarnFixedTermProducts
 
-> \GateApi\Model\InlineResponse200 listEarnFixedTermProducts($page, $limit, $asset, $type)
+> \GateApi\Model\ListEarnFixedTermProductsResponse listEarnFixedTermProducts($page, $limit, $asset, $type)
 
 Get product list
 
@@ -942,7 +942,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse200**](../Model/InlineResponse200.md)
+[**\GateApi\Model\ListEarnFixedTermProductsResponse**](../Model/ListEarnFixedTermProductsResponse.md)
 
 ### Authorization
 
@@ -960,7 +960,7 @@ No authorization required
 
 ## listEarnFixedTermProductsByAsset
 
-> \GateApi\Model\InlineResponse2001 listEarnFixedTermProductsByAsset($asset, $type)
+> \GateApi\Model\ListEarnFixedTermProductsByAssetResponse listEarnFixedTermProductsByAsset($asset, $type)
 
 Get product list by single currency
 
@@ -1004,7 +1004,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2001**](../Model/InlineResponse2001.md)
+[**\GateApi\Model\ListEarnFixedTermProductsByAssetResponse**](../Model/ListEarnFixedTermProductsByAssetResponse.md)
 
 ### Authorization
 
@@ -1022,7 +1022,7 @@ No authorization required
 
 ## listEarnFixedTermLends
 
-> \GateApi\Model\InlineResponse2002 listEarnFixedTermLends($order_type, $page, $limit, $product_id, $order_id, $asset, $sub_business, $business_filter)
+> \GateApi\Model\ListEarnFixedTermLendsResponse listEarnFixedTermLends($order_type, $page, $limit, $product_id, $order_id, $asset, $sub_business, $business_filter)
 
 Subscription list
 
@@ -1082,7 +1082,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2002**](../Model/InlineResponse2002.md)
+[**\GateApi\Model\ListEarnFixedTermLendsResponse**](../Model/ListEarnFixedTermLendsResponse.md)
 
 ### Authorization
 
@@ -1100,7 +1100,7 @@ Name | Type | Description  | Notes
 
 ## createEarnFixedTermLend
 
-> \GateApi\Model\InlineResponse2003 createEarnFixedTermLend($fixed_term_lend_request)
+> \GateApi\Model\CreateEarnFixedTermLendResponse createEarnFixedTermLend($fixed_term_lend_request)
 
 Subscription
 
@@ -1144,7 +1144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2003**](../Model/InlineResponse2003.md)
+[**\GateApi\Model\CreateEarnFixedTermLendResponse**](../Model/CreateEarnFixedTermLendResponse.md)
 
 ### Authorization
 
@@ -1162,7 +1162,7 @@ Name | Type | Description  | Notes
 
 ## createEarnFixedTermPreRedeem
 
-> \GateApi\Model\InlineResponse2004 createEarnFixedTermPreRedeem($inline_object)
+> \GateApi\Model\CreateEarnFixedTermPreRedeemResponse createEarnFixedTermPreRedeem($earn_fixed_term_pre_redeem_request)
 
 Redeem
 
@@ -1184,10 +1184,10 @@ $apiInstance = new GateApi\Api\EarnApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object = new \GateApi\Model\InlineObject(); // \GateApi\Model\InlineObject | 
+$earn_fixed_term_pre_redeem_request = new \GateApi\Model\EarnFixedTermPreRedeemRequest(); // \GateApi\Model\EarnFixedTermPreRedeemRequest | 
 
 try {
-    $result = $apiInstance->createEarnFixedTermPreRedeem($inline_object);
+    $result = $apiInstance->createEarnFixedTermPreRedeem($earn_fixed_term_pre_redeem_request);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -1202,11 +1202,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object** | [**\GateApi\Model\InlineObject**](../Model/InlineObject.md)|  | [optional]
+ **earn_fixed_term_pre_redeem_request** | [**\GateApi\Model\EarnFixedTermPreRedeemRequest**](../Model/EarnFixedTermPreRedeemRequest.md)|  | [optional]
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2004**](../Model/InlineResponse2004.md)
+[**\GateApi\Model\CreateEarnFixedTermPreRedeemResponse**](../Model/CreateEarnFixedTermPreRedeemResponse.md)
 
 ### Authorization
 
@@ -1224,7 +1224,7 @@ Name | Type | Description  | Notes
 
 ## listEarnFixedTermHistory
 
-> \GateApi\Model\InlineResponse2005 listEarnFixedTermHistory($type, $page, $limit, $product_id, $order_id, $asset, $start_at, $end_at, $sub_business, $business_filter)
+> \GateApi\Model\ListEarnFixedTermHistoryResponse listEarnFixedTermHistory($type, $page, $limit, $product_id, $order_id, $asset, $start_at, $end_at, $sub_business, $business_filter)
 
 Subscription history
 
@@ -1288,7 +1288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2005**](../Model/InlineResponse2005.md)
+[**\GateApi\Model\ListEarnFixedTermHistoryResponse**](../Model/ListEarnFixedTermHistoryResponse.md)
 
 ### Authorization
 

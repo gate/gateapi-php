@@ -1856,7 +1856,7 @@ Name | Type | Description  | Notes
 
 ## createSpotPriceTriggeredOrder
 
-> \GateApi\Model\TriggerOrderResponse1 createSpotPriceTriggeredOrder($spot_price_triggered_order)
+> \GateApi\Model\TriggerOrderResponse createSpotPriceTriggeredOrder($spot_price_triggered_order)
 
 Create price-triggered order
 
@@ -1898,7 +1898,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\TriggerOrderResponse1**](../Model/TriggerOrderResponse1.md)
+[**\GateApi\Model\TriggerOrderResponse**](../Model/TriggerOrderResponse.md)
 
 ### Authorization
 

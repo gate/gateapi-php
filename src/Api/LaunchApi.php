@@ -747,7 +747,7 @@ class LaunchApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse20011|\GateApi\Model\LaunchPoolV4ErrorResponse|\GateApi\Model\LaunchPoolV4ErrorResponse
+     * @return \GateApi\Model\RedeemLaunchPoolResponse|\GateApi\Model\LaunchPoolV4ErrorResponse|\GateApi\Model\LaunchPoolV4ErrorResponse
      */
     public function redeemLaunchPool($redeem_v4)
     {
@@ -764,7 +764,7 @@ class LaunchApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse20011|\GateApi\Model\LaunchPoolV4ErrorResponse|\GateApi\Model\LaunchPoolV4ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\RedeemLaunchPoolResponse|\GateApi\Model\LaunchPoolV4ErrorResponse|\GateApi\Model\LaunchPoolV4ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function redeemLaunchPoolWithHttpInfo($redeem_v4)
     {
@@ -794,7 +794,7 @@ class LaunchApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse20011';
+        $returnType = '\GateApi\Model\RedeemLaunchPoolResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -841,7 +841,7 @@ class LaunchApi
      */
     public function redeemLaunchPoolAsyncWithHttpInfo($redeem_v4)
     {
-        $returnType = '\GateApi\Model\InlineResponse20011';
+        $returnType = '\GateApi\Model\RedeemLaunchPoolResponse';
         $request = $this->redeemLaunchPoolRequest($redeem_v4);
 
         return $this->client

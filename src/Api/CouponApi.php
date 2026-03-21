@@ -130,7 +130,7 @@ class CouponApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2007
+     * @return \GateApi\Model\ListUserCouponsResponse
      */
     public function listUserCoupons($associative_array)
     {
@@ -155,7 +155,7 @@ class CouponApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\ListUserCouponsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listUserCouponsWithHttpInfo($associative_array)
     {
@@ -185,7 +185,7 @@ class CouponApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\ListUserCouponsResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -248,7 +248,7 @@ class CouponApi
      */
     public function listUserCouponsAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2007';
+        $returnType = '\GateApi\Model\ListUserCouponsResponse';
         $request = $this->listUserCouponsRequest($associative_array);
 
         return $this->client
@@ -507,7 +507,7 @@ class CouponApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\InlineResponse2008
+     * @return \GateApi\Model\GetUserCouponDetailResponse
      */
     public function getUserCouponDetail($associative_array)
     {
@@ -528,7 +528,7 @@ class CouponApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\InlineResponse2008, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\GetUserCouponDetailResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserCouponDetailWithHttpInfo($associative_array)
     {
@@ -558,7 +558,7 @@ class CouponApi
             );
         }
 
-        $returnType = '\GateApi\Model\InlineResponse2008';
+        $returnType = '\GateApi\Model\GetUserCouponDetailResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -613,7 +613,7 @@ class CouponApi
      */
     public function getUserCouponDetailAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\InlineResponse2008';
+        $returnType = '\GateApi\Model\GetUserCouponDetailResponse';
         $request = $this->getUserCouponDetailRequest($associative_array);
 
         return $this->client

@@ -1665,7 +1665,7 @@ Name | Type | Description  | Notes
 
 ## createPriceTriggeredDeliveryOrder
 
-> \GateApi\Model\TriggerOrderResponse1 createPriceTriggeredDeliveryOrder($settle, $futures_price_triggered_order)
+> \GateApi\Model\TriggerOrderResponse createPriceTriggeredDeliveryOrder($settle, $futures_price_triggered_order)
 
 Create price-triggered order
 
@@ -1709,7 +1709,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\TriggerOrderResponse1**](../Model/TriggerOrderResponse1.md)
+[**\GateApi\Model\TriggerOrderResponse**](../Model/TriggerOrderResponse.md)
 
 ### Authorization
 

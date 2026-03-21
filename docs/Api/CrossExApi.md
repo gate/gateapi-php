@@ -1233,7 +1233,7 @@ Name | Type | Description  | Notes
 
 ## getCrossexFee
 
-> \GateApi\Model\InlineResponse2006[] getCrossexFee()
+> \GateApi\Model\InlineResponse200[] getCrossexFee()
 
 Query User Fee Rates
 
@@ -1273,7 +1273,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\InlineResponse2006[]**](../Model/InlineResponse2006.md)
+[**\GateApi\Model\InlineResponse200[]**](../Model/InlineResponse200.md)
 
 ### Authorization
 

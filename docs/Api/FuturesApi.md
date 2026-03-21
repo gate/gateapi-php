@@ -3239,7 +3239,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     $config
 );
 $settle = 'usdt'; // string | Settle currency
-$request_body = array('request_body_example'); // string[] | 
+$request_body = array('[\"1\",\"2\",\"3\"]'); // string[] | 
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 
 try {
