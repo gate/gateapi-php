@@ -1,6 +1,6 @@
 <?php
 /**
- * FuturesOrder
+ * FuturesOrderTimerange
  *
  * PHP version 7
  *
@@ -30,7 +30,7 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * FuturesOrder Class Doc Comment
+ * FuturesOrderTimerange Class Doc Comment
  *
  * @category Class
  * @description Futures order details
@@ -38,7 +38,7 @@ use \GateApi\ObjectSerializer;
  * @author   Gate
  * @link     https://www.gate.com
  */
-class FuturesOrder implements ModelInterface, ArrayAccess
+class FuturesOrderTimerange implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FuturesOrder';
+    protected static $openAPIModelName = 'FuturesOrderTimerange';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'id' => 'int',
         'user' => 'int',
         'create_time' => 'double',
-        'update_time' => 'double',
-        'finish_time' => 'double',
+        'update_time' => 'string',
+        'finish_time' => 'string',
         'finish_as' => 'string',
         'status' => 'string',
         'contract' => 'string',
@@ -96,8 +96,8 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'id' => 'int64',
         'user' => null,
         'create_time' => 'double',
-        'update_time' => 'double',
-        'finish_time' => 'double',
+        'update_time' => null,
+        'finish_time' => null,
         'finish_as' => null,
         'status' => null,
         'contract' => null,
@@ -597,7 +597,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets update_time
      *
-     * @return double|null
+     * @return string|null
      */
     public function getUpdateTime()
     {
@@ -607,7 +607,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets update_time
      *
-     * @param double|null $update_time OrderUpdateTime
+     * @param string|null $update_time OrderUpdateTime
      *
      * @return $this
      */
@@ -621,7 +621,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Gets finish_time
      *
-     * @return double|null
+     * @return string|null
      */
     public function getFinishTime()
     {
@@ -631,7 +631,7 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     /**
      * Sets finish_time
      *
-     * @param double|null $finish_time Order finished time. Not returned if order is open
+     * @param string|null $finish_time Order finished time. Not returned if order is open
      *
      * @return $this
      */

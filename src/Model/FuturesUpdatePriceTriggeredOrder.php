@@ -58,6 +58,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
         'settle' => 'string',
         'order_id' => 'int',
         'size' => 'int',
+        'amount' => 'string',
         'price' => 'string',
         'trigger_price' => 'string',
         'price_type' => 'int',
@@ -74,6 +75,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
         'settle' => null,
         'order_id' => 'int64',
         'size' => 'int64',
+        'amount' => null,
         'price' => null,
         'trigger_price' => null,
         'price_type' => 'int32',
@@ -111,6 +113,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
         'settle' => 'settle',
         'order_id' => 'order_id',
         'size' => 'size',
+        'amount' => 'amount',
         'price' => 'price',
         'trigger_price' => 'trigger_price',
         'price_type' => 'price_type',
@@ -127,6 +130,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
         'settle' => 'setSettle',
         'order_id' => 'setOrderId',
         'size' => 'setSize',
+        'amount' => 'setAmount',
         'price' => 'setPrice',
         'trigger_price' => 'setTriggerPrice',
         'price_type' => 'setPriceType',
@@ -143,6 +147,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
         'settle' => 'getSettle',
         'order_id' => 'getOrderId',
         'size' => 'getSize',
+        'amount' => 'getAmount',
         'price' => 'getPrice',
         'trigger_price' => 'getTriggerPrice',
         'price_type' => 'getPriceType',
@@ -230,6 +235,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
@@ -340,6 +346,30 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     public function setSize($size)
     {
         $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount
+     *
+     * @return string|null
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param string|null $amount Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
+     *
+     * @return $this
+     */
+    public function setAmount($amount)
+    {
+        $this->container['amount'] = $amount;
 
         return $this;
     }

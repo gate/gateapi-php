@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **settle** | **string** | Settlement Currency (e.g., USDT, BTC) | [optional] 
 **order_id** | **int** | ID of the Pending Take-Profit/Stop-Loss Trigger Order | 
 **size** | **int** | Modified Contract Quantity. Full Close: 0; Partial Close: Positive/Negative values indicate direction (consistent with the creation interface logic). | [optional] 
+**amount** | **string** | Same as &#x60;size&#x60;; used for decimal contract size. When both &#x60;size&#x60; and &#x60;amount&#x60; are provided, &#x60;amount&#x60; takes precedence. | [optional] 
 **price** | **string** | Represents the modified trading price. A value of 0 indicates a market order. | [optional] 
 **trigger_price** | **string** | Modified Trigger Price | [optional] 
 **price_type** | **int** | Reference price type. 0 - Latest trade price, 1 - Mark price, 2 - Index price | [optional] 

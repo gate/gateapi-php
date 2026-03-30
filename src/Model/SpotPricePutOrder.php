@@ -332,6 +332,9 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['time_in_force'] === null) {
+            $invalidProperties[] = "'time_in_force' can't be null";
+        }
         $allowedValues = $this->getTimeInForceAllowableValues();
         if (!is_null($this->container['time_in_force']) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -505,7 +508,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
     /**
      * Gets time_in_force
      *
-     * @return string|null
+     * @return string
      */
     public function getTimeInForce()
     {
@@ -515,14 +518,14 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
     /**
      * Sets time_in_force
      *
-     * @param string|null $time_in_force time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only
+     * @param string $time_in_force time_in_force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only
      *
      * @return $this
      */
     public function setTimeInForce($time_in_force)
     {
         $allowedValues = $this->getTimeInForceAllowableValues();
-        if (!is_null($time_in_force) && !in_array($time_in_force, $allowedValues, true)) {
+        if (!in_array($time_in_force, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'time_in_force', must be one of '%s'",

@@ -1633,7 +1633,7 @@ class FlashSwapApi
             );
         }
 
-        $resourcePath = '/flash-swap/multi-currency/many-to-one/order/create';
+        $resourcePath = '/flash_swap/multi-currency/many-to-one/order/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1869,7 +1869,7 @@ class FlashSwapApi
             );
         }
 
-        $resourcePath = '/flash-swap/multi-currency/many-to-one/order/preview';
+        $resourcePath = '/flash_swap/multi-currency/many-to-one/order/preview';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2105,7 +2105,7 @@ class FlashSwapApi
             );
         }
 
-        $resourcePath = '/flash-swap/order/create';
+        $resourcePath = '/flash_swap/order/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2341,7 +2341,7 @@ class FlashSwapApi
             );
         }
 
-        $resourcePath = '/flash-swap/multi-currency/one-to-many/order/create';
+        $resourcePath = '/flash_swap/multi-currency/one-to-many/order/create';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2577,7 +2577,7 @@ class FlashSwapApi
             );
         }
 
-        $resourcePath = '/flash-swap/multi-currency/one-to-many/order/preview';
+        $resourcePath = '/flash_swap/multi-currency/one-to-many/order/preview';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2850,7 +2850,7 @@ class FlashSwapApi
             );
         }
 
-        $resourcePath = '/flash-swap/order/preview';
+        $resourcePath = '/flash_swap/order/preview';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

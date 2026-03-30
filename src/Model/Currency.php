@@ -65,7 +65,8 @@ class Currency implements ModelInterface, ArrayAccess
         'chain' => 'string',
         'chains' => '\GateApi\Model\SpotCurrencyChain[]',
         'total_supply' => 'string',
-        'market_cap' => 'string'
+        'market_cap' => 'string',
+        'category' => 'string[]'
     ];
 
     /**
@@ -85,7 +86,8 @@ class Currency implements ModelInterface, ArrayAccess
         'chain' => null,
         'chains' => null,
         'total_supply' => null,
-        'market_cap' => null
+        'market_cap' => null,
+        'category' => null
     ];
 
     /**
@@ -126,7 +128,8 @@ class Currency implements ModelInterface, ArrayAccess
         'chain' => 'chain',
         'chains' => 'chains',
         'total_supply' => 'total_supply',
-        'market_cap' => 'market_cap'
+        'market_cap' => 'market_cap',
+        'category' => 'category'
     ];
 
     /**
@@ -146,7 +149,8 @@ class Currency implements ModelInterface, ArrayAccess
         'chain' => 'setChain',
         'chains' => 'setChains',
         'total_supply' => 'setTotalSupply',
-        'market_cap' => 'setMarketCap'
+        'market_cap' => 'setMarketCap',
+        'category' => 'setCategory'
     ];
 
     /**
@@ -166,7 +170,8 @@ class Currency implements ModelInterface, ArrayAccess
         'chain' => 'getChain',
         'chains' => 'getChains',
         'total_supply' => 'getTotalSupply',
-        'market_cap' => 'getMarketCap'
+        'market_cap' => 'getMarketCap',
+        'category' => 'getCategory'
     ];
 
     /**
@@ -241,6 +246,7 @@ class Currency implements ModelInterface, ArrayAccess
         $this->container['chains'] = isset($data['chains']) ? $data['chains'] : null;
         $this->container['total_supply'] = isset($data['total_supply']) ? $data['total_supply'] : null;
         $this->container['market_cap'] = isset($data['market_cap']) ? $data['market_cap'] : null;
+        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
     }
 
     /**
@@ -551,6 +557,30 @@ class Currency implements ModelInterface, ArrayAccess
     public function setMarketCap($market_cap)
     {
         $this->container['market_cap'] = $market_cap;
+
+        return $this;
+    }
+
+    /**
+     * Gets category
+     *
+     * @return string[]|null
+     */
+    public function getCategory()
+    {
+        return $this->container['category'];
+    }
+
+    /**
+     * Sets category
+     *
+     * @param string[]|null $category 币种分类  - stocks: 股票 - metals: 金属 - indices: 指数 - forex: 外汇 - commodities: 大宗商品
+     *
+     * @return $this
+     */
+    public function setCategory($category)
+    {
+        $this->container['category'] = $category;
 
         return $this;
     }

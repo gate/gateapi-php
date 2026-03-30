@@ -56,6 +56,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'contract' => 'string',
         'size' => 'int',
+        'amount' => 'string',
         'price' => 'string',
         'close' => 'bool',
         'tif' => 'string',
@@ -74,6 +75,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'contract' => null,
         'size' => 'int64',
+        'amount' => null,
         'price' => null,
         'close' => null,
         'tif' => null,
@@ -113,6 +115,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'contract' => 'contract',
         'size' => 'size',
+        'amount' => 'amount',
         'price' => 'price',
         'close' => 'close',
         'tif' => 'tif',
@@ -131,6 +134,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     protected static $setters = [
         'contract' => 'setContract',
         'size' => 'setSize',
+        'amount' => 'setAmount',
         'price' => 'setPrice',
         'close' => 'setClose',
         'tif' => 'setTif',
@@ -149,6 +153,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     protected static $getters = [
         'contract' => 'getContract',
         'size' => 'getSize',
+        'amount' => 'getAmount',
         'price' => 'getPrice',
         'close' => 'getClose',
         'tif' => 'getTif',
@@ -236,6 +241,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     {
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['close'] = isset($data['close']) ? $data['close'] : false;
         $this->container['tif'] = isset($data['tif']) ? $data['tif'] : 'gtc';
@@ -328,6 +334,30 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     public function setSize($size)
     {
         $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount
+     *
+     * @return string|null
+     */
+    public function getAmount()
+    {
+        return $this->container['amount'];
+    }
+
+    /**
+     * Sets amount
+     *
+     * @param string|null $amount Same as `size`; used for decimal contract size. When both `size` and `amount` are provided, `amount` takes precedence.
+     *
+     * @return $this
+     */
+    public function setAmount($amount)
+    {
+        $this->container['amount'] = $amount;
 
         return $this;
     }
