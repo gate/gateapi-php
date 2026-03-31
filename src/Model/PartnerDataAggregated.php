@@ -199,15 +199,6 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
     const BUSINESS_TYPE_6 = 6;
     const BUSINESS_TYPE_7 = 7;
     const BUSINESS_TYPE_8 = 8;
-    const BUSINESS_TYPE_DESC_ = '全部';
-    const BUSINESS_TYPE_DESC_ = '现货';
-    const BUSINESS_TYPE_DESC_ = '合约';
-    const BUSINESS_TYPE_DESC_ALPHA = 'Alpha';
-    const BUSINESS_TYPE_DESC_WEB3 = 'Web3';
-    const BUSINESS_TYPE_DESC_PERPS_DEX = 'Perps(DEX)';
-    const BUSINESS_TYPE_DESC_EXCHANGE_ALL = 'Exchange All';
-    const BUSINESS_TYPE_DESC_WEB3_ALL = 'Web3 All';
-    const BUSINESS_TYPE_DESC_TRAD_FI = 'TradFi';
     
 
     
@@ -228,26 +219,6 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
             self::BUSINESS_TYPE_6,
             self::BUSINESS_TYPE_7,
             self::BUSINESS_TYPE_8,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getBusinessTypeDescAllowableValues()
-    {
-        return [
-            self::BUSINESS_TYPE_DESC_,
-            self::BUSINESS_TYPE_DESC_,
-            self::BUSINESS_TYPE_DESC_,
-            self::BUSINESS_TYPE_DESC_ALPHA,
-            self::BUSINESS_TYPE_DESC_WEB3,
-            self::BUSINESS_TYPE_DESC_PERPS_DEX,
-            self::BUSINESS_TYPE_DESC_EXCHANGE_ALL,
-            self::BUSINESS_TYPE_DESC_WEB3_ALL,
-            self::BUSINESS_TYPE_DESC_TRAD_FI,
         ];
     }
     
@@ -342,14 +313,6 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
         if ($this->container['business_type_desc'] === null) {
             $invalidProperties[] = "'business_type_desc' can't be null";
         }
-        $allowedValues = $this->getBusinessTypeDescAllowableValues();
-        if (!is_null($this->container['business_type_desc']) && !in_array($this->container['business_type_desc'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'business_type_desc', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -585,21 +548,12 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
     /**
      * Sets business_type_desc
      *
-     * @param string $business_type_desc Business type description
+     * @param string $business_type_desc 业务类型描述，可取值：全部, 现货, 合约, Alpha, Web3, Perps(DEX), Exchange All, Web3 All, TradFi
      *
      * @return $this
      */
     public function setBusinessTypeDesc($business_type_desc)
     {
-        $allowedValues = $this->getBusinessTypeDescAllowableValues();
-        if (!in_array($business_type_desc, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'business_type_desc', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['business_type_desc'] = $business_type_desc;
 
         return $this;
