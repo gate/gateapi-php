@@ -1142,15 +1142,17 @@ class EarnApi
      *
      * Staking coins
      *
-     * @param  \GateApi\Model\FindCoin $find_coin find_coin (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object[]
      */
-    public function findCoin($find_coin)
+    public function findCoin($associative_array)
     {
-        list($response) = $this->findCoinWithHttpInfo($find_coin);
+        list($response) = $this->findCoinWithHttpInfo($associative_array);
         return $response;
     }
 
@@ -1159,15 +1161,17 @@ class EarnApi
      *
      * Staking coins
      *
-     * @param  \GateApi\Model\FindCoin $find_coin (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function findCoinWithHttpInfo($find_coin)
+    public function findCoinWithHttpInfo($associative_array)
     {
-        $request = $this->findCoinRequest($find_coin);
+        $request = $this->findCoinRequest($associative_array);
 
         $options = $this->createHttpClientOption();
         try {
@@ -1213,14 +1217,16 @@ class EarnApi
      *
      * Staking coins
      *
-     * @param  \GateApi\Model\FindCoin $find_coin (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findCoinAsync($find_coin)
+    public function findCoinAsync($associative_array)
     {
-        return $this->findCoinAsyncWithHttpInfo($find_coin)
+        return $this->findCoinAsyncWithHttpInfo($associative_array)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1233,15 +1239,17 @@ class EarnApi
      *
      * Staking coins
      *
-     * @param  \GateApi\Model\FindCoin $find_coin (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function findCoinAsyncWithHttpInfo($find_coin)
+    public function findCoinAsyncWithHttpInfo($associative_array)
     {
         $returnType = 'object[]';
-        $request = $this->findCoinRequest($find_coin);
+        $request = $this->findCoinRequest($associative_array);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1280,19 +1288,18 @@ class EarnApi
     /**
      * Create request for operation 'findCoin'
      *
-     * @param  \GateApi\Model\FindCoin $find_coin (required)
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function findCoinRequest($find_coin)
+    protected function findCoinRequest($associative_array)
     {
-        // verify the required parameter 'find_coin' is set
-        if ($find_coin === null || (is_array($find_coin) && count($find_coin) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $find_coin when calling findCoin'
-            );
-        }
+        // unbox the parameters from the associative array
+        $cointype = array_key_exists('cointype', $associative_array) ? $associative_array['cointype'] : null;
+
 
         $resourcePath = '/earn/staking/coins';
         $formParams = [];
@@ -1301,11 +1308,20 @@ class EarnApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($cointype !== null) {
+            if('form' === 'form' && is_array($cointype)) {
+                foreach($cointype as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['cointype'] = $cointype;
+            }
+        }
+
         // body params
         $_tempBody = null;
-        if (isset($find_coin)) {
-            $_tempBody = $find_coin;
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1314,7 +1330,7 @@ class EarnApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['application/json']
+                []
             );
         }
 
@@ -2391,6 +2407,2689 @@ class EarnApi
             }
             else {
                 $queryParams['coin'] = $coin;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createAutoInvestPlan
+     *
+     * Create auto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanCreate $auto_invest_plan_create auto_invest_plan_create (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestPlanCreateResp
+     */
+    public function createAutoInvestPlan($auto_invest_plan_create)
+    {
+        list($response) = $this->createAutoInvestPlanWithHttpInfo($auto_invest_plan_create);
+        return $response;
+    }
+
+    /**
+     * Operation createAutoInvestPlanWithHttpInfo
+     *
+     * Create auto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanCreate $auto_invest_plan_create (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestPlanCreateResp, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createAutoInvestPlanWithHttpInfo($auto_invest_plan_create)
+    {
+        $request = $this->createAutoInvestPlanRequest($auto_invest_plan_create);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestPlanCreateResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createAutoInvestPlanAsync
+     *
+     * Create auto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanCreate $auto_invest_plan_create (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAutoInvestPlanAsync($auto_invest_plan_create)
+    {
+        return $this->createAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_create)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAutoInvestPlanAsyncWithHttpInfo
+     *
+     * Create auto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanCreate $auto_invest_plan_create (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_create)
+    {
+        $returnType = '\GateApi\Model\AutoInvestPlanCreateResp';
+        $request = $this->createAutoInvestPlanRequest($auto_invest_plan_create);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createAutoInvestPlan'
+     *
+     * @param  \GateApi\Model\AutoInvestPlanCreate $auto_invest_plan_create (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createAutoInvestPlanRequest($auto_invest_plan_create)
+    {
+        // verify the required parameter 'auto_invest_plan_create' is set
+        if ($auto_invest_plan_create === null || (is_array($auto_invest_plan_create) && count($auto_invest_plan_create) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $auto_invest_plan_create when calling createAutoInvestPlan'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/plans/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($auto_invest_plan_create)) {
+            $_tempBody = $auto_invest_plan_create;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAutoInvestPlan
+     *
+     * UpdateAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanUpdate $auto_invest_plan_update auto_invest_plan_update (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function updateAutoInvestPlan($auto_invest_plan_update)
+    {
+        $this->updateAutoInvestPlanWithHttpInfo($auto_invest_plan_update);
+    }
+
+    /**
+     * Operation updateAutoInvestPlanWithHttpInfo
+     *
+     * UpdateAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanUpdate $auto_invest_plan_update (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAutoInvestPlanWithHttpInfo($auto_invest_plan_update)
+    {
+        $request = $this->updateAutoInvestPlanRequest($auto_invest_plan_update);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        return [null, $statusCode, $response->getHeaders()];
+    }
+
+    /**
+     * Operation updateAutoInvestPlanAsync
+     *
+     * UpdateAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanUpdate $auto_invest_plan_update (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAutoInvestPlanAsync($auto_invest_plan_update)
+    {
+        return $this->updateAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_update)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAutoInvestPlanAsyncWithHttpInfo
+     *
+     * UpdateAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanUpdate $auto_invest_plan_update (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_update)
+    {
+        $returnType = '';
+        $request = $this->updateAutoInvestPlanRequest($auto_invest_plan_update);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAutoInvestPlan'
+     *
+     * @param  \GateApi\Model\AutoInvestPlanUpdate $auto_invest_plan_update (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateAutoInvestPlanRequest($auto_invest_plan_update)
+    {
+        // verify the required parameter 'auto_invest_plan_update' is set
+        if ($auto_invest_plan_update === null || (is_array($auto_invest_plan_update) && count($auto_invest_plan_update) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $auto_invest_plan_update when calling updateAutoInvestPlan'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/plans/update';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($auto_invest_plan_update)) {
+            $_tempBody = $auto_invest_plan_update;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation stopAutoInvestPlan
+     *
+     * StopAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanStop $auto_invest_plan_stop auto_invest_plan_stop (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function stopAutoInvestPlan($auto_invest_plan_stop)
+    {
+        $this->stopAutoInvestPlanWithHttpInfo($auto_invest_plan_stop);
+    }
+
+    /**
+     * Operation stopAutoInvestPlanWithHttpInfo
+     *
+     * StopAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanStop $auto_invest_plan_stop (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function stopAutoInvestPlanWithHttpInfo($auto_invest_plan_stop)
+    {
+        $request = $this->stopAutoInvestPlanRequest($auto_invest_plan_stop);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        return [null, $statusCode, $response->getHeaders()];
+    }
+
+    /**
+     * Operation stopAutoInvestPlanAsync
+     *
+     * StopAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanStop $auto_invest_plan_stop (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stopAutoInvestPlanAsync($auto_invest_plan_stop)
+    {
+        return $this->stopAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_stop)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation stopAutoInvestPlanAsyncWithHttpInfo
+     *
+     * StopAuto invest plan
+     *
+     * @param  \GateApi\Model\AutoInvestPlanStop $auto_invest_plan_stop (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stopAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_stop)
+    {
+        $returnType = '';
+        $request = $this->stopAutoInvestPlanRequest($auto_invest_plan_stop);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'stopAutoInvestPlan'
+     *
+     * @param  \GateApi\Model\AutoInvestPlanStop $auto_invest_plan_stop (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function stopAutoInvestPlanRequest($auto_invest_plan_stop)
+    {
+        // verify the required parameter 'auto_invest_plan_stop' is set
+        if ($auto_invest_plan_stop === null || (is_array($auto_invest_plan_stop) && count($auto_invest_plan_stop) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $auto_invest_plan_stop when calling stopAutoInvestPlan'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/plans/stop';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($auto_invest_plan_stop)) {
+            $_tempBody = $auto_invest_plan_stop;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation addPositionAutoInvestPlan
+     *
+     * Add position immediately
+     *
+     * @param  \GateApi\Model\AutoInvestPlanAddPosition $auto_invest_plan_add_position auto_invest_plan_add_position (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function addPositionAutoInvestPlan($auto_invest_plan_add_position)
+    {
+        $this->addPositionAutoInvestPlanWithHttpInfo($auto_invest_plan_add_position);
+    }
+
+    /**
+     * Operation addPositionAutoInvestPlanWithHttpInfo
+     *
+     * Add position immediately
+     *
+     * @param  \GateApi\Model\AutoInvestPlanAddPosition $auto_invest_plan_add_position (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addPositionAutoInvestPlanWithHttpInfo($auto_invest_plan_add_position)
+    {
+        $request = $this->addPositionAutoInvestPlanRequest($auto_invest_plan_add_position);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        return [null, $statusCode, $response->getHeaders()];
+    }
+
+    /**
+     * Operation addPositionAutoInvestPlanAsync
+     *
+     * Add position immediately
+     *
+     * @param  \GateApi\Model\AutoInvestPlanAddPosition $auto_invest_plan_add_position (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addPositionAutoInvestPlanAsync($auto_invest_plan_add_position)
+    {
+        return $this->addPositionAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_add_position)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addPositionAutoInvestPlanAsyncWithHttpInfo
+     *
+     * Add position immediately
+     *
+     * @param  \GateApi\Model\AutoInvestPlanAddPosition $auto_invest_plan_add_position (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addPositionAutoInvestPlanAsyncWithHttpInfo($auto_invest_plan_add_position)
+    {
+        $returnType = '';
+        $request = $this->addPositionAutoInvestPlanRequest($auto_invest_plan_add_position);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addPositionAutoInvestPlan'
+     *
+     * @param  \GateApi\Model\AutoInvestPlanAddPosition $auto_invest_plan_add_position (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function addPositionAutoInvestPlanRequest($auto_invest_plan_add_position)
+    {
+        // verify the required parameter 'auto_invest_plan_add_position' is set
+        if ($auto_invest_plan_add_position === null || (is_array($auto_invest_plan_add_position) && count($auto_invest_plan_add_position) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $auto_invest_plan_add_position when calling addPositionAutoInvestPlan'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/plans/add_position';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($auto_invest_plan_add_position)) {
+            $_tempBody = $auto_invest_plan_add_position;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAutoInvestCoins
+     *
+     * QueryCurrencies supporting auto invest
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_money Pricing currency，Optional: USDT or BTC，Default: USDT (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestCoinsItem[]
+     */
+    public function listAutoInvestCoins($associative_array)
+    {
+        list($response) = $this->listAutoInvestCoinsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listAutoInvestCoinsWithHttpInfo
+     *
+     * QueryCurrencies supporting auto invest
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_money Pricing currency，Optional: USDT or BTC，Default: USDT (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestCoinsItem[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAutoInvestCoinsWithHttpInfo($associative_array)
+    {
+        $request = $this->listAutoInvestCoinsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestCoinsItem[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listAutoInvestCoinsAsync
+     *
+     * QueryCurrencies supporting auto invest
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_money Pricing currency，Optional: USDT or BTC，Default: USDT (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestCoinsAsync($associative_array)
+    {
+        return $this->listAutoInvestCoinsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAutoInvestCoinsAsyncWithHttpInfo
+     *
+     * QueryCurrencies supporting auto invest
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_money Pricing currency，Optional: USDT or BTC，Default: USDT (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestCoinsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\AutoInvestCoinsItem[]';
+        $request = $this->listAutoInvestCoinsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAutoInvestCoins'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_money Pricing currency，Optional: USDT or BTC，Default: USDT (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listAutoInvestCoinsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $plan_money = array_key_exists('plan_money', $associative_array) ? $associative_array['plan_money'] : null;
+
+
+        $resourcePath = '/earn/autoinvest/coins';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($plan_money !== null) {
+            if('form' === 'form' && is_array($plan_money)) {
+                foreach($plan_money as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['plan_money'] = $plan_money;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAutoInvestMinAmount
+     *
+     * Get minimum investment amount
+     *
+     * @param  \GateApi\Model\AutoInvestMinInvestAmount $auto_invest_min_invest_amount auto_invest_min_invest_amount (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestMinInvestAmountResp
+     */
+    public function getAutoInvestMinAmount($auto_invest_min_invest_amount)
+    {
+        list($response) = $this->getAutoInvestMinAmountWithHttpInfo($auto_invest_min_invest_amount);
+        return $response;
+    }
+
+    /**
+     * Operation getAutoInvestMinAmountWithHttpInfo
+     *
+     * Get minimum investment amount
+     *
+     * @param  \GateApi\Model\AutoInvestMinInvestAmount $auto_invest_min_invest_amount (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestMinInvestAmountResp, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAutoInvestMinAmountWithHttpInfo($auto_invest_min_invest_amount)
+    {
+        $request = $this->getAutoInvestMinAmountRequest($auto_invest_min_invest_amount);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestMinInvestAmountResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getAutoInvestMinAmountAsync
+     *
+     * Get minimum investment amount
+     *
+     * @param  \GateApi\Model\AutoInvestMinInvestAmount $auto_invest_min_invest_amount (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAutoInvestMinAmountAsync($auto_invest_min_invest_amount)
+    {
+        return $this->getAutoInvestMinAmountAsyncWithHttpInfo($auto_invest_min_invest_amount)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAutoInvestMinAmountAsyncWithHttpInfo
+     *
+     * Get minimum investment amount
+     *
+     * @param  \GateApi\Model\AutoInvestMinInvestAmount $auto_invest_min_invest_amount (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAutoInvestMinAmountAsyncWithHttpInfo($auto_invest_min_invest_amount)
+    {
+        $returnType = '\GateApi\Model\AutoInvestMinInvestAmountResp';
+        $request = $this->getAutoInvestMinAmountRequest($auto_invest_min_invest_amount);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAutoInvestMinAmount'
+     *
+     * @param  \GateApi\Model\AutoInvestMinInvestAmount $auto_invest_min_invest_amount (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getAutoInvestMinAmountRequest($auto_invest_min_invest_amount)
+    {
+        // verify the required parameter 'auto_invest_min_invest_amount' is set
+        if ($auto_invest_min_invest_amount === null || (is_array($auto_invest_min_invest_amount) && count($auto_invest_min_invest_amount) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $auto_invest_min_invest_amount when calling getAutoInvestMinAmount'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/min_invest_amount';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($auto_invest_min_invest_amount)) {
+            $_tempBody = $auto_invest_min_invest_amount;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAutoInvestPlanRecords
+     *
+     * List plan execution records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestPlanRecordsResp
+     */
+    public function listAutoInvestPlanRecords($associative_array)
+    {
+        list($response) = $this->listAutoInvestPlanRecordsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listAutoInvestPlanRecordsWithHttpInfo
+     *
+     * List plan execution records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestPlanRecordsResp, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAutoInvestPlanRecordsWithHttpInfo($associative_array)
+    {
+        $request = $this->listAutoInvestPlanRecordsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestPlanRecordsResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listAutoInvestPlanRecordsAsync
+     *
+     * List plan execution records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestPlanRecordsAsync($associative_array)
+    {
+        return $this->listAutoInvestPlanRecordsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAutoInvestPlanRecordsAsyncWithHttpInfo
+     *
+     * List plan execution records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestPlanRecordsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\AutoInvestPlanRecordsResp';
+        $request = $this->listAutoInvestPlanRecordsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAutoInvestPlanRecords'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listAutoInvestPlanRecordsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $plan_id = array_key_exists('plan_id', $associative_array) ? $associative_array['plan_id'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
+
+        // verify the required parameter 'plan_id' is set
+        if ($plan_id === null || (is_array($plan_id) && count($plan_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $plan_id when calling listAutoInvestPlanRecords'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/plans/records';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($plan_id !== null) {
+            if('form' === 'form' && is_array($plan_id)) {
+                foreach($plan_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['plan_id'] = $plan_id;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAutoInvestOrders
+     *
+     * List plan execution recordsDetails（OrderDetails）
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $record_id Record ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestOrderItem[]
+     */
+    public function listAutoInvestOrders($plan_id, $record_id)
+    {
+        list($response) = $this->listAutoInvestOrdersWithHttpInfo($plan_id, $record_id);
+        return $response;
+    }
+
+    /**
+     * Operation listAutoInvestOrdersWithHttpInfo
+     *
+     * List plan execution recordsDetails（OrderDetails）
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $record_id Record ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestOrderItem[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAutoInvestOrdersWithHttpInfo($plan_id, $record_id)
+    {
+        $request = $this->listAutoInvestOrdersRequest($plan_id, $record_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestOrderItem[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listAutoInvestOrdersAsync
+     *
+     * List plan execution recordsDetails（OrderDetails）
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $record_id Record ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestOrdersAsync($plan_id, $record_id)
+    {
+        return $this->listAutoInvestOrdersAsyncWithHttpInfo($plan_id, $record_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAutoInvestOrdersAsyncWithHttpInfo
+     *
+     * List plan execution recordsDetails（OrderDetails）
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $record_id Record ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestOrdersAsyncWithHttpInfo($plan_id, $record_id)
+    {
+        $returnType = '\GateApi\Model\AutoInvestOrderItem[]';
+        $request = $this->listAutoInvestOrdersRequest($plan_id, $record_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAutoInvestOrders'
+     *
+     * @param  int $plan_id Plan ID (required)
+     * @param  int $record_id Record ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listAutoInvestOrdersRequest($plan_id, $record_id)
+    {
+        // verify the required parameter 'plan_id' is set
+        if ($plan_id === null || (is_array($plan_id) && count($plan_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $plan_id when calling listAutoInvestOrders'
+            );
+        }
+        // verify the required parameter 'record_id' is set
+        if ($record_id === null || (is_array($record_id) && count($record_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $record_id when calling listAutoInvestOrders'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/orders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($plan_id !== null) {
+            if('form' === 'form' && is_array($plan_id)) {
+                foreach($plan_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['plan_id'] = $plan_id;
+            }
+        }
+
+        // query params
+        if ($record_id !== null) {
+            if('form' === 'form' && is_array($record_id)) {
+                foreach($record_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['record_id'] = $record_id;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAutoInvestConfig
+     *
+     * List investment currency configuration
+     *
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestConfigItem[]
+     */
+    public function listAutoInvestConfig()
+    {
+        list($response) = $this->listAutoInvestConfigWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation listAutoInvestConfigWithHttpInfo
+     *
+     * List investment currency configuration
+     *
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestConfigItem[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAutoInvestConfigWithHttpInfo()
+    {
+        $request = $this->listAutoInvestConfigRequest();
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestConfigItem[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listAutoInvestConfigAsync
+     *
+     * List investment currency configuration
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestConfigAsync()
+    {
+        return $this->listAutoInvestConfigAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAutoInvestConfigAsyncWithHttpInfo
+     *
+     * List investment currency configuration
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestConfigAsyncWithHttpInfo()
+    {
+        $returnType = '\GateApi\Model\AutoInvestConfigItem[]';
+        $request = $this->listAutoInvestConfigRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAutoInvestConfig'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listAutoInvestConfigRequest()
+    {
+
+        $resourcePath = '/earn/autoinvest/config';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAutoInvestPlanDetail
+     *
+     * QueryAuto invest planDetails
+     *
+     * @param  int $plan_id Plan ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestPlanDetail
+     */
+    public function getAutoInvestPlanDetail($plan_id)
+    {
+        list($response) = $this->getAutoInvestPlanDetailWithHttpInfo($plan_id);
+        return $response;
+    }
+
+    /**
+     * Operation getAutoInvestPlanDetailWithHttpInfo
+     *
+     * QueryAuto invest planDetails
+     *
+     * @param  int $plan_id Plan ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestPlanDetail, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAutoInvestPlanDetailWithHttpInfo($plan_id)
+    {
+        $request = $this->getAutoInvestPlanDetailRequest($plan_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestPlanDetail';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getAutoInvestPlanDetailAsync
+     *
+     * QueryAuto invest planDetails
+     *
+     * @param  int $plan_id Plan ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAutoInvestPlanDetailAsync($plan_id)
+    {
+        return $this->getAutoInvestPlanDetailAsyncWithHttpInfo($plan_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAutoInvestPlanDetailAsyncWithHttpInfo
+     *
+     * QueryAuto invest planDetails
+     *
+     * @param  int $plan_id Plan ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAutoInvestPlanDetailAsyncWithHttpInfo($plan_id)
+    {
+        $returnType = '\GateApi\Model\AutoInvestPlanDetail';
+        $request = $this->getAutoInvestPlanDetailRequest($plan_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAutoInvestPlanDetail'
+     *
+     * @param  int $plan_id Plan ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getAutoInvestPlanDetailRequest($plan_id)
+    {
+        // verify the required parameter 'plan_id' is set
+        if ($plan_id === null || (is_array($plan_id) && count($plan_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $plan_id when calling getAutoInvestPlanDetail'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/plans/detail';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($plan_id !== null) {
+            if('form' === 'form' && is_array($plan_id)) {
+                foreach($plan_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['plan_id'] = $plan_id;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAutoInvestPlans
+     *
+     * QueryAuto invest planList
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Plan status，History history，Active active (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AutoInvestPlanListInfoResp
+     */
+    public function listAutoInvestPlans($associative_array)
+    {
+        list($response) = $this->listAutoInvestPlansWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listAutoInvestPlansWithHttpInfo
+     *
+     * QueryAuto invest planList
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Plan status，History history，Active active (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AutoInvestPlanListInfoResp, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAutoInvestPlansWithHttpInfo($associative_array)
+    {
+        $request = $this->listAutoInvestPlansRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AutoInvestPlanListInfoResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listAutoInvestPlansAsync
+     *
+     * QueryAuto invest planList
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Plan status，History history，Active active (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestPlansAsync($associative_array)
+    {
+        return $this->listAutoInvestPlansAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAutoInvestPlansAsyncWithHttpInfo
+     *
+     * QueryAuto invest planList
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Plan status，History history，Active active (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAutoInvestPlansAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\AutoInvestPlanListInfoResp';
+        $request = $this->listAutoInvestPlansRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAutoInvestPlans'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Plan status，History history，Active active (required)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listAutoInvestPlansRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
+
+        // verify the required parameter 'status' is set
+        if ($status === null || (is_array($status) && count($status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $status when calling listAutoInvestPlans'
+            );
+        }
+
+        $resourcePath = '/earn/autoinvest/plans/list_info';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * FindCoin
+ * AutoInvestMinInvestAmountResp
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * FindCoin Class Doc Comment
+ * AutoInvestMinInvestAmountResp Class Doc Comment
  *
  * @category Class
+ * @description AvailableInvestmentMinimumAmountResponse
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class FindCoin implements ModelInterface, ArrayAccess
+class AutoInvestMinInvestAmountResp implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class FindCoin implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'FindCoin';
+    protected static $openAPIModelName = 'AutoInvestMinInvestAmountResp';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,7 +55,7 @@ class FindCoin implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cointype' => 'string'
+        'min_amount' => 'string'
     ];
 
     /**
@@ -63,7 +64,7 @@ class FindCoin implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'cointype' => null
+        'min_amount' => null
     ];
 
     /**
@@ -93,7 +94,7 @@ class FindCoin implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'cointype' => 'cointype'
+        'min_amount' => 'min_amount'
     ];
 
     /**
@@ -102,7 +103,7 @@ class FindCoin implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'cointype' => 'setCointype'
+        'min_amount' => 'setMinAmount'
     ];
 
     /**
@@ -111,7 +112,7 @@ class FindCoin implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'cointype' => 'getCointype'
+        'min_amount' => 'getMinAmount'
     ];
 
     /**
@@ -174,7 +175,7 @@ class FindCoin implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['cointype'] = isset($data['cointype']) ? $data['cointype'] : null;
+        $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
     }
 
     /**
@@ -186,6 +187,9 @@ class FindCoin implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['min_amount'] === null) {
+            $invalidProperties[] = "'min_amount' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -202,25 +206,25 @@ class FindCoin implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets cointype
+     * Gets min_amount
      *
-     * @return string|null
+     * @return string
      */
-    public function getCointype()
+    public function getMinAmount()
     {
-        return $this->container['cointype'];
+        return $this->container['min_amount'];
     }
 
     /**
-     * Sets cointype
+     * Sets min_amount
      *
-     * @param string|null $cointype Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
+     * @param string $min_amount MinimumAmount
      *
      * @return $this
      */
-    public function setCointype($cointype)
+    public function setMinAmount($min_amount)
     {
-        $this->container['cointype'] = $cointype;
+        $this->container['min_amount'] = $min_amount;
 
         return $this;
     }

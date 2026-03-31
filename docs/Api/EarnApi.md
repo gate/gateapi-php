@@ -13,6 +13,17 @@ Method | HTTP request | Description
 [**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
 [**awardList**](EarnApi.md#awardList) | **GET** /earn/staking/award_list | On-chain coin-earning dividend records
 [**assetList**](EarnApi.md#assetList) | **GET** /earn/staking/assets | On-chain coin-earning assets
+[**createAutoInvestPlan**](EarnApi.md#createAutoInvestPlan) | **POST** /earn/autoinvest/plans/create | Create auto invest plan
+[**updateAutoInvestPlan**](EarnApi.md#updateAutoInvestPlan) | **POST** /earn/autoinvest/plans/update | UpdateAuto invest plan
+[**stopAutoInvestPlan**](EarnApi.md#stopAutoInvestPlan) | **POST** /earn/autoinvest/plans/stop | StopAuto invest plan
+[**addPositionAutoInvestPlan**](EarnApi.md#addPositionAutoInvestPlan) | **POST** /earn/autoinvest/plans/add_position | Add position immediately
+[**listAutoInvestCoins**](EarnApi.md#listAutoInvestCoins) | **GET** /earn/autoinvest/coins | QueryCurrencies supporting auto invest
+[**getAutoInvestMinAmount**](EarnApi.md#getAutoInvestMinAmount) | **POST** /earn/autoinvest/min_invest_amount | Get minimum investment amount
+[**listAutoInvestPlanRecords**](EarnApi.md#listAutoInvestPlanRecords) | **GET** /earn/autoinvest/plans/records | List plan execution records
+[**listAutoInvestOrders**](EarnApi.md#listAutoInvestOrders) | **GET** /earn/autoinvest/orders | List plan execution recordsDetails（OrderDetails）
+[**listAutoInvestConfig**](EarnApi.md#listAutoInvestConfig) | **GET** /earn/autoinvest/config | List investment currency configuration
+[**getAutoInvestPlanDetail**](EarnApi.md#getAutoInvestPlanDetail) | **GET** /earn/autoinvest/plans/detail | QueryAuto invest planDetails
+[**listAutoInvestPlans**](EarnApi.md#listAutoInvestPlans) | **GET** /earn/autoinvest/plans/list_info | QueryAuto invest planList
 [**listEarnFixedTermProducts**](EarnApi.md#listEarnFixedTermProducts) | **GET** /earn/fixed-term/product | Get product list
 [**listEarnFixedTermProductsByAsset**](EarnApi.md#listEarnFixedTermProductsByAsset) | **GET** /earn/fixed-term/product/{asset}/list | Get product list by single currency
 [**listEarnFixedTermLends**](EarnApi.md#listEarnFixedTermLends) | **GET** /earn/fixed-term/user/lend | Subscription list
@@ -265,7 +276,7 @@ This endpoint does not need any parameter.
 
 ## findCoin
 
-> object[] findCoin($find_coin)
+> object[] findCoin($cointype)
 
 Staking coins
 
@@ -285,10 +296,10 @@ $apiInstance = new GateApi\Api\EarnApi(
     new GuzzleHttp\Client(),
     $config
 );
-$find_coin = new \GateApi\Model\FindCoin(); // \GateApi\Model\FindCoin | 
+$associate_array['cointype'] = 'cointype_example'; // string | Currency type: swap - voucher; lock - locked position; debt - US Treasury bond.
 
 try {
-    $result = $apiInstance->findCoin($find_coin);
+    $result = $apiInstance->findCoin($associate_array);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -300,10 +311,12 @@ try {
 
 ### Parameters
 
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **find_coin** | [**\GateApi\Model\FindCoin**](../Model/FindCoin.md)|  |
+ **cointype** | **string**| Currency type: swap - voucher; lock - locked position; debt - US Treasury bond. | [optional]
 
 ### Return type
 
@@ -315,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
@@ -564,6 +577,675 @@ Name | Type | Description  | Notes
 ### Return type
 
 **object[]**
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createAutoInvestPlan
+
+> \GateApi\Model\AutoInvestPlanCreateResp createAutoInvestPlan($auto_invest_plan_create)
+
+Create auto invest plan
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$auto_invest_plan_create = new \GateApi\Model\AutoInvestPlanCreate(); // \GateApi\Model\AutoInvestPlanCreate | 
+
+try {
+    $result = $apiInstance->createAutoInvestPlan($auto_invest_plan_create);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->createAutoInvestPlan: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_invest_plan_create** | [**\GateApi\Model\AutoInvestPlanCreate**](../Model/AutoInvestPlanCreate.md)|  |
+
+### Return type
+
+[**\GateApi\Model\AutoInvestPlanCreateResp**](../Model/AutoInvestPlanCreateResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## updateAutoInvestPlan
+
+> updateAutoInvestPlan($auto_invest_plan_update)
+
+UpdateAuto invest plan
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$auto_invest_plan_update = new \GateApi\Model\AutoInvestPlanUpdate(); // \GateApi\Model\AutoInvestPlanUpdate | 
+
+try {
+    $apiInstance->updateAutoInvestPlan($auto_invest_plan_update);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->updateAutoInvestPlan: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_invest_plan_update** | [**\GateApi\Model\AutoInvestPlanUpdate**](../Model/AutoInvestPlanUpdate.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## stopAutoInvestPlan
+
+> stopAutoInvestPlan($auto_invest_plan_stop)
+
+StopAuto invest plan
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$auto_invest_plan_stop = new \GateApi\Model\AutoInvestPlanStop(); // \GateApi\Model\AutoInvestPlanStop | 
+
+try {
+    $apiInstance->stopAutoInvestPlan($auto_invest_plan_stop);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->stopAutoInvestPlan: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_invest_plan_stop** | [**\GateApi\Model\AutoInvestPlanStop**](../Model/AutoInvestPlanStop.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## addPositionAutoInvestPlan
+
+> addPositionAutoInvestPlan($auto_invest_plan_add_position)
+
+Add position immediately
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$auto_invest_plan_add_position = new \GateApi\Model\AutoInvestPlanAddPosition(); // \GateApi\Model\AutoInvestPlanAddPosition | 
+
+try {
+    $apiInstance->addPositionAutoInvestPlan($auto_invest_plan_add_position);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->addPositionAutoInvestPlan: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_invest_plan_add_position** | [**\GateApi\Model\AutoInvestPlanAddPosition**](../Model/AutoInvestPlanAddPosition.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listAutoInvestCoins
+
+> \GateApi\Model\AutoInvestCoinsItem[] listAutoInvestCoins($plan_money)
+
+QueryCurrencies supporting auto invest
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['plan_money'] = 'USDT'; // string | Pricing currency，Optional: USDT or BTC，Default: USDT
+
+try {
+    $result = $apiInstance->listAutoInvestCoins($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listAutoInvestCoins: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plan_money** | **string**| Pricing currency，Optional: USDT or BTC，Default: USDT | [optional]
+
+### Return type
+
+[**\GateApi\Model\AutoInvestCoinsItem[]**](../Model/AutoInvestCoinsItem.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getAutoInvestMinAmount
+
+> \GateApi\Model\AutoInvestMinInvestAmountResp getAutoInvestMinAmount($auto_invest_min_invest_amount)
+
+Get minimum investment amount
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$auto_invest_min_invest_amount = new \GateApi\Model\AutoInvestMinInvestAmount(); // \GateApi\Model\AutoInvestMinInvestAmount | 
+
+try {
+    $result = $apiInstance->getAutoInvestMinAmount($auto_invest_min_invest_amount);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->getAutoInvestMinAmount: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **auto_invest_min_invest_amount** | [**\GateApi\Model\AutoInvestMinInvestAmount**](../Model/AutoInvestMinInvestAmount.md)|  |
+
+### Return type
+
+[**\GateApi\Model\AutoInvestMinInvestAmountResp**](../Model/AutoInvestMinInvestAmountResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listAutoInvestPlanRecords
+
+> \GateApi\Model\AutoInvestPlanRecordsResp listAutoInvestPlanRecords($plan_id, $page, $page_size)
+
+List plan execution records
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['plan_id'] = 141378; // int | Plan ID
+$associate_array['page'] = 1; // int | page number
+$associate_array['page_size'] = 10; // int | Items per page，Maximum 100
+
+try {
+    $result = $apiInstance->listAutoInvestPlanRecords($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listAutoInvestPlanRecords: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plan_id** | **int**| Plan ID |
+ **page** | **int**| page number | [optional]
+ **page_size** | **int**| Items per page，Maximum 100 | [optional]
+
+### Return type
+
+[**\GateApi\Model\AutoInvestPlanRecordsResp**](../Model/AutoInvestPlanRecordsResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listAutoInvestOrders
+
+> \GateApi\Model\AutoInvestOrderItem[] listAutoInvestOrders($plan_id, $record_id)
+
+List plan execution recordsDetails（OrderDetails）
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$plan_id = 142583; // int | Plan ID
+$record_id = 1770805384904919; // int | Record ID
+
+try {
+    $result = $apiInstance->listAutoInvestOrders($plan_id, $record_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listAutoInvestOrders: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plan_id** | **int**| Plan ID |
+ **record_id** | **int**| Record ID |
+
+### Return type
+
+[**\GateApi\Model\AutoInvestOrderItem[]**](../Model/AutoInvestOrderItem.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listAutoInvestConfig
+
+> \GateApi\Model\AutoInvestConfigItem[] listAutoInvestConfig()
+
+List investment currency configuration
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listAutoInvestConfig();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listAutoInvestConfig: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\GateApi\Model\AutoInvestConfigItem[]**](../Model/AutoInvestConfigItem.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getAutoInvestPlanDetail
+
+> \GateApi\Model\AutoInvestPlanDetail getAutoInvestPlanDetail($plan_id)
+
+QueryAuto invest planDetails
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$plan_id = 142609; // int | Plan ID
+
+try {
+    $result = $apiInstance->getAutoInvestPlanDetail($plan_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->getAutoInvestPlanDetail: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plan_id** | **int**| Plan ID |
+
+### Return type
+
+[**\GateApi\Model\AutoInvestPlanDetail**](../Model/AutoInvestPlanDetail.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listAutoInvestPlans
+
+> \GateApi\Model\AutoInvestPlanListInfoResp listAutoInvestPlans($status, $page, $page_size)
+
+QueryAuto invest planList
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['status'] = 'active'; // string | Plan status，History history，Active active
+$associate_array['page'] = 56; // int | page number
+$associate_array['page_size'] = 56; // int | Items per page，Maximum 100
+
+try {
+    $result = $apiInstance->listAutoInvestPlans($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listAutoInvestPlans: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**| Plan status，History history，Active active |
+ **page** | **int**| page number | [optional]
+ **page_size** | **int**| Items per page，Maximum 100 | [optional]
+
+### Return type
+
+[**\GateApi\Model\AutoInvestPlanListInfoResp**](../Model/AutoInvestPlanListInfoResp.md)
 
 ### Authorization
 
