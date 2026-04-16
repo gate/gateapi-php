@@ -686,7 +686,7 @@ Name | Type | Description  | Notes
 
 ## listSubAccountBalances
 
-> \GateApi\Model\SubAccountBalance[] listSubAccountBalances($sub_uid)
+> \GateApi\Model\SubAccountBalance[] listSubAccountBalances($sub_uid, $page, $limit)
 
 Query sub-account balance information
 
@@ -707,6 +707,8 @@ $apiInstance = new GateApi\Api\WalletApi(
     $config
 );
 $associate_array['sub_uid'] = '10003'; // string | Sub-account user ID, you can query multiple records separated by `,`. If not specified, it will return records of all sub-accounts
+$associate_array['page'] = 1; // int | Page number
+$associate_array['limit'] = 100; // int | Maximum number of records returned. Default 20, max 100.
 
 try {
     $result = $apiInstance->listSubAccountBalances($associate_array);
@@ -727,6 +729,8 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sub_uid** | **string**| Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts | [optional]
+ **page** | **int**| Page number | [optional] [default to 1]
+ **limit** | **int**| Maximum number of records returned. Default 20, max 100. | [optional] [default to 100]
 
 ### Return type
 

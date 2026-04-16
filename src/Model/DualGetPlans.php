@@ -430,7 +430,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     /**
      * Sets min_copies
      *
-     * @param int|null $min_copies Minimum Units
+     * @param int|null $min_copies Minimum share count
      *
      * @return $this
      */
@@ -454,7 +454,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     /**
      * Sets max_copies
      *
-     * @param int|null $max_copies Maximum Units
+     * @param int|null $max_copies Maximum share count
      *
      * @return $this
      */

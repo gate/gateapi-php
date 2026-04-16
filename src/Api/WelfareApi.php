@@ -558,6 +558,478 @@ class WelfareApi
     }
 
     /**
+     * Operation claimTask
+     *
+     * 领取任务
+     *
+     * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req ex_skill_claim_task_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\ApiResponseExSkillClaimTaskResp|\GateApi\Model\ClaimTaskError
+     */
+    public function claimTask($ex_skill_claim_task_req)
+    {
+        list($response) = $this->claimTaskWithHttpInfo($ex_skill_claim_task_req);
+        return $response;
+    }
+
+    /**
+     * Operation claimTaskWithHttpInfo
+     *
+     * 领取任务
+     *
+     * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\ApiResponseExSkillClaimTaskResp|\GateApi\Model\ClaimTaskError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function claimTaskWithHttpInfo($ex_skill_claim_task_req)
+    {
+        $request = $this->claimTaskRequest($ex_skill_claim_task_req);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\ApiResponseExSkillClaimTaskResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation claimTaskAsync
+     *
+     * 领取任务
+     *
+     * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function claimTaskAsync($ex_skill_claim_task_req)
+    {
+        return $this->claimTaskAsyncWithHttpInfo($ex_skill_claim_task_req)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation claimTaskAsyncWithHttpInfo
+     *
+     * 领取任务
+     *
+     * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function claimTaskAsyncWithHttpInfo($ex_skill_claim_task_req)
+    {
+        $returnType = '\GateApi\Model\ApiResponseExSkillClaimTaskResp';
+        $request = $this->claimTaskRequest($ex_skill_claim_task_req);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'claimTask'
+     *
+     * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function claimTaskRequest($ex_skill_claim_task_req)
+    {
+        // verify the required parameter 'ex_skill_claim_task_req' is set
+        if ($ex_skill_claim_task_req === null || (is_array($ex_skill_claim_task_req) && count($ex_skill_claim_task_req) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ex_skill_claim_task_req when calling claimTask'
+            );
+        }
+
+        $resourcePath = '/rewards/claimTask';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($ex_skill_claim_task_req)) {
+            $_tempBody = $ex_skill_claim_task_req;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation claimReward
+     *
+     * 领取任务奖励
+     *
+     * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req ex_skill_claim_reward_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\ApiResponseExSkillClaimRewardResp|\GateApi\Model\ClaimRewardError
+     */
+    public function claimReward($ex_skill_claim_reward_req)
+    {
+        list($response) = $this->claimRewardWithHttpInfo($ex_skill_claim_reward_req);
+        return $response;
+    }
+
+    /**
+     * Operation claimRewardWithHttpInfo
+     *
+     * 领取任务奖励
+     *
+     * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\ApiResponseExSkillClaimRewardResp|\GateApi\Model\ClaimRewardError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function claimRewardWithHttpInfo($ex_skill_claim_reward_req)
+    {
+        $request = $this->claimRewardRequest($ex_skill_claim_reward_req);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\ApiResponseExSkillClaimRewardResp';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation claimRewardAsync
+     *
+     * 领取任务奖励
+     *
+     * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function claimRewardAsync($ex_skill_claim_reward_req)
+    {
+        return $this->claimRewardAsyncWithHttpInfo($ex_skill_claim_reward_req)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation claimRewardAsyncWithHttpInfo
+     *
+     * 领取任务奖励
+     *
+     * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function claimRewardAsyncWithHttpInfo($ex_skill_claim_reward_req)
+    {
+        $returnType = '\GateApi\Model\ApiResponseExSkillClaimRewardResp';
+        $request = $this->claimRewardRequest($ex_skill_claim_reward_req);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'claimReward'
+     *
+     * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function claimRewardRequest($ex_skill_claim_reward_req)
+    {
+        // verify the required parameter 'ex_skill_claim_reward_req' is set
+        if ($ex_skill_claim_reward_req === null || (is_array($ex_skill_claim_reward_req) && count($ex_skill_claim_reward_req) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ex_skill_claim_reward_req when calling claimReward'
+            );
+        }
+
+        $resourcePath = '/rewards/claimReward';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($ex_skill_claim_reward_req)) {
+            $_tempBody = $ex_skill_claim_reward_req;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Create http client option
      *
      * @throws \RuntimeException on file opening failure

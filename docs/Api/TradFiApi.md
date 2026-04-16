@@ -669,7 +669,7 @@ This endpoint does not need any parameter.
 
 ## createTradFiOrder
 
-> \GateApi\Model\CreateOrder createTradFiOrder($trad_fi_order_request)
+> \GateApi\Model\CreateOrder2 createTradFiOrder($trad_fi_order_request)
 
 Create an order
 
@@ -711,7 +711,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\CreateOrder**](../Model/CreateOrder.md)
+[**\GateApi\Model\CreateOrder2**](../Model/CreateOrder2.md)
 
 ### Authorization
 

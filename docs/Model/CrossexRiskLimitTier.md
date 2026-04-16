@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **min_risk_limit_value** | **string** | Minimum risk limit value | 
 **max_risk_limit_value** | **string** | Maximum risk limit value | 
+**quick_cal_amount** | **string** | Quick-calculation amount | 
 **leverage_max** | **string** | Maximum leverage | 
 **maintenance_rate** | **string** | Maintenance margin rate | 
 **tier** | **string** | Tier | 

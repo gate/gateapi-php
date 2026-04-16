@@ -548,7 +548,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
     /**
      * Sets business_type_desc
      *
-     * @param string $business_type_desc 业务类型描述，可取值：全部, 现货, 合约, Alpha, Web3, Perps(DEX), Exchange All, Web3 All, TradFi
+     * @param string $business_type_desc Business type description. Allowed values: All, Spot, Futures, Alpha, Web3, Perps (DEX), Exchange All, Web3 All, TradFi
      *
      * @return $this
      */

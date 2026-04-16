@@ -1671,6 +1671,3046 @@ class LaunchApi
     }
 
     /**
+     * Operation getHodlerAirdropProjectList
+     *
+     * 查询HODLer Airdrop活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
+     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
+     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\HodlerAirdropV4ProjectItem[]|\GateApi\Model\HodlerAirdropV4ErrorResponse
+     */
+    public function getHodlerAirdropProjectList($associative_array)
+    {
+        list($response) = $this->getHodlerAirdropProjectListWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getHodlerAirdropProjectListWithHttpInfo
+     *
+     * 查询HODLer Airdrop活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
+     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
+     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\HodlerAirdropV4ProjectItem[]|\GateApi\Model\HodlerAirdropV4ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getHodlerAirdropProjectListWithHttpInfo($associative_array)
+    {
+        $request = $this->getHodlerAirdropProjectListRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\HodlerAirdropV4ProjectItem[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getHodlerAirdropProjectListAsync
+     *
+     * 查询HODLer Airdrop活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
+     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
+     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getHodlerAirdropProjectListAsync($associative_array)
+    {
+        return $this->getHodlerAirdropProjectListAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getHodlerAirdropProjectListAsyncWithHttpInfo
+     *
+     * 查询HODLer Airdrop活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
+     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
+     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getHodlerAirdropProjectListAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\HodlerAirdropV4ProjectItem[]';
+        $request = $this->getHodlerAirdropProjectListRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getHodlerAirdropProjectList'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
+     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
+     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getHodlerAirdropProjectListRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : null;
+        $keyword = array_key_exists('keyword', $associative_array) ? $associative_array['keyword'] : null;
+        $join = array_key_exists('join', $associative_array) ? $associative_array['join'] : 0;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $size = array_key_exists('size', $associative_array) ? $associative_array['size'] : 10;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling LaunchApi.getHodlerAirdropProjectList, must be bigger than or equal to 1.');
+        }
+
+        if ($size !== null && $size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$size" when calling LaunchApi.getHodlerAirdropProjectList, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/launch/hodler-airdrop/project-list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($keyword !== null) {
+            if('form' === 'form' && is_array($keyword)) {
+                foreach($keyword as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['keyword'] = $keyword;
+            }
+        }
+
+        // query params
+        if ($join !== null) {
+            if('form' === 'form' && is_array($join)) {
+                foreach($join as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['join'] = $join;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($size !== null) {
+            if('form' === 'form' && is_array($size)) {
+                foreach($size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['size'] = $size;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation hodlerAirdropOrder
+     *
+     * 参与HODLer Airdrop活动
+     *
+     * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request hodler_airdrop_v4_order_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\HodlerAirdropV4OrderResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse
+     */
+    public function hodlerAirdropOrder($hodler_airdrop_v4_order_request)
+    {
+        list($response) = $this->hodlerAirdropOrderWithHttpInfo($hodler_airdrop_v4_order_request);
+        return $response;
+    }
+
+    /**
+     * Operation hodlerAirdropOrderWithHttpInfo
+     *
+     * 参与HODLer Airdrop活动
+     *
+     * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\HodlerAirdropV4OrderResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function hodlerAirdropOrderWithHttpInfo($hodler_airdrop_v4_order_request)
+    {
+        $request = $this->hodlerAirdropOrderRequest($hodler_airdrop_v4_order_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\HodlerAirdropV4OrderResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation hodlerAirdropOrderAsync
+     *
+     * 参与HODLer Airdrop活动
+     *
+     * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function hodlerAirdropOrderAsync($hodler_airdrop_v4_order_request)
+    {
+        return $this->hodlerAirdropOrderAsyncWithHttpInfo($hodler_airdrop_v4_order_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation hodlerAirdropOrderAsyncWithHttpInfo
+     *
+     * 参与HODLer Airdrop活动
+     *
+     * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function hodlerAirdropOrderAsyncWithHttpInfo($hodler_airdrop_v4_order_request)
+    {
+        $returnType = '\GateApi\Model\HodlerAirdropV4OrderResponse';
+        $request = $this->hodlerAirdropOrderRequest($hodler_airdrop_v4_order_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'hodlerAirdropOrder'
+     *
+     * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function hodlerAirdropOrderRequest($hodler_airdrop_v4_order_request)
+    {
+        // verify the required parameter 'hodler_airdrop_v4_order_request' is set
+        if ($hodler_airdrop_v4_order_request === null || (is_array($hodler_airdrop_v4_order_request) && count($hodler_airdrop_v4_order_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hodler_airdrop_v4_order_request when calling hodlerAirdropOrder'
+            );
+        }
+
+        $resourcePath = '/launch/hodler-airdrop/order';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($hodler_airdrop_v4_order_request)) {
+            $_tempBody = $hodler_airdrop_v4_order_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getHodlerAirdropUserOrderRecords
+     *
+     * 查询HODLer Airdrop参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\HodlerAirdropV4UserOrderRecord[]|\GateApi\Model\HodlerAirdropV4ErrorResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse
+     */
+    public function getHodlerAirdropUserOrderRecords($associative_array)
+    {
+        list($response) = $this->getHodlerAirdropUserOrderRecordsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getHodlerAirdropUserOrderRecordsWithHttpInfo
+     *
+     * 查询HODLer Airdrop参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\HodlerAirdropV4UserOrderRecord[]|\GateApi\Model\HodlerAirdropV4ErrorResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getHodlerAirdropUserOrderRecordsWithHttpInfo($associative_array)
+    {
+        $request = $this->getHodlerAirdropUserOrderRecordsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\HodlerAirdropV4UserOrderRecord[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getHodlerAirdropUserOrderRecordsAsync
+     *
+     * 查询HODLer Airdrop参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getHodlerAirdropUserOrderRecordsAsync($associative_array)
+    {
+        return $this->getHodlerAirdropUserOrderRecordsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getHodlerAirdropUserOrderRecordsAsyncWithHttpInfo
+     *
+     * 查询HODLer Airdrop参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getHodlerAirdropUserOrderRecordsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\HodlerAirdropV4UserOrderRecord[]';
+        $request = $this->getHodlerAirdropUserOrderRecordsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getHodlerAirdropUserOrderRecords'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getHodlerAirdropUserOrderRecordsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $keyword = array_key_exists('keyword', $associative_array) ? $associative_array['keyword'] : null;
+        $start_timest = array_key_exists('start_timest', $associative_array) ? $associative_array['start_timest'] : null;
+        $end_timest = array_key_exists('end_timest', $associative_array) ? $associative_array['end_timest'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $size = array_key_exists('size', $associative_array) ? $associative_array['size'] : 10;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling LaunchApi.getHodlerAirdropUserOrderRecords, must be bigger than or equal to 1.');
+        }
+
+        if ($size !== null && $size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$size" when calling LaunchApi.getHodlerAirdropUserOrderRecords, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/launch/hodler-airdrop/user-order-records';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($keyword !== null) {
+            if('form' === 'form' && is_array($keyword)) {
+                foreach($keyword as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['keyword'] = $keyword;
+            }
+        }
+
+        // query params
+        if ($start_timest !== null) {
+            if('form' === 'form' && is_array($start_timest)) {
+                foreach($start_timest as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_timest'] = $start_timest;
+            }
+        }
+
+        // query params
+        if ($end_timest !== null) {
+            if('form' === 'form' && is_array($end_timest)) {
+                foreach($end_timest as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_timest'] = $end_timest;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($size !== null) {
+            if('form' === 'form' && is_array($size)) {
+                foreach($size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['size'] = $size;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getHodlerAirdropUserAirdropRecords
+     *
+     * 查询HODLer Airdrop空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\HodlerAirdropV4UserAirdropRecord[]|\GateApi\Model\HodlerAirdropV4ErrorResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse
+     */
+    public function getHodlerAirdropUserAirdropRecords($associative_array)
+    {
+        list($response) = $this->getHodlerAirdropUserAirdropRecordsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getHodlerAirdropUserAirdropRecordsWithHttpInfo
+     *
+     * 查询HODLer Airdrop空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\HodlerAirdropV4UserAirdropRecord[]|\GateApi\Model\HodlerAirdropV4ErrorResponse|\GateApi\Model\HodlerAirdropV4ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getHodlerAirdropUserAirdropRecordsWithHttpInfo($associative_array)
+    {
+        $request = $this->getHodlerAirdropUserAirdropRecordsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\HodlerAirdropV4UserAirdropRecord[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getHodlerAirdropUserAirdropRecordsAsync
+     *
+     * 查询HODLer Airdrop空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getHodlerAirdropUserAirdropRecordsAsync($associative_array)
+    {
+        return $this->getHodlerAirdropUserAirdropRecordsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getHodlerAirdropUserAirdropRecordsAsyncWithHttpInfo
+     *
+     * 查询HODLer Airdrop空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getHodlerAirdropUserAirdropRecordsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\HodlerAirdropV4UserAirdropRecord[]';
+        $request = $this->getHodlerAirdropUserAirdropRecordsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getHodlerAirdropUserAirdropRecords'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $keyword 币种名称关键词筛选 (optional)
+     * @param  int $start_timest 开始时间戳（秒） (optional)
+     * @param  int $end_timest 结束时间戳（秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getHodlerAirdropUserAirdropRecordsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $keyword = array_key_exists('keyword', $associative_array) ? $associative_array['keyword'] : null;
+        $start_timest = array_key_exists('start_timest', $associative_array) ? $associative_array['start_timest'] : null;
+        $end_timest = array_key_exists('end_timest', $associative_array) ? $associative_array['end_timest'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $size = array_key_exists('size', $associative_array) ? $associative_array['size'] : 10;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling LaunchApi.getHodlerAirdropUserAirdropRecords, must be bigger than or equal to 1.');
+        }
+
+        if ($size !== null && $size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$size" when calling LaunchApi.getHodlerAirdropUserAirdropRecords, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/launch/hodler-airdrop/user-airdrop-records';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($keyword !== null) {
+            if('form' === 'form' && is_array($keyword)) {
+                foreach($keyword as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['keyword'] = $keyword;
+            }
+        }
+
+        // query params
+        if ($start_timest !== null) {
+            if('form' === 'form' && is_array($start_timest)) {
+                foreach($start_timest as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_timest'] = $start_timest;
+            }
+        }
+
+        // query params
+        if ($end_timest !== null) {
+            if('form' === 'form' && is_array($end_timest)) {
+                foreach($end_timest as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_timest'] = $end_timest;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($size !== null) {
+            if('form' === 'form' && is_array($size)) {
+                foreach($size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['size'] = $size;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCandyDropActivityListV4
+     *
+     * 查询活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
+     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
+     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
+     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CandyDropV4ActivityCd01[]|\GateApi\Model\CandyDropV4ErrorCd01
+     */
+    public function getCandyDropActivityListV4($associative_array)
+    {
+        list($response) = $this->getCandyDropActivityListV4WithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getCandyDropActivityListV4WithHttpInfo
+     *
+     * 查询活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
+     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
+     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
+     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CandyDropV4ActivityCd01[]|\GateApi\Model\CandyDropV4ErrorCd01, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCandyDropActivityListV4WithHttpInfo($associative_array)
+    {
+        $request = $this->getCandyDropActivityListV4Request($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CandyDropV4ActivityCd01[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getCandyDropActivityListV4Async
+     *
+     * 查询活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
+     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
+     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
+     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropActivityListV4Async($associative_array)
+    {
+        return $this->getCandyDropActivityListV4AsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCandyDropActivityListV4AsyncWithHttpInfo
+     *
+     * 查询活动列表
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
+     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
+     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
+     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropActivityListV4AsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\CandyDropV4ActivityCd01[]';
+        $request = $this->getCandyDropActivityListV4Request($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCandyDropActivityListV4'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
+     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
+     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
+     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCandyDropActivityListV4Request($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : null;
+        $rule_name = array_key_exists('rule_name', $associative_array) ? $associative_array['rule_name'] : null;
+        $register_status = array_key_exists('register_status', $associative_array) ? $associative_array['register_status'] : null;
+        $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 10;
+        $offset = array_key_exists('offset', $associative_array) ? $associative_array['offset'] : 0;
+
+        if ($limit !== null && $limit > 30) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling LaunchApi.getCandyDropActivityListV4, must be smaller than or equal to 30.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling LaunchApi.getCandyDropActivityListV4, must be bigger than or equal to 1.');
+        }
+
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling LaunchApi.getCandyDropActivityListV4, must be bigger than or equal to 0.');
+        }
+
+
+        $resourcePath = '/launch/candydrop/activity-list';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($rule_name !== null) {
+            if('form' === 'form' && is_array($rule_name)) {
+                foreach($rule_name as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['rule_name'] = $rule_name;
+            }
+        }
+
+        // query params
+        if ($register_status !== null) {
+            if('form' === 'form' && is_array($register_status)) {
+                foreach($register_status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['register_status'] = $register_status;
+            }
+        }
+
+        // query params
+        if ($currency !== null) {
+            if('form' === 'form' && is_array($currency)) {
+                foreach($currency as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['currency'] = $currency;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // query params
+        if ($offset !== null) {
+            if('form' === 'form' && is_array($offset)) {
+                foreach($offset as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['offset'] = $offset;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation registerCandyDropV4
+     *
+     * 报名参与活动
+     *
+     * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 candy_drop_v4_register_req_cd02 (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CandyDropV4RegisterRespCd02|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01
+     */
+    public function registerCandyDropV4($candy_drop_v4_register_req_cd02)
+    {
+        list($response) = $this->registerCandyDropV4WithHttpInfo($candy_drop_v4_register_req_cd02);
+        return $response;
+    }
+
+    /**
+     * Operation registerCandyDropV4WithHttpInfo
+     *
+     * 报名参与活动
+     *
+     * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CandyDropV4RegisterRespCd02|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function registerCandyDropV4WithHttpInfo($candy_drop_v4_register_req_cd02)
+    {
+        $request = $this->registerCandyDropV4Request($candy_drop_v4_register_req_cd02);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CandyDropV4RegisterRespCd02';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation registerCandyDropV4Async
+     *
+     * 报名参与活动
+     *
+     * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function registerCandyDropV4Async($candy_drop_v4_register_req_cd02)
+    {
+        return $this->registerCandyDropV4AsyncWithHttpInfo($candy_drop_v4_register_req_cd02)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation registerCandyDropV4AsyncWithHttpInfo
+     *
+     * 报名参与活动
+     *
+     * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function registerCandyDropV4AsyncWithHttpInfo($candy_drop_v4_register_req_cd02)
+    {
+        $returnType = '\GateApi\Model\CandyDropV4RegisterRespCd02';
+        $request = $this->registerCandyDropV4Request($candy_drop_v4_register_req_cd02);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'registerCandyDropV4'
+     *
+     * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function registerCandyDropV4Request($candy_drop_v4_register_req_cd02)
+    {
+        // verify the required parameter 'candy_drop_v4_register_req_cd02' is set
+        if ($candy_drop_v4_register_req_cd02 === null || (is_array($candy_drop_v4_register_req_cd02) && count($candy_drop_v4_register_req_cd02) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $candy_drop_v4_register_req_cd02 when calling registerCandyDropV4'
+            );
+        }
+
+        $resourcePath = '/launch/candydrop/register';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($candy_drop_v4_register_req_cd02)) {
+            $_tempBody = $candy_drop_v4_register_req_cd02;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCandyDropActivityRulesV4
+     *
+     * 查询活动规则
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CandyDropV4ActivityRulesCd03|\GateApi\Model\CandyDropV4ErrorCd01
+     */
+    public function getCandyDropActivityRulesV4($associative_array)
+    {
+        list($response) = $this->getCandyDropActivityRulesV4WithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getCandyDropActivityRulesV4WithHttpInfo
+     *
+     * 查询活动规则
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CandyDropV4ActivityRulesCd03|\GateApi\Model\CandyDropV4ErrorCd01, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCandyDropActivityRulesV4WithHttpInfo($associative_array)
+    {
+        $request = $this->getCandyDropActivityRulesV4Request($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CandyDropV4ActivityRulesCd03';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getCandyDropActivityRulesV4Async
+     *
+     * 查询活动规则
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropActivityRulesV4Async($associative_array)
+    {
+        return $this->getCandyDropActivityRulesV4AsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCandyDropActivityRulesV4AsyncWithHttpInfo
+     *
+     * 查询活动规则
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropActivityRulesV4AsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\CandyDropV4ActivityRulesCd03';
+        $request = $this->getCandyDropActivityRulesV4Request($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCandyDropActivityRulesV4'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCandyDropActivityRulesV4Request($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $activity_id = array_key_exists('activity_id', $associative_array) ? $associative_array['activity_id'] : null;
+        $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
+
+
+        $resourcePath = '/launch/candydrop/activity-rules';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($activity_id !== null) {
+            if('form' === 'form' && is_array($activity_id)) {
+                foreach($activity_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['activity_id'] = $activity_id;
+            }
+        }
+
+        // query params
+        if ($currency !== null) {
+            if('form' === 'form' && is_array($currency)) {
+                foreach($currency as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['currency'] = $currency;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCandyDropTaskProgressV4
+     *
+     * 查询任务完成进度
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CandyDropV4TaskProgressCd04|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01
+     */
+    public function getCandyDropTaskProgressV4($associative_array)
+    {
+        list($response) = $this->getCandyDropTaskProgressV4WithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getCandyDropTaskProgressV4WithHttpInfo
+     *
+     * 查询任务完成进度
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CandyDropV4TaskProgressCd04|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCandyDropTaskProgressV4WithHttpInfo($associative_array)
+    {
+        $request = $this->getCandyDropTaskProgressV4Request($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CandyDropV4TaskProgressCd04';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getCandyDropTaskProgressV4Async
+     *
+     * 查询任务完成进度
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropTaskProgressV4Async($associative_array)
+    {
+        return $this->getCandyDropTaskProgressV4AsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCandyDropTaskProgressV4AsyncWithHttpInfo
+     *
+     * 查询任务完成进度
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropTaskProgressV4AsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\CandyDropV4TaskProgressCd04';
+        $request = $this->getCandyDropTaskProgressV4Request($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCandyDropTaskProgressV4'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
+     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCandyDropTaskProgressV4Request($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $activity_id = array_key_exists('activity_id', $associative_array) ? $associative_array['activity_id'] : null;
+        $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
+
+
+        $resourcePath = '/launch/candydrop/task-progress';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($activity_id !== null) {
+            if('form' === 'form' && is_array($activity_id)) {
+                foreach($activity_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['activity_id'] = $activity_id;
+            }
+        }
+
+        // query params
+        if ($currency !== null) {
+            if('form' === 'form' && is_array($currency)) {
+                foreach($currency as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['currency'] = $currency;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCandyDropParticipationRecordsV4
+     *
+     * 查询参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CandyDropV4ParticipationRecordCd05[]|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01
+     */
+    public function getCandyDropParticipationRecordsV4($associative_array)
+    {
+        list($response) = $this->getCandyDropParticipationRecordsV4WithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getCandyDropParticipationRecordsV4WithHttpInfo
+     *
+     * 查询参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CandyDropV4ParticipationRecordCd05[]|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCandyDropParticipationRecordsV4WithHttpInfo($associative_array)
+    {
+        $request = $this->getCandyDropParticipationRecordsV4Request($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CandyDropV4ParticipationRecordCd05[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getCandyDropParticipationRecordsV4Async
+     *
+     * 查询参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropParticipationRecordsV4Async($associative_array)
+    {
+        return $this->getCandyDropParticipationRecordsV4AsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCandyDropParticipationRecordsV4AsyncWithHttpInfo
+     *
+     * 查询参与记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropParticipationRecordsV4AsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\CandyDropV4ParticipationRecordCd05[]';
+        $request = $this->getCandyDropParticipationRecordsV4Request($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCandyDropParticipationRecordsV4'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCandyDropParticipationRecordsV4Request($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : null;
+        $start_time = array_key_exists('start_time', $associative_array) ? $associative_array['start_time'] : null;
+        $end_time = array_key_exists('end_time', $associative_array) ? $associative_array['end_time'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 10;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling LaunchApi.getCandyDropParticipationRecordsV4, must be bigger than or equal to 1.');
+        }
+
+        if ($limit !== null && $limit > 30) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling LaunchApi.getCandyDropParticipationRecordsV4, must be smaller than or equal to 30.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling LaunchApi.getCandyDropParticipationRecordsV4, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/launch/candydrop/participation-records';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($currency !== null) {
+            if('form' === 'form' && is_array($currency)) {
+                foreach($currency as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['currency'] = $currency;
+            }
+        }
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($start_time !== null) {
+            if('form' === 'form' && is_array($start_time)) {
+                foreach($start_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_time'] = $start_time;
+            }
+        }
+
+        // query params
+        if ($end_time !== null) {
+            if('form' === 'form' && is_array($end_time)) {
+                foreach($end_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_time'] = $end_time;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCandyDropAirdropRecordsV4
+     *
+     * 查询空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CandyDropV4AirdropRecordCd06[]|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01
+     */
+    public function getCandyDropAirdropRecordsV4($associative_array)
+    {
+        list($response) = $this->getCandyDropAirdropRecordsV4WithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getCandyDropAirdropRecordsV4WithHttpInfo
+     *
+     * 查询空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CandyDropV4AirdropRecordCd06[]|\GateApi\Model\CandyDropV4ErrorCd01|\GateApi\Model\CandyDropV4ErrorCd01, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCandyDropAirdropRecordsV4WithHttpInfo($associative_array)
+    {
+        $request = $this->getCandyDropAirdropRecordsV4Request($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CandyDropV4AirdropRecordCd06[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getCandyDropAirdropRecordsV4Async
+     *
+     * 查询空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropAirdropRecordsV4Async($associative_array)
+    {
+        return $this->getCandyDropAirdropRecordsV4AsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCandyDropAirdropRecordsV4AsyncWithHttpInfo
+     *
+     * 查询空投记录
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCandyDropAirdropRecordsV4AsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\CandyDropV4AirdropRecordCd06[]';
+        $request = $this->getCandyDropAirdropRecordsV4Request($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCandyDropAirdropRecordsV4'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $currency 币种名称筛选 (optional)
+     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
+     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
+     * @param  int $page 页码，默认1 (optional, default to 1)
+     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCandyDropAirdropRecordsV4Request($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
+        $start_time = array_key_exists('start_time', $associative_array) ? $associative_array['start_time'] : null;
+        $end_time = array_key_exists('end_time', $associative_array) ? $associative_array['end_time'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 10;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling LaunchApi.getCandyDropAirdropRecordsV4, must be bigger than or equal to 1.');
+        }
+
+        if ($limit !== null && $limit > 30) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling LaunchApi.getCandyDropAirdropRecordsV4, must be smaller than or equal to 30.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling LaunchApi.getCandyDropAirdropRecordsV4, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/launch/candydrop/airdrop-records';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($currency !== null) {
+            if('form' === 'form' && is_array($currency)) {
+                foreach($currency as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['currency'] = $currency;
+            }
+        }
+
+        // query params
+        if ($start_time !== null) {
+            if('form' === 'form' && is_array($start_time)) {
+                foreach($start_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_time'] = $start_time;
+            }
+        }
+
+        // query params
+        if ($end_time !== null) {
+            if('form' === 'form' && is_array($end_time)) {
+                foreach($end_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_time'] = $end_time;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Create http client option
      *
      * @throws \RuntimeException on file opening failure

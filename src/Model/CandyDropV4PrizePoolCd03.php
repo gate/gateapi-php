@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOrderData
+ * CandyDropV4PrizePoolCd03
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * CreateOrderData Class Doc Comment
+ * CandyDropV4PrizePoolCd03 Class Doc Comment
  *
  * @category Class
- * @description Order result
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class CreateOrderData implements ModelInterface, ArrayAccess
+class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class CreateOrderData implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateOrder_data';
+    protected static $openAPIModelName = 'CandyDropV4PrizePool_cd03';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,7 +54,10 @@ class CreateOrderData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string'
+        'prize_pool_type' => 'int',
+        'prize_all' => 'string',
+        'prize_limit' => 'string',
+        'tasks' => '\GateApi\Model\CandyDropV4TaskCd03[]'
     ];
 
     /**
@@ -64,7 +66,10 @@ class CreateOrderData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null
+        'prize_pool_type' => null,
+        'prize_all' => null,
+        'prize_limit' => null,
+        'tasks' => null
     ];
 
     /**
@@ -94,7 +99,10 @@ class CreateOrderData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'prize_pool_type' => 'prize_pool_type',
+        'prize_all' => 'prize_all',
+        'prize_limit' => 'prize_limit',
+        'tasks' => 'tasks'
     ];
 
     /**
@@ -103,7 +111,10 @@ class CreateOrderData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'prize_pool_type' => 'setPrizePoolType',
+        'prize_all' => 'setPrizeAll',
+        'prize_limit' => 'setPrizeLimit',
+        'tasks' => 'setTasks'
     ];
 
     /**
@@ -112,7 +123,10 @@ class CreateOrderData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'prize_pool_type' => 'getPrizePoolType',
+        'prize_all' => 'getPrizeAll',
+        'prize_limit' => 'getPrizeLimit',
+        'tasks' => 'getTasks'
     ];
 
     /**
@@ -175,7 +189,10 @@ class CreateOrderData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['prize_pool_type'] = isset($data['prize_pool_type']) ? $data['prize_pool_type'] : null;
+        $this->container['prize_all'] = isset($data['prize_all']) ? $data['prize_all'] : null;
+        $this->container['prize_limit'] = isset($data['prize_limit']) ? $data['prize_limit'] : null;
+        $this->container['tasks'] = isset($data['tasks']) ? $data['tasks'] : null;
     }
 
     /**
@@ -203,25 +220,97 @@ class CreateOrderData implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets prize_pool_type
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getId()
+    public function getPrizePoolType()
     {
-        return $this->container['id'];
+        return $this->container['prize_pool_type'];
     }
 
     /**
-     * Sets id
+     * Sets prize_pool_type
      *
-     * @param string|null $id Queue Task ID (not task ID)
+     * @param int|null $prize_pool_type 奖池类型
      *
      * @return $this
      */
-    public function setId($id)
+    public function setPrizePoolType($prize_pool_type)
     {
-        $this->container['id'] = $id;
+        $this->container['prize_pool_type'] = $prize_pool_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets prize_all
+     *
+     * @return string|null
+     */
+    public function getPrizeAll()
+    {
+        return $this->container['prize_all'];
+    }
+
+    /**
+     * Sets prize_all
+     *
+     * @param string|null $prize_all 奖池总额度
+     *
+     * @return $this
+     */
+    public function setPrizeAll($prize_all)
+    {
+        $this->container['prize_all'] = $prize_all;
+
+        return $this;
+    }
+
+    /**
+     * Gets prize_limit
+     *
+     * @return string|null
+     */
+    public function getPrizeLimit()
+    {
+        return $this->container['prize_limit'];
+    }
+
+    /**
+     * Sets prize_limit
+     *
+     * @param string|null $prize_limit 每人瓜分上限
+     *
+     * @return $this
+     */
+    public function setPrizeLimit($prize_limit)
+    {
+        $this->container['prize_limit'] = $prize_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets tasks
+     *
+     * @return \GateApi\Model\CandyDropV4TaskCd03[]|null
+     */
+    public function getTasks()
+    {
+        return $this->container['tasks'];
+    }
+
+    /**
+     * Sets tasks
+     *
+     * @param \GateApi\Model\CandyDropV4TaskCd03[]|null $tasks 任务列表
+     *
+     * @return $this
+     */
+    public function setTasks($tasks)
+    {
+        $this->container['tasks'] = $tasks;
 
         return $this;
     }

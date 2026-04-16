@@ -121,6 +121,12 @@ class EarnApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  int $plan_id Financial project ID (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency enum: defaults to USDT; GUSD optional (optional)
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -140,6 +146,12 @@ class EarnApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  int $plan_id Financial project ID (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency enum: defaults to USDT; GUSD optional (optional)
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -196,6 +208,12 @@ class EarnApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  int $plan_id Financial project ID (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency enum: defaults to USDT; GUSD optional (optional)
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -218,6 +236,12 @@ class EarnApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  int $plan_id Financial project ID (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency enum: defaults to USDT; GUSD optional (optional)
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -267,6 +291,12 @@ class EarnApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  int $plan_id Financial project ID (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency enum: defaults to USDT; GUSD optional (optional)
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -275,6 +305,12 @@ class EarnApi
     {
         // unbox the parameters from the associative array
         $plan_id = array_key_exists('plan_id', $associative_array) ? $associative_array['plan_id'] : null;
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $quote_currency = array_key_exists('quote_currency', $associative_array) ? $associative_array['quote_currency'] : null;
+        $sort = array_key_exists('sort', $associative_array) ? $associative_array['sort'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
 
 
         $resourcePath = '/earn/dual/investment_plan';
@@ -293,6 +329,78 @@ class EarnApi
             }
             else {
                 $queryParams['plan_id'] = $plan_id;
+            }
+        }
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($quote_currency !== null) {
+            if('form' === 'form' && is_array($quote_currency)) {
+                foreach($quote_currency as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['quote_currency'] = $quote_currency;
+            }
+        }
+
+        // query params
+        if ($sort !== null) {
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
             }
         }
 
@@ -371,6 +479,9 @@ class EarnApi
      *
      * @param  int $from Start settlement time (optional)
      * @param  int $to End settlement time (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $status Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all (optional)
+     * @param  string $coin Investment Token (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
@@ -393,6 +504,9 @@ class EarnApi
      *
      * @param  int $from Start settlement time (optional)
      * @param  int $to End settlement time (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $status Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all (optional)
+     * @param  string $coin Investment Token (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
@@ -452,6 +566,9 @@ class EarnApi
      *
      * @param  int $from Start settlement time (optional)
      * @param  int $to End settlement time (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $status Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all (optional)
+     * @param  string $coin Investment Token (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
@@ -477,6 +594,9 @@ class EarnApi
      *
      * @param  int $from Start settlement time (optional)
      * @param  int $to End settlement time (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $status Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all (optional)
+     * @param  string $coin Investment Token (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
@@ -529,6 +649,9 @@ class EarnApi
      *
      * @param  int $from Start settlement time (optional)
      * @param  int $to End settlement time (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $status Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all (optional)
+     * @param  string $coin Investment Token (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
@@ -540,6 +663,9 @@ class EarnApi
         // unbox the parameters from the associative array
         $from = array_key_exists('from', $associative_array) ? $associative_array['from'] : null;
         $to = array_key_exists('to', $associative_array) ? $associative_array['to'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : null;
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
         $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
         $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 100;
 
@@ -583,6 +709,42 @@ class EarnApi
             }
             else {
                 $queryParams['to'] = $to;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
             }
         }
 
@@ -1067,6 +1229,981 @@ class EarnApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDualOrderRefundPreview
+     *
+     * Dual-currency early redemption preview
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\DualOrderRefundPreview
+     */
+    public function getDualOrderRefundPreview($order_id)
+    {
+        list($response) = $this->getDualOrderRefundPreviewWithHttpInfo($order_id);
+        return $response;
+    }
+
+    /**
+     * Operation getDualOrderRefundPreviewWithHttpInfo
+     *
+     * Dual-currency early redemption preview
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\DualOrderRefundPreview, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDualOrderRefundPreviewWithHttpInfo($order_id)
+    {
+        $request = $this->getDualOrderRefundPreviewRequest($order_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\DualOrderRefundPreview';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getDualOrderRefundPreviewAsync
+     *
+     * Dual-currency early redemption preview
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualOrderRefundPreviewAsync($order_id)
+    {
+        return $this->getDualOrderRefundPreviewAsyncWithHttpInfo($order_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDualOrderRefundPreviewAsyncWithHttpInfo
+     *
+     * Dual-currency early redemption preview
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualOrderRefundPreviewAsyncWithHttpInfo($order_id)
+    {
+        $returnType = '\GateApi\Model\DualOrderRefundPreview';
+        $request = $this->getDualOrderRefundPreviewRequest($order_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDualOrderRefundPreview'
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getDualOrderRefundPreviewRequest($order_id)
+    {
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling getDualOrderRefundPreview'
+            );
+        }
+
+        $resourcePath = '/earn/dual/order-refund-preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($order_id !== null) {
+            if('form' === 'form' && is_array($order_id)) {
+                foreach($order_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['order_id'] = $order_id;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation placeDualOrderRefund
+     *
+     * Dual-currency order early redemption
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params dual_order_refund_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function placeDualOrderRefund($dual_order_refund_params)
+    {
+        $this->placeDualOrderRefundWithHttpInfo($dual_order_refund_params);
+    }
+
+    /**
+     * Operation placeDualOrderRefundWithHttpInfo
+     *
+     * Dual-currency order early redemption
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function placeDualOrderRefundWithHttpInfo($dual_order_refund_params)
+    {
+        $request = $this->placeDualOrderRefundRequest($dual_order_refund_params);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        return [null, $statusCode, $response->getHeaders()];
+    }
+
+    /**
+     * Operation placeDualOrderRefundAsync
+     *
+     * Dual-currency order early redemption
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function placeDualOrderRefundAsync($dual_order_refund_params)
+    {
+        return $this->placeDualOrderRefundAsyncWithHttpInfo($dual_order_refund_params)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation placeDualOrderRefundAsyncWithHttpInfo
+     *
+     * Dual-currency order early redemption
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function placeDualOrderRefundAsyncWithHttpInfo($dual_order_refund_params)
+    {
+        $returnType = '';
+        $request = $this->placeDualOrderRefundRequest($dual_order_refund_params);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'placeDualOrderRefund'
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function placeDualOrderRefundRequest($dual_order_refund_params)
+    {
+        // verify the required parameter 'dual_order_refund_params' is set
+        if ($dual_order_refund_params === null || (is_array($dual_order_refund_params) && count($dual_order_refund_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dual_order_refund_params when calling placeDualOrderRefund'
+            );
+        }
+
+        $resourcePath = '/earn/dual/order-refund';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($dual_order_refund_params)) {
+            $_tempBody = $dual_order_refund_params;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation modifyDualOrderReinvest
+     *
+     * Modify dual-currency order reinvest
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params dual_modify_order_reinvest_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function modifyDualOrderReinvest($dual_modify_order_reinvest_params)
+    {
+        $this->modifyDualOrderReinvestWithHttpInfo($dual_modify_order_reinvest_params);
+    }
+
+    /**
+     * Operation modifyDualOrderReinvestWithHttpInfo
+     *
+     * Modify dual-currency order reinvest
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function modifyDualOrderReinvestWithHttpInfo($dual_modify_order_reinvest_params)
+    {
+        $request = $this->modifyDualOrderReinvestRequest($dual_modify_order_reinvest_params);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        return [null, $statusCode, $response->getHeaders()];
+    }
+
+    /**
+     * Operation modifyDualOrderReinvestAsync
+     *
+     * Modify dual-currency order reinvest
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function modifyDualOrderReinvestAsync($dual_modify_order_reinvest_params)
+    {
+        return $this->modifyDualOrderReinvestAsyncWithHttpInfo($dual_modify_order_reinvest_params)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation modifyDualOrderReinvestAsyncWithHttpInfo
+     *
+     * Modify dual-currency order reinvest
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function modifyDualOrderReinvestAsyncWithHttpInfo($dual_modify_order_reinvest_params)
+    {
+        $returnType = '';
+        $request = $this->modifyDualOrderReinvestRequest($dual_modify_order_reinvest_params);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'modifyDualOrderReinvest'
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function modifyDualOrderReinvestRequest($dual_modify_order_reinvest_params)
+    {
+        // verify the required parameter 'dual_modify_order_reinvest_params' is set
+        if ($dual_modify_order_reinvest_params === null || (is_array($dual_modify_order_reinvest_params) && count($dual_modify_order_reinvest_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dual_modify_order_reinvest_params when calling modifyDualOrderReinvest'
+            );
+        }
+
+        $resourcePath = '/earn/dual/modify-order-reinvest';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($dual_modify_order_reinvest_params)) {
+            $_tempBody = $dual_modify_order_reinvest_params;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDualProjectRecommend
+     *
+     * Dual-currency recommended projects
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $mode Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $history_pids Comma-separated project IDs to exclude already recommended items (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\DualProjectRecommend[]
+     */
+    public function getDualProjectRecommend($associative_array)
+    {
+        list($response) = $this->getDualProjectRecommendWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getDualProjectRecommendWithHttpInfo
+     *
+     * Dual-currency recommended projects
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $mode Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $history_pids Comma-separated project IDs to exclude already recommended items (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\DualProjectRecommend[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDualProjectRecommendWithHttpInfo($associative_array)
+    {
+        $request = $this->getDualProjectRecommendRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\DualProjectRecommend[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getDualProjectRecommendAsync
+     *
+     * Dual-currency recommended projects
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $mode Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $history_pids Comma-separated project IDs to exclude already recommended items (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualProjectRecommendAsync($associative_array)
+    {
+        return $this->getDualProjectRecommendAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDualProjectRecommendAsyncWithHttpInfo
+     *
+     * Dual-currency recommended projects
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $mode Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $history_pids Comma-separated project IDs to exclude already recommended items (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualProjectRecommendAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\DualProjectRecommend[]';
+        $request = $this->getDualProjectRecommendRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDualProjectRecommend'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $mode Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending (optional)
+     * @param  string $coin Investment Token (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $history_pids Comma-separated project IDs to exclude already recommended items (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getDualProjectRecommendRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $mode = array_key_exists('mode', $associative_array) ? $associative_array['mode'] : null;
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $history_pids = array_key_exists('history_pids', $associative_array) ? $associative_array['history_pids'] : null;
+
+
+        $resourcePath = '/earn/dual/project-recommend';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($mode !== null) {
+            if('form' === 'form' && is_array($mode)) {
+                foreach($mode as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['mode'] = $mode;
+            }
+        }
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($history_pids !== null) {
+            if('form' === 'form' && is_array($history_pids)) {
+                foreach($history_pids as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['history_pids'] = $history_pids;
+            }
+        }
 
         // body params
         $_tempBody = null;

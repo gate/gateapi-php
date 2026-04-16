@@ -1,0 +1,12 @@
+# # PreviewOrder
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**from** | [**\GateApi\Model\PreviewOrderDetail[]**](PreviewOrderDetail.md) |  | 
+**to** | [**\GateApi\Model\PreviewOrderDetail[]**](PreviewOrderDetail.md) |  | 
+**usdt_evaluated_value** | **string** |  | 
+**usdt_evaluated_value_show** | **string** |  | 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

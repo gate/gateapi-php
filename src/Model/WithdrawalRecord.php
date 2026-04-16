@@ -571,7 +571,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
     /**
      * Sets timestamp2
      *
-     * @param string|null $timestamp2 Withdrawal final time, i.e.: withdrawal cancellation time or withdrawal success time When status = CANCEL, corresponds to cancellation time When status = DONE and block_number > 0, it is the withdrawal success time
+     * @param string|null $timestamp2 Withdrawal final time, i.e.: withdrawal cancellation time or withdrawal success time When status = CANCEL, corresponds to cancellation time When status = DONE, it is the withdrawal success time
      *
      * @return $this
      */
@@ -619,7 +619,7 @@ class WithdrawalRecord implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed (Only considered truly on-chain when block_number > 0) - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
+     * @param string|null $status Transaction Status  - BCODE: Deposit Code Operation - CANCEL: Cancelled - CANCELPEND: Withdrawal Cancellation Pending - DONE: Completed - EXTPEND: Sent and Waiting for Confirmation - FAIL: On-Chain Failure Pending Confirmation - FVERIFY: Facial Verification in Progress - LOCKED: Wallet-Side Order Locked - MANUAL: Pending Manual Review - REJECT: Rejected - REQUEST: Request in Progress - REVIEW: Under Review
      *
      * @return $this
      */

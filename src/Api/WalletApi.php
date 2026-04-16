@@ -2897,6 +2897,8 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $limit Maximum number of records returned. Default 20, max 100. (optional, default to 100)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2916,6 +2918,8 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $limit Maximum number of records returned. Default 20, max 100. (optional, default to 100)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2972,6 +2976,8 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $limit Maximum number of records returned. Default 20, max 100. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2994,6 +3000,8 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $limit Maximum number of records returned. Default 20, max 100. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3043,6 +3051,8 @@ class WalletApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $sub_uid Sub-account user ID, you can query multiple records separated by &#x60;,&#x60;. If not specified, it will return records of all sub-accounts (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $limit Maximum number of records returned. Default 20, max 100. (optional, default to 100)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3051,6 +3061,19 @@ class WalletApi
     {
         // unbox the parameters from the associative array
         $sub_uid = array_key_exists('sub_uid', $associative_array) ? $associative_array['sub_uid'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 100;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling WalletApi.listSubAccountBalances, must be bigger than or equal to 1.');
+        }
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WalletApi.listSubAccountBalances, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WalletApi.listSubAccountBalances, must be bigger than or equal to 1.');
+        }
 
 
         $resourcePath = '/wallet/sub_account_balances';
@@ -3069,6 +3092,30 @@ class WalletApi
             }
             else {
                 $queryParams['sub_uid'] = $sub_uid;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
             }
         }
 

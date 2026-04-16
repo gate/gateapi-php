@@ -2829,7 +2829,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\CreateOrder|\GateApi\Model\TradFiError
+     * @return \GateApi\Model\CreateOrder2|\GateApi\Model\TradFiError
      */
     public function createTradFiOrder($trad_fi_order_request)
     {
@@ -2846,7 +2846,7 @@ class TradFiApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\CreateOrder|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CreateOrder2|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTradFiOrderWithHttpInfo($trad_fi_order_request)
     {
@@ -2876,7 +2876,7 @@ class TradFiApi
             );
         }
 
-        $returnType = '\GateApi\Model\CreateOrder';
+        $returnType = '\GateApi\Model\CreateOrder2';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2923,7 +2923,7 @@ class TradFiApi
      */
     public function createTradFiOrderAsyncWithHttpInfo($trad_fi_order_request)
     {
-        $returnType = '\GateApi\Model\CreateOrder';
+        $returnType = '\GateApi\Model\CreateOrder2';
         $request = $this->createTradFiOrderRequest($trad_fi_order_request);
 
         return $this->client

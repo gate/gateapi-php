@@ -56,6 +56,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'min_risk_limit_value' => 'string',
         'max_risk_limit_value' => 'string',
+        'quick_cal_amount' => 'string',
         'leverage_max' => 'string',
         'maintenance_rate' => 'string',
         'tier' => 'string'
@@ -69,6 +70,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'min_risk_limit_value' => null,
         'max_risk_limit_value' => null,
+        'quick_cal_amount' => null,
         'leverage_max' => null,
         'maintenance_rate' => null,
         'tier' => null
@@ -103,6 +105,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'min_risk_limit_value' => 'min_risk_limit_value',
         'max_risk_limit_value' => 'max_risk_limit_value',
+        'quick_cal_amount' => 'quick_cal_amount',
         'leverage_max' => 'leverage_max',
         'maintenance_rate' => 'maintenance_rate',
         'tier' => 'tier'
@@ -116,6 +119,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     protected static $setters = [
         'min_risk_limit_value' => 'setMinRiskLimitValue',
         'max_risk_limit_value' => 'setMaxRiskLimitValue',
+        'quick_cal_amount' => 'setQuickCalAmount',
         'leverage_max' => 'setLeverageMax',
         'maintenance_rate' => 'setMaintenanceRate',
         'tier' => 'setTier'
@@ -129,6 +133,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     protected static $getters = [
         'min_risk_limit_value' => 'getMinRiskLimitValue',
         'max_risk_limit_value' => 'getMaxRiskLimitValue',
+        'quick_cal_amount' => 'getQuickCalAmount',
         'leverage_max' => 'getLeverageMax',
         'maintenance_rate' => 'getMaintenanceRate',
         'tier' => 'getTier'
@@ -196,6 +201,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     {
         $this->container['min_risk_limit_value'] = isset($data['min_risk_limit_value']) ? $data['min_risk_limit_value'] : null;
         $this->container['max_risk_limit_value'] = isset($data['max_risk_limit_value']) ? $data['max_risk_limit_value'] : null;
+        $this->container['quick_cal_amount'] = isset($data['quick_cal_amount']) ? $data['quick_cal_amount'] : null;
         $this->container['leverage_max'] = isset($data['leverage_max']) ? $data['leverage_max'] : null;
         $this->container['maintenance_rate'] = isset($data['maintenance_rate']) ? $data['maintenance_rate'] : null;
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
@@ -215,6 +221,9 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
         }
         if ($this->container['max_risk_limit_value'] === null) {
             $invalidProperties[] = "'max_risk_limit_value' can't be null";
+        }
+        if ($this->container['quick_cal_amount'] === null) {
+            $invalidProperties[] = "'quick_cal_amount' can't be null";
         }
         if ($this->container['leverage_max'] === null) {
             $invalidProperties[] = "'leverage_max' can't be null";
@@ -284,6 +293,30 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     public function setMaxRiskLimitValue($max_risk_limit_value)
     {
         $this->container['max_risk_limit_value'] = $max_risk_limit_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets quick_cal_amount
+     *
+     * @return string
+     */
+    public function getQuickCalAmount()
+    {
+        return $this->container['quick_cal_amount'];
+    }
+
+    /**
+     * Sets quick_cal_amount
+     *
+     * @param string $quick_cal_amount Quick-calculation amount
+     *
+     * @return $this
+     */
+    public function setQuickCalAmount($quick_cal_amount)
+    {
+        $this->container['quick_cal_amount'] = $quick_cal_amount;
 
         return $this;
     }

@@ -54,7 +54,8 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int'
+        'id' => 'int',
+        'id_string' => 'string'
     ];
 
     /**
@@ -63,7 +64,8 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => 'int64'
+        'id' => 'int64',
+        'id_string' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id'
+        'id' => 'id',
+        'id_string' => 'id_string'
     ];
 
     /**
@@ -102,7 +105,8 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId'
+        'id' => 'setId',
+        'id_string' => 'setIdString'
     ];
 
     /**
@@ -111,7 +115,8 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId'
+        'id' => 'getId',
+        'id_string' => 'getIdString'
     ];
 
     /**
@@ -175,6 +180,7 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['id_string'] = isset($data['id_string']) ? $data['id_string'] : null;
     }
 
     /**
@@ -221,6 +227,30 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_string
+     *
+     * @return string|null
+     */
+    public function getIdString()
+    {
+        return $this->container['id_string'];
+    }
+
+    /**
+     * Sets id_string
+     *
+     * @param string|null $id_string String form of the auto order ID; the same order as numeric `id`, as the decimal string of `id` to avoid int64 precision loss in JavaScript and similar environments. Prefer this field to display the order ID or when a string unique identifier is needed; one-to-one with `id`. Same meaning as the field of the same name in futures price-trigger REST APIs and in `futures.orders` / `futures.autoorders` WebSocket pushes.
+     *
+     * @return $this
+     */
+    public function setIdString($id_string)
+    {
+        $this->container['id_string'] = $id_string;
 
         return $this;
     }

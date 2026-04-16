@@ -211,6 +211,12 @@ class ApiResponseExSkillGetBeginnerTaskListResp implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -229,7 +235,7 @@ class ApiResponseExSkillGetBeginnerTaskListResp implements ModelInterface, Array
     /**
      * Gets code
      *
-     * @return int|null
+     * @return int
      */
     public function getCode()
     {
@@ -239,7 +245,7 @@ class ApiResponseExSkillGetBeginnerTaskListResp implements ModelInterface, Array
     /**
      * Sets code
      *
-     * @param int|null $code Business error code: 0 = success, 1007 = no task data, 1008 = not logged in
+     * @param int $code Business error code: 0 = success, 1007 = no task data, 1008 = not logged in
      *
      * @return $this
      */
@@ -325,7 +331,7 @@ class ApiResponseExSkillGetBeginnerTaskListResp implements ModelInterface, Array
     /**
      * Gets timestamp
      *
-     * @return int|null
+     * @return int
      */
     public function getTimestamp()
     {
@@ -335,7 +341,7 @@ class ApiResponseExSkillGetBeginnerTaskListResp implements ModelInterface, Array
     /**
      * Sets timestamp
      *
-     * @param int|null $timestamp Server timestamp (milliseconds)
+     * @param int $timestamp Server timestamp (milliseconds)
      *
      * @return $this
      */

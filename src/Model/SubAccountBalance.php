@@ -55,7 +55,8 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'uid' => 'string',
-        'available' => 'map[string,string]'
+        'available' => 'map[string,string]',
+        'locking' => 'map[string,string]'
     ];
 
     /**
@@ -65,7 +66,8 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'uid' => null,
-        'available' => null
+        'available' => null,
+        'locking' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'uid' => 'uid',
-        'available' => 'available'
+        'available' => 'available',
+        'locking' => 'locking'
     ];
 
     /**
@@ -106,7 +109,8 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'uid' => 'setUid',
-        'available' => 'setAvailable'
+        'available' => 'setAvailable',
+        'locking' => 'setLocking'
     ];
 
     /**
@@ -116,7 +120,8 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'uid' => 'getUid',
-        'available' => 'getAvailable'
+        'available' => 'getAvailable',
+        'locking' => 'getLocking'
     ];
 
     /**
@@ -181,6 +186,7 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
     {
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        $this->container['locking'] = isset($data['locking']) ? $data['locking'] : null;
     }
 
     /**
@@ -251,6 +257,30 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
     public function setAvailable($available)
     {
         $this->container['available'] = $available;
+
+        return $this;
+    }
+
+    /**
+     * Gets locking
+     *
+     * @return map[string,string]|null
+     */
+    public function getLocking()
+    {
+        return $this->container['locking'];
+    }
+
+    /**
+     * Sets locking
+     *
+     * @param map[string,string]|null $locking Locked amount by currency
+     *
+     * @return $this
+     */
+    public function setLocking($locking)
+    {
+        $this->container['locking'] = $locking;
 
         return $this;
     }

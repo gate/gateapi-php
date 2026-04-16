@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * ApiResponseExSkillGetBeginnerTaskListRespDataTasks Class Doc Comment
  *
  * @category Class
- * @description Beginner task information
+ * @description 入门任务信息。&#x60;task_center_id&#x60; 与 &#x60;status&#x60; 列入 required：二者均允许为 0（注册任务、待领取下载任务）， 且避免 Go SDK 对整型零值使用 omitempty 导致客户端序列化时丢失字段。
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -275,6 +275,9 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     {
         $invalidProperties = [];
 
+        if ($this->container['task_center_id'] === null) {
+            $invalidProperties[] = "'task_center_id' can't be null";
+        }
         $allowedValues = $this->getPrizeTypeAllowableValues();
         if (!is_null($this->container['prize_type']) && !in_array($this->container['prize_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -283,6 +286,9 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
             );
         }
 
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -333,7 +339,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     /**
      * Gets task_center_id
      *
-     * @return int|null
+     * @return int
      */
     public function getTaskCenterId()
     {
@@ -343,7 +349,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     /**
      * Sets task_center_id
      *
-     * @param int|null $task_center_id Task center task ID (fixed at 0 for registration tasks)
+     * @param int $task_center_id Task center task ID (fixed at 0 for registration tasks)
      *
      * @return $this
      */
@@ -367,7 +373,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     /**
      * Sets task_type
      *
-     * @param int|null $task_type Task type: 1 = KYC level-2 verification, 2 = spot, 3 = futures, 4 = referral, 5 = quantitative, 6 = earn, 7 = startup, 8 = first deposit, 10 = registration task, 11 = onboarding task
+     * @param int|null $task_type 任务类型：1=KYC二级认证 2=现货 3=合约 4=邀请 5=量化 6=余币宝 7=startup 8=首次入金 10=注册任务 11=引导任务 23=下载任务
      *
      * @return $this
      */
@@ -510,7 +516,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     /**
      * Gets status
      *
-     * @return int|null
+     * @return int
      */
     public function getStatus()
     {
@@ -520,14 +526,14 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     /**
      * Sets status
      *
-     * @param int|null $status Task status: 0 = unclaimed, 1 = claimed, 2 = reward pending, 3 = rewarding, 4 = completed, 5 = expired
+     * @param int $status 任务状态：0=未领取（典型为待领取下载任务） 1=已领取/进行中 2=已完成待领奖 3=发奖中 4=已完成/已结算 5=已过期
      *
      * @return $this
      */
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'status', must be one of '%s'",

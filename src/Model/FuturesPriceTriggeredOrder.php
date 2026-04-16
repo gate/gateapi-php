@@ -58,6 +58,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'initial' => '\GateApi\Model\FuturesInitialOrder',
         'trigger' => '\GateApi\Model\FuturesPriceTrigger',
         'id' => 'int',
+        'id_string' => 'string',
         'user' => 'int',
         'create_time' => 'double',
         'finish_time' => 'double',
@@ -78,6 +79,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'initial' => null,
         'trigger' => null,
         'id' => 'int64',
+        'id_string' => null,
         'user' => null,
         'create_time' => 'double',
         'finish_time' => 'double',
@@ -119,6 +121,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'initial' => 'initial',
         'trigger' => 'trigger',
         'id' => 'id',
+        'id_string' => 'id_string',
         'user' => 'user',
         'create_time' => 'create_time',
         'finish_time' => 'finish_time',
@@ -139,6 +142,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'initial' => 'setInitial',
         'trigger' => 'setTrigger',
         'id' => 'setId',
+        'id_string' => 'setIdString',
         'user' => 'setUser',
         'create_time' => 'setCreateTime',
         'finish_time' => 'setFinishTime',
@@ -159,6 +163,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'initial' => 'getInitial',
         'trigger' => 'getTrigger',
         'id' => 'getId',
+        'id_string' => 'getIdString',
         'user' => 'getUser',
         'create_time' => 'getCreateTime',
         'finish_time' => 'getFinishTime',
@@ -271,6 +276,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         $this->container['initial'] = isset($data['initial']) ? $data['initial'] : null;
         $this->container['trigger'] = isset($data['trigger']) ? $data['trigger'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['id_string'] = isset($data['id_string']) ? $data['id_string'] : null;
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
@@ -396,6 +402,30 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_string
+     *
+     * @return string|null
+     */
+    public function getIdString()
+    {
+        return $this->container['id_string'];
+    }
+
+    /**
+     * Sets id_string
+     *
+     * @param string|null $id_string String form of the auto order ID; the same order as numeric `id`, as the decimal string of `id` to avoid int64 precision loss in JavaScript and similar environments. Prefer this field to display the order ID or when a string unique identifier is needed; one-to-one with `id`. Same meaning as the field of the same name in futures price-trigger REST APIs and in `futures.orders` / `futures.autoorders` WebSocket pushes.
+     *
+     * @return $this
+     */
+    public function setIdString($id_string)
+    {
+        $this->container['id_string'] = $id_string;
 
         return $this;
     }

@@ -54,8 +54,15 @@ class CreateOrder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'timestamp' => 'int',
-        'data' => '\GateApi\Model\CreateOrderData'
+        'id' => 'int',
+        'user_id' => 'int',
+        'from' => '\GateApi\Model\CreateOrderDetail[]',
+        'to' => '\GateApi\Model\CreateOrderDetail[]',
+        'source' => 'string',
+        'app_id' => 'string',
+        'client_req_id' => 'string',
+        'status' => 'int',
+        'create_time' => 'int'
     ];
 
     /**
@@ -64,8 +71,15 @@ class CreateOrder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'timestamp' => 'int64',
-        'data' => null
+        'id' => 'int64',
+        'user_id' => 'int32',
+        'from' => null,
+        'to' => null,
+        'source' => null,
+        'app_id' => null,
+        'client_req_id' => null,
+        'status' => 'int8',
+        'create_time' => 'int64'
     ];
 
     /**
@@ -95,8 +109,15 @@ class CreateOrder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'timestamp' => 'timestamp',
-        'data' => 'data'
+        'id' => 'id',
+        'user_id' => 'user_id',
+        'from' => 'from',
+        'to' => 'to',
+        'source' => 'source',
+        'app_id' => 'app_id',
+        'client_req_id' => 'client_req_id',
+        'status' => 'status',
+        'create_time' => 'create_time'
     ];
 
     /**
@@ -105,8 +126,15 @@ class CreateOrder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'timestamp' => 'setTimestamp',
-        'data' => 'setData'
+        'id' => 'setId',
+        'user_id' => 'setUserId',
+        'from' => 'setFrom',
+        'to' => 'setTo',
+        'source' => 'setSource',
+        'app_id' => 'setAppId',
+        'client_req_id' => 'setClientReqId',
+        'status' => 'setStatus',
+        'create_time' => 'setCreateTime'
     ];
 
     /**
@@ -115,8 +143,15 @@ class CreateOrder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'timestamp' => 'getTimestamp',
-        'data' => 'getData'
+        'id' => 'getId',
+        'user_id' => 'getUserId',
+        'from' => 'getFrom',
+        'to' => 'getTo',
+        'source' => 'getSource',
+        'app_id' => 'getAppId',
+        'client_req_id' => 'getClientReqId',
+        'status' => 'getStatus',
+        'create_time' => 'getCreateTime'
     ];
 
     /**
@@ -179,8 +214,15 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['from'] = isset($data['from']) ? $data['from'] : null;
+        $this->container['to'] = isset($data['to']) ? $data['to'] : null;
+        $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
+        $this->container['client_req_id'] = isset($data['client_req_id']) ? $data['client_req_id'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
     }
 
     /**
@@ -192,6 +234,33 @@ class CreateOrder implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if ($this->container['from'] === null) {
+            $invalidProperties[] = "'from' can't be null";
+        }
+        if ($this->container['to'] === null) {
+            $invalidProperties[] = "'to' can't be null";
+        }
+        if ($this->container['source'] === null) {
+            $invalidProperties[] = "'source' can't be null";
+        }
+        if ($this->container['app_id'] === null) {
+            $invalidProperties[] = "'app_id' can't be null";
+        }
+        if ($this->container['client_req_id'] === null) {
+            $invalidProperties[] = "'client_req_id' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['create_time'] === null) {
+            $invalidProperties[] = "'create_time' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -208,49 +277,217 @@ class CreateOrder implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets timestamp
+     * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getTimestamp()
+    public function getId()
     {
-        return $this->container['timestamp'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets timestamp
+     * Sets id
      *
-     * @param int|null $timestamp Server timestamp (milliseconds)
+     * @param int $id id
      *
      * @return $this
      */
-    public function setTimestamp($timestamp)
+    public function setId($id)
     {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets user_id
      *
-     * @return \GateApi\Model\CreateOrderData|null
+     * @return int
      */
-    public function getData()
+    public function getUserId()
     {
-        return $this->container['data'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets data
+     * Sets user_id
      *
-     * @param \GateApi\Model\CreateOrderData|null $data data
+     * @param int $user_id user_id
      *
      * @return $this
      */
-    public function setData($data)
+    public function setUserId($user_id)
     {
-        $this->container['data'] = $data;
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets from
+     *
+     * @return \GateApi\Model\CreateOrderDetail[]
+     */
+    public function getFrom()
+    {
+        return $this->container['from'];
+    }
+
+    /**
+     * Sets from
+     *
+     * @param \GateApi\Model\CreateOrderDetail[] $from from
+     *
+     * @return $this
+     */
+    public function setFrom($from)
+    {
+        $this->container['from'] = $from;
+
+        return $this;
+    }
+
+    /**
+     * Gets to
+     *
+     * @return \GateApi\Model\CreateOrderDetail[]
+     */
+    public function getTo()
+    {
+        return $this->container['to'];
+    }
+
+    /**
+     * Sets to
+     *
+     * @param \GateApi\Model\CreateOrderDetail[] $to to
+     *
+     * @return $this
+     */
+    public function setTo($to)
+    {
+        $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string $source source
+     *
+     * @return $this
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_id
+     *
+     * @return string
+     */
+    public function getAppId()
+    {
+        return $this->container['app_id'];
+    }
+
+    /**
+     * Sets app_id
+     *
+     * @param string $app_id app_id
+     *
+     * @return $this
+     */
+    public function setAppId($app_id)
+    {
+        $this->container['app_id'] = $app_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_req_id
+     *
+     * @return string
+     */
+    public function getClientReqId()
+    {
+        return $this->container['client_req_id'];
+    }
+
+    /**
+     * Sets client_req_id
+     *
+     * @param string $client_req_id client_req_id
+     *
+     * @return $this
+     */
+    public function setClientReqId($client_req_id)
+    {
+        $this->container['client_req_id'] = $client_req_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int $status status
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets create_time
+     *
+     * @return int
+     */
+    public function getCreateTime()
+    {
+        return $this->container['create_time'];
+    }
+
+    /**
+     * Sets create_time
+     *
+     * @param int $create_time create_time
+     *
+     * @return $this
+     */
+    public function setCreateTime($create_time)
+    {
+        $this->container['create_time'] = $create_time;
 
         return $this;
     }

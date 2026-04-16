@@ -73,6 +73,7 @@ class Contract implements ModelInterface, ArrayAccess
         'funding_interval' => 'int',
         'funding_next_apply' => 'double',
         'risk_limit_base' => 'string',
+        'interest_rate' => 'string',
         'risk_limit_step' => 'string',
         'risk_limit_max' => 'string',
         'order_size_min' => 'string',
@@ -99,6 +100,7 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_slip_ratio' => 'string',
         'market_order_size_max' => 'string',
         'funding_rate_limit' => 'string',
+        'contract_type' => 'string',
         'funding_impact_value' => 'string'
     ];
 
@@ -126,6 +128,7 @@ class Contract implements ModelInterface, ArrayAccess
         'funding_interval' => null,
         'funding_next_apply' => 'double',
         'risk_limit_base' => null,
+        'interest_rate' => null,
         'risk_limit_step' => null,
         'risk_limit_max' => null,
         'order_size_min' => null,
@@ -152,6 +155,7 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_slip_ratio' => null,
         'market_order_size_max' => null,
         'funding_rate_limit' => null,
+        'contract_type' => null,
         'funding_impact_value' => null
     ];
 
@@ -200,6 +204,7 @@ class Contract implements ModelInterface, ArrayAccess
         'funding_interval' => 'funding_interval',
         'funding_next_apply' => 'funding_next_apply',
         'risk_limit_base' => 'risk_limit_base',
+        'interest_rate' => 'interest_rate',
         'risk_limit_step' => 'risk_limit_step',
         'risk_limit_max' => 'risk_limit_max',
         'order_size_min' => 'order_size_min',
@@ -226,6 +231,7 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_slip_ratio' => 'market_order_slip_ratio',
         'market_order_size_max' => 'market_order_size_max',
         'funding_rate_limit' => 'funding_rate_limit',
+        'contract_type' => 'contract_type',
         'funding_impact_value' => 'funding_impact_value'
     ];
 
@@ -253,6 +259,7 @@ class Contract implements ModelInterface, ArrayAccess
         'funding_interval' => 'setFundingInterval',
         'funding_next_apply' => 'setFundingNextApply',
         'risk_limit_base' => 'setRiskLimitBase',
+        'interest_rate' => 'setInterestRate',
         'risk_limit_step' => 'setRiskLimitStep',
         'risk_limit_max' => 'setRiskLimitMax',
         'order_size_min' => 'setOrderSizeMin',
@@ -279,6 +286,7 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_slip_ratio' => 'setMarketOrderSlipRatio',
         'market_order_size_max' => 'setMarketOrderSizeMax',
         'funding_rate_limit' => 'setFundingRateLimit',
+        'contract_type' => 'setContractType',
         'funding_impact_value' => 'setFundingImpactValue'
     ];
 
@@ -306,6 +314,7 @@ class Contract implements ModelInterface, ArrayAccess
         'funding_interval' => 'getFundingInterval',
         'funding_next_apply' => 'getFundingNextApply',
         'risk_limit_base' => 'getRiskLimitBase',
+        'interest_rate' => 'getInterestRate',
         'risk_limit_step' => 'getRiskLimitStep',
         'risk_limit_max' => 'getRiskLimitMax',
         'order_size_min' => 'getOrderSizeMin',
@@ -332,6 +341,7 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_slip_ratio' => 'getMarketOrderSlipRatio',
         'market_order_size_max' => 'getMarketOrderSizeMax',
         'funding_rate_limit' => 'getFundingRateLimit',
+        'contract_type' => 'getContractType',
         'funding_impact_value' => 'getFundingImpactValue'
     ];
 
@@ -443,6 +453,7 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['funding_interval'] = isset($data['funding_interval']) ? $data['funding_interval'] : null;
         $this->container['funding_next_apply'] = isset($data['funding_next_apply']) ? $data['funding_next_apply'] : null;
         $this->container['risk_limit_base'] = isset($data['risk_limit_base']) ? $data['risk_limit_base'] : null;
+        $this->container['interest_rate'] = isset($data['interest_rate']) ? $data['interest_rate'] : null;
         $this->container['risk_limit_step'] = isset($data['risk_limit_step']) ? $data['risk_limit_step'] : null;
         $this->container['risk_limit_max'] = isset($data['risk_limit_max']) ? $data['risk_limit_max'] : null;
         $this->container['order_size_min'] = isset($data['order_size_min']) ? $data['order_size_min'] : null;
@@ -469,6 +480,7 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
         $this->container['market_order_size_max'] = isset($data['market_order_size_max']) ? $data['market_order_size_max'] : null;
         $this->container['funding_rate_limit'] = isset($data['funding_rate_limit']) ? $data['funding_rate_limit'] : null;
+        $this->container['contract_type'] = isset($data['contract_type']) ? $data['contract_type'] : null;
         $this->container['funding_impact_value'] = isset($data['funding_impact_value']) ? $data['funding_impact_value'] : null;
     }
 
@@ -958,6 +970,30 @@ class Contract implements ModelInterface, ArrayAccess
     public function setRiskLimitBase($risk_limit_base)
     {
         $this->container['risk_limit_base'] = $risk_limit_base;
+
+        return $this;
+    }
+
+    /**
+     * Gets interest_rate
+     *
+     * @return string|null
+     */
+    public function getInterestRate()
+    {
+        return $this->container['interest_rate'];
+    }
+
+    /**
+     * Sets interest_rate
+     *
+     * @param string|null $interest_rate Interest rate parameter used in funding rate and premium-related calculations for perpetual contracts. Returned as a string decimal ratio (e.g. `0.0003`), same convention as `funding_rate` (ratio, not percent).
+     *
+     * @return $this
+     */
+    public function setInterestRate($interest_rate)
+    {
+        $this->container['interest_rate'] = $interest_rate;
 
         return $this;
     }
@@ -1582,6 +1618,30 @@ class Contract implements ModelInterface, ArrayAccess
     public function setFundingRateLimit($funding_rate_limit)
     {
         $this->container['funding_rate_limit'] = $funding_rate_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets contract_type
+     *
+     * @return string|null
+     */
+    public function getContractType()
+    {
+        return $this->container['contract_type'];
+    }
+
+    /**
+     * Sets contract_type
+     *
+     * @param string|null $contract_type Contract classification type, e.g. stocks, metals, indices, forex, commodities, etc.
+     *
+     * @return $this
+     */
+    public function setContractType($contract_type)
+    {
+        $this->container['contract_type'] = $contract_type;
 
         return $this;
     }

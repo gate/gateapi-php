@@ -430,7 +430,7 @@ class AgencyTransaction implements ModelInterface, ArrayAccess
     /**
      * Sets amount_asset
      *
-     * @param string|null $amount_asset Commission Asset
+     * @param string|null $amount_asset Transaction amount currency
      *
      * @return $this
      */

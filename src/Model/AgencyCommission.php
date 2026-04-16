@@ -316,7 +316,7 @@ class AgencyCommission implements ModelInterface, ArrayAccess
     /**
      * Sets commission_amount
      *
-     * @param string|null $commission_amount Transaction amount
+     * @param string|null $commission_amount Commission amount
      *
      * @return $this
      */

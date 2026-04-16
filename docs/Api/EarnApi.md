@@ -8,6 +8,10 @@ Method | HTTP request | Description
 [**listDualOrders**](EarnApi.md#listDualOrders) | **GET** /earn/dual/orders | Dual Investment order list
 [**placeDualOrder**](EarnApi.md#placeDualOrder) | **POST** /earn/dual/orders | Place Dual Investment order
 [**listDualBalance**](EarnApi.md#listDualBalance) | **GET** /earn/dual/balance | Dual-Currency Earning Assets
+[**getDualOrderRefundPreview**](EarnApi.md#getDualOrderRefundPreview) | **GET** /earn/dual/order-refund-preview | Dual-currency early redemption preview
+[**placeDualOrderRefund**](EarnApi.md#placeDualOrderRefund) | **POST** /earn/dual/order-refund | Dual-currency order early redemption
+[**modifyDualOrderReinvest**](EarnApi.md#modifyDualOrderReinvest) | **POST** /earn/dual/modify-order-reinvest | Modify dual-currency order reinvest
+[**getDualProjectRecommend**](EarnApi.md#getDualProjectRecommend) | **GET** /earn/dual/project-recommend | Dual-currency recommended projects
 [**findCoin**](EarnApi.md#findCoin) | **GET** /earn/staking/coins | Staking coins
 [**swapStakingCoin**](EarnApi.md#swapStakingCoin) | **POST** /earn/staking/swap | On-chain token swap for earned coins
 [**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
@@ -34,7 +38,7 @@ Method | HTTP request | Description
 
 ## listDualInvestmentPlans
 
-> \GateApi\Model\DualGetPlans[] listDualInvestmentPlans($plan_id)
+> \GateApi\Model\DualGetPlans[] listDualInvestmentPlans($plan_id, $coin, $type, $quote_currency, $sort, $page, $page_size)
 
 Dual Investment product list
 
@@ -51,6 +55,12 @@ $apiInstance = new GateApi\Api\EarnApi(
     new GuzzleHttp\Client()
 );
 $associate_array['plan_id'] = 1; // int | Financial project ID
+$associate_array['coin'] = 'BTC'; // string | Investment Token
+$associate_array['type'] = 'call'; // string | Type enum: `put` — buy low; `call` — sell high
+$associate_array['quote_currency'] = 'quote_currency_example'; // string | Settlement currency enum: defaults to USDT; GUSD optional
+$associate_array['sort'] = 'sort_example'; // string | Sort field enum: `apy` — highest APY first `short-period` — shortest tenor first `multiple` — highest premium first
+$associate_array['page'] = 1; // int | page number
+$associate_array['page_size'] = 3; // int | Items per page
 
 try {
     $result = $apiInstance->listDualInvestmentPlans($associate_array);
@@ -71,6 +81,12 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plan_id** | **int**| Financial project ID | [optional]
+ **coin** | **string**| Investment Token | [optional]
+ **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional]
+ **quote_currency** | **string**| Settlement currency enum: defaults to USDT; GUSD optional | [optional]
+ **sort** | **string**| Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first | [optional]
+ **page** | **int**| page number | [optional]
+ **page_size** | **int**| Items per page | [optional]
 
 ### Return type
 
@@ -92,7 +108,7 @@ No authorization required
 
 ## listDualOrders
 
-> \GateApi\Model\DualGetOrders[] listDualOrders($from, $to, $page, $limit)
+> \GateApi\Model\DualGetOrders[] listDualOrders($from, $to, $type, $status, $coin, $page, $limit)
 
 Dual Investment order list
 
@@ -114,6 +130,9 @@ $apiInstance = new GateApi\Api\EarnApi(
 );
 $associate_array['from'] = 1740727000; // int | Start settlement time
 $associate_array['to'] = 1740729000; // int | End settlement time
+$associate_array['type'] = 'put'; // string | Type enum: `put` — buy low; `call` — sell high
+$associate_array['status'] = 'HOLD'; // string | Order status enum: `HOLD` — open position `REPAY` — historical position `PROCESSING` — position active `SETTLEMENT_PROCESSING` — settlement in progress `ALL` — all
+$associate_array['coin'] = 'BTC'; // string | Investment Token
 $associate_array['page'] = 1; // int | Page number
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 
@@ -137,6 +156,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **from** | **int**| Start settlement time | [optional]
  **to** | **int**| End settlement time | [optional]
+ **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional]
+ **status** | **string**| Order status enum: &#x60;HOLD&#x60; — open position &#x60;REPAY&#x60; — historical position &#x60;PROCESSING&#x60; — position active &#x60;SETTLEMENT_PROCESSING&#x60; — settlement in progress &#x60;ALL&#x60; — all | [optional]
+ **coin** | **string**| Investment Token | [optional]
  **page** | **int**| Page number | [optional] [default to 1]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
 
@@ -259,6 +281,252 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\GateApi\Model\DualGetBalance**](../Model/DualGetBalance.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getDualOrderRefundPreview
+
+> \GateApi\Model\DualOrderRefundPreview getDualOrderRefundPreview($order_id)
+
+Dual-currency early redemption preview
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = '9497'; // string | Order ID
+
+try {
+    $result = $apiInstance->getDualOrderRefundPreview($order_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->getDualOrderRefundPreview: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **string**| Order ID |
+
+### Return type
+
+[**\GateApi\Model\DualOrderRefundPreview**](../Model/DualOrderRefundPreview.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## placeDualOrderRefund
+
+> placeDualOrderRefund($dual_order_refund_params)
+
+Dual-currency order early redemption
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dual_order_refund_params = new \GateApi\Model\DualOrderRefundParams(); // \GateApi\Model\DualOrderRefundParams | 
+
+try {
+    $apiInstance->placeDualOrderRefund($dual_order_refund_params);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->placeDualOrderRefund: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dual_order_refund_params** | [**\GateApi\Model\DualOrderRefundParams**](../Model/DualOrderRefundParams.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## modifyDualOrderReinvest
+
+> modifyDualOrderReinvest($dual_modify_order_reinvest_params)
+
+Modify dual-currency order reinvest
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dual_modify_order_reinvest_params = new \GateApi\Model\DualModifyOrderReinvestParams(); // \GateApi\Model\DualModifyOrderReinvestParams | 
+
+try {
+    $apiInstance->modifyDualOrderReinvest($dual_modify_order_reinvest_params);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->modifyDualOrderReinvest: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dual_modify_order_reinvest_params** | [**\GateApi\Model\DualModifyOrderReinvestParams**](../Model/DualModifyOrderReinvestParams.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getDualProjectRecommend
+
+> \GateApi\Model\DualProjectRecommend[] getDualProjectRecommend($mode, $coin, $type, $history_pids)
+
+Dual-currency recommended projects
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['mode'] = 'normal'; // string | Sort mode; default `normal`: `senior` — curated picks (APR/tenor) `apy_up` — APY ascending `ep_down` — target price descending `ep_up` — target price ascending `dt_down` — maturity time descending `dt_up` — maturity time ascending
+$associate_array['coin'] = 'ETH'; // string | Investment Token
+$associate_array['type'] = 'call'; // string | `call`: sell high; `put`: buy low
+$associate_array['history_pids'] = '110656,110652'; // string | Comma-separated project IDs to exclude already recommended items
+
+try {
+    $result = $apiInstance->getDualProjectRecommend($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->getDualProjectRecommend: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mode** | **string**| Sort mode; default &#x60;normal&#x60;: &#x60;senior&#x60; — curated picks (APR/tenor) &#x60;apy_up&#x60; — APY ascending &#x60;ep_down&#x60; — target price descending &#x60;ep_up&#x60; — target price ascending &#x60;dt_down&#x60; — maturity time descending &#x60;dt_up&#x60; — maturity time ascending | [optional]
+ **coin** | **string**| Investment Token | [optional]
+ **type** | **string**| &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low | [optional]
+ **history_pids** | **string**| Comma-separated project IDs to exclude already recommended items | [optional]
+
+### Return type
+
+[**\GateApi\Model\DualProjectRecommend[]**](../Model/DualProjectRecommend.md)
 
 ### Authorization
 
