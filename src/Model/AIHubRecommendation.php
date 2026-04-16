@@ -62,7 +62,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
         'backtest_apr' => 'string',
         'max_drawdown' => 'string',
         'summary' => 'string',
-        'strategy_params_preview' => 'map[string,AnyType]'
+        'strategy_params_preview' => 'map[string,string]'
     ];
 
     /**
@@ -430,7 +430,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
     /**
      * Gets strategy_params_preview
      *
-     * @return map[string,AnyType]|null
+     * @return map[string,string]|null
      */
     public function getStrategyParamsPreview()
     {
@@ -440,7 +440,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
     /**
      * Sets strategy_params_preview
      *
-     * @param map[string,AnyType]|null $strategy_params_preview 推荐参数预览；按策略类型动态变化
+     * @param map[string,string]|null $strategy_params_preview 推荐参数预览；按策略类型动态变化
      *
      * @return $this
      */

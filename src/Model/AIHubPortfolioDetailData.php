@@ -59,9 +59,9 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         'strategy_type' => '\GateApi\Model\StrategyType',
         'market' => 'string',
         'status' => 'string',
-        'base_info' => 'map[string,AnyType]',
-        'metrics' => 'map[string,AnyType]',
-        'position' => 'map[string,AnyType]',
+        'base_info' => 'map[string,string]',
+        'metrics' => 'map[string,string]',
+        'position' => 'map[string,string]',
         'stop_supported' => 'bool'
     ];
 
@@ -364,7 +364,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Gets base_info
      *
-     * @return map[string,AnyType]
+     * @return map[string,string]
      */
     public function getBaseInfo()
     {
@@ -374,7 +374,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets base_info
      *
-     * @param map[string,AnyType] $base_info 基础信息，字段按策略类型动态变化
+     * @param map[string,string] $base_info 基础信息，字段按策略类型动态变化
      *
      * @return $this
      */
@@ -388,7 +388,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Gets metrics
      *
-     * @return map[string,AnyType]
+     * @return map[string,string]
      */
     public function getMetrics()
     {
@@ -398,7 +398,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets metrics
      *
-     * @param map[string,AnyType] $metrics 指标信息，字段按策略类型动态变化
+     * @param map[string,string] $metrics 指标信息，字段按策略类型动态变化
      *
      * @return $this
      */
@@ -412,7 +412,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Gets position
      *
-     * @return map[string,AnyType]|null
+     * @return map[string,string]|null
      */
     public function getPosition()
     {
@@ -422,7 +422,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets position
      *
-     * @param map[string,AnyType]|null $position 仓位或持仓信息，字段按策略类型动态变化
+     * @param map[string,string]|null $position 仓位或持仓信息，字段按策略类型动态变化
      *
      * @return $this
      */
