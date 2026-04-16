@@ -58,7 +58,7 @@ class ApiResponseAssetSwapOrderQueryV1 implements ModelInterface, ArrayAccess
         'code' => 'int',
         'label' => 'string',
         'message' => 'string',
-        'data' => 'OrderQueryV1Resp',
+        'data' => 'CreateOrder',
         'timestamp' => 'int'
     ];
 
@@ -313,7 +313,7 @@ class ApiResponseAssetSwapOrderQueryV1 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return OrderQueryV1Resp
+     * @return CreateOrder
      */
     public function getData()
     {
@@ -323,7 +323,7 @@ class ApiResponseAssetSwapOrderQueryV1 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param OrderQueryV1Resp $data 成功时为订单详情（CreateOrder），失败时为 null
+     * @param CreateOrder $data 成功时为订单详情，失败时为 null
      *
      * @return $this
      */

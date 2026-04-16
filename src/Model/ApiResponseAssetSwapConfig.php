@@ -58,7 +58,7 @@ class ApiResponseAssetSwapConfig implements ModelInterface, ArrayAccess
         'code' => 'int',
         'label' => 'string',
         'message' => 'string',
-        'data' => 'ConfigResp',
+        'data' => 'AssetSwapFrontend',
         'timestamp' => 'int'
     ];
 
@@ -313,7 +313,7 @@ class ApiResponseAssetSwapConfig implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return ConfigResp
+     * @return AssetSwapFrontend
      */
     public function getData()
     {
@@ -323,7 +323,7 @@ class ApiResponseAssetSwapConfig implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param ConfigResp $data 成功时为前端配置（ConfigResp），失败时为 null
+     * @param AssetSwapFrontend $data 成功时为前端配置，失败时为 null
      *
      * @return $this
      */
