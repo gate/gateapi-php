@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * SpotGridCreateParams Class Doc Comment
  *
  * @category Class
- * @description 现货网格策略的创建参数。
+ * @description Creation parameters for the spot grid strategy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -311,7 +311,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets money
      *
-     * @param string $money 投入金额
+     * @param string $money Amount of investment
      *
      * @return $this
      */
@@ -383,7 +383,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets grid_num
      *
-     * @param int $grid_num 网格数量
+     * @param int $grid_num Number of grids
      *
      * @return $this
      */

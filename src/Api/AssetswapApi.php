@@ -850,7 +850,7 @@ class AssetswapApi
      *
      * Portfolio optimization — place order
      *
-     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req 下单请求体（&#x60;OrderCreateV1Req&#x60;）。**无 &#x60;ratio&#x60; 字段**；&#x60;from&#x60;/&#x60;to&#x60; 每项仅 &#x60;asset&#x60; + &#x60;amount&#x60;。&#x60;to&#x60; 使用目标侧**数量** &#x60;amount&#x60;，与 preview 中 &#x60;to&#x60; 的 **ratio**（比例）语义不同，勿混用。 (required)
+     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req Order request body (&#x60;OrderCreateV1Req&#x60;). **No &#x60;ratio&#x60; field**; &#x60;from&#x60;/&#x60;to&#x60; items are only &#x60;asset&#x60; + &#x60;amount&#x60;. &#x60;to&#x60; uses the target side **amount** &#x60;amount&#x60;, which is different from the **ratio** (ratio) semantics of &#x60;to&#x60; in preview, do not mix them. (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -867,7 +867,7 @@ class AssetswapApi
      *
      * Portfolio optimization — place order
      *
-     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req 下单请求体（&#x60;OrderCreateV1Req&#x60;）。**无 &#x60;ratio&#x60; 字段**；&#x60;from&#x60;/&#x60;to&#x60; 每项仅 &#x60;asset&#x60; + &#x60;amount&#x60;。&#x60;to&#x60; 使用目标侧**数量** &#x60;amount&#x60;，与 preview 中 &#x60;to&#x60; 的 **ratio**（比例）语义不同，勿混用。 (required)
+     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req Order request body (&#x60;OrderCreateV1Req&#x60;). **No &#x60;ratio&#x60; field**; &#x60;from&#x60;/&#x60;to&#x60; items are only &#x60;asset&#x60; + &#x60;amount&#x60;. &#x60;to&#x60; uses the target side **amount** &#x60;amount&#x60;, which is different from the **ratio** (ratio) semantics of &#x60;to&#x60; in preview, do not mix them. (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -921,7 +921,7 @@ class AssetswapApi
      *
      * Portfolio optimization — place order
      *
-     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req 下单请求体（&#x60;OrderCreateV1Req&#x60;）。**无 &#x60;ratio&#x60; 字段**；&#x60;from&#x60;/&#x60;to&#x60; 每项仅 &#x60;asset&#x60; + &#x60;amount&#x60;。&#x60;to&#x60; 使用目标侧**数量** &#x60;amount&#x60;，与 preview 中 &#x60;to&#x60; 的 **ratio**（比例）语义不同，勿混用。 (required)
+     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req Order request body (&#x60;OrderCreateV1Req&#x60;). **No &#x60;ratio&#x60; field**; &#x60;from&#x60;/&#x60;to&#x60; items are only &#x60;asset&#x60; + &#x60;amount&#x60;. &#x60;to&#x60; uses the target side **amount** &#x60;amount&#x60;, which is different from the **ratio** (ratio) semantics of &#x60;to&#x60; in preview, do not mix them. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -941,7 +941,7 @@ class AssetswapApi
      *
      * Portfolio optimization — place order
      *
-     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req 下单请求体（&#x60;OrderCreateV1Req&#x60;）。**无 &#x60;ratio&#x60; 字段**；&#x60;from&#x60;/&#x60;to&#x60; 每项仅 &#x60;asset&#x60; + &#x60;amount&#x60;。&#x60;to&#x60; 使用目标侧**数量** &#x60;amount&#x60;，与 preview 中 &#x60;to&#x60; 的 **ratio**（比例）语义不同，勿混用。 (required)
+     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req Order request body (&#x60;OrderCreateV1Req&#x60;). **No &#x60;ratio&#x60; field**; &#x60;from&#x60;/&#x60;to&#x60; items are only &#x60;asset&#x60; + &#x60;amount&#x60;. &#x60;to&#x60; uses the target side **amount** &#x60;amount&#x60;, which is different from the **ratio** (ratio) semantics of &#x60;to&#x60; in preview, do not mix them. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -988,7 +988,7 @@ class AssetswapApi
     /**
      * Create request for operation 'createAssetSwapOrderV1'
      *
-     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req 下单请求体（&#x60;OrderCreateV1Req&#x60;）。**无 &#x60;ratio&#x60; 字段**；&#x60;from&#x60;/&#x60;to&#x60; 每项仅 &#x60;asset&#x60; + &#x60;amount&#x60;。&#x60;to&#x60; 使用目标侧**数量** &#x60;amount&#x60;，与 preview 中 &#x60;to&#x60; 的 **ratio**（比例）语义不同，勿混用。 (required)
+     * @param  \GateApi\Model\OrderCreateV1Req $order_create_v1_req Order request body (&#x60;OrderCreateV1Req&#x60;). **No &#x60;ratio&#x60; field**; &#x60;from&#x60;/&#x60;to&#x60; items are only &#x60;asset&#x60; + &#x60;amount&#x60;. &#x60;to&#x60; uses the target side **amount** &#x60;amount&#x60;, which is different from the **ratio** (ratio) semantics of &#x60;to&#x60; in preview, do not mix them. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1446,7 +1446,7 @@ class AssetswapApi
      *
      * Portfolio optimization — preview
      *
-     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req 预览请求体。&#x60;to&#x60; 必须为 **ratio**；与 create 的 **amount** 语义不同。 (required)
+     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req Preview the request body. &#x60;to&#x60; must be **ratio**; unlike create&#39;s **amount** semantics. (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1463,7 +1463,7 @@ class AssetswapApi
      *
      * Portfolio optimization — preview
      *
-     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req 预览请求体。&#x60;to&#x60; 必须为 **ratio**；与 create 的 **amount** 语义不同。 (required)
+     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req Preview the request body. &#x60;to&#x60; must be **ratio**; unlike create&#39;s **amount** semantics. (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1517,7 +1517,7 @@ class AssetswapApi
      *
      * Portfolio optimization — preview
      *
-     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req 预览请求体。&#x60;to&#x60; 必须为 **ratio**；与 create 的 **amount** 语义不同。 (required)
+     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req Preview the request body. &#x60;to&#x60; must be **ratio**; unlike create&#39;s **amount** semantics. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1537,7 +1537,7 @@ class AssetswapApi
      *
      * Portfolio optimization — preview
      *
-     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req 预览请求体。&#x60;to&#x60; 必须为 **ratio**；与 create 的 **amount** 语义不同。 (required)
+     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req Preview the request body. &#x60;to&#x60; must be **ratio**; unlike create&#39;s **amount** semantics. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1584,7 +1584,7 @@ class AssetswapApi
     /**
      * Create request for operation 'previewAssetSwapOrderV1'
      *
-     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req 预览请求体。&#x60;to&#x60; 必须为 **ratio**；与 create 的 **amount** 语义不同。 (required)
+     * @param  \GateApi\Model\OrderPreviewV1Req $order_preview_v1_req Preview the request body. &#x60;to&#x60; must be **ratio**; unlike create&#39;s **amount** semantics. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

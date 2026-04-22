@@ -708,7 +708,7 @@ $apiInstance = new GateApi\Api\MultiCollateralLoanApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['currencies'] = array('[\"BTC\",\"GT\"]'); // string[] | Specify currency name query array, separated by commas, maximum 100 items
+$associate_array['currencies'] = array('[\"BTC\",\"GT\"]'); // string[] | Specify currency name query array, separated by commas, maximum 100
 $associate_array['vip_level'] = '0'; // string | VIP level, defaults to 0 if not specified
 
 try {
@@ -729,7 +729,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencies** | [**string[]**](../Model/string.md)| Specify currency name query array, separated by commas, maximum 100 items |
+ **currencies** | [**string[]**](../Model/string.md)| Specify currency name query array, separated by commas, maximum 100 |
  **vip_level** | **string**| VIP level, defaults to 0 if not specified | [optional] [default to &#39;0&#39;]
 
 ### Return type

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * MarginGridCreateRequest Class Doc Comment
  *
  * @category Class
- * @description 创建杠杆网格策略的请求体。
+ * @description Create the request body for the Leverage Grid strategy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

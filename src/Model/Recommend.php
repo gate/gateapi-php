@@ -244,7 +244,7 @@ class Recommend implements ModelInterface, ArrayAccess
     /**
      * Sets balance
      *
-     * @param map[string,string] $balance 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * @param map[string,string] $balance Mapping of string keys to string values, corresponding to Go's map[string]string.
      *
      * @return $this
      */
@@ -268,7 +268,7 @@ class Recommend implements ModelInterface, ArrayAccess
     /**
      * Sets btc_faith
      *
-     * @param map[string,string] $btc_faith 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * @param map[string,string] $btc_faith Mapping of string keys to string values, corresponding to Go's map[string]string.
      *
      * @return $this
      */
@@ -292,7 +292,7 @@ class Recommend implements ModelInterface, ArrayAccess
     /**
      * Sets conservative
      *
-     * @param map[string,string] $conservative 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * @param map[string,string] $conservative Mapping of string keys to string values, corresponding to Go's map[string]string.
      *
      * @return $this
      */
@@ -316,7 +316,7 @@ class Recommend implements ModelInterface, ArrayAccess
     /**
      * Sets gt_faith
      *
-     * @param map[string,string] $gt_faith 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * @param map[string,string] $gt_faith Mapping of string keys to string values, corresponding to Go's map[string]string.
      *
      * @return $this
      */

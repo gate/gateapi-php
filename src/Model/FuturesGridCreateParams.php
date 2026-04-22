@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * FuturesGridCreateParams Class Doc Comment
  *
  * @category Class
- * @description 合约网格策略的创建参数。
+ * @description Creation parameters for the contract grid strategy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

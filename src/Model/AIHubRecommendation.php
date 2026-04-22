@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubRecommendation Class Doc Comment
  *
  * @category Class
- * @description 单条策略推荐信息。
+ * @description A single piece of strategy recommendation information.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -440,7 +440,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
     /**
      * Sets strategy_params_preview
      *
-     * @param map[string,string]|null $strategy_params_preview 推荐参数预览；按策略类型动态变化
+     * @param map[string,string]|null $strategy_params_preview Recommended parameter preview; dynamic changes by strategy type
      *
      * @return $this
      */

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubCreateSuccessResponse Class Doc Comment
  *
  * @category Class
- * @description 创建策略成功时的响应体。
+ * @description The response body when the creation strategy is successful.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

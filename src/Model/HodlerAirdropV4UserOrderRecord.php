@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * HodlerAirdropV4UserOrderRecord Class Doc Comment
  *
  * @category Class
- * @description 用户参与记录单项
+ * @description User participation record single item
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -278,7 +278,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string $asset 空投币种
+     * @param string $asset Airdrop currency
      *
      * @return $this
      */
@@ -302,7 +302,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
     /**
      * Sets user_gt_avg_amount
      *
-     * @param string|null $user_gt_avg_amount 有效持仓GT数量（参与活动时持有的GT平均数量）
+     * @param string|null $user_gt_avg_amount Effective number of GT positions (average number of GT held when participating in the event)
      *
      * @return $this
      */
@@ -326,7 +326,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
     /**
      * Sets receive_amount_base
      *
-     * @param string|null $receive_amount_base 基础空投金额，活动结束前为空字符串
+     * @param string|null $receive_amount_base Basic airdrop amount, it will be an empty string before the end of the activity
      *
      * @return $this
      */
@@ -350,7 +350,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
     /**
      * Sets receive_amount_ext
      *
-     * @param string|null $receive_amount_ext 额外空投金额（余币宝加成），活动结束前为空字符串
+     * @param string|null $receive_amount_ext Additional airdrop amount (Yubibao bonus), it will be an empty string before the end of the event
      *
      * @return $this
      */
@@ -374,7 +374,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
     /**
      * Sets close_timest
      *
-     * @param string $close_timest 活动结束时间，格式 Y-m-d H:i:s，UTC
+     * @param string $close_timest Event end time, format Y-m-d H:i:s, UTC
      *
      * @return $this
      */

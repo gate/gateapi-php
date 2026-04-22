@@ -226,7 +226,7 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
     /**
      * Sets task_name
      *
-     * @param string|null $task_name 任务主标题
+     * @param string|null $task_name Task main title
      *
      * @return $this
      */
@@ -250,7 +250,7 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
     /**
      * Sets task_desc
      *
-     * @param string|null $task_desc 任务副标题，无则返回 -
+     * @param string|null $task_desc Task subtitle, if none is returned -
      *
      * @return $this
      */
@@ -274,7 +274,7 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
     /**
      * Sets exclusive_label
      *
-     * @param string|null $exclusive_label 专属任务标签文案，未配置则返回 -
+     * @param string|null $exclusive_label Exclusive task label copywriting, if not configured, it will return -
      *
      * @return $this
      */

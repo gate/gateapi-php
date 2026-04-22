@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * CreateParam Class Doc Comment
  *
  * @category Class
- * @description **下单专用**。表示某一侧（&#x60;from&#x60; 或 &#x60;to&#x60;）的一个币种及其**数量 amount**。 用于 &#x60;OrderCreateV1Req&#x60;；**不要**用于预览接口的 &#x60;to&#x60;（预览 &#x60;to&#x60; 使用 &#x60;PreviewToParam.ratio&#x60;）。
+ * @description **For order only**. Represents a currency and its **amount** on a certain side (&#x60;from&#x60; or &#x60;to&#x60;). Used with &#x60;OrderCreateV1Req&#x60;; **Don&#39;t** be used with &#x60;to&#x60; of the preview interface (preview &#x60;to&#x60; uses &#x60;PreviewToParam.ratio&#x60;).
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -227,7 +227,7 @@ class CreateParam implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string $asset 币种符号，与 `GET /asset-swap/asset/list` 及业务支持范围一致。
+     * @param string $asset Currency symbol, consistent with `GET /asset-swap/asset/list` and business support scope.
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class CreateParam implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount 该币种在本侧的数量，**十进制字符串**（非科学计数法）。`from` 表示卖出数量，`to` 表示目标侧数量。 与预览接口 `to[].ratio` 不同。
+     * @param string $amount The quantity of this currency on this side, **decimal string** (non-scientific notation). `from` represents the selling quantity, and `to` represents the target side quantity. Different from preview interface `to[].ratio`.
      *
      * @return $this
      */

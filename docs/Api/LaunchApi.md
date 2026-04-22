@@ -9,16 +9,16 @@ Method | HTTP request | Description
 [**redeemLaunchPool**](LaunchApi.md#redeemLaunchPool) | **POST** /launch/redeem | Redeem LaunchPool staked assets
 [**listLaunchPoolPledgeRecords**](LaunchApi.md#listLaunchPoolPledgeRecords) | **GET** /launch/user-pledge-records | Query user pledge records
 [**listLaunchPoolRewardRecords**](LaunchApi.md#listLaunchPoolRewardRecords) | **GET** /launch/get-user-reward-records | Query user reward records
-[**getHodlerAirdropProjectList**](LaunchApi.md#getHodlerAirdropProjectList) | **GET** /launch/hodler-airdrop/project-list | 查询HODLer Airdrop活动列表
-[**hodlerAirdropOrder**](LaunchApi.md#hodlerAirdropOrder) | **POST** /launch/hodler-airdrop/order | 参与HODLer Airdrop活动
-[**getHodlerAirdropUserOrderRecords**](LaunchApi.md#getHodlerAirdropUserOrderRecords) | **GET** /launch/hodler-airdrop/user-order-records | 查询HODLer Airdrop参与记录
-[**getHodlerAirdropUserAirdropRecords**](LaunchApi.md#getHodlerAirdropUserAirdropRecords) | **GET** /launch/hodler-airdrop/user-airdrop-records | 查询HODLer Airdrop空投记录
-[**getCandyDropActivityListV4**](LaunchApi.md#getCandyDropActivityListV4) | **GET** /launch/candydrop/activity-list | 查询活动列表
-[**registerCandyDropV4**](LaunchApi.md#registerCandyDropV4) | **POST** /launch/candydrop/register | 报名参与活动
-[**getCandyDropActivityRulesV4**](LaunchApi.md#getCandyDropActivityRulesV4) | **GET** /launch/candydrop/activity-rules | 查询活动规则
-[**getCandyDropTaskProgressV4**](LaunchApi.md#getCandyDropTaskProgressV4) | **GET** /launch/candydrop/task-progress | 查询任务完成进度
-[**getCandyDropParticipationRecordsV4**](LaunchApi.md#getCandyDropParticipationRecordsV4) | **GET** /launch/candydrop/participation-records | 查询参与记录
-[**getCandyDropAirdropRecordsV4**](LaunchApi.md#getCandyDropAirdropRecordsV4) | **GET** /launch/candydrop/airdrop-records | 查询空投记录
+[**getHodlerAirdropProjectList**](LaunchApi.md#getHodlerAirdropProjectList) | **GET** /launch/hodler-airdrop/project-list | Check the list of HODLer Airdrop activities
+[**hodlerAirdropOrder**](LaunchApi.md#hodlerAirdropOrder) | **POST** /launch/hodler-airdrop/order | Participate in the HODLer Airdrop event
+[**getHodlerAirdropUserOrderRecords**](LaunchApi.md#getHodlerAirdropUserOrderRecords) | **GET** /launch/hodler-airdrop/user-order-records | Check HODLer Airdrop participation records
+[**getHodlerAirdropUserAirdropRecords**](LaunchApi.md#getHodlerAirdropUserAirdropRecords) | **GET** /launch/hodler-airdrop/user-airdrop-records | Query HODLer Airdrop records
+[**getCandyDropActivityListV4**](LaunchApi.md#getCandyDropActivityListV4) | **GET** /launch/candydrop/activity-list | Query activity list
+[**registerCandyDropV4**](LaunchApi.md#registerCandyDropV4) | **POST** /launch/candydrop/register | Sign up for events
+[**getCandyDropActivityRulesV4**](LaunchApi.md#getCandyDropActivityRulesV4) | **GET** /launch/candydrop/activity-rules | Query activity rules
+[**getCandyDropTaskProgressV4**](LaunchApi.md#getCandyDropTaskProgressV4) | **GET** /launch/candydrop/task-progress | Query task completion progress
+[**getCandyDropParticipationRecordsV4**](LaunchApi.md#getCandyDropParticipationRecordsV4) | **GET** /launch/candydrop/participation-records | Query participation records
+[**getCandyDropAirdropRecordsV4**](LaunchApi.md#getCandyDropAirdropRecordsV4) | **GET** /launch/candydrop/airdrop-records | Query airdrop records
 
 
 ## listLaunchPoolProjects
@@ -367,9 +367,9 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\HodlerAirdropV4ProjectItem[] getHodlerAirdropProjectList($status, $keyword, $join, $page, $size)
 
-查询HODLer Airdrop活动列表
+Check the list of HODLer Airdrop activities
 
-获取HODLer Airdrop活动列表，支持按状态、币种/项目名称、参与情况筛选。此接口无需用户登录，登录用户可获取个人参与信息。
+Get the HODLer Airdrop activity list, which supports filtering by status, currency/project name, and participation status. This interface does not require user login, and logged in users can obtain personal participation information.
 
 ### Example
 
@@ -383,11 +383,11 @@ $apiInstance = new GateApi\Api\LaunchApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['status'] = 'status_example'; // string | 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部
-$associate_array['keyword'] = 'keyword_example'; // string | 币种/项目名称关键词，模糊匹配
-$associate_array['join'] = 0; // int | 参与情况筛选：0全部（默认），1仅已参与
-$associate_array['page'] = 1; // int | 页码，默认1
-$associate_array['size'] = 10; // int | 每页条数，默认10
+$associate_array['status'] = 'status_example'; // string | Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed
+$associate_array['keyword'] = 'keyword_example'; // string | Currency/project name keywords, fuzzy matching
+$associate_array['join'] = 0; // int | Participation filter: 0 all (default), 1 only participated
+$associate_array['page'] = 1; // int | Page number, default 1
+$associate_array['size'] = 10; // int | Number of items per page, default 10
 
 try {
     $result = $apiInstance->getHodlerAirdropProjectList($associate_array);
@@ -407,11 +407,11 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string**| 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 | [optional]
- **keyword** | **string**| 币种/项目名称关键词，模糊匹配 | [optional]
- **join** | **int**| 参与情况筛选：0全部（默认），1仅已参与 | [optional] [default to 0]
- **page** | **int**| 页码，默认1 | [optional] [default to 1]
- **size** | **int**| 每页条数，默认10 | [optional] [default to 10]
+ **status** | **string**| Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed | [optional]
+ **keyword** | **string**| Currency/project name keywords, fuzzy matching | [optional]
+ **join** | **int**| Participation filter: 0 all (default), 1 only participated | [optional] [default to 0]
+ **page** | **int**| Page number, default 1 | [optional] [default to 1]
+ **size** | **int**| Number of items per page, default 10 | [optional] [default to 10]
 
 ### Return type
 
@@ -435,9 +435,9 @@ No authorization required
 
 > \GateApi\Model\HodlerAirdropV4OrderResponse hodlerAirdropOrder($hodler_airdrop_v4_order_request)
 
-参与HODLer Airdrop活动
+Participate in the HODLer Airdrop event
 
-参与指定的HODLer Airdrop活动，需持有GT。此接口需要用户登录认证，且须满足KYC要求，不支持子账户、企业/机构用户。
+To participate in designated HODLer Airdrop activities, you need to hold GT. This interface requires user login authentication and must meet KYC requirements. It does not support sub-accounts and enterprise/institutional users.
 
 ### Example
 
@@ -497,9 +497,9 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\HodlerAirdropV4UserOrderRecord[] getHodlerAirdropUserOrderRecords($keyword, $start_timest, $end_timest, $page, $size)
 
-查询HODLer Airdrop参与记录
+Check HODLer Airdrop participation records
 
-查询用户的HODLer Airdrop参与记录，返回每个活动的有效持仓和空投金额。此接口需要用户登录认证。
+Query the user's HODLer Airdrop participation record and return the effective holdings and airdrop amount of each activity. This interface requires user login authentication.
 
 ### Example
 
@@ -517,11 +517,11 @@ $apiInstance = new GateApi\Api\LaunchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['keyword'] = 'keyword_example'; // string | 币种名称关键词筛选
-$associate_array['start_timest'] = 56; // int | 开始时间戳（秒）
-$associate_array['end_timest'] = 56; // int | 结束时间戳（秒）
-$associate_array['page'] = 1; // int | 页码，默认1
-$associate_array['size'] = 10; // int | 每页条数，默认10
+$associate_array['keyword'] = 'keyword_example'; // string | Currency name keyword filtering
+$associate_array['start_timest'] = 56; // int | Start timestamp (seconds)
+$associate_array['end_timest'] = 56; // int | end timestamp (seconds)
+$associate_array['page'] = 1; // int | Page number, default 1
+$associate_array['size'] = 10; // int | Number of items per page, default 10
 
 try {
     $result = $apiInstance->getHodlerAirdropUserOrderRecords($associate_array);
@@ -541,11 +541,11 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keyword** | **string**| 币种名称关键词筛选 | [optional]
- **start_timest** | **int**| 开始时间戳（秒） | [optional]
- **end_timest** | **int**| 结束时间戳（秒） | [optional]
- **page** | **int**| 页码，默认1 | [optional] [default to 1]
- **size** | **int**| 每页条数，默认10 | [optional] [default to 10]
+ **keyword** | **string**| Currency name keyword filtering | [optional]
+ **start_timest** | **int**| Start timestamp (seconds) | [optional]
+ **end_timest** | **int**| end timestamp (seconds) | [optional]
+ **page** | **int**| Page number, default 1 | [optional] [default to 1]
+ **size** | **int**| Number of items per page, default 10 | [optional] [default to 10]
 
 ### Return type
 
@@ -569,9 +569,9 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\HodlerAirdropV4UserAirdropRecord[] getHodlerAirdropUserAirdropRecords($keyword, $start_timest, $end_timest, $page, $size)
 
-查询HODLer Airdrop空投记录
+Query HODLer Airdrop records
 
-查询用户已获得的HODLer Airdrop空投发放记录，包含基础空投、额外空投和自动兑换状态。此接口需要用户登录认证。
+Query the HODLer Airdrop airdrop distribution record that the user has obtained, including basic airdrops, additional airdrops and automatic redemption status. This interface requires user login authentication.
 
 ### Example
 
@@ -589,11 +589,11 @@ $apiInstance = new GateApi\Api\LaunchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['keyword'] = 'keyword_example'; // string | 币种名称关键词筛选
-$associate_array['start_timest'] = 56; // int | 开始时间戳（秒）
-$associate_array['end_timest'] = 56; // int | 结束时间戳（秒）
-$associate_array['page'] = 1; // int | 页码，默认1
-$associate_array['size'] = 10; // int | 每页条数，默认10
+$associate_array['keyword'] = 'keyword_example'; // string | Currency name keyword filtering
+$associate_array['start_timest'] = 56; // int | Start timestamp (seconds)
+$associate_array['end_timest'] = 56; // int | end timestamp (seconds)
+$associate_array['page'] = 1; // int | Page number, default 1
+$associate_array['size'] = 10; // int | Number of items per page, default 10
 
 try {
     $result = $apiInstance->getHodlerAirdropUserAirdropRecords($associate_array);
@@ -613,11 +613,11 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **keyword** | **string**| 币种名称关键词筛选 | [optional]
- **start_timest** | **int**| 开始时间戳（秒） | [optional]
- **end_timest** | **int**| 结束时间戳（秒） | [optional]
- **page** | **int**| 页码，默认1 | [optional] [default to 1]
- **size** | **int**| 每页条数，默认10 | [optional] [default to 10]
+ **keyword** | **string**| Currency name keyword filtering | [optional]
+ **start_timest** | **int**| Start timestamp (seconds) | [optional]
+ **end_timest** | **int**| end timestamp (seconds) | [optional]
+ **page** | **int**| Page number, default 1 | [optional] [default to 1]
+ **size** | **int**| Number of items per page, default 10 | [optional] [default to 10]
 
 ### Return type
 
@@ -641,9 +641,9 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CandyDropV4ActivityCd01[] getCandyDropActivityListV4($status, $rule_name, $register_status, $currency, $limit, $offset)
 
-查询活动列表
+Query activity list
 
-支持多维度筛选 CandyDrop 活动，每次查询返回列表排序的前十条数据。不需要登录。
+Supports multi-dimensional filtering of CandyDrop activities, and each query returns the top ten data sorted by the list. No login required.
 
 ### Example
 
@@ -657,12 +657,12 @@ $apiInstance = new GateApi\Api\LaunchApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['status'] = 'status_example'; // string | 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部
-$associate_array['rule_name'] = 'rule_name_example'; // string | 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF)
-$associate_array['register_status'] = 'register_status_example'; // string | 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部
-$associate_array['currency'] = 'currency_example'; // string | 币种名称筛选
-$associate_array['limit'] = 10; // int | 返回条数，默认10，最大30
-$associate_array['offset'] = 0; // int | 偏移量，默认0
+$associate_array['status'] = 'status_example'; // string | Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned
+$associate_array['rule_name'] = 'rule_name_example'; // string | Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF)
+$associate_array['register_status'] = 'register_status_example'; // string | Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned
+$associate_array['currency'] = 'currency_example'; // string | Currency name filter
+$associate_array['limit'] = 10; // int | Number of items returned, default 10, maximum 30
+$associate_array['offset'] = 0; // int | Offset, default 0
 
 try {
     $result = $apiInstance->getCandyDropActivityListV4($associate_array);
@@ -682,12 +682,12 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status** | **string**| 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 | [optional]
- **rule_name** | **string**| 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) | [optional]
- **register_status** | **string**| 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 | [optional]
- **currency** | **string**| 币种名称筛选 | [optional]
- **limit** | **int**| 返回条数，默认10，最大30 | [optional] [default to 10]
- **offset** | **int**| 偏移量，默认0 | [optional] [default to 0]
+ **status** | **string**| Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned | [optional]
+ **rule_name** | **string**| Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) | [optional]
+ **register_status** | **string**| Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned | [optional]
+ **currency** | **string**| Currency name filter | [optional]
+ **limit** | **int**| Number of items returned, default 10, maximum 30 | [optional] [default to 10]
+ **offset** | **int**| Offset, default 0 | [optional] [default to 0]
 
 ### Return type
 
@@ -711,9 +711,9 @@ No authorization required
 
 > \GateApi\Model\CandyDropV4RegisterRespCd02 registerCandyDropV4($candy_drop_v4_register_req_cd02)
 
-报名参与活动
+Sign up for events
 
-报名参与特定 CandyDrop 活动。需要登录，需要 API Key 签名认证。
+Sign up for select CandyDrop events. Login is required and API Key signature authentication is required.
 
 ### Example
 
@@ -773,9 +773,9 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CandyDropV4ActivityRulesCd03 getCandyDropActivityRulesV4($activity_id, $currency)
 
-查询活动规则
+Query activity rules
 
-查询特定活动的规则，包括奖池及对应任务数据。不需要登录。
+Query the rules of a specific activity, including prize pool and corresponding task data. No login required.
 
 ### Example
 
@@ -789,8 +789,8 @@ $apiInstance = new GateApi\Api\LaunchApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['activity_id'] = 56; // int | 活动ID，与 currency 二选一，至少须传其一
-$associate_array['currency'] = 'currency_example'; // string | 项目/币种名称，与 activity_id 二选一，至少须传其一
+$associate_array['activity_id'] = 56; // int | Activity ID, choose one from currency, at least one of them must be passed
+$associate_array['currency'] = 'currency_example'; // string | Project/currency name, choose one from activity_id, at least one of them must be passed
 
 try {
     $result = $apiInstance->getCandyDropActivityRulesV4($associate_array);
@@ -810,8 +810,8 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **activity_id** | **int**| 活动ID，与 currency 二选一，至少须传其一 | [optional]
- **currency** | **string**| 项目/币种名称，与 activity_id 二选一，至少须传其一 | [optional]
+ **activity_id** | **int**| Activity ID, choose one from currency, at least one of them must be passed | [optional]
+ **currency** | **string**| Project/currency name, choose one from activity_id, at least one of them must be passed | [optional]
 
 ### Return type
 
@@ -835,9 +835,9 @@ No authorization required
 
 > \GateApi\Model\CandyDropV4TaskProgressCd04 getCandyDropTaskProgressV4($activity_id, $currency)
 
-查询任务完成进度
+Query task completion progress
 
-查询进行中且已报名/参与的任务完成进度。需要登录。
+Check the completion progress of tasks that are in progress and have been registered/participated. Login required.
 
 ### Example
 
@@ -855,8 +855,8 @@ $apiInstance = new GateApi\Api\LaunchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['activity_id'] = 56; // int | 活动ID，与 currency 二选一，至少须传其一
-$associate_array['currency'] = 'currency_example'; // string | 项目/币种名称，与 activity_id 二选一，至少须传其一
+$associate_array['activity_id'] = 56; // int | Activity ID, choose one from currency, at least one of them must be passed
+$associate_array['currency'] = 'currency_example'; // string | Project/currency name, choose one from activity_id, at least one of them must be passed
 
 try {
     $result = $apiInstance->getCandyDropTaskProgressV4($associate_array);
@@ -876,8 +876,8 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **activity_id** | **int**| 活动ID，与 currency 二选一，至少须传其一 | [optional]
- **currency** | **string**| 项目/币种名称，与 activity_id 二选一，至少须传其一 | [optional]
+ **activity_id** | **int**| Activity ID, choose one from currency, at least one of them must be passed | [optional]
+ **currency** | **string**| Project/currency name, choose one from activity_id, at least one of them must be passed | [optional]
 
 ### Return type
 
@@ -901,9 +901,9 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CandyDropV4ParticipationRecordCd05[] getCandyDropParticipationRecordsV4($currency, $status, $start_time, $end_time, $page, $limit)
 
-查询参与记录
+Query participation records
 
-查询用户的 CandyDrop 参与详情。需要登录。
+Query the user's CandyDrop participation details. Login required.
 
 ### Example
 
@@ -921,12 +921,12 @@ $apiInstance = new GateApi\Api\LaunchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['currency'] = 'currency_example'; // string | 币种名称筛选
-$associate_array['status'] = 'status_example'; // string | 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖)
-$associate_array['start_time'] = 56; // int | 开始时间（Unix 时间戳秒）
-$associate_array['end_time'] = 56; // int | 结束时间（Unix 时间戳秒）
-$associate_array['page'] = 1; // int | 页码，默认1
-$associate_array['limit'] = 10; // int | 每页条数，默认10，最大30
+$associate_array['currency'] = 'currency_example'; // string | Currency name filter
+$associate_array['status'] = 'status_example'; // string | Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won)
+$associate_array['start_time'] = 56; // int | Start time (Unix timestamp seconds)
+$associate_array['end_time'] = 56; // int | End time (Unix timestamp seconds)
+$associate_array['page'] = 1; // int | Page number, default 1
+$associate_array['limit'] = 10; // int | Number of items per page, default 10, maximum 30
 
 try {
     $result = $apiInstance->getCandyDropParticipationRecordsV4($associate_array);
@@ -946,12 +946,12 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| 币种名称筛选 | [optional]
- **status** | **string**| 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) | [optional]
- **start_time** | **int**| 开始时间（Unix 时间戳秒） | [optional]
- **end_time** | **int**| 结束时间（Unix 时间戳秒） | [optional]
- **page** | **int**| 页码，默认1 | [optional] [default to 1]
- **limit** | **int**| 每页条数，默认10，最大30 | [optional] [default to 10]
+ **currency** | **string**| Currency name filter | [optional]
+ **status** | **string**| Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) | [optional]
+ **start_time** | **int**| Start time (Unix timestamp seconds) | [optional]
+ **end_time** | **int**| End time (Unix timestamp seconds) | [optional]
+ **page** | **int**| Page number, default 1 | [optional] [default to 1]
+ **limit** | **int**| Number of items per page, default 10, maximum 30 | [optional] [default to 10]
 
 ### Return type
 
@@ -975,9 +975,9 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CandyDropV4AirdropRecordCd06[] getCandyDropAirdropRecordsV4($currency, $start_time, $end_time, $page, $limit)
 
-查询空投记录
+Query airdrop records
 
-查询用户的 CandyDrop 空投详情。需要登录。
+Query the user's CandyDrop airdrop details. Login required.
 
 ### Example
 
@@ -995,11 +995,11 @@ $apiInstance = new GateApi\Api\LaunchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['currency'] = 'currency_example'; // string | 币种名称筛选
-$associate_array['start_time'] = 56; // int | 开始时间（Unix 时间戳秒）
-$associate_array['end_time'] = 56; // int | 结束时间（Unix 时间戳秒）
-$associate_array['page'] = 1; // int | 页码，默认1
-$associate_array['limit'] = 10; // int | 每页条数，默认10，最大30
+$associate_array['currency'] = 'currency_example'; // string | Currency name filter
+$associate_array['start_time'] = 56; // int | Start time (Unix timestamp seconds)
+$associate_array['end_time'] = 56; // int | End time (Unix timestamp seconds)
+$associate_array['page'] = 1; // int | Page number, default 1
+$associate_array['limit'] = 10; // int | Number of items per page, default 10, maximum 30
 
 try {
     $result = $apiInstance->getCandyDropAirdropRecordsV4($associate_array);
@@ -1019,11 +1019,11 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| 币种名称筛选 | [optional]
- **start_time** | **int**| 开始时间（Unix 时间戳秒） | [optional]
- **end_time** | **int**| 结束时间（Unix 时间戳秒） | [optional]
- **page** | **int**| 页码，默认1 | [optional] [default to 1]
- **limit** | **int**| 每页条数，默认10，最大30 | [optional] [default to 10]
+ **currency** | **string**| Currency name filter | [optional]
+ **start_time** | **int**| Start time (Unix timestamp seconds) | [optional]
+ **end_time** | **int**| End time (Unix timestamp seconds) | [optional]
+ **page** | **int**| Page number, default 1 | [optional] [default to 1]
+ **limit** | **int**| Number of items per page, default 10, maximum 30 | [optional] [default to 10]
 
 ### Return type
 

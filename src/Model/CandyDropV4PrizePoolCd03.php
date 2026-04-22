@@ -232,7 +232,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
     /**
      * Sets prize_pool_type
      *
-     * @param int|null $prize_pool_type 奖池类型
+     * @param int|null $prize_pool_type Prize pool type
      *
      * @return $this
      */
@@ -256,7 +256,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
     /**
      * Sets prize_all
      *
-     * @param string|null $prize_all 奖池总额度
+     * @param string|null $prize_all Total prize pool amount
      *
      * @return $this
      */
@@ -280,7 +280,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
     /**
      * Sets prize_limit
      *
-     * @param string|null $prize_limit 每人瓜分上限
+     * @param string|null $prize_limit Maximum share per person
      *
      * @return $this
      */
@@ -304,7 +304,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
     /**
      * Sets tasks
      *
-     * @param \GateApi\Model\CandyDropV4TaskCd03[]|null $tasks 任务列表
+     * @param \GateApi\Model\CandyDropV4TaskCd03[]|null $tasks task list
      *
      * @return $this
      */

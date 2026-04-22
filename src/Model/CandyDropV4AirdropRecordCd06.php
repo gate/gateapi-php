@@ -256,7 +256,7 @@ class CandyDropV4AirdropRecordCd06 implements ModelInterface, ArrayAccess
     /**
      * Sets airdrop_time
      *
-     * @param string|null $airdrop_time 空投时间（UTC格式化）
+     * @param string|null $airdrop_time Airdrop time (UTC format)
      *
      * @return $this
      */
@@ -280,7 +280,7 @@ class CandyDropV4AirdropRecordCd06 implements ModelInterface, ArrayAccess
     /**
      * Sets rewards
      *
-     * @param string|null $rewards 空投奖励
+     * @param string|null $rewards Airdrop rewards
      *
      * @return $this
      */
@@ -304,7 +304,7 @@ class CandyDropV4AirdropRecordCd06 implements ModelInterface, ArrayAccess
     /**
      * Sets convert_amount
      *
-     * @param string|null $convert_amount 自动兑换金额
+     * @param string|null $convert_amount Automatic exchange amount
      *
      * @return $this
      */

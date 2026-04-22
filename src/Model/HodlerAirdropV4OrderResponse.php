@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * HodlerAirdropV4OrderResponse Class Doc Comment
  *
  * @category Class
- * @description 参与活动响应
+ * @description Participate in event response
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -218,7 +218,7 @@ class HodlerAirdropV4OrderResponse implements ModelInterface, ArrayAccess
     /**
      * Sets interest_coin
      *
-     * @param string[] $interest_coin 获得空投的币种列表
+     * @param string[] $interest_coin Get the list of airdropped currencies
      *
      * @return $this
      */

@@ -560,7 +560,7 @@ class WelfareApi
     /**
      * Operation claimTask
      *
-     * 领取任务
+     * Get the task
      *
      * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req ex_skill_claim_task_req (required)
      *
@@ -577,7 +577,7 @@ class WelfareApi
     /**
      * Operation claimTaskWithHttpInfo
      *
-     * 领取任务
+     * Get the task
      *
      * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req (required)
      *
@@ -631,7 +631,7 @@ class WelfareApi
     /**
      * Operation claimTaskAsync
      *
-     * 领取任务
+     * Get the task
      *
      * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req (required)
      *
@@ -651,7 +651,7 @@ class WelfareApi
     /**
      * Operation claimTaskAsyncWithHttpInfo
      *
-     * 领取任务
+     * Get the task
      *
      * @param  \GateApi\Model\ExSkillClaimTaskReq $ex_skill_claim_task_req (required)
      *
@@ -796,7 +796,7 @@ class WelfareApi
     /**
      * Operation claimReward
      *
-     * 领取任务奖励
+     * Receive mission rewards
      *
      * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req ex_skill_claim_reward_req (required)
      *
@@ -813,7 +813,7 @@ class WelfareApi
     /**
      * Operation claimRewardWithHttpInfo
      *
-     * 领取任务奖励
+     * Receive mission rewards
      *
      * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req (required)
      *
@@ -867,7 +867,7 @@ class WelfareApi
     /**
      * Operation claimRewardAsync
      *
-     * 领取任务奖励
+     * Receive mission rewards
      *
      * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req (required)
      *
@@ -887,7 +887,7 @@ class WelfareApi
     /**
      * Operation claimRewardAsyncWithHttpInfo
      *
-     * 领取任务奖励
+     * Receive mission rewards
      *
      * @param  \GateApi\Model\ExSkillClaimRewardReq $ex_skill_claim_reward_req (required)
      *

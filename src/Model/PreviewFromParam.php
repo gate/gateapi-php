@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * PreviewFromParam Class Doc Comment
  *
  * @category Class
- * @description 预览请求的卖出侧单项：币种 + 数量。语义与 &#x60;CreateParam&#x60; 在 &#x60;from&#x60; 侧类似（均为 &#x60;asset&#x60; + &#x60;amount&#x60;）。
+ * @description Preview the selling side of the request: currency + quantity. The semantics are similar to &#x60;CreateParam&#x60; on the &#x60;from&#x60; side (both &#x60;asset&#x60; + &#x60;amount&#x60;).
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -227,7 +227,7 @@ class PreviewFromParam implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string $asset 要换出的币种符号。
+     * @param string $asset The currency symbol to be swapped out.
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class PreviewFromParam implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount 该币种换出数量，十进制字符串。
+     * @param string $amount The currency swap quantity, decimal string.
      *
      * @return $this
      */

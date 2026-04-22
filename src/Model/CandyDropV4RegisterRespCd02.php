@@ -214,7 +214,7 @@ class CandyDropV4RegisterRespCd02 implements ModelInterface, ArrayAccess
     /**
      * Sets success
      *
-     * @param bool|null $success 是否报名成功
+     * @param bool|null $success Whether the registration is successful
      *
      * @return $this
      */

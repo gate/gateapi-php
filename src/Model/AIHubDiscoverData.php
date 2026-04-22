@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubDiscoverData Class Doc Comment
  *
  * @category Class
- * @description 策略推荐结果数据。
+ * @description Strategy recommendation result data.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -284,7 +284,7 @@ class AIHubDiscoverData implements ModelInterface, ArrayAccess
     /**
      * Sets unsupported_filters
      *
-     * @param string[] $unsupported_filters 本期不支持的筛选条件
+     * @param string[] $unsupported_filters Filter conditions not supported in this issue
      *
      * @return $this
      */

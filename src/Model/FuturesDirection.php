@@ -31,7 +31,7 @@ use \GateApi\ObjectSerializer;
  * FuturesDirection Class Doc Comment
  *
  * @category Class
- * @description 合约类策略支持的方向枚举。
+ * @description Direction enumeration supported by contract-based strategies.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

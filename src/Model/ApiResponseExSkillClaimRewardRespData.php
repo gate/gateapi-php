@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * ApiResponseExSkillClaimRewardRespData Class Doc Comment
  *
  * @category Class
- * @description 领取奖励结果
+ * @description Get reward results
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -221,7 +221,7 @@ class ApiResponseExSkillClaimRewardRespData implements ModelInterface, ArrayAcce
     /**
      * Sets has_m_n_task
      *
-     * @param bool|null $has_m_n_task 是否为 m 选 n 奖池任务。为 true 时仅提示跳转，不实际发奖
+     * @param bool|null $has_m_n_task Whether to choose n prize pool tasks for m. When it is true, it only prompts a jump and does not actually issue prizes.
      *
      * @return $this
      */
@@ -245,7 +245,7 @@ class ApiResponseExSkillClaimRewardRespData implements ModelInterface, ArrayAcce
     /**
      * Sets coupon_full_name
      *
-     * @param string|null $coupon_full_name 卡券奖励全称。非卡券奖励或无法解析时为空字符串
+     * @param string|null $coupon_full_name The full name of the card reward. It is an empty string when it is not a coupon reward or cannot be parsed.
      *
      * @return $this
      */

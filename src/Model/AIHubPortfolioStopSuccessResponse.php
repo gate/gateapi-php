@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubPortfolioStopSuccessResponse Class Doc Comment
  *
  * @category Class
- * @description 终止策略成功时的响应体。
+ * @description The response body when the termination strategy is successful.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * InfiniteGridCreateParams Class Doc Comment
  *
  * @category Class
- * @description 无限网格策略的创建参数。
+ * @description Creation parameters for infinite grid strategies.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -335,7 +335,7 @@ class InfiniteGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets price_floor
      *
-     * @param string $price_floor 价格地板
+     * @param string $price_floor price floor
      *
      * @return $this
      */
@@ -359,7 +359,7 @@ class InfiniteGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets profit_per_grid
      *
-     * @param string $profit_per_grid 每格利润
+     * @param string $profit_per_grid Profit per square
      *
      * @return $this
      */

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * MarginGridCreateParams Class Doc Comment
  *
  * @category Class
- * @description 杠杆网格策略的创建参数。
+ * @description Creation parameters for the Leverage Grid strategy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * SpotMartingaleCreateRequest Class Doc Comment
  *
  * @category Class
- * @description 创建现货马丁策略的请求体。
+ * @description Create the request body of the Spot Martin strategy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * ApiResponseAssetSwapOrderCreateV1 Class Doc Comment
  *
  * @category Class
- * @description 资产配置优化-下单统一响应
+ * @description Asset allocation optimization - unified response to orders
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -251,7 +251,7 @@ class ApiResponseAssetSwapOrderCreateV1 implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code 业务错误码，0 表示成功
+     * @param int $code Business error code, 0 means success
      *
      * @return $this
      */
@@ -275,7 +275,7 @@ class ApiResponseAssetSwapOrderCreateV1 implements ModelInterface, ArrayAccess
     /**
      * Sets label
      *
-     * @param string|null $label 错误标识码，成功时为空字符串
+     * @param string|null $label Error identification code, empty string on success
      *
      * @return $this
      */
@@ -299,7 +299,7 @@ class ApiResponseAssetSwapOrderCreateV1 implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message 描述信息
+     * @param string $message Description information
      *
      * @return $this
      */
@@ -323,7 +323,7 @@ class ApiResponseAssetSwapOrderCreateV1 implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param OrderCreateV1Resp $data 成功时为下单结果，失败时为 null
+     * @param OrderCreateV1Resp $data It is the order result when successful, and null when it fails.
      *
      * @return $this
      */

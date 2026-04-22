@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubPortfolioStopRequest Class Doc Comment
  *
  * @category Class
- * @description 终止运行中策略的请求体。
+ * @description The request body to terminate a running policy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

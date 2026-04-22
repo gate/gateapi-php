@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubPortfolioRunningData Class Doc Comment
  *
  * @category Class
- * @description 运行中策略列表数据。
+ * @description Running policy list data.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

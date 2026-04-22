@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * FuturesGridCreateRequest Class Doc Comment
  *
  * @category Class
- * @description 创建合约网格策略的请求体。
+ * @description Create the request body of the contract grid strategy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

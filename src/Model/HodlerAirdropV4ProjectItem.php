@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * HodlerAirdropV4ProjectItem Class Doc Comment
  *
  * @category Class
- * @description HODLer Airdrop活动列表项
+ * @description HODLer Airdrop activity list item
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -363,7 +363,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string $asset 空投币种
+     * @param string $asset Airdrop currency
      *
      * @return $this
      */
@@ -387,7 +387,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status 项目状态
+     * @param string $status Project status
      *
      * @return $this
      */
@@ -420,7 +420,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets total_amount
      *
-     * @param string $total_amount 空投总量
+     * @param string $total_amount Total airdrop amount
      *
      * @return $this
      */
@@ -444,7 +444,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets open_timest
      *
-     * @param string $open_timest 活动开始时间，格式 Y-m-d H:i:s，UTC
+     * @param string $open_timest Event start time, format Y-m-d H:i:s, UTC
      *
      * @return $this
      */
@@ -468,7 +468,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets close_timest
      *
-     * @param string $close_timest 活动结束时间，格式 Y-m-d H:i:s，UTC
+     * @param string $close_timest Event end time, format Y-m-d H:i:s, UTC
      *
      * @return $this
      */
@@ -492,7 +492,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets per_gt_reward_token
      *
-     * @param string|null $per_gt_reward_token 每枚GT可获得的空投币数量，计算中时返回空字符串
+     * @param string|null $per_gt_reward_token The number of airdrop coins that can be obtained for each GT. When the calculation is in progress, an empty string is returned.
      *
      * @return $this
      */
@@ -516,7 +516,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets user_count
      *
-     * @param string|null $user_count 参与人数
+     * @param string|null $user_count Number of participants
      *
      * @return $this
      */
@@ -540,7 +540,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     /**
      * Sets max_queue_amount
      *
-     * @param string|null $max_queue_amount 个人参与GT上限
+     * @param string|null $max_queue_amount Personal GT limit
      *
      * @return $this
      */

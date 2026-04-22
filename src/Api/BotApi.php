@@ -116,23 +116,23 @@ class BotApi
     /**
      * Operation getAIHubStrategyRecommend
      *
-     * 获取 AIHub 策略推荐
+     * Get AIHub strategy recommendations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $market 交易对，例如 &#x60;BTC_USDT&#x60; (optional)
-     * @param  string $strategy_type 推荐目标策略类型；&#x60;contract_martingale&#x60; 不允许 (optional)
-     * @param  string $direction 行情方向 (optional)
-     * @param  string $invest_amount 投入金额，字符串透传 (optional)
-     * @param  string $scene 推荐场景；为空时 bot-service 可按实现逻辑自动推断 (optional)
-     * @param  string $refresh_recommendation_id 推荐刷新上下文。&#x60;scene&#x3D;refresh&#x60; 时使用；当 &#x60;scene&#x60; 为空但该字段存在时，bot-service 也会自动判定为 &#x60;refresh&#x60;。 正式最小格式为 &#x60;strategy_type|market&#x60;；若直接透传上一条推荐的 &#x60;recommendation_id&#x60;，第三段 &#x60;backtest_id&#x60; 会被忽略。 (optional)
-     * @param  int $limit 返回数量；&#x60;scene&#x3D;filter&#x60; 时实际结果最多 10 条 (optional)
-     * @param  string $max_drawdown_lte 最大回撤上限 (optional)
-     * @param  string $backtest_apr_gte 回测年化下限 (optional)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
+     * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
+     * @param  string $direction Market direction (optional)
+     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
+     * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
+     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
+     * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -147,23 +147,23 @@ class BotApi
     /**
      * Operation getAIHubStrategyRecommendWithHttpInfo
      *
-     * 获取 AIHub 策略推荐
+     * Get AIHub strategy recommendations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $market 交易对，例如 &#x60;BTC_USDT&#x60; (optional)
-     * @param  string $strategy_type 推荐目标策略类型；&#x60;contract_martingale&#x60; 不允许 (optional)
-     * @param  string $direction 行情方向 (optional)
-     * @param  string $invest_amount 投入金额，字符串透传 (optional)
-     * @param  string $scene 推荐场景；为空时 bot-service 可按实现逻辑自动推断 (optional)
-     * @param  string $refresh_recommendation_id 推荐刷新上下文。&#x60;scene&#x3D;refresh&#x60; 时使用；当 &#x60;scene&#x60; 为空但该字段存在时，bot-service 也会自动判定为 &#x60;refresh&#x60;。 正式最小格式为 &#x60;strategy_type|market&#x60;；若直接透传上一条推荐的 &#x60;recommendation_id&#x60;，第三段 &#x60;backtest_id&#x60; 会被忽略。 (optional)
-     * @param  int $limit 返回数量；&#x60;scene&#x3D;filter&#x60; 时实际结果最多 10 条 (optional)
-     * @param  string $max_drawdown_lte 最大回撤上限 (optional)
-     * @param  string $backtest_apr_gte 回测年化下限 (optional)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
+     * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
+     * @param  string $direction Market direction (optional)
+     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
+     * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
+     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
+     * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -215,23 +215,23 @@ class BotApi
     /**
      * Operation getAIHubStrategyRecommendAsync
      *
-     * 获取 AIHub 策略推荐
+     * Get AIHub strategy recommendations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $market 交易对，例如 &#x60;BTC_USDT&#x60; (optional)
-     * @param  string $strategy_type 推荐目标策略类型；&#x60;contract_martingale&#x60; 不允许 (optional)
-     * @param  string $direction 行情方向 (optional)
-     * @param  string $invest_amount 投入金额，字符串透传 (optional)
-     * @param  string $scene 推荐场景；为空时 bot-service 可按实现逻辑自动推断 (optional)
-     * @param  string $refresh_recommendation_id 推荐刷新上下文。&#x60;scene&#x3D;refresh&#x60; 时使用；当 &#x60;scene&#x60; 为空但该字段存在时，bot-service 也会自动判定为 &#x60;refresh&#x60;。 正式最小格式为 &#x60;strategy_type|market&#x60;；若直接透传上一条推荐的 &#x60;recommendation_id&#x60;，第三段 &#x60;backtest_id&#x60; 会被忽略。 (optional)
-     * @param  int $limit 返回数量；&#x60;scene&#x3D;filter&#x60; 时实际结果最多 10 条 (optional)
-     * @param  string $max_drawdown_lte 最大回撤上限 (optional)
-     * @param  string $backtest_apr_gte 回测年化下限 (optional)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
+     * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
+     * @param  string $direction Market direction (optional)
+     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
+     * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
+     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
+     * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -249,23 +249,23 @@ class BotApi
     /**
      * Operation getAIHubStrategyRecommendAsyncWithHttpInfo
      *
-     * 获取 AIHub 策略推荐
+     * Get AIHub strategy recommendations
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $market 交易对，例如 &#x60;BTC_USDT&#x60; (optional)
-     * @param  string $strategy_type 推荐目标策略类型；&#x60;contract_martingale&#x60; 不允许 (optional)
-     * @param  string $direction 行情方向 (optional)
-     * @param  string $invest_amount 投入金额，字符串透传 (optional)
-     * @param  string $scene 推荐场景；为空时 bot-service 可按实现逻辑自动推断 (optional)
-     * @param  string $refresh_recommendation_id 推荐刷新上下文。&#x60;scene&#x3D;refresh&#x60; 时使用；当 &#x60;scene&#x60; 为空但该字段存在时，bot-service 也会自动判定为 &#x60;refresh&#x60;。 正式最小格式为 &#x60;strategy_type|market&#x60;；若直接透传上一条推荐的 &#x60;recommendation_id&#x60;，第三段 &#x60;backtest_id&#x60; 会被忽略。 (optional)
-     * @param  int $limit 返回数量；&#x60;scene&#x3D;filter&#x60; 时实际结果最多 10 条 (optional)
-     * @param  string $max_drawdown_lte 最大回撤上限 (optional)
-     * @param  string $backtest_apr_gte 回测年化下限 (optional)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
+     * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
+     * @param  string $direction Market direction (optional)
+     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
+     * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
+     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
+     * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -314,19 +314,19 @@ class BotApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $market 交易对，例如 &#x60;BTC_USDT&#x60; (optional)
-     * @param  string $strategy_type 推荐目标策略类型；&#x60;contract_martingale&#x60; 不允许 (optional)
-     * @param  string $direction 行情方向 (optional)
-     * @param  string $invest_amount 投入金额，字符串透传 (optional)
-     * @param  string $scene 推荐场景；为空时 bot-service 可按实现逻辑自动推断 (optional)
-     * @param  string $refresh_recommendation_id 推荐刷新上下文。&#x60;scene&#x3D;refresh&#x60; 时使用；当 &#x60;scene&#x60; 为空但该字段存在时，bot-service 也会自动判定为 &#x60;refresh&#x60;。 正式最小格式为 &#x60;strategy_type|market&#x60;；若直接透传上一条推荐的 &#x60;recommendation_id&#x60;，第三段 &#x60;backtest_id&#x60; 会被忽略。 (optional)
-     * @param  int $limit 返回数量；&#x60;scene&#x3D;filter&#x60; 时实际结果最多 10 条 (optional)
-     * @param  string $max_drawdown_lte 最大回撤上限 (optional)
-     * @param  string $backtest_apr_gte 回测年化下限 (optional)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
+     * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
+     * @param  string $direction Market direction (optional)
+     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
+     * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
+     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
+     * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -560,13 +560,13 @@ class BotApi
     /**
      * Operation postAIHubSpotGridCreate
      *
-     * 创建现货网格
+     * Create spot grid
      *
      * @param  \GateApi\Model\SpotGridCreateRequest $spot_grid_create_request spot_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -581,13 +581,13 @@ class BotApi
     /**
      * Operation postAIHubSpotGridCreateWithHttpInfo
      *
-     * 创建现货网格
+     * Create spot grid
      *
      * @param  \GateApi\Model\SpotGridCreateRequest $spot_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -639,13 +639,13 @@ class BotApi
     /**
      * Operation postAIHubSpotGridCreateAsync
      *
-     * 创建现货网格
+     * Create spot grid
      *
      * @param  \GateApi\Model\SpotGridCreateRequest $spot_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -663,13 +663,13 @@ class BotApi
     /**
      * Operation postAIHubSpotGridCreateAsyncWithHttpInfo
      *
-     * 创建现货网格
+     * Create spot grid
      *
      * @param  \GateApi\Model\SpotGridCreateRequest $spot_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -717,10 +717,10 @@ class BotApi
      * Create request for operation 'postAIHubSpotGridCreate'
      *
      * @param  \GateApi\Model\SpotGridCreateRequest $spot_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -836,13 +836,13 @@ class BotApi
     /**
      * Operation postAIHubMarginGridCreate
      *
-     * 创建杠杆网格
+     * Create a lever grid
      *
      * @param  \GateApi\Model\MarginGridCreateRequest $margin_grid_create_request margin_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -857,13 +857,13 @@ class BotApi
     /**
      * Operation postAIHubMarginGridCreateWithHttpInfo
      *
-     * 创建杠杆网格
+     * Create a lever grid
      *
      * @param  \GateApi\Model\MarginGridCreateRequest $margin_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -915,13 +915,13 @@ class BotApi
     /**
      * Operation postAIHubMarginGridCreateAsync
      *
-     * 创建杠杆网格
+     * Create a lever grid
      *
      * @param  \GateApi\Model\MarginGridCreateRequest $margin_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -939,13 +939,13 @@ class BotApi
     /**
      * Operation postAIHubMarginGridCreateAsyncWithHttpInfo
      *
-     * 创建杠杆网格
+     * Create a lever grid
      *
      * @param  \GateApi\Model\MarginGridCreateRequest $margin_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -993,10 +993,10 @@ class BotApi
      * Create request for operation 'postAIHubMarginGridCreate'
      *
      * @param  \GateApi\Model\MarginGridCreateRequest $margin_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1112,13 +1112,13 @@ class BotApi
     /**
      * Operation postAIHubInfiniteGridCreate
      *
-     * 创建无限网格
+     * Create infinite grid
      *
      * @param  \GateApi\Model\InfiniteGridCreateRequest $infinite_grid_create_request infinite_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1133,13 +1133,13 @@ class BotApi
     /**
      * Operation postAIHubInfiniteGridCreateWithHttpInfo
      *
-     * 创建无限网格
+     * Create infinite grid
      *
      * @param  \GateApi\Model\InfiniteGridCreateRequest $infinite_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1191,13 +1191,13 @@ class BotApi
     /**
      * Operation postAIHubInfiniteGridCreateAsync
      *
-     * 创建无限网格
+     * Create infinite grid
      *
      * @param  \GateApi\Model\InfiniteGridCreateRequest $infinite_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1215,13 +1215,13 @@ class BotApi
     /**
      * Operation postAIHubInfiniteGridCreateAsyncWithHttpInfo
      *
-     * 创建无限网格
+     * Create infinite grid
      *
      * @param  \GateApi\Model\InfiniteGridCreateRequest $infinite_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1269,10 +1269,10 @@ class BotApi
      * Create request for operation 'postAIHubInfiniteGridCreate'
      *
      * @param  \GateApi\Model\InfiniteGridCreateRequest $infinite_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1388,13 +1388,13 @@ class BotApi
     /**
      * Operation postAIHubFuturesGridCreate
      *
-     * 创建合约网格
+     * Create a contract grid
      *
      * @param  \GateApi\Model\FuturesGridCreateRequest $futures_grid_create_request futures_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1409,13 +1409,13 @@ class BotApi
     /**
      * Operation postAIHubFuturesGridCreateWithHttpInfo
      *
-     * 创建合约网格
+     * Create a contract grid
      *
      * @param  \GateApi\Model\FuturesGridCreateRequest $futures_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1467,13 +1467,13 @@ class BotApi
     /**
      * Operation postAIHubFuturesGridCreateAsync
      *
-     * 创建合约网格
+     * Create a contract grid
      *
      * @param  \GateApi\Model\FuturesGridCreateRequest $futures_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1491,13 +1491,13 @@ class BotApi
     /**
      * Operation postAIHubFuturesGridCreateAsyncWithHttpInfo
      *
-     * 创建合约网格
+     * Create a contract grid
      *
      * @param  \GateApi\Model\FuturesGridCreateRequest $futures_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1545,10 +1545,10 @@ class BotApi
      * Create request for operation 'postAIHubFuturesGridCreate'
      *
      * @param  \GateApi\Model\FuturesGridCreateRequest $futures_grid_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1664,13 +1664,13 @@ class BotApi
     /**
      * Operation postAIHubSpotMartingaleCreate
      *
-     * 创建现货马丁
+     * Create Spot Martin
      *
      * @param  \GateApi\Model\SpotMartingaleCreateRequest $spot_martingale_create_request spot_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1685,13 +1685,13 @@ class BotApi
     /**
      * Operation postAIHubSpotMartingaleCreateWithHttpInfo
      *
-     * 创建现货马丁
+     * Create Spot Martin
      *
      * @param  \GateApi\Model\SpotMartingaleCreateRequest $spot_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1743,13 +1743,13 @@ class BotApi
     /**
      * Operation postAIHubSpotMartingaleCreateAsync
      *
-     * 创建现货马丁
+     * Create Spot Martin
      *
      * @param  \GateApi\Model\SpotMartingaleCreateRequest $spot_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1767,13 +1767,13 @@ class BotApi
     /**
      * Operation postAIHubSpotMartingaleCreateAsyncWithHttpInfo
      *
-     * 创建现货马丁
+     * Create Spot Martin
      *
      * @param  \GateApi\Model\SpotMartingaleCreateRequest $spot_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1821,10 +1821,10 @@ class BotApi
      * Create request for operation 'postAIHubSpotMartingaleCreate'
      *
      * @param  \GateApi\Model\SpotMartingaleCreateRequest $spot_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1940,13 +1940,13 @@ class BotApi
     /**
      * Operation postAIHubContractMartingaleCreate
      *
-     * 创建合约马丁
+     * Create contract martin
      *
      * @param  \GateApi\Model\ContractMartingaleCreateRequest $contract_martingale_create_request contract_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1961,13 +1961,13 @@ class BotApi
     /**
      * Operation postAIHubContractMartingaleCreateWithHttpInfo
      *
-     * 创建合约马丁
+     * Create contract martin
      *
      * @param  \GateApi\Model\ContractMartingaleCreateRequest $contract_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2019,13 +2019,13 @@ class BotApi
     /**
      * Operation postAIHubContractMartingaleCreateAsync
      *
-     * 创建合约马丁
+     * Create contract martin
      *
      * @param  \GateApi\Model\ContractMartingaleCreateRequest $contract_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2043,13 +2043,13 @@ class BotApi
     /**
      * Operation postAIHubContractMartingaleCreateAsyncWithHttpInfo
      *
-     * 创建合约马丁
+     * Create contract martin
      *
      * @param  \GateApi\Model\ContractMartingaleCreateRequest $contract_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2097,10 +2097,10 @@ class BotApi
      * Create request for operation 'postAIHubContractMartingaleCreate'
      *
      * @param  \GateApi\Model\ContractMartingaleCreateRequest $contract_martingale_create_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2216,18 +2216,18 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunning
      *
-     * 查询运行中策略列表
+     * Query the list of running policies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_type 按策略类型过滤 (optional)
-     * @param  string $market 按交易对过滤 (optional)
-     * @param  int $page 页码，默认 1 (optional, default to 1)
-     * @param  int $page_size 分页大小，默认 20，最大 50 (optional, default to 20)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_type Filter by policy type (optional)
+     * @param  string $market Filter by trading pair (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $page_size Paging size, default 20, maximum 50 (optional, default to 20)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2242,18 +2242,18 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunningWithHttpInfo
      *
-     * 查询运行中策略列表
+     * Query the list of running policies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_type 按策略类型过滤 (optional)
-     * @param  string $market 按交易对过滤 (optional)
-     * @param  int $page 页码，默认 1 (optional, default to 1)
-     * @param  int $page_size 分页大小，默认 20，最大 50 (optional, default to 20)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_type Filter by policy type (optional)
+     * @param  string $market Filter by trading pair (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $page_size Paging size, default 20, maximum 50 (optional, default to 20)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2305,18 +2305,18 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunningAsync
      *
-     * 查询运行中策略列表
+     * Query the list of running policies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_type 按策略类型过滤 (optional)
-     * @param  string $market 按交易对过滤 (optional)
-     * @param  int $page 页码，默认 1 (optional, default to 1)
-     * @param  int $page_size 分页大小，默认 20，最大 50 (optional, default to 20)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_type Filter by policy type (optional)
+     * @param  string $market Filter by trading pair (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $page_size Paging size, default 20, maximum 50 (optional, default to 20)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2334,18 +2334,18 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunningAsyncWithHttpInfo
      *
-     * 查询运行中策略列表
+     * Query the list of running policies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_type 按策略类型过滤 (optional)
-     * @param  string $market 按交易对过滤 (optional)
-     * @param  int $page 页码，默认 1 (optional, default to 1)
-     * @param  int $page_size 分页大小，默认 20，最大 50 (optional, default to 20)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_type Filter by policy type (optional)
+     * @param  string $market Filter by trading pair (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $page_size Paging size, default 20, maximum 50 (optional, default to 20)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2394,14 +2394,14 @@ class BotApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_type 按策略类型过滤 (optional)
-     * @param  string $market 按交易对过滤 (optional)
-     * @param  int $page 页码，默认 1 (optional, default to 1)
-     * @param  int $page_size 分页大小，默认 20，最大 50 (optional, default to 20)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_type Filter by policy type (optional)
+     * @param  string $market Filter by trading pair (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $page_size Paging size, default 20, maximum 50 (optional, default to 20)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2577,16 +2577,16 @@ class BotApi
     /**
      * Operation getAIHubPortfolioDetail
      *
-     * 查询单策略详情
+     * Query order policy details
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_id 策略 ID (required)
-     * @param  string $strategy_type 策略类型；用于底层详情分发 (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_id Policy ID (required)
+     * @param  string $strategy_type Policy type; used for underlying detail distribution (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2601,16 +2601,16 @@ class BotApi
     /**
      * Operation getAIHubPortfolioDetailWithHttpInfo
      *
-     * 查询单策略详情
+     * Query order policy details
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_id 策略 ID (required)
-     * @param  string $strategy_type 策略类型；用于底层详情分发 (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_id Policy ID (required)
+     * @param  string $strategy_type Policy type; used for underlying detail distribution (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2662,16 +2662,16 @@ class BotApi
     /**
      * Operation getAIHubPortfolioDetailAsync
      *
-     * 查询单策略详情
+     * Query order policy details
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_id 策略 ID (required)
-     * @param  string $strategy_type 策略类型；用于底层详情分发 (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_id Policy ID (required)
+     * @param  string $strategy_type Policy type; used for underlying detail distribution (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2689,16 +2689,16 @@ class BotApi
     /**
      * Operation getAIHubPortfolioDetailAsyncWithHttpInfo
      *
-     * 查询单策略详情
+     * Query order policy details
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_id 策略 ID (required)
-     * @param  string $strategy_type 策略类型；用于底层详情分发 (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_id Policy ID (required)
+     * @param  string $strategy_type Policy type; used for underlying detail distribution (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2747,12 +2747,12 @@ class BotApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $strategy_id 策略 ID (required)
-     * @param  string $strategy_type 策略类型；用于底层详情分发 (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $strategy_id Policy ID (required)
+     * @param  string $strategy_type Policy type; used for underlying detail distribution (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2903,13 +2903,13 @@ class BotApi
     /**
      * Operation postAIHubPortfolioStop
      *
-     * 终止单个运行中策略
+     * Terminate a single running policy
      *
      * @param  \GateApi\Model\AIHubPortfolioStopRequest $ai_hub_portfolio_stop_request ai_hub_portfolio_stop_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2924,13 +2924,13 @@ class BotApi
     /**
      * Operation postAIHubPortfolioStopWithHttpInfo
      *
-     * 终止单个运行中策略
+     * Terminate a single running policy
      *
      * @param  \GateApi\Model\AIHubPortfolioStopRequest $ai_hub_portfolio_stop_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2982,13 +2982,13 @@ class BotApi
     /**
      * Operation postAIHubPortfolioStopAsync
      *
-     * 终止单个运行中策略
+     * Terminate a single running policy
      *
      * @param  \GateApi\Model\AIHubPortfolioStopRequest $ai_hub_portfolio_stop_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3006,13 +3006,13 @@ class BotApi
     /**
      * Operation postAIHubPortfolioStopAsyncWithHttpInfo
      *
-     * 终止单个运行中策略
+     * Terminate a single running policy
      *
      * @param  \GateApi\Model\AIHubPortfolioStopRequest $ai_hub_portfolio_stop_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3060,10 +3060,10 @@ class BotApi
      * Create request for operation 'postAIHubPortfolioStop'
      *
      * @param  \GateApi\Model\AIHubPortfolioStopRequest $ai_hub_portfolio_stop_request (required)
-     * @param  string $x_gate_service_id 调用来源标识；如有需要由 APIv4 注入 (optional)
-     * @param  string $x_gate_app_lang 语言上下文，例如 &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
-     * @param  string $x_request_id 请求链路 ID；调用方可透传 (optional)
-     * @param  string $x_trace_id trace header；可由 APIv4 统一生成 (optional)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

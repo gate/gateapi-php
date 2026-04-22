@@ -280,7 +280,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     /**
      * Sets currency
      *
-     * @param string|null $currency 项目/币种名称
+     * @param string|null $currency Project/currency name
      *
      * @return $this
      */
@@ -304,7 +304,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     /**
      * Sets total_rewards
      *
-     * @param string|null $total_rewards 总奖池
+     * @param string|null $total_rewards total prize pool
      *
      * @return $this
      */
@@ -328,7 +328,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     /**
      * Sets start_time
      *
-     * @param string|null $start_time 活动开始时间（UTC格式化）
+     * @param string|null $start_time Event start time (UTC formatted)
      *
      * @return $this
      */
@@ -352,7 +352,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     /**
      * Sets end_time
      *
-     * @param string|null $end_time 活动结束时间（UTC格式化）
+     * @param string|null $end_time Event end time (UTC format)
      *
      * @return $this
      */
@@ -376,7 +376,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     /**
      * Sets rule_name
      *
-     * @param string[]|null $rule_name 任务类型列表
+     * @param string[]|null $rule_name Task type list
      *
      * @return $this
      */
@@ -400,7 +400,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     /**
      * Sets participants
      *
-     * @param int|null $participants 参与人数
+     * @param int|null $participants Number of participants
      *
      * @return $this
      */
@@ -424,7 +424,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     /**
      * Sets user_max_rewards
      *
-     * @param string|null $user_max_rewards 最高可得奖励
+     * @param string|null $user_max_rewards Maximum reward available
      *
      * @return $this
      */

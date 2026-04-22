@@ -238,7 +238,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets currency
      *
-     * @param string|null $currency 项目/币种名称
+     * @param string|null $currency Project/currency name
      *
      * @return $this
      */
@@ -262,7 +262,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets total_rewards
      *
-     * @param string|null $total_rewards 总奖池
+     * @param string|null $total_rewards total prize pool
      *
      * @return $this
      */
@@ -286,7 +286,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets start_time
      *
-     * @param string|null $start_time 活动开始时间（UTC格式化）
+     * @param string|null $start_time Event start time (UTC formatted)
      *
      * @return $this
      */
@@ -310,7 +310,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets end_time
      *
-     * @param string|null $end_time 活动结束时间（UTC格式化）
+     * @param string|null $end_time Event end time (UTC format)
      *
      * @return $this
      */
@@ -334,7 +334,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets tasks
      *
-     * @param \GateApi\Model\CandyDropV4TaskProgressItemCd04[]|null $tasks 已领取任务的进度列表
+     * @param \GateApi\Model\CandyDropV4TaskProgressItemCd04[]|null $tasks Progress list of tasks received
      *
      * @return $this
      */

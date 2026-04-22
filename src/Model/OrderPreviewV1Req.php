@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * OrderPreviewV1Req Class Doc Comment
  *
  * @category Class
- * @description 资产配置优化**预览**请求。&#x60;from&#x60; 为卖出数量；&#x60;to&#x60; 为目标币种及**分配比例 ratio**（不是绝对数量）。 正式下单请使用 &#x60;OrderCreateV1Req&#x60;，其 &#x60;to&#x60; 为 &#x60;amount&#x60;。
+ * @description Asset allocation optimization **preview** request. &#x60;from&#x60; is the selling quantity; &#x60;to&#x60; is the target currency and **distribution ratio ratio** (not the absolute quantity). Please use &#x60;OrderCreateV1Req&#x60; to place a formal order, and its &#x60;to&#x60; is &#x60;amount&#x60;.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -227,7 +227,7 @@ class OrderPreviewV1Req implements ModelInterface, ArrayAccess
     /**
      * Sets from
      *
-     * @param \GateApi\Model\PreviewFromParam[] $from 卖出侧；每项为币种 + 换出数量 `amount`（字符串十进制）。
+     * @param \GateApi\Model\PreviewFromParam[] $from Sell ​​side; each item is the currency + the swap amount `amount` (string decimal).
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class OrderPreviewV1Req implements ModelInterface, ArrayAccess
     /**
      * Sets to
      *
-     * @param \GateApi\Model\PreviewToParam[] $to 目标侧；每项为币种 + **比例** `ratio`（字符串十进制，如 `0.5`）。 典型来源：`GET /asset-swap/config` → `recommend_v2` 某分组下策略的 `schemes[].name` / `schemes[].ratio`。
+     * @param \GateApi\Model\PreviewToParam[] $to Target side; each item is currency + **ratio** `ratio` (string decimal, such as `0.5`). Typical source: `GET /asset-swap/config` → `recommend_v2` `schemes[].name` / `schemes[].ratio` of the strategy under a certain group.
      *
      * @return $this
      */

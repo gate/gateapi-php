@@ -31,7 +31,7 @@ use \GateApi\ObjectSerializer;
  * StrategyType Class Doc Comment
  *
  * @category Class
- * @description AIHub 支持的完整策略类型枚举。
+ * @description The complete enumeration of policy types supported by AIHub.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

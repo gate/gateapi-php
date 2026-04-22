@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * PreviewToParam Class Doc Comment
  *
  * @category Class
- * @description **仅用于预览** &#x60;OrderPreviewV1Req.to&#x60;。目标币种 + **比例 ratio**。 **禁止**与下单 &#x60;CreateParam&#x60; 混淆：下单的 &#x60;to&#x60; 必须使用 **&#x60;amount&#x60;**，没有 &#x60;ratio&#x60; 字段。
+ * @description **For preview only** &#x60;OrderPreviewV1Req.to&#x60;. Target currency + **ratio ratio**. **Forbidden** is confused with the order &#x60;CreateParam&#x60;: the &#x60;to&#x60; of the order must be **&#x60;amount&#x60;**, and there is no &#x60;ratio&#x60; field.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -227,7 +227,7 @@ class PreviewToParam implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string $asset 目标币种符号；常与 config 中 `recommend_v2.*[].schemes[].name` 对应。
+     * @param string $asset Target currency symbol; often corresponds to `recommend_v2.*[].schemes[].name` in config.
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class PreviewToParam implements ModelInterface, ArrayAccess
     /**
      * Sets ratio
      *
-     * @param string $ratio 该目标币种在组合中的权重比例，**十进制字符串**（如 `0.2`、`0.5`）。 常与 `GET /asset-swap/config` 的 `recommend_v2` 下某策略的 `schemes[].ratio` 一致。
+     * @param string $ratio The weight ratio of the target currency in the portfolio, **decimal string** (such as `0.2`, `0.5`). Often consistent with the `schemes[].ratio` of a strategy under `recommend_v2` of `GET /asset-swap/config`.
      *
      * @return $this
      */

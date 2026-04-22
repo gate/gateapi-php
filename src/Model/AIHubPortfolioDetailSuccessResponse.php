@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubPortfolioDetailSuccessResponse Class Doc Comment
  *
  * @category Class
- * @description 查询策略详情成功时的响应体。
+ * @description The response body when querying policy details is successful.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

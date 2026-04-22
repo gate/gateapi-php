@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * ContractMartingaleCreateParams Class Doc Comment
  *
  * @category Class
- * @description 合约马丁策略的创建参数。
+ * @description The creation parameters of the contract Martin strategy.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

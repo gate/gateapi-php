@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubDiscoverSuccessResponse Class Doc Comment
  *
  * @category Class
- * @description 获取策略推荐成功时的响应体。
+ * @description Get the response body when the strategy recommendation is successful.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com

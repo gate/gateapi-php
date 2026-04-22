@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubPortfolioStopData Class Doc Comment
  *
  * @category Class
- * @description 终止策略成功后返回的结果信息。
+ * @description The result information returned after the termination strategy is successful.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -293,7 +293,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status 当前实现返回 `stopping`
+     * @param string $status The current implementation returns `stopping`
      *
      * @return $this
      */

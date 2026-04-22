@@ -226,7 +226,7 @@ class CandyDropV4TaskProgressItemCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets task_name
      *
-     * @param string|null $task_name 任务主标题
+     * @param string|null $task_name Task main title
      *
      * @return $this
      */
@@ -250,7 +250,7 @@ class CandyDropV4TaskProgressItemCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets task_desc
      *
-     * @param string|null $task_desc 任务副标题
+     * @param string|null $task_desc Task subtitle
      *
      * @return $this
      */
@@ -274,7 +274,7 @@ class CandyDropV4TaskProgressItemCd04 implements ModelInterface, ArrayAccess
     /**
      * Sets value
      *
-     * @param string|null $value 任务进度数据（交易量/充值量等）
+     * @param string|null $value Task progress data (transaction volume/recharge volume, etc.)
      *
      * @return $this
      */

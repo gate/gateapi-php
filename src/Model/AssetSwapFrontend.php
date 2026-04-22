@@ -394,7 +394,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
     /**
      * Sets default
      *
-     * @param map[string,string] $default 字符串键到字符串值的映射，对应 Go 的 map[string]string。
+     * @param map[string,string] $default Mapping of string keys to string values, corresponding to Go's map[string]string.
      *
      * @return $this
      */
@@ -490,7 +490,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
     /**
      * Sets recommend_v2
      *
-     * @param map[string,\GateApi\Model\RecommendV2Strategy[]] $recommend_v2 策略分组键到 RecommendV2Strategy 列表的映射。
+     * @param map[string,\GateApi\Model\RecommendV2Strategy[]] $recommend_v2 Mapping of strategy grouping keys to RecommendV2Strategy lists.
      *
      * @return $this
      */

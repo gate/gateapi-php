@@ -3006,7 +3006,7 @@ class MultiCollateralLoanApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 items (required)
+     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 (required)
      * @param  string $vip_level VIP level, defaults to 0 if not specified (optional, default to '0')
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3026,7 +3026,7 @@ class MultiCollateralLoanApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 items (required)
+     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 (required)
      * @param  string $vip_level VIP level, defaults to 0 if not specified (optional, default to '0')
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3083,7 +3083,7 @@ class MultiCollateralLoanApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 items (required)
+     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 (required)
      * @param  string $vip_level VIP level, defaults to 0 if not specified (optional, default to '0')
      *
      * @throws \InvalidArgumentException
@@ -3106,7 +3106,7 @@ class MultiCollateralLoanApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 items (required)
+     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 (required)
      * @param  string $vip_level VIP level, defaults to 0 if not specified (optional, default to '0')
      *
      * @throws \InvalidArgumentException
@@ -3156,7 +3156,7 @@ class MultiCollateralLoanApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 items (required)
+     * @param  string[] $currencies Specify currency name query array, separated by commas, maximum 100 (required)
      * @param  string $vip_level VIP level, defaults to 0 if not specified (optional, default to '0')
      *
      * @throws \InvalidArgumentException

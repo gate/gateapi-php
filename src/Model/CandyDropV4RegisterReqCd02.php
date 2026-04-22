@@ -223,7 +223,7 @@ class CandyDropV4RegisterReqCd02 implements ModelInterface, ArrayAccess
     /**
      * Sets activity_id
      *
-     * @param int|null $activity_id 活动ID（可选，与 currency 配合使用）
+     * @param int|null $activity_id Activity ID (optional, used with currency)
      *
      * @return $this
      */
@@ -247,7 +247,7 @@ class CandyDropV4RegisterReqCd02 implements ModelInterface, ArrayAccess
     /**
      * Sets currency
      *
-     * @param string $currency 项目/币种名称（必填）
+     * @param string $currency Project/currency name (required)
      *
      * @return $this
      */

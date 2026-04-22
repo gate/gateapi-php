@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **string** | Product Name | [optional] 
-**airdrop_time** | **string** | 空投时间（UTC格式化） | [optional] 
-**rewards** | **string** | 空投奖励 | [optional] 
-**convert_amount** | **string** | 自动兑换金额 | [optional] 
+**airdrop_time** | **string** | Airdrop time (UTC format) | [optional] 
+**rewards** | **string** | Airdrop rewards | [optional] 
+**convert_amount** | **string** | Automatic exchange amount | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

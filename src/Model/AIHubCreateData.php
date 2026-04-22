@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubCreateData Class Doc Comment
  *
  * @category Class
- * @description 创建策略成功后返回的策略信息。
+ * @description Policy information returned after the policy is successfully created.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -323,7 +323,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status 创建成功后的初始状态，通常为 `running`
+     * @param string $status The initial state after successful creation, usually `running`
      *
      * @return $this
      */

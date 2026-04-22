@@ -280,7 +280,7 @@ class CandyDropV4ParticipationRecordCd05 implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status 项目状态：ongoing/awaiting_draw/won/not_win
+     * @param string|null $status Project status: ongoing/awaiting_draw/won/not_win
      *
      * @return $this
      */
@@ -304,7 +304,7 @@ class CandyDropV4ParticipationRecordCd05 implements ModelInterface, ArrayAccess
     /**
      * Sets register_time
      *
-     * @param string|null $register_time 参与时间（UTC格式化）
+     * @param string|null $register_time Participation time (UTC formatted)
      *
      * @return $this
      */

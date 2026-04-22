@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * ApiResponseExSkillClaimTaskResp Class Doc Comment
  *
  * @category Class
- * @description 领取任务响应
+ * @description Receive task response
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -239,7 +239,7 @@ class ApiResponseExSkillClaimTaskResp implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int|null $code 业务错误码，0 表示成功
+     * @param int|null $code Business error code, 0 means success
      *
      * @return $this
      */
@@ -311,7 +311,7 @@ class ApiResponseExSkillClaimTaskResp implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param object|null $data 成功时为空对象 {}
+     * @param object|null $data Empty object {} on success
      *
      * @return $this
      */

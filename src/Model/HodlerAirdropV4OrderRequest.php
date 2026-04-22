@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * HodlerAirdropV4OrderRequest Class Doc Comment
  *
  * @category Class
- * @description 参与活动请求体
+ * @description Participation activity request body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -222,7 +222,7 @@ class HodlerAirdropV4OrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets hodler_id
      *
-     * @param int $hodler_id 活动ID，必填
+     * @param int $hodler_id Activity ID, required
      *
      * @return $this
      */

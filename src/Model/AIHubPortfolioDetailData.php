@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubPortfolioDetailData Class Doc Comment
  *
  * @category Class
- * @description 策略详情数据。
+ * @description Policy details data.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -374,7 +374,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets base_info
      *
-     * @param map[string,string] $base_info 基础信息，字段按策略类型动态变化
+     * @param map[string,string] $base_info Basic information, fields change dynamically according to strategy type
      *
      * @return $this
      */
@@ -398,7 +398,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets metrics
      *
-     * @param map[string,string] $metrics 指标信息，字段按策略类型动态变化
+     * @param map[string,string] $metrics Indicator information, fields change dynamically according to strategy type
      *
      * @return $this
      */
@@ -422,7 +422,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets position
      *
-     * @param map[string,string]|null $position 仓位或持仓信息，字段按策略类型动态变化
+     * @param map[string,string]|null $position Position or position information, fields dynamically change according to strategy type
      *
      * @return $this
      */

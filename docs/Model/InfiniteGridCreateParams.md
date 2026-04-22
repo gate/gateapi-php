@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **money** | **string** |  | 
-**price_floor** | **string** | 价格地板 | 
-**profit_per_grid** | **string** | 每格利润 | 
+**price_floor** | **string** | price floor | 
+**profit_per_grid** | **string** | Profit per square | 
 **grid_num** | **int** |  | 
 **price_type** | **int** |  | 
 **trigger_price** | **string** |  | [optional] 

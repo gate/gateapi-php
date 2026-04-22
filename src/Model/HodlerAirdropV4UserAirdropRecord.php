@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * HodlerAirdropV4UserAirdropRecord Class Doc Comment
  *
  * @category Class
- * @description 用户空投发放记录单项
+ * @description User airdrop distribution record single item
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -278,7 +278,7 @@ class HodlerAirdropV4UserAirdropRecord implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string $asset 空投币种
+     * @param string $asset Airdrop currency
      *
      * @return $this
      */
@@ -302,7 +302,7 @@ class HodlerAirdropV4UserAirdropRecord implements ModelInterface, ArrayAccess
     /**
      * Sets receive_amount_base
      *
-     * @param string|null $receive_amount_base 基础空投金额
+     * @param string|null $receive_amount_base Basic airdrop amount
      *
      * @return $this
      */
@@ -326,7 +326,7 @@ class HodlerAirdropV4UserAirdropRecord implements ModelInterface, ArrayAccess
     /**
      * Sets receive_amount_ext
      *
-     * @param string|null $receive_amount_ext 额外空投金额（余币宝加成）
+     * @param string|null $receive_amount_ext Additional airdrop amount (Yubibao bonus)
      *
      * @return $this
      */
@@ -350,7 +350,7 @@ class HodlerAirdropV4UserAirdropRecord implements ModelInterface, ArrayAccess
     /**
      * Sets delivery_timest
      *
-     * @param string $delivery_timest 空投发放时间，格式 Y-m-d H:i:s，UTC；未发放时可能为空字符串
+     * @param string $delivery_timest Airdrop distribution time, format Y-m-d H:i:s, UTC; may be an empty string when not distributed
      *
      * @return $this
      */
@@ -374,7 +374,7 @@ class HodlerAirdropV4UserAirdropRecord implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange 自动兑换状态，0未兑换 1已兑换为GT
+     * @param string|null $exchange Automatic exchange status, 0 has not been exchanged, 1 has been exchanged for GT
      *
      * @return $this
      */

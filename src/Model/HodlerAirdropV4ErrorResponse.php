@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * HodlerAirdropV4ErrorResponse Class Doc Comment
  *
  * @category Class
- * @description v4接口统一错误响应
+ * @description v4 interface unified error response
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -293,7 +293,7 @@ class HodlerAirdropV4ErrorResponse implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message 错误信息（多语言）
+     * @param string $message Error messages (multilingual)
      *
      * @return $this
      */

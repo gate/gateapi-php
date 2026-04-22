@@ -1673,15 +1673,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropProjectList
      *
-     * 查询HODLer Airdrop活动列表
+     * Check the list of HODLer Airdrop activities
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
-     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
-     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $status Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed (optional)
+     * @param  string $keyword Currency/project name keywords, fuzzy matching (optional)
+     * @param  int $join Participation filter: 0 all (default), 1 only participated (optional, default to 0)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1696,15 +1696,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropProjectListWithHttpInfo
      *
-     * 查询HODLer Airdrop活动列表
+     * Check the list of HODLer Airdrop activities
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
-     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
-     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $status Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed (optional)
+     * @param  string $keyword Currency/project name keywords, fuzzy matching (optional)
+     * @param  int $join Participation filter: 0 all (default), 1 only participated (optional, default to 0)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1756,15 +1756,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropProjectListAsync
      *
-     * 查询HODLer Airdrop活动列表
+     * Check the list of HODLer Airdrop activities
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
-     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
-     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $status Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed (optional)
+     * @param  string $keyword Currency/project name keywords, fuzzy matching (optional)
+     * @param  int $join Participation filter: 0 all (default), 1 only participated (optional, default to 0)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1782,15 +1782,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropProjectListAsyncWithHttpInfo
      *
-     * 查询HODLer Airdrop活动列表
+     * Check the list of HODLer Airdrop activities
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
-     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
-     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $status Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed (optional)
+     * @param  string $keyword Currency/project name keywords, fuzzy matching (optional)
+     * @param  int $join Participation filter: 0 all (default), 1 only participated (optional, default to 0)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1839,11 +1839,11 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选，可选值：ACTIVE（进行中+预热中）、UNDERWAY（进行中）、PREHEAT（预热中）、FINISH（已结束），不传返回全部 (optional)
-     * @param  string $keyword 币种/项目名称关键词，模糊匹配 (optional)
-     * @param  int $join 参与情况筛选：0全部（默认），1仅已参与 (optional, default to 0)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $status Activity status filtering, optional values: ACTIVE (in progress + preheating), UNDERWAY (in progress), PREHEAT (preheating), FINISH (ended), return all if not passed (optional)
+     * @param  string $keyword Currency/project name keywords, fuzzy matching (optional)
+     * @param  int $join Participation filter: 0 all (default), 1 only participated (optional, default to 0)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2002,7 +2002,7 @@ class LaunchApi
     /**
      * Operation hodlerAirdropOrder
      *
-     * 参与HODLer Airdrop活动
+     * Participate in the HODLer Airdrop event
      *
      * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request hodler_airdrop_v4_order_request (required)
      *
@@ -2019,7 +2019,7 @@ class LaunchApi
     /**
      * Operation hodlerAirdropOrderWithHttpInfo
      *
-     * 参与HODLer Airdrop活动
+     * Participate in the HODLer Airdrop event
      *
      * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request (required)
      *
@@ -2073,7 +2073,7 @@ class LaunchApi
     /**
      * Operation hodlerAirdropOrderAsync
      *
-     * 参与HODLer Airdrop活动
+     * Participate in the HODLer Airdrop event
      *
      * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request (required)
      *
@@ -2093,7 +2093,7 @@ class LaunchApi
     /**
      * Operation hodlerAirdropOrderAsyncWithHttpInfo
      *
-     * 参与HODLer Airdrop活动
+     * Participate in the HODLer Airdrop event
      *
      * @param  \GateApi\Model\HodlerAirdropV4OrderRequest $hodler_airdrop_v4_order_request (required)
      *
@@ -2238,15 +2238,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserOrderRecords
      *
-     * 查询HODLer Airdrop参与记录
+     * Check HODLer Airdrop participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2261,15 +2261,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserOrderRecordsWithHttpInfo
      *
-     * 查询HODLer Airdrop参与记录
+     * Check HODLer Airdrop participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2321,15 +2321,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserOrderRecordsAsync
      *
-     * 查询HODLer Airdrop参与记录
+     * Check HODLer Airdrop participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2347,15 +2347,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserOrderRecordsAsyncWithHttpInfo
      *
-     * 查询HODLer Airdrop参与记录
+     * Check HODLer Airdrop participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2404,11 +2404,11 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2570,15 +2570,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserAirdropRecords
      *
-     * 查询HODLer Airdrop空投记录
+     * Query HODLer Airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2593,15 +2593,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserAirdropRecordsWithHttpInfo
      *
-     * 查询HODLer Airdrop空投记录
+     * Query HODLer Airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2653,15 +2653,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserAirdropRecordsAsync
      *
-     * 查询HODLer Airdrop空投记录
+     * Query HODLer Airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2679,15 +2679,15 @@ class LaunchApi
     /**
      * Operation getHodlerAirdropUserAirdropRecordsAsyncWithHttpInfo
      *
-     * 查询HODLer Airdrop空投记录
+     * Query HODLer Airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2736,11 +2736,11 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $keyword 币种名称关键词筛选 (optional)
-     * @param  int $start_timest 开始时间戳（秒） (optional)
-     * @param  int $end_timest 结束时间戳（秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $size 每页条数，默认10 (optional, default to 10)
+     * @param  string $keyword Currency name keyword filtering (optional)
+     * @param  int $start_timest Start timestamp (seconds) (optional)
+     * @param  int $end_timest end timestamp (seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $size Number of items per page, default 10 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2902,16 +2902,16 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityListV4
      *
-     * 查询活动列表
+     * Query activity list
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
-     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
-     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
-     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     * @param  string $status Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned (optional)
+     * @param  string $rule_name Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) (optional)
+     * @param  string $register_status Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned (optional)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $limit Number of items returned, default 10, maximum 30 (optional, default to 10)
+     * @param  int $offset Offset, default 0 (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2926,16 +2926,16 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityListV4WithHttpInfo
      *
-     * 查询活动列表
+     * Query activity list
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
-     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
-     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
-     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     * @param  string $status Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned (optional)
+     * @param  string $rule_name Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) (optional)
+     * @param  string $register_status Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned (optional)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $limit Number of items returned, default 10, maximum 30 (optional, default to 10)
+     * @param  int $offset Offset, default 0 (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2987,16 +2987,16 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityListV4Async
      *
-     * 查询活动列表
+     * Query activity list
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
-     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
-     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
-     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     * @param  string $status Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned (optional)
+     * @param  string $rule_name Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) (optional)
+     * @param  string $register_status Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned (optional)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $limit Number of items returned, default 10, maximum 30 (optional, default to 10)
+     * @param  int $offset Offset, default 0 (optional, default to 0)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3014,16 +3014,16 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityListV4AsyncWithHttpInfo
      *
-     * 查询活动列表
+     * Query activity list
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
-     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
-     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
-     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     * @param  string $status Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned (optional)
+     * @param  string $rule_name Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) (optional)
+     * @param  string $register_status Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned (optional)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $limit Number of items returned, default 10, maximum 30 (optional, default to 10)
+     * @param  int $offset Offset, default 0 (optional, default to 0)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3072,12 +3072,12 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $status 活动状态筛选：ongoing(进行中)、upcoming(即将开始)、ended(已结束)，不传则返回全部 (optional)
-     * @param  string $rule_name 任务类型筛选：spot(现货)、futures(合约)、deposit(充值)、invite(邀请)、trading_bot(交易机器人)、simple_earn(余币宝)、first_deposit(首笔入金)、alpha(Alpha)、flash_swap(闪兑)、tradfi(TradFi)、etf(ETF) (optional)
-     * @param  string $register_status 参与情况筛选：registered(已参与)、unregistered(未参与)，不传则返回全部 (optional)
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $limit 返回条数，默认10，最大30 (optional, default to 10)
-     * @param  int $offset 偏移量，默认0 (optional, default to 0)
+     * @param  string $status Activity status filtering: ongoing (in progress), upcoming (about to start), ended (ended), if not passed, all will be returned (optional)
+     * @param  string $rule_name Task type filtering: spot (spot), futures (contract), deposit (recharge), invite (invitation), trading_bot (trading robot), simple_earn (Yu Bibao), first_deposit (first deposit), alpha (Alpha), flash_swap (flash swap), tradfi (TradFi), etf (ETF) (optional)
+     * @param  string $register_status Participation status screening: registered (already participated), unregistered (not participated), if not passed, all will be returned (optional)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $limit Number of items returned, default 10, maximum 30 (optional, default to 10)
+     * @param  int $offset Offset, default 0 (optional, default to 0)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3252,7 +3252,7 @@ class LaunchApi
     /**
      * Operation registerCandyDropV4
      *
-     * 报名参与活动
+     * Sign up for events
      *
      * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 candy_drop_v4_register_req_cd02 (required)
      *
@@ -3269,7 +3269,7 @@ class LaunchApi
     /**
      * Operation registerCandyDropV4WithHttpInfo
      *
-     * 报名参与活动
+     * Sign up for events
      *
      * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 (required)
      *
@@ -3323,7 +3323,7 @@ class LaunchApi
     /**
      * Operation registerCandyDropV4Async
      *
-     * 报名参与活动
+     * Sign up for events
      *
      * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 (required)
      *
@@ -3343,7 +3343,7 @@ class LaunchApi
     /**
      * Operation registerCandyDropV4AsyncWithHttpInfo
      *
-     * 报名参与活动
+     * Sign up for events
      *
      * @param  \GateApi\Model\CandyDropV4RegisterReqCd02 $candy_drop_v4_register_req_cd02 (required)
      *
@@ -3488,12 +3488,12 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityRulesV4
      *
-     * 查询活动规则
+     * Query activity rules
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3508,12 +3508,12 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityRulesV4WithHttpInfo
      *
-     * 查询活动规则
+     * Query activity rules
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3565,12 +3565,12 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityRulesV4Async
      *
-     * 查询活动规则
+     * Query activity rules
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3588,12 +3588,12 @@ class LaunchApi
     /**
      * Operation getCandyDropActivityRulesV4AsyncWithHttpInfo
      *
-     * 查询活动规则
+     * Query activity rules
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3642,8 +3642,8 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3755,12 +3755,12 @@ class LaunchApi
     /**
      * Operation getCandyDropTaskProgressV4
      *
-     * 查询任务完成进度
+     * Query task completion progress
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3775,12 +3775,12 @@ class LaunchApi
     /**
      * Operation getCandyDropTaskProgressV4WithHttpInfo
      *
-     * 查询任务完成进度
+     * Query task completion progress
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3832,12 +3832,12 @@ class LaunchApi
     /**
      * Operation getCandyDropTaskProgressV4Async
      *
-     * 查询任务完成进度
+     * Query task completion progress
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3855,12 +3855,12 @@ class LaunchApi
     /**
      * Operation getCandyDropTaskProgressV4AsyncWithHttpInfo
      *
-     * 查询任务完成进度
+     * Query task completion progress
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3909,8 +3909,8 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  int $activity_id 活动ID，与 currency 二选一，至少须传其一 (optional)
-     * @param  string $currency 项目/币种名称，与 activity_id 二选一，至少须传其一 (optional)
+     * @param  int $activity_id Activity ID, choose one from currency, at least one of them must be passed (optional)
+     * @param  string $currency Project/currency name, choose one from activity_id, at least one of them must be passed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4025,16 +4025,16 @@ class LaunchApi
     /**
      * Operation getCandyDropParticipationRecordsV4
      *
-     * 查询参与记录
+     * Query participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  string $status Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4049,16 +4049,16 @@ class LaunchApi
     /**
      * Operation getCandyDropParticipationRecordsV4WithHttpInfo
      *
-     * 查询参与记录
+     * Query participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  string $status Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4110,16 +4110,16 @@ class LaunchApi
     /**
      * Operation getCandyDropParticipationRecordsV4Async
      *
-     * 查询参与记录
+     * Query participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  string $status Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4137,16 +4137,16 @@ class LaunchApi
     /**
      * Operation getCandyDropParticipationRecordsV4AsyncWithHttpInfo
      *
-     * 查询参与记录
+     * Query participation records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  string $status Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4195,12 +4195,12 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  string $status 状态筛选：ongoing(进行中)、awaiting_draw(待开奖)、won(已中奖)、not_win(未中奖) (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  string $status Status filtering: ongoing (in progress), awaiting_draw (to be drawn), won (already won), not_win (not won) (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4378,15 +4378,15 @@ class LaunchApi
     /**
      * Operation getCandyDropAirdropRecordsV4
      *
-     * 查询空投记录
+     * Query airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4401,15 +4401,15 @@ class LaunchApi
     /**
      * Operation getCandyDropAirdropRecordsV4WithHttpInfo
      *
-     * 查询空投记录
+     * Query airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4461,15 +4461,15 @@ class LaunchApi
     /**
      * Operation getCandyDropAirdropRecordsV4Async
      *
-     * 查询空投记录
+     * Query airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4487,15 +4487,15 @@ class LaunchApi
     /**
      * Operation getCandyDropAirdropRecordsV4AsyncWithHttpInfo
      *
-     * 查询空投记录
+     * Query airdrop records
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4544,11 +4544,11 @@ class LaunchApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency 币种名称筛选 (optional)
-     * @param  int $start_time 开始时间（Unix 时间戳秒） (optional)
-     * @param  int $end_time 结束时间（Unix 时间戳秒） (optional)
-     * @param  int $page 页码，默认1 (optional, default to 1)
-     * @param  int $limit 每页条数，默认10，最大30 (optional, default to 10)
+     * @param  string $currency Currency name filter (optional)
+     * @param  int $start_time Start time (Unix timestamp seconds) (optional)
+     * @param  int $end_time End time (Unix timestamp seconds) (optional)
+     * @param  int $page Page number, default 1 (optional, default to 1)
+     * @param  int $limit Number of items per page, default 10, maximum 30 (optional, default to 10)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
