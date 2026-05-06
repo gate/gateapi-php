@@ -116,7 +116,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbols
      *
-     * [Public Interface] Query Trading Pair Information
+     * 查询币对信息
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -135,7 +135,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbolsWithHttpInfo
      *
-     * [Public Interface] Query Trading Pair Information
+     * 查询币对信息
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -191,7 +191,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbolsAsync
      *
-     * [Public Interface] Query Trading Pair Information
+     * 查询币对信息
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -213,7 +213,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbolsAsyncWithHttpInfo
      *
-     * [Public Interface] Query Trading Pair Information
+     * 查询币对信息
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -365,7 +365,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimits
      *
-     * [Public Interface] Query Risk Limit Information
+     * 查询风险限额信息
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -382,7 +382,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimitsWithHttpInfo
      *
-     * [Public Interface] Query Risk Limit Information
+     * 查询风险限额信息
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -436,7 +436,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimitsAsync
      *
-     * [Public Interface] Query Risk Limit Information
+     * 查询风险限额信息
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -456,7 +456,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimitsAsyncWithHttpInfo
      *
-     * [Public Interface] Query Risk Limit Information
+     * 查询风险限额信息
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -607,7 +607,7 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoins
      *
-     * [Public Interface] Query Supported Transfer Currencies
+     * 查询划转币种支持
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -626,7 +626,7 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoinsWithHttpInfo
      *
-     * [Public Interface] Query Supported Transfer Currencies
+     * 查询划转币种支持
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -682,7 +682,7 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoinsAsync
      *
-     * [Public Interface] Query Supported Transfer Currencies
+     * 查询划转币种支持
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -704,7 +704,7 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoinsAsyncWithHttpInfo
      *
-     * [Public Interface] Query Supported Transfer Currencies
+     * 查询划转币种支持
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7738,6 +7738,7 @@ class CrossExApi
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
      * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $statement_type Bill entry type. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7761,6 +7762,7 @@ class CrossExApi
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
      * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $statement_type Bill entry type. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7821,6 +7823,7 @@ class CrossExApi
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
      * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $statement_type Bill entry type. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7847,6 +7850,7 @@ class CrossExApi
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
      * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $statement_type Bill entry type. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7900,6 +7904,7 @@ class CrossExApi
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
      * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $statement_type Bill entry type. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7912,6 +7917,7 @@ class CrossExApi
         $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
         $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
         $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $statement_type = array_key_exists('statement_type', $associative_array) ? $associative_array['statement_type'] : null;
         $from = array_key_exists('from', $associative_array) ? $associative_array['from'] : null;
         $to = array_key_exists('to', $associative_array) ? $associative_array['to'] : null;
 
@@ -7956,6 +7962,18 @@ class CrossExApi
             }
             else {
                 $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($statement_type !== null) {
+            if('form' === 'form' && is_array($statement_type)) {
+                foreach($statement_type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['statement_type'] = $statement_type;
             }
         }
 
@@ -8055,7 +8073,7 @@ class CrossExApi
     /**
      * Operation listCrossexCoinDiscountRate
      *
-     * Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+     * Query Currency Discount Rate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -8075,7 +8093,7 @@ class CrossExApi
     /**
      * Operation listCrossexCoinDiscountRateWithHttpInfo
      *
-     * Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+     * Query Currency Discount Rate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -8132,7 +8150,7 @@ class CrossExApi
     /**
      * Operation listCrossexCoinDiscountRateAsync
      *
-     * Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+     * Query Currency Discount Rate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -8155,7 +8173,7 @@ class CrossExApi
     /**
      * Operation listCrossexCoinDiscountRateAsyncWithHttpInfo
      *
-     * Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+     * Query Currency Discount Rate
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

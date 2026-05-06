@@ -161,8 +161,25 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const ADV_STATUS_1 = 1;
+    const ADV_STATUS_3 = 3;
+    const ADV_STATUS_4 = 4;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdvStatusAllowableValues()
+    {
+        return [
+            self::ADV_STATUS_1,
+            self::ADV_STATUS_3,
+            self::ADV_STATUS_4,
+        ];
+    }
     
 
     /**
@@ -199,6 +216,14 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
         if ($this->container['adv_status'] === null) {
             $invalidProperties[] = "'adv_status' can't be null";
         }
+        $allowedValues = $this->getAdvStatusAllowableValues();
+        if (!is_null($this->container['adv_status']) && !in_array($this->container['adv_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'adv_status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -227,7 +252,7 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
     /**
      * Sets adv_no
      *
-     * @param int $adv_no Ad ID
+     * @param int $adv_no Advertisement ID.
      *
      * @return $this
      */
@@ -251,12 +276,21 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
     /**
      * Sets adv_status
      *
-     * @param int $adv_status Ad status: 1=Active, 3=Inactive, 4=Closed
+     * @param int $adv_status Ad status. `1`: listed; `3`: delisted; `4`: closed.
      *
      * @return $this
      */
     public function setAdvStatus($adv_status)
     {
+        $allowedValues = $this->getAdvStatusAllowableValues();
+        if (!in_array($adv_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'adv_status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['adv_status'] = $adv_status;
 
         return $this;

@@ -3972,7 +3972,7 @@ class WalletApi
      * @param  string $currency Currency (required)
      * @param  string $chain Chain name (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
-     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page page number (optional, default to 1)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3994,7 +3994,7 @@ class WalletApi
      * @param  string $currency Currency (required)
      * @param  string $chain Chain name (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
-     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page page number (optional, default to 1)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4053,7 +4053,7 @@ class WalletApi
      * @param  string $currency Currency (required)
      * @param  string $chain Chain name (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
-     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4078,7 +4078,7 @@ class WalletApi
      * @param  string $currency Currency (required)
      * @param  string $chain Chain name (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
-     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4130,7 +4130,7 @@ class WalletApi
      * @param  string $currency Currency (required)
      * @param  string $chain Chain name (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
-     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page page number (optional, default to 1)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * InfiniteGridCreateParams Class Doc Comment
  *
  * @category Class
- * @description Creation parameters for infinite grid strategies.
+ * @description 无限网格策略的创建参数。  与 App 口径对齐：**仅** &#x60;money&#x60;、&#x60;price_floor&#x60;、&#x60;profit_per_grid&#x60; 为必填； &#x60;grid_num&#x60;、&#x60;price_type&#x60; 可选（不传时由服务端按默认处理）。
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -265,16 +265,10 @@ class InfiniteGridCreateParams implements ModelInterface, ArrayAccess
         if ($this->container['profit_per_grid'] === null) {
             $invalidProperties[] = "'profit_per_grid' can't be null";
         }
-        if ($this->container['grid_num'] === null) {
-            $invalidProperties[] = "'grid_num' can't be null";
-        }
-        if (($this->container['grid_num'] < 1)) {
+        if (!is_null($this->container['grid_num']) && ($this->container['grid_num'] < 1)) {
             $invalidProperties[] = "invalid value for 'grid_num', must be bigger than or equal to 1.";
         }
 
-        if ($this->container['price_type'] === null) {
-            $invalidProperties[] = "'price_type' can't be null";
-        }
         $allowedValues = $this->getPriceTypeAllowableValues();
         if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -373,7 +367,7 @@ class InfiniteGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Gets grid_num
      *
-     * @return int
+     * @return int|null
      */
     public function getGridNum()
     {
@@ -383,14 +377,14 @@ class InfiniteGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets grid_num
      *
-     * @param int $grid_num grid_num
+     * @param int|null $grid_num Optional; may be omitted like in the app.
      *
      * @return $this
      */
     public function setGridNum($grid_num)
     {
 
-        if (($grid_num < 1)) {
+        if (!is_null($grid_num) && ($grid_num < 1)) {
             throw new \InvalidArgumentException('invalid value for $grid_num when calling InfiniteGridCreateParams., must be bigger than or equal to 1.');
         }
 
@@ -402,7 +396,7 @@ class InfiniteGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Gets price_type
      *
-     * @return int
+     * @return int|null
      */
     public function getPriceType()
     {
@@ -412,14 +406,14 @@ class InfiniteGridCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets price_type
      *
-     * @param int $price_type price_type
+     * @param int|null $price_type Optional. `0` arithmetic grid; `1` geometric; omit for server defaults.
      *
      * @return $this
      */
     public function setPriceType($price_type)
     {
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!in_array($price_type, $allowedValues, true)) {
+        if (!is_null($price_type) && !in_array($price_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'price_type', must be one of '%s'",

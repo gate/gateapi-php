@@ -64,9 +64,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'int',
         'pic' => 'string',
         'file_key' => 'string',
-        'file_type' => 'string',
-        'width' => 'string',
-        'height' => 'string'
+        'file_type' => 'string'
     ];
 
     /**
@@ -85,9 +83,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => null,
         'pic' => null,
         'file_key' => null,
-        'file_type' => null,
-        'width' => null,
-        'height' => null
+        'file_type' => null
     ];
 
     /**
@@ -127,9 +123,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'type',
         'pic' => 'pic',
         'file_key' => 'file_key',
-        'file_type' => 'file_type',
-        'width' => 'width',
-        'height' => 'height'
+        'file_type' => 'file_type'
     ];
 
     /**
@@ -148,9 +142,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'setType',
         'pic' => 'setPic',
         'file_key' => 'setFileKey',
-        'file_type' => 'setFileType',
-        'width' => 'setWidth',
-        'height' => 'setHeight'
+        'file_type' => 'setFileType'
     ];
 
     /**
@@ -169,9 +161,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'getType',
         'pic' => 'getPic',
         'file_key' => 'getFileKey',
-        'file_type' => 'getFileType',
-        'width' => 'getWidth',
-        'height' => 'getHeight'
+        'file_type' => 'getFileType'
     ];
 
     /**
@@ -245,8 +235,6 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         $this->container['pic'] = isset($data['pic']) ? $data['pic'] : null;
         $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
         $this->container['file_type'] = isset($data['file_type']) ? $data['file_type'] : null;
-        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
-        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
     }
 
     /**
@@ -286,7 +274,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     /**
      * Sets is_sell
      *
-     * @param int|null $is_sell Whether seller
+     * @param int|null $is_sell Whether the current user is the seller. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -310,7 +298,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     /**
      * Sets msg_type
      *
-     * @param int|null $msg_type Message type
+     * @param int|null $msg_type Message type: `0` text; `1` file; `2` template; `3` order-share; `4` payment-share; `5` status update.
      *
      * @return $this
      */
@@ -334,7 +322,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     /**
      * Sets msg
      *
-     * @param string|null $msg Message content
+     * @param string|null $msg Message content; for file messages, usually URL or file key.
      *
      * @return $this
      */
@@ -430,7 +418,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     /**
      * Sets uid
      *
-     * @param string|null $uid Message sender UID
+     * @param string|null $uid Sender's crypto UID; system messages may use `System` or an empty string.
      *
      * @return $this
      */
@@ -454,7 +442,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param int|null $type Message type
+     * @param int|null $type Display type: `1` file message; `2` system message.
      *
      * @return $this
      */
@@ -526,61 +514,13 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     /**
      * Sets file_type
      *
-     * @param string|null $file_type File type
+     * @param string|null $file_type File type: `image` for images, `video` for videos.
      *
      * @return $this
      */
     public function setFileType($file_type)
     {
         $this->container['file_type'] = $file_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return string|null
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param string|null $width Image width
-     *
-     * @return $this
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return string|null
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param string|null $height Image height
-     *
-     * @return $this
-     */
-    public function setHeight($height)
-    {
-        $this->container['height'] = $height;
 
         return $this;
     }

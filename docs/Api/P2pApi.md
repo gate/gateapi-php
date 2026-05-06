@@ -561,7 +561,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantBooksPlaceBizPushOrder
 
-> object p2pMerchantBooksPlaceBizPushOrder($place_biz_push_order)
+> \GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponse p2pMerchantBooksPlaceBizPushOrder($place_biz_push_order)
 
 Publish ad order
 
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**\GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponse**](../Model/P2pMerchantBooksPlaceBizPushOrderResponse.md)
 
 ### Authorization
 
@@ -621,7 +621,7 @@ Name | Type | Description  | Notes
 
 ## p2pMerchantBooksAdsUpdateStatus
 
-> \GateApi\Model\P2pAdsUpdateStatusResponse p2pMerchantBooksAdsUpdateStatus($ads_update_status, $trade_type)
+> \GateApi\Model\P2pAdsUpdateStatusResponse p2pMerchantBooksAdsUpdateStatus($ads_update_status)
 
 Update ad status
 
@@ -642,10 +642,9 @@ $apiInstance = new GateApi\Api\P2pApi(
     $config
 );
 $ads_update_status = new \GateApi\Model\AdsUpdateStatus(); // \GateApi\Model\AdsUpdateStatus | 
-$trade_type = 'sell'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 
 try {
-    $result = $apiInstance->p2pMerchantBooksAdsUpdateStatus($ads_update_status, $trade_type);
+    $result = $apiInstance->p2pMerchantBooksAdsUpdateStatus($ads_update_status);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -661,7 +660,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ads_update_status** | [**\GateApi\Model\AdsUpdateStatus**](../Model/AdsUpdateStatus.md)|  |
- **trade_type** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
 
 ### Return type
 

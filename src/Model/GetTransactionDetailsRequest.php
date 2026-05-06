@@ -248,7 +248,7 @@ class GetTransactionDetailsRequest implements ModelInterface, ArrayAccess
     /**
      * Sets channel
      *
-     * @param string|null $channel Empty or web3
+     * @param string|null $channel Channel tag: omit or empty for normal P2P; use `web3` for Web3 orders.
      *
      * @return $this
      */

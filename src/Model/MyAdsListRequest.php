@@ -227,7 +227,7 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string|null $asset Cryptocurrency
+     * @param string|null $asset Crypto asset; omit to skip asset filter.
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets fiat_unit
      *
-     * @param string|null $fiat_unit Fiat currency
+     * @param string|null $fiat_unit Fiat currency; omit to skip fiat filter.
      *
      * @return $this
      */
@@ -275,7 +275,7 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets trade_type
      *
-     * @param string|null $trade_type Buy/Sell
+     * @param string|null $trade_type Ad side: `buy` for buy-crypto ads, `sell` for sell-crypto ads; omit for all sides.
      *
      * @return $this
      */

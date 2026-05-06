@@ -334,7 +334,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol ExchangeType_BusinessType_Base_Counter
+     * @param string $symbol Unique trading pair identifier in the form ExchangeType_BusinessType_Base_Counter.
      *
      * @return $this
      */
@@ -358,7 +358,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type BINANCE,OKX,GATE,BYBIT,CROSSEX
+     * @param string $exchange_type Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `CROSSEX`).
      *
      * @return $this
      */
@@ -382,7 +382,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets business_type
      *
-     * @param string $business_type SPOT, FUTURE, MARGIN
+     * @param string $business_type Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
      *
      * @return $this
      */
@@ -406,7 +406,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param string $state live/suspend
+     * @param string $state Status (`live` running / `suspend` paused).
      *
      * @return $this
      */
@@ -430,7 +430,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets min_size
      *
-     * @param string $min_size Minimum order quantity
+     * @param string $min_size Minimum order size allowed by the contract
      *
      * @return $this
      */
@@ -454,7 +454,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets min_notional
      *
-     * @param string $min_notional Minimum order value
+     * @param string $min_notional Minimum Order Value
      *
      * @return $this
      */
@@ -478,7 +478,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets lot_size
      *
-     * @param string $lot_size Quantity step size
+     * @param string $lot_size Quantity Step
      *
      * @return $this
      */
@@ -502,7 +502,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets tick_size
      *
-     * @param string $tick_size Price step size
+     * @param string $tick_size Price Step
      *
      * @return $this
      */
@@ -526,7 +526,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets max_num_orders
      *
-     * @param string $max_num_orders Maximum number of pending orders
+     * @param string $max_num_orders maximumopen orderamount
      *
      * @return $this
      */
@@ -550,7 +550,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets max_market_size
      *
-     * @param string $max_market_size Maximum order quantity at market price
+     * @param string $max_market_size Maximum Market Order Quantity
      *
      * @return $this
      */
@@ -574,7 +574,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets max_limit_size
      *
-     * @param string $max_limit_size Maximum order quantity at limit price
+     * @param string $max_limit_size Maximum order quantity for limit orders.
      *
      * @return $this
      */
@@ -598,7 +598,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets contract_size
      *
-     * @param string $contract_size contract multiplier
+     * @param string $contract_size Contract Multiplier
      *
      * @return $this
      */
@@ -622,7 +622,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets liquidation_fee
      *
-     * @param string $liquidation_fee Liquidation rate
+     * @param string $liquidation_fee Liquidation Fee Rate
      *
      * @return $this
      */
@@ -646,7 +646,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets delist_time
      *
-     * @param string $delist_time Millisecond timestamp,0 is normal
+     * @param string $delist_time Millisecond timestamp; `0` means not delisted.
      *
      * @return $this
      */

@@ -199,9 +199,6 @@ class GetChatsListRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['txid'] === null) {
-            $invalidProperties[] = "'txid' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -220,7 +217,7 @@ class GetChatsListRequest implements ModelInterface, ArrayAccess
     /**
      * Gets txid
      *
-     * @return int
+     * @return int|null
      */
     public function getTxid()
     {
@@ -230,7 +227,7 @@ class GetChatsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets txid
      *
-     * @param int $txid Order ID
+     * @param int|null $txid Order ID; omit or `0` to return the latest order with chat for the user.
      *
      * @return $this
      */
@@ -254,7 +251,7 @@ class GetChatsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets lastreceived
      *
-     * @param int|null $lastreceived Pagination timestamp (forward)
+     * @param int|null $lastreceived Timestamp of the last received message for backward incremental fetch; omit on first load.
      *
      * @return $this
      */
@@ -278,7 +275,7 @@ class GetChatsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets firstreceived
      *
-     * @param int|null $firstreceived Pagination timestamp (backward)
+     * @param int|null $firstreceived Timestamp of first received message for paging backward; omit on first load.
      *
      * @return $this
      */

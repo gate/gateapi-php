@@ -4,9 +4,9 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /crossex/rule/symbols | [Public Interface] Query Trading Pair Information
-[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /crossex/rule/risk_limits | [Public Interface] Query Risk Limit Information
-[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /crossex/transfers/coin | [Public Interface] Query Supported Transfer Currencies
+[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /crossex/rule/symbols | 查询币对信息
+[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /crossex/rule/risk_limits | 查询风险限额信息
+[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /crossex/transfers/coin | 查询划转币种支持
 [**listCrossexTransfers**](CrossExApi.md#listCrossexTransfers) | **GET** /crossex/transfers | Query Fund Transfer History
 [**createCrossexTransfer**](CrossExApi.md#createCrossexTransfer) | **POST** /crossex/transfers | Fund Transfer
 [**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /crossex/orders | Create an order
@@ -34,14 +34,14 @@ Method | HTTP request | Description
 [**listCrossexHistoryMarginInterests**](CrossExApi.md#listCrossexHistoryMarginInterests) | **GET** /crossex/history_margin_interests | Query Leveraged Interest Deduction History
 [**listCrossexHistoryTrades**](CrossExApi.md#listCrossexHistoryTrades) | **GET** /crossex/history_trades | queryfilledhistory
 [**listCrossexAccountBook**](CrossExApi.md#listCrossexAccountBook) | **GET** /crossex/account_book | Query Account Asset Change History
-[**listCrossexCoinDiscountRate**](CrossExApi.md#listCrossexCoinDiscountRate) | **GET** /crossex/coin_discount_rate | Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+[**listCrossexCoinDiscountRate**](CrossExApi.md#listCrossexCoinDiscountRate) | **GET** /crossex/coin_discount_rate | Query Currency Discount Rate
 
 
 ## listCrossexRuleSymbols
 
 > \GateApi\Model\Symbol[] listCrossexRuleSymbols($symbols)
 
-[Public Interface] Query Trading Pair Information
+查询币对信息
 
 Query Trading Pair Information
 
@@ -101,7 +101,7 @@ No authorization required
 
 > \GateApi\Model\CrossexRiskLimit[] listCrossexRuleRiskLimits($symbols)
 
-[Public Interface] Query Risk Limit Information
+查询风险限额信息
 
 Query risk limit information for futures/margin trading pairs
 
@@ -159,7 +159,7 @@ No authorization required
 
 > \GateApi\Model\CrossexTransferCoin[] listCrossexTransferCoins($coin)
 
-[Public Interface] Query Supported Transfer Currencies
+查询划转币种支持
 
 Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 
@@ -244,7 +244,7 @@ $associate_array['order_id'] = '38083797492939266'; // string | Supports queryin
 $associate_array['from'] = 1750681141933; // int | Start timestamp for the query
 $associate_array['to'] = 1750681141933; // int | End timestamp for the query, defaults to current time if not specified
 $associate_array['page'] = 1; // int | Page number
-$associate_array['limit'] = 10,20,30; // int | Maximum number returned by list, max 1000
+$associate_array['limit'] = 100; // int | Maximum number returned by list, max 1000
 
 try {
     $result = $apiInstance->listCrossexTransfers($associate_array);
@@ -1509,7 +1509,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
 );
 $associate_array['symbol'] = 'BINANCE_FUTURE_ADA_USDT'; // string | Trading Pair
 $associate_array['exchange_type'] = 'BINANCE'; // string | Exchange
-$associate_array['business_type'] = 'FUTURE、MARGIN'; // string | Business Type
+$associate_array['business_type'] = 'FUTURE'; // string | Business Type
 
 try {
     $result = $apiInstance->listCrossexOpenOrders($associate_array);
@@ -1915,7 +1915,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexAccountBook
 
-> \GateApi\Model\CrossexAccountBookRecord[] listCrossexAccountBook($page, $limit, $coin, $from, $to)
+> \GateApi\Model\CrossexAccountBookRecord[] listCrossexAccountBook($page, $limit, $coin, $statement_type, $from, $to)
 
 Query Account Asset Change History
 
@@ -1940,6 +1940,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
 $associate_array['page'] = 56; // int | Page number
 $associate_array['limit'] = 56; // int | Maximum number returned by list, max 1000
 $associate_array['coin'] = 'coin_example'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+$associate_array['statement_type'] = 'statement_type_example'; // string | Bill entry type.
 $associate_array['from'] = 56; // int | Start Millisecond Timestamp
 $associate_array['to'] = 56; // int | End Millisecond Timestamp
 
@@ -1964,6 +1965,7 @@ Name | Type | Description  | Notes
  **page** | **int**| Page number | [optional]
  **limit** | **int**| Maximum number returned by list, max 1000 | [optional]
  **coin** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
+ **statement_type** | **string**| Bill entry type. | [optional]
  **from** | **int**| Start Millisecond Timestamp | [optional]
  **to** | **int**| End Millisecond Timestamp | [optional]
 
@@ -1989,7 +1991,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CrossexCoinDiscountRate[] listCrossexCoinDiscountRate($coin, $exchange_type)
 
-Query currency discount rate (discount rate of margin currency in isolated exchange mode)
+Query Currency Discount Rate
 
 Rate Limit: 200 requests per 10 seconds
 

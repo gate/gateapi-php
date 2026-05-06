@@ -4,18 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**is_sell** | **int** | Whether seller | [optional] 
-**msg_type** | **int** | Message type | [optional] 
-**msg** | **string** | Message content | [optional] 
+**is_sell** | **int** | Whether the current user is the seller. &#x60;1&#x60;: yes; &#x60;0&#x60;: no. | [optional] 
+**msg_type** | **int** | Message type: &#x60;0&#x60; text; &#x60;1&#x60; file; &#x60;2&#x60; template; &#x60;3&#x60; order-share; &#x60;4&#x60; payment-share; &#x60;5&#x60; status update. | [optional] 
+**msg** | **string** | Message content; for file messages, usually URL or file key. | [optional] 
 **username** | **string** | Message sender username | [optional] 
 **timest** | **int** | Message timestamp | [optional] 
 **msg_obj** | [**\GateApi\Model\P2pChatMessagePayload**](P2pChatMessagePayload.md) |  | [optional] 
-**uid** | **string** | Message sender UID | [optional] 
-**type** | **int** | Message type | [optional] 
+**uid** | **string** | Sender&#39;s crypto UID; system messages may use &#x60;System&#x60; or an empty string. | [optional] 
+**type** | **int** | Display type: &#x60;1&#x60; file message; &#x60;2&#x60; system message. | [optional] 
 **pic** | **string** | File link | [optional] 
 **file_key** | **string** | File key | [optional] 
-**file_type** | **string** | File type | [optional] 
-**width** | **string** | Image width | [optional] 
-**height** | **string** | Image height | [optional] 
+**file_type** | **string** | File type: &#x60;image&#x60; for images, &#x60;video&#x60; for videos. | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

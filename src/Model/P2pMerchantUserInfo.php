@@ -466,7 +466,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets email_verified
      *
-     * @param string|null $email_verified Whether email is verified
+     * @param string|null $email_verified Whether email is verified. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -490,7 +490,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets verified
      *
-     * @param string|null $verified Whether KYC verification is completed
+     * @param string|null $verified Whether KYC is completed. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -514,7 +514,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets has_phone
      *
-     * @param string|null $has_phone Whether phone is bound
+     * @param string|null $has_phone Whether a phone number is bound. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -778,7 +778,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets is_black
      *
-     * @param int|null $is_black Whether blocked
+     * @param int|null $is_black Whether the user is blocked. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -802,7 +802,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets is_follow
      *
-     * @param int|null $is_follow Whether following
+     * @param int|null $is_follow Whether you follow this user. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -826,7 +826,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets have_traded
      *
-     * @param int|null $have_traded Whether traded with self
+     * @param int|null $have_traded Whether you have traded with this user before. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -970,7 +970,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets need_replenish
      *
-     * @param int|null $need_replenish Whether margin replenishment is needed
+     * @param int|null $need_replenish Whether additional margin is required. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -1018,7 +1018,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets online_status
      *
-     * @param int|null $online_status Merchant online status
+     * @param int|null $online_status Merchant online status: `1` online; `0` offline.
      *
      * @return $this
      */

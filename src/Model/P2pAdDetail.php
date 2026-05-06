@@ -74,7 +74,6 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'hide_rate' => 'string',
         'trade_tips' => 'string',
         'auto_reply' => 'string',
-        'new_hand' => 'string',
         'rate_ref_id' => 'int',
         'rate_offset' => 'float',
         'status' => 'string',
@@ -84,17 +83,14 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'int',
         'reg_time_limit' => 'int',
         'advertisers_limit' => 'int',
-        'verified_limit' => 'int',
         'min_completed_limit' => 'int',
         'max_completed_limit' => 'int',
         'user_orders_limit' => 'int',
         'completed_rate_limit' => 'float',
-        'user_country_limit' => 'int',
         'limit_country_cn' => 'string',
         'limit_country_en' => 'string',
         'is_hedge' => 'int',
-        'hide_payment' => 'int',
-        'fee' => 'int'
+        'hide_payment' => 'int'
     ];
 
     /**
@@ -123,7 +119,6 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'hide_rate' => null,
         'trade_tips' => null,
         'auto_reply' => null,
-        'new_hand' => null,
         'rate_ref_id' => null,
         'rate_offset' => null,
         'status' => null,
@@ -133,17 +128,14 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => null,
         'reg_time_limit' => null,
         'advertisers_limit' => null,
-        'verified_limit' => null,
         'min_completed_limit' => null,
         'max_completed_limit' => null,
         'user_orders_limit' => null,
         'completed_rate_limit' => null,
-        'user_country_limit' => null,
         'limit_country_cn' => null,
         'limit_country_en' => null,
         'is_hedge' => null,
-        'hide_payment' => null,
-        'fee' => null
+        'hide_payment' => null
     ];
 
     /**
@@ -188,12 +180,11 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'locked_amount' => 'locked_amount',
         'orderid' => 'orderid',
         'timestamp' => 'timestamp',
-        'currency_type' => 'currencyType',
+        'currency_type' => 'currency_type',
         'want_type' => 'want_type',
         'hide_rate' => 'hide_rate',
         'trade_tips' => 'trade_tips',
         'auto_reply' => 'auto_reply',
-        'new_hand' => 'new_hand',
         'rate_ref_id' => 'rate_ref_id',
         'rate_offset' => 'rate_offset',
         'status' => 'status',
@@ -203,17 +194,14 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'tier_limit',
         'reg_time_limit' => 'reg_time_limit',
         'advertisers_limit' => 'advertisers_limit',
-        'verified_limit' => 'verified_limit',
         'min_completed_limit' => 'min_completed_limit',
         'max_completed_limit' => 'max_completed_limit',
         'user_orders_limit' => 'user_orders_limit',
         'completed_rate_limit' => 'completed_rate_limit',
-        'user_country_limit' => 'user_country_limit',
         'limit_country_cn' => 'limit_country_cn',
         'limit_country_en' => 'limit_country_en',
         'is_hedge' => 'is_hedge',
-        'hide_payment' => 'hide_payment',
-        'fee' => 'fee'
+        'hide_payment' => 'hide_payment'
     ];
 
     /**
@@ -242,7 +230,6 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'hide_rate' => 'setHideRate',
         'trade_tips' => 'setTradeTips',
         'auto_reply' => 'setAutoReply',
-        'new_hand' => 'setNewHand',
         'rate_ref_id' => 'setRateRefId',
         'rate_offset' => 'setRateOffset',
         'status' => 'setStatus',
@@ -252,17 +239,14 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'setTierLimit',
         'reg_time_limit' => 'setRegTimeLimit',
         'advertisers_limit' => 'setAdvertisersLimit',
-        'verified_limit' => 'setVerifiedLimit',
         'min_completed_limit' => 'setMinCompletedLimit',
         'max_completed_limit' => 'setMaxCompletedLimit',
         'user_orders_limit' => 'setUserOrdersLimit',
         'completed_rate_limit' => 'setCompletedRateLimit',
-        'user_country_limit' => 'setUserCountryLimit',
         'limit_country_cn' => 'setLimitCountryCn',
         'limit_country_en' => 'setLimitCountryEn',
         'is_hedge' => 'setIsHedge',
-        'hide_payment' => 'setHidePayment',
-        'fee' => 'setFee'
+        'hide_payment' => 'setHidePayment'
     ];
 
     /**
@@ -291,7 +275,6 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'hide_rate' => 'getHideRate',
         'trade_tips' => 'getTradeTips',
         'auto_reply' => 'getAutoReply',
-        'new_hand' => 'getNewHand',
         'rate_ref_id' => 'getRateRefId',
         'rate_offset' => 'getRateOffset',
         'status' => 'getStatus',
@@ -301,17 +284,14 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'getTierLimit',
         'reg_time_limit' => 'getRegTimeLimit',
         'advertisers_limit' => 'getAdvertisersLimit',
-        'verified_limit' => 'getVerifiedLimit',
         'min_completed_limit' => 'getMinCompletedLimit',
         'max_completed_limit' => 'getMaxCompletedLimit',
         'user_orders_limit' => 'getUserOrdersLimit',
         'completed_rate_limit' => 'getCompletedRateLimit',
-        'user_country_limit' => 'getUserCountryLimit',
         'limit_country_cn' => 'getLimitCountryCn',
         'limit_country_en' => 'getLimitCountryEn',
         'is_hedge' => 'getIsHedge',
-        'hide_payment' => 'getHidePayment',
-        'fee' => 'getFee'
+        'hide_payment' => 'getHidePayment'
     ];
 
     /**
@@ -394,7 +374,6 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         $this->container['hide_rate'] = isset($data['hide_rate']) ? $data['hide_rate'] : null;
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
         $this->container['auto_reply'] = isset($data['auto_reply']) ? $data['auto_reply'] : null;
-        $this->container['new_hand'] = isset($data['new_hand']) ? $data['new_hand'] : null;
         $this->container['rate_ref_id'] = isset($data['rate_ref_id']) ? $data['rate_ref_id'] : null;
         $this->container['rate_offset'] = isset($data['rate_offset']) ? $data['rate_offset'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
@@ -404,17 +383,14 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         $this->container['tier_limit'] = isset($data['tier_limit']) ? $data['tier_limit'] : null;
         $this->container['reg_time_limit'] = isset($data['reg_time_limit']) ? $data['reg_time_limit'] : null;
         $this->container['advertisers_limit'] = isset($data['advertisers_limit']) ? $data['advertisers_limit'] : null;
-        $this->container['verified_limit'] = isset($data['verified_limit']) ? $data['verified_limit'] : null;
         $this->container['min_completed_limit'] = isset($data['min_completed_limit']) ? $data['min_completed_limit'] : null;
         $this->container['max_completed_limit'] = isset($data['max_completed_limit']) ? $data['max_completed_limit'] : null;
         $this->container['user_orders_limit'] = isset($data['user_orders_limit']) ? $data['user_orders_limit'] : null;
         $this->container['completed_rate_limit'] = isset($data['completed_rate_limit']) ? $data['completed_rate_limit'] : null;
-        $this->container['user_country_limit'] = isset($data['user_country_limit']) ? $data['user_country_limit'] : null;
         $this->container['limit_country_cn'] = isset($data['limit_country_cn']) ? $data['limit_country_cn'] : null;
         $this->container['limit_country_en'] = isset($data['limit_country_en']) ? $data['limit_country_en'] : null;
         $this->container['is_hedge'] = isset($data['is_hedge']) ? $data['is_hedge'] : null;
         $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
-        $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
     }
 
     /**
@@ -454,7 +430,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets rate
      *
-     * @param string|null $rate Price
+     * @param string|null $rate Advertisement price.
      *
      * @return $this
      */
@@ -478,7 +454,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string|null $type Buy/Sell order
+     * @param string|null $type Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
      *
      * @return $this
      */
@@ -502,7 +478,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string|null $amount Cryptocurrency amount
+     * @param string|null $amount Remaining crypto amount on the ad.
      *
      * @return $this
      */
@@ -526,7 +502,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets min_amount
      *
-     * @param string|null $min_amount Minimum limit
+     * @param string|null $min_amount Minimum trade amount in `want_type`.
      *
      * @return $this
      */
@@ -550,7 +526,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets max_amount
      *
-     * @param string|null $max_amount Maximum limit
+     * @param string|null $max_amount Maximum trade amount priced in `want_type`.
      *
      * @return $this
      */
@@ -598,7 +574,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets pay_ali
      *
-     * @param int|null $pay_ali Whether Alipay payment is supported
+     * @param int|null $pay_ali Whether Alipay is supported. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -622,7 +598,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets pay_bank
      *
-     * @param int|null $pay_bank Whether bank payment is supported
+     * @param int|null $pay_bank Whether bank transfer is supported. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -646,7 +622,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets pay_paypal
      *
-     * @param int|null $pay_paypal Whether PayPal payment is supported
+     * @param int|null $pay_paypal Whether PayPal is supported. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -670,7 +646,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets pay_wechat
      *
-     * @param int|null $pay_wechat Whether WeChat payment is supported
+     * @param int|null $pay_wechat Whether WeChat Pay is supported. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -718,7 +694,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets pay_type_json
      *
-     * @param string|null $pay_type_json Payment method list
+     * @param string|null $pay_type_json JSON map of payment type -> payment method ID.
      *
      * @return $this
      */
@@ -814,7 +790,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets currency_type
      *
-     * @param string|null $currency_type Cryptocurrency type
+     * @param string|null $currency_type Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -922,30 +898,6 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets new_hand
-     *
-     * @return string|null
-     */
-    public function getNewHand()
-    {
-        return $this->container['new_hand'];
-    }
-
-    /**
-     * Sets new_hand
-     *
-     * @param string|null $new_hand Merchant-friendly order
-     *
-     * @return $this
-     */
-    public function setNewHand($new_hand)
-    {
-        $this->container['new_hand'] = $new_hand;
-
-        return $this;
-    }
-
-    /**
      * Gets rate_ref_id
      *
      * @return int|null
@@ -958,7 +910,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets rate_ref_id
      *
-     * @param int|null $rate_ref_id Floating price reference ID: 1=Platform reference price, 3=Spot reference price (≤0 means fixed price, >0 means floating price)
+     * @param int|null $rate_ref_id Floating reference: `1` platform; `2` Gate; `3` spot; `<= 0` means fixed price.
      *
      * @return $this
      */
@@ -1006,7 +958,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Status
+     * @param string|null $status Ad status: `OPEN` listed; `OFFLIN` delisted; `CLOSED` closed; `CANCEL` canceled.
      *
      * @return $this
      */
@@ -1030,7 +982,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets rate_fixed
      *
-     * @param int|null $rate_fixed 0=Floating, 1=Fixed
+     * @param int|null $rate_fixed Price type: `0` floating; `1` fixed.
      *
      * @return $this
      */
@@ -1054,7 +1006,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets float_trend
      *
-     * @param int|null $float_trend 0=Upward float, 1=Downward float
+     * @param int|null $float_trend Floating direction: `0` markup; `1` markdown.
      *
      * @return $this
      */
@@ -1150,37 +1102,13 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets advertisers_limit
      *
-     * @param int|null $advertisers_limit Do not trade with advertisers, advertiser limit: 0=No limit, 1=Limit
+     * @param int|null $advertisers_limit Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
      *
      * @return $this
      */
     public function setAdvertisersLimit($advertisers_limit)
     {
         $this->container['advertisers_limit'] = $advertisers_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets verified_limit
-     *
-     * @return int|null
-     */
-    public function getVerifiedLimit()
-    {
-        return $this->container['verified_limit'];
-    }
-
-    /**
-     * Sets verified_limit
-     *
-     * @param int|null $verified_limit kyclimit
-     *
-     * @return $this
-     */
-    public function setVerifiedLimit($verified_limit)
-    {
-        $this->container['verified_limit'] = $verified_limit;
 
         return $this;
     }
@@ -1282,30 +1210,6 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets user_country_limit
-     *
-     * @return int|null
-     */
-    public function getUserCountryLimit()
-    {
-        return $this->container['user_country_limit'];
-    }
-
-    /**
-     * Sets user_country_limit
-     *
-     * @param int|null $user_country_limit KYC nationality restriction
-     *
-     * @return $this
-     */
-    public function setUserCountryLimit($user_country_limit)
-    {
-        $this->container['user_country_limit'] = $user_country_limit;
-
-        return $this;
-    }
-
-    /**
      * Gets limit_country_cn
      *
      * @return string|null
@@ -1366,7 +1270,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets is_hedge
      *
-     * @param int|null $is_hedge Whether auto delegation
+     * @param int|null $is_hedge Whether auto-delegation is enabled. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -1390,37 +1294,13 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets hide_payment
      *
-     * @param int|null $hide_payment Whether to hide payment method
+     * @param int|null $hide_payment Whether payment methods are hidden. `1`: hidden; `0`: visible.
      *
      * @return $this
      */
     public function setHidePayment($hide_payment)
     {
         $this->container['hide_payment'] = $hide_payment;
-
-        return $this;
-    }
-
-    /**
-     * Gets fee
-     *
-     * @return int|null
-     */
-    public function getFee()
-    {
-        return $this->container['fee'];
-    }
-
-    /**
-     * Sets fee
-     *
-     * @param int|null $fee fee
-     *
-     * @return $this
-     */
-    public function setFee($fee)
-    {
-        $this->container['fee'] = $fee;
 
         return $this;
     }

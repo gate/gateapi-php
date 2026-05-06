@@ -161,8 +161,27 @@ class UploadChatFile implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const IMAGE_CONTENT_TYPE_IMAGE_JPEG = 'image/jpeg';
+    const IMAGE_CONTENT_TYPE_IMAGE_JPG = 'image/jpg';
+    const IMAGE_CONTENT_TYPE_IMAGE_PNG = 'image/png';
+    const IMAGE_CONTENT_TYPE_VIDEO_MP4 = 'video/mp4';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getImageContentTypeAllowableValues()
+    {
+        return [
+            self::IMAGE_CONTENT_TYPE_IMAGE_JPEG,
+            self::IMAGE_CONTENT_TYPE_IMAGE_JPG,
+            self::IMAGE_CONTENT_TYPE_IMAGE_PNG,
+            self::IMAGE_CONTENT_TYPE_VIDEO_MP4,
+        ];
+    }
     
 
     /**
@@ -196,6 +215,14 @@ class UploadChatFile implements ModelInterface, ArrayAccess
         if ($this->container['image_content_type'] === null) {
             $invalidProperties[] = "'image_content_type' can't be null";
         }
+        $allowedValues = $this->getImageContentTypeAllowableValues();
+        if (!is_null($this->container['image_content_type']) && !in_array($this->container['image_content_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'image_content_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['base64_img'] === null) {
             $invalidProperties[] = "'base64_img' can't be null";
         }
@@ -227,12 +254,21 @@ class UploadChatFile implements ModelInterface, ArrayAccess
     /**
      * Sets image_content_type
      *
-     * @param string $image_content_type File type, currently only images and videos are supported
+     * @param string $image_content_type File MIME type: supports `image/jpeg`, `image/jpg`, `image/png`, `video/mp4`.
      *
      * @return $this
      */
     public function setImageContentType($image_content_type)
     {
+        $allowedValues = $this->getImageContentTypeAllowableValues();
+        if (!in_array($image_content_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'image_content_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['image_content_type'] = $image_content_type;
 
         return $this;
@@ -251,7 +287,7 @@ class UploadChatFile implements ModelInterface, ArrayAccess
     /**
      * Sets base64_img
      *
-     * @param string $base64_img File content (base64 encoded)
+     * @param string $base64_img Base64 file content; max 20 MB.
      *
      * @return $this
      */

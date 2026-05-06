@@ -334,7 +334,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order status when message was sent
+     * @param string|null $status Order status when sending a message. Typical values: `OPEN`, `PAID`, `LOCKED`, `ACCEPT`, `BCLOSED`, `CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`.
      *
      * @return $this
      */
@@ -406,7 +406,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     /**
      * Sets reason_id
      *
-     * @param int|null $reason_id Cancellation reason ID
+     * @param int|null $reason_id Cancel reason ID. `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller account not real; `5` payout account issue; `6` price mismatch; `7` mutually agreed cancel; `8` poor communication; `9` other; `10` seller cannot release with refund; `11` terms not met; `12` seller payout risk-controlled.
      *
      * @return $this
      */
@@ -454,7 +454,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     /**
      * Sets reason_memo
      *
-     * @param string|null $reason_memo Cancellation reason title
+     * @param string|null $reason_memo Cancel reason description.
      *
      * @return $this
      */
@@ -502,7 +502,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     /**
      * Sets seller_confirm
      *
-     * @param int|null $seller_confirm Whether seller confirmed the reason
+     * @param int|null $seller_confirm Seller confirmation of cancel reason: `0` pending; `1` confirmed; `2` rejected.
      *
      * @return $this
      */
@@ -646,7 +646,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param string|null $account Payment method name
+     * @param string|null $account Payment account or masked payment account.
      *
      * @return $this
      */
@@ -790,7 +790,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     /**
      * Sets is_delete
      *
-     * @param int|null $is_delete Whether deleted
+     * @param int|null $is_delete Whether the payment method was deleted. `1`: deleted; `0`: not deleted.
      *
      * @return $this
      */

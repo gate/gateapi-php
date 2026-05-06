@@ -340,7 +340,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
     /**
      * Sets srvtm
      *
-     * @param int|null $srvtm Timestamp of the latest message
+     * @param int|null $srvtm Timestamp of the latest message.
      *
      * @return $this
      */
@@ -364,7 +364,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
     /**
      * Sets order_status
      *
-     * @param string|null $order_status Order Status
+     * @param string|null $order_status Raw order status in DB; typical values: `OPEN`, `PAID`, `LOCKED`, `ACCEPT`, `BCLOSED`, `CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`.
      *
      * @return $this
      */

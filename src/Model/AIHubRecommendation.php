@@ -62,7 +62,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
         'backtest_apr' => 'string',
         'max_drawdown' => 'string',
         'summary' => 'string',
-        'strategy_params_preview' => 'map[string,string]'
+        'strategy_params_preview' => 'string'
     ];
 
     /**
@@ -430,7 +430,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
     /**
      * Gets strategy_params_preview
      *
-     * @return map[string,string]|null
+     * @return string|null
      */
     public function getStrategyParamsPreview()
     {
@@ -440,7 +440,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
     /**
      * Sets strategy_params_preview
      *
-     * @param map[string,string]|null $strategy_params_preview Recommended parameter preview; dynamic changes by strategy type
+     * @param string|null $strategy_params_preview Recommended-parameter preview as JSON text (string-encoded so clients deserialize it consistently). The value is a serialized JSON object whose structure varies by strategy type; callers or upper-layer models must parse it.
      *
      * @return $this
      */

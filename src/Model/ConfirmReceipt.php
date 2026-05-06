@@ -55,7 +55,7 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trade_id' => 'string'
+        'txid' => 'string'
     ];
 
     /**
@@ -64,7 +64,7 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'trade_id' => null
+        'txid' => null
     ];
 
     /**
@@ -94,7 +94,7 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'trade_id' => 'trade_id'
+        'txid' => 'txid'
     ];
 
     /**
@@ -103,7 +103,7 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'trade_id' => 'setTradeId'
+        'txid' => 'setTxid'
     ];
 
     /**
@@ -112,7 +112,7 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'trade_id' => 'getTradeId'
+        'txid' => 'getTxid'
     ];
 
     /**
@@ -175,7 +175,7 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
+        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
     }
 
     /**
@@ -187,8 +187,8 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['trade_id'] === null) {
-            $invalidProperties[] = "'trade_id' can't be null";
+        if ($this->container['txid'] === null) {
+            $invalidProperties[] = "'txid' can't be null";
         }
         return $invalidProperties;
     }
@@ -206,25 +206,25 @@ class ConfirmReceipt implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets trade_id
+     * Gets txid
      *
      * @return string
      */
-    public function getTradeId()
+    public function getTxid()
     {
-        return $this->container['trade_id'];
+        return $this->container['txid'];
     }
 
     /**
-     * Sets trade_id
+     * Sets txid
      *
-     * @param string $trade_id trade_id
+     * @param string $txid Order ID
      *
      * @return $this
      */
-    public function setTradeId($trade_id)
+    public function setTxid($txid)
     {
-        $this->container['trade_id'] = $trade_id;
+        $this->container['txid'] = $txid;
 
         return $this;
     }

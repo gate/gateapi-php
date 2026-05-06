@@ -346,7 +346,7 @@ class P2pCounterpartyUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets email_verified
      *
-     * @param string|null $email_verified Whether email is verified
+     * @param string|null $email_verified Whether email is verified. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -370,7 +370,7 @@ class P2pCounterpartyUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets verified
      *
-     * @param string|null $verified Whether KYC verification is completed
+     * @param string|null $verified Whether KYC is completed. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -394,7 +394,7 @@ class P2pCounterpartyUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets has_phone
      *
-     * @param string|null $has_phone Whether phone is bound
+     * @param string|null $has_phone Whether a phone number is bound. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -634,7 +634,7 @@ class P2pCounterpartyUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets is_follow
      *
-     * @param int|null $is_follow Whether following
+     * @param int|null $is_follow Whether you follow this user. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -658,7 +658,7 @@ class P2pCounterpartyUserInfo implements ModelInterface, ArrayAccess
     /**
      * Sets have_traded
      *
-     * @param int|null $have_traded Whether traded with self
+     * @param int|null $have_traded Whether you have traded with this user before. `1`: yes; `0`: no.
      *
      * @return $this
      */

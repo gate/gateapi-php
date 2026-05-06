@@ -460,7 +460,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param string $user_id user_id
+     * @param string $user_id User ID
      *
      * @return $this
      */
@@ -508,7 +508,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets text
      *
-     * @param string $text Customer-defined order ID
+     * @param string $text Client-defined order ID.
      *
      * @return $this
      */
@@ -532,7 +532,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param string $state Order State:  NEW: The order is legal and waiting to be sent to the exchange  OPEN: The order has been placed on the orderbook of the exchange  PARTIALLY_FILLED: The order has been partially completed  FILLED: The order has been fully executed  FAIL: The order verification in CrossEx did not pass. Please check the order reason  REJECT：The order was rejected by the exchange. Please check the order reason
+     * @param string $state 订单状态：  NEW：订单已通过校验，等待发送到交易所  OPEN：订单已挂在交易所订单簿上  PARTIALLY_FILLED：订单已部分成交  FILLED：订单已完全成交  FAIL：CrossEx 内部校验未通过，请查看 reason 字段了解失败原因  REJECT：订单被交易所拒绝，请查看 reason 字段了解失败原因
      *
      * @return $this
      */
@@ -556,7 +556,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Trading pair unique identifier ,example: BINANCE_SPOT_BTC_USDT, BINANCE_FUTURE_BTC_USDT
+     * @param string $symbol Unique trading pair identifiers, e.g. `BINANCE_SPOT_BTC_USDT`, `BINANCE_FUTURE_BTC_USDT`.
      *
      * @return $this
      */
@@ -580,7 +580,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param string $side Side(BUY,SELL)
+     * @param string $side Side (`BUY` buy / `SELL` sell).
      *
      * @return $this
      */
@@ -604,7 +604,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type Type(LIMIT, MARKET)
+     * @param string $type Order type (`LIMIT` limit / `MARKET` market).
      *
      * @return $this
      */
@@ -628,7 +628,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets attribute
      *
-     * @param string $attribute COMMON, LIQ, REDUCE, ADL
+     * @param string $attribute Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage).
      *
      * @return $this
      */
@@ -652,7 +652,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Exchange type(BINANCE,OKX,GATE,BYBIT)
+     * @param string $exchange_type Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT`).
      *
      * @return $this
      */
@@ -676,7 +676,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets business_type
      *
-     * @param string $business_type Business type(SPOT,FUTURE,MARGIN)
+     * @param string $business_type Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
      *
      * @return $this
      */
@@ -700,7 +700,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets qty
      *
-     * @param string $qty Order base quantity
+     * @param string $qty Order quantity in the base currency.
      *
      * @return $this
      */
@@ -724,7 +724,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets quote_qty
      *
-     * @param string $quote_qty Order quote quantity
+     * @param string $quote_qty Order quantity in the quote currency.
      *
      * @return $this
      */
@@ -748,7 +748,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string $price Order price
+     * @param string $price Order price.
      *
      * @return $this
      */
@@ -772,7 +772,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets time_in_force
      *
-     * @param string $time_in_force Timeinforce (default GTC, enums:GTC,IOC,FOK,POC)
+     * @param string $time_in_force Time in force (default `GTC`; enum: `GTC` / `IOC` / `FOK` / `POC`).
      *
      * @return $this
      */
@@ -796,7 +796,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets executed_qty
      *
-     * @param string $executed_qty Executed quantity
+     * @param string $executed_qty Filled base amount.
      *
      * @return $this
      */
@@ -820,7 +820,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets executed_amount
      *
-     * @param string $executed_amount Executed quote quantity
+     * @param string $executed_amount Filled quote amount.
      *
      * @return $this
      */
@@ -844,7 +844,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets executed_avg_price
      *
-     * @param string $executed_avg_price Average transaction price
+     * @param string $executed_avg_price Average Filled Price
      *
      * @return $this
      */
@@ -868,7 +868,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets fee_coin
      *
-     * @param string $fee_coin Transaction fee coin
+     * @param string $fee_coin Fee currency
      *
      * @return $this
      */
@@ -892,7 +892,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets fee
      *
-     * @param string $fee Transaction fee amount
+     * @param string $fee Fee amount.
      *
      * @return $this
      */
@@ -916,7 +916,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets reduce_only
      *
-     * @param string $reduce_only Reduce position orders only, \"true\" or \"false\"
+     * @param string $reduce_only Reduce-only order (`\"true\"` or `\"false\"`).
      *
      * @return $this
      */
@@ -940,7 +940,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string $leverage Order leverage
+     * @param string $leverage Order leverage multiplier.
      *
      * @return $this
      */
@@ -964,7 +964,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets reason
      *
-     * @param string $reason Fail message
+     * @param string $reason Failure reason description.
      *
      * @return $this
      */
@@ -988,7 +988,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets last_executed_qty
      *
-     * @param string $last_executed_qty Last transaction quantity
+     * @param string $last_executed_qty Base quantity of the latest fill.
      *
      * @return $this
      */
@@ -1012,7 +1012,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets last_executed_price
      *
-     * @param string $last_executed_price Last transaction price
+     * @param string $last_executed_price Price of the latest fill.
      *
      * @return $this
      */
@@ -1036,7 +1036,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets last_executed_amount
      *
-     * @param string $last_executed_amount Last transaction amount
+     * @param string $last_executed_amount Quote amount of the latest fill.
      *
      * @return $this
      */
@@ -1060,7 +1060,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets position_side
      *
-     * @param string $position_side Position side(NONE/LONG/SHORT)
+     * @param string $position_side Position side (`NONE` flat / `LONG` long / `SHORT` short).
      *
      * @return $this
      */
@@ -1084,7 +1084,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets create_time
      *
-     * @param string $create_time Create time
+     * @param string $create_time Created time
      *
      * @return $this
      */

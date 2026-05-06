@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * SpotMartingaleCreateParams Class Doc Comment
  *
  * @category Class
- * @description Creation parameters of spot martin strategy.
+ * @description 现货马丁策略的创建参数（对应 &#x60;MartingaleBot&#x60; 序列化字段）。  - **止损**：使用 &#x60;stop_loss_per_cycle&#x60;（每轮止损比例），与 App 一致；**不使用** &#x60;stop_loss_price&#x60;。 - 可选 **&#x60;trigger_price&#x60;**：触发价。 - &#x60;stop_loss_per_cycle&#x60; 若传入且大于 0，服务端校验区间约为 &#x60;0.001&#x60;～&#x60;0.9999&#x60;（与 &#x60;check_martingale&#x60; 一致）。
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -59,7 +59,8 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
         'price_deviation' => 'string',
         'max_orders' => 'int',
         'take_profit_ratio' => 'string',
-        'stop_loss_price' => 'string',
+        'stop_loss_per_cycle' => 'string',
+        'trigger_price' => 'string',
         'profit_sharing_ratio' => 'string'
     ];
 
@@ -73,7 +74,8 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
         'price_deviation' => null,
         'max_orders' => 'int32',
         'take_profit_ratio' => null,
-        'stop_loss_price' => null,
+        'stop_loss_per_cycle' => null,
+        'trigger_price' => null,
         'profit_sharing_ratio' => null
     ];
 
@@ -108,7 +110,8 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
         'price_deviation' => 'price_deviation',
         'max_orders' => 'max_orders',
         'take_profit_ratio' => 'take_profit_ratio',
-        'stop_loss_price' => 'stop_loss_price',
+        'stop_loss_per_cycle' => 'stop_loss_per_cycle',
+        'trigger_price' => 'trigger_price',
         'profit_sharing_ratio' => 'profit_sharing_ratio'
     ];
 
@@ -122,7 +125,8 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
         'price_deviation' => 'setPriceDeviation',
         'max_orders' => 'setMaxOrders',
         'take_profit_ratio' => 'setTakeProfitRatio',
-        'stop_loss_price' => 'setStopLossPrice',
+        'stop_loss_per_cycle' => 'setStopLossPerCycle',
+        'trigger_price' => 'setTriggerPrice',
         'profit_sharing_ratio' => 'setProfitSharingRatio'
     ];
 
@@ -136,7 +140,8 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
         'price_deviation' => 'getPriceDeviation',
         'max_orders' => 'getMaxOrders',
         'take_profit_ratio' => 'getTakeProfitRatio',
-        'stop_loss_price' => 'getStopLossPrice',
+        'stop_loss_per_cycle' => 'getStopLossPerCycle',
+        'trigger_price' => 'getTriggerPrice',
         'profit_sharing_ratio' => 'getProfitSharingRatio'
     ];
 
@@ -204,7 +209,8 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
         $this->container['price_deviation'] = isset($data['price_deviation']) ? $data['price_deviation'] : null;
         $this->container['max_orders'] = isset($data['max_orders']) ? $data['max_orders'] : null;
         $this->container['take_profit_ratio'] = isset($data['take_profit_ratio']) ? $data['take_profit_ratio'] : null;
-        $this->container['stop_loss_price'] = isset($data['stop_loss_price']) ? $data['stop_loss_price'] : null;
+        $this->container['stop_loss_per_cycle'] = isset($data['stop_loss_per_cycle']) ? $data['stop_loss_per_cycle'] : null;
+        $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
         $this->container['profit_sharing_ratio'] = isset($data['profit_sharing_ratio']) ? $data['profit_sharing_ratio'] : null;
     }
 
@@ -285,7 +291,7 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets price_deviation
      *
-     * @param string $price_deviation price_deviation
+     * @param string $price_deviation Add-position deviation ratio as a decimal string (e.g. a 2% drop is `0.02`).
      *
      * @return $this
      */
@@ -338,7 +344,7 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets take_profit_ratio
      *
-     * @param string $take_profit_ratio take_profit_ratio
+     * @param string $take_profit_ratio Take-profit ratio per round as a decimal string.
      *
      * @return $this
      */
@@ -350,25 +356,49 @@ class SpotMartingaleCreateParams implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets stop_loss_price
+     * Gets stop_loss_per_cycle
      *
      * @return string|null
      */
-    public function getStopLossPrice()
+    public function getStopLossPerCycle()
     {
-        return $this->container['stop_loss_price'];
+        return $this->container['stop_loss_per_cycle'];
     }
 
     /**
-     * Sets stop_loss_price
+     * Sets stop_loss_per_cycle
      *
-     * @param string|null $stop_loss_price stop_loss_price
+     * @param string|null $stop_loss_per_cycle Stop-loss ratio per round as a decimal string; optional; aligned with app `stop_loss_per_cycle`.
      *
      * @return $this
      */
-    public function setStopLossPrice($stop_loss_price)
+    public function setStopLossPerCycle($stop_loss_per_cycle)
     {
-        $this->container['stop_loss_price'] = $stop_loss_price;
+        $this->container['stop_loss_per_cycle'] = $stop_loss_per_cycle;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger_price
+     *
+     * @return string|null
+     */
+    public function getTriggerPrice()
+    {
+        return $this->container['trigger_price'];
+    }
+
+    /**
+     * Sets trigger_price
+     *
+     * @param string|null $trigger_price Trigger price; optional.
+     *
+     * @return $this
+     */
+    public function setTriggerPrice($trigger_price)
+    {
+        $this->container['trigger_price'] = $trigger_price;
 
         return $this;
     }

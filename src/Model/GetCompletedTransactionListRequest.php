@@ -275,7 +275,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets crypto_currency
      *
-     * @param string $crypto_currency Cryptocurrency
+     * @param string $crypto_currency Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -323,7 +323,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets select_type
      *
-     * @param string|null $select_type Buy/Sell (sell=Sell, buy=Buy, others=All)
+     * @param string|null $select_type Order side filter: `buy` buy orders; `sell` sell orders; empty: all.
      *
      * @return $this
      */
@@ -347,7 +347,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
+     * @param string|null $status Order status filter. `closed`: filled (`ACCEPT`, `BCLOSED`); `cancel`: canceled (`CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`); `locked`: locked (`LOCKED`); `open`: unpaid (`OPEN`); `paid`: paid (`PAID`); `completed`: finished or canceled (`CANCEL`, `BECANCEL`, `SCLOSED`, `SCANCEL`, `ACCEPT`, `BCLOSED`); Empty or omitted uses the endpoint default range.
      *
      * @return $this
      */
@@ -443,7 +443,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets query_dispute
      *
-     * @param int|null $query_dispute 1: Include appeal status, 0: None
+     * @param int|null $query_dispute Whether to flag dispute status in the response. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -467,7 +467,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets page
      *
-     * @param int|null $page page number
+     * @param int|null $page Page number starting at 1; values below 1 are treated as 1.
      *
      * @return $this
      */
@@ -491,7 +491,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets per_page
      *
-     * @param int|null $per_page Number of orders per page
+     * @param int|null $per_page Orders per page; default 10, max 200.
      *
      * @return $this
      */

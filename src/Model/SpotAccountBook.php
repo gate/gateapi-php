@@ -376,7 +376,7 @@ class SpotAccountBook implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string|null $type Account book type. Please refer to [account book type](#accountbook-type) for more detail
+     * @param string|null $type Account change type; deprecated (see `code` for account change type encoding)
      *
      * @return $this
      */

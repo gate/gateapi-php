@@ -236,7 +236,7 @@ class AdsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets asset
      *
-     * @param string $asset Cryptocurrency
+     * @param string $asset Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -284,7 +284,7 @@ class AdsListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets trade_type
      *
-     * @param string $trade_type Buy/Sell, sell/buy
+     * @param string $trade_type Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
      *
      * @return $this
      */

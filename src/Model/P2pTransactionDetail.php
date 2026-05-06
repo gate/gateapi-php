@@ -62,15 +62,14 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'remain_pay_time' => 'int',
         'currency_type' => 'string',
         'want_type' => 'string',
+        'symbol' => 'string',
         'rate' => 'string',
         'amount' => 'string',
         'total' => 'string',
         'status' => 'string',
         'reason_id' => 'string',
         'reason_desc' => 'string',
-        'toast_id' => 'int',
         'cancel_time' => 'string',
-        'seller_confirm' => 'int',
         'in_appeal' => 'int',
         'dispute_time' => 'int',
         'cancelable' => 'int',
@@ -87,43 +86,20 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'show_wechat' => 'string',
         'wename' => 'string',
         'show_others' => 'string',
-        'pay_others' => 'string[]',
+        'pay_others' => '\GateApi\Model\P2pTransactionDetailPayOthers[]',
         'sel_paytype' => 'string',
         'its_uid' => 'string',
-        'its_is_blue_vip' => 'int',
-        'its_tier' => 'int',
-        'its_avatar' => 'string',
         'its_nickname' => 'string',
         'its_realname' => 'string',
-        'is_follow' => 'int',
-        'is_black' => 'int',
         'have_traded' => 'int',
-        'appeal_unread' => 'int',
         'appeal_allow_cancel' => 'int',
         'appeal_verdict_has_open' => 'string',
         'im_unread' => 'int',
-        'message' => 'string',
-        'score' => 'string',
         'payment_voucher_url' => 'string[]',
-        'complete_number' => 'int',
-        'complete_rate_month' => 'string',
-        'check_journal_account' => 'bool',
-        'show_journal_account' => 'bool',
-        'is_freeze_guarantee' => 'int',
-        'usdt_left_guarantee' => 'string',
-        'guarantee_curr_type' => 'string',
         'timest_paid' => 'int',
-        'state' => 'string',
-        'release_coin_switch' => 'int',
         'own_realname' => 'string',
-        'confirmation_use_time_month' => 'int',
-        'is_risk_user' => 'int',
-        'is_xt' => 'int',
         'order_type' => 'int',
-        'symbol' => 'string',
         'is_show_receive' => 'int',
-        'is_taker' => 'int',
-        'is_online' => 'int',
         'show_seller_contact_info' => 'bool',
         'supported_pay_types' => 'string[]'
     ];
@@ -142,15 +118,14 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'remain_pay_time' => null,
         'currency_type' => null,
         'want_type' => null,
+        'symbol' => null,
         'rate' => null,
         'amount' => null,
         'total' => null,
         'status' => null,
         'reason_id' => null,
         'reason_desc' => null,
-        'toast_id' => null,
         'cancel_time' => null,
-        'seller_confirm' => null,
         'in_appeal' => null,
         'dispute_time' => null,
         'cancelable' => null,
@@ -170,40 +145,17 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'pay_others' => null,
         'sel_paytype' => null,
         'its_uid' => null,
-        'its_is_blue_vip' => null,
-        'its_tier' => null,
-        'its_avatar' => null,
         'its_nickname' => null,
         'its_realname' => null,
-        'is_follow' => null,
-        'is_black' => null,
         'have_traded' => null,
-        'appeal_unread' => null,
         'appeal_allow_cancel' => null,
         'appeal_verdict_has_open' => null,
         'im_unread' => null,
-        'message' => null,
-        'score' => null,
         'payment_voucher_url' => null,
-        'complete_number' => null,
-        'complete_rate_month' => null,
-        'check_journal_account' => null,
-        'show_journal_account' => null,
-        'is_freeze_guarantee' => null,
-        'usdt_left_guarantee' => null,
-        'guarantee_curr_type' => null,
         'timest_paid' => null,
-        'state' => null,
-        'release_coin_switch' => null,
         'own_realname' => null,
-        'confirmation_use_time_month' => null,
-        'is_risk_user' => null,
-        'is_xt' => null,
         'order_type' => null,
-        'symbol' => null,
         'is_show_receive' => null,
-        'is_taker' => null,
-        'is_online' => null,
         'show_seller_contact_info' => null,
         'supported_pay_types' => null
     ];
@@ -241,17 +193,16 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'timest' => 'timest',
         'last_pay_time' => 'last_pay_time',
         'remain_pay_time' => 'remain_pay_time',
-        'currency_type' => 'currencyType',
+        'currency_type' => 'currency_type',
         'want_type' => 'want_type',
+        'symbol' => 'symbol',
         'rate' => 'rate',
         'amount' => 'amount',
         'total' => 'total',
         'status' => 'status',
         'reason_id' => 'reason_id',
         'reason_desc' => 'reason_desc',
-        'toast_id' => 'toast_id',
         'cancel_time' => 'cancel_time',
-        'seller_confirm' => 'seller_confirm',
         'in_appeal' => 'in_appeal',
         'dispute_time' => 'dispute_time',
         'cancelable' => 'cancelable',
@@ -271,40 +222,17 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'pay_others' => 'pay_others',
         'sel_paytype' => 'sel_paytype',
         'its_uid' => 'its_uid',
-        'its_is_blue_vip' => 'its_is_blue_vip',
-        'its_tier' => 'its_tier',
-        'its_avatar' => 'its_avatar',
         'its_nickname' => 'its_nickname',
         'its_realname' => 'its_realname',
-        'is_follow' => 'is_follow',
-        'is_black' => 'is_black',
         'have_traded' => 'have_traded',
-        'appeal_unread' => 'appeal_unread',
         'appeal_allow_cancel' => 'appeal_allow_cancel',
         'appeal_verdict_has_open' => 'appeal_verdict_has_open',
         'im_unread' => 'im_unread',
-        'message' => 'message',
-        'score' => 'score',
         'payment_voucher_url' => 'payment_voucher_url',
-        'complete_number' => 'complete_number',
-        'complete_rate_month' => 'complete_rate_month',
-        'check_journal_account' => 'check_journal_account',
-        'show_journal_account' => 'show_journal_account',
-        'is_freeze_guarantee' => 'is_freeze_guarantee',
-        'usdt_left_guarantee' => 'usdt_left_guarantee',
-        'guarantee_curr_type' => 'guarantee_curr_type',
         'timest_paid' => 'timest_paid',
-        'state' => 'state',
-        'release_coin_switch' => 'release_coin_switch',
         'own_realname' => 'own_realname',
-        'confirmation_use_time_month' => 'confirmation_use_time_month',
-        'is_risk_user' => 'is_risk_user',
-        'is_xt' => 'is_xt',
         'order_type' => 'order_type',
-        'symbol' => 'symbol',
         'is_show_receive' => 'is_show_receive',
-        'is_taker' => 'is_taker',
-        'is_online' => 'is_online',
         'show_seller_contact_info' => 'show_seller_contact_info',
         'supported_pay_types' => 'supported_pay_types'
     ];
@@ -323,15 +251,14 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'remain_pay_time' => 'setRemainPayTime',
         'currency_type' => 'setCurrencyType',
         'want_type' => 'setWantType',
+        'symbol' => 'setSymbol',
         'rate' => 'setRate',
         'amount' => 'setAmount',
         'total' => 'setTotal',
         'status' => 'setStatus',
         'reason_id' => 'setReasonId',
         'reason_desc' => 'setReasonDesc',
-        'toast_id' => 'setToastId',
         'cancel_time' => 'setCancelTime',
-        'seller_confirm' => 'setSellerConfirm',
         'in_appeal' => 'setInAppeal',
         'dispute_time' => 'setDisputeTime',
         'cancelable' => 'setCancelable',
@@ -351,40 +278,17 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'pay_others' => 'setPayOthers',
         'sel_paytype' => 'setSelPaytype',
         'its_uid' => 'setItsUid',
-        'its_is_blue_vip' => 'setItsIsBlueVip',
-        'its_tier' => 'setItsTier',
-        'its_avatar' => 'setItsAvatar',
         'its_nickname' => 'setItsNickname',
         'its_realname' => 'setItsRealname',
-        'is_follow' => 'setIsFollow',
-        'is_black' => 'setIsBlack',
         'have_traded' => 'setHaveTraded',
-        'appeal_unread' => 'setAppealUnread',
         'appeal_allow_cancel' => 'setAppealAllowCancel',
         'appeal_verdict_has_open' => 'setAppealVerdictHasOpen',
         'im_unread' => 'setImUnread',
-        'message' => 'setMessage',
-        'score' => 'setScore',
         'payment_voucher_url' => 'setPaymentVoucherUrl',
-        'complete_number' => 'setCompleteNumber',
-        'complete_rate_month' => 'setCompleteRateMonth',
-        'check_journal_account' => 'setCheckJournalAccount',
-        'show_journal_account' => 'setShowJournalAccount',
-        'is_freeze_guarantee' => 'setIsFreezeGuarantee',
-        'usdt_left_guarantee' => 'setUsdtLeftGuarantee',
-        'guarantee_curr_type' => 'setGuaranteeCurrType',
         'timest_paid' => 'setTimestPaid',
-        'state' => 'setState',
-        'release_coin_switch' => 'setReleaseCoinSwitch',
         'own_realname' => 'setOwnRealname',
-        'confirmation_use_time_month' => 'setConfirmationUseTimeMonth',
-        'is_risk_user' => 'setIsRiskUser',
-        'is_xt' => 'setIsXt',
         'order_type' => 'setOrderType',
-        'symbol' => 'setSymbol',
         'is_show_receive' => 'setIsShowReceive',
-        'is_taker' => 'setIsTaker',
-        'is_online' => 'setIsOnline',
         'show_seller_contact_info' => 'setShowSellerContactInfo',
         'supported_pay_types' => 'setSupportedPayTypes'
     ];
@@ -403,15 +307,14 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'remain_pay_time' => 'getRemainPayTime',
         'currency_type' => 'getCurrencyType',
         'want_type' => 'getWantType',
+        'symbol' => 'getSymbol',
         'rate' => 'getRate',
         'amount' => 'getAmount',
         'total' => 'getTotal',
         'status' => 'getStatus',
         'reason_id' => 'getReasonId',
         'reason_desc' => 'getReasonDesc',
-        'toast_id' => 'getToastId',
         'cancel_time' => 'getCancelTime',
-        'seller_confirm' => 'getSellerConfirm',
         'in_appeal' => 'getInAppeal',
         'dispute_time' => 'getDisputeTime',
         'cancelable' => 'getCancelable',
@@ -431,40 +334,17 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         'pay_others' => 'getPayOthers',
         'sel_paytype' => 'getSelPaytype',
         'its_uid' => 'getItsUid',
-        'its_is_blue_vip' => 'getItsIsBlueVip',
-        'its_tier' => 'getItsTier',
-        'its_avatar' => 'getItsAvatar',
         'its_nickname' => 'getItsNickname',
         'its_realname' => 'getItsRealname',
-        'is_follow' => 'getIsFollow',
-        'is_black' => 'getIsBlack',
         'have_traded' => 'getHaveTraded',
-        'appeal_unread' => 'getAppealUnread',
         'appeal_allow_cancel' => 'getAppealAllowCancel',
         'appeal_verdict_has_open' => 'getAppealVerdictHasOpen',
         'im_unread' => 'getImUnread',
-        'message' => 'getMessage',
-        'score' => 'getScore',
         'payment_voucher_url' => 'getPaymentVoucherUrl',
-        'complete_number' => 'getCompleteNumber',
-        'complete_rate_month' => 'getCompleteRateMonth',
-        'check_journal_account' => 'getCheckJournalAccount',
-        'show_journal_account' => 'getShowJournalAccount',
-        'is_freeze_guarantee' => 'getIsFreezeGuarantee',
-        'usdt_left_guarantee' => 'getUsdtLeftGuarantee',
-        'guarantee_curr_type' => 'getGuaranteeCurrType',
         'timest_paid' => 'getTimestPaid',
-        'state' => 'getState',
-        'release_coin_switch' => 'getReleaseCoinSwitch',
         'own_realname' => 'getOwnRealname',
-        'confirmation_use_time_month' => 'getConfirmationUseTimeMonth',
-        'is_risk_user' => 'getIsRiskUser',
-        'is_xt' => 'getIsXt',
         'order_type' => 'getOrderType',
-        'symbol' => 'getSymbol',
         'is_show_receive' => 'getIsShowReceive',
-        'is_taker' => 'getIsTaker',
-        'is_online' => 'getIsOnline',
         'show_seller_contact_info' => 'getShowSellerContactInfo',
         'supported_pay_types' => 'getSupportedPayTypes'
     ];
@@ -537,15 +417,14 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         $this->container['remain_pay_time'] = isset($data['remain_pay_time']) ? $data['remain_pay_time'] : null;
         $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
         $this->container['want_type'] = isset($data['want_type']) ? $data['want_type'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
         $this->container['reason_desc'] = isset($data['reason_desc']) ? $data['reason_desc'] : null;
-        $this->container['toast_id'] = isset($data['toast_id']) ? $data['toast_id'] : null;
         $this->container['cancel_time'] = isset($data['cancel_time']) ? $data['cancel_time'] : null;
-        $this->container['seller_confirm'] = isset($data['seller_confirm']) ? $data['seller_confirm'] : null;
         $this->container['in_appeal'] = isset($data['in_appeal']) ? $data['in_appeal'] : null;
         $this->container['dispute_time'] = isset($data['dispute_time']) ? $data['dispute_time'] : null;
         $this->container['cancelable'] = isset($data['cancelable']) ? $data['cancelable'] : null;
@@ -565,40 +444,17 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
         $this->container['pay_others'] = isset($data['pay_others']) ? $data['pay_others'] : null;
         $this->container['sel_paytype'] = isset($data['sel_paytype']) ? $data['sel_paytype'] : null;
         $this->container['its_uid'] = isset($data['its_uid']) ? $data['its_uid'] : null;
-        $this->container['its_is_blue_vip'] = isset($data['its_is_blue_vip']) ? $data['its_is_blue_vip'] : null;
-        $this->container['its_tier'] = isset($data['its_tier']) ? $data['its_tier'] : null;
-        $this->container['its_avatar'] = isset($data['its_avatar']) ? $data['its_avatar'] : null;
         $this->container['its_nickname'] = isset($data['its_nickname']) ? $data['its_nickname'] : null;
         $this->container['its_realname'] = isset($data['its_realname']) ? $data['its_realname'] : null;
-        $this->container['is_follow'] = isset($data['is_follow']) ? $data['is_follow'] : null;
-        $this->container['is_black'] = isset($data['is_black']) ? $data['is_black'] : null;
         $this->container['have_traded'] = isset($data['have_traded']) ? $data['have_traded'] : null;
-        $this->container['appeal_unread'] = isset($data['appeal_unread']) ? $data['appeal_unread'] : null;
         $this->container['appeal_allow_cancel'] = isset($data['appeal_allow_cancel']) ? $data['appeal_allow_cancel'] : null;
         $this->container['appeal_verdict_has_open'] = isset($data['appeal_verdict_has_open']) ? $data['appeal_verdict_has_open'] : null;
         $this->container['im_unread'] = isset($data['im_unread']) ? $data['im_unread'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['score'] = isset($data['score']) ? $data['score'] : null;
         $this->container['payment_voucher_url'] = isset($data['payment_voucher_url']) ? $data['payment_voucher_url'] : null;
-        $this->container['complete_number'] = isset($data['complete_number']) ? $data['complete_number'] : null;
-        $this->container['complete_rate_month'] = isset($data['complete_rate_month']) ? $data['complete_rate_month'] : null;
-        $this->container['check_journal_account'] = isset($data['check_journal_account']) ? $data['check_journal_account'] : null;
-        $this->container['show_journal_account'] = isset($data['show_journal_account']) ? $data['show_journal_account'] : null;
-        $this->container['is_freeze_guarantee'] = isset($data['is_freeze_guarantee']) ? $data['is_freeze_guarantee'] : null;
-        $this->container['usdt_left_guarantee'] = isset($data['usdt_left_guarantee']) ? $data['usdt_left_guarantee'] : null;
-        $this->container['guarantee_curr_type'] = isset($data['guarantee_curr_type']) ? $data['guarantee_curr_type'] : null;
         $this->container['timest_paid'] = isset($data['timest_paid']) ? $data['timest_paid'] : null;
-        $this->container['state'] = isset($data['state']) ? $data['state'] : null;
-        $this->container['release_coin_switch'] = isset($data['release_coin_switch']) ? $data['release_coin_switch'] : null;
         $this->container['own_realname'] = isset($data['own_realname']) ? $data['own_realname'] : null;
-        $this->container['confirmation_use_time_month'] = isset($data['confirmation_use_time_month']) ? $data['confirmation_use_time_month'] : null;
-        $this->container['is_risk_user'] = isset($data['is_risk_user']) ? $data['is_risk_user'] : null;
-        $this->container['is_xt'] = isset($data['is_xt']) ? $data['is_xt'] : null;
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
         $this->container['is_show_receive'] = isset($data['is_show_receive']) ? $data['is_show_receive'] : null;
-        $this->container['is_taker'] = isset($data['is_taker']) ? $data['is_taker'] : null;
-        $this->container['is_online'] = isset($data['is_online']) ? $data['is_online'] : null;
         $this->container['show_seller_contact_info'] = isset($data['show_seller_contact_info']) ? $data['show_seller_contact_info'] : null;
         $this->container['supported_pay_types'] = isset($data['supported_pay_types']) ? $data['supported_pay_types'] : null;
     }
@@ -640,7 +496,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets is_sell
      *
-     * @param int|null $is_sell Whether sell order
+     * @param int|null $is_sell Whether the current user is the seller. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -760,7 +616,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets remain_pay_time
      *
-     * @param int|null $remain_pay_time Remaining payment time
+     * @param int|null $remain_pay_time Seconds left to pay; `<= 0` means overdue.
      *
      * @return $this
      */
@@ -784,7 +640,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets currency_type
      *
-     * @param string|null $currency_type Cryptocurrency type
+     * @param string|null $currency_type Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -808,13 +664,37 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets want_type
      *
-     * @param string|null $want_type Fiat currency type
+     * @param string|null $want_type Fiat currency
      *
      * @return $this
      */
     public function setWantType($want_type)
     {
         $this->container['want_type'] = $want_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol
+     *
+     * @return string|null
+     */
+    public function getSymbol()
+    {
+        return $this->container['symbol'];
+    }
+
+    /**
+     * Sets symbol
+     *
+     * @param string|null $symbol Fiat currency symbol
+     *
+     * @return $this
+     */
+    public function setSymbol($symbol)
+    {
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
@@ -832,7 +712,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets rate
      *
-     * @param string|null $rate Price
+     * @param string|null $rate Order price in `want_type` units.
      *
      * @return $this
      */
@@ -856,7 +736,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string|null $amount Size
+     * @param string|null $amount Order size in cryptocurrency.
      *
      * @return $this
      */
@@ -880,7 +760,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets total
      *
-     * @param string|null $total Fiat amount
+     * @param string|null $total Total fiat amount of the order.
      *
      * @return $this
      */
@@ -904,7 +784,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order Status
+     * @param string|null $status Display status: `unpay` unpaid; `hide_payment` unpaid with payment info hidden; `paid` buyer paid; `unconfirmed` awaiting seller confirmation; `locked` locked; `finished` done; `cancel` canceled; `expired` expired; `bclosed` arbitration filled; `sclosed` arbitration canceled.
      *
      * @return $this
      */
@@ -928,7 +808,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets reason_id
      *
-     * @param string|null $reason_id Cancellation reason ID
+     * @param string|null $reason_id Cancel reason ID; empty string means none. Examples: `1` no longer want to buy; `2` cannot reach seller; `3` will not pay; `4` seller did not provide a real account; `6` price/amount mismatch; `9` other; `10` seller cannot release and refund issued; `11` terms not met; `12` seller payout account risk-controlled.
      *
      * @return $this
      */
@@ -952,37 +832,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets reason_desc
      *
-     * @param string|null $reason_desc Cancellation reason
+     * @param string|null $reason_desc Cancel reason description.
      *
      * @return $this
      */
     public function setReasonDesc($reason_desc)
     {
         $this->container['reason_desc'] = $reason_desc;
-
-        return $this;
-    }
-
-    /**
-     * Gets toast_id
-     *
-     * @return int|null
-     */
-    public function getToastId()
-    {
-        return $this->container['toast_id'];
-    }
-
-    /**
-     * Sets toast_id
-     *
-     * @param int|null $toast_id Popup ID
-     *
-     * @return $this
-     */
-    public function setToastId($toast_id)
-    {
-        $this->container['toast_id'] = $toast_id;
 
         return $this;
     }
@@ -1012,30 +868,6 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets seller_confirm
-     *
-     * @return int|null
-     */
-    public function getSellerConfirm()
-    {
-        return $this->container['seller_confirm'];
-    }
-
-    /**
-     * Sets seller_confirm
-     *
-     * @param int|null $seller_confirm Whether seller confirmed the reason
-     *
-     * @return $this
-     */
-    public function setSellerConfirm($seller_confirm)
-    {
-        $this->container['seller_confirm'] = $seller_confirm;
-
-        return $this;
-    }
-
-    /**
      * Gets in_appeal
      *
      * @return int|null
@@ -1048,7 +880,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets in_appeal
      *
-     * @param int|null $in_appeal Whether in dispute
+     * @param int|null $in_appeal Whether a dispute is active. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -1072,7 +904,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets dispute_time
      *
-     * @param int|null $dispute_time Appeal time limit
+     * @param int|null $dispute_time Earliest timestamp when a dispute may be opened.
      *
      * @return $this
      */
@@ -1096,7 +928,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets cancelable
      *
-     * @param int|null $cancelable Whether order cancellation is allowed
+     * @param int|null $cancelable Whether cancellation is allowed. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -1120,7 +952,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets hide_payment
      *
-     * @param int|null $hide_payment Whether to hide payment method
+     * @param int|null $hide_payment Whether payment methods are hidden. `1`: hidden; `0`: visible.
      *
      * @return $this
      */
@@ -1168,7 +1000,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets show_bank
      *
-     * @param string|null $show_bank Whether to display bank
+     * @param string|null $show_bank Whether to show bank transfer details. `1`: show; `0`: hide.
      *
      * @return $this
      */
@@ -1240,7 +1072,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets bankid
      *
-     * @param string|null $bankid Bank ID
+     * @param string|null $bankid Bank account or masked account.
      *
      * @return $this
      */
@@ -1288,7 +1120,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets show_ali
      *
-     * @param string|null $show_ali Whether to display Alipay
+     * @param string|null $show_ali Whether to show Alipay details. `1`: show; `0`: hide.
      *
      * @return $this
      */
@@ -1336,7 +1168,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets is_alicode
      *
-     * @param int|null $is_alicode Whether Alipay QR code exists
+     * @param int|null $is_alicode Whether an Alipay QR exists. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -1360,7 +1192,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets show_wechat
      *
-     * @param string|null $show_wechat Whether to display WeChat
+     * @param string|null $show_wechat Whether to show WeChat details. `1`: show; `0`: hide.
      *
      * @return $this
      */
@@ -1408,7 +1240,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets show_others
      *
-     * @param string|null $show_others Whether to display other payment methods
+     * @param string|null $show_others Whether to show other payment methods. `1`: show; `0`: hide.
      *
      * @return $this
      */
@@ -1422,7 +1254,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Gets pay_others
      *
-     * @return string[]|null
+     * @return \GateApi\Model\P2pTransactionDetailPayOthers[]|null
      */
     public function getPayOthers()
     {
@@ -1432,7 +1264,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets pay_others
      *
-     * @param string[]|null $pay_others Other payment methods
+     * @param \GateApi\Model\P2pTransactionDetailPayOthers[]|null $pay_others Other payment methods
      *
      * @return $this
      */
@@ -1456,7 +1288,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets sel_paytype
      *
-     * @param string|null $sel_paytype Payment type
+     * @param string|null $sel_paytype Selected payment type for this order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      *
      * @return $this
      */
@@ -1480,85 +1312,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets its_uid
      *
-     * @param string|null $its_uid Counterparty UID
+     * @param string|null $its_uid Counterparty crypto UID.
      *
      * @return $this
      */
     public function setItsUid($its_uid)
     {
         $this->container['its_uid'] = $its_uid;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_is_blue_vip
-     *
-     * @return int|null
-     */
-    public function getItsIsBlueVip()
-    {
-        return $this->container['its_is_blue_vip'];
-    }
-
-    /**
-     * Sets its_is_blue_vip
-     *
-     * @param int|null $its_is_blue_vip Whether counterparty is Blue V
-     *
-     * @return $this
-     */
-    public function setItsIsBlueVip($its_is_blue_vip)
-    {
-        $this->container['its_is_blue_vip'] = $its_is_blue_vip;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_tier
-     *
-     * @return int|null
-     */
-    public function getItsTier()
-    {
-        return $this->container['its_tier'];
-    }
-
-    /**
-     * Sets its_tier
-     *
-     * @param int|null $its_tier Counterparty VIP tier
-     *
-     * @return $this
-     */
-    public function setItsTier($its_tier)
-    {
-        $this->container['its_tier'] = $its_tier;
-
-        return $this;
-    }
-
-    /**
-     * Gets its_avatar
-     *
-     * @return string|null
-     */
-    public function getItsAvatar()
-    {
-        return $this->container['its_avatar'];
-    }
-
-    /**
-     * Sets its_avatar
-     *
-     * @param string|null $its_avatar Counterparty avatar
-     *
-     * @return $this
-     */
-    public function setItsAvatar($its_avatar)
-    {
-        $this->container['its_avatar'] = $its_avatar;
 
         return $this;
     }
@@ -1600,61 +1360,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets its_realname
      *
-     * @param string|null $its_realname Counterparty username
+     * @param string|null $its_realname Counterparty real name or verified display name.
      *
      * @return $this
      */
     public function setItsRealname($its_realname)
     {
         $this->container['its_realname'] = $its_realname;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_follow
-     *
-     * @return int|null
-     */
-    public function getIsFollow()
-    {
-        return $this->container['is_follow'];
-    }
-
-    /**
-     * Sets is_follow
-     *
-     * @param int|null $is_follow Whether following
-     *
-     * @return $this
-     */
-    public function setIsFollow($is_follow)
-    {
-        $this->container['is_follow'] = $is_follow;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_black
-     *
-     * @return int|null
-     */
-    public function getIsBlack()
-    {
-        return $this->container['is_black'];
-    }
-
-    /**
-     * Sets is_black
-     *
-     * @param int|null $is_black Whether blocked
-     *
-     * @return $this
-     */
-    public function setIsBlack($is_black)
-    {
-        $this->container['is_black'] = $is_black;
 
         return $this;
     }
@@ -1672,37 +1384,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets have_traded
      *
-     * @param int|null $have_traded Whether traded before
+     * @param int|null $have_traded Whether you traded with the counterparty before. `1`: yes; `0`: no.
      *
      * @return $this
      */
     public function setHaveTraded($have_traded)
     {
         $this->container['have_traded'] = $have_traded;
-
-        return $this;
-    }
-
-    /**
-     * Gets appeal_unread
-     *
-     * @return int|null
-     */
-    public function getAppealUnread()
-    {
-        return $this->container['appeal_unread'];
-    }
-
-    /**
-     * Sets appeal_unread
-     *
-     * @param int|null $appeal_unread Unread appeals
-     *
-     * @return $this
-     */
-    public function setAppealUnread($appeal_unread)
-    {
-        $this->container['appeal_unread'] = $appeal_unread;
 
         return $this;
     }
@@ -1720,7 +1408,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets appeal_allow_cancel
      *
-     * @param int|null $appeal_allow_cancel Whether appeal cancellation is allowed
+     * @param int|null $appeal_allow_cancel Whether the dispute can be withdrawn. `1`: allowed; `0`: not allowed.
      *
      * @return $this
      */
@@ -1744,7 +1432,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets appeal_verdict_has_open
      *
-     * @param string|null $appeal_verdict_has_open Appeal result (including pending appeals)
+     * @param string|null $appeal_verdict_has_open Dispute outcome or in-dispute notice text.
      *
      * @return $this
      */
@@ -1768,61 +1456,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets im_unread
      *
-     * @param int|null $im_unread IM unread
+     * @param int|null $im_unread Unread chat message count.
      *
      * @return $this
      */
     public function setImUnread($im_unread)
     {
         $this->container['im_unread'] = $im_unread;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message Review content
-     *
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets score
-     *
-     * @return string|null
-     */
-    public function getScore()
-    {
-        return $this->container['score'];
-    }
-
-    /**
-     * Sets score
-     *
-     * @param string|null $score Rating
-     *
-     * @return $this
-     */
-    public function setScore($score)
-    {
-        $this->container['score'] = $score;
 
         return $this;
     }
@@ -1852,174 +1492,6 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets complete_number
-     *
-     * @return int|null
-     */
-    public function getCompleteNumber()
-    {
-        return $this->container['complete_number'];
-    }
-
-    /**
-     * Sets complete_number
-     *
-     * @param int|null $complete_number Counterparty transaction volume
-     *
-     * @return $this
-     */
-    public function setCompleteNumber($complete_number)
-    {
-        $this->container['complete_number'] = $complete_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets complete_rate_month
-     *
-     * @return string|null
-     */
-    public function getCompleteRateMonth()
-    {
-        return $this->container['complete_rate_month'];
-    }
-
-    /**
-     * Sets complete_rate_month
-     *
-     * @param string|null $complete_rate_month Counterparty completion rate
-     *
-     * @return $this
-     */
-    public function setCompleteRateMonth($complete_rate_month)
-    {
-        $this->container['complete_rate_month'] = $complete_rate_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets check_journal_account
-     *
-     * @return bool|null
-     */
-    public function getCheckJournalAccount()
-    {
-        return $this->container['check_journal_account'];
-    }
-
-    /**
-     * Sets check_journal_account
-     *
-     * @param bool|null $check_journal_account Whether transaction record is verified
-     *
-     * @return $this
-     */
-    public function setCheckJournalAccount($check_journal_account)
-    {
-        $this->container['check_journal_account'] = $check_journal_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_journal_account
-     *
-     * @return bool|null
-     */
-    public function getShowJournalAccount()
-    {
-        return $this->container['show_journal_account'];
-    }
-
-    /**
-     * Sets show_journal_account
-     *
-     * @param bool|null $show_journal_account Whether to display transaction records
-     *
-     * @return $this
-     */
-    public function setShowJournalAccount($show_journal_account)
-    {
-        $this->container['show_journal_account'] = $show_journal_account;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_freeze_guarantee
-     *
-     * @return int|null
-     */
-    public function getIsFreezeGuarantee()
-    {
-        return $this->container['is_freeze_guarantee'];
-    }
-
-    /**
-     * Sets is_freeze_guarantee
-     *
-     * @param int|null $is_freeze_guarantee Whether margin is frozen
-     *
-     * @return $this
-     */
-    public function setIsFreezeGuarantee($is_freeze_guarantee)
-    {
-        $this->container['is_freeze_guarantee'] = $is_freeze_guarantee;
-
-        return $this;
-    }
-
-    /**
-     * Gets usdt_left_guarantee
-     *
-     * @return string|null
-     */
-    public function getUsdtLeftGuarantee()
-    {
-        return $this->container['usdt_left_guarantee'];
-    }
-
-    /**
-     * Sets usdt_left_guarantee
-     *
-     * @param string|null $usdt_left_guarantee Remaining USDT margin
-     *
-     * @return $this
-     */
-    public function setUsdtLeftGuarantee($usdt_left_guarantee)
-    {
-        $this->container['usdt_left_guarantee'] = $usdt_left_guarantee;
-
-        return $this;
-    }
-
-    /**
-     * Gets guarantee_curr_type
-     *
-     * @return string|null
-     */
-    public function getGuaranteeCurrType()
-    {
-        return $this->container['guarantee_curr_type'];
-    }
-
-    /**
-     * Sets guarantee_curr_type
-     *
-     * @param string|null $guarantee_curr_type Margin currency type
-     *
-     * @return $this
-     */
-    public function setGuaranteeCurrType($guarantee_curr_type)
-    {
-        $this->container['guarantee_curr_type'] = $guarantee_curr_type;
-
-        return $this;
-    }
-
-    /**
      * Gets timest_paid
      *
      * @return int|null
@@ -2032,61 +1504,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets timest_paid
      *
-     * @param int|null $timest_paid Payment time
+     * @param int|null $timest_paid Timestamp when the buyer confirmed payment.
      *
      * @return $this
      */
     public function setTimestPaid($timest_paid)
     {
         $this->container['timest_paid'] = $timest_paid;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return string|null
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param string|null $state Order Status
-     *
-     * @return $this
-     */
-    public function setState($state)
-    {
-        $this->container['state'] = $state;
-
-        return $this;
-    }
-
-    /**
-     * Gets release_coin_switch
-     *
-     * @return int|null
-     */
-    public function getReleaseCoinSwitch()
-    {
-        return $this->container['release_coin_switch'];
-    }
-
-    /**
-     * Sets release_coin_switch
-     *
-     * @param int|null $release_coin_switch Coin release switch configuration
-     *
-     * @return $this
-     */
-    public function setReleaseCoinSwitch($release_coin_switch)
-    {
-        $this->container['release_coin_switch'] = $release_coin_switch;
 
         return $this;
     }
@@ -2104,85 +1528,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets own_realname
      *
-     * @param string|null $own_realname Username
+     * @param string|null $own_realname Current user's real name or verified display name.
      *
      * @return $this
      */
     public function setOwnRealname($own_realname)
     {
         $this->container['own_realname'] = $own_realname;
-
-        return $this;
-    }
-
-    /**
-     * Gets confirmation_use_time_month
-     *
-     * @return int|null
-     */
-    public function getConfirmationUseTimeMonth()
-    {
-        return $this->container['confirmation_use_time_month'];
-    }
-
-    /**
-     * Sets confirmation_use_time_month
-     *
-     * @param int|null $confirmation_use_time_month Average confirmation time in last 30 days
-     *
-     * @return $this
-     */
-    public function setConfirmationUseTimeMonth($confirmation_use_time_month)
-    {
-        $this->container['confirmation_use_time_month'] = $confirmation_use_time_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_risk_user
-     *
-     * @return int|null
-     */
-    public function getIsRiskUser()
-    {
-        return $this->container['is_risk_user'];
-    }
-
-    /**
-     * Sets is_risk_user
-     *
-     * @param int|null $is_risk_user Whether risk user
-     *
-     * @return $this
-     */
-    public function setIsRiskUser($is_risk_user)
-    {
-        $this->container['is_risk_user'] = $is_risk_user;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_xt
-     *
-     * @return int|null
-     */
-    public function getIsXt()
-    {
-        return $this->container['is_xt'];
-    }
-
-    /**
-     * Sets is_xt
-     *
-     * @param int|null $is_xt Whether XT order
-     *
-     * @return $this
-     */
-    public function setIsXt($is_xt)
-    {
-        $this->container['is_xt'] = $is_xt;
 
         return $this;
     }
@@ -2200,37 +1552,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets order_type
      *
-     * @param int|null $order_type Order Type
+     * @param int|null $order_type Order type: `1` standard; `2` partner; `3` flash swap; `4` Web3.
      *
      * @return $this
      */
     public function setOrderType($order_type)
     {
         $this->container['order_type'] = $order_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets symbol
-     *
-     * @return string|null
-     */
-    public function getSymbol()
-    {
-        return $this->container['symbol'];
-    }
-
-    /**
-     * Sets symbol
-     *
-     * @param string|null $symbol Fiat currency symbol
-     *
-     * @return $this
-     */
-    public function setSymbol($symbol)
-    {
-        $this->container['symbol'] = $symbol;
 
         return $this;
     }
@@ -2248,61 +1576,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets is_show_receive
      *
-     * @param int|null $is_show_receive Whether to show confirm receipt during appeal
+     * @param int|null $is_show_receive Whether to show confirm-receipt during dispute. `1`: show; `0`: hide.
      *
      * @return $this
      */
     public function setIsShowReceive($is_show_receive)
     {
         $this->container['is_show_receive'] = $is_show_receive;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_taker
-     *
-     * @return int|null
-     */
-    public function getIsTaker()
-    {
-        return $this->container['is_taker'];
-    }
-
-    /**
-     * Sets is_taker
-     *
-     * @param int|null $is_taker Whether regular user
-     *
-     * @return $this
-     */
-    public function setIsTaker($is_taker)
-    {
-        $this->container['is_taker'] = $is_taker;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_online
-     *
-     * @return int|null
-     */
-    public function getIsOnline()
-    {
-        return $this->container['is_online'];
-    }
-
-    /**
-     * Sets is_online
-     *
-     * @param int|null $is_online Merchant online status
-     *
-     * @return $this
-     */
-    public function setIsOnline($is_online)
-    {
-        $this->container['is_online'] = $is_online;
 
         return $this;
     }
@@ -2344,7 +1624,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets supported_pay_types
      *
-     * @param string[]|null $supported_pay_types Payment methods supported by current order
+     * @param string[]|null $supported_pay_types Supported payment method types for the order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      *
      * @return $this
      */

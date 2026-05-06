@@ -963,7 +963,7 @@ $apiInstance = new GateApi\Api\WalletApi(
 $associate_array['currency'] = 'USDT'; // string | Currency
 $associate_array['chain'] = ''; // string | Chain name
 $associate_array['limit'] = '50'; // string | Maximum number returned, up to 100
-$associate_array['page'] = 1; // int | Page number
+$associate_array['page'] = 1; // int | page number
 
 try {
     $result = $apiInstance->listSavedAddress($associate_array);
@@ -986,7 +986,7 @@ Name | Type | Description  | Notes
  **currency** | **string**| Currency |
  **chain** | **string**| Chain name | [optional] [default to &#39;&#39;]
  **limit** | **string**| Maximum number returned, up to 100 | [optional] [default to &#39;50&#39;]
- **page** | **int**| Page number | [optional] [default to 1]
+ **page** | **int**| page number | [optional] [default to 1]
 
 ### Return type
 

@@ -376,7 +376,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
     /**
      * Sets max_single_trans_amount
      *
-     * @param string|null $max_single_trans_amount Maximum Cryptocurrency Amount
+     * @param string|null $max_single_trans_amount Maximum crypto size per trade.
      *
      * @return $this
      */
@@ -400,7 +400,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
     /**
      * Sets min_single_trans_amount
      *
-     * @param string|null $min_single_trans_amount Minimum Cryptocurrency Amount
+     * @param string|null $min_single_trans_amount Minimum crypto size per trade.
      *
      * @return $this
      */

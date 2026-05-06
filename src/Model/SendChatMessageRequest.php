@@ -166,8 +166,23 @@ class SendChatMessageRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const TYPE_0 = 0;
+    const TYPE_1 = 1;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_0,
+            self::TYPE_1,
+        ];
+    }
     
 
     /**
@@ -202,6 +217,14 @@ class SendChatMessageRequest implements ModelInterface, ArrayAccess
         if ($this->container['txid'] === null) {
             $invalidProperties[] = "'txid' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
         }
@@ -257,12 +280,21 @@ class SendChatMessageRequest implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param int|null $type 0=Text, 1=File (video or image), default is 0 if not provided
+     * @param int|null $type Message type: `0` text; `1` file (image or video); defaults to `0`.
      *
      * @return $this
      */
     public function setType($type)
     {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['type'] = $type;
 
         return $this;
@@ -281,7 +313,7 @@ class SendChatMessageRequest implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message Message content
+     * @param string $message Message body. For `type=0`, plain text up to 500 characters; for `type=1`, pass the `file_key` returned by `upload_chat_file`.
      *
      * @return $this
      */

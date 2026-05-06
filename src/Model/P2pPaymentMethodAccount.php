@@ -144,7 +144,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
         'bankprov' => 'bankprov',
         'bankaddr' => 'bankaddr',
         'bankdesc' => 'bankdesc',
-        'hold_uid' => 'holdUid',
+        'hold_uid' => 'hold_uid',
         'hold_username' => 'hold_username',
         'real_name' => 'real_name',
         'id' => 'id',
@@ -508,7 +508,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
     /**
      * Sets bankaddr
      *
-     * @param string|null $bankaddr Bank card number
+     * @param string|null $bankaddr Bank card number or masked card number.
      *
      * @return $this
      */
@@ -604,7 +604,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
     /**
      * Sets real_name
      *
-     * @param string|null $real_name userfirst name
+     * @param string|null $real_name User verified display name.
      *
      * @return $this
      */
@@ -748,7 +748,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param string|null $account Payment method name
+     * @param string|null $account Payment account or masked payment account.
      *
      * @return $this
      */

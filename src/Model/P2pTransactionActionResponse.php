@@ -54,9 +54,12 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'timestamp' => 'float',
+        'method' => 'string',
         'code' => 'int',
         'message' => 'string',
-        'timestamp' => 'int'
+        'data' => 'object',
+        'version' => 'string'
     ];
 
     /**
@@ -65,9 +68,12 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'timestamp' => null,
+        'method' => null,
         'code' => null,
         'message' => null,
-        'timestamp' => null
+        'data' => null,
+        'version' => null
     ];
 
     /**
@@ -97,9 +103,12 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'timestamp' => 'timestamp',
+        'method' => 'method',
         'code' => 'code',
         'message' => 'message',
-        'timestamp' => 'timestamp'
+        'data' => 'data',
+        'version' => 'version'
     ];
 
     /**
@@ -108,9 +117,12 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'timestamp' => 'setTimestamp',
+        'method' => 'setMethod',
         'code' => 'setCode',
         'message' => 'setMessage',
-        'timestamp' => 'setTimestamp'
+        'data' => 'setData',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -119,9 +131,12 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'timestamp' => 'getTimestamp',
+        'method' => 'getMethod',
         'code' => 'getCode',
         'message' => 'getMessage',
-        'timestamp' => 'getTimestamp'
+        'data' => 'getData',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -184,9 +199,12 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
     }
 
     /**
@@ -214,6 +232,54 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets timestamp
+     *
+     * @return float|null
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param float|null $timestamp Response timestamp.
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
+
+        return $this;
+    }
+
+    /**
+     * Gets method
+     *
+     * @return string|null
+     */
+    public function getMethod()
+    {
+        return $this->container['method'];
+    }
+
+    /**
+     * Sets method
+     *
+     * @param string|null $method Placeholder for request method.
+     *
+     * @return $this
+     */
+    public function setMethod($method)
+    {
+        $this->container['method'] = $method;
+
+        return $this;
+    }
+
+    /**
      * Gets code
      *
      * @return int|null
@@ -226,7 +292,7 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int|null $code code
+     * @param int|null $code Response code, 0 means success
      *
      * @return $this
      */
@@ -250,7 +316,7 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string|null $message message
+     * @param string|null $message Response message
      *
      * @return $this
      */
@@ -262,25 +328,49 @@ class P2pTransactionActionResponse implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets timestamp
+     * Gets data
      *
-     * @return int|null
+     * @return object|null
      */
-    public function getTimestamp()
+    public function getData()
     {
-        return $this->container['timestamp'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets timestamp
+     * Sets data
      *
-     * @param int|null $timestamp timestamp
+     * @param object|null $data Empty object on success.
      *
      * @return $this
      */
-    public function setTimestamp($timestamp)
+    public function setData($data)
     {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string|null $version API version.
+     *
+     * @return $this
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }

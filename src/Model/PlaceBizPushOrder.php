@@ -70,7 +70,6 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'verified_limit' => 'string',
         'reg_time_limit' => 'string',
         'advertisers_limit' => 'string',
-        'hide_payment' => 'string',
         'expire_min' => 'string',
         'trade_tips' => 'string',
         'auto_reply' => 'string',
@@ -81,7 +80,8 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'user_order_limit' => 'string',
         'rate_reference_id' => 'string',
         'rate_offset' => 'string',
-        'float_trend' => 'string'
+        'float_trend' => 'string',
+        'team_payment_uid' => 'string'
     ];
 
     /**
@@ -105,7 +105,6 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'verified_limit' => null,
         'reg_time_limit' => null,
         'advertisers_limit' => null,
-        'hide_payment' => null,
         'expire_min' => null,
         'trade_tips' => null,
         'auto_reply' => null,
@@ -116,7 +115,8 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'user_order_limit' => null,
         'rate_reference_id' => null,
         'rate_offset' => null,
-        'float_trend' => null
+        'float_trend' => null,
+        'team_payment_uid' => null
     ];
 
     /**
@@ -161,7 +161,6 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'verified_limit' => 'verifiedLimit',
         'reg_time_limit' => 'regTimeLimit',
         'advertisers_limit' => 'advertisersLimit',
-        'hide_payment' => 'hide_payment',
         'expire_min' => 'expire_min',
         'trade_tips' => 'trade_tips',
         'auto_reply' => 'auto_reply',
@@ -172,7 +171,8 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'user_order_limit' => 'user_order_limit',
         'rate_reference_id' => 'rateReferenceId',
         'rate_offset' => 'rateOffset',
-        'float_trend' => 'float_trend'
+        'float_trend' => 'float_trend',
+        'team_payment_uid' => 'team_payment_uid'
     ];
 
     /**
@@ -196,7 +196,6 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'verified_limit' => 'setVerifiedLimit',
         'reg_time_limit' => 'setRegTimeLimit',
         'advertisers_limit' => 'setAdvertisersLimit',
-        'hide_payment' => 'setHidePayment',
         'expire_min' => 'setExpireMin',
         'trade_tips' => 'setTradeTips',
         'auto_reply' => 'setAutoReply',
@@ -207,7 +206,8 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'user_order_limit' => 'setUserOrderLimit',
         'rate_reference_id' => 'setRateReferenceId',
         'rate_offset' => 'setRateOffset',
-        'float_trend' => 'setFloatTrend'
+        'float_trend' => 'setFloatTrend',
+        'team_payment_uid' => 'setTeamPaymentUid'
     ];
 
     /**
@@ -231,7 +231,6 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'verified_limit' => 'getVerifiedLimit',
         'reg_time_limit' => 'getRegTimeLimit',
         'advertisers_limit' => 'getAdvertisersLimit',
-        'hide_payment' => 'getHidePayment',
         'expire_min' => 'getExpireMin',
         'trade_tips' => 'getTradeTips',
         'auto_reply' => 'getAutoReply',
@@ -242,7 +241,8 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'user_order_limit' => 'getUserOrderLimit',
         'rate_reference_id' => 'getRateReferenceId',
         'rate_offset' => 'getRateOffset',
-        'float_trend' => 'getFloatTrend'
+        'float_trend' => 'getFloatTrend',
+        'team_payment_uid' => 'getTeamPaymentUid'
     ];
 
     /**
@@ -286,8 +286,27 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const TYPE__0 = '0';
+    const TYPE__1 = '1';
+    const TYPE__2 = '2';
+    const TYPE__3 = '3';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE__0,
+            self::TYPE__1,
+            self::TYPE__2,
+            self::TYPE__3,
+        ];
+    }
     
 
     /**
@@ -320,7 +339,6 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         $this->container['verified_limit'] = isset($data['verified_limit']) ? $data['verified_limit'] : null;
         $this->container['reg_time_limit'] = isset($data['reg_time_limit']) ? $data['reg_time_limit'] : null;
         $this->container['advertisers_limit'] = isset($data['advertisers_limit']) ? $data['advertisers_limit'] : null;
-        $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
         $this->container['expire_min'] = isset($data['expire_min']) ? $data['expire_min'] : null;
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
         $this->container['auto_reply'] = isset($data['auto_reply']) ? $data['auto_reply'] : null;
@@ -332,6 +350,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         $this->container['rate_reference_id'] = isset($data['rate_reference_id']) ? $data['rate_reference_id'] : null;
         $this->container['rate_offset'] = isset($data['rate_offset']) ? $data['rate_offset'] : null;
         $this->container['float_trend'] = isset($data['float_trend']) ? $data['float_trend'] : null;
+        $this->container['team_payment_uid'] = isset($data['team_payment_uid']) ? $data['team_payment_uid'] : null;
     }
 
     /**
@@ -352,6 +371,14 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['unit_price'] === null) {
             $invalidProperties[] = "'unit_price' can't be null";
         }
@@ -395,7 +422,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets currency_type
      *
-     * @param string $currency_type Cryptocurrency
+     * @param string $currency_type Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -443,12 +470,21 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type Ad type: 0=Sell, 1=Buy, 2=Edit sell, 3=Edit buy
+     * @param string $type Ad operation type. `0`: publish sell ad; `1`: publish buy ad; `2`: edit sell ad; `3`: edit buy ad.
      *
      * @return $this
      */
     public function setType($type)
     {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['type'] = $type;
 
         return $this;
@@ -467,7 +503,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets unit_price
      *
-     * @param string $unit_price Unit price
+     * @param string $unit_price Per-unit price in fixed-price mode.
      *
      * @return $this
      */
@@ -491,7 +527,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets number
      *
-     * @param string $number Size
+     * @param string $number Ad amount priced in `currencyType`.
      *
      * @return $this
      */
@@ -515,7 +551,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets pay_type
      *
-     * @param string $pay_type Payment method
+     * @param string $pay_type Payment types, comma-separated; from pay type list `pay_type`, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      *
      * @return $this
      */
@@ -539,7 +575,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets pay_type_json
      *
-     * @param string|null $pay_type_json Payment method JSON string
+     * @param string|null $pay_type_json JSON map of payment type -> user's payment method ID.
      *
      * @return $this
      */
@@ -563,7 +599,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets rate_fixed
      *
-     * @param string|null $rate_fixed Price type: 0-Floating price, 1-Fixed price
+     * @param string|null $rate_fixed Price type: `0` floating; `1` fixed.
      *
      * @return $this
      */
@@ -587,7 +623,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets oid
      *
-     * @param string|null $oid Ad ID when editing
+     * @param string|null $oid Pass ad ID when editing; omit or empty when publishing a new ad.
      *
      * @return $this
      */
@@ -611,7 +647,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets min_amount
      *
-     * @param string $min_amount Minimum transaction amount per order
+     * @param string $min_amount Minimum trade amount in `exchangeType`.
      *
      * @return $this
      */
@@ -635,7 +671,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets max_amount
      *
-     * @param string $max_amount Maximum transaction amount per order
+     * @param string $max_amount Maximum amount per trade in `exchangeType` fiat units.
      *
      * @return $this
      */
@@ -659,7 +695,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets tier_limit
      *
-     * @param string|null $tier_limit Order tier limit
+     * @param string|null $tier_limit Minimum counterparty VIP level; `0` means no requirement.
      *
      * @return $this
      */
@@ -683,7 +719,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets verified_limit
      *
-     * @param string|null $verified_limit Verification level limit
+     * @param string|null $verified_limit Minimum counterparty verification level; `0` means no limit.
      *
      * @return $this
      */
@@ -707,7 +743,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets reg_time_limit
      *
-     * @param string|null $reg_time_limit Registration time limit
+     * @param string|null $reg_time_limit Minimum counterparty account age in days; `0` means no limit.
      *
      * @return $this
      */
@@ -731,37 +767,13 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets advertisers_limit
      *
-     * @param string|null $advertisers_limit Advertiser restriction
+     * @param string|null $advertisers_limit Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
      *
      * @return $this
      */
     public function setAdvertisersLimit($advertisers_limit)
     {
         $this->container['advertisers_limit'] = $advertisers_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets hide_payment
-     *
-     * @return string|null
-     */
-    public function getHidePayment()
-    {
-        return $this->container['hide_payment'];
-    }
-
-    /**
-     * Sets hide_payment
-     *
-     * @param string|null $hide_payment Whether to hide payment method: 1=Yes, 0=No
-     *
-     * @return $this
-     */
-    public function setHidePayment($hide_payment)
-    {
-        $this->container['hide_payment'] = $hide_payment;
 
         return $this;
     }
@@ -779,7 +791,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets expire_min
      *
-     * @param string|null $expire_min Ad expiration time (minutes)
+     * @param string|null $expire_min Payment timeout in minutes.
      *
      * @return $this
      */
@@ -803,7 +815,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets trade_tips
      *
-     * @param string|null $trade_tips Trading terms
+     * @param string|null $trade_tips Ad trading terms shown to the taker.
      *
      * @return $this
      */
@@ -827,7 +839,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets auto_reply
      *
-     * @param string|null $auto_reply Auto reply
+     * @param string|null $auto_reply Auto-reply message after order creation.
      *
      * @return $this
      */
@@ -851,7 +863,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets min_completed_limit
      *
-     * @param string|null $min_completed_limit Minimum limit of completed orders
+     * @param string|null $min_completed_limit Minimum completed orders for counterparty; `-1` unlimited.
      *
      * @return $this
      */
@@ -875,7 +887,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets max_completed_limit
      *
-     * @param string|null $max_completed_limit Maximum limit of completed orders
+     * @param string|null $max_completed_limit Maximum completed orders for counterparty; `-1` unlimited.
      *
      * @return $this
      */
@@ -899,7 +911,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets completed_rate_limit
      *
-     * @param string|null $completed_rate_limit 30-day completion rate limit
+     * @param string|null $completed_rate_limit Counterparty minimum 30-day completion rate; `-1` means no limit.
      *
      * @return $this
      */
@@ -923,7 +935,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets user_country_limit
      *
-     * @param string|null $user_country_limit KYC nationality restriction
+     * @param string|null $user_country_limit KYC nationality restriction; `-1` means no restriction.
      *
      * @return $this
      */
@@ -947,7 +959,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets user_order_limit
      *
-     * @param string|null $user_order_limit Order count limit
+     * @param string|null $user_order_limit Maximum concurrent orders allowed for the counterparty. `-1`: unlimited.
      *
      * @return $this
      */
@@ -971,7 +983,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets rate_reference_id
      *
-     * @param string|null $rate_reference_id Reference exchange rate ID
+     * @param string|null $rate_reference_id Floating price reference. `1`: platform reference; `2`: Gate reference; `3`: spot reference.
      *
      * @return $this
      */
@@ -995,7 +1007,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets rate_offset
      *
-     * @param string|null $rate_offset Reference exchange rate offset
+     * @param string|null $rate_offset Absolute floating offset ratio, e.g. `0.5` means 0.5%.
      *
      * @return $this
      */
@@ -1019,13 +1031,37 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets float_trend
      *
-     * @param string|null $float_trend 444
+     * @param string|null $float_trend Floating direction: `0` markup; `1` markdown.
      *
      * @return $this
      */
     public function setFloatTrend($float_trend)
     {
         $this->container['float_trend'] = $float_trend;
+
+        return $this;
+    }
+
+    /**
+     * Gets team_payment_uid
+     *
+     * @return string|null
+     */
+    public function getTeamPaymentUid()
+    {
+        return $this->container['team_payment_uid'];
+    }
+
+    /**
+     * Sets team_payment_uid
+     *
+     * @param string|null $team_payment_uid Team payee UID; optional for non-team merchants.
+     *
+     * @return $this
+     */
+    public function setTeamPaymentUid($team_payment_uid)
+    {
+        $this->container['team_payment_uid'] = $team_payment_uid;
 
         return $this;
     }

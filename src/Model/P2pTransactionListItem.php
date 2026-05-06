@@ -57,61 +57,24 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
         'type_buy' => 'int',
         'timest' => 'string',
         'timest_expire' => 'string',
-        'type' => 'string',
-        'trade_type' => 'string',
         'timestamp' => 'int',
         'rate' => 'string',
         'amount' => 'string',
         'total' => 'string',
         'txid' => 'int',
         'status' => 'string',
-        'order_status' => 'string',
         'its_realname' => 'string',
         'its_uid' => 'string',
         'its_nick' => 'string',
-        'user_note' => 'string',
-        'show_bank' => 'string',
-        'bankname' => 'string',
-        'bankbranch' => 'string',
         'seller_realname' => 'string',
         'buyer_realname' => 'string',
-        'bankid' => 'string',
-        'bank_holder_realname' => 'string',
-        'show_ali' => 'int',
-        'aliname' => 'string',
-        'show_wechat' => 'int',
-        'wename' => 'string',
-        'is_alicode' => 'int',
-        'dispute_time' => 'int',
         'cancelable' => 'int',
-        'black_uid' => 'string',
-        'black_name' => 'string',
-        'memo' => 'string',
-        'is_follow' => 'int',
-        'is_black' => 'bool',
         'currency_type' => 'string',
         'want_type' => 'string',
-        'is_hedge' => 'int',
         'hide_payment' => 'int',
         'sel_paytype' => 'string',
-        'show_others' => 'int',
-        'pay_others' => 'string[]',
-        'trade_tips' => 'string',
-        'appeal_unread' => 'int',
-        'im_unread' => 'int',
-        'in_dispute' => 'bool',
-        'reason_id' => 'string',
-        'reason_memo' => 'string',
-        'cancel_time' => 'string',
-        'seller_confirm' => 'int',
-        'toast_id' => 'int',
-        'dispute_reback' => 'int',
-        'score' => 'string',
-        'message' => 'string',
-        'release_coin_switch' => 'int',
-        'tier' => 'int',
-        'blue_vip' => 'int',
-        'od_time' => 'int',
+        'pay_others' => '\GateApi\Model\P2pTransactionListResultPayOthers[]',
+        'cd_time' => 'int',
         'order_type' => 'int',
         'order_tag' => 'string[]',
         'convert_info' => '\GateApi\Model\P2pTransactionConvertInfo'
@@ -126,61 +89,24 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
         'type_buy' => null,
         'timest' => null,
         'timest_expire' => null,
-        'type' => null,
-        'trade_type' => null,
         'timestamp' => null,
         'rate' => null,
         'amount' => null,
         'total' => null,
         'txid' => null,
         'status' => null,
-        'order_status' => null,
         'its_realname' => null,
         'its_uid' => null,
         'its_nick' => null,
-        'user_note' => null,
-        'show_bank' => null,
-        'bankname' => null,
-        'bankbranch' => null,
         'seller_realname' => null,
         'buyer_realname' => null,
-        'bankid' => null,
-        'bank_holder_realname' => null,
-        'show_ali' => null,
-        'aliname' => null,
-        'show_wechat' => null,
-        'wename' => null,
-        'is_alicode' => null,
-        'dispute_time' => null,
         'cancelable' => null,
-        'black_uid' => null,
-        'black_name' => null,
-        'memo' => null,
-        'is_follow' => null,
-        'is_black' => null,
         'currency_type' => null,
         'want_type' => null,
-        'is_hedge' => null,
         'hide_payment' => null,
         'sel_paytype' => null,
-        'show_others' => null,
         'pay_others' => null,
-        'trade_tips' => null,
-        'appeal_unread' => null,
-        'im_unread' => null,
-        'in_dispute' => null,
-        'reason_id' => null,
-        'reason_memo' => null,
-        'cancel_time' => null,
-        'seller_confirm' => null,
-        'toast_id' => null,
-        'dispute_reback' => null,
-        'score' => null,
-        'message' => null,
-        'release_coin_switch' => null,
-        'tier' => null,
-        'blue_vip' => null,
-        'od_time' => null,
+        'cd_time' => null,
         'order_type' => null,
         'order_tag' => null,
         'convert_info' => null
@@ -216,61 +142,24 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
         'type_buy' => 'type_buy',
         'timest' => 'timest',
         'timest_expire' => 'timest_expire',
-        'type' => 'type',
-        'trade_type' => 'trade_type',
         'timestamp' => 'timestamp',
         'rate' => 'rate',
         'amount' => 'amount',
         'total' => 'total',
         'txid' => 'txid',
         'status' => 'status',
-        'order_status' => 'order_status',
         'its_realname' => 'its_realname',
         'its_uid' => 'its_uid',
         'its_nick' => 'its_nick',
-        'user_note' => 'user_note',
-        'show_bank' => 'show_bank',
-        'bankname' => 'bankname',
-        'bankbranch' => 'bankbranch',
-        'seller_realname' => 'sellerRealname',
-        'buyer_realname' => 'buyerRealname',
-        'bankid' => 'bankid',
-        'bank_holder_realname' => 'bank_holder_realname',
-        'show_ali' => 'show_ali',
-        'aliname' => 'aliname',
-        'show_wechat' => 'show_wechat',
-        'wename' => 'wename',
-        'is_alicode' => 'is_alicode',
-        'dispute_time' => 'dispute_time',
+        'seller_realname' => 'seller_realname',
+        'buyer_realname' => 'buyer_realname',
         'cancelable' => 'cancelable',
-        'black_uid' => 'black_uid',
-        'black_name' => 'black_name',
-        'memo' => 'memo',
-        'is_follow' => 'is_follow',
-        'is_black' => 'is_black',
-        'currency_type' => 'currencyType',
+        'currency_type' => 'currency_type',
         'want_type' => 'want_type',
-        'is_hedge' => 'is_hedge',
         'hide_payment' => 'hide_payment',
         'sel_paytype' => 'sel_paytype',
-        'show_others' => 'show_others',
         'pay_others' => 'pay_others',
-        'trade_tips' => 'trade_tips',
-        'appeal_unread' => 'appeal_unread',
-        'im_unread' => 'im_unread',
-        'in_dispute' => 'in_dispute',
-        'reason_id' => 'reason_id',
-        'reason_memo' => 'reason_memo',
-        'cancel_time' => 'cancel_time',
-        'seller_confirm' => 'seller_confirm',
-        'toast_id' => 'toast_id',
-        'dispute_reback' => 'dispute_reback',
-        'score' => 'score',
-        'message' => 'message',
-        'release_coin_switch' => 'release_coin_switch',
-        'tier' => 'tier',
-        'blue_vip' => 'blue_vip',
-        'od_time' => 'od_time',
+        'cd_time' => 'cd_time',
         'order_type' => 'order_type',
         'order_tag' => 'order_tag',
         'convert_info' => 'convert_info'
@@ -285,61 +174,24 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
         'type_buy' => 'setTypeBuy',
         'timest' => 'setTimest',
         'timest_expire' => 'setTimestExpire',
-        'type' => 'setType',
-        'trade_type' => 'setTradeType',
         'timestamp' => 'setTimestamp',
         'rate' => 'setRate',
         'amount' => 'setAmount',
         'total' => 'setTotal',
         'txid' => 'setTxid',
         'status' => 'setStatus',
-        'order_status' => 'setOrderStatus',
         'its_realname' => 'setItsRealname',
         'its_uid' => 'setItsUid',
         'its_nick' => 'setItsNick',
-        'user_note' => 'setUserNote',
-        'show_bank' => 'setShowBank',
-        'bankname' => 'setBankname',
-        'bankbranch' => 'setBankbranch',
         'seller_realname' => 'setSellerRealname',
         'buyer_realname' => 'setBuyerRealname',
-        'bankid' => 'setBankid',
-        'bank_holder_realname' => 'setBankHolderRealname',
-        'show_ali' => 'setShowAli',
-        'aliname' => 'setAliname',
-        'show_wechat' => 'setShowWechat',
-        'wename' => 'setWename',
-        'is_alicode' => 'setIsAlicode',
-        'dispute_time' => 'setDisputeTime',
         'cancelable' => 'setCancelable',
-        'black_uid' => 'setBlackUid',
-        'black_name' => 'setBlackName',
-        'memo' => 'setMemo',
-        'is_follow' => 'setIsFollow',
-        'is_black' => 'setIsBlack',
         'currency_type' => 'setCurrencyType',
         'want_type' => 'setWantType',
-        'is_hedge' => 'setIsHedge',
         'hide_payment' => 'setHidePayment',
         'sel_paytype' => 'setSelPaytype',
-        'show_others' => 'setShowOthers',
         'pay_others' => 'setPayOthers',
-        'trade_tips' => 'setTradeTips',
-        'appeal_unread' => 'setAppealUnread',
-        'im_unread' => 'setImUnread',
-        'in_dispute' => 'setInDispute',
-        'reason_id' => 'setReasonId',
-        'reason_memo' => 'setReasonMemo',
-        'cancel_time' => 'setCancelTime',
-        'seller_confirm' => 'setSellerConfirm',
-        'toast_id' => 'setToastId',
-        'dispute_reback' => 'setDisputeReback',
-        'score' => 'setScore',
-        'message' => 'setMessage',
-        'release_coin_switch' => 'setReleaseCoinSwitch',
-        'tier' => 'setTier',
-        'blue_vip' => 'setBlueVip',
-        'od_time' => 'setOdTime',
+        'cd_time' => 'setCdTime',
         'order_type' => 'setOrderType',
         'order_tag' => 'setOrderTag',
         'convert_info' => 'setConvertInfo'
@@ -354,61 +206,24 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
         'type_buy' => 'getTypeBuy',
         'timest' => 'getTimest',
         'timest_expire' => 'getTimestExpire',
-        'type' => 'getType',
-        'trade_type' => 'getTradeType',
         'timestamp' => 'getTimestamp',
         'rate' => 'getRate',
         'amount' => 'getAmount',
         'total' => 'getTotal',
         'txid' => 'getTxid',
         'status' => 'getStatus',
-        'order_status' => 'getOrderStatus',
         'its_realname' => 'getItsRealname',
         'its_uid' => 'getItsUid',
         'its_nick' => 'getItsNick',
-        'user_note' => 'getUserNote',
-        'show_bank' => 'getShowBank',
-        'bankname' => 'getBankname',
-        'bankbranch' => 'getBankbranch',
         'seller_realname' => 'getSellerRealname',
         'buyer_realname' => 'getBuyerRealname',
-        'bankid' => 'getBankid',
-        'bank_holder_realname' => 'getBankHolderRealname',
-        'show_ali' => 'getShowAli',
-        'aliname' => 'getAliname',
-        'show_wechat' => 'getShowWechat',
-        'wename' => 'getWename',
-        'is_alicode' => 'getIsAlicode',
-        'dispute_time' => 'getDisputeTime',
         'cancelable' => 'getCancelable',
-        'black_uid' => 'getBlackUid',
-        'black_name' => 'getBlackName',
-        'memo' => 'getMemo',
-        'is_follow' => 'getIsFollow',
-        'is_black' => 'getIsBlack',
         'currency_type' => 'getCurrencyType',
         'want_type' => 'getWantType',
-        'is_hedge' => 'getIsHedge',
         'hide_payment' => 'getHidePayment',
         'sel_paytype' => 'getSelPaytype',
-        'show_others' => 'getShowOthers',
         'pay_others' => 'getPayOthers',
-        'trade_tips' => 'getTradeTips',
-        'appeal_unread' => 'getAppealUnread',
-        'im_unread' => 'getImUnread',
-        'in_dispute' => 'getInDispute',
-        'reason_id' => 'getReasonId',
-        'reason_memo' => 'getReasonMemo',
-        'cancel_time' => 'getCancelTime',
-        'seller_confirm' => 'getSellerConfirm',
-        'toast_id' => 'getToastId',
-        'dispute_reback' => 'getDisputeReback',
-        'score' => 'getScore',
-        'message' => 'getMessage',
-        'release_coin_switch' => 'getReleaseCoinSwitch',
-        'tier' => 'getTier',
-        'blue_vip' => 'getBlueVip',
-        'od_time' => 'getOdTime',
+        'cd_time' => 'getCdTime',
         'order_type' => 'getOrderType',
         'order_tag' => 'getOrderTag',
         'convert_info' => 'getConvertInfo'
@@ -477,61 +292,24 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
         $this->container['type_buy'] = isset($data['type_buy']) ? $data['type_buy'] : null;
         $this->container['timest'] = isset($data['timest']) ? $data['timest'] : null;
         $this->container['timest_expire'] = isset($data['timest_expire']) ? $data['timest_expire'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['trade_type'] = isset($data['trade_type']) ? $data['trade_type'] : null;
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['order_status'] = isset($data['order_status']) ? $data['order_status'] : null;
         $this->container['its_realname'] = isset($data['its_realname']) ? $data['its_realname'] : null;
         $this->container['its_uid'] = isset($data['its_uid']) ? $data['its_uid'] : null;
         $this->container['its_nick'] = isset($data['its_nick']) ? $data['its_nick'] : null;
-        $this->container['user_note'] = isset($data['user_note']) ? $data['user_note'] : null;
-        $this->container['show_bank'] = isset($data['show_bank']) ? $data['show_bank'] : null;
-        $this->container['bankname'] = isset($data['bankname']) ? $data['bankname'] : null;
-        $this->container['bankbranch'] = isset($data['bankbranch']) ? $data['bankbranch'] : null;
         $this->container['seller_realname'] = isset($data['seller_realname']) ? $data['seller_realname'] : null;
         $this->container['buyer_realname'] = isset($data['buyer_realname']) ? $data['buyer_realname'] : null;
-        $this->container['bankid'] = isset($data['bankid']) ? $data['bankid'] : null;
-        $this->container['bank_holder_realname'] = isset($data['bank_holder_realname']) ? $data['bank_holder_realname'] : null;
-        $this->container['show_ali'] = isset($data['show_ali']) ? $data['show_ali'] : null;
-        $this->container['aliname'] = isset($data['aliname']) ? $data['aliname'] : null;
-        $this->container['show_wechat'] = isset($data['show_wechat']) ? $data['show_wechat'] : null;
-        $this->container['wename'] = isset($data['wename']) ? $data['wename'] : null;
-        $this->container['is_alicode'] = isset($data['is_alicode']) ? $data['is_alicode'] : null;
-        $this->container['dispute_time'] = isset($data['dispute_time']) ? $data['dispute_time'] : null;
         $this->container['cancelable'] = isset($data['cancelable']) ? $data['cancelable'] : null;
-        $this->container['black_uid'] = isset($data['black_uid']) ? $data['black_uid'] : null;
-        $this->container['black_name'] = isset($data['black_name']) ? $data['black_name'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['is_follow'] = isset($data['is_follow']) ? $data['is_follow'] : null;
-        $this->container['is_black'] = isset($data['is_black']) ? $data['is_black'] : null;
         $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
         $this->container['want_type'] = isset($data['want_type']) ? $data['want_type'] : null;
-        $this->container['is_hedge'] = isset($data['is_hedge']) ? $data['is_hedge'] : null;
         $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
         $this->container['sel_paytype'] = isset($data['sel_paytype']) ? $data['sel_paytype'] : null;
-        $this->container['show_others'] = isset($data['show_others']) ? $data['show_others'] : null;
         $this->container['pay_others'] = isset($data['pay_others']) ? $data['pay_others'] : null;
-        $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
-        $this->container['appeal_unread'] = isset($data['appeal_unread']) ? $data['appeal_unread'] : null;
-        $this->container['im_unread'] = isset($data['im_unread']) ? $data['im_unread'] : null;
-        $this->container['in_dispute'] = isset($data['in_dispute']) ? $data['in_dispute'] : null;
-        $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
-        $this->container['reason_memo'] = isset($data['reason_memo']) ? $data['reason_memo'] : null;
-        $this->container['cancel_time'] = isset($data['cancel_time']) ? $data['cancel_time'] : null;
-        $this->container['seller_confirm'] = isset($data['seller_confirm']) ? $data['seller_confirm'] : null;
-        $this->container['toast_id'] = isset($data['toast_id']) ? $data['toast_id'] : null;
-        $this->container['dispute_reback'] = isset($data['dispute_reback']) ? $data['dispute_reback'] : null;
-        $this->container['score'] = isset($data['score']) ? $data['score'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['release_coin_switch'] = isset($data['release_coin_switch']) ? $data['release_coin_switch'] : null;
-        $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
-        $this->container['blue_vip'] = isset($data['blue_vip']) ? $data['blue_vip'] : null;
-        $this->container['od_time'] = isset($data['od_time']) ? $data['od_time'] : null;
+        $this->container['cd_time'] = isset($data['cd_time']) ? $data['cd_time'] : null;
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
         $this->container['order_tag'] = isset($data['order_tag']) ? $data['order_tag'] : null;
         $this->container['convert_info'] = isset($data['convert_info']) ? $data['convert_info'] : null;
@@ -574,7 +352,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets type_buy
      *
-     * @param int|null $type_buy 1=Buy, 0=Sell
+     * @param int|null $type_buy Order side from current user's view. `1`: buy; `0`: sell.
      *
      * @return $this
      */
@@ -634,54 +412,6 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Buy/Sell order
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets trade_type
-     *
-     * @return string|null
-     */
-    public function getTradeType()
-    {
-        return $this->container['trade_type'];
-    }
-
-    /**
-     * Sets trade_type
-     *
-     * @param string|null $trade_type Buy/Sell order
-     *
-     * @return $this
-     */
-    public function setTradeType($trade_type)
-    {
-        $this->container['trade_type'] = $trade_type;
-
-        return $this;
-    }
-
-    /**
      * Gets timestamp
      *
      * @return int|null
@@ -718,7 +448,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets rate
      *
-     * @param string|null $rate Exchange rate
+     * @param string|null $rate Order price in fiat currency.
      *
      * @return $this
      */
@@ -742,7 +472,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string|null $amount Size
+     * @param string|null $amount Order size in cryptocurrency.
      *
      * @return $this
      */
@@ -766,7 +496,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets total
      *
-     * @param string|null $total Total amount
+     * @param string|null $total Total fiat amount of the order.
      *
      * @return $this
      */
@@ -814,37 +544,13 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order Status
+     * @param string|null $status Display status: `unpay` awaiting payment; `paid` buyer paid; `unconfirmed` awaiting seller confirmation; `locked` locked; `finished` completed; `cancel` canceled; `expired` expired; `bclosed` arbitration filled; `sclosed` arbitration canceled.
      *
      * @return $this
      */
     public function setStatus($status)
     {
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets order_status
-     *
-     * @return string|null
-     */
-    public function getOrderStatus()
-    {
-        return $this->container['order_status'];
-    }
-
-    /**
-     * Sets order_status
-     *
-     * @param string|null $order_status Order status (database value)
-     *
-     * @return $this
-     */
-    public function setOrderStatus($order_status)
-    {
-        $this->container['order_status'] = $order_status;
 
         return $this;
     }
@@ -862,7 +568,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets its_realname
      *
-     * @param string|null $its_realname Counterparty username
+     * @param string|null $its_realname Counterparty real name or verified display name.
      *
      * @return $this
      */
@@ -886,7 +592,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets its_uid
      *
-     * @param string|null $its_uid Counterparty UID
+     * @param string|null $its_uid Counterparty crypto UID.
      *
      * @return $this
      */
@@ -922,102 +628,6 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets user_note
-     *
-     * @return string|null
-     */
-    public function getUserNote()
-    {
-        return $this->container['user_note'];
-    }
-
-    /**
-     * Sets user_note
-     *
-     * @param string|null $user_note User note
-     *
-     * @return $this
-     */
-    public function setUserNote($user_note)
-    {
-        $this->container['user_note'] = $user_note;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_bank
-     *
-     * @return string|null
-     */
-    public function getShowBank()
-    {
-        return $this->container['show_bank'];
-    }
-
-    /**
-     * Sets show_bank
-     *
-     * @param string|null $show_bank Whether to display bank
-     *
-     * @return $this
-     */
-    public function setShowBank($show_bank)
-    {
-        $this->container['show_bank'] = $show_bank;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankname
-     *
-     * @return string|null
-     */
-    public function getBankname()
-    {
-        return $this->container['bankname'];
-    }
-
-    /**
-     * Sets bankname
-     *
-     * @param string|null $bankname Bank name
-     *
-     * @return $this
-     */
-    public function setBankname($bankname)
-    {
-        $this->container['bankname'] = $bankname;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankbranch
-     *
-     * @return string|null
-     */
-    public function getBankbranch()
-    {
-        return $this->container['bankbranch'];
-    }
-
-    /**
-     * Sets bankbranch
-     *
-     * @param string|null $bankbranch Bank branch name
-     *
-     * @return $this
-     */
-    public function setBankbranch($bankbranch)
-    {
-        $this->container['bankbranch'] = $bankbranch;
-
-        return $this;
-    }
-
-    /**
      * Gets seller_realname
      *
      * @return string|null
@@ -1030,7 +640,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets seller_realname
      *
-     * @param string|null $seller_realname Seller name
+     * @param string|null $seller_realname Seller real name or verified display name.
      *
      * @return $this
      */
@@ -1054,205 +664,13 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets buyer_realname
      *
-     * @param string|null $buyer_realname Buyer name
+     * @param string|null $buyer_realname Buyer real name or verified display name.
      *
      * @return $this
      */
     public function setBuyerRealname($buyer_realname)
     {
         $this->container['buyer_realname'] = $buyer_realname;
-
-        return $this;
-    }
-
-    /**
-     * Gets bankid
-     *
-     * @return string|null
-     */
-    public function getBankid()
-    {
-        return $this->container['bankid'];
-    }
-
-    /**
-     * Sets bankid
-     *
-     * @param string|null $bankid Bank ID
-     *
-     * @return $this
-     */
-    public function setBankid($bankid)
-    {
-        $this->container['bankid'] = $bankid;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_holder_realname
-     *
-     * @return string|null
-     */
-    public function getBankHolderRealname()
-    {
-        return $this->container['bank_holder_realname'];
-    }
-
-    /**
-     * Sets bank_holder_realname
-     *
-     * @param string|null $bank_holder_realname Bank cardholder name
-     *
-     * @return $this
-     */
-    public function setBankHolderRealname($bank_holder_realname)
-    {
-        $this->container['bank_holder_realname'] = $bank_holder_realname;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_ali
-     *
-     * @return int|null
-     */
-    public function getShowAli()
-    {
-        return $this->container['show_ali'];
-    }
-
-    /**
-     * Sets show_ali
-     *
-     * @param int|null $show_ali Whether to display Alipay
-     *
-     * @return $this
-     */
-    public function setShowAli($show_ali)
-    {
-        $this->container['show_ali'] = $show_ali;
-
-        return $this;
-    }
-
-    /**
-     * Gets aliname
-     *
-     * @return string|null
-     */
-    public function getAliname()
-    {
-        return $this->container['aliname'];
-    }
-
-    /**
-     * Sets aliname
-     *
-     * @param string|null $aliname Alipay account name
-     *
-     * @return $this
-     */
-    public function setAliname($aliname)
-    {
-        $this->container['aliname'] = $aliname;
-
-        return $this;
-    }
-
-    /**
-     * Gets show_wechat
-     *
-     * @return int|null
-     */
-    public function getShowWechat()
-    {
-        return $this->container['show_wechat'];
-    }
-
-    /**
-     * Sets show_wechat
-     *
-     * @param int|null $show_wechat Whether to display WeChat
-     *
-     * @return $this
-     */
-    public function setShowWechat($show_wechat)
-    {
-        $this->container['show_wechat'] = $show_wechat;
-
-        return $this;
-    }
-
-    /**
-     * Gets wename
-     *
-     * @return string|null
-     */
-    public function getWename()
-    {
-        return $this->container['wename'];
-    }
-
-    /**
-     * Sets wename
-     *
-     * @param string|null $wename WeChat account name
-     *
-     * @return $this
-     */
-    public function setWename($wename)
-    {
-        $this->container['wename'] = $wename;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_alicode
-     *
-     * @return int|null
-     */
-    public function getIsAlicode()
-    {
-        return $this->container['is_alicode'];
-    }
-
-    /**
-     * Sets is_alicode
-     *
-     * @param int|null $is_alicode Whether Alipay QR code exists
-     *
-     * @return $this
-     */
-    public function setIsAlicode($is_alicode)
-    {
-        $this->container['is_alicode'] = $is_alicode;
-
-        return $this;
-    }
-
-    /**
-     * Gets dispute_time
-     *
-     * @return int|null
-     */
-    public function getDisputeTime()
-    {
-        return $this->container['dispute_time'];
-    }
-
-    /**
-     * Sets dispute_time
-     *
-     * @param int|null $dispute_time Appeal time
-     *
-     * @return $this
-     */
-    public function setDisputeTime($dispute_time)
-    {
-        $this->container['dispute_time'] = $dispute_time;
 
         return $this;
     }
@@ -1270,133 +688,13 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets cancelable
      *
-     * @param int|null $cancelable Whether cancellable
+     * @param int|null $cancelable Whether the order can be canceled. `1`: yes; `0`: no.
      *
      * @return $this
      */
     public function setCancelable($cancelable)
     {
         $this->container['cancelable'] = $cancelable;
-
-        return $this;
-    }
-
-    /**
-     * Gets black_uid
-     *
-     * @return string|null
-     */
-    public function getBlackUid()
-    {
-        return $this->container['black_uid'];
-    }
-
-    /**
-     * Sets black_uid
-     *
-     * @param string|null $black_uid Blacklist UID
-     *
-     * @return $this
-     */
-    public function setBlackUid($black_uid)
-    {
-        $this->container['black_uid'] = $black_uid;
-
-        return $this;
-    }
-
-    /**
-     * Gets black_name
-     *
-     * @return string|null
-     */
-    public function getBlackName()
-    {
-        return $this->container['black_name'];
-    }
-
-    /**
-     * Sets black_name
-     *
-     * @param string|null $black_name Blacklist username
-     *
-     * @return $this
-     */
-    public function setBlackName($black_name)
-    {
-        $this->container['black_name'] = $black_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Blacklist note
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_follow
-     *
-     * @return int|null
-     */
-    public function getIsFollow()
-    {
-        return $this->container['is_follow'];
-    }
-
-    /**
-     * Sets is_follow
-     *
-     * @param int|null $is_follow Whether following
-     *
-     * @return $this
-     */
-    public function setIsFollow($is_follow)
-    {
-        $this->container['is_follow'] = $is_follow;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_black
-     *
-     * @return bool|null
-     */
-    public function getIsBlack()
-    {
-        return $this->container['is_black'];
-    }
-
-    /**
-     * Sets is_black
-     *
-     * @param bool|null $is_black Whether blocked
-     *
-     * @return $this
-     */
-    public function setIsBlack($is_black)
-    {
-        $this->container['is_black'] = $is_black;
 
         return $this;
     }
@@ -1414,7 +712,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets currency_type
      *
-     * @param string|null $currency_type Virtual currency
+     * @param string|null $currency_type Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -1450,30 +748,6 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets is_hedge
-     *
-     * @return int|null
-     */
-    public function getIsHedge()
-    {
-        return $this->container['is_hedge'];
-    }
-
-    /**
-     * Sets is_hedge
-     *
-     * @param int|null $is_hedge Whether auto delegation
-     *
-     * @return $this
-     */
-    public function setIsHedge($is_hedge)
-    {
-        $this->container['is_hedge'] = $is_hedge;
-
-        return $this;
-    }
-
-    /**
      * Gets hide_payment
      *
      * @return int|null
@@ -1486,7 +760,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets hide_payment
      *
-     * @param int|null $hide_payment Whether to hide payment method
+     * @param int|null $hide_payment Whether payment methods are hidden. `1`: hidden; `0`: visible.
      *
      * @return $this
      */
@@ -1510,7 +784,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets sel_paytype
      *
-     * @param string|null $sel_paytype Payment type
+     * @param string|null $sel_paytype Selected payment type for this order, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
      *
      * @return $this
      */
@@ -1522,33 +796,9 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets show_others
-     *
-     * @return int|null
-     */
-    public function getShowOthers()
-    {
-        return $this->container['show_others'];
-    }
-
-    /**
-     * Sets show_others
-     *
-     * @param int|null $show_others Whether to display other payment methods
-     *
-     * @return $this
-     */
-    public function setShowOthers($show_others)
-    {
-        $this->container['show_others'] = $show_others;
-
-        return $this;
-    }
-
-    /**
      * Gets pay_others
      *
-     * @return string[]|null
+     * @return \GateApi\Model\P2pTransactionListResultPayOthers[]|null
      */
     public function getPayOthers()
     {
@@ -1558,7 +808,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets pay_others
      *
-     * @param string[]|null $pay_others Other payment methods
+     * @param \GateApi\Model\P2pTransactionListResultPayOthers[]|null $pay_others Other payment method details; may appear on historical orders.
      *
      * @return $this
      */
@@ -1570,385 +820,25 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets trade_tips
-     *
-     * @return string|null
-     */
-    public function getTradeTips()
-    {
-        return $this->container['trade_tips'];
-    }
-
-    /**
-     * Sets trade_tips
-     *
-     * @param string|null $trade_tips Trading tip
-     *
-     * @return $this
-     */
-    public function setTradeTips($trade_tips)
-    {
-        $this->container['trade_tips'] = $trade_tips;
-
-        return $this;
-    }
-
-    /**
-     * Gets appeal_unread
+     * Gets cd_time
      *
      * @return int|null
      */
-    public function getAppealUnread()
+    public function getCdTime()
     {
-        return $this->container['appeal_unread'];
+        return $this->container['cd_time'];
     }
 
     /**
-     * Sets appeal_unread
+     * Sets cd_time
      *
-     * @param int|null $appeal_unread Unread appeals
+     * @param int|null $cd_time Countdown seconds for the current order.
      *
      * @return $this
      */
-    public function setAppealUnread($appeal_unread)
+    public function setCdTime($cd_time)
     {
-        $this->container['appeal_unread'] = $appeal_unread;
-
-        return $this;
-    }
-
-    /**
-     * Gets im_unread
-     *
-     * @return int|null
-     */
-    public function getImUnread()
-    {
-        return $this->container['im_unread'];
-    }
-
-    /**
-     * Sets im_unread
-     *
-     * @param int|null $im_unread IM unread
-     *
-     * @return $this
-     */
-    public function setImUnread($im_unread)
-    {
-        $this->container['im_unread'] = $im_unread;
-
-        return $this;
-    }
-
-    /**
-     * Gets in_dispute
-     *
-     * @return bool|null
-     */
-    public function getInDispute()
-    {
-        return $this->container['in_dispute'];
-    }
-
-    /**
-     * Sets in_dispute
-     *
-     * @param bool|null $in_dispute Whether in dispute
-     *
-     * @return $this
-     */
-    public function setInDispute($in_dispute)
-    {
-        $this->container['in_dispute'] = $in_dispute;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason_id
-     *
-     * @return string|null
-     */
-    public function getReasonId()
-    {
-        return $this->container['reason_id'];
-    }
-
-    /**
-     * Sets reason_id
-     *
-     * @param string|null $reason_id Cancellation reason ID
-     *
-     * @return $this
-     */
-    public function setReasonId($reason_id)
-    {
-        $this->container['reason_id'] = $reason_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason_memo
-     *
-     * @return string|null
-     */
-    public function getReasonMemo()
-    {
-        return $this->container['reason_memo'];
-    }
-
-    /**
-     * Sets reason_memo
-     *
-     * @param string|null $reason_memo Cancellation reason note
-     *
-     * @return $this
-     */
-    public function setReasonMemo($reason_memo)
-    {
-        $this->container['reason_memo'] = $reason_memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets cancel_time
-     *
-     * @return string|null
-     */
-    public function getCancelTime()
-    {
-        return $this->container['cancel_time'];
-    }
-
-    /**
-     * Sets cancel_time
-     *
-     * @param string|null $cancel_time Cancellation time
-     *
-     * @return $this
-     */
-    public function setCancelTime($cancel_time)
-    {
-        $this->container['cancel_time'] = $cancel_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_confirm
-     *
-     * @return int|null
-     */
-    public function getSellerConfirm()
-    {
-        return $this->container['seller_confirm'];
-    }
-
-    /**
-     * Sets seller_confirm
-     *
-     * @param int|null $seller_confirm Whether seller confirmed the reason
-     *
-     * @return $this
-     */
-    public function setSellerConfirm($seller_confirm)
-    {
-        $this->container['seller_confirm'] = $seller_confirm;
-
-        return $this;
-    }
-
-    /**
-     * Gets toast_id
-     *
-     * @return int|null
-     */
-    public function getToastId()
-    {
-        return $this->container['toast_id'];
-    }
-
-    /**
-     * Sets toast_id
-     *
-     * @param int|null $toast_id Popup ID
-     *
-     * @return $this
-     */
-    public function setToastId($toast_id)
-    {
-        $this->container['toast_id'] = $toast_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets dispute_reback
-     *
-     * @return int|null
-     */
-    public function getDisputeReback()
-    {
-        return $this->container['dispute_reback'];
-    }
-
-    /**
-     * Sets dispute_reback
-     *
-     * @param int|null $dispute_reback Customer service has new reply to appeal
-     *
-     * @return $this
-     */
-    public function setDisputeReback($dispute_reback)
-    {
-        $this->container['dispute_reback'] = $dispute_reback;
-
-        return $this;
-    }
-
-    /**
-     * Gets score
-     *
-     * @return string|null
-     */
-    public function getScore()
-    {
-        return $this->container['score'];
-    }
-
-    /**
-     * Sets score
-     *
-     * @param string|null $score Rating
-     *
-     * @return $this
-     */
-    public function setScore($score)
-    {
-        $this->container['score'] = $score;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message Review content
-     *
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets release_coin_switch
-     *
-     * @return int|null
-     */
-    public function getReleaseCoinSwitch()
-    {
-        return $this->container['release_coin_switch'];
-    }
-
-    /**
-     * Sets release_coin_switch
-     *
-     * @param int|null $release_coin_switch Coin release switch configuration
-     *
-     * @return $this
-     */
-    public function setReleaseCoinSwitch($release_coin_switch)
-    {
-        $this->container['release_coin_switch'] = $release_coin_switch;
-
-        return $this;
-    }
-
-    /**
-     * Gets tier
-     *
-     * @return int|null
-     */
-    public function getTier()
-    {
-        return $this->container['tier'];
-    }
-
-    /**
-     * Sets tier
-     *
-     * @param int|null $tier VIP level
-     *
-     * @return $this
-     */
-    public function setTier($tier)
-    {
-        $this->container['tier'] = $tier;
-
-        return $this;
-    }
-
-    /**
-     * Gets blue_vip
-     *
-     * @return int|null
-     */
-    public function getBlueVip()
-    {
-        return $this->container['blue_vip'];
-    }
-
-    /**
-     * Sets blue_vip
-     *
-     * @param int|null $blue_vip Blue V Crown Shield
-     *
-     * @return $this
-     */
-    public function setBlueVip($blue_vip)
-    {
-        $this->container['blue_vip'] = $blue_vip;
-
-        return $this;
-    }
-
-    /**
-     * Gets od_time
-     *
-     * @return int|null
-     */
-    public function getOdTime()
-    {
-        return $this->container['od_time'];
-    }
-
-    /**
-     * Sets od_time
-     *
-     * @param int|null $od_time Countdown time
-     *
-     * @return $this
-     */
-    public function setOdTime($od_time)
-    {
-        $this->container['od_time'] = $od_time;
+        $this->container['cd_time'] = $cd_time;
 
         return $this;
     }
@@ -1966,7 +856,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets order_type
      *
-     * @param int|null $order_type Order Type
+     * @param int|null $order_type Order type: `1` standard; `2` partner; `3` flash swap; `4` Web3.
      *
      * @return $this
      */

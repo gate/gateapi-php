@@ -214,7 +214,7 @@ class P2pAdsUpdateStatusResult implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param int|null $status Ad status after successful update
+     * @param int|null $status Ad status after update: `1` listed; `3` delisted; `4` closed.
      *
      * @return $this
      */

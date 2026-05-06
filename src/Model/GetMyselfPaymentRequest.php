@@ -215,7 +215,7 @@ class GetMyselfPaymentRequest implements ModelInterface, ArrayAccess
     /**
      * Sets fiat
      *
-     * @param string|null $fiat Fiat currency
+     * @param string|null $fiat Fiat currency; omit to return all available payment methods.
      *
      * @return $this
      */

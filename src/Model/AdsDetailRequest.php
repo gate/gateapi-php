@@ -218,7 +218,7 @@ class AdsDetailRequest implements ModelInterface, ArrayAccess
     /**
      * Sets adv_no
      *
-     * @param string $adv_no adv_no
+     * @param string $adv_no Advertisement ID.
      *
      * @return $this
      */

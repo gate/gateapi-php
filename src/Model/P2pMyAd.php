@@ -442,7 +442,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string|null $type Ad buy/sell direction
+     * @param string|null $type Ad side: `buy` buy-crypto ad; `sell` sell-crypto ad.
      *
      * @return $this
      */
@@ -514,7 +514,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string|null $amount Remaining cryptocurrency amount of ad
+     * @param string|null $amount Remaining crypto amount on the ad.
      *
      * @return $this
      */
@@ -682,7 +682,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets pay_type_json
      *
-     * @param string|null $pay_type_json Payment method configuration details
+     * @param string|null $pay_type_json JSON map of payment type -> payment method ID.
      *
      * @return $this
      */
@@ -754,7 +754,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets advertisers_limit
      *
-     * @param int|null $advertisers_limit Whether merchant trading restriction is allowed
+     * @param int|null $advertisers_limit Whether trading with the advertiser is restricted. `0`: no; `1`: yes.
      *
      * @return $this
      */
@@ -946,7 +946,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets hide_payment
      *
-     * @param string|null $hide_payment Whether to hide payment method
+     * @param string|null $hide_payment Whether payment methods are hidden. `1`: hidden; `0`: visible.
      *
      * @return $this
      */
@@ -970,7 +970,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets currency_type
      *
-     * @param string|null $currency_type Digital currency
+     * @param string|null $currency_type Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -1042,7 +1042,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets new_hand
      *
-     * @param int|null $new_hand Special ad type
+     * @param int|null $new_hand Special ad type. `0` normal; `1` newcomer guide; `2` newcomer discount; `3` featured promo; `4` KOL ad; `5` coupon ad.
      *
      * @return $this
      */
@@ -1066,7 +1066,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id Ad ID
+     * @param string|null $id Advertisement ID.
      *
      * @return $this
      */
@@ -1090,7 +1090,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Ad status
+     * @param string|null $status Ad status: `OPEN` listed; `OFFLIN` delisted; `CLOSED` closed; `CANCEL` canceled.
      *
      * @return $this
      */
@@ -1162,7 +1162,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets is_out_time
      *
-     * @param int|null $is_out_time Whether ad is currently expired
+     * @param int|null $is_out_time Whether the ad timed out. `1`: timed out; `0`: not yet.
      *
      * @return $this
      */
@@ -1186,7 +1186,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets rate_ref_id
      *
-     * @param int|null $rate_ref_id Floating price reference configuration
+     * @param int|null $rate_ref_id Floating reference: `1` platform; `2` Gate; `3` spot; `<= 0` means fixed price.
      *
      * @return $this
      */
@@ -1234,7 +1234,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets rate_fixed
      *
-     * @param int|null $rate_fixed Reference price type: 0=Floating, 1=Fixed
+     * @param int|null $rate_fixed Price type: `0` floating; `1` fixed.
      *
      * @return $this
      */
@@ -1258,7 +1258,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets float_trend
      *
-     * @param int|null $float_trend Floating order direction
+     * @param int|null $float_trend Floating direction: `0` markup; `1` markdown.
      *
      * @return $this
      */
@@ -1282,7 +1282,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets in_dispute
      *
-     * @param int|null $in_dispute Whether ad has disputed transactions
+     * @param int|null $in_dispute Whether the ad had a disputed trade. `1`: yes; `0`: no.
      *
      * @return $this
      */
@@ -1354,7 +1354,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     /**
      * Sets is_hedge
      *
-     * @param int|null $is_hedge Auto delegation
+     * @param int|null $is_hedge Whether auto-delegation is enabled. `1`: yes; `0`: no.
      *
      * @return $this
      */

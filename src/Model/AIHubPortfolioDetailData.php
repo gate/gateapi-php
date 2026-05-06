@@ -59,9 +59,9 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         'strategy_type' => '\GateApi\Model\StrategyType',
         'market' => 'string',
         'status' => 'string',
-        'base_info' => 'map[string,string]',
-        'metrics' => 'map[string,string]',
-        'position' => 'map[string,string]',
+        'base_info' => '\GateApi\Model\AIHubPortfolioBaseInfo',
+        'metrics' => '\GateApi\Model\AIHubPortfolioMetrics',
+        'position' => '\GateApi\Model\AIHubPortfolioPosition',
         'stop_supported' => 'bool'
     ];
 
@@ -364,7 +364,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Gets base_info
      *
-     * @return map[string,string]
+     * @return \GateApi\Model\AIHubPortfolioBaseInfo
      */
     public function getBaseInfo()
     {
@@ -374,7 +374,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets base_info
      *
-     * @param map[string,string] $base_info Basic information, fields change dynamically according to strategy type
+     * @param \GateApi\Model\AIHubPortfolioBaseInfo $base_info base_info
      *
      * @return $this
      */
@@ -388,7 +388,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Gets metrics
      *
-     * @return map[string,string]
+     * @return \GateApi\Model\AIHubPortfolioMetrics
      */
     public function getMetrics()
     {
@@ -398,7 +398,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets metrics
      *
-     * @param map[string,string] $metrics Indicator information, fields change dynamically according to strategy type
+     * @param \GateApi\Model\AIHubPortfolioMetrics $metrics metrics
      *
      * @return $this
      */
@@ -412,7 +412,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Gets position
      *
-     * @return map[string,string]|null
+     * @return \GateApi\Model\AIHubPortfolioPosition|null
      */
     public function getPosition()
     {
@@ -422,7 +422,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets position
      *
-     * @param map[string,string]|null $position Position or position information, fields dynamically change according to strategy type
+     * @param \GateApi\Model\AIHubPortfolioPosition|null $position position
      *
      * @return $this
      */

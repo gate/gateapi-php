@@ -279,7 +279,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets invest_amount
      *
-     * @param string $invest_amount invest_amount
+     * @param string $invest_amount Margin allocated; the server converts it to initial contract size using live contract price, contract multiplier, and minimum lot size.
      *
      * @return $this
      */
@@ -428,7 +428,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets stop_loss_price
      *
-     * @param string|null $stop_loss_price stop_loss_price
+     * @param string|null $stop_loss_price Legacy field name. The AIHub `contract_martingale` creation path does not map this field today; follow contract martingale rules from the underlying API. MCP tooling must match bot-service behavior.
      *
      * @return $this
      */

@@ -218,7 +218,7 @@ class GetCounterpartyUserInfoRequest implements ModelInterface, ArrayAccess
     /**
      * Sets biz_uid
      *
-     * @param string $biz_uid Counterparty UID (encrypted)
+     * @param string $biz_uid Counterparty crypto UID from order list or detail field `its_uid`.
      *
      * @return $this
      */

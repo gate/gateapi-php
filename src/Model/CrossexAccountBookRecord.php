@@ -57,7 +57,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'id' => 'string',
         'user_id' => 'string',
         'business_id' => 'string',
-        'type' => 'string',
+        'statement_type' => 'string',
         'exchange_type' => 'string',
         'coin' => 'string',
         'change' => 'string',
@@ -74,7 +74,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'id' => null,
         'user_id' => null,
         'business_id' => null,
-        'type' => null,
+        'statement_type' => null,
         'exchange_type' => null,
         'coin' => null,
         'change' => null,
@@ -112,7 +112,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'id' => 'id',
         'user_id' => 'user_id',
         'business_id' => 'business_id',
-        'type' => 'type',
+        'statement_type' => 'statement_type',
         'exchange_type' => 'exchange_type',
         'coin' => 'coin',
         'change' => 'change',
@@ -129,7 +129,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'user_id' => 'setUserId',
         'business_id' => 'setBusinessId',
-        'type' => 'setType',
+        'statement_type' => 'setStatementType',
         'exchange_type' => 'setExchangeType',
         'coin' => 'setCoin',
         'change' => 'setChange',
@@ -146,7 +146,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'user_id' => 'getUserId',
         'business_id' => 'getBusinessId',
-        'type' => 'getType',
+        'statement_type' => 'getStatementType',
         'exchange_type' => 'getExchangeType',
         'coin' => 'getCoin',
         'change' => 'getChange',
@@ -217,7 +217,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['business_id'] = isset($data['business_id']) ? $data['business_id'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['statement_type'] = isset($data['statement_type']) ? $data['statement_type'] : null;
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
         $this->container['change'] = isset($data['change']) ? $data['change'] : null;
@@ -243,8 +243,8 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         if ($this->container['business_id'] === null) {
             $invalidProperties[] = "'business_id' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['statement_type'] === null) {
+            $invalidProperties[] = "'statement_type' can't be null";
         }
         if ($this->container['exchange_type'] === null) {
             $invalidProperties[] = "'exchange_type' can't be null";
@@ -349,25 +349,25 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets type
+     * Gets statement_type
      *
      * @return string
      */
-    public function getType()
+    public function getStatementType()
     {
-        return $this->container['type'];
+        return $this->container['statement_type'];
     }
 
     /**
-     * Sets type
+     * Sets statement_type
      *
-     * @param string $type Change type | `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` futures funding fee `LIQUIDATION_FEE` liquidation fee `TRANSFER_IN` transfer in `TRANSFER_OUT` transfer out `BANKRUPT_COMPENSATION` bankruptcy compensation `AUTO_REPAY` margin position auto-repay
+     * @param string $statement_type Bill entry type | `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` funding `LIQUIDATION_FEE` liquidation `TRANSFER_IN` deposit `TRANSFER_OUT` withdrawal `BANKRUPT_COMPENSATION` bankruptcy subsidy `AUTO_REPAY` margin auto-repay
      *
      * @return $this
      */
-    public function setType($type)
+    public function setStatementType($statement_type)
     {
-        $this->container['type'] = $type;
+        $this->container['statement_type'] = $statement_type;
 
         return $this;
     }

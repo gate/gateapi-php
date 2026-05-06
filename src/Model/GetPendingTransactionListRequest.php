@@ -191,8 +191,23 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const ORDER_TAB_PENDING = 'pending';
+    const ORDER_TAB_DISPUTE = 'dispute';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOrderTabAllowableValues()
+    {
+        return [
+            self::ORDER_TAB_PENDING,
+            self::ORDER_TAB_DISPUTE,
+        ];
+    }
     
 
     /**
@@ -235,6 +250,14 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
         if ($this->container['fiat_currency'] === null) {
             $invalidProperties[] = "'fiat_currency' can't be null";
         }
+        $allowedValues = $this->getOrderTabAllowableValues();
+        if (!is_null($this->container['order_tab']) && !in_array($this->container['order_tab'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'order_tab', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -263,7 +286,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets crypto_currency
      *
-     * @param string $crypto_currency Cryptocurrency
+     * @param string $crypto_currency Cryptocurrency symbol.
      *
      * @return $this
      */
@@ -311,12 +334,21 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets order_tab
      *
-     * @param string|null $order_tab Order tab, default: pending (pending: In Progress (pending: AND status in ('OPEN','PAID', 'LOCKED', 'TEMP')); dispute: In Dispute (status in ('ACCEPT','BCLOSED', 'CANCEL', 'BECANCEL', 'SCLOSED', 'SCANCEL')))
+     * @param string|null $order_tab Order tab: `pending` in progress (`OPEN`, `PAID`, `LOCKED`, `TEMP`); `dispute` in dispute; default `pending`.
      *
      * @return $this
      */
     public function setOrderTab($order_tab)
     {
+        $allowedValues = $this->getOrderTabAllowableValues();
+        if (!is_null($order_tab) && !in_array($order_tab, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'order_tab', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['order_tab'] = $order_tab;
 
         return $this;
@@ -335,7 +367,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets select_type
      *
-     * @param string|null $select_type Buy/Sell (sell=Sell, buy=Buy, others=All)
+     * @param string|null $select_type Order side filter: `buy` buy orders; `sell` sell orders; empty: all.
      *
      * @return $this
      */
@@ -359,7 +391,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order Status (dispute: Disputed Order; closed: ACCEPT, BCLOSED; cancel: CANCEL, BECANCEL, SCLOSED, SCANCEL; locked: LOCKED; open: OPEN; paid: PAID; completed: CANCEL, BECANCEL, SCLOSED, SCANCEL, ACCEPT, BCLOSED)
+     * @param string|null $status Order status filter. `open` unpaid (`OPEN`); `paid` paid (`PAID`); `locked` locked (`LOCKED`); `dispute` in dispute; empty or omitted uses the default range for `order_tab`.
      *
      * @return $this
      */

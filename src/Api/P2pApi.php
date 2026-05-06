@@ -2226,7 +2226,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponse
      */
     public function p2pMerchantBooksPlaceBizPushOrder($place_biz_push_order)
     {
@@ -2243,7 +2243,7 @@ class P2pApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function p2pMerchantBooksPlaceBizPushOrderWithHttpInfo($place_biz_push_order)
     {
@@ -2273,7 +2273,7 @@ class P2pApi
             );
         }
 
-        $returnType = 'object';
+        $returnType = '\GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponse';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2320,7 +2320,7 @@ class P2pApi
      */
     public function p2pMerchantBooksPlaceBizPushOrderAsyncWithHttpInfo($place_biz_push_order)
     {
-        $returnType = 'object';
+        $returnType = '\GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponse';
         $request = $this->p2pMerchantBooksPlaceBizPushOrderRequest($place_biz_push_order);
 
         return $this->client
@@ -2459,15 +2459,14 @@ class P2pApi
      * Update ad status
      *
      * @param  \GateApi\Model\AdsUpdateStatus $ads_update_status ads_update_status (required)
-     * @param  string $trade_type Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\P2pAdsUpdateStatusResponse
      */
-    public function p2pMerchantBooksAdsUpdateStatus($ads_update_status, $trade_type = null)
+    public function p2pMerchantBooksAdsUpdateStatus($ads_update_status)
     {
-        list($response) = $this->p2pMerchantBooksAdsUpdateStatusWithHttpInfo($ads_update_status, $trade_type);
+        list($response) = $this->p2pMerchantBooksAdsUpdateStatusWithHttpInfo($ads_update_status);
         return $response;
     }
 
@@ -2477,15 +2476,14 @@ class P2pApi
      * Update ad status
      *
      * @param  \GateApi\Model\AdsUpdateStatus $ads_update_status (required)
-     * @param  string $trade_type Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\P2pAdsUpdateStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function p2pMerchantBooksAdsUpdateStatusWithHttpInfo($ads_update_status, $trade_type = null)
+    public function p2pMerchantBooksAdsUpdateStatusWithHttpInfo($ads_update_status)
     {
-        $request = $this->p2pMerchantBooksAdsUpdateStatusRequest($ads_update_status, $trade_type);
+        $request = $this->p2pMerchantBooksAdsUpdateStatusRequest($ads_update_status);
 
         $options = $this->createHttpClientOption();
         try {
@@ -2532,14 +2530,13 @@ class P2pApi
      * Update ad status
      *
      * @param  \GateApi\Model\AdsUpdateStatus $ads_update_status (required)
-     * @param  string $trade_type Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function p2pMerchantBooksAdsUpdateStatusAsync($ads_update_status, $trade_type = null)
+    public function p2pMerchantBooksAdsUpdateStatusAsync($ads_update_status)
     {
-        return $this->p2pMerchantBooksAdsUpdateStatusAsyncWithHttpInfo($ads_update_status, $trade_type)
+        return $this->p2pMerchantBooksAdsUpdateStatusAsyncWithHttpInfo($ads_update_status)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2553,15 +2550,14 @@ class P2pApi
      * Update ad status
      *
      * @param  \GateApi\Model\AdsUpdateStatus $ads_update_status (required)
-     * @param  string $trade_type Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function p2pMerchantBooksAdsUpdateStatusAsyncWithHttpInfo($ads_update_status, $trade_type = null)
+    public function p2pMerchantBooksAdsUpdateStatusAsyncWithHttpInfo($ads_update_status)
     {
         $returnType = '\GateApi\Model\P2pAdsUpdateStatusResponse';
-        $request = $this->p2pMerchantBooksAdsUpdateStatusRequest($ads_update_status, $trade_type);
+        $request = $this->p2pMerchantBooksAdsUpdateStatusRequest($ads_update_status);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2601,12 +2597,11 @@ class P2pApi
      * Create request for operation 'p2pMerchantBooksAdsUpdateStatus'
      *
      * @param  \GateApi\Model\AdsUpdateStatus $ads_update_status (required)
-     * @param  string $trade_type Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function p2pMerchantBooksAdsUpdateStatusRequest($ads_update_status, $trade_type = null)
+    protected function p2pMerchantBooksAdsUpdateStatusRequest($ads_update_status)
     {
         // verify the required parameter 'ads_update_status' is set
         if ($ads_update_status === null || (is_array($ads_update_status) && count($ads_update_status) === 0)) {
@@ -2621,18 +2616,6 @@ class P2pApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-        // query params
-        if ($trade_type !== null) {
-            if('form' === 'form' && is_array($trade_type)) {
-                foreach($trade_type as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['trade_type'] = $trade_type;
-            }
-        }
 
         // body params
         $_tempBody = null;
