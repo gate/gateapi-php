@@ -295,7 +295,7 @@ $bank_country = 'bank_country_example'; // string |
 $bank_address = 'bank_address_example'; // string | 
 $iban = 'iban_example'; // string | 
 $swift = 'swift_example'; // string | 
-$documentation_file = "/path/to/file.txt"; // \SplFileObject | Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+$documentation_file = 'documentation_file_example'; // string | 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
 $remittance_line_number = 'remittance_line_number_example'; // string | 
 $agent_bank_name = 'agent_bank_name_example'; // string | 
 $agent_bank_swift = 'agent_bank_swift_example'; // string | 
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
  **bank_address** | **string**|  |
  **iban** | **string**|  |
  **swift** | **string**|  |
- **documentation_file** | **\SplFileObject****\SplFileObject**| Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment). |
+ **documentation_file** | **string**| 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准） |
  **remittance_line_number** | **string**|  | [optional]
  **agent_bank_name** | **string**|  | [optional]
  **agent_bank_swift** | **string**|  | [optional]

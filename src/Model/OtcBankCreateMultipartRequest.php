@@ -64,7 +64,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         'remittance_line_number' => 'string',
         'agent_bank_name' => 'string',
         'agent_bank_swift' => 'string',
-        'documentation_file' => '\SplFileObject'
+        'documentation_file' => 'string'
     ];
 
     /**
@@ -82,7 +82,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         'remittance_line_number' => null,
         'agent_bank_name' => null,
         'agent_bank_swift' => null,
-        'documentation_file' => 'binary'
+        'documentation_file' => null
     ];
 
     /**
@@ -496,7 +496,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
     /**
      * Gets documentation_file
      *
-     * @return \SplFileObject
+     * @return string
      */
     public function getDocumentationFile()
     {
@@ -506,7 +506,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
     /**
      * Sets documentation_file
      *
-     * @param \SplFileObject $documentation_file Account-opening proof file (jpg/jpeg/png/pdf, etc.; single file ≤4MB — subject to production environment).
+     * @param string $documentation_file 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
      *
      * @return $this
      */
