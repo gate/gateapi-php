@@ -313,7 +313,7 @@ class SendChatMessageRequest implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message Message body. For `type=0`, plain text up to 500 characters; for `type=1`, pass the `file_key` returned by `upload_chat_file`.
+     * @param string $message Message content. When type=0, pass text up to 500 characters, which goes through off-platform traffic diversion risk control; when hit, the response contains risk_type=1 and toast_msg. When type=1, pass the file_key returned by upload_chat_file
      *
      * @return $this
      */

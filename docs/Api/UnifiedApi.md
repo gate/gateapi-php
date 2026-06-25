@@ -26,6 +26,10 @@ Method | HTTP request | Description
 [**listUnifiedCurrencies**](UnifiedApi.md#listUnifiedCurrencies) | **GET** /unified/currencies | List of loan currencies supported by unified account
 [**getHistoryLoanRate**](UnifiedApi.md#getHistoryLoanRate) | **GET** /unified/history_loan_rate | Get historical lending rates
 [**setUnifiedCollateral**](UnifiedApi.md#setUnifiedCollateral) | **POST** /unified/collateral_currencies | Set collateral currency
+[**getEstimatedQuickRepayment**](UnifiedApi.md#getEstimatedQuickRepayment) | **GET** /unified/estimated_quick_repayment | Estimated quick repayment details
+[**createQuickRepayment**](UnifiedApi.md#createQuickRepayment) | **POST** /unified/quick_repayment | Quick repayment
+[**getUnifiedDeltaNeutral**](UnifiedApi.md#getUnifiedDeltaNeutral) | **GET** /unified/delta_neutral | Query the account Delta-neutral strategy mode setting
+[**setUnifiedDeltaNeutral**](UnifiedApi.md#setUnifiedDeltaNeutral) | **POST** /unified/delta_neutral | Set the account Delta-neutral strategy mode
 
 
 ## listUnifiedAccounts
@@ -1355,6 +1359,244 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\UnifiedCollateralRes**](../Model/UnifiedCollateralRes.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getEstimatedQuickRepayment
+
+> \GateApi\Model\QuickEstimatedRepayment getEstimatedQuickRepayment()
+
+Estimated quick repayment details
+
+Available for unified account cross-currency margin mode and portfolio margin mode
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\UnifiedApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getEstimatedQuickRepayment();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling UnifiedApi->getEstimatedQuickRepayment: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\GateApi\Model\QuickEstimatedRepayment**](../Model/QuickEstimatedRepayment.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createQuickRepayment
+
+> \GateApi\Model\QuickRepaymentResponse createQuickRepayment($quick_repayment_request)
+
+Quick repayment
+
+Available for unified account cross-currency margin mode and portfolio margin mode. Use `GET /unified/estimated_quick_repayment` to query liabilities and pending repayment information.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\UnifiedApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$quick_repayment_request = new \GateApi\Model\QuickRepaymentRequest(); // \GateApi\Model\QuickRepaymentRequest | 
+
+try {
+    $result = $apiInstance->createQuickRepayment($quick_repayment_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling UnifiedApi->createQuickRepayment: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **quick_repayment_request** | [**\GateApi\Model\QuickRepaymentRequest**](../Model/QuickRepaymentRequest.md)|  |
+
+### Return type
+
+[**\GateApi\Model\QuickRepaymentResponse**](../Model/QuickRepaymentResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getUnifiedDeltaNeutral
+
+> \GateApi\Model\DeltaNeutralEnabled getUnifiedDeltaNeutral()
+
+Query the account Delta-neutral strategy mode setting
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\UnifiedApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getUnifiedDeltaNeutral();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling UnifiedApi->getUnifiedDeltaNeutral: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\GateApi\Model\DeltaNeutralEnabled**](../Model/DeltaNeutralEnabled.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## setUnifiedDeltaNeutral
+
+> \GateApi\Model\DeltaNeutralEnabled setUnifiedDeltaNeutral($delta_neutral_enabled)
+
+Set the account Delta-neutral strategy mode
+
+Enable or disable the account Delta-neutral strategy mode.  Requirements for enabling: VIP level >= 4 and the account is in cross-currency margin mode; otherwise 403 is returned. Returns the enabled status after the setting takes effect.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\UnifiedApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$delta_neutral_enabled = new \GateApi\Model\DeltaNeutralEnabled(); // \GateApi\Model\DeltaNeutralEnabled | 
+
+try {
+    $result = $apiInstance->setUnifiedDeltaNeutral($delta_neutral_enabled);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling UnifiedApi->setUnifiedDeltaNeutral: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **delta_neutral_enabled** | [**\GateApi\Model\DeltaNeutralEnabled**](../Model/DeltaNeutralEnabled.md)|  |
+
+### Return type
+
+[**\GateApi\Model\DeltaNeutralEnabled**](../Model/DeltaNeutralEnabled.md)
 
 ### Authorization
 

@@ -247,7 +247,7 @@ class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
     /**
      * Sets close_type
      *
-     * @param int $close_type 平仓类型  说明： - 1：部分平仓（必须传 close_volume） - 2：全平（无需传 close_volume）
+     * @param int $close_type Close Type Description: - 1: Partial Close (close_volume is required) - 2: Full Close (close_volume is not required)
      *
      * @return $this
      */
@@ -280,7 +280,7 @@ class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
     /**
      * Sets close_volume
      *
-     * @param string|null $close_volume 平仓数量  说明： - 当 close_type = 1 时必传 - 当 close_type = 2 时忽略该字段
+     * @param string|null $close_volume Close Volume Description: - Required when close_type = 1 - Ignored when close_type = 2
      *
      * @return $this
      */

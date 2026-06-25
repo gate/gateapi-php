@@ -92,7 +92,9 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'int',
         'stp_act' => 'string',
         'finish_as' => 'string',
-        'slippage' => 'string'
+        'slippage' => 'string',
+        'stop_profit' => '\GateApi\Model\SpotOrderStopProfit',
+        'stop_loss' => '\GateApi\Model\SpotOrderStopLoss'
     ];
 
     /**
@@ -138,7 +140,9 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'stp_id' => null,
         'stp_act' => null,
         'finish_as' => null,
-        'slippage' => null
+        'slippage' => null,
+        'stop_profit' => null,
+        'stop_loss' => null
     ];
 
     /**
@@ -205,7 +209,9 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'stp_id',
         'stp_act' => 'stp_act',
         'finish_as' => 'finish_as',
-        'slippage' => 'slippage'
+        'slippage' => 'slippage',
+        'stop_profit' => 'stop_profit',
+        'stop_loss' => 'stop_loss'
     ];
 
     /**
@@ -251,7 +257,9 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'setStpId',
         'stp_act' => 'setStpAct',
         'finish_as' => 'setFinishAs',
-        'slippage' => 'setSlippage'
+        'slippage' => 'setSlippage',
+        'stop_profit' => 'setStopProfit',
+        'stop_loss' => 'setStopLoss'
     ];
 
     /**
@@ -297,7 +305,9 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'stp_id' => 'getStpId',
         'stp_act' => 'getStpAct',
         'finish_as' => 'getFinishAs',
-        'slippage' => 'getSlippage'
+        'slippage' => 'getSlippage',
+        'stop_profit' => 'getStopProfit',
+        'stop_loss' => 'getStopLoss'
     ];
 
     /**
@@ -539,6 +549,8 @@ class BatchOrder implements ModelInterface, ArrayAccess
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
         $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        $this->container['stop_profit'] = isset($data['stop_profit']) ? $data['stop_profit'] : null;
+        $this->container['stop_loss'] = isset($data['stop_loss']) ? $data['stop_loss'] : null;
     }
 
     /**
@@ -1552,7 +1564,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Sets finish_as
      *
-     * @param string|null $finish_as 订单结束方式，包括：  - open: 等待处理 - filled: 完全成交 - cancelled: 用户撤销 - liquidate_cancelled: 爆仓撤销 - small: 订单数量太小 - depth_not_enough: 深度不足导致撤单 - trader_not_enough: 对手方不足导致撤单 - ioc: 未立即成交，因为 tif 设置为 ioc - poc: 未满足挂单策略，因为 tif 设置为 poc/rvt/rat/rpi表示只想成为maker, 经检查会成为taker被拒绝 - fok: 未立即完全成交，因为 tif 设置为 fok - stp: 订单发生自成交限制而被撤销 - price_protect_cancelled: 价格保护导致撤单 - unknown: 未知
+     * @param string|null $finish_as How the order finished:  - open: Pending processing - filled: Fully filled - cancelled: Cancelled by user - liquidate_cancelled: Cancelled by liquidation - small: Order size too small - depth_not_enough: Cancelled due to insufficient order book depth - trader_not_enough: Cancelled due to insufficient counterparty liquidity - ioc: Not filled immediately because time-in-force is IOC - poc: Post-only requirement not met because time-in-force is set to poc (maker-only); rejected after being detected as taker - fok: Not fully filled immediately because time-in-force is FOK - stp: Cancelled due to self-trade prevention - price_protect_cancelled: Cancelled due to price protection - unknown: Unknown
      *
      * @return $this
      */
@@ -1592,6 +1604,54 @@ class BatchOrder implements ModelInterface, ArrayAccess
     public function setSlippage($slippage)
     {
         $this->container['slippage'] = $slippage;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_profit
+     *
+     * @return \GateApi\Model\SpotOrderStopProfit|null
+     */
+    public function getStopProfit()
+    {
+        return $this->container['stop_profit'];
+    }
+
+    /**
+     * Sets stop_profit
+     *
+     * @param \GateApi\Model\SpotOrderStopProfit|null $stop_profit stop_profit
+     *
+     * @return $this
+     */
+    public function setStopProfit($stop_profit)
+    {
+        $this->container['stop_profit'] = $stop_profit;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_loss
+     *
+     * @return \GateApi\Model\SpotOrderStopLoss|null
+     */
+    public function getStopLoss()
+    {
+        return $this->container['stop_loss'];
+    }
+
+    /**
+     * Sets stop_loss
+     *
+     * @param \GateApi\Model\SpotOrderStopLoss|null $stop_loss stop_loss
+     *
+     * @return $this
+     */
+    public function setStopLoss($stop_loss)
+    {
+        $this->container['stop_loss'] = $stop_loss;
 
         return $this;
     }

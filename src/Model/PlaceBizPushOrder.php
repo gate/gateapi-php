@@ -815,7 +815,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets trade_tips
      *
-     * @param string|null $trade_tips Ad trading terms shown to the taker.
+     * @param string|null $trade_tips Advertisement trade terms displayed to ordering users; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
      *
      * @return $this
      */
@@ -839,7 +839,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets auto_reply
      *
-     * @param string|null $auto_reply Auto-reply message after order creation.
+     * @param string|null $auto_reply Auto reply content after order creation; goes through off-platform traffic diversion risk control on submission, and when hit, the advertisement is not saved and code 70305102 is returned
      *
      * @return $this
      */

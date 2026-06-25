@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**listSubAccountMarginBalances**](WalletApi.md#listSubAccountMarginBalances) | **GET** /wallet/sub_account_margin_balances | Query sub-account isolated margin account balance information
 [**listSubAccountFuturesBalances**](WalletApi.md#listSubAccountFuturesBalances) | **GET** /wallet/sub_account_futures_balances | Query sub-account perpetual futures account balance information
 [**listSubAccountCrossMarginBalances**](WalletApi.md#listSubAccountCrossMarginBalances) | **GET** /wallet/sub_account_cross_margin_balances | Query sub-account cross margin account balance information
-[**listSavedAddress**](WalletApi.md#listSavedAddress) | **GET** /wallet/saved_address | Query withdrawal address whitelist
+[**listSavedAddress**](WalletApi.md#listSavedAddress) | **GET** /wallet/saved_address | Query saved address
 [**getTradeFee**](WalletApi.md#getTradeFee) | **GET** /wallet/fee | Query personal trading fees
 [**getTotalBalance**](WalletApi.md#getTotalBalance) | **GET** /wallet/total_balance | Query personal account totals
 [**listSmallBalance**](WalletApi.md#listSmallBalance) | **GET** /wallet/small_balance | Get list of convertible small balance currencies
@@ -940,9 +940,9 @@ Name | Type | Description  | Notes
 
 ## listSavedAddress
 
-> \GateApi\Model\SavedAddress[] listSavedAddress($currency, $chain, $limit, $page)
+> \GateApi\Model\SavedAddress[] listSavedAddress($currency, $chain, $verified, $limit, $page)
 
-Query withdrawal address whitelist
+Query saved address
 
 ### Example
 
@@ -962,6 +962,7 @@ $apiInstance = new GateApi\Api\WalletApi(
 );
 $associate_array['currency'] = 'USDT'; // string | Currency
 $associate_array['chain'] = ''; // string | Chain name
+$associate_array['verified'] = ''; // string | 1 means verified address, 0 means normal address, empty string means no limit
 $associate_array['limit'] = '50'; // string | Maximum number returned, up to 100
 $associate_array['page'] = 1; // int | page number
 
@@ -983,8 +984,9 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **string**| Currency |
+ **currency** | **string**| Currency | [optional]
  **chain** | **string**| Chain name | [optional] [default to &#39;&#39;]
+ **verified** | **string**| 1 means verified address, 0 means normal address, empty string means no limit | [optional] [default to &#39;&#39;]
  **limit** | **string**| Maximum number returned, up to 100 | [optional] [default to &#39;50&#39;]
  **page** | **int**| page number | [optional] [default to 1]
 

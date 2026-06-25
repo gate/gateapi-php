@@ -54,7 +54,12 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'srvtm' => 'int'
+        'srvtm' => 'int',
+        'txid' => 'int',
+        'conversation_id' => 'string',
+        'msg_type' => 'int',
+        'risk_type' => 'int',
+        'toast_msg' => 'string'
     ];
 
     /**
@@ -63,7 +68,12 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'srvtm' => null
+        'srvtm' => null,
+        'txid' => null,
+        'conversation_id' => null,
+        'msg_type' => null,
+        'risk_type' => null,
+        'toast_msg' => null
     ];
 
     /**
@@ -93,7 +103,12 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'srvtm' => 'SRVTM'
+        'srvtm' => 'SRVTM',
+        'txid' => 'txid',
+        'conversation_id' => 'conversation_id',
+        'msg_type' => 'msg_type',
+        'risk_type' => 'risk_type',
+        'toast_msg' => 'toast_msg'
     ];
 
     /**
@@ -102,7 +117,12 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'srvtm' => 'setSrvtm'
+        'srvtm' => 'setSrvtm',
+        'txid' => 'setTxid',
+        'conversation_id' => 'setConversationId',
+        'msg_type' => 'setMsgType',
+        'risk_type' => 'setRiskType',
+        'toast_msg' => 'setToastMsg'
     ];
 
     /**
@@ -111,7 +131,12 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'srvtm' => 'getSrvtm'
+        'srvtm' => 'getSrvtm',
+        'txid' => 'getTxid',
+        'conversation_id' => 'getConversationId',
+        'msg_type' => 'getMsgType',
+        'risk_type' => 'getRiskType',
+        'toast_msg' => 'getToastMsg'
     ];
 
     /**
@@ -155,8 +180,34 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const MSG_TYPE_0 = 0;
+    const RISK_TYPE_1 = 1;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMsgTypeAllowableValues()
+    {
+        return [
+            self::MSG_TYPE_0,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRiskTypeAllowableValues()
+    {
+        return [
+            self::RISK_TYPE_1,
+        ];
+    }
     
 
     /**
@@ -175,6 +226,11 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['srvtm'] = isset($data['srvtm']) ? $data['srvtm'] : null;
+        $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        $this->container['conversation_id'] = isset($data['conversation_id']) ? $data['conversation_id'] : null;
+        $this->container['msg_type'] = isset($data['msg_type']) ? $data['msg_type'] : null;
+        $this->container['risk_type'] = isset($data['risk_type']) ? $data['risk_type'] : null;
+        $this->container['toast_msg'] = isset($data['toast_msg']) ? $data['toast_msg'] : null;
     }
 
     /**
@@ -185,6 +241,22 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getMsgTypeAllowableValues();
+        if (!is_null($this->container['msg_type']) && !in_array($this->container['msg_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'msg_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getRiskTypeAllowableValues();
+        if (!is_null($this->container['risk_type']) && !in_array($this->container['risk_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'risk_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -221,6 +293,144 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
     public function setSrvtm($srvtm)
     {
         $this->container['srvtm'] = $srvtm;
+
+        return $this;
+    }
+
+    /**
+     * Gets txid
+     *
+     * @return int|null
+     */
+    public function getTxid()
+    {
+        return $this->container['txid'];
+    }
+
+    /**
+     * Sets txid
+     *
+     * @param int|null $txid Order ID
+     *
+     * @return $this
+     */
+    public function setTxid($txid)
+    {
+        $this->container['txid'] = $txid;
+
+        return $this;
+    }
+
+    /**
+     * Gets conversation_id
+     *
+     * @return string|null
+     */
+    public function getConversationId()
+    {
+        return $this->container['conversation_id'];
+    }
+
+    /**
+     * Sets conversation_id
+     *
+     * @param string|null $conversation_id Chat ID, formatted as both parties' UIDs concatenated in ascending order
+     *
+     * @return $this
+     */
+    public function setConversationId($conversation_id)
+    {
+        $this->container['conversation_id'] = $conversation_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets msg_type
+     *
+     * @return int|null
+     */
+    public function getMsgType()
+    {
+        return $this->container['msg_type'];
+    }
+
+    /**
+     * Sets msg_type
+     *
+     * @param int|null $msg_type Message content type when risk control is hit. 0: text
+     *
+     * @return $this
+     */
+    public function setMsgType($msg_type)
+    {
+        $allowedValues = $this->getMsgTypeAllowableValues();
+        if (!is_null($msg_type) && !in_array($msg_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'msg_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['msg_type'] = $msg_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets risk_type
+     *
+     * @return int|null
+     */
+    public function getRiskType()
+    {
+        return $this->container['risk_type'];
+    }
+
+    /**
+     * Sets risk_type
+     *
+     * @param int|null $risk_type Risk control display type. 1: off-platform traffic diversion risk; returned only when risk control is hit
+     *
+     * @return $this
+     */
+    public function setRiskType($risk_type)
+    {
+        $allowedValues = $this->getRiskTypeAllowableValues();
+        if (!is_null($risk_type) && !in_array($risk_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'risk_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['risk_type'] = $risk_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets toast_msg
+     *
+     * @return string|null
+     */
+    public function getToastMsg()
+    {
+        return $this->container['toast_msg'];
+    }
+
+    /**
+     * Sets toast_msg
+     *
+     * @param string|null $toast_msg Risk control prompt message; returned only when risk_type=1
+     *
+     * @return $this
+     */
+    public function setToastMsg($toast_msg)
+    {
+        $this->container['toast_msg'] = $toast_msg;
 
         return $this;
     }

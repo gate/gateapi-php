@@ -60,10 +60,8 @@ class DualGetPlans implements ModelInterface, ArrayAccess
         'exercise_currency' => 'string',
         'exercise_price' => 'double',
         'delivery_time' => 'int',
-        'min_copies' => 'int',
-        'max_copies' => 'int',
-        'per_value' => 'string',
         'apy_display' => 'string',
+        'min_amount' => 'string',
         'start_time' => 'int',
         'end_time' => 'int',
         'status' => 'string'
@@ -81,10 +79,8 @@ class DualGetPlans implements ModelInterface, ArrayAccess
         'exercise_currency' => null,
         'exercise_price' => 'double',
         'delivery_time' => 'int32',
-        'min_copies' => 'int32',
-        'max_copies' => 'int32',
-        'per_value' => null,
         'apy_display' => null,
+        'min_amount' => null,
         'start_time' => 'int32',
         'end_time' => 'int32',
         'status' => null
@@ -123,10 +119,8 @@ class DualGetPlans implements ModelInterface, ArrayAccess
         'exercise_currency' => 'exercise_currency',
         'exercise_price' => 'exercise_price',
         'delivery_time' => 'delivery_time',
-        'min_copies' => 'min_copies',
-        'max_copies' => 'max_copies',
-        'per_value' => 'per_value',
         'apy_display' => 'apy_display',
+        'min_amount' => 'min_amount',
         'start_time' => 'start_time',
         'end_time' => 'end_time',
         'status' => 'status'
@@ -144,10 +138,8 @@ class DualGetPlans implements ModelInterface, ArrayAccess
         'exercise_currency' => 'setExerciseCurrency',
         'exercise_price' => 'setExercisePrice',
         'delivery_time' => 'setDeliveryTime',
-        'min_copies' => 'setMinCopies',
-        'max_copies' => 'setMaxCopies',
-        'per_value' => 'setPerValue',
         'apy_display' => 'setApyDisplay',
+        'min_amount' => 'setMinAmount',
         'start_time' => 'setStartTime',
         'end_time' => 'setEndTime',
         'status' => 'setStatus'
@@ -165,10 +157,8 @@ class DualGetPlans implements ModelInterface, ArrayAccess
         'exercise_currency' => 'getExerciseCurrency',
         'exercise_price' => 'getExercisePrice',
         'delivery_time' => 'getDeliveryTime',
-        'min_copies' => 'getMinCopies',
-        'max_copies' => 'getMaxCopies',
-        'per_value' => 'getPerValue',
         'apy_display' => 'getApyDisplay',
+        'min_amount' => 'getMinAmount',
         'start_time' => 'getStartTime',
         'end_time' => 'getEndTime',
         'status' => 'getStatus'
@@ -240,10 +230,8 @@ class DualGetPlans implements ModelInterface, ArrayAccess
         $this->container['exercise_currency'] = isset($data['exercise_currency']) ? $data['exercise_currency'] : null;
         $this->container['exercise_price'] = isset($data['exercise_price']) ? $data['exercise_price'] : null;
         $this->container['delivery_time'] = isset($data['delivery_time']) ? $data['delivery_time'] : null;
-        $this->container['min_copies'] = isset($data['min_copies']) ? $data['min_copies'] : null;
-        $this->container['max_copies'] = isset($data['max_copies']) ? $data['max_copies'] : null;
-        $this->container['per_value'] = isset($data['per_value']) ? $data['per_value'] : null;
         $this->container['apy_display'] = isset($data['apy_display']) ? $data['apy_display'] : null;
+        $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
@@ -418,78 +406,6 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets min_copies
-     *
-     * @return int|null
-     */
-    public function getMinCopies()
-    {
-        return $this->container['min_copies'];
-    }
-
-    /**
-     * Sets min_copies
-     *
-     * @param int|null $min_copies Minimum share count
-     *
-     * @return $this
-     */
-    public function setMinCopies($min_copies)
-    {
-        $this->container['min_copies'] = $min_copies;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_copies
-     *
-     * @return int|null
-     */
-    public function getMaxCopies()
-    {
-        return $this->container['max_copies'];
-    }
-
-    /**
-     * Sets max_copies
-     *
-     * @param int|null $max_copies Maximum share count
-     *
-     * @return $this
-     */
-    public function setMaxCopies($max_copies)
-    {
-        $this->container['max_copies'] = $max_copies;
-
-        return $this;
-    }
-
-    /**
-     * Gets per_value
-     *
-     * @return string|null
-     */
-    public function getPerValue()
-    {
-        return $this->container['per_value'];
-    }
-
-    /**
-     * Sets per_value
-     *
-     * @param string|null $per_value Value Per Unit (deprecated)
-     *
-     * @return $this
-     */
-    public function setPerValue($per_value)
-    {
-        $this->container['per_value'] = $per_value;
-
-        return $this;
-    }
-
-    /**
      * Gets apy_display
      *
      * @return string|null
@@ -509,6 +425,30 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     public function setApyDisplay($apy_display)
     {
         $this->container['apy_display'] = $apy_display;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_amount
+     *
+     * @return string|null
+     */
+    public function getMinAmount()
+    {
+        return $this->container['min_amount'];
+    }
+
+    /**
+     * Sets min_amount
+     *
+     * @param string|null $min_amount Minimum investment amount
+     *
+     * @return $this
+     */
+    public function setMinAmount($min_amount)
+    {
+        $this->container['min_amount'] = $min_amount;
 
         return $this;
     }
@@ -574,7 +514,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status 状态:  `NOTSTARTED`-未开始 `ONGOING`-进行中 `ENDED`-已结束
+     * @param string|null $status Status:  `NOTSTARTED` - Not started `ONGOING` - In progress `ENDED` - Ended
      *
      * @return $this
      */

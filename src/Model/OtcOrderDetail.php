@@ -63,6 +63,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_amount' => 'string',
         'rate' => 'string',
         'transfer_remark' => 'string',
+        'reference_code' => 'string',
         'status' => 'string',
         'db_status' => 'string',
         'create_time' => 'string',
@@ -87,6 +88,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_amount' => null,
         'rate' => null,
         'transfer_remark' => null,
+        'reference_code' => null,
         'status' => null,
         'db_status' => null,
         'create_time' => null,
@@ -132,6 +134,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_amount' => 'crypto_amount',
         'rate' => 'rate',
         'transfer_remark' => 'transfer_remark',
+        'reference_code' => 'reference_code',
         'status' => 'status',
         'db_status' => 'db_status',
         'create_time' => 'create_time',
@@ -156,6 +159,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_amount' => 'setCryptoAmount',
         'rate' => 'setRate',
         'transfer_remark' => 'setTransferRemark',
+        'reference_code' => 'setReferenceCode',
         'status' => 'setStatus',
         'db_status' => 'setDbStatus',
         'create_time' => 'setCreateTime',
@@ -180,6 +184,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_amount' => 'getCryptoAmount',
         'rate' => 'getRate',
         'transfer_remark' => 'getTransferRemark',
+        'reference_code' => 'getReferenceCode',
         'status' => 'getStatus',
         'db_status' => 'getDbStatus',
         'create_time' => 'getCreateTime',
@@ -258,6 +263,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
         $this->container['transfer_remark'] = isset($data['transfer_remark']) ? $data['transfer_remark'] : null;
+        $this->container['reference_code'] = isset($data['reference_code']) ? $data['reference_code'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['db_status'] = isset($data['db_status']) ? $data['db_status'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
@@ -544,13 +550,37 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     /**
      * Sets transfer_remark
      *
-     * @param string $transfer_remark Remark
+     * @param string $transfer_remark Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
      *
      * @return $this
      */
     public function setTransferRemark($transfer_remark)
     {
         $this->container['transfer_remark'] = $transfer_remark;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference_code
+     *
+     * @return string|null
+     */
+    public function getReferenceCode()
+    {
+        return $this->container['reference_code'];
+    }
+
+    /**
+     * Sets reference_code
+     *
+     * @param string|null $reference_code Unique bank transfer reference code for deposit buy orders (SGB deposit scenario; mutually exclusive with transfer_remark)
+     *
+     * @return $this
+     */
+    public function setReferenceCode($reference_code)
+    {
+        $this->container['reference_code'] = $reference_code;
 
         return $this;
     }

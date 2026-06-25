@@ -433,7 +433,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param int $status Status
+     * @param int $status Status. 4 - success
      *
      * @return $this
      */

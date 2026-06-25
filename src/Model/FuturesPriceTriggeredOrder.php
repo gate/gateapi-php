@@ -67,7 +67,8 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'finish_as' => 'string',
         'reason' => 'string',
         'order_type' => 'string',
-        'me_order_id' => 'int'
+        'me_order_id' => 'int',
+        'pos_margin_mode' => 'string'
     ];
 
     /**
@@ -88,7 +89,8 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'finish_as' => null,
         'reason' => null,
         'order_type' => null,
-        'me_order_id' => 'int64'
+        'me_order_id' => 'int64',
+        'pos_margin_mode' => null
     ];
 
     /**
@@ -130,7 +132,8 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'finish_as' => 'finish_as',
         'reason' => 'reason',
         'order_type' => 'order_type',
-        'me_order_id' => 'me_order_id'
+        'me_order_id' => 'me_order_id',
+        'pos_margin_mode' => 'pos_margin_mode'
     ];
 
     /**
@@ -151,7 +154,8 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'finish_as' => 'setFinishAs',
         'reason' => 'setReason',
         'order_type' => 'setOrderType',
-        'me_order_id' => 'setMeOrderId'
+        'me_order_id' => 'setMeOrderId',
+        'pos_margin_mode' => 'setPosMarginMode'
     ];
 
     /**
@@ -172,7 +176,8 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         'finish_as' => 'getFinishAs',
         'reason' => 'getReason',
         'order_type' => 'getOrderType',
-        'me_order_id' => 'getMeOrderId'
+        'me_order_id' => 'getMeOrderId',
+        'pos_margin_mode' => 'getPosMarginMode'
     ];
 
     /**
@@ -224,6 +229,8 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
     const FINISH_AS_SUCCEEDED = 'succeeded';
     const FINISH_AS_FAILED = 'failed';
     const FINISH_AS_EXPIRED = 'expired';
+    const POS_MARGIN_MODE_ISOLATED = 'isolated';
+    const POS_MARGIN_MODE_CROSS = 'cross';
     
 
     
@@ -257,6 +264,19 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         ];
     }
     
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPosMarginModeAllowableValues()
+    {
+        return [
+            self::POS_MARGIN_MODE_ISOLATED,
+            self::POS_MARGIN_MODE_CROSS,
+        ];
+    }
+    
 
     /**
      * Associative array for storing property values
@@ -286,6 +306,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
         $this->container['me_order_id'] = isset($data['me_order_id']) ? $data['me_order_id'] : null;
+        $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
     }
 
     /**
@@ -315,6 +336,14 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         if (!is_null($this->container['finish_as']) && !in_array($this->container['finish_as'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'finish_as', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getPosMarginModeAllowableValues();
+        if (!is_null($this->container['pos_margin_mode']) && !in_array($this->container['pos_margin_mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'pos_margin_mode', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -660,6 +689,39 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
     public function setMeOrderId($me_order_id)
     {
         $this->container['me_order_id'] = $me_order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets pos_margin_mode
+     *
+     * @return string|null
+     */
+    public function getPosMarginMode()
+    {
+        return $this->container['pos_margin_mode'];
+    }
+
+    /**
+     * Sets pos_margin_mode
+     *
+     * @param string|null $pos_margin_mode Position margin mode: `isolated` (isolated margin) or `cross` (cross margin). Returned by the server in simple split-position mode; when writing, use only the values below.
+     *
+     * @return $this
+     */
+    public function setPosMarginMode($pos_margin_mode)
+    {
+        $allowedValues = $this->getPosMarginModeAllowableValues();
+        if (!is_null($pos_margin_mode) && !in_array($pos_margin_mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'pos_margin_mode', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;
     }

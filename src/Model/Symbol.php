@@ -358,7 +358,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Exchange type (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `CROSSEX`).
+     * @param string $exchange_type Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
      *
      * @return $this
      */

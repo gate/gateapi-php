@@ -274,7 +274,7 @@ class CrossexAccountUpdateResponse implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string|null $exchange_type Requested exchange to modify (BINANCE/OKX/GATE/BYBIT/CROSSEX; when account mode is ISOLATED_EXCHANGE, the exchange must be specified to modify futures position mode)
+     * @param string|null $exchange_type Exchange targeted by the requested change (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `CROSSEX`). When account mode is `ISOLATED_EXCHANGE`, the exchange must be specified to change futures position mode.
      *
      * @return $this
      */

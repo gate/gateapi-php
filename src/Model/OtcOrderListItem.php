@@ -69,6 +69,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_amount' => 'string',
         'rate' => 'string',
         'transfer_remark' => 'string',
+        'reference_code' => 'string',
         'gate_bank_account_iban' => 'string',
         'promotion_code' => 'string'
     ];
@@ -94,6 +95,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_amount' => null,
         'rate' => null,
         'transfer_remark' => null,
+        'reference_code' => null,
         'gate_bank_account_iban' => null,
         'promotion_code' => null
     ];
@@ -140,6 +142,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_amount' => 'crypto_amount',
         'rate' => 'rate',
         'transfer_remark' => 'transfer_remark',
+        'reference_code' => 'reference_code',
         'gate_bank_account_iban' => 'gate_bank_account_iban',
         'promotion_code' => 'promotion_code'
     ];
@@ -165,6 +168,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_amount' => 'setCryptoAmount',
         'rate' => 'setRate',
         'transfer_remark' => 'setTransferRemark',
+        'reference_code' => 'setReferenceCode',
         'gate_bank_account_iban' => 'setGateBankAccountIban',
         'promotion_code' => 'setPromotionCode'
     ];
@@ -190,6 +194,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_amount' => 'getCryptoAmount',
         'rate' => 'getRate',
         'transfer_remark' => 'getTransferRemark',
+        'reference_code' => 'getReferenceCode',
         'gate_bank_account_iban' => 'getGateBankAccountIban',
         'promotion_code' => 'getPromotionCode'
     ];
@@ -269,6 +274,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
         $this->container['transfer_remark'] = isset($data['transfer_remark']) ? $data['transfer_remark'] : null;
+        $this->container['reference_code'] = isset($data['reference_code']) ? $data['reference_code'] : null;
         $this->container['gate_bank_account_iban'] = isset($data['gate_bank_account_iban']) ? $data['gate_bank_account_iban'] : null;
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
     }
@@ -646,13 +652,37 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets transfer_remark
      *
-     * @param string|null $transfer_remark Remark
+     * @param string|null $transfer_remark Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
      *
      * @return $this
      */
     public function setTransferRemark($transfer_remark)
     {
         $this->container['transfer_remark'] = $transfer_remark;
+
+        return $this;
+    }
+
+    /**
+     * Gets reference_code
+     *
+     * @return string|null
+     */
+    public function getReferenceCode()
+    {
+        return $this->container['reference_code'];
+    }
+
+    /**
+     * Sets reference_code
+     *
+     * @param string|null $reference_code Unique bank transfer reference code for deposit buy orders (SGB deposit scenario)
+     *
+     * @return $this
+     */
+    public function setReferenceCode($reference_code)
+    {
+        $this->container['reference_code'] = $reference_code;
 
         return $this;
     }

@@ -58,7 +58,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponse implements ModelInterface, Array
         'method' => 'string',
         'code' => 'int',
         'message' => 'string',
-        'data' => 'object',
+        'data' => '\GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponseData',
         'version' => 'string'
     ];
 
@@ -292,7 +292,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponse implements ModelInterface, Array
     /**
      * Sets code
      *
-     * @param int|null $code Response code, 0 means success
+     * @param int|null $code Response code. 0 means success; 70305102 means the advertisement trade terms or auto reply hit off-platform traffic diversion risk control
      *
      * @return $this
      */
@@ -330,7 +330,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponse implements ModelInterface, Array
     /**
      * Gets data
      *
-     * @return object|null
+     * @return \GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponseData|null
      */
     public function getData()
     {
@@ -340,7 +340,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponse implements ModelInterface, Array
     /**
      * Sets data
      *
-     * @param object|null $data Empty object on successful publish or edit.
+     * @param \GateApi\Model\P2pMerchantBooksPlaceBizPushOrderResponseData|null $data data
      *
      * @return $this
      */

@@ -3965,12 +3965,13 @@ class WalletApi
     /**
      * Operation listSavedAddress
      *
-     * Query withdrawal address whitelist
+     * Query saved address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency (required)
+     * @param  string $currency Currency (optional)
      * @param  string $chain Chain name (optional, default to '')
+     * @param  string $verified 1 means verified address, 0 means normal address, empty string means no limit (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
      * @param  int $page page number (optional, default to 1)
      *
@@ -3987,12 +3988,13 @@ class WalletApi
     /**
      * Operation listSavedAddressWithHttpInfo
      *
-     * Query withdrawal address whitelist
+     * Query saved address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency (required)
+     * @param  string $currency Currency (optional)
      * @param  string $chain Chain name (optional, default to '')
+     * @param  string $verified 1 means verified address, 0 means normal address, empty string means no limit (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
      * @param  int $page page number (optional, default to 1)
      *
@@ -4046,12 +4048,13 @@ class WalletApi
     /**
      * Operation listSavedAddressAsync
      *
-     * Query withdrawal address whitelist
+     * Query saved address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency (required)
+     * @param  string $currency Currency (optional)
      * @param  string $chain Chain name (optional, default to '')
+     * @param  string $verified 1 means verified address, 0 means normal address, empty string means no limit (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
      * @param  int $page page number (optional, default to 1)
      *
@@ -4071,12 +4074,13 @@ class WalletApi
     /**
      * Operation listSavedAddressAsyncWithHttpInfo
      *
-     * Query withdrawal address whitelist
+     * Query saved address
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency (required)
+     * @param  string $currency Currency (optional)
      * @param  string $chain Chain name (optional, default to '')
+     * @param  string $verified 1 means verified address, 0 means normal address, empty string means no limit (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
      * @param  int $page page number (optional, default to 1)
      *
@@ -4127,8 +4131,9 @@ class WalletApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency (required)
+     * @param  string $currency Currency (optional)
      * @param  string $chain Chain name (optional, default to '')
+     * @param  string $verified 1 means verified address, 0 means normal address, empty string means no limit (optional, default to '')
      * @param  string $limit Maximum number returned, up to 100 (optional, default to '50')
      * @param  int $page page number (optional, default to 1)
      *
@@ -4140,15 +4145,10 @@ class WalletApi
         // unbox the parameters from the associative array
         $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
         $chain = array_key_exists('chain', $associative_array) ? $associative_array['chain'] : '';
+        $verified = array_key_exists('verified', $associative_array) ? $associative_array['verified'] : '';
         $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : '50';
         $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
 
-        // verify the required parameter 'currency' is set
-        if ($currency === null || (is_array($currency) && count($currency) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $currency when calling listSavedAddress'
-            );
-        }
         if ($page !== null && $page < 1) {
             throw new \InvalidArgumentException('invalid value for "$page" when calling WalletApi.listSavedAddress, must be bigger than or equal to 1.');
         }
@@ -4182,6 +4182,18 @@ class WalletApi
             }
             else {
                 $queryParams['chain'] = $chain;
+            }
+        }
+
+        // query params
+        if ($verified !== null) {
+            if('form' === 'form' && is_array($verified)) {
+                foreach($verified as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['verified'] = $verified;
             }
         }
 

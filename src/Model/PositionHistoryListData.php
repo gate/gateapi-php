@@ -55,6 +55,8 @@ class PositionHistoryListData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
+        'total' => 'int',
+        'total_page' => 'int',
         'list' => '\GateApi\Model\PositionHistoryListDataList[]'
     ];
 
@@ -64,6 +66,8 @@ class PositionHistoryListData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'total' => null,
+        'total_page' => null,
         'list' => null
     ];
 
@@ -94,6 +98,8 @@ class PositionHistoryListData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'total' => 'total',
+        'total_page' => 'total_page',
         'list' => 'list'
     ];
 
@@ -103,6 +109,8 @@ class PositionHistoryListData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'total' => 'setTotal',
+        'total_page' => 'setTotalPage',
         'list' => 'setList'
     ];
 
@@ -112,6 +120,8 @@ class PositionHistoryListData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'total' => 'getTotal',
+        'total_page' => 'getTotalPage',
         'list' => 'getList'
     ];
 
@@ -175,6 +185,8 @@ class PositionHistoryListData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['total_page'] = isset($data['total_page']) ? $data['total_page'] : null;
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
     }
 
@@ -201,6 +213,54 @@ class PositionHistoryListData implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets total
+     *
+     * @return int|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int|null $total Total amount
+     *
+     * @return $this
+     */
+    public function setTotal($total)
+    {
+        $this->container['total'] = $total;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_page
+     *
+     * @return int|null
+     */
+    public function getTotalPage()
+    {
+        return $this->container['total_page'];
+    }
+
+    /**
+     * Sets total_page
+     *
+     * @param int|null $total_page Total pages
+     *
+     * @return $this
+     */
+    public function setTotalPage($total_page)
+    {
+        $this->container['total_page'] = $total_page;
+
+        return $this;
+    }
 
     /**
      * Gets list

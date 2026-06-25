@@ -57,7 +57,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
         'size' => 'string',
         'price' => 'string',
         'amend_text' => 'string',
-        'text' => 'string'
+        'text' => 'string',
+        'action_mode' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
         'size' => null,
         'price' => null,
         'amend_text' => null,
-        'text' => null
+        'text' => null,
+        'action_mode' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
         'size' => 'size',
         'price' => 'price',
         'amend_text' => 'amend_text',
-        'text' => 'text'
+        'text' => 'text',
+        'action_mode' => 'action_mode'
     ];
 
     /**
@@ -114,7 +117,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
         'size' => 'setSize',
         'price' => 'setPrice',
         'amend_text' => 'setAmendText',
-        'text' => 'setText'
+        'text' => 'setText',
+        'action_mode' => 'setActionMode'
     ];
 
     /**
@@ -126,7 +130,8 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
         'size' => 'getSize',
         'price' => 'getPrice',
         'amend_text' => 'getAmendText',
-        'text' => 'getText'
+        'text' => 'getText',
+        'action_mode' => 'getActionMode'
     ];
 
     /**
@@ -193,6 +198,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['action_mode'] = isset($data['action_mode']) ? $data['action_mode'] : null;
     }
 
     /**
@@ -311,6 +317,30 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     public function setText($text)
     {
         $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_mode
+     *
+     * @return string|null
+     */
+    public function getActionMode()
+    {
+        return $this->container['action_mode'];
+    }
+
+    /**
+     * Sets action_mode
+     *
+     * @param string|null $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
+     *
+     * @return $this
+     */
+    public function setActionMode($action_mode)
+    {
+        $this->container['action_mode'] = $action_mode;
 
         return $this;
     }

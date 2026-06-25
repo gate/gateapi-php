@@ -58,6 +58,9 @@ class Position implements ModelInterface, ArrayAccess
         'user' => 'int',
         'contract' => 'string',
         'size' => 'string',
+        'hedge_status' => 'string',
+        'hedged_size' => 'string',
+        'unhedged_size' => 'string',
         'leverage' => 'string',
         'risk_limit' => 'string',
         'leverage_max' => 'string',
@@ -102,6 +105,9 @@ class Position implements ModelInterface, ArrayAccess
         'user' => 'int64',
         'contract' => null,
         'size' => null,
+        'hedge_status' => null,
+        'hedged_size' => null,
+        'unhedged_size' => null,
         'leverage' => null,
         'risk_limit' => null,
         'leverage_max' => null,
@@ -167,6 +173,9 @@ class Position implements ModelInterface, ArrayAccess
         'user' => 'user',
         'contract' => 'contract',
         'size' => 'size',
+        'hedge_status' => 'hedge_status',
+        'hedged_size' => 'hedged_size',
+        'unhedged_size' => 'unhedged_size',
         'leverage' => 'leverage',
         'risk_limit' => 'risk_limit',
         'leverage_max' => 'leverage_max',
@@ -211,6 +220,9 @@ class Position implements ModelInterface, ArrayAccess
         'user' => 'setUser',
         'contract' => 'setContract',
         'size' => 'setSize',
+        'hedge_status' => 'setHedgeStatus',
+        'hedged_size' => 'setHedgedSize',
+        'unhedged_size' => 'setUnhedgedSize',
         'leverage' => 'setLeverage',
         'risk_limit' => 'setRiskLimit',
         'leverage_max' => 'setLeverageMax',
@@ -255,6 +267,9 @@ class Position implements ModelInterface, ArrayAccess
         'user' => 'getUser',
         'contract' => 'getContract',
         'size' => 'getSize',
+        'hedge_status' => 'getHedgeStatus',
+        'hedged_size' => 'getHedgedSize',
+        'unhedged_size' => 'getUnhedgedSize',
         'leverage' => 'getLeverage',
         'risk_limit' => 'getRiskLimit',
         'leverage_max' => 'getLeverageMax',
@@ -331,11 +346,26 @@ class Position implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const HEDGE_STATUS_PARTIAL_HEDGED = 'partial_hedged';
+    const HEDGE_STATUS_FULL_HEDGED = 'full_hedged';
     const MODE_SINGLE = 'single';
     const MODE_DUAL_LONG = 'dual_long';
     const MODE_DUAL_SHORT = 'dual_short';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getHedgeStatusAllowableValues()
+    {
+        return [
+            self::HEDGE_STATUS_PARTIAL_HEDGED,
+            self::HEDGE_STATUS_FULL_HEDGED,
+        ];
+    }
     
     /**
      * Gets allowable values of the enum
@@ -370,6 +400,9 @@ class Position implements ModelInterface, ArrayAccess
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['hedge_status'] = isset($data['hedge_status']) ? $data['hedge_status'] : null;
+        $this->container['hedged_size'] = isset($data['hedged_size']) ? $data['hedged_size'] : null;
+        $this->container['unhedged_size'] = isset($data['unhedged_size']) ? $data['unhedged_size'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
         $this->container['risk_limit'] = isset($data['risk_limit']) ? $data['risk_limit'] : null;
         $this->container['leverage_max'] = isset($data['leverage_max']) ? $data['leverage_max'] : null;
@@ -413,6 +446,14 @@ class Position implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getHedgeStatusAllowableValues();
+        if (!is_null($this->container['hedge_status']) && !in_array($this->container['hedge_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'hedge_status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getModeAllowableValues();
         if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
@@ -505,6 +546,87 @@ class Position implements ModelInterface, ArrayAccess
     public function setSize($size)
     {
         $this->container['size'] = $size;
+
+        return $this;
+    }
+
+    /**
+     * Gets hedge_status
+     *
+     * @return string|null
+     */
+    public function getHedgeStatus()
+    {
+        return $this->container['hedge_status'];
+    }
+
+    /**
+     * Sets hedge_status
+     *
+     * @param string|null $hedge_status The hedging status of the position under the Delta-neutral strategy. Including:  - `partial_hedged`: partially hedged - `full_hedged`: fully hedged
+     *
+     * @return $this
+     */
+    public function setHedgeStatus($hedge_status)
+    {
+        $allowedValues = $this->getHedgeStatusAllowableValues();
+        if (!is_null($hedge_status) && !in_array($hedge_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'hedge_status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['hedge_status'] = $hedge_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets hedged_size
+     *
+     * @return string|null
+     */
+    public function getHedgedSize()
+    {
+        return $this->container['hedged_size'];
+    }
+
+    /**
+     * Sets hedged_size
+     *
+     * @param string|null $hedged_size The hedged position size under the Delta-neutral strategy.
+     *
+     * @return $this
+     */
+    public function setHedgedSize($hedged_size)
+    {
+        $this->container['hedged_size'] = $hedged_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets unhedged_size
+     *
+     * @return string|null
+     */
+    public function getUnhedgedSize()
+    {
+        return $this->container['unhedged_size'];
+    }
+
+    /**
+     * Sets unhedged_size
+     *
+     * @param string|null $unhedged_size The unhedged position size under the Delta-neutral strategy, calculated as `max(abs(size) - abs(hedged_size), 0)`.
+     *
+     * @return $this
+     */
+    public function setUnhedgedSize($unhedged_size)
+    {
+        $this->container['unhedged_size'] = $unhedged_size;
 
         return $this;
     }

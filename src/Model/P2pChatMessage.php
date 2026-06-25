@@ -64,7 +64,9 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'int',
         'pic' => 'string',
         'file_key' => 'string',
-        'file_type' => 'string'
+        'file_type' => 'string',
+        'risk_type' => 'int',
+        'toast_msg' => 'string'
     ];
 
     /**
@@ -83,7 +85,9 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => null,
         'pic' => null,
         'file_key' => null,
-        'file_type' => null
+        'file_type' => null,
+        'risk_type' => null,
+        'toast_msg' => null
     ];
 
     /**
@@ -123,7 +127,9 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'type',
         'pic' => 'pic',
         'file_key' => 'file_key',
-        'file_type' => 'file_type'
+        'file_type' => 'file_type',
+        'risk_type' => 'risk_type',
+        'toast_msg' => 'toast_msg'
     ];
 
     /**
@@ -142,7 +148,9 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'setType',
         'pic' => 'setPic',
         'file_key' => 'setFileKey',
-        'file_type' => 'setFileType'
+        'file_type' => 'setFileType',
+        'risk_type' => 'setRiskType',
+        'toast_msg' => 'setToastMsg'
     ];
 
     /**
@@ -161,7 +169,9 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         'type' => 'getType',
         'pic' => 'getPic',
         'file_key' => 'getFileKey',
-        'file_type' => 'getFileType'
+        'file_type' => 'getFileType',
+        'risk_type' => 'getRiskType',
+        'toast_msg' => 'getToastMsg'
     ];
 
     /**
@@ -205,8 +215,21 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const RISK_TYPE_1 = 1;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRiskTypeAllowableValues()
+    {
+        return [
+            self::RISK_TYPE_1,
+        ];
+    }
     
 
     /**
@@ -235,6 +258,8 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         $this->container['pic'] = isset($data['pic']) ? $data['pic'] : null;
         $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
         $this->container['file_type'] = isset($data['file_type']) ? $data['file_type'] : null;
+        $this->container['risk_type'] = isset($data['risk_type']) ? $data['risk_type'] : null;
+        $this->container['toast_msg'] = isset($data['toast_msg']) ? $data['toast_msg'] : null;
     }
 
     /**
@@ -245,6 +270,14 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getRiskTypeAllowableValues();
+        if (!is_null($this->container['risk_type']) && !in_array($this->container['risk_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'risk_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -521,6 +554,63 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     public function setFileType($file_type)
     {
         $this->container['file_type'] = $file_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets risk_type
+     *
+     * @return int|null
+     */
+    public function getRiskType()
+    {
+        return $this->container['risk_type'];
+    }
+
+    /**
+     * Sets risk_type
+     *
+     * @param int|null $risk_type Risk control display type. 1: off-platform traffic diversion risk; returned when a text message hits risk control
+     *
+     * @return $this
+     */
+    public function setRiskType($risk_type)
+    {
+        $allowedValues = $this->getRiskTypeAllowableValues();
+        if (!is_null($risk_type) && !in_array($risk_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'risk_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['risk_type'] = $risk_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets toast_msg
+     *
+     * @return string|null
+     */
+    public function getToastMsg()
+    {
+        return $this->container['toast_msg'];
+    }
+
+    /**
+     * Sets toast_msg
+     *
+     * @param string|null $toast_msg Risk control prompt message; returned only when risk_type=1
+     *
+     * @return $this
+     */
+    public function setToastMsg($toast_msg)
+    {
+        $this->container['toast_msg'] = $toast_msg;
 
         return $this;
     }

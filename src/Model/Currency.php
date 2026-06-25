@@ -574,7 +574,7 @@ class Currency implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param string[]|null $category 币种分类  - stocks: 股票 - metals: 金属 - indices: 指数 - forex: 外汇 - commodities: 大宗商品
+     * @param string[]|null $category Currency categories - stocks: Stocks - metals: Metals - indices: Indices - forex: Forex - commodities: Commodities
      *
      * @return $this
      */

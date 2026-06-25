@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**price_tp** | **string** | 止盈价格  说明： - 不传 或 传 \&quot;0\&quot;：将清空原有止盈价 - 如不希望清空，请传接口返回的原止盈价 | [optional] 
-**price_sl** | **string** | 止损价格  说明： - 不传 或 传 \&quot;0\&quot;：将清空原有止损价 - 如不希望清空，请传接口返回的原止损价 | [optional] 
+**price_tp** | **string** | Take Profit Price Description: - If not provided or set to \&quot;0\&quot;: The original take profit price will be cleared - If you do not want to clear it, pass the original take profit price returned by the interface | [optional] 
+**price_sl** | **string** | Stop Loss Price Description: - If not provided or set to \&quot;0\&quot;: The original stop loss price will be cleared - If you do not want to clear it, pass the original stop loss price returned by the interface | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **coin** | **string** | Staked and redeemed currencies | 
 **amount** | **string** | Amount | 
 **type** | **int** | Type 0-Staking 1-Redemption | 
-**status** | **int** | Status | 
+**status** | **int** | Status. 1 - success, 3 - delayed redemption in progress, 6 - redemption cancellation order | 
 **redeem_stamp** | **int** | Redemption credit time | 
 **create_stamp** | **int** | Order time | 
 **exchange_amount** | **string** | Exchange rate | 

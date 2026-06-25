@@ -637,7 +637,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
     /**
      * Sets assets
      *
-     * @param \GateApi\Model\CrossexAccountAsset[] $assets 资产列表，按交易所与币种维度返回各账户余额、保证金及盈亏明细
+     * @param \GateApi\Model\CrossexAccountAsset[] $assets Asset list: grouped by exchange and currency, returning per-account balances, margin, and PnL details
      *
      * @return $this
      */

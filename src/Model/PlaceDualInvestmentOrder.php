@@ -56,7 +56,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'id' => 'int',
         'plan_id' => 'int',
-        'copies' => 'string',
         'invest_amount' => 'string',
         'settlement_amount' => 'string',
         'create_time' => 'int',
@@ -81,7 +80,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'id' => 'int32',
         'plan_id' => 'int32',
-        'copies' => null,
         'invest_amount' => null,
         'settlement_amount' => null,
         'create_time' => 'int32',
@@ -127,7 +125,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'plan_id' => 'plan_id',
-        'copies' => 'copies',
         'invest_amount' => 'invest_amount',
         'settlement_amount' => 'settlement_amount',
         'create_time' => 'create_time',
@@ -152,7 +149,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'plan_id' => 'setPlanId',
-        'copies' => 'setCopies',
         'invest_amount' => 'setInvestAmount',
         'settlement_amount' => 'setSettlementAmount',
         'create_time' => 'setCreateTime',
@@ -177,7 +173,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'plan_id' => 'getPlanId',
-        'copies' => 'getCopies',
         'invest_amount' => 'getInvestAmount',
         'settlement_amount' => 'getSettlementAmount',
         'create_time' => 'getCreateTime',
@@ -256,7 +251,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
-        $this->container['copies'] = isset($data['copies']) ? $data['copies'] : null;
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
         $this->container['settlement_amount'] = isset($data['settlement_amount']) ? $data['settlement_amount'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
@@ -341,30 +335,6 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     public function setPlanId($plan_id)
     {
         $this->container['plan_id'] = $plan_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets copies
-     *
-     * @return string|null
-     */
-    public function getCopies()
-    {
-        return $this->container['copies'];
-    }
-
-    /**
-     * Sets copies
-     *
-     * @param string|null $copies Units
-     *
-     * @return $this
-     */
-    public function setCopies($copies)
-    {
-        $this->container['copies'] = $copies;
 
         return $this;
     }

@@ -116,11 +116,11 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbols
      *
-     * 查询币对信息
+     * Query symbol information
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
+     * @param  string $symbols List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -135,11 +135,11 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbolsWithHttpInfo
      *
-     * 查询币对信息
+     * Query symbol information
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
+     * @param  string $symbols List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -191,11 +191,11 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbolsAsync
      *
-     * 查询币对信息
+     * Query symbol information
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
+     * @param  string $symbols List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -213,11 +213,11 @@ class CrossExApi
     /**
      * Operation listCrossexRuleSymbolsAsyncWithHttpInfo
      *
-     * 查询币对信息
+     * Query symbol information
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
+     * @param  string $symbols List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -266,7 +266,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
+     * @param  string $symbols List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -365,7 +365,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimits
      *
-     * 查询风险限额信息
+     * Query risk limit information
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -382,7 +382,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimitsWithHttpInfo
      *
-     * 查询风险限额信息
+     * Query risk limit information
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -436,7 +436,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimitsAsync
      *
-     * 查询风险限额信息
+     * Query risk limit information
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -456,7 +456,7 @@ class CrossExApi
     /**
      * Operation listCrossexRuleRiskLimitsAsyncWithHttpInfo
      *
-     * 查询风险限额信息
+     * Query risk limit information
      *
      * @param  string $symbols Trading Pair List, multiple separated by commas Example values: BINANCE_FUTURE_ADA_USDT,GATE_MARGIN_ADA_USDT (required)
      *
@@ -607,11 +607,11 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoins
      *
-     * 查询划转币种支持
+     * Query supported transfer currencies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -626,11 +626,11 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoinsWithHttpInfo
      *
-     * 查询划转币种支持
+     * Query supported transfer currencies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -682,11 +682,11 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoinsAsync
      *
-     * 查询划转币种支持
+     * Query supported transfer currencies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -704,11 +704,11 @@ class CrossExApi
     /**
      * Operation listCrossexTransferCoinsAsyncWithHttpInfo
      *
-     * 查询划转币种支持
+     * Query supported transfer currencies
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -757,7 +757,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2856,7 +2856,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2875,7 +2875,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2931,7 +2931,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2953,7 +2953,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3002,7 +3002,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4532,7 +4532,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      * @param  string $exchange_type Exchange (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -4552,7 +4552,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      * @param  string $exchange_type Exchange (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -4609,7 +4609,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      * @param  string $exchange_type Exchange (optional)
      *
      * @throws \InvalidArgumentException
@@ -4632,7 +4632,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      * @param  string $exchange_type Exchange (optional)
      *
      * @throws \InvalidArgumentException
@@ -4682,7 +4682,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Currency (optional)
+     * @param  string $coin Query by specified currency name (optional)
      * @param  string $exchange_type Exchange (optional)
      *
      * @throws \InvalidArgumentException
@@ -6099,9 +6099,10 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
+     * @param  string $attributes Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6122,9 +6123,10 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
+     * @param  string $attributes Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6182,9 +6184,10 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
+     * @param  string $attributes Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6208,9 +6211,10 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
+     * @param  string $attributes Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6261,9 +6265,10 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
+     * @param  string $attributes Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6276,6 +6281,7 @@ class CrossExApi
         $symbol = array_key_exists('symbol', $associative_array) ? $associative_array['symbol'] : null;
         $from = array_key_exists('from', $associative_array) ? $associative_array['from'] : null;
         $to = array_key_exists('to', $associative_array) ? $associative_array['to'] : null;
+        $attributes = array_key_exists('attributes', $associative_array) ? $associative_array['attributes'] : null;
 
 
         $resourcePath = '/crossex/history_orders';
@@ -6342,6 +6348,18 @@ class CrossExApi
             }
             else {
                 $queryParams['to'] = $to;
+            }
+        }
+
+        // query params
+        if ($attributes !== null) {
+            if('form' === 'form' && is_array($attributes)) {
+                foreach($attributes as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['attributes'] = $attributes;
             }
         }
 
@@ -6423,7 +6441,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6446,7 +6464,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6506,7 +6524,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6532,7 +6550,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6585,7 +6603,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6747,7 +6765,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6770,7 +6788,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6830,7 +6848,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6856,7 +6874,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -6909,7 +6927,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7069,7 +7087,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $to Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $page Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
@@ -7093,7 +7111,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $to Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $page Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
@@ -7154,7 +7172,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $to Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $page Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
@@ -7181,7 +7199,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $to Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $page Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
@@ -7235,7 +7253,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $to Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
      * @param  int $page Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
@@ -7413,7 +7431,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7436,7 +7454,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7496,7 +7514,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7522,7 +7540,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7575,7 +7593,7 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $symbol Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
+     * @param  string $symbol Currency pair (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7737,8 +7755,8 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $statement_type Bill entry type. (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $statement_type Bill entry type. The filter accepts the same values returned in the response. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7761,8 +7779,8 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $statement_type Bill entry type. (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $statement_type Bill entry type. The filter accepts the same values returned in the response. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7822,8 +7840,8 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $statement_type Bill entry type. (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $statement_type Bill entry type. The filter accepts the same values returned in the response. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7849,8 +7867,8 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $statement_type Bill entry type. (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $statement_type Bill entry type. The filter accepts the same values returned in the response. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -7903,8 +7921,8 @@ class CrossExApi
      *
      * @param  int $page Page number (optional)
      * @param  int $limit Maximum number returned by list, max 1000 (optional)
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $statement_type Bill entry type. (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $statement_type Bill entry type. The filter accepts the same values returned in the response. (optional)
      * @param  int $from Start Millisecond Timestamp (optional)
      * @param  int $to End Millisecond Timestamp (optional)
      *
@@ -8077,8 +8095,8 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8097,8 +8115,8 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8154,8 +8172,8 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8177,8 +8195,8 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8227,8 +8245,8 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $coin Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT (optional)
+     * @param  string $coin Query by specified currency name (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

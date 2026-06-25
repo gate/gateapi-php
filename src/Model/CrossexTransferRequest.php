@@ -299,7 +299,7 @@ class CrossexTransferRequest implements ModelInterface, ArrayAccess
     /**
      * Sets from
      *
-     * @param string $from Transfer-in account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * @param string $from `from` receiving account (`CROSSEX_BINANCE`, `CROSSEX_OKX`, `CROSSEX_GATE`, `CROSSEX_BYBIT`, `CROSSEX_KRAKEN`, `CROSSEX_HYPERLIQUID`, `CROSSEX`, `SPOT`).
      *
      * @return $this
      */
@@ -323,7 +323,7 @@ class CrossexTransferRequest implements ModelInterface, ArrayAccess
     /**
      * Sets to
      *
-     * @param string $to Transfer-out account: CROSSEX_BINANCE, CROSSEX_OKX, CROSSEX_GATE, CROSSEX_BYBIT, CROSSEX, SPOT
+     * @param string $to `to` debit account (funds withdrawn from): `CROSSEX_BINANCE`, `CROSSEX_OKX`, `CROSSEX_GATE`, `CROSSEX_BYBIT`, `CROSSEX_KRAKEN`, `CROSSEX_HYPERLIQUID`, `CROSSEX`, `SPOT`
      *
      * @return $this
      */

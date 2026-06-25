@@ -61,7 +61,9 @@ class BatchAmendItem implements ModelInterface, ArrayAccess
         'amount' => 'string',
         'price' => 'string',
         'amend_text' => 'string',
-        'action_mode' => 'string'
+        'action_mode' => 'string',
+        'stop_profit' => '\GateApi\Model\SpotOrderStopProfit',
+        'stop_loss' => '\GateApi\Model\SpotOrderStopLoss'
     ];
 
     /**
@@ -76,7 +78,9 @@ class BatchAmendItem implements ModelInterface, ArrayAccess
         'amount' => null,
         'price' => null,
         'amend_text' => null,
-        'action_mode' => null
+        'action_mode' => null,
+        'stop_profit' => null,
+        'stop_loss' => null
     ];
 
     /**
@@ -112,7 +116,9 @@ class BatchAmendItem implements ModelInterface, ArrayAccess
         'amount' => 'amount',
         'price' => 'price',
         'amend_text' => 'amend_text',
-        'action_mode' => 'action_mode'
+        'action_mode' => 'action_mode',
+        'stop_profit' => 'stop_profit',
+        'stop_loss' => 'stop_loss'
     ];
 
     /**
@@ -127,7 +133,9 @@ class BatchAmendItem implements ModelInterface, ArrayAccess
         'amount' => 'setAmount',
         'price' => 'setPrice',
         'amend_text' => 'setAmendText',
-        'action_mode' => 'setActionMode'
+        'action_mode' => 'setActionMode',
+        'stop_profit' => 'setStopProfit',
+        'stop_loss' => 'setStopLoss'
     ];
 
     /**
@@ -142,7 +150,9 @@ class BatchAmendItem implements ModelInterface, ArrayAccess
         'amount' => 'getAmount',
         'price' => 'getPrice',
         'amend_text' => 'getAmendText',
-        'action_mode' => 'getActionMode'
+        'action_mode' => 'getActionMode',
+        'stop_profit' => 'getStopProfit',
+        'stop_loss' => 'getStopLoss'
     ];
 
     /**
@@ -212,6 +222,8 @@ class BatchAmendItem implements ModelInterface, ArrayAccess
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
         $this->container['action_mode'] = isset($data['action_mode']) ? $data['action_mode'] : null;
+        $this->container['stop_profit'] = isset($data['stop_profit']) ? $data['stop_profit'] : null;
+        $this->container['stop_loss'] = isset($data['stop_loss']) ? $data['stop_loss'] : null;
     }
 
     /**
@@ -416,6 +428,54 @@ class BatchAmendItem implements ModelInterface, ArrayAccess
     public function setActionMode($action_mode)
     {
         $this->container['action_mode'] = $action_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_profit
+     *
+     * @return \GateApi\Model\SpotOrderStopProfit|null
+     */
+    public function getStopProfit()
+    {
+        return $this->container['stop_profit'];
+    }
+
+    /**
+     * Sets stop_profit
+     *
+     * @param \GateApi\Model\SpotOrderStopProfit|null $stop_profit stop_profit
+     *
+     * @return $this
+     */
+    public function setStopProfit($stop_profit)
+    {
+        $this->container['stop_profit'] = $stop_profit;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_loss
+     *
+     * @return \GateApi\Model\SpotOrderStopLoss|null
+     */
+    public function getStopLoss()
+    {
+        return $this->container['stop_loss'];
+    }
+
+    /**
+     * Sets stop_loss
+     *
+     * @param \GateApi\Model\SpotOrderStopLoss|null $stop_loss stop_loss
+     *
+     * @return $this
+     */
+    public function setStopLoss($stop_loss)
+    {
+        $this->container['stop_loss'] = $stop_loss;
 
         return $this;
     }

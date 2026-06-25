@@ -84,7 +84,12 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'string',
         'pid' => 'int',
         'market_order_slip_ratio' => 'string',
-        'pos_margin_mode' => 'string'
+        'pos_margin_mode' => 'string',
+        'action_mode' => 'string',
+        'tpsl_tp_trigger_price' => 'string',
+        'tpsl_sl_trigger_price' => 'string',
+        'tpsl_tp_bbo_type' => 'string',
+        'tpsl_sl_bbo_type' => 'string'
     ];
 
     /**
@@ -122,7 +127,12 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => null,
         'pid' => 'int64',
         'market_order_slip_ratio' => null,
-        'pos_margin_mode' => null
+        'pos_margin_mode' => null,
+        'action_mode' => null,
+        'tpsl_tp_trigger_price' => null,
+        'tpsl_sl_trigger_price' => null,
+        'tpsl_tp_bbo_type' => null,
+        'tpsl_sl_bbo_type' => null
     ];
 
     /**
@@ -181,7 +191,12 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'amend_text',
         'pid' => 'pid',
         'market_order_slip_ratio' => 'market_order_slip_ratio',
-        'pos_margin_mode' => 'pos_margin_mode'
+        'pos_margin_mode' => 'pos_margin_mode',
+        'action_mode' => 'action_mode',
+        'tpsl_tp_trigger_price' => 'tpsl_tp_trigger_price',
+        'tpsl_sl_trigger_price' => 'tpsl_sl_trigger_price',
+        'tpsl_tp_bbo_type' => 'tpsl_tp_bbo_type',
+        'tpsl_sl_bbo_type' => 'tpsl_sl_bbo_type'
     ];
 
     /**
@@ -219,7 +234,12 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'setAmendText',
         'pid' => 'setPid',
         'market_order_slip_ratio' => 'setMarketOrderSlipRatio',
-        'pos_margin_mode' => 'setPosMarginMode'
+        'pos_margin_mode' => 'setPosMarginMode',
+        'action_mode' => 'setActionMode',
+        'tpsl_tp_trigger_price' => 'setTpslTpTriggerPrice',
+        'tpsl_sl_trigger_price' => 'setTpslSlTriggerPrice',
+        'tpsl_tp_bbo_type' => 'setTpslTpBboType',
+        'tpsl_sl_bbo_type' => 'setTpslSlBboType'
     ];
 
     /**
@@ -257,7 +277,12 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         'amend_text' => 'getAmendText',
         'pid' => 'getPid',
         'market_order_slip_ratio' => 'getMarketOrderSlipRatio',
-        'pos_margin_mode' => 'getPosMarginMode'
+        'pos_margin_mode' => 'getPosMarginMode',
+        'action_mode' => 'getActionMode',
+        'tpsl_tp_trigger_price' => 'getTpslTpTriggerPrice',
+        'tpsl_sl_trigger_price' => 'getTpslSlTriggerPrice',
+        'tpsl_tp_bbo_type' => 'getTpslTpBboType',
+        'tpsl_sl_bbo_type' => 'getTpslSlBboType'
     ];
 
     /**
@@ -447,6 +472,11 @@ class FuturesOrder implements ModelInterface, ArrayAccess
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
         $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        $this->container['action_mode'] = isset($data['action_mode']) ? $data['action_mode'] : null;
+        $this->container['tpsl_tp_trigger_price'] = isset($data['tpsl_tp_trigger_price']) ? $data['tpsl_tp_trigger_price'] : null;
+        $this->container['tpsl_sl_trigger_price'] = isset($data['tpsl_sl_trigger_price']) ? $data['tpsl_sl_trigger_price'] : null;
+        $this->container['tpsl_tp_bbo_type'] = isset($data['tpsl_tp_bbo_type']) ? $data['tpsl_tp_bbo_type'] : null;
+        $this->container['tpsl_sl_bbo_type'] = isset($data['tpsl_sl_bbo_type']) ? $data['tpsl_sl_bbo_type'] : null;
     }
 
     /**
@@ -1283,6 +1313,126 @@ class FuturesOrder implements ModelInterface, ArrayAccess
     public function setPosMarginMode($pos_margin_mode)
     {
         $this->container['pos_margin_mode'] = $pos_margin_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_mode
+     *
+     * @return string|null
+     */
+    public function getActionMode()
+    {
+        return $this->container['action_mode'];
+    }
+
+    /**
+     * Sets action_mode
+     *
+     * @param string|null $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
+     *
+     * @return $this
+     */
+    public function setActionMode($action_mode)
+    {
+        $this->container['action_mode'] = $action_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets tpsl_tp_trigger_price
+     *
+     * @return string|null
+     */
+    public function getTpslTpTriggerPrice()
+    {
+        return $this->container['tpsl_tp_trigger_price'];
+    }
+
+    /**
+     * Sets tpsl_tp_trigger_price
+     *
+     * @param string|null $tpsl_tp_trigger_price Take profit price
+     *
+     * @return $this
+     */
+    public function setTpslTpTriggerPrice($tpsl_tp_trigger_price)
+    {
+        $this->container['tpsl_tp_trigger_price'] = $tpsl_tp_trigger_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets tpsl_sl_trigger_price
+     *
+     * @return string|null
+     */
+    public function getTpslSlTriggerPrice()
+    {
+        return $this->container['tpsl_sl_trigger_price'];
+    }
+
+    /**
+     * Sets tpsl_sl_trigger_price
+     *
+     * @param string|null $tpsl_sl_trigger_price Stop loss price
+     *
+     * @return $this
+     */
+    public function setTpslSlTriggerPrice($tpsl_sl_trigger_price)
+    {
+        $this->container['tpsl_sl_trigger_price'] = $tpsl_sl_trigger_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets tpsl_tp_bbo_type
+     *
+     * @return string|null
+     */
+    public function getTpslTpBboType()
+    {
+        return $this->container['tpsl_tp_bbo_type'];
+    }
+
+    /**
+     * Sets tpsl_tp_bbo_type
+     *
+     * @param string|null $tpsl_tp_bbo_type Take profit BBO type
+     *
+     * @return $this
+     */
+    public function setTpslTpBboType($tpsl_tp_bbo_type)
+    {
+        $this->container['tpsl_tp_bbo_type'] = $tpsl_tp_bbo_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets tpsl_sl_bbo_type
+     *
+     * @return string|null
+     */
+    public function getTpslSlBboType()
+    {
+        return $this->container['tpsl_sl_bbo_type'];
+    }
+
+    /**
+     * Sets tpsl_sl_bbo_type
+     *
+     * @param string|null $tpsl_sl_bbo_type Stop loss BBO type
+     *
+     * @return $this
+     */
+    public function setTpslSlBboType($tpsl_sl_bbo_type)
+    {
+        $this->container['tpsl_sl_bbo_type'] = $tpsl_sl_bbo_type;
 
         return $this;
     }

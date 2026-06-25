@@ -3861,6 +3861,248 @@ class TradFiApi
     }
 
     /**
+     * Operation queryOrderLog
+     *
+     * Get order details by log ID
+     *
+     * @param  int $log_id log_id returned from the order placement API (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\OrderLog|\GateApi\Model\TradFiError
+     */
+    public function queryOrderLog($log_id)
+    {
+        list($response) = $this->queryOrderLogWithHttpInfo($log_id);
+        return $response;
+    }
+
+    /**
+     * Operation queryOrderLogWithHttpInfo
+     *
+     * Get order details by log ID
+     *
+     * @param  int $log_id log_id returned from the order placement API (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\OrderLog|\GateApi\Model\TradFiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function queryOrderLogWithHttpInfo($log_id)
+    {
+        $request = $this->queryOrderLogRequest($log_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\OrderLog';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation queryOrderLogAsync
+     *
+     * Get order details by log ID
+     *
+     * @param  int $log_id log_id returned from the order placement API (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryOrderLogAsync($log_id)
+    {
+        return $this->queryOrderLogAsyncWithHttpInfo($log_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation queryOrderLogAsyncWithHttpInfo
+     *
+     * Get order details by log ID
+     *
+     * @param  int $log_id log_id returned from the order placement API (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryOrderLogAsyncWithHttpInfo($log_id)
+    {
+        $returnType = '\GateApi\Model\OrderLog';
+        $request = $this->queryOrderLogRequest($log_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'queryOrderLog'
+     *
+     * @param  int $log_id log_id returned from the order placement API (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function queryOrderLogRequest($log_id)
+    {
+        // verify the required parameter 'log_id' is set
+        if ($log_id === null || (is_array($log_id) && count($log_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $log_id when calling queryOrderLog'
+            );
+        }
+
+        $resourcePath = '/tradfi/orders/log/{log_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($log_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'log_id' . '}',
+                ObjectSerializer::toPathValue($log_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation queryPositionList
      *
      * Query active position list
@@ -4601,6 +4843,8 @@ class TradFiApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number; defaults to 1 if omitted. (optional)
+     * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
      * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
@@ -4623,6 +4867,8 @@ class TradFiApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number; defaults to 1 if omitted. (optional)
+     * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
      * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
@@ -4682,6 +4928,8 @@ class TradFiApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number; defaults to 1 if omitted. (optional)
+     * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
      * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
@@ -4707,6 +4955,8 @@ class TradFiApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number; defaults to 1 if omitted. (optional)
+     * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
      * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
@@ -4759,6 +5009,8 @@ class TradFiApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
+     * @param  int $page Page number; defaults to 1 if omitted. (optional)
+     * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
      * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
@@ -4770,6 +5022,8 @@ class TradFiApi
     protected function queryPositionHistoryListRequest($associative_array)
     {
         // unbox the parameters from the associative array
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
         $begin_time = array_key_exists('begin_time', $associative_array) ? $associative_array['begin_time'] : null;
         $end_time = array_key_exists('end_time', $associative_array) ? $associative_array['end_time'] : null;
         $symbol = array_key_exists('symbol', $associative_array) ? $associative_array['symbol'] : null;
@@ -4782,6 +5036,30 @@ class TradFiApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
 
         // query params
         if ($begin_time !== null) {

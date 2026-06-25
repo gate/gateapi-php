@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * OtcMarkOrderPaidRequest Class Doc Comment
  *
  * @category Class
- * @description Fiat Order Set Paid Request Body
+ * @description Request body for marking a fiat order as paid (deposit confirmation). Must include the user&#39;s payment receipt (consistent with §3.2).  **&#x60;payment_receipt_file_key&#x60; is required**; the order primary key for this path is &#x60;order_id&#x60;. When accessed via the Pay gateway using &#x60;client_order_id&#x60;, the gateway&#39;s rewritten field prevails.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -55,7 +55,10 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_id' => 'string'
+        'order_id' => 'string',
+        'client_order_id' => 'string',
+        'payment_receipt_file_key' => 'string',
+        'payment_receipt' => 'string'
     ];
 
     /**
@@ -64,7 +67,10 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null
+        'order_id' => null,
+        'client_order_id' => null,
+        'payment_receipt_file_key' => null,
+        'payment_receipt' => null
     ];
 
     /**
@@ -94,7 +100,10 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_id' => 'order_id'
+        'order_id' => 'order_id',
+        'client_order_id' => 'client_order_id',
+        'payment_receipt_file_key' => 'payment_receipt_file_key',
+        'payment_receipt' => 'payment_receipt'
     ];
 
     /**
@@ -103,7 +112,10 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'order_id' => 'setOrderId'
+        'order_id' => 'setOrderId',
+        'client_order_id' => 'setClientOrderId',
+        'payment_receipt_file_key' => 'setPaymentReceiptFileKey',
+        'payment_receipt' => 'setPaymentReceipt'
     ];
 
     /**
@@ -112,7 +124,10 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'order_id' => 'getOrderId'
+        'order_id' => 'getOrderId',
+        'client_order_id' => 'getClientOrderId',
+        'payment_receipt_file_key' => 'getPaymentReceiptFileKey',
+        'payment_receipt' => 'getPaymentReceipt'
     ];
 
     /**
@@ -176,6 +191,9 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['client_order_id'] = isset($data['client_order_id']) ? $data['client_order_id'] : null;
+        $this->container['payment_receipt_file_key'] = isset($data['payment_receipt_file_key']) ? $data['payment_receipt_file_key'] : null;
+        $this->container['payment_receipt'] = isset($data['payment_receipt']) ? $data['payment_receipt'] : null;
     }
 
     /**
@@ -189,6 +207,9 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
 
         if ($this->container['order_id'] === null) {
             $invalidProperties[] = "'order_id' can't be null";
+        }
+        if ($this->container['payment_receipt_file_key'] === null) {
+            $invalidProperties[] = "'payment_receipt_file_key' can't be null";
         }
         return $invalidProperties;
     }
@@ -225,6 +246,78 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
     public function setOrderId($order_id)
     {
         $this->container['order_id'] = $order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_order_id
+     *
+     * @return string|null
+     */
+    public function getClientOrderId()
+    {
+        return $this->container['client_order_id'];
+    }
+
+    /**
+     * Sets client_order_id
+     *
+     * @param string|null $client_order_id Client order ID (used by some gateway/Inner Pay paths, optional)
+     *
+     * @return $this
+     */
+    public function setClientOrderId($client_order_id)
+    {
+        $this->container['client_order_id'] = $client_order_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_receipt_file_key
+     *
+     * @return string
+     */
+    public function getPaymentReceiptFileKey()
+    {
+        return $this->container['payment_receipt_file_key'];
+    }
+
+    /**
+     * Sets payment_receipt_file_key
+     *
+     * @param string $payment_receipt_file_key User payment receipt: **required**. Stored as a file_key. Single file; jpg/jpeg/png/pdf; ≤4MB.
+     *
+     * @return $this
+     */
+    public function setPaymentReceiptFileKey($payment_receipt_file_key)
+    {
+        $this->container['payment_receipt_file_key'] = $payment_receipt_file_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_receipt
+     *
+     * @return string|null
+     */
+    public function getPaymentReceipt()
+    {
+        return $this->container['payment_receipt'];
+    }
+
+    /**
+     * Sets payment_receipt
+     *
+     * @param string|null $payment_receipt Alias compatible with `payment_receipt_file_key` (depends on the gateway's external field name)
+     *
+     * @return $this
+     */
+    public function setPaymentReceipt($payment_receipt)
+    {
+        $this->container['payment_receipt'] = $payment_receipt;
 
         return $this;
     }

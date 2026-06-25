@@ -479,7 +479,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets bank_id
      *
-     * @param string $bank_id Bank card ID used for the order (retrieved via the default bank card API)
+     * @param string $bank_id The bank card ID used for placing the order; select it from the list returned by `GET /otc/bank_list` (or `GET /otc/bank/list`); the default card has `is_default=1`
      *
      * @return $this
      */

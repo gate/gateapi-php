@@ -1,6 +1,6 @@
 <?php
 /**
- * OtcUserDefaultBankResponse
+ * StopAllChaseOrdersResp
  *
  * PHP version 7
  *
@@ -30,14 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * OtcUserDefaultBankResponse Class Doc Comment
+ * StopAllChaseOrdersResp Class Doc Comment
  *
  * @category Class
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
+class StopAllChaseOrdersResp implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +46,7 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'OtcUserDefaultBankResponse';
+    protected static $openAPIModelName = 'StopAllChaseOrdersResp';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,10 +54,7 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string',
-        'data' => '\GateApi\Model\OtcUserDefaultBank',
-        'timestamp' => 'int'
+        'orders' => '\GateApi\Model\ChaseOrder[]'
     ];
 
     /**
@@ -66,10 +63,7 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null,
-        'data' => null,
-        'timestamp' => null
+        'orders' => null
     ];
 
     /**
@@ -99,10 +93,7 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message',
-        'data' => 'data',
-        'timestamp' => 'timestamp'
+        'orders' => 'orders'
     ];
 
     /**
@@ -111,10 +102,7 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'data' => 'setData',
-        'timestamp' => 'setTimestamp'
+        'orders' => 'setOrders'
     ];
 
     /**
@@ -123,10 +111,7 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'data' => 'getData',
-        'timestamp' => 'getTimestamp'
+        'orders' => 'getOrders'
     ];
 
     /**
@@ -189,10 +174,7 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
     }
 
     /**
@@ -204,18 +186,6 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -232,97 +202,25 @@ class OtcUserDefaultBankResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets orders
      *
-     * @return int
+     * @return \GateApi\Model\ChaseOrder[]|null
      */
-    public function getCode()
+    public function getOrders()
     {
-        return $this->container['code'];
+        return $this->container['orders'];
     }
 
     /**
-     * Sets code
+     * Sets orders
      *
-     * @param int $code code
+     * @param \GateApi\Model\ChaseOrder[]|null $orders orders
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setOrders($orders)
     {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message message
-     *
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \GateApi\Model\OtcUserDefaultBank
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \GateApi\Model\OtcUserDefaultBank $data data
-     *
-     * @return $this
-     */
-    public function setData($data)
-    {
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return int
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param int $timestamp timestamp
-     *
-     * @return $this
-     */
-    public function setTimestamp($timestamp)
-    {
-        $this->container['timestamp'] = $timestamp;
+        $this->container['orders'] = $orders;
 
         return $this;
     }

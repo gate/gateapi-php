@@ -84,7 +84,9 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'amend_text' => 'string',
         'pid' => 'int',
         'market_order_slip_ratio' => 'string',
-        'pos_margin_mode' => 'string'
+        'pos_margin_mode' => 'string',
+        'tpsl_tp_trigger_price' => 'string',
+        'tpsl_sl_trigger_price' => 'string'
     ];
 
     /**
@@ -122,7 +124,9 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'amend_text' => null,
         'pid' => 'int64',
         'market_order_slip_ratio' => null,
-        'pos_margin_mode' => null
+        'pos_margin_mode' => null,
+        'tpsl_tp_trigger_price' => null,
+        'tpsl_sl_trigger_price' => null
     ];
 
     /**
@@ -181,7 +185,9 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'amend_text' => 'amend_text',
         'pid' => 'pid',
         'market_order_slip_ratio' => 'market_order_slip_ratio',
-        'pos_margin_mode' => 'pos_margin_mode'
+        'pos_margin_mode' => 'pos_margin_mode',
+        'tpsl_tp_trigger_price' => 'tpsl_tp_trigger_price',
+        'tpsl_sl_trigger_price' => 'tpsl_sl_trigger_price'
     ];
 
     /**
@@ -219,7 +225,9 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'amend_text' => 'setAmendText',
         'pid' => 'setPid',
         'market_order_slip_ratio' => 'setMarketOrderSlipRatio',
-        'pos_margin_mode' => 'setPosMarginMode'
+        'pos_margin_mode' => 'setPosMarginMode',
+        'tpsl_tp_trigger_price' => 'setTpslTpTriggerPrice',
+        'tpsl_sl_trigger_price' => 'setTpslSlTriggerPrice'
     ];
 
     /**
@@ -257,7 +265,9 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'amend_text' => 'getAmendText',
         'pid' => 'getPid',
         'market_order_slip_ratio' => 'getMarketOrderSlipRatio',
-        'pos_margin_mode' => 'getPosMarginMode'
+        'pos_margin_mode' => 'getPosMarginMode',
+        'tpsl_tp_trigger_price' => 'getTpslTpTriggerPrice',
+        'tpsl_sl_trigger_price' => 'getTpslSlTriggerPrice'
     ];
 
     /**
@@ -447,6 +457,8 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
         $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        $this->container['tpsl_tp_trigger_price'] = isset($data['tpsl_tp_trigger_price']) ? $data['tpsl_tp_trigger_price'] : null;
+        $this->container['tpsl_sl_trigger_price'] = isset($data['tpsl_sl_trigger_price']) ? $data['tpsl_sl_trigger_price'] : null;
     }
 
     /**
@@ -1283,6 +1295,54 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
     public function setPosMarginMode($pos_margin_mode)
     {
         $this->container['pos_margin_mode'] = $pos_margin_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets tpsl_tp_trigger_price
+     *
+     * @return string|null
+     */
+    public function getTpslTpTriggerPrice()
+    {
+        return $this->container['tpsl_tp_trigger_price'];
+    }
+
+    /**
+     * Sets tpsl_tp_trigger_price
+     *
+     * @param string|null $tpsl_tp_trigger_price Take profit price
+     *
+     * @return $this
+     */
+    public function setTpslTpTriggerPrice($tpsl_tp_trigger_price)
+    {
+        $this->container['tpsl_tp_trigger_price'] = $tpsl_tp_trigger_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets tpsl_sl_trigger_price
+     *
+     * @return string|null
+     */
+    public function getTpslSlTriggerPrice()
+    {
+        return $this->container['tpsl_sl_trigger_price'];
+    }
+
+    /**
+     * Sets tpsl_sl_trigger_price
+     *
+     * @param string|null $tpsl_sl_trigger_price Stop loss price
+     *
+     * @return $this
+     */
+    public function setTpslSlTriggerPrice($tpsl_sl_trigger_price)
+    {
+        $this->container['tpsl_sl_trigger_price'] = $tpsl_sl_trigger_price;
 
         return $this;
     }

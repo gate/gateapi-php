@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **reward_coin** | **string** | Reward currency | 
 **interest** | **string** | Interest amount | 
 **fee** | **string** | fee | 
-**status** | **int** | Status | 
+**status** | **int** | Status. 4 - success | 
 **bonus_date** | **string** | Date | 
 **should_bonus_stamp** | **int** | Scheduled distribution timestamp | 
 

@@ -62,6 +62,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
         'address' => 'string',
         'memo' => 'string',
         'status' => 'string',
+        'refund_status' => 'string',
         'chain' => 'string'
     ];
 
@@ -79,6 +80,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
         'address' => null,
         'memo' => null,
         'status' => null,
+        'refund_status' => null,
         'chain' => null
     ];
 
@@ -117,6 +119,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
         'address' => 'address',
         'memo' => 'memo',
         'status' => 'status',
+        'refund_status' => 'refund_status',
         'chain' => 'chain'
     ];
 
@@ -134,6 +137,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
         'address' => 'setAddress',
         'memo' => 'setMemo',
         'status' => 'setStatus',
+        'refund_status' => 'setRefundStatus',
         'chain' => 'setChain'
     ];
 
@@ -151,6 +155,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
         'address' => 'getAddress',
         'memo' => 'getMemo',
         'status' => 'getStatus',
+        'refund_status' => 'getRefundStatus',
         'chain' => 'getChain'
     ];
 
@@ -222,6 +227,7 @@ class DepositRecord implements ModelInterface, ArrayAccess
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['refund_status'] = isset($data['refund_status']) ? $data['refund_status'] : null;
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
     }
 
@@ -446,6 +452,30 @@ class DepositRecord implements ModelInterface, ArrayAccess
     public function setStatus($status)
     {
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets refund_status
+     *
+     * @return string|null
+     */
+    public function getRefundStatus()
+    {
+        return $this->container['refund_status'];
+    }
+
+    /**
+     * Sets refund_status
+     *
+     * @param string|null $refund_status Blocked deposit refund status. This field is returned only when the deposit record has a blocked deposit refund record with a non-empty refund status. Not returned when there is no refund record or the refund status is empty - REFUNDING: Refund in progress - REFUNDED: Refund completed - REFUND_FAILED: Refund failed - REJECTED: Refund rejected
+     *
+     * @return $this
+     */
+    public function setRefundStatus($refund_status)
+    {
+        $this->container['refund_status'] = $refund_status;
 
         return $this;
     }

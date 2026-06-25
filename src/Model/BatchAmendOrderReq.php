@@ -59,7 +59,8 @@ class BatchAmendOrderReq implements ModelInterface, ArrayAccess
         'text' => 'string',
         'size' => 'string',
         'price' => 'string',
-        'amend_text' => 'string'
+        'amend_text' => 'string',
+        'action_mode' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class BatchAmendOrderReq implements ModelInterface, ArrayAccess
         'text' => null,
         'size' => null,
         'price' => null,
-        'amend_text' => null
+        'amend_text' => null,
+        'action_mode' => null
     ];
 
     /**
@@ -106,7 +108,8 @@ class BatchAmendOrderReq implements ModelInterface, ArrayAccess
         'text' => 'text',
         'size' => 'size',
         'price' => 'price',
-        'amend_text' => 'amend_text'
+        'amend_text' => 'amend_text',
+        'action_mode' => 'action_mode'
     ];
 
     /**
@@ -119,7 +122,8 @@ class BatchAmendOrderReq implements ModelInterface, ArrayAccess
         'text' => 'setText',
         'size' => 'setSize',
         'price' => 'setPrice',
-        'amend_text' => 'setAmendText'
+        'amend_text' => 'setAmendText',
+        'action_mode' => 'setActionMode'
     ];
 
     /**
@@ -132,7 +136,8 @@ class BatchAmendOrderReq implements ModelInterface, ArrayAccess
         'text' => 'getText',
         'size' => 'getSize',
         'price' => 'getPrice',
-        'amend_text' => 'getAmendText'
+        'amend_text' => 'getAmendText',
+        'action_mode' => 'getActionMode'
     ];
 
     /**
@@ -200,6 +205,7 @@ class BatchAmendOrderReq implements ModelInterface, ArrayAccess
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
+        $this->container['action_mode'] = isset($data['action_mode']) ? $data['action_mode'] : null;
     }
 
     /**
@@ -342,6 +348,30 @@ class BatchAmendOrderReq implements ModelInterface, ArrayAccess
     public function setAmendText($amend_text)
     {
         $this->container['amend_text'] = $amend_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_mode
+     *
+     * @return string|null
+     */
+    public function getActionMode()
+    {
+        return $this->container['action_mode'];
+    }
+
+    /**
+     * Sets action_mode
+     *
+     * @param string|null $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
+     *
+     * @return $this
+     */
+    public function setActionMode($action_mode)
+    {
+        $this->container['action_mode'] = $action_mode;
 
         return $this;
     }

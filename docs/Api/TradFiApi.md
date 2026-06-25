@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**updateOrder**](TradFiApi.md#updateOrder) | **PUT** /tradfi/orders/{order_id} | Modify order
 [**deleteOrder**](TradFiApi.md#deleteOrder) | **DELETE** /tradfi/orders/{order_id} | Cancel order
 [**queryOrderHistoryList**](TradFiApi.md#queryOrderHistoryList) | **GET** /tradfi/orders/history | Query historical order list
+[**queryOrderLog**](TradFiApi.md#queryOrderLog) | **GET** /tradfi/orders/log/{log_id} | Get order details by log ID
 [**queryPositionList**](TradFiApi.md#queryPositionList) | **GET** /tradfi/positions | Query active position list
 [**updatePosition**](TradFiApi.md#updatePosition) | **PUT** /tradfi/positions/{position_id} | Modify position
 [**closePosition**](TradFiApi.md#closePosition) | **POST** /tradfi/positions/{position_id}/close | Close position
@@ -917,6 +918,66 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## queryOrderLog
+
+> \GateApi\Model\OrderLog queryOrderLog($log_id)
+
+Get order details by log ID
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\TradFiApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$log_id = 1223; // int | log_id returned from the order placement API
+
+try {
+    $result = $apiInstance->queryOrderLog($log_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling TradFiApi->queryOrderLog: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **log_id** | **int**| log_id returned from the order placement API |
+
+### Return type
+
+[**\GateApi\Model\OrderLog**](../Model/OrderLog.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## queryPositionList
 
 > \GateApi\Model\PositionList queryPositionList()
@@ -1099,7 +1160,7 @@ Name | Type | Description  | Notes
 
 ## queryPositionHistoryList
 
-> \GateApi\Model\PositionHistoryList queryPositionHistoryList($begin_time, $end_time, $symbol, $position_dir)
+> \GateApi\Model\PositionHistoryList queryPositionHistoryList($page, $page_size, $begin_time, $end_time, $symbol, $position_dir)
 
 Query historical position list
 
@@ -1119,6 +1180,8 @@ $apiInstance = new GateApi\Api\TradFiApi(
     new GuzzleHttp\Client(),
     $config
 );
+$associate_array['page'] = 1; // int | Page number; defaults to 1 if omitted.
+$associate_array['page_size'] = 10; // int | Page size; defaults to 10 if omitted. Maximum 100.
 $associate_array['begin_time'] = 56; // int | Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
 $associate_array['end_time'] = 56; // int | End time (timestamp in seconds)
 $associate_array['symbol'] = 'symbol_example'; // string | Trading symbol (e.g., EURUSD)
@@ -1142,6 +1205,8 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **page** | **int**| Page number; defaults to 1 if omitted. | [optional]
+ **page_size** | **int**| Page size; defaults to 10 if omitted. Maximum 100. | [optional]
  **begin_time** | **int**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | [optional]
  **end_time** | **int**| End time (timestamp in seconds) | [optional]
  **symbol** | **string**| Trading symbol (e.g., EURUSD) | [optional]

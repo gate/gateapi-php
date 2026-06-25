@@ -257,7 +257,7 @@ class PlaceDualInvestmentOrderParams implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Subscription amount, mutually exclusive with copies field
+     * @param string $amount Subscription amount
      *
      * @return $this
      */

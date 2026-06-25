@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**p2pMerchantAccountGetUserInfo**](P2pApi.md#p2pMerchantAccountGetUserInfo) | **POST** /p2p/merchant/account/get_user_info | Get account information
 [**p2pMerchantAccountGetCounterpartyUserInfo**](P2pApi.md#p2pMerchantAccountGetCounterpartyUserInfo) | **POST** /p2p/merchant/account/get_counterparty_user_info | Get counterparty information
 [**p2pMerchantAccountGetMyselfPayment**](P2pApi.md#p2pMerchantAccountGetMyselfPayment) | **POST** /p2p/merchant/account/get_myself_payment | Get payment method list
+[**p2pMerchantAccountSetMerchantWorkHours**](P2pApi.md#p2pMerchantAccountSetMerchantWorkHours) | **POST** /p2p/merchant/account/set_merchant_work_hours | Set merchant working status and custom working hours
 [**p2pMerchantTransactionGetPendingTransactionList**](P2pApi.md#p2pMerchantTransactionGetPendingTransactionList) | **POST** /p2p/merchant/transaction/get_pending_transaction_list | Get pending orders
 [**p2pMerchantTransactionGetCompletedTransactionList**](P2pApi.md#p2pMerchantTransactionGetCompletedTransactionList) | **POST** /p2p/merchant/transaction/get_completed_transaction_list | Get all/historical orders
 [**p2pMerchantTransactionGetTransactionDetails**](P2pApi.md#p2pMerchantTransactionGetTransactionDetails) | **POST** /p2p/merchant/transaction/get_transaction_details | Query order details
@@ -184,6 +185,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\P2pPaymentMethodsResponse**](../Model/P2pPaymentMethodsResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## p2pMerchantAccountSetMerchantWorkHours
+
+> \GateApi\Model\P2pMerchantWorkHoursResponse p2pMerchantAccountSetMerchantWorkHours($set_merchant_work_hours_request)
+
+Set merchant working status and custom working hours
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\P2pApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$set_merchant_work_hours_request = new \GateApi\Model\SetMerchantWorkHoursRequest(); // \GateApi\Model\SetMerchantWorkHoursRequest | 
+
+try {
+    $result = $apiInstance->p2pMerchantAccountSetMerchantWorkHours($set_merchant_work_hours_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling P2pApi->p2pMerchantAccountSetMerchantWorkHours: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **set_merchant_work_hours_request** | [**\GateApi\Model\SetMerchantWorkHoursRequest**](../Model/SetMerchantWorkHoursRequest.md)|  |
+
+### Return type
+
+[**\GateApi\Model\P2pMerchantWorkHoursResponse**](../Model/P2pMerchantWorkHoursResponse.md)
 
 ### Authorization
 
@@ -565,6 +626,8 @@ Name | Type | Description  | Notes
 
 Publish ad order
 
+When publishing or editing an advertisement, trade_tips and auto_reply go through off-platform traffic diversion risk control; when hit, the advertisement is not saved, and code 70305102 with data.risk_event is returned.
+
 ### Example
 
 ```php
@@ -926,6 +989,8 @@ Name | Type | Description  | Notes
 > \GateApi\Model\P2pSendChatMessageResponse p2pMerchantChatSendChatMessage($send_chat_message_request)
 
 Send text message
+
+Text messages go through off-platform traffic diversion risk control. When hit, the API still returns code 0, and data contains risk_type=1 and toast_msg.
 
 ### Example
 

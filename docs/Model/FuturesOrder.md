@@ -34,5 +34,10 @@ Name | Type | Description | Notes
 **pid** | **int** | Position ID | [optional] 
 **market_order_slip_ratio** | **string** | Custom maximum slippage rate for market orders. If not provided, the default contract settings will be used | [optional] 
 **pos_margin_mode** | **string** | Position Margin Mode isolated - Isolated Margin, cross - Cross Margin, only passed in simple split position mode | [optional] 
+**action_mode** | **string** | Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | [optional] 
+**tpsl_tp_trigger_price** | **string** | Take profit price | [optional] 
+**tpsl_sl_trigger_price** | **string** | Stop loss price | [optional] 
+**tpsl_tp_bbo_type** | **string** | Take profit BBO type | [optional] 
+**tpsl_sl_bbo_type** | **string** | Stop loss BBO type | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

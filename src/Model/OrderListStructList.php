@@ -385,7 +385,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param int $status Status
+     * @param int $status Status. 1 - success, 3 - delayed redemption in progress, 6 - redemption cancellation order
      *
      * @return $this
      */

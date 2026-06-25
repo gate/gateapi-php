@@ -4,9 +4,9 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /crossex/rule/symbols | 查询币对信息
-[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /crossex/rule/risk_limits | 查询风险限额信息
-[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /crossex/transfers/coin | 查询划转币种支持
+[**listCrossexRuleSymbols**](CrossExApi.md#listCrossexRuleSymbols) | **GET** /crossex/rule/symbols | Query symbol information
+[**listCrossexRuleRiskLimits**](CrossExApi.md#listCrossexRuleRiskLimits) | **GET** /crossex/rule/risk_limits | Query risk limit information
+[**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /crossex/transfers/coin | Query supported transfer currencies
 [**listCrossexTransfers**](CrossExApi.md#listCrossexTransfers) | **GET** /crossex/transfers | Query Fund Transfer History
 [**createCrossexTransfer**](CrossExApi.md#createCrossexTransfer) | **POST** /crossex/transfers | Fund Transfer
 [**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /crossex/orders | Create an order
@@ -41,7 +41,7 @@ Method | HTTP request | Description
 
 > \GateApi\Model\Symbol[] listCrossexRuleSymbols($symbols)
 
-查询币对信息
+Query symbol information
 
 Query Trading Pair Information
 
@@ -57,7 +57,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['symbols'] = 'symbols_example'; // string | 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+$associate_array['symbols'] = 'symbols_example'; // string | List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
 
 try {
     $result = $apiInstance->listCrossexRuleSymbols($associate_array);
@@ -77,7 +77,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbols** | **string**| 币对列表，多个以逗号分隔 示例值: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional]
+ **symbols** | **string**| List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional]
 
 ### Return type
 
@@ -101,7 +101,7 @@ No authorization required
 
 > \GateApi\Model\CrossexRiskLimit[] listCrossexRuleRiskLimits($symbols)
 
-查询风险限额信息
+Query risk limit information
 
 Query risk limit information for futures/margin trading pairs
 
@@ -159,7 +159,7 @@ No authorization required
 
 > \GateApi\Model\CrossexTransferCoin[] listCrossexTransferCoins($coin)
 
-查询划转币种支持
+Query supported transfer currencies
 
 Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 
@@ -175,7 +175,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['coin'] = 'BTC'; // string | Currency
+$associate_array['coin'] = 'BTC'; // string | Query by specified currency name
 
 try {
     $result = $apiInstance->listCrossexTransferCoins($associate_array);
@@ -195,7 +195,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coin** | **string**| Currency | [optional]
+ **coin** | **string**| Query by specified currency name | [optional]
 
 ### Return type
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 Fund Transfer
 
-Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE`
+Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE` - When either side of the transfer is `CROSSEX_KRAKEN`, only USDT is supported for now. - When either side of the transfer is `CROSSEX_HYPERLIQUID`, the other side must be `SPOT`, and only USDC is supported.
 
 ### Example
 
@@ -749,7 +749,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT'; // string | Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT)
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID'; // string | Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
 
 try {
     $result = $apiInstance->getCrossexAccount($associate_array);
@@ -769,7 +769,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_type** | **string**| Exchange. Not required in cross-exchange mode; required in single-exchange mode (BINANCE/OKX/GATE/BYBIT) | [optional]
+ **exchange_type** | **string**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). | [optional]
 
 ### Return type
 
@@ -1189,8 +1189,8 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['coin'] = 'SOL'; // string | Currency
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT'; // string | Exchange
+$associate_array['coin'] = 'SOL'; // string | Query by specified currency name
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID'; // string | Exchange
 
 try {
     $result = $apiInstance->getCrossexInterestRate($associate_array);
@@ -1210,7 +1210,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coin** | **string**| Currency | [optional]
+ **coin** | **string**| Query by specified currency name | [optional]
  **exchange_type** | **string**| Exchange | [optional]
 
 ### Return type
@@ -1314,7 +1314,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['symbol'] = 'BINANCE_FUTURE_ADA_USDT'; // string | Trading Pair
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT'; // string | Exchange
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID'; // string | Exchange
 
 try {
     $result = $apiInstance->listCrossexPositions($associate_array);
@@ -1553,7 +1553,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexHistoryOrders
 
-> \GateApi\Model\CrossexOrder[] listCrossexHistoryOrders($page, $limit, $symbol, $from, $to)
+> \GateApi\Model\CrossexOrder[] listCrossexHistoryOrders($page, $limit, $symbol, $from, $to, $attributes)
 
 queryorderhistory
 
@@ -1577,9 +1577,10 @@ $apiInstance = new GateApi\Api\CrossExApi(
 );
 $associate_array['page'] = 56; // int | Page number
 $associate_array['limit'] = 56; // int | Maximum number of records returned in a single list
-$associate_array['symbol'] = 'symbol_example'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+$associate_array['symbol'] = 'symbol_example'; // string | Currency pair
 $associate_array['from'] = 56; // int | Start Millisecond Timestamp
 $associate_array['to'] = 56; // int | End Millisecond Timestamp
+$associate_array['attributes'] = 'attributes_example'; // string | Order attributes (`COMMON` normal / `LIQ` liquidation takeover / `REDUCE` liquidation reduction / `ADL` auto-deleverage / `SETTLEMENT` delisting settlement). Multiple values, comma-separated.
 
 try {
     $result = $apiInstance->listCrossexHistoryOrders($associate_array);
@@ -1601,9 +1602,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional]
- **symbol** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
+ **symbol** | **string**| Currency pair | [optional]
  **from** | **int**| Start Millisecond Timestamp | [optional]
  **to** | **int**| End Millisecond Timestamp | [optional]
+ **attributes** | **string**| Order attributes (&#x60;COMMON&#x60; normal / &#x60;LIQ&#x60; liquidation takeover / &#x60;REDUCE&#x60; liquidation reduction / &#x60;ADL&#x60; auto-deleverage / &#x60;SETTLEMENT&#x60; delisting settlement). Multiple values, comma-separated. | [optional]
 
 ### Return type
 
@@ -1649,7 +1651,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
 );
 $associate_array['page'] = 56; // int | Page number
 $associate_array['limit'] = 56; // int | Maximum number returned by list, max 1000
-$associate_array['symbol'] = 'symbol_example'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+$associate_array['symbol'] = 'symbol_example'; // string | Currency pair
 $associate_array['from'] = 56; // int | Start Millisecond Timestamp
 $associate_array['to'] = 56; // int | End Millisecond Timestamp
 
@@ -1673,7 +1675,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number | [optional]
  **limit** | **int**| Maximum number returned by list, max 1000 | [optional]
- **symbol** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
+ **symbol** | **string**| Currency pair | [optional]
  **from** | **int**| Start Millisecond Timestamp | [optional]
  **to** | **int**| End Millisecond Timestamp | [optional]
 
@@ -1721,7 +1723,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
 );
 $associate_array['page'] = 56; // int | Page number
 $associate_array['limit'] = 56; // int | Maximum number returned by list, max 1000
-$associate_array['symbol'] = 'symbol_example'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+$associate_array['symbol'] = 'symbol_example'; // string | Currency pair
 $associate_array['from'] = 56; // int | Start Millisecond Timestamp
 $associate_array['to'] = 56; // int | End Millisecond Timestamp
 
@@ -1745,7 +1747,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number | [optional]
  **limit** | **int**| Maximum number returned by list, max 1000 | [optional]
- **symbol** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
+ **symbol** | **string**| Currency pair | [optional]
  **from** | **int**| Start Millisecond Timestamp | [optional]
  **to** | **int**| End Millisecond Timestamp | [optional]
 
@@ -1791,7 +1793,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['symbol'] = 'symbol_example'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+$associate_array['symbol'] = 'symbol_example'; // string | Currency pair
 $associate_array['from'] = 56; // int | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 $associate_array['to'] = 56; // int | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
 $associate_array['page'] = 56; // int | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
@@ -1816,7 +1818,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
+ **symbol** | **string**| Currency pair | [optional]
  **from** | **int**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
  **to** | **int**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
  **page** | **int**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
@@ -1867,7 +1869,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
 );
 $associate_array['page'] = 56; // int | Page number
 $associate_array['limit'] = 56; // int | Maximum number returned by list, max 1000
-$associate_array['symbol'] = 'symbol_example'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+$associate_array['symbol'] = 'symbol_example'; // string | Currency pair
 $associate_array['from'] = 56; // int | Start Millisecond Timestamp
 $associate_array['to'] = 56; // int | End Millisecond Timestamp
 
@@ -1891,7 +1893,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number | [optional]
  **limit** | **int**| Maximum number returned by list, max 1000 | [optional]
- **symbol** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
+ **symbol** | **string**| Currency pair | [optional]
  **from** | **int**| Start Millisecond Timestamp | [optional]
  **to** | **int**| End Millisecond Timestamp | [optional]
 
@@ -1939,8 +1941,8 @@ $apiInstance = new GateApi\Api\CrossExApi(
 );
 $associate_array['page'] = 56; // int | Page number
 $associate_array['limit'] = 56; // int | Maximum number returned by list, max 1000
-$associate_array['coin'] = 'coin_example'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-$associate_array['statement_type'] = 'statement_type_example'; // string | Bill entry type.
+$associate_array['coin'] = 'coin_example'; // string | Query by specified currency name
+$associate_array['statement_type'] = 'statement_type_example'; // string | Bill entry type. The filter accepts the same values returned in the response.
 $associate_array['from'] = 56; // int | Start Millisecond Timestamp
 $associate_array['to'] = 56; // int | End Millisecond Timestamp
 
@@ -1964,8 +1966,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number | [optional]
  **limit** | **int**| Maximum number returned by list, max 1000 | [optional]
- **coin** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
- **statement_type** | **string**| Bill entry type. | [optional]
+ **coin** | **string**| Query by specified currency name | [optional]
+ **statement_type** | **string**| Bill entry type. The filter accepts the same values returned in the response. | [optional]
  **from** | **int**| Start Millisecond Timestamp | [optional]
  **to** | **int**| End Millisecond Timestamp | [optional]
 
@@ -2011,8 +2013,8 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['coin'] = 'SOL'; // string | Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
-$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE/BYBIT
+$associate_array['coin'] = 'SOL'; // string | Query by specified currency name
+$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID
 
 try {
     $result = $apiInstance->listCrossexCoinDiscountRate($associate_array);
@@ -2032,8 +2034,8 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coin** | **string**| Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt; Language: en Language-Team: en &lt;L@li.org&gt; Plural-Forms: nplurals&#x3D;2; plural&#x3D;(n !&#x3D;1) MIME-Version: 1.0 Content-Type: text/plain; charset&#x3D;utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0 | [optional]
- **exchange_type** | **string**| OKX/GATE/BINANCE/BYBIT | [optional]
+ **coin** | **string**| Query by specified currency name | [optional]
+ **exchange_type** | **string**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID | [optional]
 
 ### Return type
 

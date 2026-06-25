@@ -1,6 +1,6 @@
 <?php
 /**
- * OtcUserDefaultBank
+ * QuickRepaymentResponse
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * OtcUserDefaultBank Class Doc Comment
+ * QuickRepaymentResponse Class Doc Comment
  *
  * @category Class
+ * @description Quick repayment result
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class OtcUserDefaultBank implements ModelInterface, ArrayAccess
+class QuickRepaymentResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'OtcUserDefaultBank';
+    protected static $openAPIModelName = 'QuickRepaymentResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,13 +55,9 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'bank_account_name' => 'string',
-        'bank_name' => 'string',
-        'bank_country' => 'string',
-        'bank_address' => 'string',
-        'bank_code' => 'string',
-        'branch_code' => 'string'
+        'order_id' => 'string',
+        'repaid_infos' => '\GateApi\Model\UnifiedQuickRepayRepaidInfo[]',
+        'used_infos' => '\GateApi\Model\UnifiedQuickRepayUsedInfo[]'
     ];
 
     /**
@@ -69,13 +66,9 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'bank_account_name' => null,
-        'bank_name' => null,
-        'bank_country' => null,
-        'bank_address' => null,
-        'bank_code' => null,
-        'branch_code' => null
+        'order_id' => null,
+        'repaid_infos' => null,
+        'used_infos' => null
     ];
 
     /**
@@ -105,13 +98,9 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'bank_account_name' => 'bank_account_name',
-        'bank_name' => 'bank_name',
-        'bank_country' => 'bank_country',
-        'bank_address' => 'bank_address',
-        'bank_code' => 'bank_code',
-        'branch_code' => 'branch_code'
+        'order_id' => 'order_id',
+        'repaid_infos' => 'repaid_infos',
+        'used_infos' => 'used_infos'
     ];
 
     /**
@@ -120,13 +109,9 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'bank_account_name' => 'setBankAccountName',
-        'bank_name' => 'setBankName',
-        'bank_country' => 'setBankCountry',
-        'bank_address' => 'setBankAddress',
-        'bank_code' => 'setBankCode',
-        'branch_code' => 'setBranchCode'
+        'order_id' => 'setOrderId',
+        'repaid_infos' => 'setRepaidInfos',
+        'used_infos' => 'setUsedInfos'
     ];
 
     /**
@@ -135,13 +120,9 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'bank_account_name' => 'getBankAccountName',
-        'bank_name' => 'getBankName',
-        'bank_country' => 'getBankCountry',
-        'bank_address' => 'getBankAddress',
-        'bank_code' => 'getBankCode',
-        'branch_code' => 'getBranchCode'
+        'order_id' => 'getOrderId',
+        'repaid_infos' => 'getRepaidInfos',
+        'used_infos' => 'getUsedInfos'
     ];
 
     /**
@@ -204,13 +185,9 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['bank_account_name'] = isset($data['bank_account_name']) ? $data['bank_account_name'] : null;
-        $this->container['bank_name'] = isset($data['bank_name']) ? $data['bank_name'] : null;
-        $this->container['bank_country'] = isset($data['bank_country']) ? $data['bank_country'] : null;
-        $this->container['bank_address'] = isset($data['bank_address']) ? $data['bank_address'] : null;
-        $this->container['bank_code'] = isset($data['bank_code']) ? $data['bank_code'] : null;
-        $this->container['branch_code'] = isset($data['branch_code']) ? $data['branch_code'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['repaid_infos'] = isset($data['repaid_infos']) ? $data['repaid_infos'] : null;
+        $this->container['used_infos'] = isset($data['used_infos']) ? $data['used_infos'] : null;
     }
 
     /**
@@ -222,26 +199,14 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
         }
-        if ($this->container['bank_account_name'] === null) {
-            $invalidProperties[] = "'bank_account_name' can't be null";
+        if ($this->container['repaid_infos'] === null) {
+            $invalidProperties[] = "'repaid_infos' can't be null";
         }
-        if ($this->container['bank_name'] === null) {
-            $invalidProperties[] = "'bank_name' can't be null";
-        }
-        if ($this->container['bank_country'] === null) {
-            $invalidProperties[] = "'bank_country' can't be null";
-        }
-        if ($this->container['bank_address'] === null) {
-            $invalidProperties[] = "'bank_address' can't be null";
-        }
-        if ($this->container['bank_code'] === null) {
-            $invalidProperties[] = "'bank_code' can't be null";
-        }
-        if ($this->container['branch_code'] === null) {
-            $invalidProperties[] = "'branch_code' can't be null";
+        if ($this->container['used_infos'] === null) {
+            $invalidProperties[] = "'used_infos' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,169 +224,73 @@ class OtcUserDefaultBank implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets order_id
      *
      * @return string
      */
-    public function getId()
+    public function getOrderId()
     {
-        return $this->container['id'];
+        return $this->container['order_id'];
     }
 
     /**
-     * Sets id
+     * Sets order_id
      *
-     * @param string $id Bank ID (required for order placement)
+     * @param string $order_id Order ID
      *
      * @return $this
      */
-    public function setId($id)
+    public function setOrderId($order_id)
     {
-        $this->container['id'] = $id;
+        $this->container['order_id'] = $order_id;
 
         return $this;
     }
 
     /**
-     * Gets bank_account_name
+     * Gets repaid_infos
      *
-     * @return string
+     * @return \GateApi\Model\UnifiedQuickRepayRepaidInfo[]
      */
-    public function getBankAccountName()
+    public function getRepaidInfos()
     {
-        return $this->container['bank_account_name'];
+        return $this->container['repaid_infos'];
     }
 
     /**
-     * Sets bank_account_name
+     * Sets repaid_infos
      *
-     * @param string $bank_account_name bank_account_name
+     * @param \GateApi\Model\UnifiedQuickRepayRepaidInfo[] $repaid_infos Repaid currency details
      *
      * @return $this
      */
-    public function setBankAccountName($bank_account_name)
+    public function setRepaidInfos($repaid_infos)
     {
-        $this->container['bank_account_name'] = $bank_account_name;
+        $this->container['repaid_infos'] = $repaid_infos;
 
         return $this;
     }
 
     /**
-     * Gets bank_name
+     * Gets used_infos
      *
-     * @return string
+     * @return \GateApi\Model\UnifiedQuickRepayUsedInfo[]
      */
-    public function getBankName()
+    public function getUsedInfos()
     {
-        return $this->container['bank_name'];
+        return $this->container['used_infos'];
     }
 
     /**
-     * Sets bank_name
+     * Sets used_infos
      *
-     * @param string $bank_name bank_name
+     * @param \GateApi\Model\UnifiedQuickRepayUsedInfo[] $used_infos Currencies used for repayment
      *
      * @return $this
      */
-    public function setBankName($bank_name)
+    public function setUsedInfos($used_infos)
     {
-        $this->container['bank_name'] = $bank_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_country
-     *
-     * @return string
-     */
-    public function getBankCountry()
-    {
-        return $this->container['bank_country'];
-    }
-
-    /**
-     * Sets bank_country
-     *
-     * @param string $bank_country bank_country
-     *
-     * @return $this
-     */
-    public function setBankCountry($bank_country)
-    {
-        $this->container['bank_country'] = $bank_country;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_address
-     *
-     * @return string
-     */
-    public function getBankAddress()
-    {
-        return $this->container['bank_address'];
-    }
-
-    /**
-     * Sets bank_address
-     *
-     * @param string $bank_address bank_address
-     *
-     * @return $this
-     */
-    public function setBankAddress($bank_address)
-    {
-        $this->container['bank_address'] = $bank_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_code
-     *
-     * @return string
-     */
-    public function getBankCode()
-    {
-        return $this->container['bank_code'];
-    }
-
-    /**
-     * Sets bank_code
-     *
-     * @param string $bank_code bank_code
-     *
-     * @return $this
-     */
-    public function setBankCode($bank_code)
-    {
-        $this->container['bank_code'] = $bank_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets branch_code
-     *
-     * @return string
-     */
-    public function getBranchCode()
-    {
-        return $this->container['branch_code'];
-    }
-
-    /**
-     * Sets branch_code
-     *
-     * @param string $branch_code branch_code
-     *
-     * @return $this
-     */
-    public function setBranchCode($branch_code)
-    {
-        $this->container['branch_code'] = $branch_code;
+        $this->container['used_infos'] = $used_infos;
 
         return $this;
     }

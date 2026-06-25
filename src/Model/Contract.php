@@ -101,7 +101,8 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_size_max' => 'string',
         'funding_rate_limit' => 'string',
         'contract_type' => 'string',
-        'funding_impact_value' => 'string'
+        'funding_impact_value' => 'string',
+        'enable_circuit_breaker' => 'bool'
     ];
 
     /**
@@ -156,7 +157,8 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_size_max' => null,
         'funding_rate_limit' => null,
         'contract_type' => null,
-        'funding_impact_value' => null
+        'funding_impact_value' => null,
+        'enable_circuit_breaker' => null
     ];
 
     /**
@@ -232,7 +234,8 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_size_max' => 'market_order_size_max',
         'funding_rate_limit' => 'funding_rate_limit',
         'contract_type' => 'contract_type',
-        'funding_impact_value' => 'funding_impact_value'
+        'funding_impact_value' => 'funding_impact_value',
+        'enable_circuit_breaker' => 'enable_circuit_breaker'
     ];
 
     /**
@@ -287,7 +290,8 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_size_max' => 'setMarketOrderSizeMax',
         'funding_rate_limit' => 'setFundingRateLimit',
         'contract_type' => 'setContractType',
-        'funding_impact_value' => 'setFundingImpactValue'
+        'funding_impact_value' => 'setFundingImpactValue',
+        'enable_circuit_breaker' => 'setEnableCircuitBreaker'
     ];
 
     /**
@@ -342,7 +346,8 @@ class Contract implements ModelInterface, ArrayAccess
         'market_order_size_max' => 'getMarketOrderSizeMax',
         'funding_rate_limit' => 'getFundingRateLimit',
         'contract_type' => 'getContractType',
-        'funding_impact_value' => 'getFundingImpactValue'
+        'funding_impact_value' => 'getFundingImpactValue',
+        'enable_circuit_breaker' => 'getEnableCircuitBreaker'
     ];
 
     /**
@@ -482,6 +487,7 @@ class Contract implements ModelInterface, ArrayAccess
         $this->container['funding_rate_limit'] = isset($data['funding_rate_limit']) ? $data['funding_rate_limit'] : null;
         $this->container['contract_type'] = isset($data['contract_type']) ? $data['contract_type'] : null;
         $this->container['funding_impact_value'] = isset($data['funding_impact_value']) ? $data['funding_impact_value'] : null;
+        $this->container['enable_circuit_breaker'] = isset($data['enable_circuit_breaker']) ? $data['enable_circuit_breaker'] : null;
     }
 
     /**
@@ -1666,6 +1672,30 @@ class Contract implements ModelInterface, ArrayAccess
     public function setFundingImpactValue($funding_impact_value)
     {
         $this->container['funding_impact_value'] = $funding_impact_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_circuit_breaker
+     *
+     * @return bool|null
+     */
+    public function getEnableCircuitBreaker()
+    {
+        return $this->container['enable_circuit_breaker'];
+    }
+
+    /**
+     * Sets enable_circuit_breaker
+     *
+     * @param bool|null $enable_circuit_breaker Whether the newly launched contract activates mark price circuit breaker (If the platform intends to activate this mechanism for a newly launched contract market to prevent significant price fluctuations and excessive liquidations after launch, an advance announcement will be made).
+     *
+     * @return $this
+     */
+    public function setEnableCircuitBreaker($enable_circuit_breaker)
+    {
+        $this->container['enable_circuit_breaker'] = $enable_circuit_breaker;
 
         return $this;
     }
