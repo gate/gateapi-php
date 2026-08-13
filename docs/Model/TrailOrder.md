@@ -42,6 +42,6 @@ Name | Type | Description | Notes
 **pos_margin_mode** | **string** | Position margin mode: isolated/cross | [optional] [readonly] 
 **position_mode** | **string** | Position mode: single, dual, and dual_plus | [optional] [readonly] 
 **error_label** | **string** | Error label | [optional] [readonly] 
-**leverage** | **string** | leverage | [optional] [readonly] 
+**leverage** | **string** | Leverage | [optional] [readonly] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

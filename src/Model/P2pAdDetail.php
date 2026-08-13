@@ -59,6 +59,10 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'amount' => 'string',
         'min_amount' => 'string',
         'max_amount' => 'string',
+        'fiat_min_amount' => 'string',
+        'fiat_max_amount' => 'string',
+        'limit_basis' => 'int',
+        'limit_basis_text' => 'string',
         'total' => 'string',
         'pay_ali' => 'int',
         'pay_bank' => 'int',
@@ -83,6 +87,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'int',
         'reg_time_limit' => 'int',
         'advertisers_limit' => 'int',
+        'polymarket_limit' => 'int',
         'min_completed_limit' => 'int',
         'max_completed_limit' => 'int',
         'user_orders_limit' => 'int',
@@ -104,6 +109,10 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'amount' => null,
         'min_amount' => null,
         'max_amount' => null,
+        'fiat_min_amount' => null,
+        'fiat_max_amount' => null,
+        'limit_basis' => null,
+        'limit_basis_text' => null,
         'total' => null,
         'pay_ali' => null,
         'pay_bank' => null,
@@ -128,6 +137,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => null,
         'reg_time_limit' => null,
         'advertisers_limit' => null,
+        'polymarket_limit' => null,
         'min_completed_limit' => null,
         'max_completed_limit' => null,
         'user_orders_limit' => null,
@@ -170,6 +180,10 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'amount' => 'amount',
         'min_amount' => 'min_amount',
         'max_amount' => 'max_amount',
+        'fiat_min_amount' => 'fiat_min_amount',
+        'fiat_max_amount' => 'fiat_max_amount',
+        'limit_basis' => 'limit_basis',
+        'limit_basis_text' => 'limit_basis_text',
         'total' => 'total',
         'pay_ali' => 'pay_ali',
         'pay_bank' => 'pay_bank',
@@ -194,6 +208,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'tier_limit',
         'reg_time_limit' => 'reg_time_limit',
         'advertisers_limit' => 'advertisers_limit',
+        'polymarket_limit' => 'polymarket_limit',
         'min_completed_limit' => 'min_completed_limit',
         'max_completed_limit' => 'max_completed_limit',
         'user_orders_limit' => 'user_orders_limit',
@@ -215,6 +230,10 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'amount' => 'setAmount',
         'min_amount' => 'setMinAmount',
         'max_amount' => 'setMaxAmount',
+        'fiat_min_amount' => 'setFiatMinAmount',
+        'fiat_max_amount' => 'setFiatMaxAmount',
+        'limit_basis' => 'setLimitBasis',
+        'limit_basis_text' => 'setLimitBasisText',
         'total' => 'setTotal',
         'pay_ali' => 'setPayAli',
         'pay_bank' => 'setPayBank',
@@ -239,6 +258,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'setTierLimit',
         'reg_time_limit' => 'setRegTimeLimit',
         'advertisers_limit' => 'setAdvertisersLimit',
+        'polymarket_limit' => 'setPolymarketLimit',
         'min_completed_limit' => 'setMinCompletedLimit',
         'max_completed_limit' => 'setMaxCompletedLimit',
         'user_orders_limit' => 'setUserOrdersLimit',
@@ -260,6 +280,10 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'amount' => 'getAmount',
         'min_amount' => 'getMinAmount',
         'max_amount' => 'getMaxAmount',
+        'fiat_min_amount' => 'getFiatMinAmount',
+        'fiat_max_amount' => 'getFiatMaxAmount',
+        'limit_basis' => 'getLimitBasis',
+        'limit_basis_text' => 'getLimitBasisText',
         'total' => 'getTotal',
         'pay_ali' => 'getPayAli',
         'pay_bank' => 'getPayBank',
@@ -284,6 +308,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         'tier_limit' => 'getTierLimit',
         'reg_time_limit' => 'getRegTimeLimit',
         'advertisers_limit' => 'getAdvertisersLimit',
+        'polymarket_limit' => 'getPolymarketLimit',
         'min_completed_limit' => 'getMinCompletedLimit',
         'max_completed_limit' => 'getMaxCompletedLimit',
         'user_orders_limit' => 'getUserOrdersLimit',
@@ -335,8 +360,38 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const LIMIT_BASIS_0 = 0;
+    const LIMIT_BASIS_1 = 1;
+    const LIMIT_BASIS_TEXT_CRYPTO = 'crypto';
+    const LIMIT_BASIS_TEXT_FIAT = 'fiat';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLimitBasisAllowableValues()
+    {
+        return [
+            self::LIMIT_BASIS_0,
+            self::LIMIT_BASIS_1,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLimitBasisTextAllowableValues()
+    {
+        return [
+            self::LIMIT_BASIS_TEXT_CRYPTO,
+            self::LIMIT_BASIS_TEXT_FIAT,
+        ];
+    }
     
 
     /**
@@ -359,6 +414,10 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
         $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
+        $this->container['fiat_min_amount'] = isset($data['fiat_min_amount']) ? $data['fiat_min_amount'] : null;
+        $this->container['fiat_max_amount'] = isset($data['fiat_max_amount']) ? $data['fiat_max_amount'] : null;
+        $this->container['limit_basis'] = isset($data['limit_basis']) ? $data['limit_basis'] : null;
+        $this->container['limit_basis_text'] = isset($data['limit_basis_text']) ? $data['limit_basis_text'] : null;
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
         $this->container['pay_ali'] = isset($data['pay_ali']) ? $data['pay_ali'] : null;
         $this->container['pay_bank'] = isset($data['pay_bank']) ? $data['pay_bank'] : null;
@@ -383,6 +442,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
         $this->container['tier_limit'] = isset($data['tier_limit']) ? $data['tier_limit'] : null;
         $this->container['reg_time_limit'] = isset($data['reg_time_limit']) ? $data['reg_time_limit'] : null;
         $this->container['advertisers_limit'] = isset($data['advertisers_limit']) ? $data['advertisers_limit'] : null;
+        $this->container['polymarket_limit'] = isset($data['polymarket_limit']) ? $data['polymarket_limit'] : null;
         $this->container['min_completed_limit'] = isset($data['min_completed_limit']) ? $data['min_completed_limit'] : null;
         $this->container['max_completed_limit'] = isset($data['max_completed_limit']) ? $data['max_completed_limit'] : null;
         $this->container['user_orders_limit'] = isset($data['user_orders_limit']) ? $data['user_orders_limit'] : null;
@@ -401,6 +461,22 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getLimitBasisAllowableValues();
+        if (!is_null($this->container['limit_basis']) && !in_array($this->container['limit_basis'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'limit_basis', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getLimitBasisTextAllowableValues();
+        if (!is_null($this->container['limit_basis_text']) && !in_array($this->container['limit_basis_text'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'limit_basis_text', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -502,7 +578,7 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets min_amount
      *
-     * @param string|null $min_amount Minimum trade amount in `want_type`.
+     * @param string|null $min_amount Minimum quantity per order, denominated by currency_type
      *
      * @return $this
      */
@@ -526,13 +602,127 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     /**
      * Sets max_amount
      *
-     * @param string|null $max_amount Maximum trade amount priced in `want_type`.
+     * @param string|null $max_amount Maximum quantity per order, denominated by currency_type
      *
      * @return $this
      */
     public function setMaxAmount($max_amount)
     {
         $this->container['max_amount'] = $max_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_min_amount
+     *
+     * @return string|null
+     */
+    public function getFiatMinAmount()
+    {
+        return $this->container['fiat_min_amount'];
+    }
+
+    /**
+     * Sets fiat_min_amount
+     *
+     * @param string|null $fiat_min_amount Minimum trade amount in `want_type`.
+     *
+     * @return $this
+     */
+    public function setFiatMinAmount($fiat_min_amount)
+    {
+        $this->container['fiat_min_amount'] = $fiat_min_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_max_amount
+     *
+     * @return string|null
+     */
+    public function getFiatMaxAmount()
+    {
+        return $this->container['fiat_max_amount'];
+    }
+
+    /**
+     * Sets fiat_max_amount
+     *
+     * @param string|null $fiat_max_amount Maximum trade amount priced in `want_type`.
+     *
+     * @return $this
+     */
+    public function setFiatMaxAmount($fiat_max_amount)
+    {
+        $this->container['fiat_max_amount'] = $fiat_max_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_basis
+     *
+     * @return int|null
+     */
+    public function getLimitBasis()
+    {
+        return $this->container['limit_basis'];
+    }
+
+    /**
+     * Sets limit_basis
+     *
+     * @param int|null $limit_basis Trading limit unit. 0: crypto quantity, 1: fiat amount
+     *
+     * @return $this
+     */
+    public function setLimitBasis($limit_basis)
+    {
+        $allowedValues = $this->getLimitBasisAllowableValues();
+        if (!is_null($limit_basis) && !in_array($limit_basis, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'limit_basis', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['limit_basis'] = $limit_basis;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_basis_text
+     *
+     * @return string|null
+     */
+    public function getLimitBasisText()
+    {
+        return $this->container['limit_basis_text'];
+    }
+
+    /**
+     * Sets limit_basis_text
+     *
+     * @param string|null $limit_basis_text Trading limit unit label. crypto: crypto quantity, fiat: fiat amount
+     *
+     * @return $this
+     */
+    public function setLimitBasisText($limit_basis_text)
+    {
+        $allowedValues = $this->getLimitBasisTextAllowableValues();
+        if (!is_null($limit_basis_text) && !in_array($limit_basis_text, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'limit_basis_text', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['limit_basis_text'] = $limit_basis_text;
 
         return $this;
     }
@@ -1109,6 +1299,30 @@ class P2pAdDetail implements ModelInterface, ArrayAccess
     public function setAdvertisersLimit($advertisers_limit)
     {
         $this->container['advertisers_limit'] = $advertisers_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets polymarket_limit
+     *
+     * @return int|null
+     */
+    public function getPolymarketLimit()
+    {
+        return $this->container['polymarket_limit'];
+    }
+
+    /**
+     * Sets polymarket_limit
+     *
+     * @param int|null $polymarket_limit Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
+     *
+     * @return $this
+     */
+    public function setPolymarketLimit($polymarket_limit)
+    {
+        $this->container['polymarket_limit'] = $polymarket_limit;
 
         return $this;
     }

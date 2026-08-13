@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **period_type** | **string** | Cycle type（e.g., monthly） | 
 **period_day** | **int** | Cycle day | 
 **period_hour** | **int** | CycleHours | 
-**portfolio** | [**\GateApi\Model\AutoInvestPortfolioItem[]**](AutoInvestPortfolioItem.md) | InvestmentPortfolio | 
+**portfolio** | [**\GateApi\Model\AutoInvestPortfolioItem[]**](AutoInvestPortfolioItem.md) | Portfolio | 
 **next_time** | **int** | Next execution time (Unix timestamp) | 
 **period** | **int** | Executed periods | 
 **fund_source** | **string** | Fund source（spot/earn） | 

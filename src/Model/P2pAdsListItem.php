@@ -59,8 +59,14 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         'fiat_unit' => 'string',
         'adv_no' => 'int',
         'price' => 'string',
+        'surplus_amount' => 'string',
         'max_single_trans_amount' => 'string',
         'min_single_trans_amount' => 'string',
+        'fiat_min_amount' => 'string',
+        'fiat_max_amount' => 'string',
+        'limit_basis' => 'int',
+        'limit_basis_text' => 'string',
+        'trade_methods' => '\GateApi\Model\P2pAdsListTradeMethod[]',
         'nick_name' => 'string'
     ];
 
@@ -75,8 +81,14 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         'fiat_unit' => null,
         'adv_no' => null,
         'price' => null,
+        'surplus_amount' => null,
         'max_single_trans_amount' => null,
         'min_single_trans_amount' => null,
+        'fiat_min_amount' => null,
+        'fiat_max_amount' => null,
+        'limit_basis' => null,
+        'limit_basis_text' => null,
+        'trade_methods' => null,
         'nick_name' => null
     ];
 
@@ -112,8 +124,14 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         'fiat_unit' => 'fiat_unit',
         'adv_no' => 'adv_no',
         'price' => 'price',
+        'surplus_amount' => 'surplus_amount',
         'max_single_trans_amount' => 'max_single_trans_amount',
         'min_single_trans_amount' => 'min_single_trans_amount',
+        'fiat_min_amount' => 'fiat_min_amount',
+        'fiat_max_amount' => 'fiat_max_amount',
+        'limit_basis' => 'limit_basis',
+        'limit_basis_text' => 'limit_basis_text',
+        'trade_methods' => 'trade_methods',
         'nick_name' => 'nick_name'
     ];
 
@@ -128,8 +146,14 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         'fiat_unit' => 'setFiatUnit',
         'adv_no' => 'setAdvNo',
         'price' => 'setPrice',
+        'surplus_amount' => 'setSurplusAmount',
         'max_single_trans_amount' => 'setMaxSingleTransAmount',
         'min_single_trans_amount' => 'setMinSingleTransAmount',
+        'fiat_min_amount' => 'setFiatMinAmount',
+        'fiat_max_amount' => 'setFiatMaxAmount',
+        'limit_basis' => 'setLimitBasis',
+        'limit_basis_text' => 'setLimitBasisText',
+        'trade_methods' => 'setTradeMethods',
         'nick_name' => 'setNickName'
     ];
 
@@ -144,8 +168,14 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         'fiat_unit' => 'getFiatUnit',
         'adv_no' => 'getAdvNo',
         'price' => 'getPrice',
+        'surplus_amount' => 'getSurplusAmount',
         'max_single_trans_amount' => 'getMaxSingleTransAmount',
         'min_single_trans_amount' => 'getMinSingleTransAmount',
+        'fiat_min_amount' => 'getFiatMinAmount',
+        'fiat_max_amount' => 'getFiatMaxAmount',
+        'limit_basis' => 'getLimitBasis',
+        'limit_basis_text' => 'getLimitBasisText',
+        'trade_methods' => 'getTradeMethods',
         'nick_name' => 'getNickName'
     ];
 
@@ -190,8 +220,38 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const LIMIT_BASIS_0 = 0;
+    const LIMIT_BASIS_1 = 1;
+    const LIMIT_BASIS_TEXT_CRYPTO = 'crypto';
+    const LIMIT_BASIS_TEXT_FIAT = 'fiat';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLimitBasisAllowableValues()
+    {
+        return [
+            self::LIMIT_BASIS_0,
+            self::LIMIT_BASIS_1,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLimitBasisTextAllowableValues()
+    {
+        return [
+            self::LIMIT_BASIS_TEXT_CRYPTO,
+            self::LIMIT_BASIS_TEXT_FIAT,
+        ];
+    }
     
 
     /**
@@ -214,8 +274,14 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         $this->container['fiat_unit'] = isset($data['fiat_unit']) ? $data['fiat_unit'] : null;
         $this->container['adv_no'] = isset($data['adv_no']) ? $data['adv_no'] : null;
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['surplus_amount'] = isset($data['surplus_amount']) ? $data['surplus_amount'] : null;
         $this->container['max_single_trans_amount'] = isset($data['max_single_trans_amount']) ? $data['max_single_trans_amount'] : null;
         $this->container['min_single_trans_amount'] = isset($data['min_single_trans_amount']) ? $data['min_single_trans_amount'] : null;
+        $this->container['fiat_min_amount'] = isset($data['fiat_min_amount']) ? $data['fiat_min_amount'] : null;
+        $this->container['fiat_max_amount'] = isset($data['fiat_max_amount']) ? $data['fiat_max_amount'] : null;
+        $this->container['limit_basis'] = isset($data['limit_basis']) ? $data['limit_basis'] : null;
+        $this->container['limit_basis_text'] = isset($data['limit_basis_text']) ? $data['limit_basis_text'] : null;
+        $this->container['trade_methods'] = isset($data['trade_methods']) ? $data['trade_methods'] : null;
         $this->container['nick_name'] = isset($data['nick_name']) ? $data['nick_name'] : null;
     }
 
@@ -227,6 +293,22 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getLimitBasisAllowableValues();
+        if (!is_null($this->container['limit_basis']) && !in_array($this->container['limit_basis'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'limit_basis', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getLimitBasisTextAllowableValues();
+        if (!is_null($this->container['limit_basis_text']) && !in_array($this->container['limit_basis_text'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'limit_basis_text', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -364,6 +446,30 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets surplus_amount
+     *
+     * @return string|null
+     */
+    public function getSurplusAmount()
+    {
+        return $this->container['surplus_amount'];
+    }
+
+    /**
+     * Sets surplus_amount
+     *
+     * @param string|null $surplus_amount Remaining tradable crypto quantity
+     *
+     * @return $this
+     */
+    public function setSurplusAmount($surplus_amount)
+    {
+        $this->container['surplus_amount'] = $surplus_amount;
+
+        return $this;
+    }
+
+    /**
      * Gets max_single_trans_amount
      *
      * @return string|null
@@ -407,6 +513,144 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
     public function setMinSingleTransAmount($min_single_trans_amount)
     {
         $this->container['min_single_trans_amount'] = $min_single_trans_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_min_amount
+     *
+     * @return string|null
+     */
+    public function getFiatMinAmount()
+    {
+        return $this->container['fiat_min_amount'];
+    }
+
+    /**
+     * Sets fiat_min_amount
+     *
+     * @param string|null $fiat_min_amount Minimum fiat amount per order
+     *
+     * @return $this
+     */
+    public function setFiatMinAmount($fiat_min_amount)
+    {
+        $this->container['fiat_min_amount'] = $fiat_min_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_max_amount
+     *
+     * @return string|null
+     */
+    public function getFiatMaxAmount()
+    {
+        return $this->container['fiat_max_amount'];
+    }
+
+    /**
+     * Sets fiat_max_amount
+     *
+     * @param string|null $fiat_max_amount Maximum fiat amount per order
+     *
+     * @return $this
+     */
+    public function setFiatMaxAmount($fiat_max_amount)
+    {
+        $this->container['fiat_max_amount'] = $fiat_max_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_basis
+     *
+     * @return int|null
+     */
+    public function getLimitBasis()
+    {
+        return $this->container['limit_basis'];
+    }
+
+    /**
+     * Sets limit_basis
+     *
+     * @param int|null $limit_basis Trading limit unit. 0: crypto quantity, 1: fiat amount
+     *
+     * @return $this
+     */
+    public function setLimitBasis($limit_basis)
+    {
+        $allowedValues = $this->getLimitBasisAllowableValues();
+        if (!is_null($limit_basis) && !in_array($limit_basis, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'limit_basis', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['limit_basis'] = $limit_basis;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_basis_text
+     *
+     * @return string|null
+     */
+    public function getLimitBasisText()
+    {
+        return $this->container['limit_basis_text'];
+    }
+
+    /**
+     * Sets limit_basis_text
+     *
+     * @param string|null $limit_basis_text Trading limit unit label. crypto: crypto quantity, fiat: fiat amount
+     *
+     * @return $this
+     */
+    public function setLimitBasisText($limit_basis_text)
+    {
+        $allowedValues = $this->getLimitBasisTextAllowableValues();
+        if (!is_null($limit_basis_text) && !in_array($limit_basis_text, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'limit_basis_text', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['limit_basis_text'] = $limit_basis_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_methods
+     *
+     * @return \GateApi\Model\P2pAdsListTradeMethod[]|null
+     */
+    public function getTradeMethods()
+    {
+        return $this->container['trade_methods'];
+    }
+
+    /**
+     * Sets trade_methods
+     *
+     * @param \GateApi\Model\P2pAdsListTradeMethod[]|null $trade_methods Supported payment methods list
+     *
+     * @return $this
+     */
+    public function setTradeMethods($trade_methods)
+    {
+        $this->container['trade_methods'] = $trade_methods;
 
         return $this;
     }

@@ -67,7 +67,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'max_limit_size' => 'string',
         'contract_size' => 'string',
         'liquidation_fee' => 'string',
-        'delist_time' => 'string'
+        'delist_time' => 'string',
+        'support_rpi' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'max_limit_size' => null,
         'contract_size' => null,
         'liquidation_fee' => null,
-        'delist_time' => null
+        'delist_time' => null,
+        'support_rpi' => null
     ];
 
     /**
@@ -132,7 +134,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'max_limit_size' => 'max_limit_size',
         'contract_size' => 'contract_size',
         'liquidation_fee' => 'liquidation_fee',
-        'delist_time' => 'delist_time'
+        'delist_time' => 'delist_time',
+        'support_rpi' => 'support_rpi'
     ];
 
     /**
@@ -154,7 +157,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'max_limit_size' => 'setMaxLimitSize',
         'contract_size' => 'setContractSize',
         'liquidation_fee' => 'setLiquidationFee',
-        'delist_time' => 'setDelistTime'
+        'delist_time' => 'setDelistTime',
+        'support_rpi' => 'setSupportRpi'
     ];
 
     /**
@@ -176,7 +180,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'max_limit_size' => 'getMaxLimitSize',
         'contract_size' => 'getContractSize',
         'liquidation_fee' => 'getLiquidationFee',
-        'delist_time' => 'getDelistTime'
+        'delist_time' => 'getDelistTime',
+        'support_rpi' => 'getSupportRpi'
     ];
 
     /**
@@ -253,6 +258,7 @@ class Symbol implements ModelInterface, ArrayAccess
         $this->container['contract_size'] = isset($data['contract_size']) ? $data['contract_size'] : null;
         $this->container['liquidation_fee'] = isset($data['liquidation_fee']) ? $data['liquidation_fee'] : null;
         $this->container['delist_time'] = isset($data['delist_time']) ? $data['delist_time'] : null;
+        $this->container['support_rpi'] = isset($data['support_rpi']) ? $data['support_rpi'] : null;
     }
 
     /**
@@ -358,7 +364,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
+     * @param string $exchange_type Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
      *
      * @return $this
      */
@@ -430,7 +436,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets min_size
      *
-     * @param string $min_size Minimum order size allowed by the contract
+     * @param string $min_size Minimum order quantity
      *
      * @return $this
      */
@@ -598,7 +604,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets contract_size
      *
-     * @param string $contract_size Contract Multiplier
+     * @param string $contract_size Contract multiplier (deprecated; quantity is used uniformly)
      *
      * @return $this
      */
@@ -653,6 +659,30 @@ class Symbol implements ModelInterface, ArrayAccess
     public function setDelistTime($delist_time)
     {
         $this->container['delist_time'] = $delist_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets support_rpi
+     *
+     * @return string|null
+     */
+    public function getSupportRpi()
+    {
+        return $this->container['support_rpi'];
+    }
+
+    /**
+     * Sets support_rpi
+     *
+     * @param string|null $support_rpi Whether RPI order placement is supported (true if supported; false otherwise)
+     *
+     * @return $this
+     */
+    public function setSupportRpi($support_rpi)
+    {
+        $this->container['support_rpi'] = $support_rpi;
 
         return $this;
     }

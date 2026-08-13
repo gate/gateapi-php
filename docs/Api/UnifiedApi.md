@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**listCurrencyDiscountTiers**](UnifiedApi.md#listCurrencyDiscountTiers) | **GET** /unified/currency_discount_tiers | Query unified account tiered
 [**listLoanMarginTiers**](UnifiedApi.md#listLoanMarginTiers) | **GET** /unified/loan_margin_tiers | Query unified account tiered loan margin
 [**calculatePortfolioMargin**](UnifiedApi.md#calculatePortfolioMargin) | **POST** /unified/portfolio_calculator | Portfolio margin calculator
+[**setUserLeverage**](UnifiedApi.md#setUserLeverage) | **POST** /unified/leverage/user_setting | Set leverage for all of the user&#39;s borrowed currencies
 [**getUserLeverageCurrencyConfig**](UnifiedApi.md#getUserLeverageCurrencyConfig) | **GET** /unified/leverage/user_currency_config | Maximum and minimum currency leverage that can be set
 [**getUserLeverageCurrencySetting**](UnifiedApi.md#getUserLeverageCurrencySetting) | **GET** /unified/leverage/user_currency_setting | Get user currency leverage
 [**setUserLeverageCurrencySetting**](UnifiedApi.md#setUserLeverageCurrencySetting) | **POST** /unified/leverage/user_currency_setting | Set loan currency leverage
@@ -998,6 +999,68 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## setUserLeverage
+
+> \GateApi\Model\LeverageFailedCurrencies[] setUserLeverage($user_leverage_setting)
+
+Set leverage for all of the user's borrowed currencies
+
+Note the following: - Leverage cannot be changed for currencies with outstanding loans. - A leverage value above a currency's limit is capped at that limit. - Failures are not rolled back and affect only the currencies that failed. For example, if USDT has an outstanding loan, only the USDT leverage remains unchanged.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\UnifiedApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$user_leverage_setting = new \GateApi\Model\UserLeverageSetting(); // \GateApi\Model\UserLeverageSetting | 
+
+try {
+    $result = $apiInstance->setUserLeverage($user_leverage_setting);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling UnifiedApi->setUserLeverage: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_leverage_setting** | [**\GateApi\Model\UserLeverageSetting**](../Model/UserLeverageSetting.md)|  |
+
+### Return type
+
+[**\GateApi\Model\LeverageFailedCurrencies[]**](../Model/LeverageFailedCurrencies.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
 
 ### HTTP request headers
 

@@ -287,7 +287,7 @@ class FuturesPremiumIndex implements ModelInterface, ArrayAccess
     /**
      * Sets h
      *
-     * @param string|null $h Highest price
+     * @param string|null $h High price
      *
      * @return $this
      */
@@ -311,7 +311,7 @@ class FuturesPremiumIndex implements ModelInterface, ArrayAccess
     /**
      * Sets l
      *
-     * @param string|null $l Lowest price
+     * @param string|null $l Low price
      *
      * @return $this
      */

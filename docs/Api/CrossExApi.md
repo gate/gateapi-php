@@ -9,7 +9,8 @@ Method | HTTP request | Description
 [**listCrossexTransferCoins**](CrossExApi.md#listCrossexTransferCoins) | **GET** /crossex/transfers/coin | Query supported transfer currencies
 [**listCrossexTransfers**](CrossExApi.md#listCrossexTransfers) | **GET** /crossex/transfers | Query Fund Transfer History
 [**createCrossexTransfer**](CrossExApi.md#createCrossexTransfer) | **POST** /crossex/transfers | Fund Transfer
-[**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /crossex/orders | Create an order
+[**createCrossexOrder**](CrossExApi.md#createCrossexOrder) | **POST** /crossex/orders | Create order
+[**cancelBatchCrossexOrders**](CrossExApi.md#cancelBatchCrossexOrders) | **POST** /crossex/batch_cancel_orders | Batch cancel orders
 [**getCrossexOrder**](CrossExApi.md#getCrossexOrder) | **GET** /crossex/orders/{order_id} | Query order details
 [**updateCrossexOrder**](CrossExApi.md#updateCrossexOrder) | **PUT** /crossex/orders/{order_id} | Modify Order
 [**cancelCrossexOrder**](CrossExApi.md#cancelCrossexOrder) | **DELETE** /crossex/orders/{order_id} | Cancel Order
@@ -22,19 +23,24 @@ Method | HTTP request | Description
 [**getCrossexMarginPositionsLeverage**](CrossExApi.md#getCrossexMarginPositionsLeverage) | **GET** /crossex/margin_positions/leverage | Query Leveraged Trading Pair Leverage Multiplier
 [**updateCrossexMarginPositionsLeverage**](CrossExApi.md#updateCrossexMarginPositionsLeverage) | **POST** /crossex/margin_positions/leverage | Modify Leveraged Trading Pair Leverage Multiplier
 [**closeCrossexPosition**](CrossExApi.md#closeCrossexPosition) | **POST** /crossex/position | Full Close Position
+[**getCrossexPositionsMarginMode**](CrossExApi.md#getCrossexPositionsMarginMode) | **GET** /crossex/positions/margin_mode | Get futures position margin mode
+[**updateCrossexPositionsMarginMode**](CrossExApi.md#updateCrossexPositionsMarginMode) | **POST** /crossex/positions/margin_mode | Update futures position margin mode
+[**updateCrossexPositionsMargin**](CrossExApi.md#updateCrossexPositionsMargin) | **POST** /crossex/positions/margin | Increase or decrease isolated margin
 [**getCrossexInterestRate**](CrossExApi.md#getCrossexInterestRate) | **GET** /crossex/interest_rate | Query margin asset interest rates
 [**getCrossexFee**](CrossExApi.md#getCrossexFee) | **GET** /crossex/fee | Query User Fee Rates
 [**listCrossexPositions**](CrossExApi.md#listCrossexPositions) | **GET** /crossex/positions | Query Contract Positions
 [**listCrossexMarginPositions**](CrossExApi.md#listCrossexMarginPositions) | **GET** /crossex/margin_positions | Query Leveraged Positions
 [**listCrossexAdlRank**](CrossExApi.md#listCrossexAdlRank) | **GET** /crossex/adl_rank | Query ADL Position Reduction Ranking
 [**listCrossexOpenOrders**](CrossExApi.md#listCrossexOpenOrders) | **GET** /crossex/open_orders | Query All Current Open Orders
-[**listCrossexHistoryOrders**](CrossExApi.md#listCrossexHistoryOrders) | **GET** /crossex/history_orders | queryorderhistory
+[**listCrossexHistoryOrders**](CrossExApi.md#listCrossexHistoryOrders) | **GET** /crossex/history_orders | Query order history
 [**listCrossexHistoryPositions**](CrossExApi.md#listCrossexHistoryPositions) | **GET** /crossex/history_positions | Query Contract Position History
 [**listCrossexHistoryMarginPositions**](CrossExApi.md#listCrossexHistoryMarginPositions) | **GET** /crossex/history_margin_positions | Query Leveraged Position History
 [**listCrossexHistoryMarginInterests**](CrossExApi.md#listCrossexHistoryMarginInterests) | **GET** /crossex/history_margin_interests | Query Leveraged Interest Deduction History
-[**listCrossexHistoryTrades**](CrossExApi.md#listCrossexHistoryTrades) | **GET** /crossex/history_trades | queryfilledhistory
+[**listCrossexHistoryTrades**](CrossExApi.md#listCrossexHistoryTrades) | **GET** /crossex/history_trades | Query filled history
 [**listCrossexAccountBook**](CrossExApi.md#listCrossexAccountBook) | **GET** /crossex/account_book | Query Account Asset Change History
 [**listCrossexCoinDiscountRate**](CrossExApi.md#listCrossexCoinDiscountRate) | **GET** /crossex/coin_discount_rate | Query Currency Discount Rate
+[**listCrossexMarketTickers**](CrossExApi.md#listCrossexMarketTickers) | **GET** /crossex/market/tickers | Get exchange tickers
+[**listCrossexMarketFundingInfo**](CrossExApi.md#listCrossexMarketFundingInfo) | **GET** /crossex/market/funding_info | Get exchange futures funding rate information
 
 
 ## listCrossexRuleSymbols
@@ -161,7 +167,7 @@ No authorization required
 
 Query supported transfer currencies
 
-Project-Id-Version: GateApiTools 1.0.0 Report-Msgid-Bugs-To: EMAIL@ADDRESS POT-Creation-Date: 2025-11-12 18:14+0800 PO-Revision-Date: 2019-01-02 17:30+0800 Last-Translator: FULL NAME <EMAIL@ADDRESS> Language: en Language-Team: en <L@li.org> Plural-Forms: nplurals=2; plural=(n !=1) MIME-Version: 1.0 Content-Type: text/plain; charset=utf-8 Content-Transfer-Encoding: 8bit Generated-By: Babel 2.8.0
+`est_fee`: On-chain withdrawal fee. When a fund transfer involves an on-chain withdrawal, the exchange charges this fee. This value is for reference only; the actual fee charged by the exchange applies
 
 ### Example
 
@@ -355,7 +361,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CrossexOrderActionResponse createCrossexOrder($crossex_order_request)
 
-Create an order
+Create order
 
 Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
 
@@ -398,6 +404,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\CrossexOrderActionResponse**](../Model/CrossexOrderActionResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## cancelBatchCrossexOrders
+
+> \GateApi\Model\CrossexBatchCancelOrderResponse[] cancelBatchCrossexOrders($crossex_batch_cancel_order_request)
+
+Batch cancel orders
+
+Cancel multiple specified orders. Either order_id or text is required; if both are provided, order_id takes precedence. Rate limit: 100 requests per 10 seconds
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$crossex_batch_cancel_order_request = array(new \GateApi\Model\CrossexBatchCancelOrderRequest()); // \GateApi\Model\CrossexBatchCancelOrderRequest[] | 
+
+try {
+    $result = $apiInstance->cancelBatchCrossexOrders($crossex_batch_cancel_order_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->cancelBatchCrossexOrders: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **crossex_batch_cancel_order_request** | [**\GateApi\Model\CrossexBatchCancelOrderRequest[]**](../Model/CrossexBatchCancelOrderRequest.md)|  |
+
+### Return type
+
+[**\GateApi\Model\CrossexBatchCancelOrderResponse[]**](../Model/CrossexBatchCancelOrderResponse.md)
 
 ### Authorization
 
@@ -607,7 +675,7 @@ Name | Type | Description  | Notes
 
 Flash Swap Inquiry
 
-Rate Limit: 100 requests per day
+Rate limit: 100 requests per day For HYPERLIQUID, swaps between `HYPERLIQUID_USDC` and `CROSSEX_USDT` are supported. Flash Swap in isolated exchange mode is not currently supported for HYPERLIQUID
 
 ### Example
 
@@ -749,7 +817,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID'; // string | Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT'; // string | Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
 
 try {
     $result = $apiInstance->getCrossexAccount($associate_array);
@@ -769,7 +837,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_type** | **string**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). | [optional]
+ **exchange_type** | **string**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). | [optional]
 
 ### Return type
 
@@ -1109,7 +1177,7 @@ Name | Type | Description  | Notes
 
 Full Close Position
 
-Rate Limit: 100 requests per day. Automatic close-out rules. Supports closing FUTURE or MARGIN positions.  Prerequisites before using this interface: - No pending orders for the symbol exist in the current account. - When the system detects the position meets any of the following limits while prerequisites are met: - Less than or equal to the minimum notional amount (minNotional) - Less than or equal to the minimum order quantity (minSize)  After meeting the conditions, the system will automatically generate a close-out order and immediately fully close the position. This interface is used to avoid issues where orders are too small to be placed on the exchange, ensuring small positions can be closed smoothly when reaching the threshold.
+Rate limit: 100 requests per day. Automatic position-closing rules. FUTURE and MARGIN positions are supported.  Before using this endpoint, ensure that the following prerequisite is met: - There are no open orders for the symbol in the current account. - Once the prerequisite is met, the system checks whether the position meets either of the following conditions: - Less than the minimum notional amount (minNotional) - Less than the minimum order size (minSize)  When either condition is met, the system automatically creates a closing order and immediately closes the entire position. This endpoint prevents positions that are too small to be submitted to an exchange from becoming stranded and ensures that small positions can be closed when they fall below the threshold.
 
 ### Example
 
@@ -1165,6 +1233,192 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## getCrossexPositionsMarginMode
+
+> \GateApi\Model\CrossexMarginModeResponse getCrossexPositionsMarginMode($symbol)
+
+Get futures position margin mode
+
+Rate Limit: 200 requests per 10 seconds
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'HYPERLIQUID_FUTURE_CXMT_USDC'; // string | Futures trading pair
+
+try {
+    $result = $apiInstance->getCrossexPositionsMarginMode($symbol);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->getCrossexPositionsMarginMode: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Futures trading pair |
+
+### Return type
+
+[**\GateApi\Model\CrossexMarginModeResponse**](../Model/CrossexMarginModeResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## updateCrossexPositionsMarginMode
+
+> \GateApi\Model\CrossexMarginModeResponse updateCrossexPositionsMarginMode($crossex_margin_mode_request)
+
+Update futures position margin mode
+
+Rate limit: 100 requests per 10 seconds. Only Hyperliquid futures trading pairs are supported. The margin mode cannot be changed while open orders or positions exist
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$crossex_margin_mode_request = new \GateApi\Model\CrossexMarginModeRequest(); // \GateApi\Model\CrossexMarginModeRequest | 
+
+try {
+    $result = $apiInstance->updateCrossexPositionsMarginMode($crossex_margin_mode_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->updateCrossexPositionsMarginMode: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **crossex_margin_mode_request** | [**\GateApi\Model\CrossexMarginModeRequest**](../Model/CrossexMarginModeRequest.md)|  | [optional]
+
+### Return type
+
+[**\GateApi\Model\CrossexMarginModeResponse**](../Model/CrossexMarginModeResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## updateCrossexPositionsMargin
+
+> \GateApi\Model\CrossexIsolatedMarginResponse updateCrossexPositionsMargin($crossex_isolated_margin_request)
+
+Increase or decrease isolated margin
+
+Rate limit: 100 requests per 10 seconds. Only Hyperliquid isolated futures positions are supported. Positive values increase margin, while negative values decrease margin
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$crossex_isolated_margin_request = new \GateApi\Model\CrossexIsolatedMarginRequest(); // \GateApi\Model\CrossexIsolatedMarginRequest | 
+
+try {
+    $result = $apiInstance->updateCrossexPositionsMargin($crossex_isolated_margin_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->updateCrossexPositionsMargin: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **crossex_isolated_margin_request** | [**\GateApi\Model\CrossexIsolatedMarginRequest**](../Model/CrossexIsolatedMarginRequest.md)|  | [optional]
+
+### Return type
+
+[**\GateApi\Model\CrossexIsolatedMarginResponse**](../Model/CrossexIsolatedMarginResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## getCrossexInterestRate
 
 > \GateApi\Model\CrossexInterestRate[] getCrossexInterestRate($coin, $exchange_type)
@@ -1190,7 +1444,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['coin'] = 'SOL'; // string | Query by specified currency name
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID'; // string | Exchange
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT'; // string | Exchange
 
 try {
     $result = $apiInstance->getCrossexInterestRate($associate_array);
@@ -1314,7 +1568,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['symbol'] = 'BINANCE_FUTURE_ADA_USDT'; // string | Trading Pair
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID'; // string | Exchange
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT'; // string | Exchange
 
 try {
     $result = $apiInstance->listCrossexPositions($associate_array);
@@ -1423,7 +1677,7 @@ Name | Type | Description  | Notes
 
 ## listCrossexAdlRank
 
-> \GateApi\Model\CrossexAdlRank[] listCrossexAdlRank($symbol)
+> \GateApi\Model\CrossexAdlRank listCrossexAdlRank($symbol)
 
 Query ADL Position Reduction Ranking
 
@@ -1467,7 +1721,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\CrossexAdlRank[]**](../Model/CrossexAdlRank.md)
+[**\GateApi\Model\CrossexAdlRank**](../Model/CrossexAdlRank.md)
 
 ### Authorization
 
@@ -1555,7 +1809,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CrossexOrder[] listCrossexHistoryOrders($page, $limit, $symbol, $from, $to, $attributes)
 
-queryorderhistory
+Query order history
 
 Rate Limit: 200 requests per 10 seconds
 
@@ -1847,7 +2101,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\CrossexTrade[] listCrossexHistoryTrades($page, $limit, $symbol, $from, $to)
 
-queryfilledhistory
+Query filled history
 
 Rate Limit: 200 requests per 10 seconds
 
@@ -2014,7 +2268,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['coin'] = 'SOL'; // string | Query by specified currency name
-$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID
+$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT
 
 try {
     $result = $apiInstance->listCrossexCoinDiscountRate($associate_array);
@@ -2035,11 +2289,139 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coin** | **string**| Query by specified currency name | [optional]
- **exchange_type** | **string**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID | [optional]
+ **exchange_type** | **string**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT | [optional]
 
 ### Return type
 
 [**\GateApi\Model\CrossexCoinDiscountRate[]**](../Model/CrossexCoinDiscountRate.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listCrossexMarketTickers
+
+> \GateApi\Model\InlineResponse2001[] listCrossexMarketTickers($symbols)
+
+Get exchange tickers
+
+Rate limit: 1 request per second - Margin trading pairs cannot be passed directly as parameters. For example, `GATE_MARGIN_BTC_USDT` is invalid.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['symbols'] = 'GATE_SPOT_BTC_USDT,GATE_FUTURE_BTC_USDT'; // string | Trading Pair List, multiple separated by commas
+
+try {
+    $result = $apiInstance->listCrossexMarketTickers($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->listCrossexMarketTickers: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbols** | **string**| Trading Pair List, multiple separated by commas | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2001[]**](../Model/InlineResponse2001.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listCrossexMarketFundingInfo
+
+> \GateApi\Model\InlineResponse2002[] listCrossexMarketFundingInfo($symbols)
+
+Get exchange futures funding rate information
+
+Rate limit: 1 request per second - For `Deribit`, `funding_rate` is the current real-time rate calculated over an 8-hour period.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['symbols'] = 'BINANCE_MARGIN_BTC_USDT,OKX_MARGIN_BTC_USDT,GATE_MARGIN_BTC_USDT'; // string | Trading Pair List, multiple separated by commas
+
+try {
+    $result = $apiInstance->listCrossexMarketFundingInfo($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->listCrossexMarketFundingInfo: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbols** | **string**| Trading Pair List, multiple separated by commas | [optional]
+
+### Return type
+
+[**\GateApi\Model\InlineResponse2002[]**](../Model/InlineResponse2002.md)
 
 ### Authorization
 

@@ -215,7 +215,7 @@ class FuturesLeverage implements ModelInterface, ArrayAccess
     /**
      * Sets lever
      *
-     * @param string|null $lever leverage
+     * @param string|null $lever Leverage
      *
      * @return $this
      */

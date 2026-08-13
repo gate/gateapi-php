@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **order_id** | **int** | Order ID | [optional] 
 **symbol** | **string** | Currency pair | [optional] 
 **state** | **string** | Order status code | [optional] 
-**volume** | **string** | Order volume | [optional] 
+**volume** | **string** | Order quantity | [optional] 
 **price** | **string** | Current price | [optional] 
 **price_tp** | **string** | Current take profit price | [optional] 
 **price_sl** | **string** | Current stop loss price | [optional] 

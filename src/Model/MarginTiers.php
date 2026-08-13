@@ -334,7 +334,7 @@ class MarginTiers implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string|null $leverage Position leverage
+     * @param string|null $leverage Leverage multiplier
      *
      * @return $this
      */

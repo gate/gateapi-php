@@ -614,7 +614,7 @@ class AutoInvestPlanDetail implements ModelInterface, ArrayAccess
     /**
      * Sets portfolio
      *
-     * @param \GateApi\Model\AutoInvestPortfolioItem[] $portfolio InvestmentPortfolio
+     * @param \GateApi\Model\AutoInvestPortfolioItem[] $portfolio Portfolio
      *
      * @return $this
      */

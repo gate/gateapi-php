@@ -1161,7 +1161,7 @@ class DeliveryContract implements ModelInterface, ArrayAccess
     /**
      * Sets order_size_min
      *
-     * @param int|null $order_size_min Minimum order size allowed by the contract
+     * @param int|null $order_size_min Minimum order quantity
      *
      * @return $this
      */
@@ -1185,7 +1185,7 @@ class DeliveryContract implements ModelInterface, ArrayAccess
     /**
      * Sets order_size_max
      *
-     * @param int|null $order_size_max Maximum order size allowed by the contract
+     * @param int|null $order_size_max Maximum order quantity
      *
      * @return $this
      */

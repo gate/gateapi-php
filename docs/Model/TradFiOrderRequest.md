@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **price** | **string** | Order price | 
 **price_type** | **string** | Price type (trigger&#x3D;trigger price, market&#x3D;market price) | 
-**side** | **int** | Order side (1&#x3D;sell, 2&#x3D;buy) | 
+**side** | **int** | Side (1&#x3D;sell, 2&#x3D;buy) | 
 **symbol** | **string** | Trading symbol code | 
-**volume** | **string** | Order volume | 
+**volume** | **string** | Order quantity | 
 **price_tp** | **string** | Take profit price (optional) | [optional] 
 **price_sl** | **string** | Stop loss price (optional) | [optional] 
 

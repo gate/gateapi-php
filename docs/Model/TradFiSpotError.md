@@ -1,0 +1,12 @@
+# # TradFiSpotError
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**label** | **string** | Business error label | [optional] 
+**message** | **string** | Error message | [optional] 
+**data** | [**object**](.md) | Error additional data | [optional] 
+**timestamp** | **int** | Server timestamp (milliseconds) | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

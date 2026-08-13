@@ -60,6 +60,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'statement_type' => 'string',
         'exchange_type' => 'string',
         'coin' => 'string',
+        'symbol' => 'string',
         'change' => 'string',
         'balance' => 'string',
         'create_time' => 'string'
@@ -77,6 +78,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'statement_type' => null,
         'exchange_type' => null,
         'coin' => null,
+        'symbol' => null,
         'change' => null,
         'balance' => null,
         'create_time' => null
@@ -115,6 +117,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'statement_type' => 'statement_type',
         'exchange_type' => 'exchange_type',
         'coin' => 'coin',
+        'symbol' => 'symbol',
         'change' => 'change',
         'balance' => 'balance',
         'create_time' => 'create_time'
@@ -132,6 +135,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'statement_type' => 'setStatementType',
         'exchange_type' => 'setExchangeType',
         'coin' => 'setCoin',
+        'symbol' => 'setSymbol',
         'change' => 'setChange',
         'balance' => 'setBalance',
         'create_time' => 'setCreateTime'
@@ -149,6 +153,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         'statement_type' => 'getStatementType',
         'exchange_type' => 'getExchangeType',
         'coin' => 'getCoin',
+        'symbol' => 'getSymbol',
         'change' => 'getChange',
         'balance' => 'getBalance',
         'create_time' => 'getCreateTime'
@@ -220,6 +225,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
         $this->container['statement_type'] = isset($data['statement_type']) ? $data['statement_type'] : null;
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
         $this->container['change'] = isset($data['change']) ? $data['change'] : null;
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
@@ -337,7 +343,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     /**
      * Sets business_id
      *
-     * @param string $business_id Business ID
+     * @param string $business_id Business ID. Its meaning varies by `statement_type`. `TRANSACTION`: order ID. `TRADING_FEE`: order ID. `LIQUIDATION_FEE`: liquidation order ID. `FUNDING_FEE`: position ID and funding fee settlement time. For other types, it is a system-generated processing ID with no business meaning.
      *
      * @return $this
      */
@@ -416,6 +422,30 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     public function setCoin($coin)
     {
         $this->container['coin'] = $coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol
+     *
+     * @return string|null
+     */
+    public function getSymbol()
+    {
+        return $this->container['symbol'];
+    }
+
+    /**
+     * Sets symbol
+     *
+     * @param string|null $symbol Trading Pair
+     *
+     * @return $this
+     */
+    public function setSymbol($symbol)
+    {
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }

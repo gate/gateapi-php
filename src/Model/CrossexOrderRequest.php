@@ -209,6 +209,7 @@ class CrossexOrderRequest implements ModelInterface, ArrayAccess
     const TIME_IN_FORCE_IOC = 'IOC';
     const TIME_IN_FORCE_FOK = 'FOK';
     const TIME_IN_FORCE_POC = 'POC';
+    const TIME_IN_FORCE_RPI = 'RPI';
     const REDUCE_ONLY_TRUE = 'true';
     const REDUCE_ONLY_FALSE = 'false';
     const POSITION_SIDE_LONG = 'LONG';
@@ -255,6 +256,7 @@ class CrossexOrderRequest implements ModelInterface, ArrayAccess
             self::TIME_IN_FORCE_IOC,
             self::TIME_IN_FORCE_FOK,
             self::TIME_IN_FORCE_POC,
+            self::TIME_IN_FORCE_RPI,
         ];
     }
     
@@ -420,7 +422,7 @@ class CrossexOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Unique identifier `{Exchange}_{Business}_{Base}_{Counter}` Examples: To send a Binance spot order on `ADA/USDT`, use `BINANCE_SPOT_ADA_USDT`; For an ADA/USDT-margined USDT perpetual futures order on OKX, use `OKX_FUTURE_ADA_USDT`; For ADA/USDT margin trading on Gate, use `GATE_MARGIN_ADA_USDT`; For ADA/USDT spot trading on Bybit, use `BYBIT_SPOT_ADA_USDT`; For an ADA/USD futures order on Kraken, use `KRAKEN_FUTURE_ADA_USD`; For an ADA/USDC futures order on Hyperliquid, use `HYPERLIQUID_FUTURE_ADA_USDC`; Supports spot trades, USDT-margined perpetual futures, and spot margin templates. BYBIT omits spot margin for now; Kraken and Hyperliquid omit dedicated spot/margin legs inside CrossEx.
+     * @param string $symbol Unique identifier `{Exchange}_{Business}_{Base}_{Counter}` Examples: To send a Binance spot order on `ADA/USDT`, use `BINANCE_SPOT_ADA_USDT`; For an ADA/USDT-margined USDT perpetual futures order on OKX, use `OKX_FUTURE_ADA_USDT`; For ADA/USDT margin trading on Gate, use `GATE_MARGIN_ADA_USDT`; For ADA/USDT spot trading on Bybit, use `BYBIT_SPOT_ADA_USDT`; For an ADA/USD futures order on Kraken, use `KRAKEN_FUTURE_ADA_USD`; For an ADA/USDC futures order on Hyperliquid, use `HYPERLIQUID_FUTURE_ADA_USDC`; For an ADA/USDC futures order on Deribit, use `DERIBIT_FUTURE_ADA_USDC`; Supports spot trades, USDT-margined perpetual futures, and spot margin templates. BYBIT and DERIBIT omit spot margin for now; Kraken and Hyperliquid omit dedicated spot/margin legs inside CrossEx.
      *
      * @return $this
      */
@@ -510,7 +512,7 @@ class CrossexOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets time_in_force
      *
-     * @param string|null $time_in_force Default GTC, supports enumerated types: GTC, IOC, FOK, POC GTC: GoodTillCancelled IOC: ImmediateOrCancelled FOK: FillOrKill POC: PendingOrCancelled or PostOnly
+     * @param string|null $time_in_force Defaults to GTC. Supported values: `GTC`, `IOC`, `FOK`, `POC`, and `RPI` `GTC`: GoodTillCancelled `IOC`: ImmediateOrCancelled `FOK`: FillOrKill `POC`: PendingOrCancelled or PostOnly `RPI`: Retail Price Improvement
      *
      * @return $this
      */

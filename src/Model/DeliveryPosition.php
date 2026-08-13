@@ -624,7 +624,7 @@ class DeliveryPosition implements ModelInterface, ArrayAccess
     /**
      * Sets margin
      *
-     * @param string|null $margin Position margin
+     * @param string|null $margin Margin
      *
      * @return $this
      */

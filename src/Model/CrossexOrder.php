@@ -652,7 +652,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID`).
+     * @param string $exchange_type Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
      *
      * @return $this
      */
@@ -772,7 +772,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets time_in_force
      *
-     * @param string $time_in_force Time in force (default `GTC`; enum: `GTC` / `IOC` / `FOK` / `POC`).
+     * @param string $time_in_force Time-in-force policy (default: GTC; allowed values: GTC, IOC, FOK, POC, and RPI)
      *
      * @return $this
      */

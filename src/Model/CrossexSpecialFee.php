@@ -56,7 +56,8 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'symbol' => 'string',
         'taker_fee_rate' => 'string',
-        'maker_fee_rate' => 'string'
+        'maker_fee_rate' => 'string',
+        'rpi_fee_rate' => 'string'
     ];
 
     /**
@@ -67,7 +68,8 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'symbol' => null,
         'taker_fee_rate' => null,
-        'maker_fee_rate' => null
+        'maker_fee_rate' => null,
+        'rpi_fee_rate' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'symbol' => 'symbol',
         'taker_fee_rate' => 'taker_fee_rate',
-        'maker_fee_rate' => 'maker_fee_rate'
+        'maker_fee_rate' => 'maker_fee_rate',
+        'rpi_fee_rate' => 'rpi_fee_rate'
     ];
 
     /**
@@ -110,7 +113,8 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     protected static $setters = [
         'symbol' => 'setSymbol',
         'taker_fee_rate' => 'setTakerFeeRate',
-        'maker_fee_rate' => 'setMakerFeeRate'
+        'maker_fee_rate' => 'setMakerFeeRate',
+        'rpi_fee_rate' => 'setRpiFeeRate'
     ];
 
     /**
@@ -121,7 +125,8 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     protected static $getters = [
         'symbol' => 'getSymbol',
         'taker_fee_rate' => 'getTakerFeeRate',
-        'maker_fee_rate' => 'getMakerFeeRate'
+        'maker_fee_rate' => 'getMakerFeeRate',
+        'rpi_fee_rate' => 'getRpiFeeRate'
     ];
 
     /**
@@ -187,6 +192,7 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
         $this->container['taker_fee_rate'] = isset($data['taker_fee_rate']) ? $data['taker_fee_rate'] : null;
         $this->container['maker_fee_rate'] = isset($data['maker_fee_rate']) ? $data['maker_fee_rate'] : null;
+        $this->container['rpi_fee_rate'] = isset($data['rpi_fee_rate']) ? $data['rpi_fee_rate'] : null;
     }
 
     /**
@@ -290,6 +296,30 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     public function setMakerFeeRate($maker_fee_rate)
     {
         $this->container['maker_fee_rate'] = $maker_fee_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets rpi_fee_rate
+     *
+     * @return string|null
+     */
+    public function getRpiFeeRate()
+    {
+        return $this->container['rpi_fee_rate'];
+    }
+
+    /**
+     * Sets rpi_fee_rate
+     *
+     * @param string|null $rpi_fee_rate RPI order maker fee rate
+     *
+     * @return $this
+     */
+    public function setRpiFeeRate($rpi_fee_rate)
+    {
+        $this->container['rpi_fee_rate'] = $rpi_fee_rate;
 
         return $this;
     }

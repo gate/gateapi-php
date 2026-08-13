@@ -377,7 +377,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string $type Type
      *
      * @return $this
      */

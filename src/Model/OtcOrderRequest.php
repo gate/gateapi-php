@@ -311,7 +311,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param string $side Quote direction returned by the quote API (used for order validation)
+     * @param string $side The side returned by the quote endpoint (used for order validation). For backward compatibility, `FIAT`/`CRYPTO` or `PAY`/`GET` are accepted; new integrations should use the value returned by the quote response.
      *
      * @return $this
      */
@@ -479,7 +479,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets bank_id
      *
-     * @param string $bank_id The bank card ID used for placing the order; select it from the list returned by `GET /otc/bank_list` (or `GET /otc/bank/list`); the default card has `is_default=1`
+     * @param string $bank_id Bank card ID used to place the order. Select one from the list returned by `GET /otc/bank/list`; the default card has `is_default=1`.
      *
      * @return $this
      */

@@ -260,7 +260,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param string $side PAY/GET quote direction. PAY means user inputs pay amount, GET means user inputs get amount. If PAY, pay_amount is required. If GET, get_amount is required
+     * @param string $side PAY: specify the payment amount (`pay_amount` is required); GET: specify the receive amount (`get_amount` is required).
      *
      * @return $this
      */
@@ -284,7 +284,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
     /**
      * Sets pay_coin
      *
-     * @param string $pay_coin Currency the user pays. Supported currencies can be found on the OTC web quote page.
+     * @param string $pay_coin Payment currency. Supported currencies are available on the OTC web quote page.
      *
      * @return $this
      */
@@ -308,7 +308,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
     /**
      * Sets get_coin
      *
-     * @param string $get_coin Currency the user receives. Supported currencies can be found on the OTC web quote page.
+     * @param string $get_coin Receive currency. Supported currencies are available on the OTC web quote page.
      *
      * @return $this
      */
@@ -404,7 +404,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
     /**
      * Sets promotion_code
      *
-     * @param string|null $promotion_code Promotion code (optional)
+     * @param string|null $promotion_code Promotion code
      *
      * @return $this
      */

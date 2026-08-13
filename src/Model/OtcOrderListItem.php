@@ -60,7 +60,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'trade_no' => 'string',
         'type' => 'string',
         'status' => 'string',
-        'db_status' => 'string',
         'fiat_currency' => 'string',
         'fiat_currency_info' => '\GateApi\Model\OtcOrderListFiatCurrencyInfo',
         'fiat_amount' => 'string',
@@ -68,9 +67,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_currency_info' => '\GateApi\Model\OtcOrderListCryptoCurrencyInfo',
         'crypto_amount' => 'string',
         'rate' => 'string',
-        'transfer_remark' => 'string',
-        'reference_code' => 'string',
-        'gate_bank_account_iban' => 'string',
         'promotion_code' => 'string'
     ];
 
@@ -86,7 +82,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'trade_no' => null,
         'type' => null,
         'status' => null,
-        'db_status' => null,
         'fiat_currency' => null,
         'fiat_currency_info' => null,
         'fiat_amount' => null,
@@ -94,9 +89,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_currency_info' => null,
         'crypto_amount' => null,
         'rate' => null,
-        'transfer_remark' => null,
-        'reference_code' => null,
-        'gate_bank_account_iban' => null,
         'promotion_code' => null
     ];
 
@@ -133,7 +125,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'trade_no' => 'trade_no',
         'type' => 'type',
         'status' => 'status',
-        'db_status' => 'db_status',
         'fiat_currency' => 'fiat_currency',
         'fiat_currency_info' => 'fiat_currency_info',
         'fiat_amount' => 'fiat_amount',
@@ -141,9 +132,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_currency_info' => 'crypto_currency_info',
         'crypto_amount' => 'crypto_amount',
         'rate' => 'rate',
-        'transfer_remark' => 'transfer_remark',
-        'reference_code' => 'reference_code',
-        'gate_bank_account_iban' => 'gate_bank_account_iban',
         'promotion_code' => 'promotion_code'
     ];
 
@@ -159,7 +147,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'trade_no' => 'setTradeNo',
         'type' => 'setType',
         'status' => 'setStatus',
-        'db_status' => 'setDbStatus',
         'fiat_currency' => 'setFiatCurrency',
         'fiat_currency_info' => 'setFiatCurrencyInfo',
         'fiat_amount' => 'setFiatAmount',
@@ -167,9 +154,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_currency_info' => 'setCryptoCurrencyInfo',
         'crypto_amount' => 'setCryptoAmount',
         'rate' => 'setRate',
-        'transfer_remark' => 'setTransferRemark',
-        'reference_code' => 'setReferenceCode',
-        'gate_bank_account_iban' => 'setGateBankAccountIban',
         'promotion_code' => 'setPromotionCode'
     ];
 
@@ -185,7 +169,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'trade_no' => 'getTradeNo',
         'type' => 'getType',
         'status' => 'getStatus',
-        'db_status' => 'getDbStatus',
         'fiat_currency' => 'getFiatCurrency',
         'fiat_currency_info' => 'getFiatCurrencyInfo',
         'fiat_amount' => 'getFiatAmount',
@@ -193,9 +176,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         'crypto_currency_info' => 'getCryptoCurrencyInfo',
         'crypto_amount' => 'getCryptoAmount',
         'rate' => 'getRate',
-        'transfer_remark' => 'getTransferRemark',
-        'reference_code' => 'getReferenceCode',
-        'gate_bank_account_iban' => 'getGateBankAccountIban',
         'promotion_code' => 'getPromotionCode'
     ];
 
@@ -265,7 +245,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         $this->container['trade_no'] = isset($data['trade_no']) ? $data['trade_no'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['db_status'] = isset($data['db_status']) ? $data['db_status'] : null;
         $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
         $this->container['fiat_currency_info'] = isset($data['fiat_currency_info']) ? $data['fiat_currency_info'] : null;
         $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
@@ -273,9 +252,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
         $this->container['crypto_currency_info'] = isset($data['crypto_currency_info']) ? $data['crypto_currency_info'] : null;
         $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
-        $this->container['transfer_remark'] = isset($data['transfer_remark']) ? $data['transfer_remark'] : null;
-        $this->container['reference_code'] = isset($data['reference_code']) ? $data['reference_code'] : null;
-        $this->container['gate_bank_account_iban'] = isset($data['gate_bank_account_iban']) ? $data['gate_bank_account_iban'] : null;
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
     }
 
@@ -412,7 +388,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string|null $type Quote direction buy/sell/all
+     * @param string|null $type BUY deposit / SELL withdrawal
      *
      * @return $this
      */
@@ -436,37 +412,13 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order Status
+     * @param string|null $status Order status
      *
      * @return $this
      */
     public function setStatus($status)
     {
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets db_status
-     *
-     * @return string|null
-     */
-    public function getDbStatus()
-    {
-        return $this->container['db_status'];
-    }
-
-    /**
-     * Sets db_status
-     *
-     * @param string|null $db_status db_status
-     *
-     * @return $this
-     */
-    public function setDbStatus($db_status)
-    {
-        $this->container['db_status'] = $db_status;
 
         return $this;
     }
@@ -484,7 +436,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets fiat_currency
      *
-     * @param string|null $fiat_currency Fiat type
+     * @param string|null $fiat_currency Fiat currency
      *
      * @return $this
      */
@@ -556,7 +508,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets crypto_currency
      *
-     * @param string|null $crypto_currency Stablecoin
+     * @param string|null $crypto_currency Digital currency
      *
      * @return $this
      */
@@ -604,7 +556,7 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets crypto_amount
      *
-     * @param string|null $crypto_amount Stablecoin amount
+     * @param string|null $crypto_amount Cryptocurrency amount
      *
      * @return $this
      */
@@ -635,78 +587,6 @@ class OtcOrderListItem implements ModelInterface, ArrayAccess
     public function setRate($rate)
     {
         $this->container['rate'] = $rate;
-
-        return $this;
-    }
-
-    /**
-     * Gets transfer_remark
-     *
-     * @return string|null
-     */
-    public function getTransferRemark()
-    {
-        return $this->container['transfer_remark'];
-    }
-
-    /**
-     * Sets transfer_remark
-     *
-     * @param string|null $transfer_remark Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
-     *
-     * @return $this
-     */
-    public function setTransferRemark($transfer_remark)
-    {
-        $this->container['transfer_remark'] = $transfer_remark;
-
-        return $this;
-    }
-
-    /**
-     * Gets reference_code
-     *
-     * @return string|null
-     */
-    public function getReferenceCode()
-    {
-        return $this->container['reference_code'];
-    }
-
-    /**
-     * Sets reference_code
-     *
-     * @param string|null $reference_code Unique bank transfer reference code for deposit buy orders (SGB deposit scenario)
-     *
-     * @return $this
-     */
-    public function setReferenceCode($reference_code)
-    {
-        $this->container['reference_code'] = $reference_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets gate_bank_account_iban
-     *
-     * @return string|null
-     */
-    public function getGateBankAccountIban()
-    {
-        return $this->container['gate_bank_account_iban'];
-    }
-
-    /**
-     * Sets gate_bank_account_iban
-     *
-     * @param string|null $gate_bank_account_iban Bank account
-     *
-     * @return $this
-     */
-    public function setGateBankAccountIban($gate_bank_account_iban)
-    {
-        $this->container['gate_bank_account_iban'] = $gate_bank_account_iban;
 
         return $this;
     }

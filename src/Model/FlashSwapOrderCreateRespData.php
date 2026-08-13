@@ -614,7 +614,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param int|null $status Order Status
+     * @param int|null $status Order status
      *
      * @return $this
      */

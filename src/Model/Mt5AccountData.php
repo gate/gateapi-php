@@ -257,7 +257,7 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param int|null $leverage Position leverage
+     * @param int|null $leverage Leverage multiplier
      *
      * @return $this
      */

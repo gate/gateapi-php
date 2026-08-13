@@ -57,8 +57,10 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
         'id' => 'int',
         'trade_no' => 'string',
         'pay_coin' => 'string',
+        'pay_icon' => 'string',
         'pay_amount' => 'string',
         'get_coin' => 'string',
+        'get_icon' => 'string',
         'get_amount' => 'string',
         'rate' => 'string',
         'rate_reci' => 'string',
@@ -76,8 +78,10 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
         'id' => null,
         'trade_no' => null,
         'pay_coin' => null,
+        'pay_icon' => null,
         'pay_amount' => null,
         'get_coin' => null,
+        'get_icon' => null,
         'get_amount' => null,
         'rate' => null,
         'rate_reci' => null,
@@ -116,8 +120,10 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
         'id' => 'id',
         'trade_no' => 'trade_no',
         'pay_coin' => 'pay_coin',
+        'pay_icon' => 'pay_icon',
         'pay_amount' => 'pay_amount',
         'get_coin' => 'get_coin',
+        'get_icon' => 'get_icon',
         'get_amount' => 'get_amount',
         'rate' => 'rate',
         'rate_reci' => 'rate_reci',
@@ -135,8 +141,10 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'trade_no' => 'setTradeNo',
         'pay_coin' => 'setPayCoin',
+        'pay_icon' => 'setPayIcon',
         'pay_amount' => 'setPayAmount',
         'get_coin' => 'setGetCoin',
+        'get_icon' => 'setGetIcon',
         'get_amount' => 'setGetAmount',
         'rate' => 'setRate',
         'rate_reci' => 'setRateReci',
@@ -154,8 +162,10 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'trade_no' => 'getTradeNo',
         'pay_coin' => 'getPayCoin',
+        'pay_icon' => 'getPayIcon',
         'pay_amount' => 'getPayAmount',
         'get_coin' => 'getGetCoin',
+        'get_icon' => 'getGetIcon',
         'get_amount' => 'getGetAmount',
         'rate' => 'getRate',
         'rate_reci' => 'getRateReci',
@@ -227,8 +237,10 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['trade_no'] = isset($data['trade_no']) ? $data['trade_no'] : null;
         $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
+        $this->container['pay_icon'] = isset($data['pay_icon']) ? $data['pay_icon'] : null;
         $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
         $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
+        $this->container['get_icon'] = isset($data['get_icon']) ? $data['get_icon'] : null;
         $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
         $this->container['rate_reci'] = isset($data['rate_reci']) ? $data['rate_reci'] : null;
@@ -334,6 +346,30 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets pay_icon
+     *
+     * @return string|null
+     */
+    public function getPayIcon()
+    {
+        return $this->container['pay_icon'];
+    }
+
+    /**
+     * Sets pay_icon
+     *
+     * @param string|null $pay_icon Payment currency icon
+     *
+     * @return $this
+     */
+    public function setPayIcon($pay_icon)
+    {
+        $this->container['pay_icon'] = $pay_icon;
+
+        return $this;
+    }
+
+    /**
      * Gets pay_amount
      *
      * @return string|null
@@ -377,6 +413,30 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
     public function setGetCoin($get_coin)
     {
         $this->container['get_coin'] = $get_coin;
+
+        return $this;
+    }
+
+    /**
+     * Gets get_icon
+     *
+     * @return string|null
+     */
+    public function getGetIcon()
+    {
+        return $this->container['get_icon'];
+    }
+
+    /**
+     * Sets get_icon
+     *
+     * @param string|null $get_icon Received currency icon
+     *
+     * @return $this
+     */
+    public function setGetIcon($get_icon)
+    {
+        $this->container['get_icon'] = $get_icon;
 
         return $this;
     }
@@ -490,7 +550,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets create_timest
      *
-     * @param int|null $create_timest timetimestamp
+     * @param int|null $create_timest Created time
      *
      * @return $this
      */

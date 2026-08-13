@@ -76,8 +76,8 @@ class ContractStat implements ModelInterface, ArrayAccess
         'short_taker_size' => 'string',
         'top_long_account' => 'int',
         'top_short_account' => 'int',
-        'long_users' => 'string',
-        'short_users' => 'string'
+        'long_users' => 'int',
+        'short_users' => 'int'
     ];
 
     /**
@@ -108,8 +108,8 @@ class ContractStat implements ModelInterface, ArrayAccess
         'short_taker_size' => null,
         'top_long_account' => 'int64',
         'top_short_account' => 'int64',
-        'long_users' => null,
-        'short_users' => null
+        'long_users' => 'int64',
+        'short_users' => 'int64'
     ];
 
     /**
@@ -870,7 +870,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets long_users
      *
-     * @return string|null
+     * @return int|null
      */
     public function getLongUsers()
     {
@@ -880,7 +880,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets long_users
      *
-     * @param string|null $long_users Number of users holding long positions
+     * @param int|null $long_users Number of users holding long positions
      *
      * @return $this
      */
@@ -894,7 +894,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Gets short_users
      *
-     * @return string|null
+     * @return int|null
      */
     public function getShortUsers()
     {
@@ -904,7 +904,7 @@ class ContractStat implements ModelInterface, ArrayAccess
     /**
      * Sets short_users
      *
-     * @param string|null $short_users Number of users holding short positions
+     * @param int|null $short_users Number of users holding short positions
      *
      * @return $this
      */

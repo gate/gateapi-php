@@ -1423,7 +1423,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string|null $leverage leverage
+     * @param string|null $leverage Leverage
      *
      * @return $this
      */

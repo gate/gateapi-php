@@ -66,10 +66,14 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'oid' => 'string',
         'min_amount' => 'string',
         'max_amount' => 'string',
+        'limit_basis' => 'int',
+        'fiat_min_amount' => 'string',
+        'fiat_max_amount' => 'string',
         'tier_limit' => 'string',
         'verified_limit' => 'string',
         'reg_time_limit' => 'string',
         'advertisers_limit' => 'string',
+        'polymarket_limit' => 'int',
         'expire_min' => 'string',
         'trade_tips' => 'string',
         'auto_reply' => 'string',
@@ -101,10 +105,14 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'oid' => null,
         'min_amount' => null,
         'max_amount' => null,
+        'limit_basis' => null,
+        'fiat_min_amount' => null,
+        'fiat_max_amount' => null,
         'tier_limit' => null,
         'verified_limit' => null,
         'reg_time_limit' => null,
         'advertisers_limit' => null,
+        'polymarket_limit' => null,
         'expire_min' => null,
         'trade_tips' => null,
         'auto_reply' => null,
@@ -157,10 +165,14 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'oid' => 'oid',
         'min_amount' => 'minAmount',
         'max_amount' => 'maxAmount',
+        'limit_basis' => 'limitBasis',
+        'fiat_min_amount' => 'fiatMinAmount',
+        'fiat_max_amount' => 'fiatMaxAmount',
         'tier_limit' => 'tierLimit',
         'verified_limit' => 'verifiedLimit',
         'reg_time_limit' => 'regTimeLimit',
         'advertisers_limit' => 'advertisersLimit',
+        'polymarket_limit' => 'polymarket_limit',
         'expire_min' => 'expire_min',
         'trade_tips' => 'trade_tips',
         'auto_reply' => 'auto_reply',
@@ -192,10 +204,14 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'oid' => 'setOid',
         'min_amount' => 'setMinAmount',
         'max_amount' => 'setMaxAmount',
+        'limit_basis' => 'setLimitBasis',
+        'fiat_min_amount' => 'setFiatMinAmount',
+        'fiat_max_amount' => 'setFiatMaxAmount',
         'tier_limit' => 'setTierLimit',
         'verified_limit' => 'setVerifiedLimit',
         'reg_time_limit' => 'setRegTimeLimit',
         'advertisers_limit' => 'setAdvertisersLimit',
+        'polymarket_limit' => 'setPolymarketLimit',
         'expire_min' => 'setExpireMin',
         'trade_tips' => 'setTradeTips',
         'auto_reply' => 'setAutoReply',
@@ -227,10 +243,14 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         'oid' => 'getOid',
         'min_amount' => 'getMinAmount',
         'max_amount' => 'getMaxAmount',
+        'limit_basis' => 'getLimitBasis',
+        'fiat_min_amount' => 'getFiatMinAmount',
+        'fiat_max_amount' => 'getFiatMaxAmount',
         'tier_limit' => 'getTierLimit',
         'verified_limit' => 'getVerifiedLimit',
         'reg_time_limit' => 'getRegTimeLimit',
         'advertisers_limit' => 'getAdvertisersLimit',
+        'polymarket_limit' => 'getPolymarketLimit',
         'expire_min' => 'getExpireMin',
         'trade_tips' => 'getTradeTips',
         'auto_reply' => 'getAutoReply',
@@ -290,6 +310,10 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     const TYPE__1 = '1';
     const TYPE__2 = '2';
     const TYPE__3 = '3';
+    const LIMIT_BASIS_0 = 0;
+    const LIMIT_BASIS_1 = 1;
+    const POLYMARKET_LIMIT_0 = 0;
+    const POLYMARKET_LIMIT_1 = 1;
     
 
     
@@ -305,6 +329,32 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
             self::TYPE__1,
             self::TYPE__2,
             self::TYPE__3,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLimitBasisAllowableValues()
+    {
+        return [
+            self::LIMIT_BASIS_0,
+            self::LIMIT_BASIS_1,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPolymarketLimitAllowableValues()
+    {
+        return [
+            self::POLYMARKET_LIMIT_0,
+            self::POLYMARKET_LIMIT_1,
         ];
     }
     
@@ -335,10 +385,14 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         $this->container['oid'] = isset($data['oid']) ? $data['oid'] : null;
         $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
         $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
+        $this->container['limit_basis'] = isset($data['limit_basis']) ? $data['limit_basis'] : null;
+        $this->container['fiat_min_amount'] = isset($data['fiat_min_amount']) ? $data['fiat_min_amount'] : null;
+        $this->container['fiat_max_amount'] = isset($data['fiat_max_amount']) ? $data['fiat_max_amount'] : null;
         $this->container['tier_limit'] = isset($data['tier_limit']) ? $data['tier_limit'] : null;
         $this->container['verified_limit'] = isset($data['verified_limit']) ? $data['verified_limit'] : null;
         $this->container['reg_time_limit'] = isset($data['reg_time_limit']) ? $data['reg_time_limit'] : null;
         $this->container['advertisers_limit'] = isset($data['advertisers_limit']) ? $data['advertisers_limit'] : null;
+        $this->container['polymarket_limit'] = isset($data['polymarket_limit']) ? $data['polymarket_limit'] : null;
         $this->container['expire_min'] = isset($data['expire_min']) ? $data['expire_min'] : null;
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
         $this->container['auto_reply'] = isset($data['auto_reply']) ? $data['auto_reply'] : null;
@@ -388,12 +442,22 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         if ($this->container['pay_type'] === null) {
             $invalidProperties[] = "'pay_type' can't be null";
         }
-        if ($this->container['min_amount'] === null) {
-            $invalidProperties[] = "'min_amount' can't be null";
+        $allowedValues = $this->getLimitBasisAllowableValues();
+        if (!is_null($this->container['limit_basis']) && !in_array($this->container['limit_basis'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'limit_basis', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['max_amount'] === null) {
-            $invalidProperties[] = "'max_amount' can't be null";
+
+        $allowedValues = $this->getPolymarketLimitAllowableValues();
+        if (!is_null($this->container['polymarket_limit']) && !in_array($this->container['polymarket_limit'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'polymarket_limit', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -551,7 +615,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets pay_type
      *
-     * @param string $pay_type Payment types, comma-separated; from pay type list `pay_type`, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`.
+     * @param string $pay_type Payment types enabled for the ad, comma-separated; values can be obtained from `pay_type` in the payment method list, e.g. `bank`, `alipay`, `wechat`, `paypal`, `swift`, `wu`. `pay_type_json` uses the types in this field as keys to specify the corresponding payment accounts.
      *
      * @return $this
      */
@@ -575,7 +639,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets pay_type_json
      *
-     * @param string|null $pay_type_json JSON map of payment type -> user's payment method ID.
+     * @param string|null $pay_type_json JSON string of specific payment accounts corresponding to `payType`. Each key is a payment type listed in `payType`, and each value is the current user's payment method ID for that type. For example, when `payType` is `bank,swift`, this field can be {\"bank\":\"10001\",\"swift\":\"10002\"}.
      *
      * @return $this
      */
@@ -637,7 +701,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Gets min_amount
      *
-     * @return string
+     * @return string|null
      */
     public function getMinAmount()
     {
@@ -647,7 +711,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets min_amount
      *
-     * @param string $min_amount Minimum trade amount in `exchangeType`.
+     * @param string|null $min_amount Minimum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
      *
      * @return $this
      */
@@ -661,7 +725,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Gets max_amount
      *
-     * @return string
+     * @return string|null
      */
     public function getMaxAmount()
     {
@@ -671,13 +735,94 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     /**
      * Sets max_amount
      *
-     * @param string $max_amount Maximum amount per trade in `exchangeType` fiat units.
+     * @param string|null $max_amount Maximum quantity per order, denominated by currencyType; required when limitBasis is not passed or is 0
      *
      * @return $this
      */
     public function setMaxAmount($max_amount)
     {
         $this->container['max_amount'] = $max_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_basis
+     *
+     * @return int|null
+     */
+    public function getLimitBasis()
+    {
+        return $this->container['limit_basis'];
+    }
+
+    /**
+     * Sets limit_basis
+     *
+     * @param int|null $limit_basis Trading limit unit. 0: by crypto quantity, 1: by fiat amount; defaults to 0 when not passed for a new ad. The limit unit of an existing ad cannot be changed when editing; a fiat-limit ad must keep passing 1 when edited
+     *
+     * @return $this
+     */
+    public function setLimitBasis($limit_basis)
+    {
+        $allowedValues = $this->getLimitBasisAllowableValues();
+        if (!is_null($limit_basis) && !in_array($limit_basis, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'limit_basis', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['limit_basis'] = $limit_basis;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_min_amount
+     *
+     * @return string|null
+     */
+    public function getFiatMinAmount()
+    {
+        return $this->container['fiat_min_amount'];
+    }
+
+    /**
+     * Sets fiat_min_amount
+     *
+     * @param string|null $fiat_min_amount Minimum amount per order, denominated by exchangeType; required when limitBasis is 1
+     *
+     * @return $this
+     */
+    public function setFiatMinAmount($fiat_min_amount)
+    {
+        $this->container['fiat_min_amount'] = $fiat_min_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets fiat_max_amount
+     *
+     * @return string|null
+     */
+    public function getFiatMaxAmount()
+    {
+        return $this->container['fiat_max_amount'];
+    }
+
+    /**
+     * Sets fiat_max_amount
+     *
+     * @param string|null $fiat_max_amount Maximum amount per order, denominated by exchangeType; required when limitBasis is 1, and must not exceed the total fiat value of the ad quantity converted at the price
+     *
+     * @return $this
+     */
+    public function setFiatMaxAmount($fiat_max_amount)
+    {
+        $this->container['fiat_max_amount'] = $fiat_max_amount;
 
         return $this;
     }
@@ -774,6 +919,39 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     public function setAdvertisersLimit($advertisers_limit)
     {
         $this->container['advertisers_limit'] = $advertisers_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets polymarket_limit
+     *
+     * @return int|null
+     */
+    public function getPolymarketLimit()
+    {
+        return $this->container['polymarket_limit'];
+    }
+
+    /**
+     * Sets polymarket_limit
+     *
+     * @param int|null $polymarket_limit Whether to restrict trading with Polymarket users. 0: no restriction, 1: restricted
+     *
+     * @return $this
+     */
+    public function setPolymarketLimit($polymarket_limit)
+    {
+        $allowedValues = $this->getPolymarketLimitAllowableValues();
+        if (!is_null($polymarket_limit) && !in_array($polymarket_limit, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'polymarket_limit', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['polymarket_limit'] = $polymarket_limit;
 
         return $this;
     }

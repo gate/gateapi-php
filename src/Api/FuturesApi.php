@@ -5412,7 +5412,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
-     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -5434,7 +5434,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
-     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -5493,7 +5493,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
-     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -5518,7 +5518,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
-     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -5570,7 +5570,7 @@ class FuturesApi
      *
      * @param  string $settle Settle currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
-     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
      * @throws \InvalidArgumentException
@@ -5581,7 +5581,7 @@ class FuturesApi
         // unbox the parameters from the associative array
         $settle = array_key_exists('settle', $associative_array) ? $associative_array['settle'] : null;
         $holding = array_key_exists('holding', $associative_array) ? $associative_array['holding'] : null;
-        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 100;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
         $offset = array_key_exists('offset', $associative_array) ? $associative_array['offset'] : 0;
 
         // verify the required parameter 'settle' is set
@@ -5590,8 +5590,8 @@ class FuturesApi
                 'Missing the required parameter $settle when calling listPositions'
             );
         }
-        if ($limit !== null && $limit > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling FuturesApi.listPositions, must be smaller than or equal to 1000.');
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling FuturesApi.listPositions, must be smaller than or equal to 100.');
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling FuturesApi.listPositions, must be bigger than or equal to 1.');

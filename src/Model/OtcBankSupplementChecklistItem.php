@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * OtcBankSupplementChecklistItem Class Doc Comment
  *
  * @category Class
+ * @description Supplementary document item
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -54,10 +55,7 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'zh' => 'string',
-        'en' => 'string',
-        'required' => 'bool'
+        'description' => 'string'
     ];
 
     /**
@@ -66,10 +64,7 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'zh' => null,
-        'en' => null,
-        'required' => null
+        'description' => null
     ];
 
     /**
@@ -99,10 +94,7 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'zh' => 'zh',
-        'en' => 'en',
-        'required' => 'required'
+        'description' => 'description'
     ];
 
     /**
@@ -111,10 +103,7 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'zh' => 'setZh',
-        'en' => 'setEn',
-        'required' => 'setRequired'
+        'description' => 'setDescription'
     ];
 
     /**
@@ -123,10 +112,7 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'zh' => 'getZh',
-        'en' => 'getEn',
-        'required' => 'getRequired'
+        'description' => 'getDescription'
     ];
 
     /**
@@ -189,10 +175,7 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['zh'] = isset($data['zh']) ? $data['zh'] : null;
-        $this->container['en'] = isset($data['en']) ? $data['en'] : null;
-        $this->container['required'] = isset($data['required']) ? $data['required'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
     }
 
     /**
@@ -204,11 +187,8 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['required'] === null) {
-            $invalidProperties[] = "'required' can't be null";
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,97 +206,25 @@ class OtcBankSupplementChecklistItem implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets code
+     * Gets description
      *
      * @return string
      */
-    public function getCode()
+    public function getDescription()
     {
-        return $this->container['code'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets code
+     * Sets description
      *
-     * @param string $code Material item code, corresponding to the top-level key of `relationship_proof`
+     * @param string $description Supplementary document submission description
      *
      * @return $this
      */
-    public function setCode($code)
+    public function setDescription($description)
     {
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets zh
-     *
-     * @return string|null
-     */
-    public function getZh()
-    {
-        return $this->container['zh'];
-    }
-
-    /**
-     * Sets zh
-     *
-     * @param string|null $zh zh
-     *
-     * @return $this
-     */
-    public function setZh($zh)
-    {
-        $this->container['zh'] = $zh;
-
-        return $this;
-    }
-
-    /**
-     * Gets en
-     *
-     * @return string|null
-     */
-    public function getEn()
-    {
-        return $this->container['en'];
-    }
-
-    /**
-     * Sets en
-     *
-     * @param string|null $en en
-     *
-     * @return $this
-     */
-    public function setEn($en)
-    {
-        $this->container['en'] = $en;
-
-        return $this;
-    }
-
-    /**
-     * Gets required
-     *
-     * @return bool
-     */
-    public function getRequired()
-    {
-        return $this->container['required'];
-    }
-
-    /**
-     * Sets required
-     *
-     * @param bool $required Whether required
-     *
-     * @return $this
-     */
-    public function setRequired($required)
-    {
-        $this->container['required'] = $required;
+        $this->container['description'] = $description;
 
         return $this;
     }

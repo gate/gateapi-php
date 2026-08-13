@@ -305,7 +305,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
     /**
      * Sets highest_price
      *
-     * @param string|null $highest_price Highest price
+     * @param string|null $highest_price High price
      *
      * @return $this
      */
@@ -329,7 +329,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
     /**
      * Sets lowest_price
      *
-     * @param string|null $lowest_price Lowest price
+     * @param string|null $lowest_price Low price
      *
      * @return $this
      */

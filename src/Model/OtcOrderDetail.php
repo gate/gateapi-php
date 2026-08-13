@@ -62,15 +62,26 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_currency' => 'string',
         'crypto_amount' => 'string',
         'rate' => 'string',
-        'transfer_remark' => 'string',
-        'reference_code' => 'string',
+        'bank_account_name' => 'string',
+        'bank_name' => 'string',
+        'bank_country' => 'string',
+        'bank_address' => 'string',
+        'bank_account_number_iban' => 'string',
+        'swift_code' => 'string',
+        'intermediate_bank_name' => 'string',
+        'intermediary_bank_swift_code' => 'string',
+        'gate_bank_account_name' => 'string',
+        'gate_bank_name' => 'string',
+        'gate_bank_country' => 'string',
+        'gate_bank_address' => 'string',
+        'gate_bank_account_number_iban' => 'string',
+        'gate_swift_code' => 'string',
+        'gate_intermediary_bank_name' => 'string',
+        'gate_intermediary_bank_swift_code' => 'string',
+        'gate_transfer_remark' => 'string',
+        'gate_reference_code' => 'string',
         'status' => 'string',
-        'db_status' => 'string',
-        'create_time' => 'string',
-        'memo' => 'string',
-        'side' => 'string',
-        'promotion_code' => 'string',
-        'trade_no' => 'string'
+        'create_time' => 'string'
     ];
 
     /**
@@ -87,15 +98,26 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_currency' => null,
         'crypto_amount' => null,
         'rate' => null,
-        'transfer_remark' => null,
-        'reference_code' => null,
+        'bank_account_name' => null,
+        'bank_name' => null,
+        'bank_country' => null,
+        'bank_address' => null,
+        'bank_account_number_iban' => null,
+        'swift_code' => null,
+        'intermediate_bank_name' => null,
+        'intermediary_bank_swift_code' => null,
+        'gate_bank_account_name' => null,
+        'gate_bank_name' => null,
+        'gate_bank_country' => null,
+        'gate_bank_address' => null,
+        'gate_bank_account_number_iban' => null,
+        'gate_swift_code' => null,
+        'gate_intermediary_bank_name' => null,
+        'gate_intermediary_bank_swift_code' => null,
+        'gate_transfer_remark' => null,
+        'gate_reference_code' => null,
         'status' => null,
-        'db_status' => null,
-        'create_time' => null,
-        'memo' => null,
-        'side' => null,
-        'promotion_code' => null,
-        'trade_no' => null
+        'create_time' => null
     ];
 
     /**
@@ -133,15 +155,26 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_currency' => 'crypto_currency',
         'crypto_amount' => 'crypto_amount',
         'rate' => 'rate',
-        'transfer_remark' => 'transfer_remark',
-        'reference_code' => 'reference_code',
+        'bank_account_name' => 'bank_account_name',
+        'bank_name' => 'bank_name',
+        'bank_country' => 'bank_country',
+        'bank_address' => 'bank_address',
+        'bank_account_number_iban' => 'bank_account_number_iban',
+        'swift_code' => 'swift_code',
+        'intermediate_bank_name' => 'intermediate_bank_name',
+        'intermediary_bank_swift_code' => 'intermediary_bank_swift_code',
+        'gate_bank_account_name' => 'gate_bank_account_name',
+        'gate_bank_name' => 'gate_bank_name',
+        'gate_bank_country' => 'gate_bank_country',
+        'gate_bank_address' => 'gate_bank_address',
+        'gate_bank_account_number_iban' => 'gate_bank_account_number_iban',
+        'gate_swift_code' => 'gate_swift_code',
+        'gate_intermediary_bank_name' => 'gate_intermediary_bank_name',
+        'gate_intermediary_bank_swift_code' => 'gate_intermediary_bank_swift_code',
+        'gate_transfer_remark' => 'gate_transfer_remark',
+        'gate_reference_code' => 'gate_reference_code',
         'status' => 'status',
-        'db_status' => 'db_status',
-        'create_time' => 'create_time',
-        'memo' => 'memo',
-        'side' => 'side',
-        'promotion_code' => 'promotion_code',
-        'trade_no' => 'trade_no'
+        'create_time' => 'create_time'
     ];
 
     /**
@@ -158,15 +191,26 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_currency' => 'setCryptoCurrency',
         'crypto_amount' => 'setCryptoAmount',
         'rate' => 'setRate',
-        'transfer_remark' => 'setTransferRemark',
-        'reference_code' => 'setReferenceCode',
+        'bank_account_name' => 'setBankAccountName',
+        'bank_name' => 'setBankName',
+        'bank_country' => 'setBankCountry',
+        'bank_address' => 'setBankAddress',
+        'bank_account_number_iban' => 'setBankAccountNumberIban',
+        'swift_code' => 'setSwiftCode',
+        'intermediate_bank_name' => 'setIntermediateBankName',
+        'intermediary_bank_swift_code' => 'setIntermediaryBankSwiftCode',
+        'gate_bank_account_name' => 'setGateBankAccountName',
+        'gate_bank_name' => 'setGateBankName',
+        'gate_bank_country' => 'setGateBankCountry',
+        'gate_bank_address' => 'setGateBankAddress',
+        'gate_bank_account_number_iban' => 'setGateBankAccountNumberIban',
+        'gate_swift_code' => 'setGateSwiftCode',
+        'gate_intermediary_bank_name' => 'setGateIntermediaryBankName',
+        'gate_intermediary_bank_swift_code' => 'setGateIntermediaryBankSwiftCode',
+        'gate_transfer_remark' => 'setGateTransferRemark',
+        'gate_reference_code' => 'setGateReferenceCode',
         'status' => 'setStatus',
-        'db_status' => 'setDbStatus',
-        'create_time' => 'setCreateTime',
-        'memo' => 'setMemo',
-        'side' => 'setSide',
-        'promotion_code' => 'setPromotionCode',
-        'trade_no' => 'setTradeNo'
+        'create_time' => 'setCreateTime'
     ];
 
     /**
@@ -183,15 +227,26 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         'crypto_currency' => 'getCryptoCurrency',
         'crypto_amount' => 'getCryptoAmount',
         'rate' => 'getRate',
-        'transfer_remark' => 'getTransferRemark',
-        'reference_code' => 'getReferenceCode',
+        'bank_account_name' => 'getBankAccountName',
+        'bank_name' => 'getBankName',
+        'bank_country' => 'getBankCountry',
+        'bank_address' => 'getBankAddress',
+        'bank_account_number_iban' => 'getBankAccountNumberIban',
+        'swift_code' => 'getSwiftCode',
+        'intermediate_bank_name' => 'getIntermediateBankName',
+        'intermediary_bank_swift_code' => 'getIntermediaryBankSwiftCode',
+        'gate_bank_account_name' => 'getGateBankAccountName',
+        'gate_bank_name' => 'getGateBankName',
+        'gate_bank_country' => 'getGateBankCountry',
+        'gate_bank_address' => 'getGateBankAddress',
+        'gate_bank_account_number_iban' => 'getGateBankAccountNumberIban',
+        'gate_swift_code' => 'getGateSwiftCode',
+        'gate_intermediary_bank_name' => 'getGateIntermediaryBankName',
+        'gate_intermediary_bank_swift_code' => 'getGateIntermediaryBankSwiftCode',
+        'gate_transfer_remark' => 'getGateTransferRemark',
+        'gate_reference_code' => 'getGateReferenceCode',
         'status' => 'getStatus',
-        'db_status' => 'getDbStatus',
-        'create_time' => 'getCreateTime',
-        'memo' => 'getMemo',
-        'side' => 'getSide',
-        'promotion_code' => 'getPromotionCode',
-        'trade_no' => 'getTradeNo'
+        'create_time' => 'getCreateTime'
     ];
 
     /**
@@ -262,15 +317,26 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
         $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
-        $this->container['transfer_remark'] = isset($data['transfer_remark']) ? $data['transfer_remark'] : null;
-        $this->container['reference_code'] = isset($data['reference_code']) ? $data['reference_code'] : null;
+        $this->container['bank_account_name'] = isset($data['bank_account_name']) ? $data['bank_account_name'] : null;
+        $this->container['bank_name'] = isset($data['bank_name']) ? $data['bank_name'] : null;
+        $this->container['bank_country'] = isset($data['bank_country']) ? $data['bank_country'] : null;
+        $this->container['bank_address'] = isset($data['bank_address']) ? $data['bank_address'] : null;
+        $this->container['bank_account_number_iban'] = isset($data['bank_account_number_iban']) ? $data['bank_account_number_iban'] : null;
+        $this->container['swift_code'] = isset($data['swift_code']) ? $data['swift_code'] : null;
+        $this->container['intermediate_bank_name'] = isset($data['intermediate_bank_name']) ? $data['intermediate_bank_name'] : null;
+        $this->container['intermediary_bank_swift_code'] = isset($data['intermediary_bank_swift_code']) ? $data['intermediary_bank_swift_code'] : null;
+        $this->container['gate_bank_account_name'] = isset($data['gate_bank_account_name']) ? $data['gate_bank_account_name'] : null;
+        $this->container['gate_bank_name'] = isset($data['gate_bank_name']) ? $data['gate_bank_name'] : null;
+        $this->container['gate_bank_country'] = isset($data['gate_bank_country']) ? $data['gate_bank_country'] : null;
+        $this->container['gate_bank_address'] = isset($data['gate_bank_address']) ? $data['gate_bank_address'] : null;
+        $this->container['gate_bank_account_number_iban'] = isset($data['gate_bank_account_number_iban']) ? $data['gate_bank_account_number_iban'] : null;
+        $this->container['gate_swift_code'] = isset($data['gate_swift_code']) ? $data['gate_swift_code'] : null;
+        $this->container['gate_intermediary_bank_name'] = isset($data['gate_intermediary_bank_name']) ? $data['gate_intermediary_bank_name'] : null;
+        $this->container['gate_intermediary_bank_swift_code'] = isset($data['gate_intermediary_bank_swift_code']) ? $data['gate_intermediary_bank_swift_code'] : null;
+        $this->container['gate_transfer_remark'] = isset($data['gate_transfer_remark']) ? $data['gate_transfer_remark'] : null;
+        $this->container['gate_reference_code'] = isset($data['gate_reference_code']) ? $data['gate_reference_code'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['db_status'] = isset($data['db_status']) ? $data['db_status'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['side'] = isset($data['side']) ? $data['side'] : null;
-        $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
-        $this->container['trade_no'] = isset($data['trade_no']) ? $data['trade_no'] : null;
     }
 
     /**
@@ -306,29 +372,11 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
         if ($this->container['rate'] === null) {
             $invalidProperties[] = "'rate' can't be null";
         }
-        if ($this->container['transfer_remark'] === null) {
-            $invalidProperties[] = "'transfer_remark' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['db_status'] === null) {
-            $invalidProperties[] = "'db_status' can't be null";
-        }
         if ($this->container['create_time'] === null) {
             $invalidProperties[] = "'create_time' can't be null";
-        }
-        if ($this->container['memo'] === null) {
-            $invalidProperties[] = "'memo' can't be null";
-        }
-        if ($this->container['side'] === null) {
-            $invalidProperties[] = "'side' can't be null";
-        }
-        if ($this->container['promotion_code'] === null) {
-            $invalidProperties[] = "'promotion_code' can't be null";
-        }
-        if ($this->container['trade_no'] === null) {
-            $invalidProperties[] = "'trade_no' can't be null";
         }
         return $invalidProperties;
     }
@@ -430,7 +478,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     /**
      * Sets fiat_currency
      *
-     * @param string $fiat_currency Fiat type
+     * @param string $fiat_currency Fiat currency
      *
      * @return $this
      */
@@ -478,7 +526,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     /**
      * Sets crypto_currency
      *
-     * @param string $crypto_currency Stablecoin
+     * @param string $crypto_currency Digital currency
      *
      * @return $this
      */
@@ -502,7 +550,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     /**
      * Sets crypto_amount
      *
-     * @param string $crypto_amount Stablecoin amount
+     * @param string $crypto_amount Cryptocurrency amount
      *
      * @return $this
      */
@@ -538,49 +586,433 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets transfer_remark
+     * Gets bank_account_name
      *
-     * @return string
+     * @return string|null
      */
-    public function getTransferRemark()
+    public function getBankAccountName()
     {
-        return $this->container['transfer_remark'];
+        return $this->container['bank_account_name'];
     }
 
     /**
-     * Sets transfer_remark
+     * Sets bank_account_name
      *
-     * @param string $transfer_remark Transfer remark (mutually exclusive with reference_code; empty string when the deposit buy order has a reference code)
+     * @param string|null $bank_account_name User payment/receiving name
      *
      * @return $this
      */
-    public function setTransferRemark($transfer_remark)
+    public function setBankAccountName($bank_account_name)
     {
-        $this->container['transfer_remark'] = $transfer_remark;
+        $this->container['bank_account_name'] = $bank_account_name;
 
         return $this;
     }
 
     /**
-     * Gets reference_code
+     * Gets bank_name
      *
      * @return string|null
      */
-    public function getReferenceCode()
+    public function getBankName()
     {
-        return $this->container['reference_code'];
+        return $this->container['bank_name'];
     }
 
     /**
-     * Sets reference_code
+     * Sets bank_name
      *
-     * @param string|null $reference_code Unique bank transfer reference code for deposit buy orders (SGB deposit scenario; mutually exclusive with transfer_remark)
+     * @param string|null $bank_name User payment/receiving bank name
      *
      * @return $this
      */
-    public function setReferenceCode($reference_code)
+    public function setBankName($bank_name)
     {
-        $this->container['reference_code'] = $reference_code;
+        $this->container['bank_name'] = $bank_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_country
+     *
+     * @return string|null
+     */
+    public function getBankCountry()
+    {
+        return $this->container['bank_country'];
+    }
+
+    /**
+     * Sets bank_country
+     *
+     * @param string|null $bank_country User payment/receiving bank country
+     *
+     * @return $this
+     */
+    public function setBankCountry($bank_country)
+    {
+        $this->container['bank_country'] = $bank_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_address
+     *
+     * @return string|null
+     */
+    public function getBankAddress()
+    {
+        return $this->container['bank_address'];
+    }
+
+    /**
+     * Sets bank_address
+     *
+     * @param string|null $bank_address User payment/receiving bank address
+     *
+     * @return $this
+     */
+    public function setBankAddress($bank_address)
+    {
+        $this->container['bank_address'] = $bank_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets bank_account_number_iban
+     *
+     * @return string|null
+     */
+    public function getBankAccountNumberIban()
+    {
+        return $this->container['bank_account_number_iban'];
+    }
+
+    /**
+     * Sets bank_account_number_iban
+     *
+     * @param string|null $bank_account_number_iban User payment/receiving bank account number/IBAN
+     *
+     * @return $this
+     */
+    public function setBankAccountNumberIban($bank_account_number_iban)
+    {
+        $this->container['bank_account_number_iban'] = $bank_account_number_iban;
+
+        return $this;
+    }
+
+    /**
+     * Gets swift_code
+     *
+     * @return string|null
+     */
+    public function getSwiftCode()
+    {
+        return $this->container['swift_code'];
+    }
+
+    /**
+     * Sets swift_code
+     *
+     * @param string|null $swift_code User payment/receiving bank SWIFT code
+     *
+     * @return $this
+     */
+    public function setSwiftCode($swift_code)
+    {
+        $this->container['swift_code'] = $swift_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets intermediate_bank_name
+     *
+     * @return string|null
+     */
+    public function getIntermediateBankName()
+    {
+        return $this->container['intermediate_bank_name'];
+    }
+
+    /**
+     * Sets intermediate_bank_name
+     *
+     * @param string|null $intermediate_bank_name User payment/receiving intermediary bank name
+     *
+     * @return $this
+     */
+    public function setIntermediateBankName($intermediate_bank_name)
+    {
+        $this->container['intermediate_bank_name'] = $intermediate_bank_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets intermediary_bank_swift_code
+     *
+     * @return string|null
+     */
+    public function getIntermediaryBankSwiftCode()
+    {
+        return $this->container['intermediary_bank_swift_code'];
+    }
+
+    /**
+     * Sets intermediary_bank_swift_code
+     *
+     * @param string|null $intermediary_bank_swift_code User payment/receiving intermediary bank SWIFT code
+     *
+     * @return $this
+     */
+    public function setIntermediaryBankSwiftCode($intermediary_bank_swift_code)
+    {
+        $this->container['intermediary_bank_swift_code'] = $intermediary_bank_swift_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_bank_account_name
+     *
+     * @return string|null
+     */
+    public function getGateBankAccountName()
+    {
+        return $this->container['gate_bank_account_name'];
+    }
+
+    /**
+     * Sets gate_bank_account_name
+     *
+     * @param string|null $gate_bank_account_name Gate beneficiary name, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateBankAccountName($gate_bank_account_name)
+    {
+        $this->container['gate_bank_account_name'] = $gate_bank_account_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_bank_name
+     *
+     * @return string|null
+     */
+    public function getGateBankName()
+    {
+        return $this->container['gate_bank_name'];
+    }
+
+    /**
+     * Sets gate_bank_name
+     *
+     * @param string|null $gate_bank_name Gate beneficiary bank name, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateBankName($gate_bank_name)
+    {
+        $this->container['gate_bank_name'] = $gate_bank_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_bank_country
+     *
+     * @return string|null
+     */
+    public function getGateBankCountry()
+    {
+        return $this->container['gate_bank_country'];
+    }
+
+    /**
+     * Sets gate_bank_country
+     *
+     * @param string|null $gate_bank_country Gate beneficiary bank country, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateBankCountry($gate_bank_country)
+    {
+        $this->container['gate_bank_country'] = $gate_bank_country;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_bank_address
+     *
+     * @return string|null
+     */
+    public function getGateBankAddress()
+    {
+        return $this->container['gate_bank_address'];
+    }
+
+    /**
+     * Sets gate_bank_address
+     *
+     * @param string|null $gate_bank_address Gate beneficiary bank address, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateBankAddress($gate_bank_address)
+    {
+        $this->container['gate_bank_address'] = $gate_bank_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_bank_account_number_iban
+     *
+     * @return string|null
+     */
+    public function getGateBankAccountNumberIban()
+    {
+        return $this->container['gate_bank_account_number_iban'];
+    }
+
+    /**
+     * Sets gate_bank_account_number_iban
+     *
+     * @param string|null $gate_bank_account_number_iban Gate beneficiary bank account number/IBAN, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateBankAccountNumberIban($gate_bank_account_number_iban)
+    {
+        $this->container['gate_bank_account_number_iban'] = $gate_bank_account_number_iban;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_swift_code
+     *
+     * @return string|null
+     */
+    public function getGateSwiftCode()
+    {
+        return $this->container['gate_swift_code'];
+    }
+
+    /**
+     * Sets gate_swift_code
+     *
+     * @param string|null $gate_swift_code Gate beneficiary bank SWIFT code, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateSwiftCode($gate_swift_code)
+    {
+        $this->container['gate_swift_code'] = $gate_swift_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_intermediary_bank_name
+     *
+     * @return string|null
+     */
+    public function getGateIntermediaryBankName()
+    {
+        return $this->container['gate_intermediary_bank_name'];
+    }
+
+    /**
+     * Sets gate_intermediary_bank_name
+     *
+     * @param string|null $gate_intermediary_bank_name Gate beneficiary intermediary bank name, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateIntermediaryBankName($gate_intermediary_bank_name)
+    {
+        $this->container['gate_intermediary_bank_name'] = $gate_intermediary_bank_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_intermediary_bank_swift_code
+     *
+     * @return string|null
+     */
+    public function getGateIntermediaryBankSwiftCode()
+    {
+        return $this->container['gate_intermediary_bank_swift_code'];
+    }
+
+    /**
+     * Sets gate_intermediary_bank_swift_code
+     *
+     * @param string|null $gate_intermediary_bank_swift_code Gate beneficiary intermediary bank SWIFT code, shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateIntermediaryBankSwiftCode($gate_intermediary_bank_swift_code)
+    {
+        $this->container['gate_intermediary_bank_swift_code'] = $gate_intermediary_bank_swift_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_transfer_remark
+     *
+     * @return string|null
+     */
+    public function getGateTransferRemark()
+    {
+        return $this->container['gate_transfer_remark'];
+    }
+
+    /**
+     * Sets gate_transfer_remark
+     *
+     * @param string|null $gate_transfer_remark Transfer remark (mutually exclusive with `gate_reference_code`; empty when a BUY deposit order has a reference code), shown for BUY only
+     *
+     * @return $this
+     */
+    public function setGateTransferRemark($gate_transfer_remark)
+    {
+        $this->container['gate_transfer_remark'] = $gate_transfer_remark;
+
+        return $this;
+    }
+
+    /**
+     * Gets gate_reference_code
+     *
+     * @return string|null
+     */
+    public function getGateReferenceCode()
+    {
+        return $this->container['gate_reference_code'];
+    }
+
+    /**
+     * Sets gate_reference_code
+     *
+     * @param string|null $gate_reference_code Be sure to include the reference code when making the transfer so that your order can be processed promptly. (Mutually exclusive with `gate_transfer_remark`.)
+     *
+     * @return $this
+     */
+    public function setGateReferenceCode($gate_reference_code)
+    {
+        $this->container['gate_reference_code'] = $gate_reference_code;
 
         return $this;
     }
@@ -610,30 +1042,6 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets db_status
-     *
-     * @return string
-     */
-    public function getDbStatus()
-    {
-        return $this->container['db_status'];
-    }
-
-    /**
-     * Sets db_status
-     *
-     * @param string $db_status db_status
-     *
-     * @return $this
-     */
-    public function setDbStatus($db_status)
-    {
-        $this->container['db_status'] = $db_status;
-
-        return $this;
-    }
-
-    /**
      * Gets create_time
      *
      * @return string
@@ -653,102 +1061,6 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     public function setCreateTime($create_time)
     {
         $this->container['create_time'] = $create_time;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string $memo Cancellation or rejection reason
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets side
-     *
-     * @return string
-     */
-    public function getSide()
-    {
-        return $this->container['side'];
-    }
-
-    /**
-     * Sets side
-     *
-     * @param string $side Quote direction
-     *
-     * @return $this
-     */
-    public function setSide($side)
-    {
-        $this->container['side'] = $side;
-
-        return $this;
-    }
-
-    /**
-     * Gets promotion_code
-     *
-     * @return string
-     */
-    public function getPromotionCode()
-    {
-        return $this->container['promotion_code'];
-    }
-
-    /**
-     * Sets promotion_code
-     *
-     * @param string $promotion_code Promotion code
-     *
-     * @return $this
-     */
-    public function setPromotionCode($promotion_code)
-    {
-        $this->container['promotion_code'] = $promotion_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets trade_no
-     *
-     * @return string
-     */
-    public function getTradeNo()
-    {
-        return $this->container['trade_no'];
-    }
-
-    /**
-     * Sets trade_no
-     *
-     * @param string $trade_no Trade number
-     *
-     * @return $this
-     */
-    public function setTradeNo($trade_no)
-    {
-        $this->container['trade_no'] = $trade_no;
 
         return $this;
     }

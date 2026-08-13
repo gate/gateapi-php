@@ -64,7 +64,10 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
         'promotion_code' => 'string',
         'side' => 'string',
         'order_type' => 'string',
-        'quote_token' => 'string'
+        'quote_token' => 'string',
+        'validity_period' => 'string',
+        'refresh_limit' => 'int',
+        'refresh_limit_msg' => 'string'
     ];
 
     /**
@@ -83,7 +86,10 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
         'promotion_code' => null,
         'side' => null,
         'order_type' => null,
-        'quote_token' => null
+        'quote_token' => null,
+        'validity_period' => null,
+        'refresh_limit' => null,
+        'refresh_limit_msg' => null
     ];
 
     /**
@@ -123,7 +129,10 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
         'promotion_code' => 'promotion_code',
         'side' => 'side',
         'order_type' => 'order_type',
-        'quote_token' => 'quote_token'
+        'quote_token' => 'quote_token',
+        'validity_period' => 'validity_period',
+        'refresh_limit' => 'refresh_limit',
+        'refresh_limit_msg' => 'refresh_limit_msg'
     ];
 
     /**
@@ -142,7 +151,10 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
         'promotion_code' => 'setPromotionCode',
         'side' => 'setSide',
         'order_type' => 'setOrderType',
-        'quote_token' => 'setQuoteToken'
+        'quote_token' => 'setQuoteToken',
+        'validity_period' => 'setValidityPeriod',
+        'refresh_limit' => 'setRefreshLimit',
+        'refresh_limit_msg' => 'setRefreshLimitMsg'
     ];
 
     /**
@@ -161,7 +173,10 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
         'promotion_code' => 'getPromotionCode',
         'side' => 'getSide',
         'order_type' => 'getOrderType',
-        'quote_token' => 'getQuoteToken'
+        'quote_token' => 'getQuoteToken',
+        'validity_period' => 'getValidityPeriod',
+        'refresh_limit' => 'getRefreshLimit',
+        'refresh_limit_msg' => 'getRefreshLimitMsg'
     ];
 
     /**
@@ -235,6 +250,9 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
         $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
+        $this->container['validity_period'] = isset($data['validity_period']) ? $data['validity_period'] : null;
+        $this->container['refresh_limit'] = isset($data['refresh_limit']) ? $data['refresh_limit'] : null;
+        $this->container['refresh_limit_msg'] = isset($data['refresh_limit_msg']) ? $data['refresh_limit_msg'] : null;
     }
 
     /**
@@ -554,6 +572,78 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
     public function setQuoteToken($quote_token)
     {
         $this->container['quote_token'] = $quote_token;
+
+        return $this;
+    }
+
+    /**
+     * Gets validity_period
+     *
+     * @return string|null
+     */
+    public function getValidityPeriod()
+    {
+        return $this->container['validity_period'];
+    }
+
+    /**
+     * Sets validity_period
+     *
+     * @param string|null $validity_period Quote validity period (seconds)
+     *
+     * @return $this
+     */
+    public function setValidityPeriod($validity_period)
+    {
+        $this->container['validity_period'] = $validity_period;
+
+        return $this;
+    }
+
+    /**
+     * Gets refresh_limit
+     *
+     * @return int|null
+     */
+    public function getRefreshLimit()
+    {
+        return $this->container['refresh_limit'];
+    }
+
+    /**
+     * Sets refresh_limit
+     *
+     * @param int|null $refresh_limit Quote refresh limit
+     *
+     * @return $this
+     */
+    public function setRefreshLimit($refresh_limit)
+    {
+        $this->container['refresh_limit'] = $refresh_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets refresh_limit_msg
+     *
+     * @return string|null
+     */
+    public function getRefreshLimitMsg()
+    {
+        return $this->container['refresh_limit_msg'];
+    }
+
+    /**
+     * Sets refresh_limit_msg
+     *
+     * @param string|null $refresh_limit_msg Quote refresh limit message
+     *
+     * @return $this
+     */
+    public function setRefreshLimitMsg($refresh_limit_msg)
+    {
+        $this->container['refresh_limit_msg'] = $refresh_limit_msg;
 
         return $this;
     }

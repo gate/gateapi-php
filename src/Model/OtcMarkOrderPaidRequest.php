@@ -287,7 +287,7 @@ class OtcMarkOrderPaidRequest implements ModelInterface, ArrayAccess
     /**
      * Sets payment_receipt_file_key
      *
-     * @param string $payment_receipt_file_key User payment receipt: **required**. Stored as a file_key. Single file; jpg/jpeg/png/pdf; ≤4MB.
+     * @param string $payment_receipt_file_key User payment receipt: **required**. Stored as a file_key. One file; jpg/jpeg/png/pdf; maximum 10 MB.
      *
      * @return $this
      */

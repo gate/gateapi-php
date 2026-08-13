@@ -223,6 +223,24 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['pay_coin'] === null) {
+            $invalidProperties[] = "'pay_coin' can't be null";
+        }
+        if ($this->container['get_coin'] === null) {
+            $invalidProperties[] = "'get_coin' can't be null";
+        }
+        if ($this->container['pay_amount'] === null) {
+            $invalidProperties[] = "'pay_amount' can't be null";
+        }
+        if ($this->container['get_amount'] === null) {
+            $invalidProperties[] = "'get_amount' can't be null";
+        }
+        if ($this->container['side'] === null) {
+            $invalidProperties[] = "'side' can't be null";
+        }
+        if ($this->container['quote_token'] === null) {
+            $invalidProperties[] = "'quote_token' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -241,7 +259,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Gets pay_coin
      *
-     * @return string|null
+     * @return string
      */
     public function getPayCoin()
     {
@@ -251,7 +269,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets pay_coin
      *
-     * @param string|null $pay_coin Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+     * @param string $pay_coin Currency paid by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      *
      * @return $this
      */
@@ -265,7 +283,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Gets get_coin
      *
-     * @return string|null
+     * @return string
      */
     public function getGetCoin()
     {
@@ -275,7 +293,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets get_coin
      *
-     * @param string|null $get_coin Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
+     * @param string $get_coin Currency to be received by the user. Supported currencies can be queried from the OTC web stablecoin quote page.
      *
      * @return $this
      */
@@ -289,7 +307,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Gets pay_amount
      *
-     * @return string|null
+     * @return string
      */
     public function getPayAmount()
     {
@@ -299,7 +317,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets pay_amount
      *
-     * @param string|null $pay_amount User payment currency amount
+     * @param string $pay_amount User payment currency amount
      *
      * @return $this
      */
@@ -313,7 +331,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Gets get_amount
      *
-     * @return string|null
+     * @return string
      */
     public function getGetAmount()
     {
@@ -323,7 +341,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets get_amount
      *
-     * @param string|null $get_amount Amount of currency received by the user
+     * @param string $get_amount Amount of currency received by the user
      *
      * @return $this
      */
@@ -337,7 +355,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Gets side
      *
-     * @return string|null
+     * @return string
      */
     public function getSide()
     {
@@ -347,7 +365,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param string|null $side Quote direction returned by the quote API (used for order validation)
+     * @param string $side The side returned by the quote endpoint (used for order validation). For backward compatibility, `PAY`/`GET` are accepted; new integrations should use the value returned by the quote response.
      *
      * @return $this
      */
@@ -371,7 +389,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets promotion_code
      *
-     * @param string|null $promotion_code promotion code
+     * @param string|null $promotion_code Promotion code (optional)
      *
      * @return $this
      */
@@ -385,7 +403,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Gets quote_token
      *
-     * @return string|null
+     * @return string
      */
     public function getQuoteToken()
     {
@@ -395,7 +413,7 @@ class OtcStableCoinOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets quote_token
      *
-     * @param string|null $quote_token Parameter returned by the quote API
+     * @param string $quote_token Parameter returned by the quote API
      *
      * @return $this
      */

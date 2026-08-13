@@ -14,13 +14,12 @@ Method | HTTP request | Description
 [**listCandlesticks**](SpotApi.md#listCandlesticks) | **GET** /spot/candlesticks | Market K-line chart
 [**getFee**](SpotApi.md#getFee) | **GET** /spot/fee | Query account fee rates
 [**getBatchSpotFee**](SpotApi.md#getBatchSpotFee) | **GET** /spot/batch_fee | Batch query account fee rates
-[**listSpotAccounts**](SpotApi.md#listSpotAccounts) | **GET** /spot/accounts | List spot trading accounts
 [**listSpotAccountBook**](SpotApi.md#listSpotAccountBook) | **GET** /spot/account_book | Query spot account transaction history
 [**createBatchOrders**](SpotApi.md#createBatchOrders) | **POST** /spot/batch_orders | Batch place orders
 [**listAllOpenOrders**](SpotApi.md#listAllOpenOrders) | **GET** /spot/open_orders | List all open orders
 [**createCrossLiquidateOrder**](SpotApi.md#createCrossLiquidateOrder) | **POST** /spot/cross_liquidate_orders | Close position when cross-currency is disabled
 [**listOrders**](SpotApi.md#listOrders) | **GET** /spot/orders | List orders
-[**createOrder**](SpotApi.md#createOrder) | **POST** /spot/orders | Create an order
+[**createOrder**](SpotApi.md#createOrder) | **POST** /spot/orders | Create order
 [**cancelOrders**](SpotApi.md#cancelOrders) | **DELETE** /spot/orders | Cancel all &#x60;open&#x60; orders in specified currency pair
 [**cancelBatchOrders**](SpotApi.md#cancelBatchOrders) | **POST** /spot/cancel_batch_orders | Cancel batch orders by specified ID list
 [**getOrder**](SpotApi.md#getOrder) | **GET** /spot/orders/{order_id} | Query single order details
@@ -36,6 +35,11 @@ Method | HTTP request | Description
 [**cancelSpotPriceTriggeredOrderList**](SpotApi.md#cancelSpotPriceTriggeredOrderList) | **DELETE** /spot/price_orders | Cancel all auto orders
 [**getSpotPriceTriggeredOrder**](SpotApi.md#getSpotPriceTriggeredOrder) | **GET** /spot/price_orders/{order_id} | Query single auto order details
 [**cancelSpotPriceTriggeredOrder**](SpotApi.md#cancelSpotPriceTriggeredOrder) | **DELETE** /spot/price_orders/{order_id} | Cancel single auto order
+[**listSpotPovOrders**](SpotApi.md#listSpotPovOrders) | **GET** /spot/pov_orders | List Spot POV orders
+[**createSpotPovOrder**](SpotApi.md#createSpotPovOrder) | **POST** /spot/pov_orders | Create a Spot POV order
+[**cancelSpotPovOrders**](SpotApi.md#cancelSpotPovOrders) | **POST** /spot/pov_orders/cancel | Cancel Spot POV orders
+[**getSpotPovOrder**](SpotApi.md#getSpotPovOrder) | **GET** /spot/pov_orders/{order_id} | Query Spot POV order details
+[**cancelSpotPovOrder**](SpotApi.md#cancelSpotPovOrder) | **POST** /spot/pov_orders/{order_id}/cancel | Cancel a Spot POV order
 
 
 ## listCurrencies
@@ -648,68 +652,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
-## listSpotAccounts
-
-> \GateApi\Model\SpotAccount[] listSpotAccounts($currency)
-
-List spot trading accounts
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Gate APIv4 authorization: apiv4
-$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
-
-
-$apiInstance = new GateApi\Api\SpotApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$associate_array['currency'] = 'BTC'; // string | Query by specified currency name
-
-try {
-    $result = $apiInstance->listSpotAccounts($associate_array);
-    print_r($result);
-} catch (GateApi\GateApiException $e) {
-    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
-} catch (Exception $e) {
-    echo 'Exception when calling SpotApi->listSpotAccounts: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Note: the input parameter is an associative array with the keys listed as the parameter name below.
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **currency** | **string**| Query by specified currency name | [optional]
-
-### Return type
-
-[**\GateApi\Model\SpotAccount[]**](../Model/SpotAccount.md)
-
-### Authorization
-
-[apiv4](../../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
-
-
 ## listSpotAccountBook
 
 > \GateApi\Model\SpotAccountBook[] listSpotAccountBook($currency, $from, $to, $page, $limit, $type, $code)
@@ -1062,7 +1004,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\Order createOrder($order, $x_gate_exptime)
 
-Create an order
+Create order
 
 Supports spot, margin, leverage, and cross-margin leverage orders. Use different accounts through the `account` field. Default is `spot`, which means using the spot account to place orders. If the user has a `unified` account, the default is to place orders with the unified account.  When using leveraged account trading (i.e., when `account` is set to `margin`), you can set `auto_borrow` to `true`. In case of insufficient account balance, the system will automatically execute `POST /margin/uni/loans` to borrow the insufficient amount. Whether assets obtained after leveraged order execution are automatically used to repay borrowing orders of the isolated margin account depends on the automatic repayment settings of the user's isolated margin account. Account automatic repayment settings can be queried and set through `/margin/auto_repay`.  When using unified account trading (i.e., when `account` is set to `unified`), `auto_borrow` can also be enabled to realize automatic borrowing of insufficient amounts. However, unlike the isolated margin account, whether unified account orders are automatically repaid depends on the `auto_repay` setting when placing the order. This setting only applies to the current order, meaning only assets obtained after order execution will be used to repay borrowing orders of the cross-margin account. Unified account ordering currently supports enabling both `auto_borrow` and `auto_repay` simultaneously.  Auto repayment will be triggered when the order ends, i.e., when `status` is `cancelled` or `closed`.  **Order Status**  The order status in pending orders is `open`, which remains `open` until all quantity is filled. If fully filled, the order ends and status becomes `closed`. If the order is cancelled before all transactions are completed, regardless of partial fills, the status will become `cancelled`.  **Iceberg Orders**  `iceberg` is used to set the displayed quantity of iceberg orders and does not support complete hiding. Note that hidden portions are charged according to the taker's fee rate.  **Self-Trade Prevention**  Set `stp_act` to determine the self-trade prevention strategy to use
 
@@ -2081,6 +2023,316 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\SpotPriceTriggeredOrder**](../Model/SpotPriceTriggeredOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listSpotPovOrders
+
+> \GateApi\Model\SpotPovOrder[] listSpotPovOrders($status, $currency_pair, $side, $page, $limit)
+
+List Spot POV orders
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\SpotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['status'] = 'open'; // string | Order status. Defaults to open  - open: Active orders - finished: Finished orders
+$associate_array['currency_pair'] = 'BTC_USDT'; // string | Currency pair
+$associate_array['side'] = 'sell'; // string | Specify all bids or all asks, both included if not specified
+$associate_array['page'] = 1; // int | Page number, up to 100
+$associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
+
+try {
+    $result = $apiInstance->listSpotPovOrders($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling SpotApi->listSpotPovOrders: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**| Order status. Defaults to open  - open: Active orders - finished: Finished orders | [default to &#39;open&#39;]
+ **currency_pair** | **string**| Currency pair | [optional]
+ **side** | **string**| Specify all bids or all asks, both included if not specified | [optional]
+ **page** | **int**| Page number, up to 100 | [optional] [default to 1]
+ **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
+
+### Return type
+
+[**\GateApi\Model\SpotPovOrder[]**](../Model/SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## createSpotPovOrder
+
+> \GateApi\Model\SpotPovOrder createSpotPovOrder($spot_pov_order_creator)
+
+Create a Spot POV order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\SpotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$spot_pov_order_creator = new \GateApi\Model\SpotPovOrderCreator(); // \GateApi\Model\SpotPovOrderCreator | 
+
+try {
+    $result = $apiInstance->createSpotPovOrder($spot_pov_order_creator);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling SpotApi->createSpotPovOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **spot_pov_order_creator** | [**\GateApi\Model\SpotPovOrderCreator**](../Model/SpotPovOrderCreator.md)|  |
+
+### Return type
+
+[**\GateApi\Model\SpotPovOrder**](../Model/SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## cancelSpotPovOrders
+
+> \GateApi\Model\SpotPovOrder[] cancelSpotPovOrders($currency_pair)
+
+Cancel Spot POV orders
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\SpotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$currency_pair = 'BTC_USDT'; // string | Currency pair
+
+try {
+    $result = $apiInstance->cancelSpotPovOrders($currency_pair);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling SpotApi->cancelSpotPovOrders: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency_pair** | **string**| Currency pair | [optional]
+
+### Return type
+
+[**\GateApi\Model\SpotPovOrder[]**](../Model/SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getSpotPovOrder
+
+> \GateApi\Model\SpotPovOrder getSpotPovOrder($order_id)
+
+Query Spot POV order details
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\SpotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = '12345'; // string | The order ID returned after successful creation, or the custom ID specified by the user in the `text` field.
+
+try {
+    $result = $apiInstance->getSpotPovOrder($order_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling SpotApi->getSpotPovOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **string**| The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. |
+
+### Return type
+
+[**\GateApi\Model\SpotPovOrder**](../Model/SpotPovOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## cancelSpotPovOrder
+
+> \GateApi\Model\SpotPovOrder cancelSpotPovOrder($order_id)
+
+Cancel a Spot POV order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\SpotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = '12345'; // string | The order ID returned after successful creation, or the custom ID specified by the user in the `text` field.
+
+try {
+    $result = $apiInstance->cancelSpotPovOrder($order_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling SpotApi->cancelSpotPovOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **string**| The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. |
+
+### Return type
+
+[**\GateApi\Model\SpotPovOrder**](../Model/SpotPovOrder.md)
 
 ### Authorization
 

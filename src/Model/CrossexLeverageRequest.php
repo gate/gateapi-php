@@ -251,7 +251,7 @@ class CrossexLeverageRequest implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string $leverage leverage
+     * @param string $leverage Leverage
      *
      * @return $this
      */

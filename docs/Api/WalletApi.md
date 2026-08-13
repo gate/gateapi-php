@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**getDepositAddress**](WalletApi.md#getDepositAddress) | **GET** /wallet/deposit_address | Generate currency deposit address
 [**listWithdrawals**](WalletApi.md#listWithdrawals) | **GET** /wallet/withdrawals | Get withdrawal records
 [**listDeposits**](WalletApi.md#listDeposits) | **GET** /wallet/deposits | Get deposit records
+[**getTransfer**](WalletApi.md#getTransfer) | **GET** /wallet/transfers | Get trading account transfer
 [**transfer**](WalletApi.md#transfer) | **POST** /wallet/transfers | Transfer between trading accounts
 [**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Get transfer records between main and sub accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
@@ -281,6 +282,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\DepositRecord[]**](../Model/DepositRecord.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getTransfer
+
+> \GateApi\Model\AccountTransferDetail getTransfer($tx_id)
+
+Get trading account transfer
+
+Get the current user's trading account transfer details using the tx_id returned by the transfer endpoint
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\WalletApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tx_id = '59636381286'; // string | Transfer transaction ID
+
+try {
+    $result = $apiInstance->getTransfer($tx_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling WalletApi->getTransfer: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tx_id** | **string**| Transfer transaction ID |
+
+### Return type
+
+[**\GateApi\Model\AccountTransferDetail**](../Model/AccountTransferDetail.md)
 
 ### Authorization
 

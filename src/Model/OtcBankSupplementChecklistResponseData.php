@@ -249,7 +249,7 @@ class OtcBankSupplementChecklistResponseData implements ModelInterface, ArrayAcc
     /**
      * Sets user_type
      *
-     * @param string $user_type personal or enterprise
+     * @param string $user_type `personal` or `enterprise`, matching the supplementary document submission type; `items[].description` describes the submission requirements for each item
      *
      * @return $this
      */

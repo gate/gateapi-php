@@ -323,7 +323,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets volume
      *
-     * @param string|null $volume Order volume
+     * @param string|null $volume Order quantity
      *
      * @return $this
      */

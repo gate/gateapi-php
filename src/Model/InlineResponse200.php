@@ -57,8 +57,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
         'exchange_type' => 'string',
         'spot_maker_fee' => 'string',
         'spot_taker_fee' => 'string',
+        'spot_rpi_maker_fee' => 'string',
         'future_maker_fee' => 'string',
         'future_taker_fee' => 'string',
+        'future_rpi_maker_fee' => 'string',
         'special_fee_list' => '\GateApi\Model\CrossexSpecialFee[]'
     ];
 
@@ -71,8 +73,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
         'exchange_type' => null,
         'spot_maker_fee' => null,
         'spot_taker_fee' => null,
+        'spot_rpi_maker_fee' => null,
         'future_maker_fee' => null,
         'future_taker_fee' => null,
+        'future_rpi_maker_fee' => null,
         'special_fee_list' => null
     ];
 
@@ -106,8 +110,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
         'exchange_type' => 'exchange_type',
         'spot_maker_fee' => 'spot_maker_fee',
         'spot_taker_fee' => 'spot_taker_fee',
+        'spot_rpi_maker_fee' => 'spot_rpi_maker_fee',
         'future_maker_fee' => 'future_maker_fee',
         'future_taker_fee' => 'future_taker_fee',
+        'future_rpi_maker_fee' => 'future_rpi_maker_fee',
         'special_fee_list' => 'special_fee_list'
     ];
 
@@ -120,8 +126,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
         'exchange_type' => 'setExchangeType',
         'spot_maker_fee' => 'setSpotMakerFee',
         'spot_taker_fee' => 'setSpotTakerFee',
+        'spot_rpi_maker_fee' => 'setSpotRpiMakerFee',
         'future_maker_fee' => 'setFutureMakerFee',
         'future_taker_fee' => 'setFutureTakerFee',
+        'future_rpi_maker_fee' => 'setFutureRpiMakerFee',
         'special_fee_list' => 'setSpecialFeeList'
     ];
 
@@ -134,8 +142,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
         'exchange_type' => 'getExchangeType',
         'spot_maker_fee' => 'getSpotMakerFee',
         'spot_taker_fee' => 'getSpotTakerFee',
+        'spot_rpi_maker_fee' => 'getSpotRpiMakerFee',
         'future_maker_fee' => 'getFutureMakerFee',
         'future_taker_fee' => 'getFutureTakerFee',
+        'future_rpi_maker_fee' => 'getFutureRpiMakerFee',
         'special_fee_list' => 'getSpecialFeeList'
     ];
 
@@ -202,8 +212,10 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
         $this->container['spot_maker_fee'] = isset($data['spot_maker_fee']) ? $data['spot_maker_fee'] : null;
         $this->container['spot_taker_fee'] = isset($data['spot_taker_fee']) ? $data['spot_taker_fee'] : null;
+        $this->container['spot_rpi_maker_fee'] = isset($data['spot_rpi_maker_fee']) ? $data['spot_rpi_maker_fee'] : null;
         $this->container['future_maker_fee'] = isset($data['future_maker_fee']) ? $data['future_maker_fee'] : null;
         $this->container['future_taker_fee'] = isset($data['future_taker_fee']) ? $data['future_taker_fee'] : null;
+        $this->container['future_rpi_maker_fee'] = isset($data['future_rpi_maker_fee']) ? $data['future_rpi_maker_fee'] : null;
         $this->container['special_fee_list'] = isset($data['special_fee_list']) ? $data['special_fee_list'] : null;
     }
 
@@ -319,6 +331,30 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets spot_rpi_maker_fee
+     *
+     * @return string|null
+     */
+    public function getSpotRpiMakerFee()
+    {
+        return $this->container['spot_rpi_maker_fee'];
+    }
+
+    /**
+     * Sets spot_rpi_maker_fee
+     *
+     * @param string|null $spot_rpi_maker_fee Spot RPI order maker fee rate
+     *
+     * @return $this
+     */
+    public function setSpotRpiMakerFee($spot_rpi_maker_fee)
+    {
+        $this->container['spot_rpi_maker_fee'] = $spot_rpi_maker_fee;
+
+        return $this;
+    }
+
+    /**
      * Gets future_maker_fee
      *
      * @return string
@@ -362,6 +398,30 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     public function setFutureTakerFee($future_taker_fee)
     {
         $this->container['future_taker_fee'] = $future_taker_fee;
+
+        return $this;
+    }
+
+    /**
+     * Gets future_rpi_maker_fee
+     *
+     * @return string|null
+     */
+    public function getFutureRpiMakerFee()
+    {
+        return $this->container['future_rpi_maker_fee'];
+    }
+
+    /**
+     * Sets future_rpi_maker_fee
+     *
+     * @param string|null $future_rpi_maker_fee Futures RPI order maker fee rate
+     *
+     * @return $this
+     */
+    public function setFutureRpiMakerFee($future_rpi_maker_fee)
+    {
+        $this->container['future_rpi_maker_fee'] = $future_rpi_maker_fee;
 
         return $this;
     }

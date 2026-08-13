@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 Create stablecoin order
 
-Create stablecoin order
+Create a stablecoin order. All request body fields except `promotion_code` are required.
 
 ### Example
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 Get user bank card list
 
-Retrieve the user's bank card list, used to select a bank card when placing an order. **Default card**: refer to the list item field `is_default` (1=default); there is no need to call the deprecated standalone \"default bank card\" endpoint. Corresponding Inner: `GET /bank_list` or `GET /bank/list`.
+List the user's bank cards for selecting a card when placing an order. **Default card**: use the `is_default` field in each list item (`1` indicates the default). The deprecated standalone default-bank-card endpoint is no longer required.
 
 ### Example
 
@@ -295,7 +295,7 @@ $bank_country = 'bank_country_example'; // string |
 $bank_address = 'bank_address_example'; // string | 
 $iban = 'iban_example'; // string | 
 $swift = 'swift_example'; // string | 
-$documentation_file = 'documentation_file_example'; // string | 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准）
+$documentation_file = 'documentation_file_example'; // string | Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
 $remittance_line_number = 'remittance_line_number_example'; // string | 
 $agent_bank_name = 'agent_bank_name_example'; // string | 
 $agent_bank_swift = 'agent_bank_swift_example'; // string | 
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
  **bank_address** | **string**|  |
  **iban** | **string**|  |
  **swift** | **string**|  |
- **documentation_file** | **string**| 开户证明文件内容（multipart 文件字段，二进制/Base64；jpg/jpeg/png/pdf 等，单文件≤4MB 以现网为准） |
+ **documentation_file** | **string**| Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) |
  **remittance_line_number** | **string**|  | [optional]
  **agent_bank_name** | **string**|  | [optional]
  **agent_bank_swift** | **string**|  | [optional]
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 
 Query the checklist of materials to supplement for a bank card
 
-**①** `bank_id` must be specified: after verifying that the card belongs to the current user and its status allows supplementation, returns the items to be supplemented and whether each sub-item is required, based on the user's **passed professional verification type** (personal/enterprise). Corresponding Inner: `GET /bank/bank_supplement_checklist`.
+**①** `bank_id` must be specified. After verifying that the card belongs to the current user and its status allows supplementary documents, the endpoint returns the required items based on the user's **approved advanced verification type** (personal/enterprise); each item's `description` states the submission requirements. Corresponding Inner endpoint: `GET /bank/bank_supplement_checklist`.
 
 ### Example
 
@@ -681,7 +681,7 @@ Name | Type | Description  | Notes
 
 Mark fiat order as paid (deposit confirmation)
 
-Mark a fiat buy order as paid (deposit confirmation). **The user's payment receipt must be uploaded**: `payment_receipt_file_key` is required; file format jpg / jpeg / png / pdf, single file no larger than 4MB (jointly validated by the server and gateway). The compatible field name `payment_receipt` is subject to the gateway/production environment. For the persisted field, see `otc_trade_record.payment_receipt_file_key`. The Pay Inner path is `POST .../pay/order_set_paid` (orders are usually associated via `client_order_id`); this OpenAPI path maps to Inner `POST /order/paid` and still uses `order_id` as the primary key—if the gateway unifies it to the merchant order number, the gateway documentation prevails.
+Mark a fiat BUY order as paid (deposit confirmation). **A user payment receipt must be uploaded**: `payment_receipt_file_key` is required; supported formats are jpg/jpeg/png/pdf, with a maximum size of 10 MB per file (validated jointly by the service and gateway). The compatibility field name `payment_receipt` is subject to the gateway/live environment. The persisted field is `otc_trade_record.payment_receipt_file_key`. The Pay Inner path is `POST .../pay/order_set_paid` (commonly associated by `client_order_id`); the Inner path corresponding to this OpenAPI endpoint, `POST /order/paid`, still primarily uses `order_id`. If the gateway standardizes on the merchant order ID, follow the gateway documentation.
 
 ### Example
 
@@ -828,7 +828,7 @@ $associate_array['fiat_currency'] = 'fiat_currency_example'; // string | Fiat cu
 $associate_array['crypto_currency'] = 'crypto_currency_example'; // string | Digital currency
 $associate_array['start_time'] = 'start_time_example'; // string | starttime   for example : 2025-09-09
 $associate_array['end_time'] = 'end_time_example'; // string | endtime  for example :2025-09-09
-$associate_array['status'] = 'status_example'; // string | DONE: Completed CANCEL: Canceled PROCESSING: In Progress
+$associate_array['status'] = 'status_example'; // string | DONE: completed CANCEL: canceled PROCESSING: in progress DISBURSED: disbursed
 $associate_array['pn'] = 'pn_example'; // string | Page number
 $associate_array['ps'] = 'ps_example'; // string | Number of items per page
 
@@ -855,7 +855,7 @@ Name | Type | Description  | Notes
  **crypto_currency** | **string**| Digital currency | [optional]
  **start_time** | **string**| starttime   for example : 2025-09-09 | [optional]
  **end_time** | **string**| endtime  for example :2025-09-09 | [optional]
- **status** | **string**| DONE: Completed CANCEL: Canceled PROCESSING: In Progress | [optional]
+ **status** | **string**| DONE: completed CANCEL: canceled PROCESSING: in progress DISBURSED: disbursed | [optional]
  **pn** | **string**| Page number | [optional]
  **ps** | **string**| Number of items per page | [optional]
 

@@ -250,7 +250,7 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param int|null $leverage leverage
+     * @param int|null $leverage Leverage
      *
      * @return $this
      */

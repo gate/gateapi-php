@@ -1428,7 +1428,7 @@ class CrossExApi
     /**
      * Operation createCrossexOrder
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\CrossexOrderRequest $crossex_order_request crossex_order_request (optional)
      *
@@ -1445,7 +1445,7 @@ class CrossExApi
     /**
      * Operation createCrossexOrderWithHttpInfo
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\CrossexOrderRequest $crossex_order_request (optional)
      *
@@ -1499,7 +1499,7 @@ class CrossExApi
     /**
      * Operation createCrossexOrderAsync
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\CrossexOrderRequest $crossex_order_request (optional)
      *
@@ -1519,7 +1519,7 @@ class CrossExApi
     /**
      * Operation createCrossexOrderAsyncWithHttpInfo
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\CrossexOrderRequest $crossex_order_request (optional)
      *
@@ -1587,6 +1587,242 @@ class CrossExApi
         $_tempBody = null;
         if (isset($crossex_order_request)) {
             $_tempBody = $crossex_order_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation cancelBatchCrossexOrders
+     *
+     * Batch cancel orders
+     *
+     * @param  \GateApi\Model\CrossexBatchCancelOrderRequest[] $crossex_batch_cancel_order_request crossex_batch_cancel_order_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CrossexBatchCancelOrderResponse[]
+     */
+    public function cancelBatchCrossexOrders($crossex_batch_cancel_order_request)
+    {
+        list($response) = $this->cancelBatchCrossexOrdersWithHttpInfo($crossex_batch_cancel_order_request);
+        return $response;
+    }
+
+    /**
+     * Operation cancelBatchCrossexOrdersWithHttpInfo
+     *
+     * Batch cancel orders
+     *
+     * @param  \GateApi\Model\CrossexBatchCancelOrderRequest[] $crossex_batch_cancel_order_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CrossexBatchCancelOrderResponse[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelBatchCrossexOrdersWithHttpInfo($crossex_batch_cancel_order_request)
+    {
+        $request = $this->cancelBatchCrossexOrdersRequest($crossex_batch_cancel_order_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CrossexBatchCancelOrderResponse[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation cancelBatchCrossexOrdersAsync
+     *
+     * Batch cancel orders
+     *
+     * @param  \GateApi\Model\CrossexBatchCancelOrderRequest[] $crossex_batch_cancel_order_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelBatchCrossexOrdersAsync($crossex_batch_cancel_order_request)
+    {
+        return $this->cancelBatchCrossexOrdersAsyncWithHttpInfo($crossex_batch_cancel_order_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelBatchCrossexOrdersAsyncWithHttpInfo
+     *
+     * Batch cancel orders
+     *
+     * @param  \GateApi\Model\CrossexBatchCancelOrderRequest[] $crossex_batch_cancel_order_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelBatchCrossexOrdersAsyncWithHttpInfo($crossex_batch_cancel_order_request)
+    {
+        $returnType = '\GateApi\Model\CrossexBatchCancelOrderResponse[]';
+        $request = $this->cancelBatchCrossexOrdersRequest($crossex_batch_cancel_order_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelBatchCrossexOrders'
+     *
+     * @param  \GateApi\Model\CrossexBatchCancelOrderRequest[] $crossex_batch_cancel_order_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function cancelBatchCrossexOrdersRequest($crossex_batch_cancel_order_request)
+    {
+        // verify the required parameter 'crossex_batch_cancel_order_request' is set
+        if ($crossex_batch_cancel_order_request === null || (is_array($crossex_batch_cancel_order_request) && count($crossex_batch_cancel_order_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $crossex_batch_cancel_order_request when calling cancelBatchCrossexOrders'
+            );
+        }
+
+        $resourcePath = '/crossex/batch_cancel_orders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($crossex_batch_cancel_order_request)) {
+            $_tempBody = $crossex_batch_cancel_order_request;
         }
 
         if ($multipart) {
@@ -2856,7 +3092,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2875,7 +3111,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2931,7 +3167,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2953,7 +3189,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3002,7 +3238,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4526,6 +4762,711 @@ class CrossExApi
     }
 
     /**
+     * Operation getCrossexPositionsMarginMode
+     *
+     * Get futures position margin mode
+     *
+     * @param  string $symbol Futures trading pair (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CrossexMarginModeResponse
+     */
+    public function getCrossexPositionsMarginMode($symbol)
+    {
+        list($response) = $this->getCrossexPositionsMarginModeWithHttpInfo($symbol);
+        return $response;
+    }
+
+    /**
+     * Operation getCrossexPositionsMarginModeWithHttpInfo
+     *
+     * Get futures position margin mode
+     *
+     * @param  string $symbol Futures trading pair (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CrossexMarginModeResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCrossexPositionsMarginModeWithHttpInfo($symbol)
+    {
+        $request = $this->getCrossexPositionsMarginModeRequest($symbol);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CrossexMarginModeResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getCrossexPositionsMarginModeAsync
+     *
+     * Get futures position margin mode
+     *
+     * @param  string $symbol Futures trading pair (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCrossexPositionsMarginModeAsync($symbol)
+    {
+        return $this->getCrossexPositionsMarginModeAsyncWithHttpInfo($symbol)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCrossexPositionsMarginModeAsyncWithHttpInfo
+     *
+     * Get futures position margin mode
+     *
+     * @param  string $symbol Futures trading pair (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCrossexPositionsMarginModeAsyncWithHttpInfo($symbol)
+    {
+        $returnType = '\GateApi\Model\CrossexMarginModeResponse';
+        $request = $this->getCrossexPositionsMarginModeRequest($symbol);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCrossexPositionsMarginMode'
+     *
+     * @param  string $symbol Futures trading pair (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getCrossexPositionsMarginModeRequest($symbol)
+    {
+        // verify the required parameter 'symbol' is set
+        if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling getCrossexPositionsMarginMode'
+            );
+        }
+
+        $resourcePath = '/crossex/positions/margin_mode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($symbol !== null) {
+            if('form' === 'form' && is_array($symbol)) {
+                foreach($symbol as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['symbol'] = $symbol;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCrossexPositionsMarginMode
+     *
+     * Update futures position margin mode
+     *
+     * @param  \GateApi\Model\CrossexMarginModeRequest $crossex_margin_mode_request crossex_margin_mode_request (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CrossexMarginModeResponse
+     */
+    public function updateCrossexPositionsMarginMode($crossex_margin_mode_request = null)
+    {
+        list($response) = $this->updateCrossexPositionsMarginModeWithHttpInfo($crossex_margin_mode_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateCrossexPositionsMarginModeWithHttpInfo
+     *
+     * Update futures position margin mode
+     *
+     * @param  \GateApi\Model\CrossexMarginModeRequest $crossex_margin_mode_request (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CrossexMarginModeResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateCrossexPositionsMarginModeWithHttpInfo($crossex_margin_mode_request = null)
+    {
+        $request = $this->updateCrossexPositionsMarginModeRequest($crossex_margin_mode_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CrossexMarginModeResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation updateCrossexPositionsMarginModeAsync
+     *
+     * Update futures position margin mode
+     *
+     * @param  \GateApi\Model\CrossexMarginModeRequest $crossex_margin_mode_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCrossexPositionsMarginModeAsync($crossex_margin_mode_request = null)
+    {
+        return $this->updateCrossexPositionsMarginModeAsyncWithHttpInfo($crossex_margin_mode_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateCrossexPositionsMarginModeAsyncWithHttpInfo
+     *
+     * Update futures position margin mode
+     *
+     * @param  \GateApi\Model\CrossexMarginModeRequest $crossex_margin_mode_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCrossexPositionsMarginModeAsyncWithHttpInfo($crossex_margin_mode_request = null)
+    {
+        $returnType = '\GateApi\Model\CrossexMarginModeResponse';
+        $request = $this->updateCrossexPositionsMarginModeRequest($crossex_margin_mode_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCrossexPositionsMarginMode'
+     *
+     * @param  \GateApi\Model\CrossexMarginModeRequest $crossex_margin_mode_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateCrossexPositionsMarginModeRequest($crossex_margin_mode_request = null)
+    {
+
+        $resourcePath = '/crossex/positions/margin_mode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($crossex_margin_mode_request)) {
+            $_tempBody = $crossex_margin_mode_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCrossexPositionsMargin
+     *
+     * Increase or decrease isolated margin
+     *
+     * @param  \GateApi\Model\CrossexIsolatedMarginRequest $crossex_isolated_margin_request crossex_isolated_margin_request (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\CrossexIsolatedMarginResponse
+     */
+    public function updateCrossexPositionsMargin($crossex_isolated_margin_request = null)
+    {
+        list($response) = $this->updateCrossexPositionsMarginWithHttpInfo($crossex_isolated_margin_request);
+        return $response;
+    }
+
+    /**
+     * Operation updateCrossexPositionsMarginWithHttpInfo
+     *
+     * Increase or decrease isolated margin
+     *
+     * @param  \GateApi\Model\CrossexIsolatedMarginRequest $crossex_isolated_margin_request (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\CrossexIsolatedMarginResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateCrossexPositionsMarginWithHttpInfo($crossex_isolated_margin_request = null)
+    {
+        $request = $this->updateCrossexPositionsMarginRequest($crossex_isolated_margin_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\CrossexIsolatedMarginResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation updateCrossexPositionsMarginAsync
+     *
+     * Increase or decrease isolated margin
+     *
+     * @param  \GateApi\Model\CrossexIsolatedMarginRequest $crossex_isolated_margin_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCrossexPositionsMarginAsync($crossex_isolated_margin_request = null)
+    {
+        return $this->updateCrossexPositionsMarginAsyncWithHttpInfo($crossex_isolated_margin_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateCrossexPositionsMarginAsyncWithHttpInfo
+     *
+     * Increase or decrease isolated margin
+     *
+     * @param  \GateApi\Model\CrossexIsolatedMarginRequest $crossex_isolated_margin_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCrossexPositionsMarginAsyncWithHttpInfo($crossex_isolated_margin_request = null)
+    {
+        $returnType = '\GateApi\Model\CrossexIsolatedMarginResponse';
+        $request = $this->updateCrossexPositionsMarginRequest($crossex_isolated_margin_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCrossexPositionsMargin'
+     *
+     * @param  \GateApi\Model\CrossexIsolatedMarginRequest $crossex_isolated_margin_request (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateCrossexPositionsMarginRequest($crossex_isolated_margin_request = null)
+    {
+
+        $resourcePath = '/crossex/positions/margin';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($crossex_isolated_margin_request)) {
+            $_tempBody = $crossex_isolated_margin_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getCrossexInterestRate
      *
      * Query margin asset interest rates
@@ -5566,7 +6507,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\CrossexAdlRank[]
+     * @return \GateApi\Model\CrossexAdlRank
      */
     public function listCrossexAdlRank($symbol)
     {
@@ -5583,7 +6524,7 @@ class CrossExApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\CrossexAdlRank[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\CrossexAdlRank, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCrossexAdlRankWithHttpInfo($symbol)
     {
@@ -5613,7 +6554,7 @@ class CrossExApi
             );
         }
 
-        $returnType = '\GateApi\Model\CrossexAdlRank[]';
+        $returnType = '\GateApi\Model\CrossexAdlRank';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -5660,7 +6601,7 @@ class CrossExApi
      */
     public function listCrossexAdlRankAsyncWithHttpInfo($symbol)
     {
-        $returnType = '\GateApi\Model\CrossexAdlRank[]';
+        $returnType = '\GateApi\Model\CrossexAdlRank';
         $request = $this->listCrossexAdlRankRequest($symbol);
 
         return $this->client
@@ -6093,7 +7034,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryOrders
      *
-     * queryorderhistory
+     * Query order history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -6117,7 +7058,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryOrdersWithHttpInfo
      *
-     * queryorderhistory
+     * Query order history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -6178,7 +7119,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryOrdersAsync
      *
-     * queryorderhistory
+     * Query order history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -6205,7 +7146,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryOrdersAsyncWithHttpInfo
      *
-     * queryorderhistory
+     * Query order history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7425,7 +8366,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryTrades
      *
-     * queryfilledhistory
+     * Query filled history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7448,7 +8389,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryTradesWithHttpInfo
      *
-     * queryfilledhistory
+     * Query filled history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7508,7 +8449,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryTradesAsync
      *
-     * queryfilledhistory
+     * Query filled history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -7534,7 +8475,7 @@ class CrossExApi
     /**
      * Operation listCrossexHistoryTradesAsyncWithHttpInfo
      *
-     * queryfilledhistory
+     * Query filled history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -8096,7 +9037,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8116,7 +9057,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8173,7 +9114,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8196,7 +9137,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8246,7 +9187,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8286,6 +9227,510 @@ class CrossExApi
             }
             else {
                 $queryParams['exchange_type'] = $exchange_type;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listCrossexMarketTickers
+     *
+     * Get exchange tickers
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2001[]
+     */
+    public function listCrossexMarketTickers($associative_array)
+    {
+        list($response) = $this->listCrossexMarketTickersWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listCrossexMarketTickersWithHttpInfo
+     *
+     * Get exchange tickers
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2001[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listCrossexMarketTickersWithHttpInfo($associative_array)
+    {
+        $request = $this->listCrossexMarketTickersRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2001[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listCrossexMarketTickersAsync
+     *
+     * Get exchange tickers
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCrossexMarketTickersAsync($associative_array)
+    {
+        return $this->listCrossexMarketTickersAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listCrossexMarketTickersAsyncWithHttpInfo
+     *
+     * Get exchange tickers
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCrossexMarketTickersAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2001[]';
+        $request = $this->listCrossexMarketTickersRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listCrossexMarketTickers'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listCrossexMarketTickersRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $symbols = array_key_exists('symbols', $associative_array) ? $associative_array['symbols'] : null;
+
+
+        $resourcePath = '/crossex/market/tickers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($symbols !== null) {
+            if('form' === 'form' && is_array($symbols)) {
+                foreach($symbols as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['symbols'] = $symbols;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listCrossexMarketFundingInfo
+     *
+     * Get exchange futures funding rate information
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\InlineResponse2002[]
+     */
+    public function listCrossexMarketFundingInfo($associative_array)
+    {
+        list($response) = $this->listCrossexMarketFundingInfoWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listCrossexMarketFundingInfoWithHttpInfo
+     *
+     * Get exchange futures funding rate information
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\InlineResponse2002[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listCrossexMarketFundingInfoWithHttpInfo($associative_array)
+    {
+        $request = $this->listCrossexMarketFundingInfoRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\InlineResponse2002[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listCrossexMarketFundingInfoAsync
+     *
+     * Get exchange futures funding rate information
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCrossexMarketFundingInfoAsync($associative_array)
+    {
+        return $this->listCrossexMarketFundingInfoAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listCrossexMarketFundingInfoAsyncWithHttpInfo
+     *
+     * Get exchange futures funding rate information
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listCrossexMarketFundingInfoAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\InlineResponse2002[]';
+        $request = $this->listCrossexMarketFundingInfoRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listCrossexMarketFundingInfo'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $symbols Trading Pair List, multiple separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listCrossexMarketFundingInfoRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $symbols = array_key_exists('symbols', $associative_array) ? $associative_array['symbols'] : null;
+
+
+        $resourcePath = '/crossex/market/funding_info';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($symbols !== null) {
+            if('form' === 'form' && is_array($symbols)) {
+                foreach($symbols as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['symbols'] = $symbols;
             }
         }
 

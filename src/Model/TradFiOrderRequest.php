@@ -369,7 +369,7 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param int $side Order side (1=sell, 2=buy)
+     * @param int $side Side (1=sell, 2=buy)
      *
      * @return $this
      */
@@ -426,7 +426,7 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets volume
      *
-     * @param string $volume Order volume
+     * @param string $volume Order quantity
      *
      * @return $this
      */

@@ -620,7 +620,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     /**
      * Sets amount_precision
      *
-     * @param int|null $amount_precision Amount scale
+     * @param int|null $amount_precision Quantity precision
      *
      * @return $this
      */
@@ -644,7 +644,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     /**
      * Sets precision
      *
-     * @param int|null $precision Price scale
+     * @param int|null $precision Price precision
      *
      * @return $this
      */
@@ -917,7 +917,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     /**
      * Sets market_order_max_stock
      *
-     * @param string|null $market_order_max_stock Maximum Market Order Quantity
+     * @param string|null $market_order_max_stock Maximum market order quantity. `null` or `0` means no limit
      *
      * @return $this
      */
@@ -941,7 +941,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     /**
      * Sets market_order_max_money
      *
-     * @param string|null $market_order_max_money Maximum Market Order Amount
+     * @param string|null $market_order_max_money Maximum market order amount. `null` or `0` means no limit
      *
      * @return $this
      */

@@ -59,8 +59,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'bank_name' => 'string',
         'bank_country' => 'string',
         'bank_address' => 'string',
-        'bank_code' => 'string',
-        'branch_code' => 'string',
         'iban' => 'string',
         'swift' => 'string',
         'remittance_line_number' => 'string',
@@ -69,11 +67,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'submit_time' => 'string',
         'update_time' => 'string',
         'status' => 'string',
-        'documentation_file_type' => 'string',
-        'memo' => 'string',
-        'is_default' => 'int',
-        'bank_id' => 'string',
-        'documentation_file_key_url' => 'string'
+        'is_default' => 'int'
     ];
 
     /**
@@ -87,8 +81,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'bank_name' => null,
         'bank_country' => null,
         'bank_address' => null,
-        'bank_code' => null,
-        'branch_code' => null,
         'iban' => null,
         'swift' => null,
         'remittance_line_number' => null,
@@ -97,11 +89,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'submit_time' => null,
         'update_time' => null,
         'status' => null,
-        'documentation_file_type' => null,
-        'memo' => null,
-        'is_default' => null,
-        'bank_id' => null,
-        'documentation_file_key_url' => null
+        'is_default' => null
     ];
 
     /**
@@ -136,8 +124,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'bank_name' => 'bank_name',
         'bank_country' => 'bank_country',
         'bank_address' => 'bank_address',
-        'bank_code' => 'bank_code',
-        'branch_code' => 'branch_code',
         'iban' => 'iban',
         'swift' => 'swift',
         'remittance_line_number' => 'remittance_line_number',
@@ -146,11 +132,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'submit_time' => 'submit_time',
         'update_time' => 'update_time',
         'status' => 'status',
-        'documentation_file_type' => 'documentation_file_type',
-        'memo' => 'memo',
-        'is_default' => 'is_default',
-        'bank_id' => 'bank_id',
-        'documentation_file_key_url' => 'documentation_file_key_url'
+        'is_default' => 'is_default'
     ];
 
     /**
@@ -164,8 +146,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'bank_name' => 'setBankName',
         'bank_country' => 'setBankCountry',
         'bank_address' => 'setBankAddress',
-        'bank_code' => 'setBankCode',
-        'branch_code' => 'setBranchCode',
         'iban' => 'setIban',
         'swift' => 'setSwift',
         'remittance_line_number' => 'setRemittanceLineNumber',
@@ -174,11 +154,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'submit_time' => 'setSubmitTime',
         'update_time' => 'setUpdateTime',
         'status' => 'setStatus',
-        'documentation_file_type' => 'setDocumentationFileType',
-        'memo' => 'setMemo',
-        'is_default' => 'setIsDefault',
-        'bank_id' => 'setBankId',
-        'documentation_file_key_url' => 'setDocumentationFileKeyUrl'
+        'is_default' => 'setIsDefault'
     ];
 
     /**
@@ -192,8 +168,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'bank_name' => 'getBankName',
         'bank_country' => 'getBankCountry',
         'bank_address' => 'getBankAddress',
-        'bank_code' => 'getBankCode',
-        'branch_code' => 'getBranchCode',
         'iban' => 'getIban',
         'swift' => 'getSwift',
         'remittance_line_number' => 'getRemittanceLineNumber',
@@ -202,11 +176,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         'submit_time' => 'getSubmitTime',
         'update_time' => 'getUpdateTime',
         'status' => 'getStatus',
-        'documentation_file_type' => 'getDocumentationFileType',
-        'memo' => 'getMemo',
-        'is_default' => 'getIsDefault',
-        'bank_id' => 'getBankId',
-        'documentation_file_key_url' => 'getDocumentationFileKeyUrl'
+        'is_default' => 'getIsDefault'
     ];
 
     /**
@@ -274,8 +244,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         $this->container['bank_name'] = isset($data['bank_name']) ? $data['bank_name'] : null;
         $this->container['bank_country'] = isset($data['bank_country']) ? $data['bank_country'] : null;
         $this->container['bank_address'] = isset($data['bank_address']) ? $data['bank_address'] : null;
-        $this->container['bank_code'] = isset($data['bank_code']) ? $data['bank_code'] : null;
-        $this->container['branch_code'] = isset($data['branch_code']) ? $data['branch_code'] : null;
         $this->container['iban'] = isset($data['iban']) ? $data['iban'] : null;
         $this->container['swift'] = isset($data['swift']) ? $data['swift'] : null;
         $this->container['remittance_line_number'] = isset($data['remittance_line_number']) ? $data['remittance_line_number'] : null;
@@ -284,11 +252,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
         $this->container['submit_time'] = isset($data['submit_time']) ? $data['submit_time'] : null;
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['documentation_file_type'] = isset($data['documentation_file_type']) ? $data['documentation_file_type'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['is_default'] = isset($data['is_default']) ? $data['is_default'] : null;
-        $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
-        $this->container['documentation_file_key_url'] = isset($data['documentation_file_key_url']) ? $data['documentation_file_key_url'] : null;
     }
 
     /**
@@ -337,7 +301,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string $id Bank ID (required for order placement)
+     * @param string $id Bank card ID (used when placing an order; the synonymous `bank_id` field has been consolidated into `id`)
      *
      * @return $this
      */
@@ -440,54 +404,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
     public function setBankAddress($bank_address)
     {
         $this->container['bank_address'] = $bank_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_code
-     *
-     * @return string|null
-     */
-    public function getBankCode()
-    {
-        return $this->container['bank_code'];
-    }
-
-    /**
-     * Sets bank_code
-     *
-     * @param string|null $bank_code Bank code
-     *
-     * @return $this
-     */
-    public function setBankCode($bank_code)
-    {
-        $this->container['bank_code'] = $bank_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets branch_code
-     *
-     * @return string|null
-     */
-    public function getBranchCode()
-    {
-        return $this->container['branch_code'];
-    }
-
-    /**
-     * Sets branch_code
-     *
-     * @param string|null $branch_code Branch code
-     *
-     * @return $this
-     */
-    public function setBranchCode($branch_code)
-    {
-        $this->container['branch_code'] = $branch_code;
 
         return $this;
     }
@@ -685,54 +601,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets documentation_file_type
-     *
-     * @return string|null
-     */
-    public function getDocumentationFileType()
-    {
-        return $this->container['documentation_file_type'];
-    }
-
-    /**
-     * Sets documentation_file_type
-     *
-     * @param string|null $documentation_file_type Document file type
-     *
-     * @return $this
-     */
-    public function setDocumentationFileType($documentation_file_type)
-    {
-        $this->container['documentation_file_type'] = $documentation_file_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Remark
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
      * Gets is_default
      *
      * @return int|null
@@ -752,54 +620,6 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
     public function setIsDefault($is_default)
     {
         $this->container['is_default'] = $is_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets bank_id
-     *
-     * @return string|null
-     */
-    public function getBankId()
-    {
-        return $this->container['bank_id'];
-    }
-
-    /**
-     * Sets bank_id
-     *
-     * @param string|null $bank_id Bank ID
-     *
-     * @return $this
-     */
-    public function setBankId($bank_id)
-    {
-        $this->container['bank_id'] = $bank_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets documentation_file_key_url
-     *
-     * @return string|null
-     */
-    public function getDocumentationFileKeyUrl()
-    {
-        return $this->container['documentation_file_key_url'];
-    }
-
-    /**
-     * Sets documentation_file_key_url
-     *
-     * @param string|null $documentation_file_key_url Document file URL
-     *
-     * @return $this
-     */
-    public function setDocumentationFileKeyUrl($documentation_file_key_url)
-    {
-        $this->container['documentation_file_key_url'] = $documentation_file_key_url;
 
         return $this;
     }

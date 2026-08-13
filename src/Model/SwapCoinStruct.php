@@ -514,7 +514,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
     /**
      * Sets update_stamp
      *
-     * @param int|null $update_stamp UpdateTimestamp
+     * @param int|null $update_stamp Update timestamp
      *
      * @return $this
      */

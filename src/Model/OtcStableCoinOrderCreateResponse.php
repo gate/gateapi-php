@@ -55,7 +55,8 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'code' => 'int',
-        'message' => 'string'
+        'message' => 'string',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -65,7 +66,8 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'code' => null,
-        'message' => null
+        'message' => null,
+        'timestamp' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'code' => 'code',
-        'message' => 'message'
+        'message' => 'message',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -106,7 +109,8 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'code' => 'setCode',
-        'message' => 'setMessage'
+        'message' => 'setMessage',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -116,7 +120,8 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'code' => 'getCode',
-        'message' => 'getMessage'
+        'message' => 'getMessage',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -181,6 +186,7 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -197,6 +203,9 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
         }
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -226,7 +235,7 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param int $code code
+     * @param int $code Business code; 0 indicates success
      *
      * @return $this
      */
@@ -250,13 +259,37 @@ class OtcStableCoinOrderCreateResponse implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string $message Message
      *
      * @return $this
      */
     public function setMessage($message)
     {
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return int
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param int $timestamp Server Unix timestamp in seconds
+     *
+     * @return $this
+     */
+    public function setTimestamp($timestamp)
+    {
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

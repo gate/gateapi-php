@@ -59,12 +59,15 @@ class CrossexPosition implements ModelInterface, ArrayAccess
         'symbol' => 'string',
         'position_side' => 'string',
         'initial_margin' => 'string',
+        'isolated_margin' => 'string',
+        'margin_mode' => 'string',
         'maintenance_margin' => 'string',
         'position_qty' => 'string',
         'position_value' => 'string',
         'upnl' => 'string',
         'upnl_rate' => 'string',
         'entry_price' => 'string',
+        'liq_price' => 'string',
         'mark_price' => 'string',
         'leverage' => 'string',
         'max_leverage' => 'string',
@@ -88,12 +91,15 @@ class CrossexPosition implements ModelInterface, ArrayAccess
         'symbol' => null,
         'position_side' => null,
         'initial_margin' => null,
+        'isolated_margin' => null,
+        'margin_mode' => null,
         'maintenance_margin' => null,
         'position_qty' => null,
         'position_value' => null,
         'upnl' => null,
         'upnl_rate' => null,
         'entry_price' => null,
+        'liq_price' => null,
         'mark_price' => null,
         'leverage' => null,
         'max_leverage' => null,
@@ -138,12 +144,15 @@ class CrossexPosition implements ModelInterface, ArrayAccess
         'symbol' => 'symbol',
         'position_side' => 'position_side',
         'initial_margin' => 'initial_margin',
+        'isolated_margin' => 'isolated_margin',
+        'margin_mode' => 'margin_mode',
         'maintenance_margin' => 'maintenance_margin',
         'position_qty' => 'position_qty',
         'position_value' => 'position_value',
         'upnl' => 'upnl',
         'upnl_rate' => 'upnl_rate',
         'entry_price' => 'entry_price',
+        'liq_price' => 'liq_price',
         'mark_price' => 'mark_price',
         'leverage' => 'leverage',
         'max_leverage' => 'max_leverage',
@@ -167,12 +176,15 @@ class CrossexPosition implements ModelInterface, ArrayAccess
         'symbol' => 'setSymbol',
         'position_side' => 'setPositionSide',
         'initial_margin' => 'setInitialMargin',
+        'isolated_margin' => 'setIsolatedMargin',
+        'margin_mode' => 'setMarginMode',
         'maintenance_margin' => 'setMaintenanceMargin',
         'position_qty' => 'setPositionQty',
         'position_value' => 'setPositionValue',
         'upnl' => 'setUpnl',
         'upnl_rate' => 'setUpnlRate',
         'entry_price' => 'setEntryPrice',
+        'liq_price' => 'setLiqPrice',
         'mark_price' => 'setMarkPrice',
         'leverage' => 'setLeverage',
         'max_leverage' => 'setMaxLeverage',
@@ -196,12 +208,15 @@ class CrossexPosition implements ModelInterface, ArrayAccess
         'symbol' => 'getSymbol',
         'position_side' => 'getPositionSide',
         'initial_margin' => 'getInitialMargin',
+        'isolated_margin' => 'getIsolatedMargin',
+        'margin_mode' => 'getMarginMode',
         'maintenance_margin' => 'getMaintenanceMargin',
         'position_qty' => 'getPositionQty',
         'position_value' => 'getPositionValue',
         'upnl' => 'getUpnl',
         'upnl_rate' => 'getUpnlRate',
         'entry_price' => 'getEntryPrice',
+        'liq_price' => 'getLiqPrice',
         'mark_price' => 'getMarkPrice',
         'leverage' => 'getLeverage',
         'max_leverage' => 'getMaxLeverage',
@@ -279,12 +294,15 @@ class CrossexPosition implements ModelInterface, ArrayAccess
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
         $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
+        $this->container['isolated_margin'] = isset($data['isolated_margin']) ? $data['isolated_margin'] : null;
+        $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
         $this->container['position_qty'] = isset($data['position_qty']) ? $data['position_qty'] : null;
         $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
         $this->container['upnl'] = isset($data['upnl']) ? $data['upnl'] : null;
         $this->container['upnl_rate'] = isset($data['upnl_rate']) ? $data['upnl_rate'] : null;
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        $this->container['liq_price'] = isset($data['liq_price']) ? $data['liq_price'] : null;
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
         $this->container['max_leverage'] = isset($data['max_leverage']) ? $data['max_leverage'] : null;
@@ -442,6 +460,54 @@ class CrossexPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets isolated_margin
+     *
+     * @return string|null
+     */
+    public function getIsolatedMargin()
+    {
+        return $this->container['isolated_margin'];
+    }
+
+    /**
+     * Sets isolated_margin
+     *
+     * @param string|null $isolated_margin Isolated margin. It is 0 in cross margin mode and applies only to isolated margin positions
+     *
+     * @return $this
+     */
+    public function setIsolatedMargin($isolated_margin)
+    {
+        $this->container['isolated_margin'] = $isolated_margin;
+
+        return $this;
+    }
+
+    /**
+     * Gets margin_mode
+     *
+     * @return string|null
+     */
+    public function getMarginMode()
+    {
+        return $this->container['margin_mode'];
+    }
+
+    /**
+     * Sets margin_mode
+     *
+     * @param string|null $margin_mode Margin mode (CROSS/ISOLATED)
+     *
+     * @return $this
+     */
+    public function setMarginMode($margin_mode)
+    {
+        $this->container['margin_mode'] = $margin_mode;
+
+        return $this;
+    }
+
+    /**
      * Gets maintenance_margin
      *
      * @return string|null
@@ -586,6 +652,30 @@ class CrossexPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets liq_price
+     *
+     * @return string|null
+     */
+    public function getLiqPrice()
+    {
+        return $this->container['liq_price'];
+    }
+
+    /**
+     * Sets liq_price
+     *
+     * @param string|null $liq_price Liquidation price. It is 0 in cross margin mode and applies only to isolated margin positions; 0 in isolated margin mode means the position will not be liquidated
+     *
+     * @return $this
+     */
+    public function setLiqPrice($liq_price)
+    {
+        $this->container['liq_price'] = $liq_price;
+
+        return $this;
+    }
+
+    /**
      * Gets mark_price
      *
      * @return string|null
@@ -718,7 +808,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
     /**
      * Sets funding_fee
      *
-     * @param string|null $funding_fee Position Funding Fee
+     * @param string|null $funding_fee Accumulated position funding fee. A positive value indicates a gain, while a negative value indicates a loss.
      *
      * @return $this
      */

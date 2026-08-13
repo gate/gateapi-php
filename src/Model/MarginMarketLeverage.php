@@ -248,7 +248,7 @@ class MarginMarketLeverage implements ModelInterface, ArrayAccess
     /**
      * Sets leverage
      *
-     * @param string $leverage Position leverage
+     * @param string $leverage Leverage multiplier
      *
      * @return $this
      */

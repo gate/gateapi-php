@@ -346,7 +346,7 @@ class AlphaCurrency implements ModelInterface, ArrayAccess
     /**
      * Sets amount_precision
      *
-     * @param int|null $amount_precision Amount scale
+     * @param int|null $amount_precision Quantity precision
      *
      * @return $this
      */
@@ -370,7 +370,7 @@ class AlphaCurrency implements ModelInterface, ArrayAccess
     /**
      * Sets precision
      *
-     * @param int|null $precision Price scale
+     * @param int|null $precision Price precision
      *
      * @return $this
      */

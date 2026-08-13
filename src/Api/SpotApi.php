@@ -2812,258 +2812,6 @@ class SpotApi
     }
 
     /**
-     * Operation listSpotAccounts
-     *
-     * List spot trading accounts
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $currency Query by specified currency name (optional)
-     *
-     * @throws \GateApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \GateApi\Model\SpotAccount[]
-     */
-    public function listSpotAccounts($associative_array)
-    {
-        list($response) = $this->listSpotAccountsWithHttpInfo($associative_array);
-        return $response;
-    }
-
-    /**
-     * Operation listSpotAccountsWithHttpInfo
-     *
-     * List spot trading accounts
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $currency Query by specified currency name (optional)
-     *
-     * @throws \GateApi\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\SpotAccount[], HTTP status code, HTTP response headers (array of strings)
-     */
-    public function listSpotAccountsWithHttpInfo($associative_array)
-    {
-        $request = $this->listSpotAccountsRequest($associative_array);
-
-        $options = $this->createHttpClientOption();
-        try {
-            $response = $this->client->send($request, $options);
-        } catch (RequestException $e) {
-            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
-            if ($responseBody != null) {
-                $gateError = json_decode($responseBody, true);
-                if ($gateError !== null && isset($gateError['label'])) {
-                    throw new GateApiException(
-                        $gateError,
-                        $e->getCode(),
-                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                        $responseBody
-                    );
-                }
-            }
-            throw new ApiException(
-                "[{$e->getCode()}] {$e->getMessage()}",
-                $e->getCode(),
-                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                $responseBody
-            );
-        }
-
-        $returnType = '\GateApi\Model\SpotAccount[]';
-        $responseBody = $response->getBody();
-        if ($returnType === '\SplFileObject') {
-            $content = $responseBody; //stream goes to serializer
-        } else {
-            $content = (string) $responseBody;
-        }
-
-        return [
-            ObjectSerializer::deserialize($content, $returnType, []),
-            $response->getStatusCode(),
-            $response->getHeaders()
-        ];
-    }
-
-    /**
-     * Operation listSpotAccountsAsync
-     *
-     * List spot trading accounts
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $currency Query by specified currency name (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listSpotAccountsAsync($associative_array)
-    {
-        return $this->listSpotAccountsAsyncWithHttpInfo($associative_array)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation listSpotAccountsAsyncWithHttpInfo
-     *
-     * List spot trading accounts
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $currency Query by specified currency name (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listSpotAccountsAsyncWithHttpInfo($associative_array)
-    {
-        $returnType = '\GateApi\Model\SpotAccount[]';
-        $request = $this->listSpotAccountsRequest($associative_array);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = (string) $responseBody;
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'listSpotAccounts'
-     *
-     * Note: the input parameter is an associative array with the keys listed as the parameter name below
-     *
-     * @param  string $currency Query by specified currency name (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function listSpotAccountsRequest($associative_array)
-    {
-        // unbox the parameters from the associative array
-        $currency = array_key_exists('currency', $associative_array) ? $associative_array['currency'] : null;
-
-
-        $resourcePath = '/spot/accounts';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($currency !== null) {
-            if('form' === 'form' && is_array($currency)) {
-                foreach($currency as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['currency'] = $currency;
-            }
-        }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
-            } else {
-                $httpBody = $_tempBody;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires Gate APIv4 authentication
-        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
-        $headers = array_merge($headers, $signHeaders);
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-        // Set default X-Gate-Size-Decimal header for futures API
-        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation listSpotAccountBook
      *
      * Query spot account transaction history
@@ -4619,7 +4367,7 @@ class SpotApi
     /**
      * Operation createOrder
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\Order $order order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -4637,7 +4385,7 @@ class SpotApi
     /**
      * Operation createOrderWithHttpInfo
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\Order $order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -4692,7 +4440,7 @@ class SpotApi
     /**
      * Operation createOrderAsync
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\Order $order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -4713,7 +4461,7 @@ class SpotApi
     /**
      * Operation createOrderAsyncWithHttpInfo
      *
-     * Create an order
+     * Create order
      *
      * @param  \GateApi\Model\Order $order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -9056,6 +8804,1309 @@ class SpotApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listSpotPovOrders
+     *
+     * List Spot POV orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Order status. Defaults to open  - open: Active orders - finished: Finished orders (required)
+     * @param  string $currency_pair Currency pair (optional)
+     * @param  string $side Specify all bids or all asks, both included if not specified (optional)
+     * @param  int $page Page number, up to 100 (optional, default to 1)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\SpotPovOrder[]
+     */
+    public function listSpotPovOrders($associative_array)
+    {
+        list($response) = $this->listSpotPovOrdersWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listSpotPovOrdersWithHttpInfo
+     *
+     * List Spot POV orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Order status. Defaults to open  - open: Active orders - finished: Finished orders (required)
+     * @param  string $currency_pair Currency pair (optional)
+     * @param  string $side Specify all bids or all asks, both included if not specified (optional)
+     * @param  int $page Page number, up to 100 (optional, default to 1)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\SpotPovOrder[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listSpotPovOrdersWithHttpInfo($associative_array)
+    {
+        $request = $this->listSpotPovOrdersRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\SpotPovOrder[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listSpotPovOrdersAsync
+     *
+     * List Spot POV orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Order status. Defaults to open  - open: Active orders - finished: Finished orders (required)
+     * @param  string $currency_pair Currency pair (optional)
+     * @param  string $side Specify all bids or all asks, both included if not specified (optional)
+     * @param  int $page Page number, up to 100 (optional, default to 1)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSpotPovOrdersAsync($associative_array)
+    {
+        return $this->listSpotPovOrdersAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listSpotPovOrdersAsyncWithHttpInfo
+     *
+     * List Spot POV orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Order status. Defaults to open  - open: Active orders - finished: Finished orders (required)
+     * @param  string $currency_pair Currency pair (optional)
+     * @param  string $side Specify all bids or all asks, both included if not specified (optional)
+     * @param  int $page Page number, up to 100 (optional, default to 1)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSpotPovOrdersAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\SpotPovOrder[]';
+        $request = $this->listSpotPovOrdersRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listSpotPovOrders'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $status Order status. Defaults to open  - open: Active orders - finished: Finished orders (required)
+     * @param  string $currency_pair Currency pair (optional)
+     * @param  string $side Specify all bids or all asks, both included if not specified (optional)
+     * @param  int $page Page number, up to 100 (optional, default to 1)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listSpotPovOrdersRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : 'open';
+        $currency_pair = array_key_exists('currency_pair', $associative_array) ? $associative_array['currency_pair'] : null;
+        $side = array_key_exists('side', $associative_array) ? $associative_array['side'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 100;
+
+        // verify the required parameter 'status' is set
+        if ($status === null || (is_array($status) && count($status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $status when calling listSpotPovOrders'
+            );
+        }
+        if ($page !== null && $page > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling SpotApi.listSpotPovOrders, must be smaller than or equal to 100.');
+        }
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling SpotApi.listSpotPovOrders, must be bigger than or equal to 1.');
+        }
+
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling SpotApi.listSpotPovOrders, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling SpotApi.listSpotPovOrders, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/spot/pov_orders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($currency_pair !== null) {
+            if('form' === 'form' && is_array($currency_pair)) {
+                foreach($currency_pair as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['currency_pair'] = $currency_pair;
+            }
+        }
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($side !== null) {
+            if('form' === 'form' && is_array($side)) {
+                foreach($side as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['side'] = $side;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createSpotPovOrder
+     *
+     * Create a Spot POV order
+     *
+     * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator spot_pov_order_creator (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\SpotPovOrder
+     */
+    public function createSpotPovOrder($spot_pov_order_creator)
+    {
+        list($response) = $this->createSpotPovOrderWithHttpInfo($spot_pov_order_creator);
+        return $response;
+    }
+
+    /**
+     * Operation createSpotPovOrderWithHttpInfo
+     *
+     * Create a Spot POV order
+     *
+     * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\SpotPovOrder, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createSpotPovOrderWithHttpInfo($spot_pov_order_creator)
+    {
+        $request = $this->createSpotPovOrderRequest($spot_pov_order_creator);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\SpotPovOrder';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createSpotPovOrderAsync
+     *
+     * Create a Spot POV order
+     *
+     * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSpotPovOrderAsync($spot_pov_order_creator)
+    {
+        return $this->createSpotPovOrderAsyncWithHttpInfo($spot_pov_order_creator)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createSpotPovOrderAsyncWithHttpInfo
+     *
+     * Create a Spot POV order
+     *
+     * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSpotPovOrderAsyncWithHttpInfo($spot_pov_order_creator)
+    {
+        $returnType = '\GateApi\Model\SpotPovOrder';
+        $request = $this->createSpotPovOrderRequest($spot_pov_order_creator);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createSpotPovOrder'
+     *
+     * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createSpotPovOrderRequest($spot_pov_order_creator)
+    {
+        // verify the required parameter 'spot_pov_order_creator' is set
+        if ($spot_pov_order_creator === null || (is_array($spot_pov_order_creator) && count($spot_pov_order_creator) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $spot_pov_order_creator when calling createSpotPovOrder'
+            );
+        }
+
+        $resourcePath = '/spot/pov_orders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($spot_pov_order_creator)) {
+            $_tempBody = $spot_pov_order_creator;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation cancelSpotPovOrders
+     *
+     * Cancel Spot POV orders
+     *
+     * @param  string $currency_pair Currency pair (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\SpotPovOrder[]
+     */
+    public function cancelSpotPovOrders($currency_pair = null)
+    {
+        list($response) = $this->cancelSpotPovOrdersWithHttpInfo($currency_pair);
+        return $response;
+    }
+
+    /**
+     * Operation cancelSpotPovOrdersWithHttpInfo
+     *
+     * Cancel Spot POV orders
+     *
+     * @param  string $currency_pair Currency pair (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\SpotPovOrder[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelSpotPovOrdersWithHttpInfo($currency_pair = null)
+    {
+        $request = $this->cancelSpotPovOrdersRequest($currency_pair);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\SpotPovOrder[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation cancelSpotPovOrdersAsync
+     *
+     * Cancel Spot POV orders
+     *
+     * @param  string $currency_pair Currency pair (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelSpotPovOrdersAsync($currency_pair = null)
+    {
+        return $this->cancelSpotPovOrdersAsyncWithHttpInfo($currency_pair)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelSpotPovOrdersAsyncWithHttpInfo
+     *
+     * Cancel Spot POV orders
+     *
+     * @param  string $currency_pair Currency pair (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelSpotPovOrdersAsyncWithHttpInfo($currency_pair = null)
+    {
+        $returnType = '\GateApi\Model\SpotPovOrder[]';
+        $request = $this->cancelSpotPovOrdersRequest($currency_pair);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelSpotPovOrders'
+     *
+     * @param  string $currency_pair Currency pair (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function cancelSpotPovOrdersRequest($currency_pair = null)
+    {
+
+        $resourcePath = '/spot/pov_orders/cancel';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($currency_pair !== null) {
+            if('form' === 'form' && is_array($currency_pair)) {
+                foreach($currency_pair as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['currency_pair'] = $currency_pair;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getSpotPovOrder
+     *
+     * Query Spot POV order details
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\SpotPovOrder
+     */
+    public function getSpotPovOrder($order_id)
+    {
+        list($response) = $this->getSpotPovOrderWithHttpInfo($order_id);
+        return $response;
+    }
+
+    /**
+     * Operation getSpotPovOrderWithHttpInfo
+     *
+     * Query Spot POV order details
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\SpotPovOrder, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getSpotPovOrderWithHttpInfo($order_id)
+    {
+        $request = $this->getSpotPovOrderRequest($order_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\SpotPovOrder';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getSpotPovOrderAsync
+     *
+     * Query Spot POV order details
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSpotPovOrderAsync($order_id)
+    {
+        return $this->getSpotPovOrderAsyncWithHttpInfo($order_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getSpotPovOrderAsyncWithHttpInfo
+     *
+     * Query Spot POV order details
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSpotPovOrderAsyncWithHttpInfo($order_id)
+    {
+        $returnType = '\GateApi\Model\SpotPovOrder';
+        $request = $this->getSpotPovOrderRequest($order_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getSpotPovOrder'
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getSpotPovOrderRequest($order_id)
+    {
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling getSpotPovOrder'
+            );
+        }
+
+        $resourcePath = '/spot/pov_orders/{order_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($order_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'order_id' . '}',
+                ObjectSerializer::toPathValue($order_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation cancelSpotPovOrder
+     *
+     * Cancel a Spot POV order
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\SpotPovOrder
+     */
+    public function cancelSpotPovOrder($order_id)
+    {
+        list($response) = $this->cancelSpotPovOrderWithHttpInfo($order_id);
+        return $response;
+    }
+
+    /**
+     * Operation cancelSpotPovOrderWithHttpInfo
+     *
+     * Cancel a Spot POV order
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\SpotPovOrder, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cancelSpotPovOrderWithHttpInfo($order_id)
+    {
+        $request = $this->cancelSpotPovOrderRequest($order_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\SpotPovOrder';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation cancelSpotPovOrderAsync
+     *
+     * Cancel a Spot POV order
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelSpotPovOrderAsync($order_id)
+    {
+        return $this->cancelSpotPovOrderAsyncWithHttpInfo($order_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cancelSpotPovOrderAsyncWithHttpInfo
+     *
+     * Cancel a Spot POV order
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cancelSpotPovOrderAsyncWithHttpInfo($order_id)
+    {
+        $returnType = '\GateApi\Model\SpotPovOrder';
+        $request = $this->cancelSpotPovOrderRequest($order_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cancelSpotPovOrder'
+     *
+     * @param  string $order_id The order ID returned after successful creation, or the custom ID specified by the user in the &#x60;text&#x60; field. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function cancelSpotPovOrderRequest($order_id)
+    {
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling cancelSpotPovOrder'
+            );
+        }
+
+        $resourcePath = '/spot/pov_orders/{order_id}/cancel';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($order_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'order_id' . '}',
+                ObjectSerializer::toPathValue($order_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

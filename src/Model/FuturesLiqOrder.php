@@ -394,7 +394,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     /**
      * Sets left
      *
-     * @param string|null $left System liquidation order maker size
+     * @param string|null $left Reserved field with no current business significance.
      *
      * @return $this
      */

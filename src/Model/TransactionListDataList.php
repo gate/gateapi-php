@@ -352,7 +352,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
     /**
      * Sets change
      *
-     * @param string|null $change Change Quantity
+     * @param string|null $change Change amount
      *
      * @return $this
      */

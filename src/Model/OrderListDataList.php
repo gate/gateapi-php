@@ -404,7 +404,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
     /**
      * Sets symbol_desc
      *
-     * @param string|null $symbol_desc Trading symbol description
+     * @param string|null $symbol_desc Symbol description
      *
      * @return $this
      */
@@ -542,7 +542,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
     /**
      * Sets side
      *
-     * @param int|null $side Order side (1=sell, 2=buy)
+     * @param int|null $side Side (1=sell, 2=buy)
      *
      * @return $this
      */
@@ -575,7 +575,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
     /**
      * Sets volume
      *
-     * @param string|null $volume Order volume
+     * @param string|null $volume Order quantity
      *
      * @return $this
      */
