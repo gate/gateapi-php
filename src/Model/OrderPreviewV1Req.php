@@ -227,7 +227,7 @@ class OrderPreviewV1Req implements ModelInterface, ArrayAccess
     /**
      * Sets from
      *
-     * @param \GateApi\Model\PreviewFromParam[] $from Sell ​​side; each item is the currency + the swap amount `amount` (string decimal).
+     * @param \GateApi\Model\PreviewFromParam[] $from Sell side; each item is the currency + the swap amount `amount` (string decimal).
      *
      * @return $this
      */

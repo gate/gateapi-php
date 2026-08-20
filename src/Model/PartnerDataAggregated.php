@@ -457,7 +457,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
     /**
      * Sets trading_user_count
      *
-     * @param string $trading_user_count Transaction participant count​ (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
+     * @param string $trading_user_count Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
      *
      * @return $this
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * UniCurrencyPair
+ * FuturesADLRiskStates
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * UniCurrencyPair Class Doc Comment
+ * FuturesADLRiskStates Class Doc Comment
  *
  * @category Class
- * @description Currency pair of the loan
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class UniCurrencyPair implements ModelInterface, ArrayAccess
+class FuturesADLRiskStates implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UniCurrencyPair';
+    protected static $openAPIModelName = 'FuturesADLRiskStates';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,12 +54,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency_pair' => 'string',
-        'base_min_borrow_amount' => 'string',
-        'quote_min_borrow_amount' => 'string',
-        'leverage' => 'string',
-        'status' => 'string',
-        'delisted_time' => 'float'
+        'settle' => 'string',
+        'states' => 'map[string,\GateApi\Model\FuturesADLRiskState]'
     ];
 
     /**
@@ -69,12 +64,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'currency_pair' => null,
-        'base_min_borrow_amount' => null,
-        'quote_min_borrow_amount' => null,
-        'leverage' => null,
-        'status' => null,
-        'delisted_time' => 'int64'
+        'settle' => null,
+        'states' => null
     ];
 
     /**
@@ -104,12 +95,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency_pair' => 'currency_pair',
-        'base_min_borrow_amount' => 'base_min_borrow_amount',
-        'quote_min_borrow_amount' => 'quote_min_borrow_amount',
-        'leverage' => 'leverage',
-        'status' => 'status',
-        'delisted_time' => 'delisted_time'
+        'settle' => 'settle',
+        'states' => 'states'
     ];
 
     /**
@@ -118,12 +105,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'currency_pair' => 'setCurrencyPair',
-        'base_min_borrow_amount' => 'setBaseMinBorrowAmount',
-        'quote_min_borrow_amount' => 'setQuoteMinBorrowAmount',
-        'leverage' => 'setLeverage',
-        'status' => 'setStatus',
-        'delisted_time' => 'setDelistedTime'
+        'settle' => 'setSettle',
+        'states' => 'setStates'
     ];
 
     /**
@@ -132,12 +115,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'currency_pair' => 'getCurrencyPair',
-        'base_min_borrow_amount' => 'getBaseMinBorrowAmount',
-        'quote_min_borrow_amount' => 'getQuoteMinBorrowAmount',
-        'leverage' => 'getLeverage',
-        'status' => 'getStatus',
-        'delisted_time' => 'getDelistedTime'
+        'settle' => 'getSettle',
+        'states' => 'getStates'
     ];
 
     /**
@@ -200,12 +179,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
-        $this->container['base_min_borrow_amount'] = isset($data['base_min_borrow_amount']) ? $data['base_min_borrow_amount'] : null;
-        $this->container['quote_min_borrow_amount'] = isset($data['quote_min_borrow_amount']) ? $data['quote_min_borrow_amount'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['delisted_time'] = isset($data['delisted_time']) ? $data['delisted_time'] : null;
+        $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        $this->container['states'] = isset($data['states']) ? $data['states'] : null;
     }
 
     /**
@@ -217,6 +192,12 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['settle'] === null) {
+            $invalidProperties[] = "'settle' can't be null";
+        }
+        if ($this->container['states'] === null) {
+            $invalidProperties[] = "'states' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -233,145 +214,49 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets currency_pair
+     * Gets settle
      *
-     * @return string|null
+     * @return string
      */
-    public function getCurrencyPair()
+    public function getSettle()
     {
-        return $this->container['currency_pair'];
+        return $this->container['settle'];
     }
 
     /**
-     * Sets currency_pair
+     * Sets settle
      *
-     * @param string|null $currency_pair Currency pair
+     * @param string $settle Settle currency
      *
      * @return $this
      */
-    public function setCurrencyPair($currency_pair)
+    public function setSettle($settle)
     {
-        $this->container['currency_pair'] = $currency_pair;
+        $this->container['settle'] = $settle;
 
         return $this;
     }
 
     /**
-     * Gets base_min_borrow_amount
+     * Gets states
      *
-     * @return string|null
+     * @return map[string,\GateApi\Model\FuturesADLRiskState]
      */
-    public function getBaseMinBorrowAmount()
+    public function getStates()
     {
-        return $this->container['base_min_borrow_amount'];
+        return $this->container['states'];
     }
 
     /**
-     * Sets base_min_borrow_amount
+     * Sets states
      *
-     * @param string|null $base_min_borrow_amount Minimum borrow amount of base currency
+     * @param map[string,\GateApi\Model\FuturesADLRiskState] $states Mapping of futures markets to ADL risk states
      *
      * @return $this
      */
-    public function setBaseMinBorrowAmount($base_min_borrow_amount)
+    public function setStates($states)
     {
-        $this->container['base_min_borrow_amount'] = $base_min_borrow_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets quote_min_borrow_amount
-     *
-     * @return string|null
-     */
-    public function getQuoteMinBorrowAmount()
-    {
-        return $this->container['quote_min_borrow_amount'];
-    }
-
-    /**
-     * Sets quote_min_borrow_amount
-     *
-     * @param string|null $quote_min_borrow_amount Minimum borrow amount of quote currency
-     *
-     * @return $this
-     */
-    public function setQuoteMinBorrowAmount($quote_min_borrow_amount)
-    {
-        $this->container['quote_min_borrow_amount'] = $quote_min_borrow_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets leverage
-     *
-     * @return string|null
-     */
-    public function getLeverage()
-    {
-        return $this->container['leverage'];
-    }
-
-    /**
-     * Sets leverage
-     *
-     * @param string|null $leverage Leverage multiplier
-     *
-     * @return $this
-     */
-    public function setLeverage($leverage)
-    {
-        $this->container['leverage'] = $leverage;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Status  - enabled: Enabled - disabled: Disabled
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets delisted_time
-     *
-     * @return float|null
-     */
-    public function getDelistedTime()
-    {
-        return $this->container['delisted_time'];
-    }
-
-    /**
-     * Sets delisted_time
-     *
-     * @param float|null $delisted_time Delisting Time
-     *
-     * @return $this
-     */
-    public function setDelistedTime($delisted_time)
-    {
-        $this->container['delisted_time'] = $delisted_time;
+        $this->container['states'] = $states;
 
         return $this;
     }

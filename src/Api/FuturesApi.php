@@ -120,7 +120,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -141,7 +141,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -199,7 +199,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -223,7 +223,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -274,7 +274,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -419,7 +419,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -440,7 +440,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -498,7 +498,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -522,7 +522,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -573,7 +573,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      *
@@ -716,7 +716,7 @@ class FuturesApi
      *
      * Query single contract information
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -734,7 +734,7 @@ class FuturesApi
      *
      * Query single contract information
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -789,7 +789,7 @@ class FuturesApi
      *
      * Query single contract information
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -810,7 +810,7 @@ class FuturesApi
      *
      * Query single contract information
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -858,7 +858,7 @@ class FuturesApi
     /**
      * Create request for operation 'getFuturesContract'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -971,13 +971,252 @@ class FuturesApi
     }
 
     /**
+     * Operation listFuturesADLRiskStates
+     *
+     * List market-level ADL risk states
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FuturesADLRiskStates
+     */
+    public function listFuturesADLRiskStates($settle)
+    {
+        list($response) = $this->listFuturesADLRiskStatesWithHttpInfo($settle);
+        return $response;
+    }
+
+    /**
+     * Operation listFuturesADLRiskStatesWithHttpInfo
+     *
+     * List market-level ADL risk states
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FuturesADLRiskStates, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listFuturesADLRiskStatesWithHttpInfo($settle)
+    {
+        $request = $this->listFuturesADLRiskStatesRequest($settle);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FuturesADLRiskStates';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listFuturesADLRiskStatesAsync
+     *
+     * List market-level ADL risk states
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listFuturesADLRiskStatesAsync($settle)
+    {
+        return $this->listFuturesADLRiskStatesAsyncWithHttpInfo($settle)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listFuturesADLRiskStatesAsyncWithHttpInfo
+     *
+     * List market-level ADL risk states
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listFuturesADLRiskStatesAsyncWithHttpInfo($settle)
+    {
+        $returnType = '\GateApi\Model\FuturesADLRiskStates';
+        $request = $this->listFuturesADLRiskStatesRequest($settle);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listFuturesADLRiskStates'
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listFuturesADLRiskStatesRequest($settle)
+    {
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling listFuturesADLRiskStates'
+            );
+        }
+
+        $resourcePath = '/futures/{settle}/adl_risk_states';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listFuturesOrderBook
      *
      * Query futures market depth information
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
@@ -1000,7 +1239,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
@@ -1060,7 +1299,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
@@ -1086,7 +1325,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
@@ -1139,7 +1378,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
      * @param  int $limit Number of depth levels (optional, default to 10)
@@ -1314,7 +1553,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1339,7 +1578,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1401,7 +1640,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1429,7 +1668,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1484,7 +1723,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -1691,7 +1930,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -1716,7 +1955,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -1778,7 +2017,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -1806,7 +2045,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -1861,7 +2100,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -2061,7 +2300,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -2085,7 +2324,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -2146,7 +2385,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -2173,7 +2412,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -2227,7 +2466,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified (optional)
      * @param  int $to Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision (optional)
@@ -2413,7 +2652,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -2433,7 +2672,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -2490,7 +2729,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -2513,7 +2752,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -2563,7 +2802,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -2683,7 +2922,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
@@ -2706,7 +2945,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
@@ -2766,7 +3005,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
@@ -2792,7 +3031,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
@@ -2845,7 +3084,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
@@ -3018,7 +3257,7 @@ class FuturesApi
      *
      * Batch Query Historical Funding Rate Data for Perpetual Contracts
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request batch_funding_rates_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3036,7 +3275,7 @@ class FuturesApi
      *
      * Batch Query Historical Funding Rate Data for Perpetual Contracts
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3091,7 +3330,7 @@ class FuturesApi
      *
      * Batch Query Historical Funding Rate Data for Perpetual Contracts
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
      *
      * @throws \InvalidArgumentException
@@ -3112,7 +3351,7 @@ class FuturesApi
      *
      * Batch Query Historical Funding Rate Data for Perpetual Contracts
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
      *
      * @throws \InvalidArgumentException
@@ -3160,7 +3399,7 @@ class FuturesApi
     /**
      * Create request for operation 'listBatchFuturesFundingRates'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchFundingRatesRequest $batch_funding_rates_request (required)
      *
      * @throws \InvalidArgumentException
@@ -3273,7 +3512,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3293,7 +3532,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3350,7 +3589,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
      * @throws \InvalidArgumentException
@@ -3373,7 +3612,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
      * @throws \InvalidArgumentException
@@ -3423,7 +3662,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      *
      * @throws \InvalidArgumentException
@@ -3550,7 +3789,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp (optional)
      * @param  string $interval interval (optional, default to '5m')
@@ -3573,7 +3812,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp (optional)
      * @param  string $interval (optional, default to '5m')
@@ -3633,7 +3872,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp (optional)
      * @param  string $interval (optional, default to '5m')
@@ -3659,7 +3898,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp (optional)
      * @param  string $interval (optional, default to '5m')
@@ -3712,7 +3951,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp (optional)
      * @param  string $interval (optional, default to '5m')
@@ -3885,7 +4124,7 @@ class FuturesApi
      *
      * Query index constituents
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $index Index name (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3903,7 +4142,7 @@ class FuturesApi
      *
      * Query index constituents
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $index Index name (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3958,7 +4197,7 @@ class FuturesApi
      *
      * Query index constituents
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $index Index name (required)
      *
      * @throws \InvalidArgumentException
@@ -3979,7 +4218,7 @@ class FuturesApi
      *
      * Query index constituents
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $index Index name (required)
      *
      * @throws \InvalidArgumentException
@@ -4027,7 +4266,7 @@ class FuturesApi
     /**
      * Create request for operation 'getIndexConstituents'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $index Index name (required)
      *
      * @throws \InvalidArgumentException
@@ -4146,7 +4385,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -4169,7 +4408,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -4229,7 +4468,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -4255,7 +4494,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -4308,7 +4547,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -4477,7 +4716,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -4499,7 +4738,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -4558,7 +4797,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -4583,7 +4822,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -4635,7 +4874,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -4792,7 +5031,7 @@ class FuturesApi
      *
      * Get futures account
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4809,7 +5048,7 @@ class FuturesApi
      *
      * Get futures account
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4863,7 +5102,7 @@ class FuturesApi
      *
      * Get futures account
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4883,7 +5122,7 @@ class FuturesApi
      *
      * Get futures account
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4930,7 +5169,7 @@ class FuturesApi
     /**
      * Create request for operation 'listFuturesAccounts'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5036,7 +5275,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5061,7 +5300,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5123,7 +5362,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5151,7 +5390,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5206,7 +5445,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5410,7 +5649,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
      * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5432,7 +5671,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
      * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5491,7 +5730,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
      * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5516,7 +5755,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
      * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5568,7 +5807,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $holding Return only real positions - true, return all - false (optional)
      * @param  int $limit Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. (optional)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -5730,7 +5969,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -5754,7 +5993,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -5815,7 +6054,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -5842,7 +6081,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -5896,7 +6135,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -6092,7 +6331,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -6112,7 +6351,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -6169,7 +6408,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -6192,7 +6431,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -6242,7 +6481,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -6366,7 +6605,7 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
      * @param  string $dual_side dual_long - Long, dual_short - Short (required)
@@ -6386,7 +6625,7 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
      * @param  string $dual_side dual_long - Long, dual_short - Short (required)
@@ -6443,7 +6682,7 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
      * @param  string $dual_side dual_long - Long, dual_short - Short (required)
@@ -6466,7 +6705,7 @@ class FuturesApi
      *
      * Get Leverage Information for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
      * @param  string $dual_side dual_long - Long, dual_short - Short (required)
@@ -6516,7 +6755,7 @@ class FuturesApi
     /**
      * Create request for operation 'getLeverage'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $pos_margin_mode Position Margin Mode, required for split position mode, values: isolated/cross. (required)
      * @param  string $dual_side dual_long - Long, dual_short - Short (required)
@@ -6674,7 +6913,7 @@ class FuturesApi
      *
      * Update position margin
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      *
@@ -6693,7 +6932,7 @@ class FuturesApi
      *
      * Update position margin
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      *
@@ -6749,7 +6988,7 @@ class FuturesApi
      *
      * Update position margin
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      *
@@ -6771,7 +7010,7 @@ class FuturesApi
      *
      * Update position margin
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      *
@@ -6820,7 +7059,7 @@ class FuturesApi
     /**
      * Create request for operation 'updatePositionMargin'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      *
@@ -6959,7 +7198,7 @@ class FuturesApi
      *
      * Update position leverage
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
      * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
@@ -6980,7 +7219,7 @@ class FuturesApi
      *
      * Update position leverage
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
      * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
@@ -7038,7 +7277,7 @@ class FuturesApi
      *
      * Update position leverage
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
      * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
@@ -7062,7 +7301,7 @@ class FuturesApi
      *
      * Update position leverage
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
      * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
@@ -7113,7 +7352,7 @@ class FuturesApi
     /**
      * Create request for operation 'updatePositionLeverage'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. (required)
      * @param  string $cross_leverage_limit Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. (optional)
@@ -7278,7 +7517,7 @@ class FuturesApi
      *
      * Update Leverage for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Position Leverage Multiple (required)
      * @param  string $margin_mode Margin Mode isolated/cross (required)
@@ -7299,7 +7538,7 @@ class FuturesApi
      *
      * Update Leverage for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Position Leverage Multiple (required)
      * @param  string $margin_mode Margin Mode isolated/cross (required)
@@ -7357,7 +7596,7 @@ class FuturesApi
      *
      * Update Leverage for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Position Leverage Multiple (required)
      * @param  string $margin_mode Margin Mode isolated/cross (required)
@@ -7381,7 +7620,7 @@ class FuturesApi
      *
      * Update Leverage for Specified Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Position Leverage Multiple (required)
      * @param  string $margin_mode Margin Mode isolated/cross (required)
@@ -7432,7 +7671,7 @@ class FuturesApi
     /**
      * Create request for operation 'updateContractPositionLeverage'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage Position Leverage Multiple (required)
      * @param  string $margin_mode Margin Mode isolated/cross (required)
@@ -7603,7 +7842,7 @@ class FuturesApi
      *
      * Switch Position Margin Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPositionCrossMode $futures_position_cross_mode futures_position_cross_mode (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -7621,7 +7860,7 @@ class FuturesApi
      *
      * Switch Position Margin Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPositionCrossMode $futures_position_cross_mode (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -7676,7 +7915,7 @@ class FuturesApi
      *
      * Switch Position Margin Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPositionCrossMode $futures_position_cross_mode (required)
      *
      * @throws \InvalidArgumentException
@@ -7697,7 +7936,7 @@ class FuturesApi
      *
      * Switch Position Margin Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPositionCrossMode $futures_position_cross_mode (required)
      *
      * @throws \InvalidArgumentException
@@ -7745,7 +7984,7 @@ class FuturesApi
     /**
      * Create request for operation 'updatePositionCrossMode'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPositionCrossMode $futures_position_cross_mode (required)
      *
      * @throws \InvalidArgumentException
@@ -7859,7 +8098,7 @@ class FuturesApi
      *
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -7877,7 +8116,7 @@ class FuturesApi
      *
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -7932,7 +8171,7 @@ class FuturesApi
      *
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \InvalidArgumentException
@@ -7953,7 +8192,7 @@ class FuturesApi
      *
      * Switch Between Cross and Isolated Margin Modes Under Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \InvalidArgumentException
@@ -8001,7 +8240,7 @@ class FuturesApi
     /**
      * Create request for operation 'updateDualCompPositionCrossMode'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateDualCompPositionCrossModeRequest $update_dual_comp_position_cross_mode_request (required)
      *
      * @throws \InvalidArgumentException
@@ -8115,7 +8354,7 @@ class FuturesApi
      *
      * Update position risk limit
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -8134,7 +8373,7 @@ class FuturesApi
      *
      * Update position risk limit
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -8190,7 +8429,7 @@ class FuturesApi
      *
      * Update position risk limit
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -8212,7 +8451,7 @@ class FuturesApi
      *
      * Update position risk limit
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -8261,7 +8500,7 @@ class FuturesApi
     /**
      * Create request for operation 'updatePositionRiskLimit'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -8400,7 +8639,7 @@ class FuturesApi
      *
      * Set position mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -8418,7 +8657,7 @@ class FuturesApi
      *
      * Set position mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -8473,7 +8712,7 @@ class FuturesApi
      *
      * Set position mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \InvalidArgumentException
@@ -8494,7 +8733,7 @@ class FuturesApi
      *
      * Set position mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \InvalidArgumentException
@@ -8542,7 +8781,7 @@ class FuturesApi
     /**
      * Create request for operation 'setDualMode'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  bool $dual_mode Whether to enable Hedge Mode (required)
      *
      * @throws \InvalidArgumentException
@@ -8665,7 +8904,7 @@ class FuturesApi
      *
      * Set Position Holding Mode, replacing the dual_mode interface
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -8683,7 +8922,7 @@ class FuturesApi
      *
      * Set Position Holding Mode, replacing the dual_mode interface
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -8738,7 +8977,7 @@ class FuturesApi
      *
      * Set Position Holding Mode, replacing the dual_mode interface
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
      *
      * @throws \InvalidArgumentException
@@ -8759,7 +8998,7 @@ class FuturesApi
      *
      * Set Position Holding Mode, replacing the dual_mode interface
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
      *
      * @throws \InvalidArgumentException
@@ -8807,7 +9046,7 @@ class FuturesApi
     /**
      * Create request for operation 'setPositionMode'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $position_mode Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively (required)
      *
      * @throws \InvalidArgumentException
@@ -8932,7 +9171,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -8952,7 +9191,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -9009,7 +9248,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -9032,7 +9271,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -9082,7 +9321,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      *
      * @throws \InvalidArgumentException
@@ -9206,7 +9445,7 @@ class FuturesApi
      *
      * Update position margin in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      * @param  string $dual_side Long or short position (required)
@@ -9226,7 +9465,7 @@ class FuturesApi
      *
      * Update position margin in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      * @param  string $dual_side Long or short position (required)
@@ -9283,7 +9522,7 @@ class FuturesApi
      *
      * Update position margin in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      * @param  string $dual_side Long or short position (required)
@@ -9306,7 +9545,7 @@ class FuturesApi
      *
      * Update position margin in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      * @param  string $dual_side Long or short position (required)
@@ -9356,7 +9595,7 @@ class FuturesApi
     /**
      * Create request for operation 'updateDualModePositionMargin'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $change Margin change amount, positive number increases, negative number decreases (required)
      * @param  string $dual_side Long or short position (required)
@@ -9514,7 +9753,7 @@ class FuturesApi
      *
      * Update position leverage in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage New position leverage (required)
      * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
@@ -9534,7 +9773,7 @@ class FuturesApi
      *
      * Update position leverage in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage New position leverage (required)
      * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
@@ -9591,7 +9830,7 @@ class FuturesApi
      *
      * Update position leverage in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage New position leverage (required)
      * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
@@ -9614,7 +9853,7 @@ class FuturesApi
      *
      * Update position leverage in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage New position leverage (required)
      * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
@@ -9664,7 +9903,7 @@ class FuturesApi
     /**
      * Create request for operation 'updateDualModePositionLeverage'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $leverage New position leverage (required)
      * @param  string $cross_leverage_limit Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) (optional)
@@ -9816,7 +10055,7 @@ class FuturesApi
      *
      * Update position risk limit in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -9835,7 +10074,7 @@ class FuturesApi
      *
      * Update position risk limit in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -9891,7 +10130,7 @@ class FuturesApi
      *
      * Update position risk limit in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -9913,7 +10152,7 @@ class FuturesApi
      *
      * Update position risk limit in Hedge Mode
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -9962,7 +10201,7 @@ class FuturesApi
     /**
      * Create request for operation 'updateDualModePositionRiskLimit'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract (required)
      * @param  string $risk_limit New risk limit value (required)
      *
@@ -10103,7 +10342,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -10127,7 +10366,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -10188,7 +10427,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -10215,7 +10454,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -10269,7 +10508,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -10463,7 +10702,7 @@ class FuturesApi
      *
      * Place futures order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder $futures_order futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -10482,7 +10721,7 @@ class FuturesApi
      *
      * Place futures order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -10538,7 +10777,7 @@ class FuturesApi
      *
      * Place futures order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -10560,7 +10799,7 @@ class FuturesApi
      *
      * Place futures order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -10609,7 +10848,7 @@ class FuturesApi
     /**
      * Create request for operation 'createFuturesOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -10729,7 +10968,7 @@ class FuturesApi
      *
      * Cancel all orders with 'open' status
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -10752,7 +10991,7 @@ class FuturesApi
      *
      * Cancel all orders with 'open' status
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -10812,7 +11051,7 @@ class FuturesApi
      *
      * Cancel all orders with 'open' status
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -10838,7 +11077,7 @@ class FuturesApi
      *
      * Cancel all orders with 'open' status
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -10891,7 +11130,7 @@ class FuturesApi
     /**
      * Create request for operation 'cancelFuturesOrders'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $contract Contract Identifier; if specified, only cancel pending orders related to this contract (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -11068,7 +11307,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -11092,7 +11331,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -11153,7 +11392,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -11180,7 +11419,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -11234,7 +11473,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -11422,7 +11661,7 @@ class FuturesApi
      *
      * Place batch futures orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder[] $futures_order futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -11441,7 +11680,7 @@ class FuturesApi
      *
      * Place batch futures orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder[] $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -11497,7 +11736,7 @@ class FuturesApi
      *
      * Place batch futures orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder[] $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -11519,7 +11758,7 @@ class FuturesApi
      *
      * Place batch futures orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder[] $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -11568,7 +11807,7 @@ class FuturesApi
     /**
      * Create request for operation 'createBatchFuturesOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesOrder[] $futures_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -11688,7 +11927,7 @@ class FuturesApi
      *
      * Query single order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -11706,7 +11945,7 @@ class FuturesApi
      *
      * Query single order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -11761,7 +12000,7 @@ class FuturesApi
      *
      * Query single order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      *
      * @throws \InvalidArgumentException
@@ -11782,7 +12021,7 @@ class FuturesApi
      *
      * Query single order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      *
      * @throws \InvalidArgumentException
@@ -11830,7 +12069,7 @@ class FuturesApi
     /**
      * Create request for operation 'getFuturesOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      *
      * @throws \InvalidArgumentException
@@ -11950,7 +12189,7 @@ class FuturesApi
      *
      * Amend single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  \GateApi\Model\FuturesOrderAmendment $futures_order_amendment futures_order_amendment (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -11970,7 +12209,7 @@ class FuturesApi
      *
      * Amend single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  \GateApi\Model\FuturesOrderAmendment $futures_order_amendment (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -12027,7 +12266,7 @@ class FuturesApi
      *
      * Amend single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  \GateApi\Model\FuturesOrderAmendment $futures_order_amendment (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -12050,7 +12289,7 @@ class FuturesApi
      *
      * Amend single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  \GateApi\Model\FuturesOrderAmendment $futures_order_amendment (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -12100,7 +12339,7 @@ class FuturesApi
     /**
      * Create request for operation 'amendFuturesOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  \GateApi\Model\FuturesOrderAmendment $futures_order_amendment (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
@@ -12236,7 +12475,7 @@ class FuturesApi
      *
      * Cancel single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -12256,7 +12495,7 @@ class FuturesApi
      *
      * Cancel single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -12313,7 +12552,7 @@ class FuturesApi
      *
      * Cancel single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -12336,7 +12575,7 @@ class FuturesApi
      *
      * Cancel single order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -12386,7 +12625,7 @@ class FuturesApi
     /**
      * Create request for operation 'cancelFuturesOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $order_id The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
@@ -12527,7 +12766,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -12551,7 +12790,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -12612,7 +12851,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -12639,7 +12878,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -12693,7 +12932,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $order Futures order ID, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -12883,7 +13122,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -12908,7 +13147,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -12970,7 +13209,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -12998,7 +13237,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -13053,7 +13292,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
@@ -13257,7 +13496,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13283,7 +13522,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13346,7 +13585,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13375,7 +13614,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13431,7 +13670,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13649,7 +13888,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13674,7 +13913,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13736,7 +13975,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13764,7 +14003,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -13819,7 +14058,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -14023,7 +14262,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -14048,7 +14287,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -14110,7 +14349,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -14138,7 +14377,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -14193,7 +14432,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
@@ -14395,7 +14634,7 @@ class FuturesApi
      *
      * Countdown cancel orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CountdownCancelAllFuturesTask $countdown_cancel_all_futures_task countdown_cancel_all_futures_task (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -14413,7 +14652,7 @@ class FuturesApi
      *
      * Countdown cancel orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CountdownCancelAllFuturesTask $countdown_cancel_all_futures_task (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -14468,7 +14707,7 @@ class FuturesApi
      *
      * Countdown cancel orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CountdownCancelAllFuturesTask $countdown_cancel_all_futures_task (required)
      *
      * @throws \InvalidArgumentException
@@ -14489,7 +14728,7 @@ class FuturesApi
      *
      * Countdown cancel orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CountdownCancelAllFuturesTask $countdown_cancel_all_futures_task (required)
      *
      * @throws \InvalidArgumentException
@@ -14537,7 +14776,7 @@ class FuturesApi
     /**
      * Create request for operation 'countdownCancelAllFutures'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CountdownCancelAllFuturesTask $countdown_cancel_all_futures_task (required)
      *
      * @throws \InvalidArgumentException
@@ -14653,7 +14892,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -14673,7 +14912,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -14730,7 +14969,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -14753,7 +14992,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -14803,7 +15042,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -14924,7 +15163,7 @@ class FuturesApi
      *
      * Cancel batch orders by specified ID list
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string[] $request_body request_body (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -14943,7 +15182,7 @@ class FuturesApi
      *
      * Cancel batch orders by specified ID list
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string[] $request_body (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -14999,7 +15238,7 @@ class FuturesApi
      *
      * Cancel batch orders by specified ID list
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string[] $request_body (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15021,7 +15260,7 @@ class FuturesApi
      *
      * Cancel batch orders by specified ID list
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string[] $request_body (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15070,7 +15309,7 @@ class FuturesApi
     /**
      * Create request for operation 'cancelBatchFutureOrders'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string[] $request_body (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15190,7 +15429,7 @@ class FuturesApi
      *
      * Batch modify orders by specified IDs
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchAmendOrderReq[] $batch_amend_order_req batch_amend_order_req (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15209,7 +15448,7 @@ class FuturesApi
      *
      * Batch modify orders by specified IDs
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchAmendOrderReq[] $batch_amend_order_req (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15265,7 +15504,7 @@ class FuturesApi
      *
      * Batch modify orders by specified IDs
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchAmendOrderReq[] $batch_amend_order_req (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15287,7 +15526,7 @@ class FuturesApi
      *
      * Batch modify orders by specified IDs
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchAmendOrderReq[] $batch_amend_order_req (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15336,7 +15575,7 @@ class FuturesApi
     /**
      * Create request for operation 'amendBatchFutureOrders'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\BatchAmendOrderReq[] $batch_amend_order_req (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15456,7 +15695,7 @@ class FuturesApi
      *
      * Query risk limit table by table_id
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $table_id Risk limit table ID (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -15474,7 +15713,7 @@ class FuturesApi
      *
      * Query risk limit table by table_id
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $table_id Risk limit table ID (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -15529,7 +15768,7 @@ class FuturesApi
      *
      * Query risk limit table by table_id
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $table_id Risk limit table ID (required)
      *
      * @throws \InvalidArgumentException
@@ -15550,7 +15789,7 @@ class FuturesApi
      *
      * Query risk limit table by table_id
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $table_id Risk limit table ID (required)
      *
      * @throws \InvalidArgumentException
@@ -15598,7 +15837,7 @@ class FuturesApi
     /**
      * Create request for operation 'getFuturesRiskLimitTable'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $table_id Risk limit table ID (required)
      *
      * @throws \InvalidArgumentException
@@ -15718,7 +15957,7 @@ class FuturesApi
      *
      * Level-based BBO Contract Order Placement
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order futures_bbo_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15737,7 +15976,7 @@ class FuturesApi
      *
      * Level-based BBO Contract Order Placement
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15793,7 +16032,7 @@ class FuturesApi
      *
      * Level-based BBO Contract Order Placement
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15815,7 +16054,7 @@ class FuturesApi
      *
      * Level-based BBO Contract Order Placement
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15864,7 +16103,7 @@ class FuturesApi
     /**
      * Create request for operation 'createFuturesBBOOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesBBOOrder $futures_bbo_order (required)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -15984,7 +16223,7 @@ class FuturesApi
      *
      * Create trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateTrailOrder $create_trail_order create_trail_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -16002,7 +16241,7 @@ class FuturesApi
      *
      * Create trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -16057,7 +16296,7 @@ class FuturesApi
      *
      * Create trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -16078,7 +16317,7 @@ class FuturesApi
      *
      * Create trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -16126,7 +16365,7 @@ class FuturesApi
     /**
      * Create request for operation 'createTrailOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateTrailOrder $create_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -16240,7 +16479,7 @@ class FuturesApi
      *
      * Terminate trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopTrailOrder $stop_trail_order stop_trail_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -16258,7 +16497,7 @@ class FuturesApi
      *
      * Terminate trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -16313,7 +16552,7 @@ class FuturesApi
      *
      * Terminate trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -16334,7 +16573,7 @@ class FuturesApi
      *
      * Terminate trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -16382,7 +16621,7 @@ class FuturesApi
     /**
      * Create request for operation 'stopTrailOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopTrailOrder $stop_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -16496,7 +16735,7 @@ class FuturesApi
      *
      * Batch terminate trail orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders stop_all_trail_orders (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -16514,7 +16753,7 @@ class FuturesApi
      *
      * Batch terminate trail orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -16569,7 +16808,7 @@ class FuturesApi
      *
      * Batch terminate trail orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
      *
      * @throws \InvalidArgumentException
@@ -16590,7 +16829,7 @@ class FuturesApi
      *
      * Batch terminate trail orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
      *
      * @throws \InvalidArgumentException
@@ -16638,7 +16877,7 @@ class FuturesApi
     /**
      * Create request for operation 'stopAllTrailOrders'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllTrailOrders $stop_all_trail_orders (required)
      *
      * @throws \InvalidArgumentException
@@ -16754,7 +16993,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Contract name (optional)
      * @param  bool $is_finished Whether historical order (optional)
      * @param  int $start_at Start time of time range (optional)
@@ -16785,7 +17024,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Contract name (optional)
      * @param  bool $is_finished Whether historical order (optional)
      * @param  int $start_at Start time of time range (optional)
@@ -16853,7 +17092,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Contract name (optional)
      * @param  bool $is_finished Whether historical order (optional)
      * @param  int $start_at Start time of time range (optional)
@@ -16887,7 +17126,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Contract name (optional)
      * @param  bool $is_finished Whether historical order (optional)
      * @param  int $start_at Start time of time range (optional)
@@ -16948,7 +17187,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Contract name (optional)
      * @param  bool $is_finished Whether historical order (optional)
      * @param  int $start_at Start time of time range (optional)
@@ -17223,7 +17462,7 @@ class FuturesApi
      *
      * Get trail order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -17241,7 +17480,7 @@ class FuturesApi
      *
      * Get trail order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -17296,7 +17535,7 @@ class FuturesApi
      *
      * Get trail order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      *
      * @throws \InvalidArgumentException
@@ -17317,7 +17556,7 @@ class FuturesApi
      *
      * Get trail order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      *
      * @throws \InvalidArgumentException
@@ -17365,7 +17604,7 @@ class FuturesApi
     /**
      * Create request for operation 'getTrailOrderDetail'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      *
      * @throws \InvalidArgumentException
@@ -17488,7 +17727,7 @@ class FuturesApi
      *
      * Update trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order update_trail_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -17506,7 +17745,7 @@ class FuturesApi
      *
      * Update trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -17561,7 +17800,7 @@ class FuturesApi
      *
      * Update trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -17582,7 +17821,7 @@ class FuturesApi
      *
      * Update trail order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -17630,7 +17869,7 @@ class FuturesApi
     /**
      * Create request for operation 'updateTrailOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\UpdateTrailOrder $update_trail_order (required)
      *
      * @throws \InvalidArgumentException
@@ -17746,7 +17985,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      * @param  int $page_num Page number, starting from 1 (optional, default to 1)
      * @param  int $page_size Number of items per page (optional, default to 20)
@@ -17768,7 +18007,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      * @param  int $page_num Page number, starting from 1 (optional, default to 1)
      * @param  int $page_size Number of items per page (optional, default to 20)
@@ -17827,7 +18066,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      * @param  int $page_num Page number, starting from 1 (optional, default to 1)
      * @param  int $page_size Number of items per page (optional, default to 20)
@@ -17852,7 +18091,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      * @param  int $page_num Page number, starting from 1 (optional, default to 1)
      * @param  int $page_size Number of items per page (optional, default to 20)
@@ -17904,7 +18143,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $id Order ID (required)
      * @param  int $page_num Page number, starting from 1 (optional, default to 1)
      * @param  int $page_size Number of items per page (optional, default to 20)
@@ -18059,7 +18298,7 @@ class FuturesApi
      *
      * Create a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateChaseOrderReq $create_chase_order_req create_chase_order_req (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -18077,7 +18316,7 @@ class FuturesApi
      *
      * Create a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateChaseOrderReq $create_chase_order_req (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -18132,7 +18371,7 @@ class FuturesApi
      *
      * Create a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateChaseOrderReq $create_chase_order_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18153,7 +18392,7 @@ class FuturesApi
      *
      * Create a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateChaseOrderReq $create_chase_order_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18201,7 +18440,7 @@ class FuturesApi
     /**
      * Create request for operation 'createChaseOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\CreateChaseOrderReq $create_chase_order_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18315,7 +18554,7 @@ class FuturesApi
      *
      * Stop a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopChaseOrderReq $stop_chase_order_req stop_chase_order_req (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -18333,7 +18572,7 @@ class FuturesApi
      *
      * Stop a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopChaseOrderReq $stop_chase_order_req (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -18388,7 +18627,7 @@ class FuturesApi
      *
      * Stop a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopChaseOrderReq $stop_chase_order_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18409,7 +18648,7 @@ class FuturesApi
      *
      * Stop a chase order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopChaseOrderReq $stop_chase_order_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18457,7 +18696,7 @@ class FuturesApi
     /**
      * Create request for operation 'stopChaseOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopChaseOrderReq $stop_chase_order_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18571,7 +18810,7 @@ class FuturesApi
      *
      * Stop chase orders in batch
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllChaseOrdersReq $stop_all_chase_orders_req stop_all_chase_orders_req (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -18589,7 +18828,7 @@ class FuturesApi
      *
      * Stop chase orders in batch
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllChaseOrdersReq $stop_all_chase_orders_req (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -18644,7 +18883,7 @@ class FuturesApi
      *
      * Stop chase orders in batch
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllChaseOrdersReq $stop_all_chase_orders_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18665,7 +18904,7 @@ class FuturesApi
      *
      * Stop chase orders in batch
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllChaseOrdersReq $stop_all_chase_orders_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18713,7 +18952,7 @@ class FuturesApi
     /**
      * Create request for operation 'stopAllChaseOrders'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\StopAllChaseOrdersReq $stop_all_chase_orders_req (required)
      *
      * @throws \InvalidArgumentException
@@ -18829,7 +19068,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
@@ -18858,7 +19097,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
@@ -18924,7 +19163,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
@@ -18956,7 +19195,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
@@ -19015,7 +19254,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
@@ -19279,7 +19518,7 @@ class FuturesApi
      *
      * Get chase order detail
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $id Order ID, must be a non-zero positive integer (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -19297,7 +19536,7 @@ class FuturesApi
      *
      * Get chase order detail
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $id Order ID, must be a non-zero positive integer (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -19352,7 +19591,7 @@ class FuturesApi
      *
      * Get chase order detail
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $id Order ID, must be a non-zero positive integer (required)
      *
      * @throws \InvalidArgumentException
@@ -19373,7 +19612,7 @@ class FuturesApi
      *
      * Get chase order detail
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $id Order ID, must be a non-zero positive integer (required)
      *
      * @throws \InvalidArgumentException
@@ -19421,7 +19660,7 @@ class FuturesApi
     /**
      * Create request for operation 'getChaseOrderDetail'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $id Order ID, must be a non-zero positive integer (required)
      *
      * @throws \InvalidArgumentException
@@ -19546,7 +19785,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -19569,7 +19808,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -19629,7 +19868,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -19655,7 +19894,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -19708,7 +19947,7 @@ class FuturesApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $status Query order list based on status (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
@@ -19888,7 +20127,7 @@ class FuturesApi
      *
      * Create price-triggered order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPriceTriggeredOrder $futures_price_triggered_order futures_price_triggered_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -19906,7 +20145,7 @@ class FuturesApi
      *
      * Create price-triggered order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPriceTriggeredOrder $futures_price_triggered_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -19961,7 +20200,7 @@ class FuturesApi
      *
      * Create price-triggered order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPriceTriggeredOrder $futures_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
@@ -19982,7 +20221,7 @@ class FuturesApi
      *
      * Create price-triggered order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPriceTriggeredOrder $futures_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
@@ -20030,7 +20269,7 @@ class FuturesApi
     /**
      * Create request for operation 'createPriceTriggeredOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesPriceTriggeredOrder $futures_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
@@ -20144,7 +20383,7 @@ class FuturesApi
      *
      * Cancel all auto orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -20162,7 +20401,7 @@ class FuturesApi
      *
      * Cancel all auto orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -20217,7 +20456,7 @@ class FuturesApi
      *
      * Cancel all auto orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -20238,7 +20477,7 @@ class FuturesApi
      *
      * Cancel all auto orders
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -20286,7 +20525,7 @@ class FuturesApi
     /**
      * Create request for operation 'cancelPriceTriggeredOrderList'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  string $contract Futures contract, return related data only if specified (optional)
      *
      * @throws \InvalidArgumentException
@@ -20403,7 +20642,7 @@ class FuturesApi
      *
      * Query single auto order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -20421,7 +20660,7 @@ class FuturesApi
      *
      * Query single auto order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -20476,7 +20715,7 @@ class FuturesApi
      *
      * Query single auto order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \InvalidArgumentException
@@ -20497,7 +20736,7 @@ class FuturesApi
      *
      * Query single auto order details
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \InvalidArgumentException
@@ -20545,7 +20784,7 @@ class FuturesApi
     /**
      * Create request for operation 'getPriceTriggeredOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \InvalidArgumentException
@@ -20665,7 +20904,7 @@ class FuturesApi
      *
      * Cancel single auto order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -20683,7 +20922,7 @@ class FuturesApi
      *
      * Cancel single auto order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -20738,7 +20977,7 @@ class FuturesApi
      *
      * Cancel single auto order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \InvalidArgumentException
@@ -20759,7 +20998,7 @@ class FuturesApi
      *
      * Cancel single auto order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \InvalidArgumentException
@@ -20807,7 +21046,7 @@ class FuturesApi
     /**
      * Create request for operation 'cancelPriceTriggeredOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  int $order_id ID returned when order is successfully created (required)
      *
      * @throws \InvalidArgumentException
@@ -20927,7 +21166,7 @@ class FuturesApi
      *
      * Modify a Single Auto Order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order futures_update_price_triggered_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -20945,7 +21184,7 @@ class FuturesApi
      *
      * Modify a Single Auto Order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -21000,7 +21239,7 @@ class FuturesApi
      *
      * Modify a Single Auto Order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
@@ -21021,7 +21260,7 @@ class FuturesApi
      *
      * Modify a Single Auto Order
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
@@ -21069,7 +21308,7 @@ class FuturesApi
     /**
      * Create request for operation 'updatePriceTriggeredOrder'
      *
-     * @param  string $settle Settle currency (required)
+     * @param  string $settle Perpetual futures settlement currency (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException

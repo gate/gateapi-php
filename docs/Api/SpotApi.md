@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**listCandlesticks**](SpotApi.md#listCandlesticks) | **GET** /spot/candlesticks | Market K-line chart
 [**getFee**](SpotApi.md#getFee) | **GET** /spot/fee | Query account fee rates
 [**getBatchSpotFee**](SpotApi.md#getBatchSpotFee) | **GET** /spot/batch_fee | Batch query account fee rates
+[**listSpotAccounts**](SpotApi.md#listSpotAccounts) | **GET** /spot/accounts | List spot trading accounts
 [**listSpotAccountBook**](SpotApi.md#listSpotAccountBook) | **GET** /spot/account_book | Query spot account transaction history
 [**createBatchOrders**](SpotApi.md#createBatchOrders) | **POST** /spot/batch_orders | Batch place orders
 [**listAllOpenOrders**](SpotApi.md#listAllOpenOrders) | **GET** /spot/open_orders | List all open orders
@@ -37,9 +38,9 @@ Method | HTTP request | Description
 [**cancelSpotPriceTriggeredOrder**](SpotApi.md#cancelSpotPriceTriggeredOrder) | **DELETE** /spot/price_orders/{order_id} | Cancel single auto order
 [**listSpotPovOrders**](SpotApi.md#listSpotPovOrders) | **GET** /spot/pov_orders | List Spot POV orders
 [**createSpotPovOrder**](SpotApi.md#createSpotPovOrder) | **POST** /spot/pov_orders | Create a Spot POV order
-[**cancelSpotPovOrders**](SpotApi.md#cancelSpotPovOrders) | **POST** /spot/pov_orders/cancel | Cancel Spot POV orders
+[**cancelSpotPovOrders**](SpotApi.md#cancelSpotPovOrders) | **DELETE** /spot/pov_orders | Cancel Spot POV orders
 [**getSpotPovOrder**](SpotApi.md#getSpotPovOrder) | **GET** /spot/pov_orders/{order_id} | Query Spot POV order details
-[**cancelSpotPovOrder**](SpotApi.md#cancelSpotPovOrder) | **POST** /spot/pov_orders/{order_id}/cancel | Cancel a Spot POV order
+[**cancelSpotPovOrder**](SpotApi.md#cancelSpotPovOrder) | **DELETE** /spot/pov_orders/{order_id} | Cancel a Spot POV order
 
 
 ## listCurrencies
@@ -637,6 +638,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**map[string,\GateApi\Model\SpotFee]**](../Model/SpotFee.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listSpotAccounts
+
+> \GateApi\Model\SpotAccount[] listSpotAccounts($currency)
+
+List spot trading accounts
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\SpotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['currency'] = 'BTC'; // string | Query by specified currency name
+
+try {
+    $result = $apiInstance->listSpotAccounts($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling SpotApi->listSpotAccounts: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **string**| Query by specified currency name | [optional]
+
+### Return type
+
+[**\GateApi\Model\SpotAccount[]**](../Model/SpotAccount.md)
 
 ### Authorization
 

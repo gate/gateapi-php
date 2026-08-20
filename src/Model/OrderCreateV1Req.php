@@ -227,7 +227,7 @@ class OrderCreateV1Req implements ModelInterface, ArrayAccess
     /**
      * Sets from
      *
-     * @param \GateApi\Model\CreateParam[] $from Sell ​​side list, at least one item; each item is the currency and amount `amount` to be swapped out.
+     * @param \GateApi\Model\CreateParam[] $from Sell side list, at least one item; each item is the currency and amount `amount` to be swapped out.
      *
      * @return $this
      */

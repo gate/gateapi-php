@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**listFuturesContracts**](FuturesApi.md#listFuturesContracts) | **GET** /futures/{settle}/contracts | Query all futures contracts
 [**listFuturesContractsAll**](FuturesApi.md#listFuturesContractsAll) | **GET** /futures/{settle}/contracts_all | Query all contract information (including delisted)
 [**getFuturesContract**](FuturesApi.md#getFuturesContract) | **GET** /futures/{settle}/contracts/{contract} | Query single contract information
+[**listFuturesADLRiskStates**](FuturesApi.md#listFuturesADLRiskStates) | **GET** /futures/{settle}/adl_risk_states | List market-level ADL risk states
 [**listFuturesOrderBook**](FuturesApi.md#listFuturesOrderBook) | **GET** /futures/{settle}/order_book | Query futures market depth information
 [**listFuturesTrades**](FuturesApi.md#listFuturesTrades) | **GET** /futures/{settle}/trades | Futures market transaction records
 [**listFuturesCandlesticks**](FuturesApi.md#listFuturesCandlesticks) | **GET** /futures/{settle}/candlesticks | Futures market K-line chart
@@ -94,7 +95,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
 
@@ -116,7 +117,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -156,7 +157,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
 
@@ -178,7 +179,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
 
@@ -218,7 +219,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 
 try {
@@ -237,12 +238,70 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
 
 ### Return type
 
 [**\GateApi\Model\Contract**](../Model/Contract.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listFuturesADLRiskStates
+
+> \GateApi\Model\FuturesADLRiskStates listFuturesADLRiskStates($settle)
+
+List market-level ADL risk states
+
+List the current ADL risk states of all futures markets for the specified settlement currency
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$settle = 'usdt'; // string | Perpetual futures settlement currency
+
+try {
+    $result = $apiInstance->listFuturesADLRiskStates($settle);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->listFuturesADLRiskStates: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Perpetual futures settlement currency |
+
+### Return type
+
+[**\GateApi\Model\FuturesADLRiskStates**](../Model/FuturesADLRiskStates.md)
 
 ### Authorization
 
@@ -278,7 +337,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['interval'] = '0'; // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
 $associate_array['limit'] = 10; // int | Number of depth levels
@@ -302,7 +361,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **int**| Number of depth levels | [optional] [default to 10]
@@ -344,7 +403,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -370,7 +429,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -416,7 +475,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['from'] = 1546905600; // int | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
 $associate_array['to'] = 1546935600; // int | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
@@ -442,7 +501,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **from** | **int**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional]
  **to** | **int**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional]
@@ -488,7 +547,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['from'] = 1546905600; // int | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
 $associate_array['to'] = 1546935600; // int | Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision
@@ -513,7 +572,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **from** | **int**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional]
  **to** | **int**| Specify the end time of the K-line chart, defaults to current time if not specified, note that the time format is Unix timestamp with second precision | [optional]
@@ -556,7 +615,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 
 try {
@@ -577,7 +636,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
 
 ### Return type
@@ -616,7 +675,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
@@ -640,7 +699,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
@@ -682,7 +741,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $batch_funding_rates_request = new \GateApi\Model\BatchFundingRatesRequest(); // \GateApi\Model\BatchFundingRatesRequest | 
 
 try {
@@ -701,7 +760,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **batch_funding_rates_request** | [**\GateApi\Model\BatchFundingRatesRequest**](../Model/BatchFundingRatesRequest.md)|  |
 
 ### Return type
@@ -740,7 +799,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 
 try {
@@ -761,7 +820,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
 
 ### Return type
@@ -800,7 +859,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['from'] = 1604561000; // int | Start timestamp
 $associate_array['interval'] = '5m'; // string | 
@@ -824,7 +883,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **from** | **int**| Start timestamp | [optional]
  **interval** | **string**|  | [optional] [default to &#39;5m&#39;]
@@ -866,7 +925,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $index = 'BTC_USDT'; // string | Index name
 
 try {
@@ -885,7 +944,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **index** | **string**| Index name |
 
 ### Return type
@@ -926,7 +985,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
 $associate_array['to'] = 1547706332; // int | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
@@ -950,7 +1009,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
  **to** | **int**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional]
@@ -994,7 +1053,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -1017,7 +1076,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -1064,7 +1123,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 
 try {
     $result = $apiInstance->listFuturesAccounts($settle);
@@ -1082,7 +1141,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
 
 ### Return type
 
@@ -1126,7 +1185,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -1152,7 +1211,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -1200,7 +1259,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['holding'] = true; // bool | Return only real positions - true, return all - false
 $associate_array['limit'] = 100; // int | Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100].
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -1223,7 +1282,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **holding** | **bool**| Return only real positions - true, return all - false | [optional]
  **limit** | **int**| Maximum number of positions returned. If omitted, all current positions are returned by default; if provided, the value must be within [1,100]. | [optional]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -1268,7 +1327,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 $associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
 $associate_array['to'] = 1547706332; // int | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
@@ -1293,7 +1352,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
  **to** | **int**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional]
@@ -1342,7 +1401,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 
 try {
@@ -1363,7 +1422,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
 
 ### Return type
@@ -1408,7 +1467,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $pos_margin_mode = 'isolated'; // string | Position Margin Mode, required for split position mode, values: isolated/cross.
 $dual_side = 'dual_long'; // string | dual_long - Long, dual_short - Short
@@ -1429,7 +1488,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **pos_margin_mode** | **string**| Position Margin Mode, required for split position mode, values: isolated/cross. |
  **dual_side** | **string**| dual_long - Long, dual_short - Short |
@@ -1476,7 +1535,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $change = '0.01'; // string | Margin change amount, positive number increases, negative number decreases
 
@@ -1496,7 +1555,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **change** | **string**| Margin change amount, positive number increases, negative number decreases |
 
@@ -1542,7 +1601,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $leverage = '10'; // string | Set the leverage for isolated margin. When setting isolated margin leverage, the `cross_leverage_limit`  must be empty.
 $cross_leverage_limit = '10'; // string | Set the leverage for cross margin. When setting cross margin leverage, the `leverage` must be set to 0.
@@ -1564,7 +1623,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **leverage** | **string**| Set the leverage for isolated margin. When setting isolated margin leverage, the &#x60;cross_leverage_limit&#x60;  must be empty. |
  **cross_leverage_limit** | **string**| Set the leverage for cross margin. When setting cross margin leverage, the &#x60;leverage&#x60; must be set to 0. | [optional]
@@ -1612,7 +1671,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $leverage = '10'; // string | Position Leverage Multiple
 $margin_mode = 'cross'; // string | Margin Mode isolated/cross
@@ -1634,7 +1693,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **leverage** | **string**| Position Leverage Multiple |
  **margin_mode** | **string**| Margin Mode isolated/cross |
@@ -1680,7 +1739,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $futures_position_cross_mode = new \GateApi\Model\FuturesPositionCrossMode(); // \GateApi\Model\FuturesPositionCrossMode | 
 
 try {
@@ -1699,7 +1758,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **futures_position_cross_mode** | [**\GateApi\Model\FuturesPositionCrossMode**](../Model/FuturesPositionCrossMode.md)|  |
 
 ### Return type
@@ -1742,7 +1801,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $update_dual_comp_position_cross_mode_request = new \GateApi\Model\UpdateDualCompPositionCrossModeRequest(); // \GateApi\Model\UpdateDualCompPositionCrossModeRequest | 
 
 try {
@@ -1761,7 +1820,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **update_dual_comp_position_cross_mode_request** | [**\GateApi\Model\UpdateDualCompPositionCrossModeRequest**](../Model/UpdateDualCompPositionCrossModeRequest.md)|  |
 
 ### Return type
@@ -1806,7 +1865,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $risk_limit = '1000000'; // string | New risk limit value
 
@@ -1826,7 +1885,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **risk_limit** | **string**| New risk limit value |
 
@@ -1872,7 +1931,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $dual_mode = true; // bool | Whether to enable Hedge Mode
 
 try {
@@ -1891,7 +1950,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **dual_mode** | **bool**| Whether to enable Hedge Mode |
 
 ### Return type
@@ -1936,7 +1995,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $position_mode = 'dual_plus'; // string | Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively
 
 try {
@@ -1955,7 +2014,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **position_mode** | **string**| Optional Values: single, dual, dual_plus, representing Single Direction, Dual Direction, Split Position respectively |
 
 ### Return type
@@ -1998,7 +2057,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
 
 try {
@@ -2019,7 +2078,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
 
 ### Return type
@@ -2062,7 +2121,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $change = '0.01'; // string | Margin change amount, positive number increases, negative number decreases
 $dual_side = 'dual_long'; // string | Long or short position
@@ -2083,7 +2142,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **change** | **string**| Margin change amount, positive number increases, negative number decreases |
  **dual_side** | **string**| Long or short position |
@@ -2128,7 +2187,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $leverage = '10'; // string | New position leverage
 $cross_leverage_limit = '10'; // string | Cross margin leverage (valid only when `leverage` is 0)
@@ -2149,7 +2208,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **leverage** | **string**| New position leverage |
  **cross_leverage_limit** | **string**| Cross margin leverage (valid only when &#x60;leverage&#x60; is 0) | [optional]
@@ -2196,7 +2255,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract
 $risk_limit = '1000000'; // string | New risk limit value
 
@@ -2216,7 +2275,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract |
  **risk_limit** | **string**| New risk limit value |
 
@@ -2262,7 +2321,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['status'] = 'open'; // string | Query order list based on status
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
@@ -2287,7 +2346,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **status** | **string**| Query order list based on status |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
@@ -2336,7 +2395,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $futures_order = new \GateApi\Model\FuturesOrder(); // \GateApi\Model\FuturesOrder | 
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 
@@ -2356,7 +2415,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **futures_order** | [**\GateApi\Model\FuturesOrder**](../Model/FuturesOrder.md)|  |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
 
@@ -2402,7 +2461,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 $contract = 'BTC_USDT'; // string | Contract Identifier; if specified, only cancel pending orders related to this contract
 $action_mode = 'ACK'; // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
@@ -2426,7 +2485,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
  **contract** | **string**| Contract Identifier; if specified, only cancel pending orders related to this contract | [optional]
  **action_mode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | [optional]
@@ -2474,7 +2533,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
 $associate_array['to'] = 1547706332; // int | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
@@ -2499,7 +2558,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
  **to** | **int**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional]
@@ -2548,7 +2607,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $futures_order = array(new \GateApi\Model\FuturesOrder()); // \GateApi\Model\FuturesOrder[] | 
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 
@@ -2568,7 +2627,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **futures_order** | [**\GateApi\Model\FuturesOrder[]**](../Model/FuturesOrder.md)|  |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
 
@@ -2614,7 +2673,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $order_id = '12345'; // string | The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
 
 try {
@@ -2633,7 +2692,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **order_id** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. |
 
 ### Return type
@@ -2676,7 +2735,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $order_id = '12345'; // string | The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
 $futures_order_amendment = new \GateApi\Model\FuturesOrderAmendment(); // \GateApi\Model\FuturesOrderAmendment | 
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
@@ -2697,7 +2756,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **order_id** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. |
  **futures_order_amendment** | [**\GateApi\Model\FuturesOrderAmendment**](../Model/FuturesOrderAmendment.md)|  |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
@@ -2742,7 +2801,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $order_id = '12345'; // string | The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the `text` field). When using the custom `text` field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by `text`; continuing to use `text` returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by `text` indefinitely.
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 $action_mode = 'ACK'; // string | Processing Mode  When placing an order, different fields are returned based on the action_mode  - `ACK`: Asynchronous mode, returns only key order fields - `RESULT`: No clearing information - `FULL`: Full mode (default)
@@ -2763,7 +2822,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **order_id** | **string**| The order ID returned when the order is created successfully, or the custom ID specified by the user when creating the order (i.e. the &#x60;text&#x60; field). When using the custom &#x60;text&#x60; field: 1. If the order was not filled and has been cancelled, after 60 seconds you cannot query the order by &#x60;text&#x60;; continuing to use &#x60;text&#x60; returns error ORDER_NOT_FOUND. 2. If the order was fully or partially filled, you can query the order by &#x60;text&#x60; indefinitely. |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
  **action_mode** | **string**| Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) | [optional]
@@ -2810,7 +2869,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['order'] = 12345; // int | Futures order ID, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
@@ -2835,7 +2894,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **order** | **int**| Futures order ID, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
@@ -2882,7 +2941,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
 $associate_array['to'] = 1547706332; // int | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
@@ -2908,7 +2967,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
  **to** | **int**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional]
@@ -2956,7 +3015,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -2983,7 +3042,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -3032,7 +3091,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -3058,7 +3117,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -3106,7 +3165,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
 $associate_array['offset'] = 0; // int | List offset, starting from 0
@@ -3132,7 +3191,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
@@ -3182,7 +3241,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $countdown_cancel_all_futures_task = new \GateApi\Model\CountdownCancelAllFuturesTask(); // \GateApi\Model\CountdownCancelAllFuturesTask | 
 
 try {
@@ -3201,7 +3260,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **countdown_cancel_all_futures_task** | [**\GateApi\Model\CountdownCancelAllFuturesTask**](../Model/CountdownCancelAllFuturesTask.md)|  |
 
 ### Return type
@@ -3244,7 +3303,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 
 try {
@@ -3265,7 +3324,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
 
 ### Return type
@@ -3310,7 +3369,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $request_body = array('[\"1\",\"2\",\"3\"]'); // string[] | 
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 
@@ -3330,7 +3389,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **request_body** | [**string[]**](../Model/string.md)|  |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
 
@@ -3376,7 +3435,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $batch_amend_order_req = array(new \GateApi\Model\BatchAmendOrderReq()); // \GateApi\Model\BatchAmendOrderReq[] | 
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 
@@ -3396,7 +3455,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **batch_amend_order_req** | [**\GateApi\Model\BatchAmendOrderReq[]**](../Model/BatchAmendOrderReq.md)|  |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
 
@@ -3438,7 +3497,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $table_id = 'CYBER_USDT_20241122'; // string | Risk limit table ID
 
 try {
@@ -3457,7 +3516,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **table_id** | **string**| Risk limit table ID |
 
 ### Return type
@@ -3502,7 +3561,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $futures_bbo_order = new \GateApi\Model\FuturesBBOOrder(); // \GateApi\Model\FuturesBBOOrder | 
 $x_gate_exptime = '1689560679123'; // string | Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected
 
@@ -3522,7 +3581,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **futures_bbo_order** | [**\GateApi\Model\FuturesBBOOrder**](../Model/FuturesBBOOrder.md)|  |
  **x_gate_exptime** | **string**| Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected | [optional]
 
@@ -3566,7 +3625,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $create_trail_order = new \GateApi\Model\CreateTrailOrder(); // \GateApi\Model\CreateTrailOrder | 
 
 try {
@@ -3585,7 +3644,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **create_trail_order** | [**\GateApi\Model\CreateTrailOrder**](../Model/CreateTrailOrder.md)|  |
 
 ### Return type
@@ -3628,7 +3687,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $stop_trail_order = new \GateApi\Model\StopTrailOrder(); // \GateApi\Model\StopTrailOrder | 
 
 try {
@@ -3647,7 +3706,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **stop_trail_order** | [**\GateApi\Model\StopTrailOrder**](../Model/StopTrailOrder.md)|  |
 
 ### Return type
@@ -3690,7 +3749,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $stop_all_trail_orders = new \GateApi\Model\StopAllTrailOrders(); // \GateApi\Model\StopAllTrailOrders | 
 
 try {
@@ -3709,7 +3768,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **stop_all_trail_orders** | [**\GateApi\Model\StopAllTrailOrders**](../Model/StopAllTrailOrders.md)|  |
 
 ### Return type
@@ -3752,7 +3811,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['contract'] = 'contract_example'; // string | Contract name
 $associate_array['is_finished'] = True; // bool | Whether historical order
 $associate_array['start_at'] = 56; // int | Start time of time range
@@ -3784,7 +3843,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Contract name | [optional]
  **is_finished** | **bool**| Whether historical order | [optional]
  **start_at** | **int**| Start time of time range | [optional]
@@ -3838,7 +3897,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $id = 56; // int | Order ID
 
 try {
@@ -3857,7 +3916,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **id** | **int**| Order ID |
 
 ### Return type
@@ -3900,7 +3959,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $update_trail_order = new \GateApi\Model\UpdateTrailOrder(); // \GateApi\Model\UpdateTrailOrder | 
 
 try {
@@ -3919,7 +3978,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **update_trail_order** | [**\GateApi\Model\UpdateTrailOrder**](../Model/UpdateTrailOrder.md)|  |
 
 ### Return type
@@ -3962,7 +4021,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['id'] = 56; // int | Order ID
 $associate_array['page_num'] = 1; // int | Page number, starting from 1
 $associate_array['page_size'] = 20; // int | Number of items per page
@@ -3985,7 +4044,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **id** | **int**| Order ID |
  **page_num** | **int**| Page number, starting from 1 | [optional] [default to 1]
  **page_size** | **int**| Number of items per page | [optional] [default to 20]
@@ -4030,7 +4089,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $create_chase_order_req = new \GateApi\Model\CreateChaseOrderReq(); // \GateApi\Model\CreateChaseOrderReq | 
 
 try {
@@ -4049,7 +4108,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **create_chase_order_req** | [**\GateApi\Model\CreateChaseOrderReq**](../Model/CreateChaseOrderReq.md)|  |
 
 ### Return type
@@ -4092,7 +4151,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $stop_chase_order_req = new \GateApi\Model\StopChaseOrderReq(); // \GateApi\Model\StopChaseOrderReq | 
 
 try {
@@ -4111,7 +4170,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **stop_chase_order_req** | [**\GateApi\Model\StopChaseOrderReq**](../Model/StopChaseOrderReq.md)|  |
 
 ### Return type
@@ -4154,7 +4213,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $stop_all_chase_orders_req = new \GateApi\Model\StopAllChaseOrdersReq(); // \GateApi\Model\StopAllChaseOrdersReq | 
 
 try {
@@ -4173,7 +4232,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **stop_all_chase_orders_req** | [**\GateApi\Model\StopAllChaseOrdersReq**](../Model/StopAllChaseOrdersReq.md)|  |
 
 ### Return type
@@ -4216,7 +4275,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['sort_by'] = 56; // int | Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
 $associate_array['contract'] = 'contract_example'; // string | Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
 $associate_array['is_finished'] = True; // bool | true to query finished orders, false to query in-progress orders
@@ -4246,7 +4305,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **sort_by** | **int**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 |
  **contract** | **string**| Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase | [optional]
  **is_finished** | **bool**| true to query finished orders, false to query in-progress orders | [optional]
@@ -4298,7 +4357,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $id = 'id_example'; // string | Order ID, must be a non-zero positive integer
 
 try {
@@ -4317,7 +4376,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **id** | **string**| Order ID, must be a non-zero positive integer |
 
 ### Return type
@@ -4360,7 +4419,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['settle'] = 'usdt'; // string | Settle currency
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
 $associate_array['status'] = 'status_example'; // string | Query order list based on status
 $associate_array['contract'] = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 $associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
@@ -4384,7 +4443,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **status** | **string**| Query order list based on status |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
  **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
@@ -4430,7 +4489,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $futures_price_triggered_order = new \GateApi\Model\FuturesPriceTriggeredOrder(); // \GateApi\Model\FuturesPriceTriggeredOrder | 
 
 try {
@@ -4449,7 +4508,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **futures_price_triggered_order** | [**\GateApi\Model\FuturesPriceTriggeredOrder**](../Model/FuturesPriceTriggeredOrder.md)|  |
 
 ### Return type
@@ -4492,7 +4551,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $contract = 'BTC_USDT'; // string | Futures contract, return related data only if specified
 
 try {
@@ -4511,7 +4570,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **contract** | **string**| Futures contract, return related data only if specified | [optional]
 
 ### Return type
@@ -4554,7 +4613,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $order_id = 56; // int | ID returned when order is successfully created
 
 try {
@@ -4573,7 +4632,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **order_id** | **int**| ID returned when order is successfully created |
 
 ### Return type
@@ -4616,7 +4675,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $order_id = 56; // int | ID returned when order is successfully created
 
 try {
@@ -4635,7 +4694,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **order_id** | **int**| ID returned when order is successfully created |
 
 ### Return type
@@ -4678,7 +4737,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$settle = 'usdt'; // string | Settle currency
+$settle = 'usdt'; // string | Perpetual futures settlement currency
 $futures_update_price_triggered_order = new \GateApi\Model\FuturesUpdatePriceTriggeredOrder(); // \GateApi\Model\FuturesUpdatePriceTriggeredOrder | 
 
 try {
@@ -4697,7 +4756,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **string**| Settle currency |
+ **settle** | **string**| Perpetual futures settlement currency |
  **futures_update_price_triggered_order** | [**\GateApi\Model\FuturesUpdatePriceTriggeredOrder**](../Model/FuturesUpdatePriceTriggeredOrder.md)|  |
 
 ### Return type

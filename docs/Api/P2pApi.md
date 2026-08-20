@@ -4,7 +4,6 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**p2pMerchantQuerySpotBalance**](P2pApi.md#p2pMerchantQuerySpotBalance) | **GET** /spot/accounts | Query spot balance
 [**p2pMerchantAccountGetUserInfo**](P2pApi.md#p2pMerchantAccountGetUserInfo) | **POST** /p2p/merchant/account/get_user_info | Get account information
 [**p2pMerchantAccountGetCounterpartyUserInfo**](P2pApi.md#p2pMerchantAccountGetCounterpartyUserInfo) | **POST** /p2p/merchant/account/get_counterparty_user_info | Get counterparty information
 [**p2pMerchantAccountGetMyselfPayment**](P2pApi.md#p2pMerchantAccountGetMyselfPayment) | **POST** /p2p/merchant/account/get_myself_payment | Get payment method list
@@ -23,63 +22,6 @@ Method | HTTP request | Description
 [**p2pMerchantChatGetChatsList**](P2pApi.md#p2pMerchantChatGetChatsList) | **POST** /p2p/merchant/chat/get_chats_list | Get chat history
 [**p2pMerchantChatSendChatMessage**](P2pApi.md#p2pMerchantChatSendChatMessage) | **POST** /p2p/merchant/chat/send_chat_message | Send text message
 [**p2pMerchantChatUploadChatFile**](P2pApi.md#p2pMerchantChatUploadChatFile) | **POST** /p2p/merchant/chat/upload_chat_file | Upload chat file
-
-
-## p2pMerchantQuerySpotBalance
-
-> p2pMerchantQuerySpotBalance()
-
-Query spot balance
-
-Use Spot API `GET /spot/accounts` to query spot account balance; this entry is for guidance only and does not define separate P2P Merchant request parameters or response body.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Gate APIv4 authorization: apiv4
-$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
-
-
-$apiInstance = new GateApi\Api\P2pApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
-try {
-    $apiInstance->p2pMerchantQuerySpotBalance();
-} catch (GateApi\GateApiException $e) {
-    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
-} catch (Exception $e) {
-    echo 'Exception when calling P2pApi->p2pMerchantQuerySpotBalance: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[apiv4](../../README.md#apiv4)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
 
 
 ## p2pMerchantAccountGetUserInfo

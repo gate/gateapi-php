@@ -1,6 +1,6 @@
 <?php
 /**
- * UniCurrencyPair
+ * FuturesADLRiskState
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * UniCurrencyPair Class Doc Comment
+ * FuturesADLRiskState Class Doc Comment
  *
  * @category Class
- * @description Currency pair of the loan
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class UniCurrencyPair implements ModelInterface, ArrayAccess
+class FuturesADLRiskState implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UniCurrencyPair';
+    protected static $openAPIModelName = 'FuturesADLRiskState';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,12 +54,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency_pair' => 'string',
-        'base_min_borrow_amount' => 'string',
-        'quote_min_borrow_amount' => 'string',
-        'leverage' => 'string',
-        'status' => 'string',
-        'delisted_time' => 'float'
+        'state' => 'string',
+        'calculated_at_ms' => 'int'
     ];
 
     /**
@@ -69,12 +64,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'currency_pair' => null,
-        'base_min_borrow_amount' => null,
-        'quote_min_borrow_amount' => null,
-        'leverage' => null,
-        'status' => null,
-        'delisted_time' => 'int64'
+        'state' => null,
+        'calculated_at_ms' => 'int64'
     ];
 
     /**
@@ -104,12 +95,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency_pair' => 'currency_pair',
-        'base_min_borrow_amount' => 'base_min_borrow_amount',
-        'quote_min_borrow_amount' => 'quote_min_borrow_amount',
-        'leverage' => 'leverage',
-        'status' => 'status',
-        'delisted_time' => 'delisted_time'
+        'state' => 'state',
+        'calculated_at_ms' => 'calculated_at_ms'
     ];
 
     /**
@@ -118,12 +105,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'currency_pair' => 'setCurrencyPair',
-        'base_min_borrow_amount' => 'setBaseMinBorrowAmount',
-        'quote_min_borrow_amount' => 'setQuoteMinBorrowAmount',
-        'leverage' => 'setLeverage',
-        'status' => 'setStatus',
-        'delisted_time' => 'setDelistedTime'
+        'state' => 'setState',
+        'calculated_at_ms' => 'setCalculatedAtMs'
     ];
 
     /**
@@ -132,12 +115,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'currency_pair' => 'getCurrencyPair',
-        'base_min_borrow_amount' => 'getBaseMinBorrowAmount',
-        'quote_min_borrow_amount' => 'getQuoteMinBorrowAmount',
-        'leverage' => 'getLeverage',
-        'status' => 'getStatus',
-        'delisted_time' => 'getDelistedTime'
+        'state' => 'getState',
+        'calculated_at_ms' => 'getCalculatedAtMs'
     ];
 
     /**
@@ -181,8 +160,25 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const STATE_NORMAL = 'normal';
+    const STATE_WARNING = 'warning';
+    const STATE_ADL_RISK = 'adl_risk';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStateAllowableValues()
+    {
+        return [
+            self::STATE_NORMAL,
+            self::STATE_WARNING,
+            self::STATE_ADL_RISK,
+        ];
+    }
     
 
     /**
@@ -200,12 +196,8 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
-        $this->container['base_min_borrow_amount'] = isset($data['base_min_borrow_amount']) ? $data['base_min_borrow_amount'] : null;
-        $this->container['quote_min_borrow_amount'] = isset($data['quote_min_borrow_amount']) ? $data['quote_min_borrow_amount'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['delisted_time'] = isset($data['delisted_time']) ? $data['delisted_time'] : null;
+        $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        $this->container['calculated_at_ms'] = isset($data['calculated_at_ms']) ? $data['calculated_at_ms'] : null;
     }
 
     /**
@@ -217,6 +209,20 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
+        $allowedValues = $this->getStateAllowableValues();
+        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'state', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['calculated_at_ms'] === null) {
+            $invalidProperties[] = "'calculated_at_ms' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -233,145 +239,58 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets currency_pair
+     * Gets state
      *
-     * @return string|null
+     * @return string
      */
-    public function getCurrencyPair()
+    public function getState()
     {
-        return $this->container['currency_pair'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets currency_pair
+     * Sets state
      *
-     * @param string|null $currency_pair Currency pair
+     * @param string $state Market ADL risk state
      *
      * @return $this
      */
-    public function setCurrencyPair($currency_pair)
+    public function setState($state)
     {
-        $this->container['currency_pair'] = $currency_pair;
+        $allowedValues = $this->getStateAllowableValues();
+        if (!in_array($state, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'state', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['state'] = $state;
 
         return $this;
     }
 
     /**
-     * Gets base_min_borrow_amount
+     * Gets calculated_at_ms
      *
-     * @return string|null
+     * @return int
      */
-    public function getBaseMinBorrowAmount()
+    public function getCalculatedAtMs()
     {
-        return $this->container['base_min_borrow_amount'];
+        return $this->container['calculated_at_ms'];
     }
 
     /**
-     * Sets base_min_borrow_amount
+     * Sets calculated_at_ms
      *
-     * @param string|null $base_min_borrow_amount Minimum borrow amount of base currency
+     * @param int $calculated_at_ms State calculation time, as a Unix timestamp in milliseconds
      *
      * @return $this
      */
-    public function setBaseMinBorrowAmount($base_min_borrow_amount)
+    public function setCalculatedAtMs($calculated_at_ms)
     {
-        $this->container['base_min_borrow_amount'] = $base_min_borrow_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets quote_min_borrow_amount
-     *
-     * @return string|null
-     */
-    public function getQuoteMinBorrowAmount()
-    {
-        return $this->container['quote_min_borrow_amount'];
-    }
-
-    /**
-     * Sets quote_min_borrow_amount
-     *
-     * @param string|null $quote_min_borrow_amount Minimum borrow amount of quote currency
-     *
-     * @return $this
-     */
-    public function setQuoteMinBorrowAmount($quote_min_borrow_amount)
-    {
-        $this->container['quote_min_borrow_amount'] = $quote_min_borrow_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets leverage
-     *
-     * @return string|null
-     */
-    public function getLeverage()
-    {
-        return $this->container['leverage'];
-    }
-
-    /**
-     * Sets leverage
-     *
-     * @param string|null $leverage Leverage multiplier
-     *
-     * @return $this
-     */
-    public function setLeverage($leverage)
-    {
-        $this->container['leverage'] = $leverage;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Status  - enabled: Enabled - disabled: Disabled
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets delisted_time
-     *
-     * @return float|null
-     */
-    public function getDelistedTime()
-    {
-        return $this->container['delisted_time'];
-    }
-
-    /**
-     * Sets delisted_time
-     *
-     * @param float|null $delisted_time Delisting Time
-     *
-     * @return $this
-     */
-    public function setDelistedTime($delisted_time)
-    {
-        $this->container['delisted_time'] = $delisted_time;
+        $this->container['calculated_at_ms'] = $calculated_at_ms;
 
         return $this;
     }

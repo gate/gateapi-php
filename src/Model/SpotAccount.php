@@ -1,6 +1,6 @@
 <?php
 /**
- * UniCurrencyPair
+ * SpotAccount
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * UniCurrencyPair Class Doc Comment
+ * SpotAccount Class Doc Comment
  *
  * @category Class
- * @description Currency pair of the loan
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class UniCurrencyPair implements ModelInterface, ArrayAccess
+class SpotAccount implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UniCurrencyPair';
+    protected static $openAPIModelName = 'SpotAccount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,12 +54,10 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency_pair' => 'string',
-        'base_min_borrow_amount' => 'string',
-        'quote_min_borrow_amount' => 'string',
-        'leverage' => 'string',
-        'status' => 'string',
-        'delisted_time' => 'float'
+        'currency' => 'string',
+        'available' => 'string',
+        'locked' => 'string',
+        'update_id' => 'int'
     ];
 
     /**
@@ -69,12 +66,10 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'currency_pair' => null,
-        'base_min_borrow_amount' => null,
-        'quote_min_borrow_amount' => null,
-        'leverage' => null,
-        'status' => null,
-        'delisted_time' => 'int64'
+        'currency' => null,
+        'available' => null,
+        'locked' => null,
+        'update_id' => 'int64'
     ];
 
     /**
@@ -104,12 +99,10 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency_pair' => 'currency_pair',
-        'base_min_borrow_amount' => 'base_min_borrow_amount',
-        'quote_min_borrow_amount' => 'quote_min_borrow_amount',
-        'leverage' => 'leverage',
-        'status' => 'status',
-        'delisted_time' => 'delisted_time'
+        'currency' => 'currency',
+        'available' => 'available',
+        'locked' => 'locked',
+        'update_id' => 'update_id'
     ];
 
     /**
@@ -118,12 +111,10 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'currency_pair' => 'setCurrencyPair',
-        'base_min_borrow_amount' => 'setBaseMinBorrowAmount',
-        'quote_min_borrow_amount' => 'setQuoteMinBorrowAmount',
-        'leverage' => 'setLeverage',
-        'status' => 'setStatus',
-        'delisted_time' => 'setDelistedTime'
+        'currency' => 'setCurrency',
+        'available' => 'setAvailable',
+        'locked' => 'setLocked',
+        'update_id' => 'setUpdateId'
     ];
 
     /**
@@ -132,12 +123,10 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'currency_pair' => 'getCurrencyPair',
-        'base_min_borrow_amount' => 'getBaseMinBorrowAmount',
-        'quote_min_borrow_amount' => 'getQuoteMinBorrowAmount',
-        'leverage' => 'getLeverage',
-        'status' => 'getStatus',
-        'delisted_time' => 'getDelistedTime'
+        'currency' => 'getCurrency',
+        'available' => 'getAvailable',
+        'locked' => 'getLocked',
+        'update_id' => 'getUpdateId'
     ];
 
     /**
@@ -200,12 +189,10 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
-        $this->container['base_min_borrow_amount'] = isset($data['base_min_borrow_amount']) ? $data['base_min_borrow_amount'] : null;
-        $this->container['quote_min_borrow_amount'] = isset($data['quote_min_borrow_amount']) ? $data['quote_min_borrow_amount'] : null;
-        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['delisted_time'] = isset($data['delisted_time']) ? $data['delisted_time'] : null;
+        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
+        $this->container['update_id'] = isset($data['update_id']) ? $data['update_id'] : null;
     }
 
     /**
@@ -233,145 +220,97 @@ class UniCurrencyPair implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets currency_pair
+     * Gets currency
      *
      * @return string|null
      */
-    public function getCurrencyPair()
+    public function getCurrency()
     {
-        return $this->container['currency_pair'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets currency_pair
+     * Sets currency
      *
-     * @param string|null $currency_pair Currency pair
+     * @param string|null $currency Currency detail
      *
      * @return $this
      */
-    public function setCurrencyPair($currency_pair)
+    public function setCurrency($currency)
     {
-        $this->container['currency_pair'] = $currency_pair;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets base_min_borrow_amount
+     * Gets available
      *
      * @return string|null
      */
-    public function getBaseMinBorrowAmount()
+    public function getAvailable()
     {
-        return $this->container['base_min_borrow_amount'];
+        return $this->container['available'];
     }
 
     /**
-     * Sets base_min_borrow_amount
+     * Sets available
      *
-     * @param string|null $base_min_borrow_amount Minimum borrow amount of base currency
+     * @param string|null $available Available amount
      *
      * @return $this
      */
-    public function setBaseMinBorrowAmount($base_min_borrow_amount)
+    public function setAvailable($available)
     {
-        $this->container['base_min_borrow_amount'] = $base_min_borrow_amount;
+        $this->container['available'] = $available;
 
         return $this;
     }
 
     /**
-     * Gets quote_min_borrow_amount
+     * Gets locked
      *
      * @return string|null
      */
-    public function getQuoteMinBorrowAmount()
+    public function getLocked()
     {
-        return $this->container['quote_min_borrow_amount'];
+        return $this->container['locked'];
     }
 
     /**
-     * Sets quote_min_borrow_amount
+     * Sets locked
      *
-     * @param string|null $quote_min_borrow_amount Minimum borrow amount of quote currency
+     * @param string|null $locked Locked amount, used in trading
      *
      * @return $this
      */
-    public function setQuoteMinBorrowAmount($quote_min_borrow_amount)
+    public function setLocked($locked)
     {
-        $this->container['quote_min_borrow_amount'] = $quote_min_borrow_amount;
+        $this->container['locked'] = $locked;
 
         return $this;
     }
 
     /**
-     * Gets leverage
+     * Gets update_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getLeverage()
+    public function getUpdateId()
     {
-        return $this->container['leverage'];
+        return $this->container['update_id'];
     }
 
     /**
-     * Sets leverage
+     * Sets update_id
      *
-     * @param string|null $leverage Leverage multiplier
+     * @param int|null $update_id Version number
      *
      * @return $this
      */
-    public function setLeverage($leverage)
+    public function setUpdateId($update_id)
     {
-        $this->container['leverage'] = $leverage;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Status  - enabled: Enabled - disabled: Disabled
-     *
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets delisted_time
-     *
-     * @return float|null
-     */
-    public function getDelistedTime()
-    {
-        return $this->container['delisted_time'];
-    }
-
-    /**
-     * Sets delisted_time
-     *
-     * @param float|null $delisted_time Delisting Time
-     *
-     * @return $this
-     */
-    public function setDelistedTime($delisted_time)
-    {
-        $this->container['delisted_time'] = $delisted_time;
+        $this->container['update_id'] = $update_id;
 
         return $this;
     }

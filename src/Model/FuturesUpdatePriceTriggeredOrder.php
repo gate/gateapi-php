@@ -291,7 +291,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     /**
      * Sets settle
      *
-     * @param string|null $settle Settlement Currency (e.g., USDT, BTC)
+     * @param string|null $settle Perpetual futures settlement currency, e.g. usdt, btc, usd1
      *
      * @return $this
      */
