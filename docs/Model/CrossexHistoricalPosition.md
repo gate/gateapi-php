@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **position_side** | **string** | Position Direction Before Close | [optional] 
 **position_mode** | **string** | Position Mode at Close | [optional] 
 **leverage** | **string** | Leverage at Close | [optional] 
+**margin_mode** | **string** | Margin mode (CROSS/ISOLATED) | [optional] 
 **business_type** | **string** | Business Type | 
 **create_time** | **string** | Created time | [optional] 
 **update_time** | **string** | Update time | [optional] 

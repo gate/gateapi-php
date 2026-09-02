@@ -70,7 +70,8 @@ class Trade implements ModelInterface, ArrayAccess
         'amend_text' => 'string',
         'sequence_id' => 'string',
         'text' => 'string',
-        'deal' => 'string'
+        'deal' => 'string',
+        'trade_quote' => 'string'
     ];
 
     /**
@@ -95,7 +96,8 @@ class Trade implements ModelInterface, ArrayAccess
         'amend_text' => null,
         'sequence_id' => null,
         'text' => null,
-        'deal' => null
+        'deal' => null,
+        'trade_quote' => null
     ];
 
     /**
@@ -141,7 +143,8 @@ class Trade implements ModelInterface, ArrayAccess
         'amend_text' => 'amend_text',
         'sequence_id' => 'sequence_id',
         'text' => 'text',
-        'deal' => 'deal'
+        'deal' => 'deal',
+        'trade_quote' => 'trade_quote'
     ];
 
     /**
@@ -166,7 +169,8 @@ class Trade implements ModelInterface, ArrayAccess
         'amend_text' => 'setAmendText',
         'sequence_id' => 'setSequenceId',
         'text' => 'setText',
-        'deal' => 'setDeal'
+        'deal' => 'setDeal',
+        'trade_quote' => 'setTradeQuote'
     ];
 
     /**
@@ -191,7 +195,8 @@ class Trade implements ModelInterface, ArrayAccess
         'amend_text' => 'getAmendText',
         'sequence_id' => 'getSequenceId',
         'text' => 'getText',
-        'deal' => 'getDeal'
+        'deal' => 'getDeal',
+        'trade_quote' => 'getTradeQuote'
     ];
 
     /**
@@ -301,6 +306,7 @@ class Trade implements ModelInterface, ArrayAccess
         $this->container['sequence_id'] = isset($data['sequence_id']) ? $data['sequence_id'] : null;
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['deal'] = isset($data['deal']) ? $data['deal'] : null;
+        $this->container['trade_quote'] = isset($data['trade_quote']) ? $data['trade_quote'] : null;
     }
 
     /**
@@ -765,6 +771,30 @@ class Trade implements ModelInterface, ArrayAccess
     public function setDeal($deal)
     {
         $this->container['deal'] = $deal;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_quote
+     *
+     * @return string|null
+     */
+    public function getTradeQuote()
+    {
+        return $this->container['trade_quote'];
+    }
+
+    /**
+     * Sets trade_quote
+     *
+     * @param string|null $trade_quote Actual quote currency used for the trade
+     *
+     * @return $this
+     */
+    public function setTradeQuote($trade_quote)
+    {
+        $this->container['trade_quote'] = $trade_quote;
 
         return $this;
     }

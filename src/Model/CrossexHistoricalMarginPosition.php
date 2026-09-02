@@ -658,7 +658,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
     /**
      * Sets interest
      *
-     * @param string $interest Total Deducted Interest
+     * @param string $interest Accumulated position interest
      *
      * @return $this
      */

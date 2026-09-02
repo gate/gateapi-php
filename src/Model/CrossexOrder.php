@@ -532,7 +532,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param string $state Order status:  NEW: Validated and queued to be sent to the exchange.  OPEN: Resting on the exchange order book.  PARTIALLY_FILLED: Partially filled.  FILLED: Fully filled.  FAIL: CrossEx internal validation failed; see the `reason` field for details.  REJECT: Rejected by the exchange; see the `reason` field for details.
+     * @param string $state Order status: `NEW`: validated locally, pending submission to the exchange `OPEN`: resting on the exchange order book `PARTIALLY_FILLED`: partially filled `FILLED`: fully filled `FAIL`: CrossEx validation failed; see `reason` `REJECT`: rejected by the exchange; see `reason` `CANCELLED`: cancelled
      *
      * @return $this
      */
@@ -676,7 +676,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets business_type
      *
-     * @param string $business_type Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
+     * @param string $business_type Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin / `CONVERT` Flash Swap).
      *
      * @return $this
      */
@@ -1060,7 +1060,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets position_side
      *
-     * @param string $position_side Position side (`NONE` flat / `LONG` long / `SHORT` short).
+     * @param string $position_side Position side (`NONE` one-way position / `LONG` long / `SHORT` short)
      *
      * @return $this
      */

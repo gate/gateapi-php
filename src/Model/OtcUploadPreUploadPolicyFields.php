@@ -1,6 +1,6 @@
 <?php
 /**
- * CrossexConvertQuoteRequest
+ * OtcUploadPreUploadPolicyFields
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * CrossexConvertQuoteRequest Class Doc Comment
+ * OtcUploadPreUploadPolicyFields Class Doc Comment
  *
  * @category Class
- * @description Flash Swap Quote Request Body
+ * @description S3 POST Policy signature fields; send unchanged as form-data during direct upload
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
+class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CrossexConvertQuoteRequest';
+    protected static $openAPIModelName = 'OtcUploadPreUploadPolicyFields';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,10 +55,13 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange_type' => 'string',
-        'from_coin' => 'string',
-        'to_coin' => 'string',
-        'from_amount' => 'string'
+        'key' => 'string',
+        'content_type' => 'string',
+        'x_amz_credential' => 'string',
+        'x_amz_algorithm' => 'string',
+        'x_amz_date' => 'string',
+        'policy' => 'string',
+        'x_amz_signature' => 'string'
     ];
 
     /**
@@ -67,10 +70,13 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'exchange_type' => null,
-        'from_coin' => null,
-        'to_coin' => null,
-        'from_amount' => null
+        'key' => null,
+        'content_type' => null,
+        'x_amz_credential' => null,
+        'x_amz_algorithm' => null,
+        'x_amz_date' => null,
+        'policy' => null,
+        'x_amz_signature' => null
     ];
 
     /**
@@ -100,10 +106,13 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange_type' => 'exchange_type',
-        'from_coin' => 'from_coin',
-        'to_coin' => 'to_coin',
-        'from_amount' => 'from_amount'
+        'key' => 'key',
+        'content_type' => 'Content-Type',
+        'x_amz_credential' => 'X-Amz-Credential',
+        'x_amz_algorithm' => 'X-Amz-Algorithm',
+        'x_amz_date' => 'X-Amz-Date',
+        'policy' => 'Policy',
+        'x_amz_signature' => 'X-Amz-Signature'
     ];
 
     /**
@@ -112,10 +121,13 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'exchange_type' => 'setExchangeType',
-        'from_coin' => 'setFromCoin',
-        'to_coin' => 'setToCoin',
-        'from_amount' => 'setFromAmount'
+        'key' => 'setKey',
+        'content_type' => 'setContentType',
+        'x_amz_credential' => 'setXAmzCredential',
+        'x_amz_algorithm' => 'setXAmzAlgorithm',
+        'x_amz_date' => 'setXAmzDate',
+        'policy' => 'setPolicy',
+        'x_amz_signature' => 'setXAmzSignature'
     ];
 
     /**
@@ -124,10 +136,13 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'exchange_type' => 'getExchangeType',
-        'from_coin' => 'getFromCoin',
-        'to_coin' => 'getToCoin',
-        'from_amount' => 'getFromAmount'
+        'key' => 'getKey',
+        'content_type' => 'getContentType',
+        'x_amz_credential' => 'getXAmzCredential',
+        'x_amz_algorithm' => 'getXAmzAlgorithm',
+        'x_amz_date' => 'getXAmzDate',
+        'policy' => 'getPolicy',
+        'x_amz_signature' => 'getXAmzSignature'
     ];
 
     /**
@@ -190,10 +205,13 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
-        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
-        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
+        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        $this->container['x_amz_credential'] = isset($data['x_amz_credential']) ? $data['x_amz_credential'] : null;
+        $this->container['x_amz_algorithm'] = isset($data['x_amz_algorithm']) ? $data['x_amz_algorithm'] : null;
+        $this->container['x_amz_date'] = isset($data['x_amz_date']) ? $data['x_amz_date'] : null;
+        $this->container['policy'] = isset($data['policy']) ? $data['policy'] : null;
+        $this->container['x_amz_signature'] = isset($data['x_amz_signature']) ? $data['x_amz_signature'] : null;
     }
 
     /**
@@ -205,17 +223,26 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
         }
-        if ($this->container['from_coin'] === null) {
-            $invalidProperties[] = "'from_coin' can't be null";
+        if ($this->container['content_type'] === null) {
+            $invalidProperties[] = "'content_type' can't be null";
         }
-        if ($this->container['to_coin'] === null) {
-            $invalidProperties[] = "'to_coin' can't be null";
+        if ($this->container['x_amz_credential'] === null) {
+            $invalidProperties[] = "'x_amz_credential' can't be null";
         }
-        if ($this->container['from_amount'] === null) {
-            $invalidProperties[] = "'from_amount' can't be null";
+        if ($this->container['x_amz_algorithm'] === null) {
+            $invalidProperties[] = "'x_amz_algorithm' can't be null";
+        }
+        if ($this->container['x_amz_date'] === null) {
+            $invalidProperties[] = "'x_amz_date' can't be null";
+        }
+        if ($this->container['policy'] === null) {
+            $invalidProperties[] = "'policy' can't be null";
+        }
+        if ($this->container['x_amz_signature'] === null) {
+            $invalidProperties[] = "'x_amz_signature' can't be null";
         }
         return $invalidProperties;
     }
@@ -233,97 +260,169 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets exchange_type
+     * Gets key
      *
      * @return string
      */
-    public function getExchangeType()
+    public function getKey()
     {
-        return $this->container['exchange_type'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets key
      *
-     * @param string $exchange_type Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, and KRAKEN
+     * @param string $key Plaintext temporary object path, identical to base64_decode(file_key)
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setKey($key)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets from_coin
+     * Gets content_type
      *
      * @return string
      */
-    public function getFromCoin()
+    public function getContentType()
     {
-        return $this->container['from_coin'];
+        return $this->container['content_type'];
     }
 
     /**
-     * Sets from_coin
+     * Sets content_type
      *
-     * @param string $from_coin Asset Sold
+     * @param string $content_type Must match the decoded content_type from the pre-upload request
      *
      * @return $this
      */
-    public function setFromCoin($from_coin)
+    public function setContentType($content_type)
     {
-        $this->container['from_coin'] = $from_coin;
+        $this->container['content_type'] = $content_type;
 
         return $this;
     }
 
     /**
-     * Gets to_coin
+     * Gets x_amz_credential
      *
      * @return string
      */
-    public function getToCoin()
+    public function getXAmzCredential()
     {
-        return $this->container['to_coin'];
+        return $this->container['x_amz_credential'];
     }
 
     /**
-     * Sets to_coin
+     * Sets x_amz_credential
      *
-     * @param string $to_coin Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT
+     * @param string $x_amz_credential AWS temporary credential and scope; submit them unchanged during direct upload
      *
      * @return $this
      */
-    public function setToCoin($to_coin)
+    public function setXAmzCredential($x_amz_credential)
     {
-        $this->container['to_coin'] = $to_coin;
+        $this->container['x_amz_credential'] = $x_amz_credential;
 
         return $this;
     }
 
     /**
-     * Gets from_amount
+     * Gets x_amz_algorithm
      *
      * @return string
      */
-    public function getFromAmount()
+    public function getXAmzAlgorithm()
     {
-        return $this->container['from_amount'];
+        return $this->container['x_amz_algorithm'];
     }
 
     /**
-     * Sets from_amount
+     * Sets x_amz_algorithm
      *
-     * @param string $from_amount Amount to sell
+     * @param string $x_amz_algorithm AWS signing algorithm; submit it unchanged during direct upload
      *
      * @return $this
      */
-    public function setFromAmount($from_amount)
+    public function setXAmzAlgorithm($x_amz_algorithm)
     {
-        $this->container['from_amount'] = $from_amount;
+        $this->container['x_amz_algorithm'] = $x_amz_algorithm;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_amz_date
+     *
+     * @return string
+     */
+    public function getXAmzDate()
+    {
+        return $this->container['x_amz_date'];
+    }
+
+    /**
+     * Sets x_amz_date
+     *
+     * @param string $x_amz_date AWS signing timestamp; submit it unchanged during direct upload
+     *
+     * @return $this
+     */
+    public function setXAmzDate($x_amz_date)
+    {
+        $this->container['x_amz_date'] = $x_amz_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets policy
+     *
+     * @return string
+     */
+    public function getPolicy()
+    {
+        return $this->container['policy'];
+    }
+
+    /**
+     * Sets policy
+     *
+     * @param string $policy Base64-encoded S3 POST Policy; submit it unchanged during direct upload
+     *
+     * @return $this
+     */
+    public function setPolicy($policy)
+    {
+        $this->container['policy'] = $policy;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_amz_signature
+     *
+     * @return string
+     */
+    public function getXAmzSignature()
+    {
+        return $this->container['x_amz_signature'];
+    }
+
+    /**
+     * Sets x_amz_signature
+     *
+     * @param string $x_amz_signature S3 POST Policy signature; submit it unchanged during direct upload
+     *
+     * @return $this
+     */
+    public function setXAmzSignature($x_amz_signature)
+    {
+        $this->container['x_amz_signature'] = $x_amz_signature;
 
         return $this;
     }

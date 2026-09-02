@@ -58,7 +58,8 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
         'bank_id' => 'string',
         'id_document_front' => 'string',
         'id_document_back' => 'string',
-        'address_proof' => 'string'
+        'address_proof' => 'string',
+        'relationship_proof' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
         'bank_id' => null,
         'id_document_front' => null,
         'id_document_back' => null,
-        'address_proof' => null
+        'address_proof' => null,
+        'relationship_proof' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
         'bank_id' => 'bank_id',
         'id_document_front' => 'id_document_front',
         'id_document_back' => 'id_document_back',
-        'address_proof' => 'address_proof'
+        'address_proof' => 'address_proof',
+        'relationship_proof' => 'relationship_proof'
     ];
 
     /**
@@ -115,7 +118,8 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
         'bank_id' => 'setBankId',
         'id_document_front' => 'setIdDocumentFront',
         'id_document_back' => 'setIdDocumentBack',
-        'address_proof' => 'setAddressProof'
+        'address_proof' => 'setAddressProof',
+        'relationship_proof' => 'setRelationshipProof'
     ];
 
     /**
@@ -127,7 +131,8 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
         'bank_id' => 'getBankId',
         'id_document_front' => 'getIdDocumentFront',
         'id_document_back' => 'getIdDocumentBack',
-        'address_proof' => 'getAddressProof'
+        'address_proof' => 'getAddressProof',
+        'relationship_proof' => 'getRelationshipProof'
     ];
 
     /**
@@ -194,6 +199,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
         $this->container['id_document_front'] = isset($data['id_document_front']) ? $data['id_document_front'] : null;
         $this->container['id_document_back'] = isset($data['id_document_back']) ? $data['id_document_back'] : null;
         $this->container['address_proof'] = isset($data['address_proof']) ? $data['address_proof'] : null;
+        $this->container['relationship_proof'] = isset($data['relationship_proof']) ? $data['relationship_proof'] : null;
     }
 
     /**
@@ -207,15 +213,6 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
 
         if ($this->container['bank_id'] === null) {
             $invalidProperties[] = "'bank_id' can't be null";
-        }
-        if ($this->container['id_document_front'] === null) {
-            $invalidProperties[] = "'id_document_front' can't be null";
-        }
-        if ($this->container['id_document_back'] === null) {
-            $invalidProperties[] = "'id_document_back' can't be null";
-        }
-        if ($this->container['address_proof'] === null) {
-            $invalidProperties[] = "'address_proof' can't be null";
         }
         return $invalidProperties;
     }
@@ -259,7 +256,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     /**
      * Gets id_document_front
      *
-     * @return string
+     * @return string|null
      */
     public function getIdDocumentFront()
     {
@@ -269,7 +266,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     /**
      * Sets id_document_front
      *
-     * @param string $id_document_front ID document front-side file content (multipart file field, binary/Base64)
+     * @param string|null $id_document_front ID document front-side file content (multipart file field, binary/Base64)
      *
      * @return $this
      */
@@ -283,7 +280,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     /**
      * Gets id_document_back
      *
-     * @return string
+     * @return string|null
      */
     public function getIdDocumentBack()
     {
@@ -293,7 +290,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     /**
      * Sets id_document_back
      *
-     * @param string $id_document_back ID document back-side file content (multipart file field, binary/Base64)
+     * @param string|null $id_document_back ID document back-side file content (multipart file field, binary/Base64)
      *
      * @return $this
      */
@@ -307,7 +304,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     /**
      * Gets address_proof
      *
-     * @return string
+     * @return string|null
      */
     public function getAddressProof()
     {
@@ -317,13 +314,37 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     /**
      * Sets address_proof
      *
-     * @param string $address_proof Proof-of-address file content (multipart file field, binary/Base64)
+     * @param string|null $address_proof Proof-of-address file content (multipart file field, binary/Base64)
      *
      * @return $this
      */
     public function setAddressProof($address_proof)
     {
         $this->container['address_proof'] = $address_proof;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationship_proof
+     *
+     * @return string|null
+     */
+    public function getRelationshipProof()
+    {
+        return $this->container['relationship_proof'];
+    }
+
+    /**
+     * Sets relationship_proof
+     *
+     * @param string|null $relationship_proof Optional. JSON string of relationship_proof.
+     *
+     * @return $this
+     */
+    public function setRelationshipProof($relationship_proof)
+    {
+        $this->container['relationship_proof'] = $relationship_proof;
 
         return $this;
     }

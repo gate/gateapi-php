@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **base_name** | **string** | Base currency name | [optional] 
 **quote** | **string** | Quote currency | [optional] 
 **quote_name** | **string** | Quote currency name | [optional] 
+**trade_quotes** | **string[]** | Quote currencies supported by the unified market; null means that the market does not support unified quote currencies | [optional] 
 **fee** | **string** | Trading fee rate(deprecated) | [optional] 
 **min_base_amount** | **string** | Minimum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] 
 **min_quote_amount** | **string** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] 

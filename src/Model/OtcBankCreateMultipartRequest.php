@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * OtcBankCreateMultipartRequest Class Doc Comment
  *
  * @category Class
- * @description Inner create-bank-card &#x60;multipart/form-data&#x60;. Use the form field &#x60;documentation_file&#x60; to upload the account-opening proof.
+ * @description Inner create-bank-card &#x60;multipart/form-data&#x60;. Account-opening proof file (choose one):  - **Pre-upload**: &#x60;documentation_file_key&#x60; + &#x60;file_type&#x60; (call &#x60;POST /otc/upload/pre_upload&#x60; first, &#x60;scene&#x3D;bank&#x60;); - **Multipart direct upload**: &#x60;documentation_file&#x60; file field.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -64,7 +64,9 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         'remittance_line_number' => 'string',
         'agent_bank_name' => 'string',
         'agent_bank_swift' => 'string',
-        'documentation_file' => 'string'
+        'documentation_file' => 'string',
+        'documentation_file_key' => 'string',
+        'file_type' => 'string'
     ];
 
     /**
@@ -82,7 +84,9 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         'remittance_line_number' => null,
         'agent_bank_name' => null,
         'agent_bank_swift' => null,
-        'documentation_file' => null
+        'documentation_file' => null,
+        'documentation_file_key' => null,
+        'file_type' => null
     ];
 
     /**
@@ -121,7 +125,9 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         'remittance_line_number' => 'remittance_line_number',
         'agent_bank_name' => 'agent_bank_name',
         'agent_bank_swift' => 'agent_bank_swift',
-        'documentation_file' => 'documentation_file'
+        'documentation_file' => 'documentation_file',
+        'documentation_file_key' => 'documentation_file_key',
+        'file_type' => 'file_type'
     ];
 
     /**
@@ -139,7 +145,9 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         'remittance_line_number' => 'setRemittanceLineNumber',
         'agent_bank_name' => 'setAgentBankName',
         'agent_bank_swift' => 'setAgentBankSwift',
-        'documentation_file' => 'setDocumentationFile'
+        'documentation_file' => 'setDocumentationFile',
+        'documentation_file_key' => 'setDocumentationFileKey',
+        'file_type' => 'setFileType'
     ];
 
     /**
@@ -157,7 +165,9 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         'remittance_line_number' => 'getRemittanceLineNumber',
         'agent_bank_name' => 'getAgentBankName',
         'agent_bank_swift' => 'getAgentBankSwift',
-        'documentation_file' => 'getDocumentationFile'
+        'documentation_file' => 'getDocumentationFile',
+        'documentation_file_key' => 'getDocumentationFileKey',
+        'file_type' => 'getFileType'
     ];
 
     /**
@@ -230,6 +240,8 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         $this->container['agent_bank_name'] = isset($data['agent_bank_name']) ? $data['agent_bank_name'] : null;
         $this->container['agent_bank_swift'] = isset($data['agent_bank_swift']) ? $data['agent_bank_swift'] : null;
         $this->container['documentation_file'] = isset($data['documentation_file']) ? $data['documentation_file'] : null;
+        $this->container['documentation_file_key'] = isset($data['documentation_file_key']) ? $data['documentation_file_key'] : null;
+        $this->container['file_type'] = isset($data['file_type']) ? $data['file_type'] : null;
     }
 
     /**
@@ -258,9 +270,6 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
         }
         if ($this->container['swift'] === null) {
             $invalidProperties[] = "'swift' can't be null";
-        }
-        if ($this->container['documentation_file'] === null) {
-            $invalidProperties[] = "'documentation_file' can't be null";
         }
         return $invalidProperties;
     }
@@ -496,7 +505,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
     /**
      * Gets documentation_file
      *
-     * @return string
+     * @return string|null
      */
     public function getDocumentationFile()
     {
@@ -506,13 +515,61 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
     /**
      * Sets documentation_file
      *
-     * @param string $documentation_file Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment)
+     * @param string|null $documentation_file Multipart direct upload; mutually exclusive with documentation_file_key
      *
      * @return $this
      */
     public function setDocumentationFile($documentation_file)
     {
         $this->container['documentation_file'] = $documentation_file;
+
+        return $this;
+    }
+
+    /**
+     * Gets documentation_file_key
+     *
+     * @return string|null
+     */
+    public function getDocumentationFileKey()
+    {
+        return $this->container['documentation_file_key'];
+    }
+
+    /**
+     * Sets documentation_file_key
+     *
+     * @param string|null $documentation_file_key Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted)
+     *
+     * @return $this
+     */
+    public function setDocumentationFileKey($documentation_file_key)
+    {
+        $this->container['documentation_file_key'] = $documentation_file_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets file_type
+     *
+     * @return string|null
+     */
+    public function getFileType()
+    {
+        return $this->container['file_type'];
+    }
+
+    /**
+     * Sets file_type
+     *
+     * @param string|null $file_type Required when using documentation_file_key; plaintext MIME or its base64
+     *
+     * @return $this
+     */
+    public function setFileType($file_type)
+    {
+        $this->container['file_type'] = $file_type;
 
         return $this;
     }

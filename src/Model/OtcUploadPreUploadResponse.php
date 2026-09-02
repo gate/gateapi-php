@@ -1,6 +1,6 @@
 <?php
 /**
- * CrossexConvertQuoteRequest
+ * OtcUploadPreUploadResponse
  *
  * PHP version 7
  *
@@ -30,15 +30,14 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * CrossexConvertQuoteRequest Class Doc Comment
+ * OtcUploadPreUploadResponse Class Doc Comment
  *
  * @category Class
- * @description Flash Swap Quote Request Body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
+class OtcUploadPreUploadResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +46,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CrossexConvertQuoteRequest';
+    protected static $openAPIModelName = 'OtcUploadPreUploadResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,10 +54,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange_type' => 'string',
-        'from_coin' => 'string',
-        'to_coin' => 'string',
-        'from_amount' => 'string'
+        'code' => 'int',
+        'message' => 'string',
+        'data' => '\GateApi\Model\OtcUploadPreUploadData',
+        'timestamp' => 'int'
     ];
 
     /**
@@ -67,10 +66,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'exchange_type' => null,
-        'from_coin' => null,
-        'to_coin' => null,
-        'from_amount' => null
+        'code' => null,
+        'message' => null,
+        'data' => null,
+        'timestamp' => null
     ];
 
     /**
@@ -100,10 +99,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange_type' => 'exchange_type',
-        'from_coin' => 'from_coin',
-        'to_coin' => 'to_coin',
-        'from_amount' => 'from_amount'
+        'code' => 'code',
+        'message' => 'message',
+        'data' => 'data',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -112,10 +111,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'exchange_type' => 'setExchangeType',
-        'from_coin' => 'setFromCoin',
-        'to_coin' => 'setToCoin',
-        'from_amount' => 'setFromAmount'
+        'code' => 'setCode',
+        'message' => 'setMessage',
+        'data' => 'setData',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -124,10 +123,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'exchange_type' => 'getExchangeType',
-        'from_coin' => 'getFromCoin',
-        'to_coin' => 'getToCoin',
-        'from_amount' => 'getFromAmount'
+        'code' => 'getCode',
+        'message' => 'getMessage',
+        'data' => 'getData',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -190,10 +189,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
-        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
-        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
     }
 
     /**
@@ -205,17 +204,17 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
         }
-        if ($this->container['from_coin'] === null) {
-            $invalidProperties[] = "'from_coin' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['to_coin'] === null) {
-            $invalidProperties[] = "'to_coin' can't be null";
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
         }
-        if ($this->container['from_amount'] === null) {
-            $invalidProperties[] = "'from_amount' can't be null";
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -233,97 +232,97 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets exchange_type
+     * Gets code
      *
-     * @return string
+     * @return int
      */
-    public function getExchangeType()
+    public function getCode()
     {
-        return $this->container['exchange_type'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets code
      *
-     * @param string $exchange_type Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, and KRAKEN
+     * @param int $code 0 success; 10010400 parameter error
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setCode($code)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets from_coin
+     * Gets message
      *
      * @return string
      */
-    public function getFromCoin()
+    public function getMessage()
     {
-        return $this->container['from_coin'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets from_coin
+     * Sets message
      *
-     * @param string $from_coin Asset Sold
+     * @param string $message Response message
      *
      * @return $this
      */
-    public function setFromCoin($from_coin)
+    public function setMessage($message)
     {
-        $this->container['from_coin'] = $from_coin;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets to_coin
+     * Gets data
      *
-     * @return string
+     * @return \GateApi\Model\OtcUploadPreUploadData
      */
-    public function getToCoin()
+    public function getData()
     {
-        return $this->container['to_coin'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets to_coin
+     * Sets data
      *
-     * @param string $to_coin Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT
+     * @param \GateApi\Model\OtcUploadPreUploadData $data data
      *
      * @return $this
      */
-    public function setToCoin($to_coin)
+    public function setData($data)
     {
-        $this->container['to_coin'] = $to_coin;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets from_amount
+     * Gets timestamp
      *
-     * @return string
+     * @return int
      */
-    public function getFromAmount()
+    public function getTimestamp()
     {
-        return $this->container['from_amount'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets from_amount
+     * Sets timestamp
      *
-     * @param string $from_amount Amount to sell
+     * @param int $timestamp Response timestamp (in seconds)
      *
      * @return $this
      */
-    public function setFromAmount($from_amount)
+    public function setTimestamp($timestamp)
     {
-        $this->container['from_amount'] = $from_amount;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

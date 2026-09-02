@@ -62,7 +62,8 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
         'passport' => 'string',
         'share_holding_structure' => 'string',
         'funds_statement' => 'string',
-        'additional' => 'string'
+        'additional' => 'string',
+        'relationship_proof' => 'string'
     ];
 
     /**
@@ -78,7 +79,8 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
         'passport' => null,
         'share_holding_structure' => null,
         'funds_statement' => null,
-        'additional' => null
+        'additional' => null,
+        'relationship_proof' => null
     ];
 
     /**
@@ -115,7 +117,8 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
         'passport' => 'passport',
         'share_holding_structure' => 'share_holding_structure',
         'funds_statement' => 'funds_statement',
-        'additional' => 'additional'
+        'additional' => 'additional',
+        'relationship_proof' => 'relationship_proof'
     ];
 
     /**
@@ -131,7 +134,8 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
         'passport' => 'setPassport',
         'share_holding_structure' => 'setShareHoldingStructure',
         'funds_statement' => 'setFundsStatement',
-        'additional' => 'setAdditional'
+        'additional' => 'setAdditional',
+        'relationship_proof' => 'setRelationshipProof'
     ];
 
     /**
@@ -147,7 +151,8 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
         'passport' => 'getPassport',
         'share_holding_structure' => 'getShareHoldingStructure',
         'funds_statement' => 'getFundsStatement',
-        'additional' => 'getAdditional'
+        'additional' => 'getAdditional',
+        'relationship_proof' => 'getRelationshipProof'
     ];
 
     /**
@@ -218,6 +223,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
         $this->container['share_holding_structure'] = isset($data['share_holding_structure']) ? $data['share_holding_structure'] : null;
         $this->container['funds_statement'] = isset($data['funds_statement']) ? $data['funds_statement'] : null;
         $this->container['additional'] = isset($data['additional']) ? $data['additional'] : null;
+        $this->container['relationship_proof'] = isset($data['relationship_proof']) ? $data['relationship_proof'] : null;
     }
 
     /**
@@ -231,18 +237,6 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
 
         if ($this->container['bank_id'] === null) {
             $invalidProperties[] = "'bank_id' can't be null";
-        }
-        if ($this->container['certificate'] === null) {
-            $invalidProperties[] = "'certificate' can't be null";
-        }
-        if ($this->container['share_holders'] === null) {
-            $invalidProperties[] = "'share_holders' can't be null";
-        }
-        if ($this->container['passport'] === null) {
-            $invalidProperties[] = "'passport' can't be null";
-        }
-        if ($this->container['share_holding_structure'] === null) {
-            $invalidProperties[] = "'share_holding_structure' can't be null";
         }
         return $invalidProperties;
     }
@@ -310,7 +304,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Gets certificate
      *
-     * @return string
+     * @return string|null
      */
     public function getCertificate()
     {
@@ -320,7 +314,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Sets certificate
      *
-     * @param string $certificate Business license / registration certificate file content (multipart file field, binary/Base64)
+     * @param string|null $certificate Business license / registration certificate file content (multipart file field, binary/Base64)
      *
      * @return $this
      */
@@ -334,7 +328,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Gets share_holders
      *
-     * @return string
+     * @return string|null
      */
     public function getShareHolders()
     {
@@ -344,7 +338,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Sets share_holders
      *
-     * @param string $share_holders Register of shareholders file content (multipart file field, binary/Base64)
+     * @param string|null $share_holders Register of shareholders file content (multipart file field, binary/Base64)
      *
      * @return $this
      */
@@ -358,7 +352,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Gets passport
      *
-     * @return string
+     * @return string|null
      */
     public function getPassport()
     {
@@ -368,7 +362,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Sets passport
      *
-     * @param string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64)
+     * @param string|null $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64)
      *
      * @return $this
      */
@@ -382,7 +376,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Gets share_holding_structure
      *
-     * @return string
+     * @return string|null
      */
     public function getShareHoldingStructure()
     {
@@ -392,7 +386,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     /**
      * Sets share_holding_structure
      *
-     * @param string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64)
+     * @param string|null $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64)
      *
      * @return $this
      */
@@ -447,6 +441,30 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     public function setAdditional($additional)
     {
         $this->container['additional'] = $additional;
+
+        return $this;
+    }
+
+    /**
+     * Gets relationship_proof
+     *
+     * @return string|null
+     */
+    public function getRelationshipProof()
+    {
+        return $this->container['relationship_proof'];
+    }
+
+    /**
+     * Sets relationship_proof
+     *
+     * @param string|null $relationship_proof Optional. JSON string of relationship_proof.
+     *
+     * @return $this
+     */
+    public function setRelationshipProof($relationship_proof)
+    {
+        $this->container['relationship_proof'] = $relationship_proof;
 
         return $this;
     }

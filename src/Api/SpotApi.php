@@ -4870,6 +4870,7 @@ class SpotApi
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
      * @param  string $account Specify account type  Classic account: All are included if not specified Unified account: Specify &#x60;unified&#x60; (optional)
+     * @param  string $trade_quote In a **unified market** only, specifies the actual quote currency for cancellation; when omitted, all orders matching the other criteria are cancelled (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -4877,9 +4878,9 @@ class SpotApi
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\OrderCancel[]
      */
-    public function cancelOrders($currency_pair = null, $side = null, $account = null, $action_mode = null, $x_gate_exptime = null)
+    public function cancelOrders($currency_pair = null, $side = null, $account = null, $trade_quote = null, $action_mode = null, $x_gate_exptime = null)
     {
-        list($response) = $this->cancelOrdersWithHttpInfo($currency_pair, $side, $account, $action_mode, $x_gate_exptime);
+        list($response) = $this->cancelOrdersWithHttpInfo($currency_pair, $side, $account, $trade_quote, $action_mode, $x_gate_exptime);
         return $response;
     }
 
@@ -4891,6 +4892,7 @@ class SpotApi
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
      * @param  string $account Specify account type  Classic account: All are included if not specified Unified account: Specify &#x60;unified&#x60; (optional)
+     * @param  string $trade_quote In a **unified market** only, specifies the actual quote currency for cancellation; when omitted, all orders matching the other criteria are cancelled (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
@@ -4898,9 +4900,9 @@ class SpotApi
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\OrderCancel[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function cancelOrdersWithHttpInfo($currency_pair = null, $side = null, $account = null, $action_mode = null, $x_gate_exptime = null)
+    public function cancelOrdersWithHttpInfo($currency_pair = null, $side = null, $account = null, $trade_quote = null, $action_mode = null, $x_gate_exptime = null)
     {
-        $request = $this->cancelOrdersRequest($currency_pair, $side, $account, $action_mode, $x_gate_exptime);
+        $request = $this->cancelOrdersRequest($currency_pair, $side, $account, $trade_quote, $action_mode, $x_gate_exptime);
 
         $options = $this->createHttpClientOption();
         try {
@@ -4949,15 +4951,16 @@ class SpotApi
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
      * @param  string $account Specify account type  Classic account: All are included if not specified Unified account: Specify &#x60;unified&#x60; (optional)
+     * @param  string $trade_quote In a **unified market** only, specifies the actual quote currency for cancellation; when omitted, all orders matching the other criteria are cancelled (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelOrdersAsync($currency_pair = null, $side = null, $account = null, $action_mode = null, $x_gate_exptime = null)
+    public function cancelOrdersAsync($currency_pair = null, $side = null, $account = null, $trade_quote = null, $action_mode = null, $x_gate_exptime = null)
     {
-        return $this->cancelOrdersAsyncWithHttpInfo($currency_pair, $side, $account, $action_mode, $x_gate_exptime)
+        return $this->cancelOrdersAsyncWithHttpInfo($currency_pair, $side, $account, $trade_quote, $action_mode, $x_gate_exptime)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4973,16 +4976,17 @@ class SpotApi
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
      * @param  string $account Specify account type  Classic account: All are included if not specified Unified account: Specify &#x60;unified&#x60; (optional)
+     * @param  string $trade_quote In a **unified market** only, specifies the actual quote currency for cancellation; when omitted, all orders matching the other criteria are cancelled (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelOrdersAsyncWithHttpInfo($currency_pair = null, $side = null, $account = null, $action_mode = null, $x_gate_exptime = null)
+    public function cancelOrdersAsyncWithHttpInfo($currency_pair = null, $side = null, $account = null, $trade_quote = null, $action_mode = null, $x_gate_exptime = null)
     {
         $returnType = '\GateApi\Model\OrderCancel[]';
-        $request = $this->cancelOrdersRequest($currency_pair, $side, $account, $action_mode, $x_gate_exptime);
+        $request = $this->cancelOrdersRequest($currency_pair, $side, $account, $trade_quote, $action_mode, $x_gate_exptime);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5024,13 +5028,14 @@ class SpotApi
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
      * @param  string $account Specify account type  Classic account: All are included if not specified Unified account: Specify &#x60;unified&#x60; (optional)
+     * @param  string $trade_quote In a **unified market** only, specifies the actual quote currency for cancellation; when omitted, all orders matching the other criteria are cancelled (optional)
      * @param  string $action_mode Processing Mode  When placing an order, different fields are returned based on the action_mode  - &#x60;ACK&#x60;: Asynchronous mode, returns only key order fields - &#x60;RESULT&#x60;: No clearing information - &#x60;FULL&#x60;: Full mode (default) (optional)
      * @param  string $x_gate_exptime Specify the expiration time (milliseconds); if the GATE receives the request time greater than the expiration time, the request will be rejected (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function cancelOrdersRequest($currency_pair = null, $side = null, $account = null, $action_mode = null, $x_gate_exptime = null)
+    protected function cancelOrdersRequest($currency_pair = null, $side = null, $account = null, $trade_quote = null, $action_mode = null, $x_gate_exptime = null)
     {
 
         $resourcePath = '/spot/orders';
@@ -5073,6 +5078,18 @@ class SpotApi
             }
             else {
                 $queryParams['account'] = $account;
+            }
+        }
+
+        // query params
+        if ($trade_quote !== null) {
+            if('form' === 'form' && is_array($trade_quote)) {
+                foreach($trade_quote as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['trade_quote'] = $trade_quote;
             }
         }
 

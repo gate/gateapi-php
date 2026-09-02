@@ -64,6 +64,7 @@ class Order implements ModelInterface, ArrayAccess
         'update_time_ms' => 'int',
         'status' => 'string',
         'currency_pair' => 'string',
+        'trade_quote' => 'string',
         'type' => 'string',
         'account' => 'string',
         'side' => 'string',
@@ -111,6 +112,7 @@ class Order implements ModelInterface, ArrayAccess
         'update_time_ms' => 'int64',
         'status' => null,
         'currency_pair' => null,
+        'trade_quote' => null,
         'type' => null,
         'account' => null,
         'side' => null,
@@ -179,6 +181,7 @@ class Order implements ModelInterface, ArrayAccess
         'update_time_ms' => 'update_time_ms',
         'status' => 'status',
         'currency_pair' => 'currency_pair',
+        'trade_quote' => 'trade_quote',
         'type' => 'type',
         'account' => 'account',
         'side' => 'side',
@@ -226,6 +229,7 @@ class Order implements ModelInterface, ArrayAccess
         'update_time_ms' => 'setUpdateTimeMs',
         'status' => 'setStatus',
         'currency_pair' => 'setCurrencyPair',
+        'trade_quote' => 'setTradeQuote',
         'type' => 'setType',
         'account' => 'setAccount',
         'side' => 'setSide',
@@ -273,6 +277,7 @@ class Order implements ModelInterface, ArrayAccess
         'update_time_ms' => 'getUpdateTimeMs',
         'status' => 'getStatus',
         'currency_pair' => 'getCurrencyPair',
+        'trade_quote' => 'getTradeQuote',
         'type' => 'getType',
         'account' => 'getAccount',
         'side' => 'getSide',
@@ -496,6 +501,7 @@ class Order implements ModelInterface, ArrayAccess
         $this->container['update_time_ms'] = isset($data['update_time_ms']) ? $data['update_time_ms'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        $this->container['trade_quote'] = isset($data['trade_quote']) ? $data['trade_quote'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : 'limit';
         $this->container['account'] = isset($data['account']) ? $data['account'] : 'spot';
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
@@ -830,6 +836,30 @@ class Order implements ModelInterface, ArrayAccess
     public function setCurrencyPair($currency_pair)
     {
         $this->container['currency_pair'] = $currency_pair;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_quote
+     *
+     * @return string|null
+     */
+    public function getTradeQuote()
+    {
+        return $this->container['trade_quote'];
+    }
+
+    /**
+     * Sets trade_quote
+     *
+     * @param string|null $trade_quote Actual quote currency used for the trade; can be specified only in a unified market
+     *
+     * @return $this
+     */
+    public function setTradeQuote($trade_quote)
+    {
+        $this->container['trade_quote'] = $trade_quote;
 
         return $this;
     }

@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **to_coin** | **string** | Asset Bought | 
 **from_amount** | **string** | Amount to sell | 
 **to_amount** | **string** | Amount to buy | 
-**price** | **string** | Price | 
+**price** | **string** | Quoted price | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

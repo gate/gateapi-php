@@ -406,7 +406,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     /**
      * Sets equity
      *
-     * @param string|null $equity Equity (only USDT has a value; other assets are 0)
+     * @param string|null $equity Net margin equity for the currency
      *
      * @return $this
      */
@@ -430,7 +430,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     /**
      * Sets futures_initial_margin
      *
-     * @param string|null $futures_initial_margin Futures initial margin (only USDT has a value; other assets are 0)
+     * @param string|null $futures_initial_margin Currency-specific futures initial margin. This value is populated for futures settlement currencies (USDT/USDC/USD)
      *
      * @return $this
      */
@@ -454,7 +454,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     /**
      * Sets futures_maintenance_margin
      *
-     * @param string|null $futures_maintenance_margin Futures maintenance margin (only USDT has a value; other assets are 0)
+     * @param string|null $futures_maintenance_margin Currency-specific futures maintenance margin. This value is populated for futures settlement currencies (USDT/USDC/USD)
      *
      * @return $this
      */
@@ -478,7 +478,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     /**
      * Sets borrowing_initial_margin
      *
-     * @param string $borrowing_initial_margin Margin trading initial margin (only USDT has a value; other assets are 0)
+     * @param string $borrowing_initial_margin Currency-specific margin trading initial margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD)
      *
      * @return $this
      */
@@ -502,7 +502,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     /**
      * Sets borrowing_maintenance_margin
      *
-     * @param string $borrowing_maintenance_margin Margin trading maintenance margin (only USDT has a value; other assets are 0)
+     * @param string $borrowing_maintenance_margin Currency-specific margin trading maintenance margin. This value is populated for margin or futures settlement currencies (USDT/USDC/USD)
      *
      * @return $this
      */
@@ -550,7 +550,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     /**
      * Sets liability
      *
-     * @param string|null $liability Liabilities (only meaningful in isolated exchange mode; always 0 in cross-exchange mode)
+     * @param string|null $liability Liability for the currency. This value is populated only for USDT, USDC, or USD
      *
      * @return $this
      */

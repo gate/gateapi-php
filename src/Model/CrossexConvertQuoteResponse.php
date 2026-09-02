@@ -415,7 +415,7 @@ class CrossexConvertQuoteResponse implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string $price Price
+     * @param string $price Quoted price
      *
      * @return $this
      */

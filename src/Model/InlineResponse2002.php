@@ -292,7 +292,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets funding_interval
      *
-     * @param string $funding_interval Tier
+     * @param string $funding_interval Funding interval (in seconds)
      *
      * @return $this
      */
@@ -316,7 +316,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     /**
      * Sets funding_time
      *
-     * @param string $funding_time Next funding time
+     * @param string $funding_time Next funding time (Unix timestamp in milliseconds)
      *
      * @return $this
      */

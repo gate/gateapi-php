@@ -545,7 +545,7 @@ class CrossexOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets qty
      *
-     * @param string|null $qty Order quantity (required unless spot market buy)
+     * @param string|null $qty Order quantity (required unless spot or margin market buy)
      *
      * @return $this
      */

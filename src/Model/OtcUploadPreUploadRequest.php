@@ -1,6 +1,6 @@
 <?php
 /**
- * CrossexConvertQuoteRequest
+ * OtcUploadPreUploadRequest
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * CrossexConvertQuoteRequest Class Doc Comment
+ * OtcUploadPreUploadRequest Class Doc Comment
  *
  * @category Class
- * @description Flash Swap Quote Request Body
+ * @description File pre-upload request body
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
+class OtcUploadPreUploadRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CrossexConvertQuoteRequest';
+    protected static $openAPIModelName = 'OtcUploadPreUploadRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,10 +55,8 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange_type' => 'string',
-        'from_coin' => 'string',
-        'to_coin' => 'string',
-        'from_amount' => 'string'
+        'content_type' => 'string',
+        'scene' => 'string'
     ];
 
     /**
@@ -67,10 +65,8 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'exchange_type' => null,
-        'from_coin' => null,
-        'to_coin' => null,
-        'from_amount' => null
+        'content_type' => null,
+        'scene' => null
     ];
 
     /**
@@ -100,10 +96,8 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange_type' => 'exchange_type',
-        'from_coin' => 'from_coin',
-        'to_coin' => 'to_coin',
-        'from_amount' => 'from_amount'
+        'content_type' => 'content_type',
+        'scene' => 'scene'
     ];
 
     /**
@@ -112,10 +106,8 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'exchange_type' => 'setExchangeType',
-        'from_coin' => 'setFromCoin',
-        'to_coin' => 'setToCoin',
-        'from_amount' => 'setFromAmount'
+        'content_type' => 'setContentType',
+        'scene' => 'setScene'
     ];
 
     /**
@@ -124,10 +116,8 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'exchange_type' => 'getExchangeType',
-        'from_coin' => 'getFromCoin',
-        'to_coin' => 'getToCoin',
-        'from_amount' => 'getFromAmount'
+        'content_type' => 'getContentType',
+        'scene' => 'getScene'
     ];
 
     /**
@@ -171,8 +161,46 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const CONTENT_TYPE_A_W1H_Z2_UVC_G5N = 'aW1hZ2UvcG5n';
+    const CONTENT_TYPE_A_W1H_Z2_UVAN_BL_ZW = 'aW1hZ2UvanBlZw==';
+    const CONTENT_TYPE_A_W1H_Z2_UVAN_BN = 'aW1hZ2UvanBn';
+    const CONTENT_TYPE_YX_BWB_GLJ_YX_RPB24VC_G_RM = 'YXBwbGljYXRpb24vcGRm';
+    const SCENE_GENERAL = 'general';
+    const SCENE_BANK = 'bank';
+    const SCENE_ASSESSMENT = 'assessment';
+    const SCENE_CREDIT = 'credit';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getContentTypeAllowableValues()
+    {
+        return [
+            self::CONTENT_TYPE_A_W1H_Z2_UVC_G5N,
+            self::CONTENT_TYPE_A_W1H_Z2_UVAN_BL_ZW,
+            self::CONTENT_TYPE_A_W1H_Z2_UVAN_BN,
+            self::CONTENT_TYPE_YX_BWB_GLJ_YX_RPB24VC_G_RM,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSceneAllowableValues()
+    {
+        return [
+            self::SCENE_GENERAL,
+            self::SCENE_BANK,
+            self::SCENE_ASSESSMENT,
+            self::SCENE_CREDIT,
+        ];
+    }
     
 
     /**
@@ -190,10 +218,8 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
-        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
-        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
+        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        $this->container['scene'] = isset($data['scene']) ? $data['scene'] : 'general';
     }
 
     /**
@@ -205,18 +231,25 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
+        if ($this->container['content_type'] === null) {
+            $invalidProperties[] = "'content_type' can't be null";
         }
-        if ($this->container['from_coin'] === null) {
-            $invalidProperties[] = "'from_coin' can't be null";
+        $allowedValues = $this->getContentTypeAllowableValues();
+        if (!is_null($this->container['content_type']) && !in_array($this->container['content_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'content_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['to_coin'] === null) {
-            $invalidProperties[] = "'to_coin' can't be null";
+
+        $allowedValues = $this->getSceneAllowableValues();
+        if (!is_null($this->container['scene']) && !in_array($this->container['scene'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'scene', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['from_amount'] === null) {
-            $invalidProperties[] = "'from_amount' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -233,97 +266,67 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets exchange_type
+     * Gets content_type
      *
      * @return string
      */
-    public function getExchangeType()
+    public function getContentType()
     {
-        return $this->container['exchange_type'];
+        return $this->container['content_type'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets content_type
      *
-     * @param string $exchange_type Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, and KRAKEN
+     * @param string $content_type **Base64** of the file MIME type, required. Only image/png, image/jpeg, image/jpg, and application/pdf are supported.
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setContentType($content_type)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $allowedValues = $this->getContentTypeAllowableValues();
+        if (!in_array($content_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'content_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['content_type'] = $content_type;
 
         return $this;
     }
 
     /**
-     * Gets from_coin
+     * Gets scene
      *
-     * @return string
+     * @return string|null
      */
-    public function getFromCoin()
+    public function getScene()
     {
-        return $this->container['from_coin'];
+        return $this->container['scene'];
     }
 
     /**
-     * Sets from_coin
+     * Sets scene
      *
-     * @param string $from_coin Asset Sold
+     * @param string|null $scene Business scene, optional, defaults to general; determines temporary path and production directory after relocation
      *
      * @return $this
      */
-    public function setFromCoin($from_coin)
+    public function setScene($scene)
     {
-        $this->container['from_coin'] = $from_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets to_coin
-     *
-     * @return string
-     */
-    public function getToCoin()
-    {
-        return $this->container['to_coin'];
-    }
-
-    /**
-     * Sets to_coin
-     *
-     * @param string $to_coin Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT
-     *
-     * @return $this
-     */
-    public function setToCoin($to_coin)
-    {
-        $this->container['to_coin'] = $to_coin;
-
-        return $this;
-    }
-
-    /**
-     * Gets from_amount
-     *
-     * @return string
-     */
-    public function getFromAmount()
-    {
-        return $this->container['from_amount'];
-    }
-
-    /**
-     * Sets from_amount
-     *
-     * @param string $from_amount Amount to sell
-     *
-     * @return $this
-     */
-    public function setFromAmount($from_amount)
-    {
-        $this->container['from_amount'] = $from_amount;
+        $allowedValues = $this->getSceneAllowableValues();
+        if (!is_null($scene) && !in_array($scene, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'scene', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['scene'] = $scene;
 
         return $this;
     }

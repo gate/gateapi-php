@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **liquidation_fee** | **string** | Liquidation Fee Rate | 
 **delist_time** | **string** | Millisecond timestamp; &#x60;0&#x60; means not delisted. | 
 **support_rpi** | **string** | Whether RPI order placement is supported (true if supported; false otherwise) | [optional] 
+**support_cross** | **string** | Whether cross-margin order placement is supported (true if supported; false otherwise) | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

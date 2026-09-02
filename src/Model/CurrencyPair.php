@@ -60,6 +60,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'base_name' => 'string',
         'quote' => 'string',
         'quote_name' => 'string',
+        'trade_quotes' => 'string[]',
         'fee' => 'string',
         'min_base_amount' => 'string',
         'min_quote_amount' => 'string',
@@ -92,6 +93,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'base_name' => null,
         'quote' => null,
         'quote_name' => null,
+        'trade_quotes' => null,
         'fee' => null,
         'min_base_amount' => null,
         'min_quote_amount' => null,
@@ -145,6 +147,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'base_name' => 'base_name',
         'quote' => 'quote',
         'quote_name' => 'quote_name',
+        'trade_quotes' => 'trade_quotes',
         'fee' => 'fee',
         'min_base_amount' => 'min_base_amount',
         'min_quote_amount' => 'min_quote_amount',
@@ -177,6 +180,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'base_name' => 'setBaseName',
         'quote' => 'setQuote',
         'quote_name' => 'setQuoteName',
+        'trade_quotes' => 'setTradeQuotes',
         'fee' => 'setFee',
         'min_base_amount' => 'setMinBaseAmount',
         'min_quote_amount' => 'setMinQuoteAmount',
@@ -209,6 +213,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         'base_name' => 'getBaseName',
         'quote' => 'getQuote',
         'quote_name' => 'getQuoteName',
+        'trade_quotes' => 'getTradeQuotes',
         'fee' => 'getFee',
         'min_base_amount' => 'getMinBaseAmount',
         'min_quote_amount' => 'getMinQuoteAmount',
@@ -314,6 +319,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         $this->container['base_name'] = isset($data['base_name']) ? $data['base_name'] : null;
         $this->container['quote'] = isset($data['quote']) ? $data['quote'] : null;
         $this->container['quote_name'] = isset($data['quote_name']) ? $data['quote_name'] : null;
+        $this->container['trade_quotes'] = isset($data['trade_quotes']) ? $data['trade_quotes'] : null;
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
         $this->container['min_base_amount'] = isset($data['min_base_amount']) ? $data['min_base_amount'] : null;
         $this->container['min_quote_amount'] = isset($data['min_quote_amount']) ? $data['min_quote_amount'] : null;
@@ -483,6 +489,30 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     public function setQuoteName($quote_name)
     {
         $this->container['quote_name'] = $quote_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets trade_quotes
+     *
+     * @return string[]|null
+     */
+    public function getTradeQuotes()
+    {
+        return $this->container['trade_quotes'];
+    }
+
+    /**
+     * Sets trade_quotes
+     *
+     * @param string[]|null $trade_quotes Quote currencies supported by the unified market; null means that the market does not support unified quote currencies
+     *
+     * @return $this
+     */
+    public function setTradeQuotes($trade_quotes)
+    {
+        $this->container['trade_quotes'] = $trade_quotes;
 
         return $this;
     }

@@ -1054,18 +1054,20 @@ class OTCApi
      * @param  string $bank_address bank_address (required)
      * @param  string $iban iban (required)
      * @param  string $swift swift (required)
-     * @param  string $documentation_file Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) (required)
      * @param  string $remittance_line_number remittance_line_number (optional)
      * @param  string $agent_bank_name agent_bank_name (optional)
      * @param  string $agent_bank_swift agent_bank_swift (optional)
+     * @param  string $documentation_file Multipart direct upload; mutually exclusive with documentation_file_key (optional)
+     * @param  string $documentation_file_key Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted) (optional)
+     * @param  string $file_type Required when using documentation_file_key; plaintext MIME or its base64 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\OtcBankCreateResponse
      */
-    public function createOtcBank($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null)
+    public function createOtcBank($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null, $documentation_file = null, $documentation_file_key = null, $file_type = null)
     {
-        list($response) = $this->createOtcBankWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number, $agent_bank_name, $agent_bank_swift);
+        list($response) = $this->createOtcBankWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number, $agent_bank_name, $agent_bank_swift, $documentation_file, $documentation_file_key, $file_type);
         return $response;
     }
 
@@ -1080,18 +1082,20 @@ class OTCApi
      * @param  string $bank_address (required)
      * @param  string $iban (required)
      * @param  string $swift (required)
-     * @param  string $documentation_file Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) (required)
      * @param  string $remittance_line_number (optional)
      * @param  string $agent_bank_name (optional)
      * @param  string $agent_bank_swift (optional)
+     * @param  string $documentation_file Multipart direct upload; mutually exclusive with documentation_file_key (optional)
+     * @param  string $documentation_file_key Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted) (optional)
+     * @param  string $file_type Required when using documentation_file_key; plaintext MIME or its base64 (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\OtcBankCreateResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOtcBankWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null)
+    public function createOtcBankWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null, $documentation_file = null, $documentation_file_key = null, $file_type = null)
     {
-        $request = $this->createOtcBankRequest($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number, $agent_bank_name, $agent_bank_swift);
+        $request = $this->createOtcBankRequest($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number, $agent_bank_name, $agent_bank_swift, $documentation_file, $documentation_file_key, $file_type);
 
         $options = $this->createHttpClientOption();
         try {
@@ -1143,17 +1147,19 @@ class OTCApi
      * @param  string $bank_address (required)
      * @param  string $iban (required)
      * @param  string $swift (required)
-     * @param  string $documentation_file Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) (required)
      * @param  string $remittance_line_number (optional)
      * @param  string $agent_bank_name (optional)
      * @param  string $agent_bank_swift (optional)
+     * @param  string $documentation_file Multipart direct upload; mutually exclusive with documentation_file_key (optional)
+     * @param  string $documentation_file_key Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted) (optional)
+     * @param  string $file_type Required when using documentation_file_key; plaintext MIME or its base64 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOtcBankAsync($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null)
+    public function createOtcBankAsync($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null, $documentation_file = null, $documentation_file_key = null, $file_type = null)
     {
-        return $this->createOtcBankAsyncWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number, $agent_bank_name, $agent_bank_swift)
+        return $this->createOtcBankAsyncWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number, $agent_bank_name, $agent_bank_swift, $documentation_file, $documentation_file_key, $file_type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1172,18 +1178,20 @@ class OTCApi
      * @param  string $bank_address (required)
      * @param  string $iban (required)
      * @param  string $swift (required)
-     * @param  string $documentation_file Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) (required)
      * @param  string $remittance_line_number (optional)
      * @param  string $agent_bank_name (optional)
      * @param  string $agent_bank_swift (optional)
+     * @param  string $documentation_file Multipart direct upload; mutually exclusive with documentation_file_key (optional)
+     * @param  string $documentation_file_key Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted) (optional)
+     * @param  string $file_type Required when using documentation_file_key; plaintext MIME or its base64 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOtcBankAsyncWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null)
+    public function createOtcBankAsyncWithHttpInfo($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null, $documentation_file = null, $documentation_file_key = null, $file_type = null)
     {
         $returnType = '\GateApi\Model\OtcBankCreateResponse';
-        $request = $this->createOtcBankRequest($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number, $agent_bank_name, $agent_bank_swift);
+        $request = $this->createOtcBankRequest($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number, $agent_bank_name, $agent_bank_swift, $documentation_file, $documentation_file_key, $file_type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1228,15 +1236,17 @@ class OTCApi
      * @param  string $bank_address (required)
      * @param  string $iban (required)
      * @param  string $swift (required)
-     * @param  string $documentation_file Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) (required)
      * @param  string $remittance_line_number (optional)
      * @param  string $agent_bank_name (optional)
      * @param  string $agent_bank_swift (optional)
+     * @param  string $documentation_file Multipart direct upload; mutually exclusive with documentation_file_key (optional)
+     * @param  string $documentation_file_key Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted) (optional)
+     * @param  string $file_type Required when using documentation_file_key; plaintext MIME or its base64 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createOtcBankRequest($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $documentation_file, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null)
+    protected function createOtcBankRequest($bank_account_name, $bank_name, $bank_country, $bank_address, $iban, $swift, $remittance_line_number = null, $agent_bank_name = null, $agent_bank_swift = null, $documentation_file = null, $documentation_file_key = null, $file_type = null)
     {
         // verify the required parameter 'bank_account_name' is set
         if ($bank_account_name === null || (is_array($bank_account_name) && count($bank_account_name) === 0)) {
@@ -1272,12 +1282,6 @@ class OTCApi
         if ($swift === null || (is_array($swift) && count($swift) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $swift when calling createOtcBank'
-            );
-        }
-        // verify the required parameter 'documentation_file' is set
-        if ($documentation_file === null || (is_array($documentation_file) && count($documentation_file) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $documentation_file when calling createOtcBank'
             );
         }
 
@@ -1336,6 +1340,16 @@ class OTCApi
         // form params
         if ($documentation_file !== null) {
             $formParams['documentation_file'] = ObjectSerializer::toFormValue($documentation_file);
+        }
+
+        // form params
+        if ($documentation_file_key !== null) {
+            $formParams['documentation_file_key'] = ObjectSerializer::toFormValue($documentation_file_key);
+        }
+
+        // form params
+        if ($file_type !== null) {
+            $formParams['file_type'] = ObjectSerializer::toFormValue($file_type);
         }
 
         // body params
@@ -2130,17 +2144,18 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Personal)
      *
      * @param  string $bank_id bank_id (required)
-     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (required)
+     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\OtcActionResponse
      */
-    public function submitOtcBankPersonalSupplement($bank_id, $id_document_front, $id_document_back, $address_proof)
+    public function submitOtcBankPersonalSupplement($bank_id, $id_document_front = null, $id_document_back = null, $address_proof = null, $relationship_proof = null)
     {
-        list($response) = $this->submitOtcBankPersonalSupplementWithHttpInfo($bank_id, $id_document_front, $id_document_back, $address_proof);
+        list($response) = $this->submitOtcBankPersonalSupplementWithHttpInfo($bank_id, $id_document_front, $id_document_back, $address_proof, $relationship_proof);
         return $response;
     }
 
@@ -2150,17 +2165,18 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Personal)
      *
      * @param  string $bank_id (required)
-     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (required)
+     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\OtcActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function submitOtcBankPersonalSupplementWithHttpInfo($bank_id, $id_document_front, $id_document_back, $address_proof)
+    public function submitOtcBankPersonalSupplementWithHttpInfo($bank_id, $id_document_front = null, $id_document_back = null, $address_proof = null, $relationship_proof = null)
     {
-        $request = $this->submitOtcBankPersonalSupplementRequest($bank_id, $id_document_front, $id_document_back, $address_proof);
+        $request = $this->submitOtcBankPersonalSupplementRequest($bank_id, $id_document_front, $id_document_back, $address_proof, $relationship_proof);
 
         $options = $this->createHttpClientOption();
         try {
@@ -2207,16 +2223,17 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Personal)
      *
      * @param  string $bank_id (required)
-     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (required)
+     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submitOtcBankPersonalSupplementAsync($bank_id, $id_document_front, $id_document_back, $address_proof)
+    public function submitOtcBankPersonalSupplementAsync($bank_id, $id_document_front = null, $id_document_back = null, $address_proof = null, $relationship_proof = null)
     {
-        return $this->submitOtcBankPersonalSupplementAsyncWithHttpInfo($bank_id, $id_document_front, $id_document_back, $address_proof)
+        return $this->submitOtcBankPersonalSupplementAsyncWithHttpInfo($bank_id, $id_document_front, $id_document_back, $address_proof, $relationship_proof)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2230,17 +2247,18 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Personal)
      *
      * @param  string $bank_id (required)
-     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (required)
+     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submitOtcBankPersonalSupplementAsyncWithHttpInfo($bank_id, $id_document_front, $id_document_back, $address_proof)
+    public function submitOtcBankPersonalSupplementAsyncWithHttpInfo($bank_id, $id_document_front = null, $id_document_back = null, $address_proof = null, $relationship_proof = null)
     {
         $returnType = '\GateApi\Model\OtcActionResponse';
-        $request = $this->submitOtcBankPersonalSupplementRequest($bank_id, $id_document_front, $id_document_back, $address_proof);
+        $request = $this->submitOtcBankPersonalSupplementRequest($bank_id, $id_document_front, $id_document_back, $address_proof, $relationship_proof);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2280,37 +2298,20 @@ class OTCApi
      * Create request for operation 'submitOtcBankPersonalSupplement'
      *
      * @param  string $bank_id (required)
-     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (required)
-     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (required)
+     * @param  string $id_document_front ID document front-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $id_document_back ID document back-side file content (multipart file field, binary/Base64) (optional)
+     * @param  string $address_proof Proof-of-address file content (multipart file field, binary/Base64) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function submitOtcBankPersonalSupplementRequest($bank_id, $id_document_front, $id_document_back, $address_proof)
+    protected function submitOtcBankPersonalSupplementRequest($bank_id, $id_document_front = null, $id_document_back = null, $address_proof = null, $relationship_proof = null)
     {
         // verify the required parameter 'bank_id' is set
         if ($bank_id === null || (is_array($bank_id) && count($bank_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $bank_id when calling submitOtcBankPersonalSupplement'
-            );
-        }
-        // verify the required parameter 'id_document_front' is set
-        if ($id_document_front === null || (is_array($id_document_front) && count($id_document_front) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_document_front when calling submitOtcBankPersonalSupplement'
-            );
-        }
-        // verify the required parameter 'id_document_back' is set
-        if ($id_document_back === null || (is_array($id_document_back) && count($id_document_back) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id_document_back when calling submitOtcBankPersonalSupplement'
-            );
-        }
-        // verify the required parameter 'address_proof' is set
-        if ($address_proof === null || (is_array($address_proof) && count($address_proof) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $address_proof when calling submitOtcBankPersonalSupplement'
             );
         }
 
@@ -2339,6 +2340,11 @@ class OTCApi
         // form params
         if ($address_proof !== null) {
             $formParams['address_proof'] = ObjectSerializer::toFormValue($address_proof);
+        }
+
+        // form params
+        if ($relationship_proof !== null) {
+            $formParams['relationship_proof'] = ObjectSerializer::toFormValue($relationship_proof);
         }
 
         // body params
@@ -2416,21 +2422,22 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Enterprise)
      *
      * @param  string $bank_id bank_id (required)
-     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (required)
-     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (required)
      * @param  string $uid uid (optional)
+     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (optional)
+     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (optional)
      * @param  string $funds_statement Proof-of-funds file content (multipart file field, binary/Base64, optional) (optional)
      * @param  string $additional Other supplementary material file content (multipart file field, binary/Base64, optional) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\OtcActionResponse
      */
-    public function submitOtcBankEnterpriseSupplement($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid = null, $funds_statement = null, $additional = null)
+    public function submitOtcBankEnterpriseSupplement($bank_id, $uid = null, $certificate = null, $share_holders = null, $passport = null, $share_holding_structure = null, $funds_statement = null, $additional = null, $relationship_proof = null)
     {
-        list($response) = $this->submitOtcBankEnterpriseSupplementWithHttpInfo($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid, $funds_statement, $additional);
+        list($response) = $this->submitOtcBankEnterpriseSupplementWithHttpInfo($bank_id, $uid, $certificate, $share_holders, $passport, $share_holding_structure, $funds_statement, $additional, $relationship_proof);
         return $response;
     }
 
@@ -2440,21 +2447,22 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Enterprise)
      *
      * @param  string $bank_id (required)
-     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (required)
-     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (required)
      * @param  string $uid (optional)
+     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (optional)
+     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (optional)
      * @param  string $funds_statement Proof-of-funds file content (multipart file field, binary/Base64, optional) (optional)
      * @param  string $additional Other supplementary material file content (multipart file field, binary/Base64, optional) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\OtcActionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function submitOtcBankEnterpriseSupplementWithHttpInfo($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid = null, $funds_statement = null, $additional = null)
+    public function submitOtcBankEnterpriseSupplementWithHttpInfo($bank_id, $uid = null, $certificate = null, $share_holders = null, $passport = null, $share_holding_structure = null, $funds_statement = null, $additional = null, $relationship_proof = null)
     {
-        $request = $this->submitOtcBankEnterpriseSupplementRequest($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid, $funds_statement, $additional);
+        $request = $this->submitOtcBankEnterpriseSupplementRequest($bank_id, $uid, $certificate, $share_holders, $passport, $share_holding_structure, $funds_statement, $additional, $relationship_proof);
 
         $options = $this->createHttpClientOption();
         try {
@@ -2501,20 +2509,21 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Enterprise)
      *
      * @param  string $bank_id (required)
-     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (required)
-     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (required)
      * @param  string $uid (optional)
+     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (optional)
+     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (optional)
      * @param  string $funds_statement Proof-of-funds file content (multipart file field, binary/Base64, optional) (optional)
      * @param  string $additional Other supplementary material file content (multipart file field, binary/Base64, optional) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submitOtcBankEnterpriseSupplementAsync($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid = null, $funds_statement = null, $additional = null)
+    public function submitOtcBankEnterpriseSupplementAsync($bank_id, $uid = null, $certificate = null, $share_holders = null, $passport = null, $share_holding_structure = null, $funds_statement = null, $additional = null, $relationship_proof = null)
     {
-        return $this->submitOtcBankEnterpriseSupplementAsyncWithHttpInfo($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid, $funds_statement, $additional)
+        return $this->submitOtcBankEnterpriseSupplementAsyncWithHttpInfo($bank_id, $uid, $certificate, $share_holders, $passport, $share_holding_structure, $funds_statement, $additional, $relationship_proof)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2528,21 +2537,22 @@ class OTCApi
      * Submit Bank Card Supplement Materials (Enterprise)
      *
      * @param  string $bank_id (required)
-     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (required)
-     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (required)
      * @param  string $uid (optional)
+     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (optional)
+     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (optional)
      * @param  string $funds_statement Proof-of-funds file content (multipart file field, binary/Base64, optional) (optional)
      * @param  string $additional Other supplementary material file content (multipart file field, binary/Base64, optional) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function submitOtcBankEnterpriseSupplementAsyncWithHttpInfo($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid = null, $funds_statement = null, $additional = null)
+    public function submitOtcBankEnterpriseSupplementAsyncWithHttpInfo($bank_id, $uid = null, $certificate = null, $share_holders = null, $passport = null, $share_holding_structure = null, $funds_statement = null, $additional = null, $relationship_proof = null)
     {
         $returnType = '\GateApi\Model\OtcActionResponse';
-        $request = $this->submitOtcBankEnterpriseSupplementRequest($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid, $funds_statement, $additional);
+        $request = $this->submitOtcBankEnterpriseSupplementRequest($bank_id, $uid, $certificate, $share_holders, $passport, $share_holding_structure, $funds_statement, $additional, $relationship_proof);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2582,47 +2592,24 @@ class OTCApi
      * Create request for operation 'submitOtcBankEnterpriseSupplement'
      *
      * @param  string $bank_id (required)
-     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (required)
-     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (required)
-     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (required)
      * @param  string $uid (optional)
+     * @param  string $certificate Business license / registration certificate file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holders Register of shareholders file content (multipart file field, binary/Base64) (optional)
+     * @param  string $passport Legal representative / shareholder passport file content (multipart file field, binary/Base64) (optional)
+     * @param  string $share_holding_structure Ownership structure chart file content (multipart file field, binary/Base64) (optional)
      * @param  string $funds_statement Proof-of-funds file content (multipart file field, binary/Base64, optional) (optional)
      * @param  string $additional Other supplementary material file content (multipart file field, binary/Base64, optional) (optional)
+     * @param  string $relationship_proof Optional. JSON string of relationship_proof. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function submitOtcBankEnterpriseSupplementRequest($bank_id, $certificate, $share_holders, $passport, $share_holding_structure, $uid = null, $funds_statement = null, $additional = null)
+    protected function submitOtcBankEnterpriseSupplementRequest($bank_id, $uid = null, $certificate = null, $share_holders = null, $passport = null, $share_holding_structure = null, $funds_statement = null, $additional = null, $relationship_proof = null)
     {
         // verify the required parameter 'bank_id' is set
         if ($bank_id === null || (is_array($bank_id) && count($bank_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $bank_id when calling submitOtcBankEnterpriseSupplement'
-            );
-        }
-        // verify the required parameter 'certificate' is set
-        if ($certificate === null || (is_array($certificate) && count($certificate) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $certificate when calling submitOtcBankEnterpriseSupplement'
-            );
-        }
-        // verify the required parameter 'share_holders' is set
-        if ($share_holders === null || (is_array($share_holders) && count($share_holders) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $share_holders when calling submitOtcBankEnterpriseSupplement'
-            );
-        }
-        // verify the required parameter 'passport' is set
-        if ($passport === null || (is_array($passport) && count($passport) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $passport when calling submitOtcBankEnterpriseSupplement'
-            );
-        }
-        // verify the required parameter 'share_holding_structure' is set
-        if ($share_holding_structure === null || (is_array($share_holding_structure) && count($share_holding_structure) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $share_holding_structure when calling submitOtcBankEnterpriseSupplement'
             );
         }
 
@@ -2673,6 +2660,11 @@ class OTCApi
             $formParams['additional'] = ObjectSerializer::toFormValue($additional);
         }
 
+        // form params
+        if ($relationship_proof !== null) {
+            $formParams['relationship_proof'] = ObjectSerializer::toFormValue($relationship_proof);
+        }
+
         // body params
         $_tempBody = null;
 
@@ -2684,6 +2676,242 @@ class OTCApi
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
                 ['multipart/form-data']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createOtcUploadPreUpload
+     *
+     * Pre-upload file (temporary bucket)
+     *
+     * @param  \GateApi\Model\OtcUploadPreUploadRequest $otc_upload_pre_upload_request otc_upload_pre_upload_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\OtcUploadPreUploadResponse
+     */
+    public function createOtcUploadPreUpload($otc_upload_pre_upload_request)
+    {
+        list($response) = $this->createOtcUploadPreUploadWithHttpInfo($otc_upload_pre_upload_request);
+        return $response;
+    }
+
+    /**
+     * Operation createOtcUploadPreUploadWithHttpInfo
+     *
+     * Pre-upload file (temporary bucket)
+     *
+     * @param  \GateApi\Model\OtcUploadPreUploadRequest $otc_upload_pre_upload_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\OtcUploadPreUploadResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createOtcUploadPreUploadWithHttpInfo($otc_upload_pre_upload_request)
+    {
+        $request = $this->createOtcUploadPreUploadRequest($otc_upload_pre_upload_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\OtcUploadPreUploadResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation createOtcUploadPreUploadAsync
+     *
+     * Pre-upload file (temporary bucket)
+     *
+     * @param  \GateApi\Model\OtcUploadPreUploadRequest $otc_upload_pre_upload_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createOtcUploadPreUploadAsync($otc_upload_pre_upload_request)
+    {
+        return $this->createOtcUploadPreUploadAsyncWithHttpInfo($otc_upload_pre_upload_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createOtcUploadPreUploadAsyncWithHttpInfo
+     *
+     * Pre-upload file (temporary bucket)
+     *
+     * @param  \GateApi\Model\OtcUploadPreUploadRequest $otc_upload_pre_upload_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createOtcUploadPreUploadAsyncWithHttpInfo($otc_upload_pre_upload_request)
+    {
+        $returnType = '\GateApi\Model\OtcUploadPreUploadResponse';
+        $request = $this->createOtcUploadPreUploadRequest($otc_upload_pre_upload_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createOtcUploadPreUpload'
+     *
+     * @param  \GateApi\Model\OtcUploadPreUploadRequest $otc_upload_pre_upload_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createOtcUploadPreUploadRequest($otc_upload_pre_upload_request)
+    {
+        // verify the required parameter 'otc_upload_pre_upload_request' is set
+        if ($otc_upload_pre_upload_request === null || (is_array($otc_upload_pre_upload_request) && count($otc_upload_pre_upload_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $otc_upload_pre_upload_request when calling createOtcUploadPreUpload'
+            );
+        }
+
+        $resourcePath = '/otc/upload/pre_upload';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($otc_upload_pre_upload_request)) {
+            $_tempBody = $otc_upload_pre_upload_request;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
             );
         }
 

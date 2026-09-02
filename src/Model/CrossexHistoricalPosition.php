@@ -71,6 +71,7 @@ class CrossexHistoricalPosition implements ModelInterface, ArrayAccess
         'position_side' => 'string',
         'position_mode' => 'string',
         'leverage' => 'string',
+        'margin_mode' => 'string',
         'business_type' => 'string',
         'create_time' => 'string',
         'update_time' => 'string'
@@ -99,6 +100,7 @@ class CrossexHistoricalPosition implements ModelInterface, ArrayAccess
         'position_side' => null,
         'position_mode' => null,
         'leverage' => null,
+        'margin_mode' => null,
         'business_type' => null,
         'create_time' => null,
         'update_time' => null
@@ -148,6 +150,7 @@ class CrossexHistoricalPosition implements ModelInterface, ArrayAccess
         'position_side' => 'position_side',
         'position_mode' => 'position_mode',
         'leverage' => 'leverage',
+        'margin_mode' => 'margin_mode',
         'business_type' => 'business_type',
         'create_time' => 'create_time',
         'update_time' => 'update_time'
@@ -176,6 +179,7 @@ class CrossexHistoricalPosition implements ModelInterface, ArrayAccess
         'position_side' => 'setPositionSide',
         'position_mode' => 'setPositionMode',
         'leverage' => 'setLeverage',
+        'margin_mode' => 'setMarginMode',
         'business_type' => 'setBusinessType',
         'create_time' => 'setCreateTime',
         'update_time' => 'setUpdateTime'
@@ -204,6 +208,7 @@ class CrossexHistoricalPosition implements ModelInterface, ArrayAccess
         'position_side' => 'getPositionSide',
         'position_mode' => 'getPositionMode',
         'leverage' => 'getLeverage',
+        'margin_mode' => 'getMarginMode',
         'business_type' => 'getBusinessType',
         'create_time' => 'getCreateTime',
         'update_time' => 'getUpdateTime'
@@ -286,6 +291,7 @@ class CrossexHistoricalPosition implements ModelInterface, ArrayAccess
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
@@ -722,6 +728,30 @@ class CrossexHistoricalPosition implements ModelInterface, ArrayAccess
     public function setLeverage($leverage)
     {
         $this->container['leverage'] = $leverage;
+
+        return $this;
+    }
+
+    /**
+     * Gets margin_mode
+     *
+     * @return string|null
+     */
+    public function getMarginMode()
+    {
+        return $this->container['margin_mode'];
+    }
+
+    /**
+     * Sets margin_mode
+     *
+     * @param string|null $margin_mode Margin mode (CROSS/ISOLATED)
+     *
+     * @return $this
+     */
+    public function setMarginMode($margin_mode)
+    {
+        $this->container['margin_mode'] = $margin_mode;
 
         return $this;
     }

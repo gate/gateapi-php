@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **remittance_line_number** | **string** |  | [optional] 
 **agent_bank_name** | **string** |  | [optional] 
 **agent_bank_swift** | **string** |  | [optional] 
-**documentation_file** | **string** | Account opening proof file content (multipart file field, binary/Base64; jpg/jpeg/png/pdf, etc.; maximum 10 MB per file, subject to the live environment) | 
+**documentation_file** | **string** | Multipart direct upload; mutually exclusive with documentation_file_key | [optional] 
+**documentation_file_key** | **string** | Pre-upload mode; file_key returned by pre_upload (plaintext or base64 accepted) | [optional] 
+**file_type** | **string** | Required when using documentation_file_key; plaintext MIME or its base64 | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

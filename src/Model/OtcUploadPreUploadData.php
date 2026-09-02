@@ -1,6 +1,6 @@
 <?php
 /**
- * CrossexConvertQuoteRequest
+ * OtcUploadPreUploadData
  *
  * PHP version 7
  *
@@ -30,15 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * CrossexConvertQuoteRequest Class Doc Comment
+ * OtcUploadPreUploadData Class Doc Comment
  *
  * @category Class
- * @description Flash Swap Quote Request Body
+ * @description Pre-upload credentials and S3 direct-upload parameters
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
+class OtcUploadPreUploadData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CrossexConvertQuoteRequest';
+    protected static $openAPIModelName = 'OtcUploadPreUploadData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,10 +55,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange_type' => 'string',
-        'from_coin' => 'string',
-        'to_coin' => 'string',
-        'from_amount' => 'string'
+        'file_key' => 'string',
+        'url' => 'string',
+        'fields' => '\GateApi\Model\OtcUploadPreUploadPolicyFields',
+        'expires_in' => 'int'
     ];
 
     /**
@@ -67,10 +67,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'exchange_type' => null,
-        'from_coin' => null,
-        'to_coin' => null,
-        'from_amount' => null
+        'file_key' => null,
+        'url' => null,
+        'fields' => null,
+        'expires_in' => null
     ];
 
     /**
@@ -100,10 +100,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange_type' => 'exchange_type',
-        'from_coin' => 'from_coin',
-        'to_coin' => 'to_coin',
-        'from_amount' => 'from_amount'
+        'file_key' => 'file_key',
+        'url' => 'url',
+        'fields' => 'fields',
+        'expires_in' => 'expires_in'
     ];
 
     /**
@@ -112,10 +112,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'exchange_type' => 'setExchangeType',
-        'from_coin' => 'setFromCoin',
-        'to_coin' => 'setToCoin',
-        'from_amount' => 'setFromAmount'
+        'file_key' => 'setFileKey',
+        'url' => 'setUrl',
+        'fields' => 'setFields',
+        'expires_in' => 'setExpiresIn'
     ];
 
     /**
@@ -124,10 +124,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'exchange_type' => 'getExchangeType',
-        'from_coin' => 'getFromCoin',
-        'to_coin' => 'getToCoin',
-        'from_amount' => 'getFromAmount'
+        'file_key' => 'getFileKey',
+        'url' => 'getUrl',
+        'fields' => 'getFields',
+        'expires_in' => 'getExpiresIn'
     ];
 
     /**
@@ -190,10 +190,10 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
-        $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
-        $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
-        $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
+        $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
+        $this->container['expires_in'] = isset($data['expires_in']) ? $data['expires_in'] : null;
     }
 
     /**
@@ -205,17 +205,17 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['exchange_type'] === null) {
-            $invalidProperties[] = "'exchange_type' can't be null";
+        if ($this->container['file_key'] === null) {
+            $invalidProperties[] = "'file_key' can't be null";
         }
-        if ($this->container['from_coin'] === null) {
-            $invalidProperties[] = "'from_coin' can't be null";
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['to_coin'] === null) {
-            $invalidProperties[] = "'to_coin' can't be null";
+        if ($this->container['fields'] === null) {
+            $invalidProperties[] = "'fields' can't be null";
         }
-        if ($this->container['from_amount'] === null) {
-            $invalidProperties[] = "'from_amount' can't be null";
+        if ($this->container['expires_in'] === null) {
+            $invalidProperties[] = "'expires_in' can't be null";
         }
         return $invalidProperties;
     }
@@ -233,97 +233,97 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets exchange_type
+     * Gets file_key
      *
      * @return string
      */
-    public function getExchangeType()
+    public function getFileKey()
     {
-        return $this->container['exchange_type'];
+        return $this->container['file_key'];
     }
 
     /**
-     * Sets exchange_type
+     * Sets file_key
      *
-     * @param string $exchange_type Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, and KRAKEN
+     * @param string $file_key Base64 temporary object path; pass back **unchanged** on business submit—do not decode
      *
      * @return $this
      */
-    public function setExchangeType($exchange_type)
+    public function setFileKey($file_key)
     {
-        $this->container['exchange_type'] = $exchange_type;
+        $this->container['file_key'] = $file_key;
 
         return $this;
     }
 
     /**
-     * Gets from_coin
+     * Gets url
      *
      * @return string
      */
-    public function getFromCoin()
+    public function getUrl()
     {
-        return $this->container['from_coin'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets from_coin
+     * Sets url
      *
-     * @param string $from_coin Asset Sold
+     * @param string $url S3 direct upload URL
      *
      * @return $this
      */
-    public function setFromCoin($from_coin)
+    public function setUrl($url)
     {
-        $this->container['from_coin'] = $from_coin;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets to_coin
+     * Gets fields
      *
-     * @return string
+     * @return \GateApi\Model\OtcUploadPreUploadPolicyFields
      */
-    public function getToCoin()
+    public function getFields()
     {
-        return $this->container['to_coin'];
+        return $this->container['fields'];
     }
 
     /**
-     * Sets to_coin
+     * Sets fields
      *
-     * @param string $to_coin Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT
+     * @param \GateApi\Model\OtcUploadPreUploadPolicyFields $fields fields
      *
      * @return $this
      */
-    public function setToCoin($to_coin)
+    public function setFields($fields)
     {
-        $this->container['to_coin'] = $to_coin;
+        $this->container['fields'] = $fields;
 
         return $this;
     }
 
     /**
-     * Gets from_amount
+     * Gets expires_in
      *
-     * @return string
+     * @return int
      */
-    public function getFromAmount()
+    public function getExpiresIn()
     {
-        return $this->container['from_amount'];
+        return $this->container['expires_in'];
     }
 
     /**
-     * Sets from_amount
+     * Sets expires_in
      *
-     * @param string $from_amount Amount to sell
+     * @param int $expires_in Policy validity period in seconds; currently 5400 (90 minutes); aligns with `expiration` in `fields.Policy`; call this endpoint again after expiry
      *
      * @return $this
      */
-    public function setFromAmount($from_amount)
+    public function setExpiresIn($expires_in)
     {
-        $this->container['from_amount'] = $from_amount;
+        $this->container['expires_in'] = $expires_in;
 
         return $this;
     }

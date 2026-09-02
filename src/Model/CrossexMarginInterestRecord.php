@@ -113,7 +113,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_id' => 'userId',
+        'user_id' => 'user_id',
         'symbol' => 'symbol',
         'interest_id' => 'interest_id',
         'liability_id' => 'liability_id',
@@ -499,7 +499,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
     /**
      * Sets interest_type
      *
-     * @param string $interest_type Interest deduction type (`PERIODIC_POSITION` hourly interest on position, `PERIODIC_OPEN_ORDER` hourly interest on open orders, `IMMEDIATE_OPEN_ORDER` interest charged on order placement, `PERIODIC_ISOLATED` hourly interest on debt)
+     * @param string $interest_type Interest deduction type `PERIODIC_POSITION`: hourly interest charged on positions `PERIODIC_OPEN_ORDER`: hourly interest charged on open orders `IMMEDIATE_OPEN_ORDER`: interest charged when an order is placed `PERIODIC_ISOLATED`: hourly interest charged on liabilities
      *
      * @return $this
      */

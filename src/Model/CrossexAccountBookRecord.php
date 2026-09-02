@@ -343,7 +343,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     /**
      * Sets business_id
      *
-     * @param string $business_id Business ID. Its meaning varies by `statement_type`. `TRANSACTION`: order ID. `TRADING_FEE`: order ID. `LIQUIDATION_FEE`: liquidation order ID. `FUNDING_FEE`: position ID and funding fee settlement time. For other types, it is a system-generated processing ID with no business meaning.
+     * @param string $business_id Business ID. Its meaning varies by `statement_type`. TRANSACTION: order ID TRADING_FEE: order ID LIQUIDATION_FEE: liquidation order ID FUNDING_FEE: position ID and funding fee settlement time For other types, it is a system-generated processing ID with no business meaning
      *
      * @return $this
      */
@@ -367,7 +367,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     /**
      * Sets statement_type
      *
-     * @param string $statement_type Bill entry type. `TRANSACTION` trade `TRADING_FEE` fee `FUNDING_FEE` funding `LIQUIDATION_FEE` liquidation `TRANSFER_IN` deposit `TRANSFER_OUT` withdrawal `BANKRUPT_COMPENSATION` bankruptcy subsidy `AUTO_REPAY` margin auto-repay `INTEREST_ISOLATED` isolated-venue interest entry `ACCOUNT_MODE_CHANGE` account mode switch entry `KRAKEN_CONVERSION` conversion of other margin coins to cover a negative KRAKEN_USD balance `OTHER` other
+     * @param string $statement_type Account book entry type `TRANSACTION`: trade `TRADING_FEE`: trading fee `FUNDING_FEE`: futures funding fee `LIQUIDATION_FEE`: liquidation fee `TRANSFER_IN`: transfer in `TRANSFER_OUT`: transfer out `BANKRUPT_COMPENSATION`: bankruptcy compensation `AUTO_REPAY`: automatic repayment of margin position liabilities `INTEREST_ISOLATED`: interest entry `ACCOUNT_MODE_CHANGE`: balance change caused by an account mode switch `KRAKEN_CONVERSION`: conversion of other margin currencies to cover a negative KRAKEN_USD balance `OTHER`: other
      *
      * @return $this
      */
@@ -463,7 +463,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     /**
      * Sets change
      *
-     * @param string $change Change amount (positive indicates transfer in; negative indicates transfer out)
+     * @param string $change Change amount (positive values indicate an increase; negative values indicate a decrease)
      *
      * @return $this
      */

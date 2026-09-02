@@ -68,7 +68,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'contract_size' => 'string',
         'liquidation_fee' => 'string',
         'delist_time' => 'string',
-        'support_rpi' => 'string'
+        'support_rpi' => 'string',
+        'support_cross' => 'string'
     ];
 
     /**
@@ -91,7 +92,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'contract_size' => null,
         'liquidation_fee' => null,
         'delist_time' => null,
-        'support_rpi' => null
+        'support_rpi' => null,
+        'support_cross' => null
     ];
 
     /**
@@ -135,7 +137,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'contract_size' => 'contract_size',
         'liquidation_fee' => 'liquidation_fee',
         'delist_time' => 'delist_time',
-        'support_rpi' => 'support_rpi'
+        'support_rpi' => 'support_rpi',
+        'support_cross' => 'support_cross'
     ];
 
     /**
@@ -158,7 +161,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'contract_size' => 'setContractSize',
         'liquidation_fee' => 'setLiquidationFee',
         'delist_time' => 'setDelistTime',
-        'support_rpi' => 'setSupportRpi'
+        'support_rpi' => 'setSupportRpi',
+        'support_cross' => 'setSupportCross'
     ];
 
     /**
@@ -181,7 +185,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'contract_size' => 'getContractSize',
         'liquidation_fee' => 'getLiquidationFee',
         'delist_time' => 'getDelistTime',
-        'support_rpi' => 'getSupportRpi'
+        'support_rpi' => 'getSupportRpi',
+        'support_cross' => 'getSupportCross'
     ];
 
     /**
@@ -259,6 +264,7 @@ class Symbol implements ModelInterface, ArrayAccess
         $this->container['liquidation_fee'] = isset($data['liquidation_fee']) ? $data['liquidation_fee'] : null;
         $this->container['delist_time'] = isset($data['delist_time']) ? $data['delist_time'] : null;
         $this->container['support_rpi'] = isset($data['support_rpi']) ? $data['support_rpi'] : null;
+        $this->container['support_cross'] = isset($data['support_cross']) ? $data['support_cross'] : null;
     }
 
     /**
@@ -683,6 +689,30 @@ class Symbol implements ModelInterface, ArrayAccess
     public function setSupportRpi($support_rpi)
     {
         $this->container['support_rpi'] = $support_rpi;
+
+        return $this;
+    }
+
+    /**
+     * Gets support_cross
+     *
+     * @return string|null
+     */
+    public function getSupportCross()
+    {
+        return $this->container['support_cross'];
+    }
+
+    /**
+     * Sets support_cross
+     *
+     * @param string|null $support_cross Whether cross-margin order placement is supported (true if supported; false otherwise)
+     *
+     * @return $this
+     */
+    public function setSupportCross($support_cross)
+    {
+        $this->container['support_cross'] = $support_cross;
 
         return $this;
     }

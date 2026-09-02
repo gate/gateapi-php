@@ -55,7 +55,8 @@ class CrossexIsolatedMarginResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'margin' => 'string'
+        'margin' => 'string',
+        'position_side' => 'string'
     ];
 
     /**
@@ -65,7 +66,8 @@ class CrossexIsolatedMarginResponse implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'margin' => null
+        'margin' => null,
+        'position_side' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class CrossexIsolatedMarginResponse implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'margin' => 'margin'
+        'margin' => 'margin',
+        'position_side' => 'position_side'
     ];
 
     /**
@@ -106,7 +109,8 @@ class CrossexIsolatedMarginResponse implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'margin' => 'setMargin'
+        'margin' => 'setMargin',
+        'position_side' => 'setPositionSide'
     ];
 
     /**
@@ -116,7 +120,8 @@ class CrossexIsolatedMarginResponse implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'margin' => 'getMargin'
+        'margin' => 'getMargin',
+        'position_side' => 'getPositionSide'
     ];
 
     /**
@@ -181,6 +186,7 @@ class CrossexIsolatedMarginResponse implements ModelInterface, ArrayAccess
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
     }
 
     /**
@@ -257,6 +263,30 @@ class CrossexIsolatedMarginResponse implements ModelInterface, ArrayAccess
     public function setMargin($margin)
     {
         $this->container['margin'] = $margin;
+
+        return $this;
+    }
+
+    /**
+     * Gets position_side
+     *
+     * @return string|null
+     */
+    public function getPositionSide()
+    {
+        return $this->container['position_side'];
+    }
+
+    /**
+     * Sets position_side
+     *
+     * @param string|null $position_side Position side (NONE/LONG/SHORT). Defaults to NONE for one-way positions if omitted
+     *
+     * @return $this
+     */
+    public function setPositionSide($position_side)
+    {
+        $this->container['position_side'] = $position_side;
 
         return $this;
     }

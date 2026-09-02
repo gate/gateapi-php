@@ -277,7 +277,7 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
     /**
      * Sets min_trans_amount
      *
-     * @param float $min_trans_amount Minimum Transfer Quantity (including estimated fees)
+     * @param float $min_trans_amount Minimum transfer amount (estimated fee included)
      *
      * @return $this
      */
