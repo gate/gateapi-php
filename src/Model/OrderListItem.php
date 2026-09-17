@@ -278,6 +278,7 @@ class OrderListItem implements ModelInterface, ArrayAccess
     const EXCHANGE_US = 'us';
     const EXCHANGE_HK = 'hk';
     const EXCHANGE_KR = 'kr';
+    const EXCHANGE_JP = 'jp';
     const TRADE_STATUS_PRE_MARKET = 'pre_market';
     const TRADE_STATUS_OPEN = 'open';
     const TRADE_STATUS_POST_MARKET = 'post_market';
@@ -305,6 +306,7 @@ class OrderListItem implements ModelInterface, ArrayAccess
             self::EXCHANGE_US,
             self::EXCHANGE_HK,
             self::EXCHANGE_KR,
+            self::EXCHANGE_JP,
         ];
     }
     
@@ -533,7 +535,7 @@ class OrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Exchange, supports us, hk, and kr
+     * @param string|null $exchange Exchange, supports us, hk, kr, and jp
      *
      * @return $this
      */

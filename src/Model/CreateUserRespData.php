@@ -55,8 +55,7 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'status' => 'int',
-        'leverage' => 'int',
-        'mt5_uid' => 'string'
+        'leverage' => 'int'
     ];
 
     /**
@@ -66,8 +65,7 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'leverage' => null,
-        'mt5_uid' => null
+        'leverage' => null
     ];
 
     /**
@@ -98,8 +96,7 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'leverage' => 'leverage',
-        'mt5_uid' => 'mt5_uid'
+        'leverage' => 'leverage'
     ];
 
     /**
@@ -109,8 +106,7 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'leverage' => 'setLeverage',
-        'mt5_uid' => 'setMt5Uid'
+        'leverage' => 'setLeverage'
     ];
 
     /**
@@ -120,8 +116,7 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'leverage' => 'getLeverage',
-        'mt5_uid' => 'getMt5Uid'
+        'leverage' => 'getLeverage'
     ];
 
     /**
@@ -186,7 +181,6 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
     {
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
-        $this->container['mt5_uid'] = isset($data['mt5_uid']) ? $data['mt5_uid'] : null;
     }
 
     /**
@@ -257,30 +251,6 @@ class CreateUserRespData implements ModelInterface, ArrayAccess
     public function setLeverage($leverage)
     {
         $this->container['leverage'] = $leverage;
-
-        return $this;
-    }
-
-    /**
-     * Gets mt5_uid
-     *
-     * @return string|null
-     */
-    public function getMt5Uid()
-    {
-        return $this->container['mt5_uid'];
-    }
-
-    /**
-     * Sets mt5_uid
-     *
-     * @param string|null $mt5_uid mt5uid
-     *
-     * @return $this
-     */
-    public function setMt5Uid($mt5_uid)
-    {
-        $this->container['mt5_uid'] = $mt5_uid;
 
         return $this;
     }

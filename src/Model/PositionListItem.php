@@ -308,6 +308,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     const EXCHANGE_US = 'us';
     const EXCHANGE_HK = 'hk';
     const EXCHANGE_KR = 'kr';
+    const EXCHANGE_JP = 'jp';
     const TRADE_STATUS_PRE_MARKET = 'pre_market';
     const TRADE_STATUS_OPEN = 'open';
     const TRADE_STATUS_POST_MARKET = 'post_market';
@@ -327,6 +328,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
             self::EXCHANGE_US,
             self::EXCHANGE_HK,
             self::EXCHANGE_KR,
+            self::EXCHANGE_JP,
         ];
     }
     
@@ -472,7 +474,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Exchange, supports us, hk, and kr
+     * @param string|null $exchange Exchange, supports us, hk, kr, and jp
      *
      * @return $this
      */
@@ -610,7 +612,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets symbol_desc
      *
-     * @param string|null $symbol_desc symbol_desc
+     * @param string|null $symbol_desc Symbol description
      *
      * @return $this
      */
@@ -994,7 +996,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets max_order_volume
      *
-     * @param string|null $max_order_volume max_order_volume
+     * @param string|null $max_order_volume Maximum order quantity
      *
      * @return $this
      */
@@ -1018,7 +1020,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets step_order_volume
      *
-     * @param string|null $step_order_volume step_order_volume
+     * @param string|null $step_order_volume Order step size
      *
      * @return $this
      */
@@ -1042,7 +1044,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets min_order_volume
      *
-     * @param string|null $min_order_volume min_order_volume
+     * @param string|null $min_order_volume Minimum order quantity
      *
      * @return $this
      */
@@ -1066,7 +1068,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets price_precision
      *
-     * @param int|null $price_precision price_precision
+     * @param int|null $price_precision Price precision
      *
      * @return $this
      */
@@ -1090,7 +1092,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets price_protection
      *
-     * @param string|null $price_protection price_protection
+     * @param string|null $price_protection Price protection range
      *
      * @return $this
      */
@@ -1114,7 +1116,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets sell_price_protection
      *
-     * @param string|null $sell_price_protection sell_price_protection
+     * @param string|null $sell_price_protection Sell price protection rate
      *
      * @return $this
      */
@@ -1138,7 +1140,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets buy_price_protection
      *
-     * @param string|null $buy_price_protection buy_price_protection
+     * @param string|null $buy_price_protection Buy price protection rate
      *
      * @return $this
      */
@@ -1186,7 +1188,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets slippage_rate
      *
-     * @param string|null $slippage_rate slippage_rate
+     * @param string|null $slippage_rate Slippage
      *
      * @return $this
      */

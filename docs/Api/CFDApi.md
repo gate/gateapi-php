@@ -147,11 +147,15 @@ Query symbol commission rates
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
 
 $apiInstance = new GateApi\Api\CFDApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $associate_array['symbols'] = 'AUDUSD,XAUUSD'; // string | List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required
 $associate_array['category_code'] = 'forex-外汇,metal-金属,index-指数,commodity-大宗商品,stock-股票'; // string | List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required
@@ -183,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[apiv4](../../README.md#apiv4)
 
 ### HTTP request headers
 
@@ -259,11 +263,15 @@ Query trading symbol details
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
 
 $apiInstance = new GateApi\Api\CFDApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $symbols = 'EURUSD,XAGUSD'; // string | Trading symbol code list (comma-separated, max 10 symbols)
 
@@ -291,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[apiv4](../../README.md#apiv4)
 
 ### HTTP request headers
 

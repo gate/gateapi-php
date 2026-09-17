@@ -253,6 +253,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     const EXCHANGE_US = 'us';
     const EXCHANGE_HK = 'hk';
     const EXCHANGE_KR = 'kr';
+    const EXCHANGE_JP = 'jp';
     const PRICE_TYPE_MARKET = 'market';
     const PRICE_TYPE_LIMIT = 'limit';
     const SIDE_1 = 1;
@@ -272,6 +273,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
             self::EXCHANGE_US,
             self::EXCHANGE_HK,
             self::EXCHANGE_KR,
+            self::EXCHANGE_JP,
         ];
     }
     
@@ -420,7 +422,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets order_id
      *
-     * @param string|null $order_id order_id
+     * @param string|null $order_id Order ID
      *
      * @return $this
      */
@@ -444,7 +446,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string|null $symbol symbol
+     * @param string|null $symbol Symbol
      *
      * @return $this
      */
@@ -468,7 +470,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Exchange, supports us, hk, and kr
+     * @param string|null $exchange Exchange, supports us, hk, kr, and jp
      *
      * @return $this
      */
@@ -501,7 +503,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets quote_currency
      *
-     * @param string|null $quote_currency quote_currency
+     * @param string|null $quote_currency Quote currency
      *
      * @return $this
      */
@@ -549,7 +551,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets symbol_desc
      *
-     * @param string|null $symbol_desc symbol_desc
+     * @param string|null $symbol_desc Symbol description
      *
      * @return $this
      */
@@ -768,7 +770,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets volume
      *
-     * @param string|null $volume volume
+     * @param string|null $volume Order quantity
      *
      * @return $this
      */
@@ -792,7 +794,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets fill_volume
      *
-     * @param string|null $fill_volume fill_volume
+     * @param string|null $fill_volume Trading size
      *
      * @return $this
      */
@@ -816,7 +818,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price price
+     * @param string|null $price Order price
      *
      * @return $this
      */
@@ -840,7 +842,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets avg_fill_price
      *
-     * @param string|null $avg_fill_price avg_fill_price
+     * @param string|null $avg_fill_price Average fill price
      *
      * @return $this
      */
@@ -888,7 +890,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets time_setup
      *
-     * @param int|null $time_setup time_setup
+     * @param int|null $time_setup Order creation time (Unix timestamp, seconds)
      *
      * @return $this
      */
@@ -912,7 +914,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets time_done
      *
-     * @param int|null $time_done time_done
+     * @param int|null $time_done Order completion time (Unix timestamp in seconds)
      *
      * @return $this
      */

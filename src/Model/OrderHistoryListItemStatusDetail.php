@@ -33,6 +33,7 @@ use \GateApi\ObjectSerializer;
  * OrderHistoryListItemStatusDetail Class Doc Comment
  *
  * @category Class
+ * @description Order status details
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -220,7 +221,7 @@ class OrderHistoryListItemStatusDetail implements ModelInterface, ArrayAccess
     /**
      * Sets title
      *
-     * @param string|null $title title
+     * @param string|null $title Status title
      *
      * @return $this
      */
@@ -244,7 +245,7 @@ class OrderHistoryListItemStatusDetail implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param string|null $message message
+     * @param string|null $message Status message
      *
      * @return $this
      */

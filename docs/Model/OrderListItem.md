@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **order_id** | **string** | Order ID | [optional] 
 **symbol** | **string** | Symbol | [optional] 
-**exchange** | **string** | Exchange, supports us, hk, and kr | [optional] 
+**exchange** | **string** | Exchange, supports us, hk, kr, and jp | [optional] 
 **quote_currency** | **string** | Quote currency | [optional] 
 **fx_rate** | **string** | Quote currency to USD exchange rate | [optional] 
 **symbol_desc** | **string** | Symbol description | [optional] 

@@ -109,7 +109,7 @@ $apiInstance = new GateApi\Api\StockApi(
     new GuzzleHttp\Client()
 );
 $associate_array['symbols'] = 'AAPL,TSLA'; // string | Symbol list, multiple separated by commas
-$associate_array['exchange'] = 'us'; // string | Exchange, supports us, hk, and kr
+$associate_array['exchange'] = 'us'; // string | Exchange, supports us, hk, kr, and jp
 $associate_array['with_desc_i18n'] = true; // bool | Whether to return multilingual symbol description
 $associate_array['page'] = 1; // int | Page number, defaults to 1
 $associate_array['page_size'] = 100; // int | Page size, defaults to 10, max 500; server caps at 500
@@ -133,7 +133,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbols** | **string**| Symbol list, multiple separated by commas | [optional]
- **exchange** | **string**| Exchange, supports us, hk, and kr | [optional]
+ **exchange** | **string**| Exchange, supports us, hk, kr, and jp | [optional]
  **with_desc_i18n** | **bool**| Whether to return multilingual symbol description | [optional]
  **page** | **int**| Page number, defaults to 1 | [optional]
  **page_size** | **int**| Page size, defaults to 10, max 500; server caps at 500 | [optional]
@@ -177,7 +177,7 @@ $apiInstance = new GateApi\Api\StockApi(
     new GuzzleHttp\Client()
 );
 $associate_array['symbols'] = 'AAPL,TSLA'; // string | Symbol list, multiple separated by commas
-$associate_array['exchange'] = 'us'; // string | Exchange, supports us, hk, and kr
+$associate_array['exchange'] = 'us'; // string | Exchange, supports us, hk, kr, and jp
 $associate_array['page'] = 1; // int | Page number, defaults to 1
 $associate_array['page_size'] = 100; // int | Page size, defaults to 10, max 500; server caps at 500
 
@@ -200,7 +200,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbols** | **string**| Symbol list, multiple separated by commas | [optional]
- **exchange** | **string**| Exchange, supports us, hk, and kr | [optional]
+ **exchange** | **string**| Exchange, supports us, hk, kr, and jp | [optional]
  **page** | **int**| Page number, defaults to 1 | [optional]
  **page_size** | **int**| Page size, defaults to 10, max 500; server caps at 500 | [optional]
 
@@ -693,7 +693,7 @@ $apiInstance = new GateApi\Api\StockApi(
 $associate_array['pnl_calc_type'] = 1; // int | PnL calculation cost type. Defaults to average cost price when omitted (1 = average cost price, 2 = diluted cost price)
 $associate_array['pnl_calc_price'] = 1; // int | PnL calculation price type. Defaults to intraday price when omitted (1 = intraday price, 2 = latest extended-hours price)
 $associate_array['symbol'] = 'AAPL'; // string | Symbol
-$associate_array['exchange'] = 'us'; // string | Exchange, supports us, hk, and kr
+$associate_array['exchange'] = 'us'; // string | Exchange, supports us, hk, kr, and jp
 
 try {
     $result = $apiInstance->queryStockPositions($associate_array);
@@ -716,7 +716,7 @@ Name | Type | Description  | Notes
  **pnl_calc_type** | **int**| PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) | [optional]
  **pnl_calc_price** | **int**| PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) | [optional]
  **symbol** | **string**| Symbol | [optional]
- **exchange** | **string**| Exchange, supports us, hk, and kr | [optional]
+ **exchange** | **string**| Exchange, supports us, hk, kr, and jp | [optional]
 
 ### Return type
 

@@ -479,7 +479,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets trading_session
      *
-     * @param string $trading_session Trading session. Limit orders support only All, while market orders support only Regular.
+     * @param string $trading_session Trading session. Limit orders support only all, while market orders support only regular.
      *
      * @return $this
      */

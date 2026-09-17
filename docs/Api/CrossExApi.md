@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 Fund Transfer
 
-Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE` - When either side of the transfer is `CROSSEX_KRAKEN`, only USDT is supported for now. - When either side of the transfer is `CROSSEX_HYPERLIQUID`, the other side must be `SPOT`, and only USDC is supported.
+Rate limit: 10 requests per 10 seconds - In cross-exchange mode, when transferring USDT, either `from` or `to` must be `SPOT`, and the other side must be `CROSSEX`.   If `CROSSEX_${exchange_type}` (e.g. `CROSSEX_GATE`) is provided, it will be automatically treated as `CROSSEX`. - In isolated exchange mode, when transferring USDT, either `from` or `to` must be `CROSSEX_${exchange_type}`, and the other side must be `SPOT` or `CROSSEX_${exchange_type}`.   If `CROSSEX` is provided, it will be automatically treated as `CROSSEX_GATE`. - When transferring non-USDT assets to or from CrossEx, neither `from` nor `to` can be `CROSSEX`; `CROSSEX_${exchange_type}` must be explicitly specified. - When transferring non-USDT assets, transfers between `CROSSEX_{exchange_type}` accounts are supported, for example: from = `CROSSEX_BINANCE`, to = `CROSSEX_GATE` - When either side of the transfer is `CROSSEX_KRAKEN`, only USDT is supported for now. - When either side of the transfer is `CROSSEX_HYPERLIQUID`, the other side must be `SPOT`, and only USDC is supported. - When either side of the transfer is `CROSSEX_LIGHTER`, the other side must be `SPOT`, and only USDC is supported.
 
 ### Example
 
@@ -675,7 +675,7 @@ Name | Type | Description  | Notes
 
 Flash Swap Inquiry
 
-Rate limit: 100 requests per day For HYPERLIQUID, swaps between `HYPERLIQUID_USDC` and `CROSSEX_USDT` are supported. Flash Swap in isolated exchange mode is not currently supported for HYPERLIQUID. For KRAKEN, only conversion from `KRAKEN_USD` to `CROSSEX_USDT` is supported. Flash Swap in isolated exchange mode is not currently supported for KRAKEN.
+Rate limit: 100 requests per day For HYPERLIQUID, swaps between `HYPERLIQUID_USDC` and `CROSSEX_USDT` are supported. Flash Swap in isolated exchange mode is not currently supported for HYPERLIQUID. For LIGHTER, swaps between `LIGHTER_USDC` and `CROSSEX_USDT` are supported. Flash Swap in isolated exchange mode is not currently supported for LIGHTER. For KRAKEN, only conversion from `KRAKEN_USD` to `CROSSEX_USDT` is supported. Flash Swap in isolated exchange mode is not currently supported for KRAKEN.
 
 ### Example
 
@@ -817,7 +817,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT'; // string | Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT`).
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT,LIGHTER'; // string | Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER`).
 
 try {
     $result = $apiInstance->getCrossexAccount($associate_array);
@@ -837,7 +837,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange_type** | **string**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). | [optional]
+ **exchange_type** | **string**| Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60; / &#x60;LIGHTER&#x60;). | [optional]
 
 ### Return type
 
@@ -1444,7 +1444,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['coin'] = 'SOL'; // string | Query by specified currency name
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT'; // string | Exchange
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT,LIGHTER'; // string | Exchange
 
 try {
     $result = $apiInstance->getCrossexInterestRate($associate_array);
@@ -1568,7 +1568,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['symbol'] = 'BINANCE_FUTURE_ADA_USDT'; // string | Trading Pair
-$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT'; // string | Exchange
+$associate_array['exchange_type'] = 'BINANCE,OKX,GATE,BYBIT,KRAKEN,HYPERLIQUID,DERIBIT,LIGHTER'; // string | Exchange
 
 try {
     $result = $apiInstance->listCrossexPositions($associate_array);
@@ -2268,7 +2268,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     $config
 );
 $associate_array['coin'] = 'SOL'; // string | Query by specified currency name
-$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT
+$associate_array['exchange_type'] = 'OKX'; // string | OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT/LIGHTER
 
 try {
     $result = $apiInstance->listCrossexCoinDiscountRate($associate_array);
@@ -2289,7 +2289,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coin** | **string**| Query by specified currency name | [optional]
- **exchange_type** | **string**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT | [optional]
+ **exchange_type** | **string**| OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT/LIGHTER | [optional]
 
 ### Return type
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * SymbolDetailItemSymbolDescs
+ * AnnouncementArticleListResponse
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * SymbolDetailItemSymbolDescs Class Doc Comment
+ * AnnouncementArticleListResponse Class Doc Comment
  *
  * @category Class
+ * @description Announcement article list response
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
+class AnnouncementArticleListResponse implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SymbolDetailItem_symbol_descs';
+    protected static $openAPIModelName = 'AnnouncementArticleListResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,8 +55,10 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'lang' => 'string',
-        'value' => 'string'
+        'code' => 'int',
+        'data' => '\GateApi\Model\AnnouncementArticleListData',
+        'message' => 'string',
+        'version' => 'string'
     ];
 
     /**
@@ -64,8 +67,10 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'lang' => null,
-        'value' => null
+        'code' => null,
+        'data' => null,
+        'message' => null,
+        'version' => null
     ];
 
     /**
@@ -95,8 +100,10 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'lang' => 'lang',
-        'value' => 'value'
+        'code' => 'code',
+        'data' => 'data',
+        'message' => 'message',
+        'version' => 'version'
     ];
 
     /**
@@ -105,8 +112,10 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'lang' => 'setLang',
-        'value' => 'setValue'
+        'code' => 'setCode',
+        'data' => 'setData',
+        'message' => 'setMessage',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -115,8 +124,10 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'lang' => 'getLang',
-        'value' => 'getValue'
+        'code' => 'getCode',
+        'data' => 'getData',
+        'message' => 'getMessage',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -179,8 +190,10 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
     }
 
     /**
@@ -192,6 +205,18 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -208,49 +233,97 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets lang
+     * Gets code
      *
-     * @return string|null
+     * @return int
      */
-    public function getLang()
+    public function getCode()
     {
-        return $this->container['lang'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets lang
+     * Sets code
      *
-     * @param string|null $lang Language
+     * @param int $code Business status code
      *
      * @return $this
      */
-    public function setLang($lang)
+    public function setCode($code)
     {
-        $this->container['lang'] = $lang;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets data
      *
-     * @return string|null
+     * @return \GateApi\Model\AnnouncementArticleListData
      */
-    public function getValue()
+    public function getData()
     {
-        return $this->container['value'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets value
+     * Sets data
      *
-     * @param string|null $value Localized description
+     * @param \GateApi\Model\AnnouncementArticleListData $data data
      *
      * @return $this
      */
-    public function setValue($value)
+    public function setData($data)
     {
-        $this->container['value'] = $value;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message Response message
+     *
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param string $version Response version
+     *
+     * @return $this
+     */
+    public function setVersion($version)
+    {
+        $this->container['version'] = $version;
 
         return $this;
     }

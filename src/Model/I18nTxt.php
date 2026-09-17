@@ -220,7 +220,7 @@ class I18nTxt implements ModelInterface, ArrayAccess
     /**
      * Sets lang
      *
-     * @param string|null $lang lang
+     * @param string|null $lang Language
      *
      * @return $this
      */
@@ -244,7 +244,7 @@ class I18nTxt implements ModelInterface, ArrayAccess
     /**
      * Sets value
      *
-     * @param string|null $value value
+     * @param string|null $value Localized description
      *
      * @return $this
      */

@@ -60,6 +60,9 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'position_market_value' => 'string',
         'position_pnl' => 'string',
         'today_pnl' => 'string',
+        'option_position_market_value' => 'string',
+        'option_position_pnl' => 'string',
+        'option_today_pnl' => 'string',
         'user_exists' => 'bool'
     ];
 
@@ -75,6 +78,9 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'position_market_value' => null,
         'position_pnl' => null,
         'today_pnl' => null,
+        'option_position_market_value' => null,
+        'option_position_pnl' => null,
+        'option_today_pnl' => null,
         'user_exists' => null
     ];
 
@@ -111,6 +117,9 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'position_market_value' => 'position_market_value',
         'position_pnl' => 'position_pnl',
         'today_pnl' => 'today_pnl',
+        'option_position_market_value' => 'option_position_market_value',
+        'option_position_pnl' => 'option_position_pnl',
+        'option_today_pnl' => 'option_today_pnl',
         'user_exists' => 'user_exists'
     ];
 
@@ -126,6 +135,9 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'position_market_value' => 'setPositionMarketValue',
         'position_pnl' => 'setPositionPnl',
         'today_pnl' => 'setTodayPnl',
+        'option_position_market_value' => 'setOptionPositionMarketValue',
+        'option_position_pnl' => 'setOptionPositionPnl',
+        'option_today_pnl' => 'setOptionTodayPnl',
         'user_exists' => 'setUserExists'
     ];
 
@@ -141,6 +153,9 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'position_market_value' => 'getPositionMarketValue',
         'position_pnl' => 'getPositionPnl',
         'today_pnl' => 'getTodayPnl',
+        'option_position_market_value' => 'getOptionPositionMarketValue',
+        'option_position_pnl' => 'getOptionPositionPnl',
+        'option_today_pnl' => 'getOptionTodayPnl',
         'user_exists' => 'getUserExists'
     ];
 
@@ -210,6 +225,9 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         $this->container['position_market_value'] = isset($data['position_market_value']) ? $data['position_market_value'] : null;
         $this->container['position_pnl'] = isset($data['position_pnl']) ? $data['position_pnl'] : null;
         $this->container['today_pnl'] = isset($data['today_pnl']) ? $data['today_pnl'] : null;
+        $this->container['option_position_market_value'] = isset($data['option_position_market_value']) ? $data['option_position_market_value'] : null;
+        $this->container['option_position_pnl'] = isset($data['option_position_pnl']) ? $data['option_position_pnl'] : null;
+        $this->container['option_today_pnl'] = isset($data['option_today_pnl']) ? $data['option_today_pnl'] : null;
         $this->container['user_exists'] = isset($data['user_exists']) ? $data['user_exists'] : null;
     }
 
@@ -377,6 +395,78 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
     public function setTodayPnl($today_pnl)
     {
         $this->container['today_pnl'] = $today_pnl;
+
+        return $this;
+    }
+
+    /**
+     * Gets option_position_market_value
+     *
+     * @return string|null
+     */
+    public function getOptionPositionMarketValue()
+    {
+        return $this->container['option_position_market_value'];
+    }
+
+    /**
+     * Sets option_position_market_value
+     *
+     * @param string|null $option_position_market_value Option position market value
+     *
+     * @return $this
+     */
+    public function setOptionPositionMarketValue($option_position_market_value)
+    {
+        $this->container['option_position_market_value'] = $option_position_market_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets option_position_pnl
+     *
+     * @return string|null
+     */
+    public function getOptionPositionPnl()
+    {
+        return $this->container['option_position_pnl'];
+    }
+
+    /**
+     * Sets option_position_pnl
+     *
+     * @param string|null $option_position_pnl Option position PnL
+     *
+     * @return $this
+     */
+    public function setOptionPositionPnl($option_position_pnl)
+    {
+        $this->container['option_position_pnl'] = $option_position_pnl;
+
+        return $this;
+    }
+
+    /**
+     * Gets option_today_pnl
+     *
+     * @return string|null
+     */
+    public function getOptionTodayPnl()
+    {
+        return $this->container['option_today_pnl'];
+    }
+
+    /**
+     * Sets option_today_pnl
+     *
+     * @param string|null $option_today_pnl Option today's PnL
+     *
+     * @return $this
+     */
+    public function setOptionTodayPnl($option_today_pnl)
+    {
+        $this->container['option_today_pnl'] = $option_today_pnl;
 
         return $this;
     }

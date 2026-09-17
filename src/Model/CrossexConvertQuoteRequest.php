@@ -245,7 +245,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, and KRAKEN
+     * @param string $exchange_type Exchange type Currently supports only BINANCE, OKX, GATE, BYBIT, HYPERLIQUID, KRAKEN, and LIGHTER
      *
      * @return $this
      */
@@ -293,7 +293,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     /**
      * Sets to_coin
      *
-     * @param string $to_coin Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT
+     * @param string $to_coin Asset to receive OKX and GATE only support conversion to BTC, ETH, or USDT BYBIT and BINANCE only support conversion to USDT HYPERLIQUID only supports conversion to USDT or USDC KRAKEN only supports conversion to USDT LIGHTER only supports swaps between USDT and USDC
      *
      * @return $this
      */

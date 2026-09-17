@@ -3092,7 +3092,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60; / &#x60;LIGHTER&#x60;). (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3111,7 +3111,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60; / &#x60;LIGHTER&#x60;). (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3167,7 +3167,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60; / &#x60;LIGHTER&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3189,7 +3189,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60; / &#x60;LIGHTER&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3238,7 +3238,7 @@ class CrossExApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60;). (optional)
+     * @param  string $exchange_type Trading venue identifier. Omit in cross-exchange mode; required in isolated-per-venue mode (&#x60;BINANCE&#x60; / &#x60;OKX&#x60; / &#x60;GATE&#x60; / &#x60;BYBIT&#x60; / &#x60;KRAKEN&#x60; / &#x60;HYPERLIQUID&#x60; / &#x60;DERIBIT&#x60; / &#x60;LIGHTER&#x60;). (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9037,7 +9037,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT/LIGHTER (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9057,7 +9057,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT/LIGHTER (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9114,7 +9114,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT/LIGHTER (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9137,7 +9137,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT/LIGHTER (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9187,7 +9187,7 @@ class CrossExApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $coin Query by specified currency name (optional)
-     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT (optional)
+     * @param  string $exchange_type OKX/GATE/BINANCE/BYBIT/KRAKEN/HYPERLIQUID/DERIBIT/LIGHTER (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

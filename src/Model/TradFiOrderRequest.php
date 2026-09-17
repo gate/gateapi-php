@@ -61,7 +61,8 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
         'symbol' => 'string',
         'volume' => 'string',
         'price_tp' => 'string',
-        'price_sl' => 'string'
+        'price_sl' => 'string',
+        'leverage' => 'int'
     ];
 
     /**
@@ -76,7 +77,8 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
         'symbol' => null,
         'volume' => null,
         'price_tp' => null,
-        'price_sl' => null
+        'price_sl' => null,
+        'leverage' => null
     ];
 
     /**
@@ -112,7 +114,8 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
         'symbol' => 'symbol',
         'volume' => 'volume',
         'price_tp' => 'price_tp',
-        'price_sl' => 'price_sl'
+        'price_sl' => 'price_sl',
+        'leverage' => 'leverage'
     ];
 
     /**
@@ -127,7 +130,8 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
         'symbol' => 'setSymbol',
         'volume' => 'setVolume',
         'price_tp' => 'setPriceTp',
-        'price_sl' => 'setPriceSl'
+        'price_sl' => 'setPriceSl',
+        'leverage' => 'setLeverage'
     ];
 
     /**
@@ -142,7 +146,8 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
         'symbol' => 'getSymbol',
         'volume' => 'getVolume',
         'price_tp' => 'getPriceTp',
-        'price_sl' => 'getPriceSl'
+        'price_sl' => 'getPriceSl',
+        'leverage' => 'getLeverage'
     ];
 
     /**
@@ -242,6 +247,7 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
         $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
         $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
     }
 
     /**
@@ -402,7 +408,7 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Trading symbol code
+     * @param string $symbol Base trading symbol code
      *
      * @return $this
      */
@@ -481,6 +487,30 @@ class TradFiOrderRequest implements ModelInterface, ArrayAccess
     public function setPriceSl($price_sl)
     {
         $this->container['price_sl'] = $price_sl;
+
+        return $this;
+    }
+
+    /**
+     * Gets leverage
+     *
+     * @return int|null
+     */
+    public function getLeverage()
+    {
+        return $this->container['leverage'];
+    }
+
+    /**
+     * Sets leverage
+     *
+     * @param int|null $leverage Leverage multiplier (must be one of the leverage multipliers allowed for the symbol in the trading symbol details response)
+     *
+     * @return $this
+     */
+    public function setLeverage($leverage)
+    {
+        $this->container['leverage'] = $leverage;
 
         return $this;
     }

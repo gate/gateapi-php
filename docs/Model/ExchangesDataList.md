@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**exchange** | **string** | Trading market, supports us, hk, and kr | [optional] 
+**exchange** | **string** | Trading market, supports us, hk, kr, and jp | [optional] 
 **exchange_desc** | **string** | Market display name | [optional] 
 **icon_link** | **string** | Market icon | [optional] 
 **support_transfer** | **bool** | Whether stock transfer is supported | [optional] 

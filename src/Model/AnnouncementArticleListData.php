@@ -1,6 +1,6 @@
 <?php
 /**
- * SymbolDetailItemSymbolDescs
+ * AnnouncementArticleListData
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * SymbolDetailItemSymbolDescs Class Doc Comment
+ * AnnouncementArticleListData Class Doc Comment
  *
  * @category Class
+ * @description Announcement articles and total count
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
+class AnnouncementArticleListData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SymbolDetailItem_symbol_descs';
+    protected static $openAPIModelName = 'AnnouncementArticleListData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,8 +55,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'lang' => 'string',
-        'value' => 'string'
+        'list' => '\GateApi\Model\AnnouncementArticle[]',
+        'total' => 'int'
     ];
 
     /**
@@ -64,8 +65,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'lang' => null,
-        'value' => null
+        'list' => null,
+        'total' => null
     ];
 
     /**
@@ -95,8 +96,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'lang' => 'lang',
-        'value' => 'value'
+        'list' => 'list',
+        'total' => 'total'
     ];
 
     /**
@@ -105,8 +106,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'lang' => 'setLang',
-        'value' => 'setValue'
+        'list' => 'setList',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -115,8 +116,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'lang' => 'getLang',
-        'value' => 'getValue'
+        'list' => 'getList',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -179,8 +180,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
     }
 
     /**
@@ -192,6 +193,12 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['list'] === null) {
+            $invalidProperties[] = "'list' can't be null";
+        }
+        if ($this->container['total'] === null) {
+            $invalidProperties[] = "'total' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -208,49 +215,49 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets lang
+     * Gets list
      *
-     * @return string|null
+     * @return \GateApi\Model\AnnouncementArticle[]
      */
-    public function getLang()
+    public function getList()
     {
-        return $this->container['lang'];
+        return $this->container['list'];
     }
 
     /**
-     * Sets lang
+     * Sets list
      *
-     * @param string|null $lang Language
+     * @param \GateApi\Model\AnnouncementArticle[] $list Announcement article list
      *
      * @return $this
      */
-    public function setLang($lang)
+    public function setList($list)
     {
-        $this->container['lang'] = $lang;
+        $this->container['list'] = $list;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets total
      *
-     * @return string|null
+     * @return int
      */
-    public function getValue()
+    public function getTotal()
     {
-        return $this->container['value'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets value
+     * Sets total
      *
-     * @param string|null $value Localized description
+     * @param int $total Total number of announcement articles.
      *
      * @return $this
      */
-    public function setValue($value)
+    public function setTotal($total)
     {
-        $this->container['value'] = $value;
+        $this->container['total'] = $total;
 
         return $this;
     }

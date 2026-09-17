@@ -598,7 +598,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     /**
      * Sets cross_balance
      *
-     * @param string|null $cross_balance Full margin balance is valid in single currency margin mode, and is 0 in other modes such as cross currency margin/combined margin mode
+     * @param string|null $cross_balance Full margin balance is available in both single-currency and multi-currency margin modes, and is 0 in portfolio margin mode.
      *
      * @return $this
      */

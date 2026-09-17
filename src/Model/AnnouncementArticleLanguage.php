@@ -1,6 +1,6 @@
 <?php
 /**
- * SymbolDetailItemSymbolDescs
+ * AnnouncementArticleLanguage
  *
  * PHP version 7
  *
@@ -30,14 +30,15 @@ use \ArrayAccess;
 use \GateApi\ObjectSerializer;
 
 /**
- * SymbolDetailItemSymbolDescs Class Doc Comment
+ * AnnouncementArticleLanguage Class Doc Comment
  *
  * @category Class
+ * @description Announcement article language
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
  */
-class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
+class AnnouncementArticleLanguage implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -46,7 +47,7 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SymbolDetailItem_symbol_descs';
+    protected static $openAPIModelName = 'AnnouncementArticleLanguage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -54,8 +55,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'lang' => 'string',
-        'value' => 'string'
+        'code' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -64,8 +65,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'lang' => null,
-        'value' => null
+        'code' => null,
+        'name' => null
     ];
 
     /**
@@ -95,8 +96,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'lang' => 'lang',
-        'value' => 'value'
+        'code' => 'code',
+        'name' => 'name'
     ];
 
     /**
@@ -105,8 +106,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'lang' => 'setLang',
-        'value' => 'setValue'
+        'code' => 'setCode',
+        'name' => 'setName'
     ];
 
     /**
@@ -115,8 +116,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'lang' => 'getLang',
-        'value' => 'getValue'
+        'code' => 'getCode',
+        'name' => 'getName'
     ];
 
     /**
@@ -179,8 +180,8 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
     /**
@@ -192,6 +193,12 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -208,49 +215,49 @@ class SymbolDetailItemSymbolDescs implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets lang
+     * Gets code
      *
-     * @return string|null
+     * @return string
      */
-    public function getLang()
+    public function getCode()
     {
-        return $this->container['lang'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets lang
+     * Sets code
      *
-     * @param string|null $lang Language
+     * @param string $code Language code, for example \"cn\".
      *
      * @return $this
      */
-    public function setLang($lang)
+    public function setCode($code)
     {
-        $this->container['lang'] = $lang;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets name
      *
-     * @return string|null
+     * @return string
      */
-    public function getValue()
+    public function getName()
     {
-        return $this->container['value'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets value
+     * Sets name
      *
-     * @param string|null $value Localized description
+     * @param string $name Language name
      *
      * @return $this
      */
-    public function setValue($value)
+    public function setName($name)
     {
-        $this->container['value'] = $value;
+        $this->container['name'] = $name;
 
         return $this;
     }

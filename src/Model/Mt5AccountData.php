@@ -55,7 +55,6 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'mt5_uid' => 'int',
         'leverage' => 'int',
         'stop_out_level' => 'string',
         'status' => 'int'
@@ -67,7 +66,6 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'mt5_uid' => null,
         'leverage' => null,
         'stop_out_level' => null,
         'status' => null
@@ -100,7 +98,6 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'mt5_uid' => 'mt5_uid',
         'leverage' => 'leverage',
         'stop_out_level' => 'stop_out_level',
         'status' => 'status'
@@ -112,7 +109,6 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'mt5_uid' => 'setMt5Uid',
         'leverage' => 'setLeverage',
         'stop_out_level' => 'setStopOutLevel',
         'status' => 'setStatus'
@@ -124,7 +120,6 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'mt5_uid' => 'getMt5Uid',
         'leverage' => 'getLeverage',
         'stop_out_level' => 'getStopOutLevel',
         'status' => 'getStatus'
@@ -190,7 +185,6 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['mt5_uid'] = isset($data['mt5_uid']) ? $data['mt5_uid'] : null;
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
         $this->container['stop_out_level'] = isset($data['stop_out_level']) ? $data['stop_out_level'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
@@ -219,30 +213,6 @@ class Mt5AccountData implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets mt5_uid
-     *
-     * @return int|null
-     */
-    public function getMt5Uid()
-    {
-        return $this->container['mt5_uid'];
-    }
-
-    /**
-     * Sets mt5_uid
-     *
-     * @param int|null $mt5_uid MT5 userID
-     *
-     * @return $this
-     */
-    public function setMt5Uid($mt5_uid)
-    {
-        $this->container['mt5_uid'] = $mt5_uid;
-
-        return $this;
-    }
 
     /**
      * Gets leverage

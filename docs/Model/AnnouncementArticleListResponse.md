@@ -1,9 +1,12 @@
-# # CreateOrder2Data
+# # AnnouncementArticleListResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Queue Task ID (not order ID) | [optional] 
+**code** | **int** | Business status code | 
+**data** | [**\GateApi\Model\AnnouncementArticleListData**](AnnouncementArticleListData.md) |  | 
+**message** | **string** | Response message | 
+**version** | **string** | Response version | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

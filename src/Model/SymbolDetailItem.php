@@ -62,6 +62,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'string',
         'symbol_desc' => 'string',
         'category' => 'string',
+        'asset_type' => 'string',
         'settlement_currency' => 'string',
         'max_order_volume' => 'string',
         'step_order_volume' => 'string',
@@ -96,6 +97,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'fx_rate' => null,
         'symbol_desc' => null,
         'category' => null,
+        'asset_type' => null,
         'settlement_currency' => null,
         'max_order_volume' => null,
         'step_order_volume' => null,
@@ -151,6 +153,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'fx_rate',
         'symbol_desc' => 'symbol_desc',
         'category' => 'category',
+        'asset_type' => 'asset_type',
         'settlement_currency' => 'settlement_currency',
         'max_order_volume' => 'max_order_volume',
         'step_order_volume' => 'step_order_volume',
@@ -185,6 +188,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'setFxRate',
         'symbol_desc' => 'setSymbolDesc',
         'category' => 'setCategory',
+        'asset_type' => 'setAssetType',
         'settlement_currency' => 'setSettlementCurrency',
         'max_order_volume' => 'setMaxOrderVolume',
         'step_order_volume' => 'setStepOrderVolume',
@@ -219,6 +223,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'getFxRate',
         'symbol_desc' => 'getSymbolDesc',
         'category' => 'getCategory',
+        'asset_type' => 'getAssetType',
         'settlement_currency' => 'getSettlementCurrency',
         'max_order_volume' => 'getMaxOrderVolume',
         'step_order_volume' => 'getStepOrderVolume',
@@ -283,6 +288,18 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     const EXCHANGE_US = 'us';
     const EXCHANGE_HK = 'hk';
     const EXCHANGE_KR = 'kr';
+    const EXCHANGE_JP = 'jp';
+    const CATEGORY_CS = 'CS';
+    const CATEGORY_ETF = 'ETF';
+    const CATEGORY_ADRC = 'ADRC';
+    const CATEGORY_ADR = 'ADR';
+    const CATEGORY_ETV = 'ETV';
+    const CATEGORY_PFD = 'PFD';
+    const CATEGORY_ETS = 'ETS';
+    const CATEGORY_ETN = 'ETN';
+    const CATEGORY_FUND = 'FUND';
+    const ASSET_TYPE_STOCK = 'STOCK';
+    const ASSET_TYPE_ETF = 'ETF';
     const TRADE_STATUS_PRE_MARKET = 'pre_market';
     const TRADE_STATUS_OPEN = 'open';
     const TRADE_STATUS_POST_MARKET = 'post_market';
@@ -309,6 +326,40 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
             self::EXCHANGE_US,
             self::EXCHANGE_HK,
             self::EXCHANGE_KR,
+            self::EXCHANGE_JP,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCategoryAllowableValues()
+    {
+        return [
+            self::CATEGORY_CS,
+            self::CATEGORY_ETF,
+            self::CATEGORY_ADRC,
+            self::CATEGORY_ADR,
+            self::CATEGORY_ETV,
+            self::CATEGORY_PFD,
+            self::CATEGORY_ETS,
+            self::CATEGORY_ETN,
+            self::CATEGORY_FUND,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAssetTypeAllowableValues()
+    {
+        return [
+            self::ASSET_TYPE_STOCK,
+            self::ASSET_TYPE_ETF,
         ];
     }
     
@@ -381,6 +432,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         $this->container['fx_rate'] = isset($data['fx_rate']) ? $data['fx_rate'] : null;
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        $this->container['asset_type'] = isset($data['asset_type']) ? $data['asset_type'] : null;
         $this->container['settlement_currency'] = isset($data['settlement_currency']) ? $data['settlement_currency'] : null;
         $this->container['max_order_volume'] = isset($data['max_order_volume']) ? $data['max_order_volume'] : null;
         $this->container['step_order_volume'] = isset($data['step_order_volume']) ? $data['step_order_volume'] : null;
@@ -414,6 +466,22 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         if (!is_null($this->container['exchange']) && !in_array($this->container['exchange'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'exchange', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'category', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAssetTypeAllowableValues();
+        if (!is_null($this->container['asset_type']) && !in_array($this->container['asset_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'asset_type', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -470,7 +538,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string|null $symbol symbol
+     * @param string|null $symbol Symbol
      *
      * @return $this
      */
@@ -494,7 +562,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Exchange, supports us, hk, and kr
+     * @param string|null $exchange Exchange, supports us, hk, kr, and jp
      *
      * @return $this
      */
@@ -527,7 +595,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_desc
      *
-     * @param string|null $exchange_desc exchange_desc
+     * @param string|null $exchange_desc Exchange description
      *
      * @return $this
      */
@@ -551,7 +619,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets quote_currency
      *
-     * @param string|null $quote_currency quote_currency
+     * @param string|null $quote_currency Quote currency
      *
      * @return $this
      */
@@ -575,7 +643,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets quote_currency_precision
      *
-     * @param int|null $quote_currency_precision quote_currency_precision
+     * @param int|null $quote_currency_precision Quote currency precision
      *
      * @return $this
      */
@@ -623,7 +691,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets symbol_desc
      *
-     * @param string|null $symbol_desc symbol_desc
+     * @param string|null $symbol_desc Symbol description
      *
      * @return $this
      */
@@ -647,13 +715,55 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param string|null $category category
+     * @param string|null $category Symbol category. - CS: Common stock. - ETF: Exchange-traded funds. - ADRC, ADR: Depositary receipts for foreign companies listed in the U.S. - ETV: Exchange-traded products. - PFD: Preferred stock. - ETS: Exchange-traded securities. - ETN: Exchange-traded notes. - FUND: Funds.
      *
      * @return $this
      */
     public function setCategory($category)
     {
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($category) && !in_array($category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'category', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets asset_type
+     *
+     * @return string|null
+     */
+    public function getAssetType()
+    {
+        return $this->container['asset_type'];
+    }
+
+    /**
+     * Sets asset_type
+     *
+     * @param string|null $asset_type Asset type. - STOCK: Stock. - ETF: Exchange-traded fund.
+     *
+     * @return $this
+     */
+    public function setAssetType($asset_type)
+    {
+        $allowedValues = $this->getAssetTypeAllowableValues();
+        if (!is_null($asset_type) && !in_array($asset_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'asset_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['asset_type'] = $asset_type;
 
         return $this;
     }
@@ -671,7 +781,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets settlement_currency
      *
-     * @param string|null $settlement_currency settlement_currency
+     * @param string|null $settlement_currency Settlement currency
      *
      * @return $this
      */
@@ -695,7 +805,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets max_order_volume
      *
-     * @param string|null $max_order_volume max_order_volume
+     * @param string|null $max_order_volume Maximum order quantity
      *
      * @return $this
      */
@@ -719,7 +829,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets step_order_volume
      *
-     * @param string|null $step_order_volume step_order_volume
+     * @param string|null $step_order_volume Order step size
      *
      * @return $this
      */
@@ -743,7 +853,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets min_order_volume
      *
-     * @param string|null $min_order_volume min_order_volume
+     * @param string|null $min_order_volume Minimum order quantity
      *
      * @return $this
      */
@@ -791,7 +901,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets volume_precision
      *
-     * @param int|null $volume_precision volume_precision
+     * @param int|null $volume_precision Quantity precision
      *
      * @return $this
      */
@@ -815,7 +925,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets is_ipo
      *
-     * @param bool|null $is_ipo is_ipo
+     * @param bool|null $is_ipo Whether it is an IPO symbol
      *
      * @return $this
      */
@@ -839,7 +949,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets ipo_price
      *
-     * @param string|null $ipo_price ipo_price
+     * @param string|null $ipo_price IPO price
      *
      * @return $this
      */
@@ -863,7 +973,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets price_protection
      *
-     * @param string|null $price_protection price_protection
+     * @param string|null $price_protection Price protection range
      *
      * @return $this
      */
@@ -887,7 +997,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets sell_price_protection
      *
-     * @param string|null $sell_price_protection sell_price_protection
+     * @param string|null $sell_price_protection Sell price protection rate
      *
      * @return $this
      */
@@ -911,7 +1021,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets buy_price_protection
      *
-     * @param string|null $buy_price_protection buy_price_protection
+     * @param string|null $buy_price_protection Buy price protection rate
      *
      * @return $this
      */
@@ -935,7 +1045,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets slippage_rate
      *
-     * @param string|null $slippage_rate slippage_rate
+     * @param string|null $slippage_rate Slippage
      *
      * @return $this
      */
@@ -1082,7 +1192,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets symbol_descs
      *
-     * @param \GateApi\Model\SymbolDetailItemSymbolDescs[]|null $symbol_descs symbol_descs
+     * @param \GateApi\Model\SymbolDetailItemSymbolDescs[]|null $symbol_descs Multilingual symbol description
      *
      * @return $this
      */
@@ -1106,7 +1216,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets icon_link
      *
-     * @param string|null $icon_link icon_link
+     * @param string|null $icon_link Icon URL
      *
      * @return $this
      */

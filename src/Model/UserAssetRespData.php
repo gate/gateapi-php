@@ -60,8 +60,7 @@ class UserAssetRespData implements ModelInterface, ArrayAccess
         'balance' => 'string',
         'margin' => 'string',
         'margin_free' => 'string',
-        'unrealized_pnl' => 'string',
-        'mt5_uid' => 'string'
+        'unrealized_pnl' => 'string'
     ];
 
     /**
@@ -75,8 +74,7 @@ class UserAssetRespData implements ModelInterface, ArrayAccess
         'balance' => null,
         'margin' => null,
         'margin_free' => null,
-        'unrealized_pnl' => null,
-        'mt5_uid' => null
+        'unrealized_pnl' => null
     ];
 
     /**
@@ -111,8 +109,7 @@ class UserAssetRespData implements ModelInterface, ArrayAccess
         'balance' => 'balance',
         'margin' => 'margin',
         'margin_free' => 'margin_free',
-        'unrealized_pnl' => 'unrealized_pnl',
-        'mt5_uid' => 'mt5_uid'
+        'unrealized_pnl' => 'unrealized_pnl'
     ];
 
     /**
@@ -126,8 +123,7 @@ class UserAssetRespData implements ModelInterface, ArrayAccess
         'balance' => 'setBalance',
         'margin' => 'setMargin',
         'margin_free' => 'setMarginFree',
-        'unrealized_pnl' => 'setUnrealizedPnl',
-        'mt5_uid' => 'setMt5Uid'
+        'unrealized_pnl' => 'setUnrealizedPnl'
     ];
 
     /**
@@ -141,8 +137,7 @@ class UserAssetRespData implements ModelInterface, ArrayAccess
         'balance' => 'getBalance',
         'margin' => 'getMargin',
         'margin_free' => 'getMarginFree',
-        'unrealized_pnl' => 'getUnrealizedPnl',
-        'mt5_uid' => 'getMt5Uid'
+        'unrealized_pnl' => 'getUnrealizedPnl'
     ];
 
     /**
@@ -211,7 +206,6 @@ class UserAssetRespData implements ModelInterface, ArrayAccess
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
         $this->container['margin_free'] = isset($data['margin_free']) ? $data['margin_free'] : null;
         $this->container['unrealized_pnl'] = isset($data['unrealized_pnl']) ? $data['unrealized_pnl'] : null;
-        $this->container['mt5_uid'] = isset($data['mt5_uid']) ? $data['mt5_uid'] : null;
     }
 
     /**
@@ -378,30 +372,6 @@ class UserAssetRespData implements ModelInterface, ArrayAccess
     public function setUnrealizedPnl($unrealized_pnl)
     {
         $this->container['unrealized_pnl'] = $unrealized_pnl;
-
-        return $this;
-    }
-
-    /**
-     * Gets mt5_uid
-     *
-     * @return string|null
-     */
-    public function getMt5Uid()
-    {
-        return $this->container['mt5_uid'];
-    }
-
-    /**
-     * Sets mt5_uid
-     *
-     * @param string|null $mt5_uid MT5 userID
-     *
-     * @return $this
-     */
-    public function setMt5Uid($mt5_uid)
-    {
-        $this->container['mt5_uid'] = $mt5_uid;
 
         return $this;
     }

@@ -63,7 +63,8 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         'fiat_amount' => 'string',
         'promotion_code' => 'string',
         'quote_token' => 'string',
-        'bank_id' => 'string'
+        'bank_id' => 'string',
+        'receive_type' => 'string'
     ];
 
     /**
@@ -80,7 +81,8 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         'fiat_amount' => null,
         'promotion_code' => null,
         'quote_token' => null,
-        'bank_id' => null
+        'bank_id' => null,
+        'receive_type' => null
     ];
 
     /**
@@ -118,7 +120,8 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         'fiat_amount' => 'fiat_amount',
         'promotion_code' => 'promotion_code',
         'quote_token' => 'quote_token',
-        'bank_id' => 'bank_id'
+        'bank_id' => 'bank_id',
+        'receive_type' => 'receive_type'
     ];
 
     /**
@@ -135,7 +138,8 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         'fiat_amount' => 'setFiatAmount',
         'promotion_code' => 'setPromotionCode',
         'quote_token' => 'setQuoteToken',
-        'bank_id' => 'setBankId'
+        'bank_id' => 'setBankId',
+        'receive_type' => 'setReceiveType'
     ];
 
     /**
@@ -152,7 +156,8 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         'fiat_amount' => 'getFiatAmount',
         'promotion_code' => 'getPromotionCode',
         'quote_token' => 'getQuoteToken',
-        'bank_id' => 'getBankId'
+        'bank_id' => 'getBankId',
+        'receive_type' => 'getReceiveType'
     ];
 
     /**
@@ -196,8 +201,27 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const RECEIVE_TYPE_YOU = 'YOU';
+    const RECEIVE_TYPE_GATE = 'GATE';
+    const RECEIVE_TYPE_RECIPIENT = 'RECIPIENT';
+    const RECEIVE_TYPE_PERSON = 'PERSON';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReceiveTypeAllowableValues()
+    {
+        return [
+            self::RECEIVE_TYPE_YOU,
+            self::RECEIVE_TYPE_GATE,
+            self::RECEIVE_TYPE_RECIPIENT,
+            self::RECEIVE_TYPE_PERSON,
+        ];
+    }
     
 
     /**
@@ -224,6 +248,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
         $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
         $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
+        $this->container['receive_type'] = isset($data['receive_type']) ? $data['receive_type'] : null;
     }
 
     /**
@@ -259,6 +284,14 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
         if ($this->container['bank_id'] === null) {
             $invalidProperties[] = "'bank_id' can't be null";
         }
+        $allowedValues = $this->getReceiveTypeAllowableValues();
+        if (!is_null($this->container['receive_type']) && !in_array($this->container['receive_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'receive_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -486,6 +519,39 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
     public function setBankId($bank_id)
     {
         $this->container['bank_id'] = $bank_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets receive_type
+     *
+     * @return string|null
+     */
+    public function getReceiveType()
+    {
+        return $this->container['receive_type'];
+    }
+
+    /**
+     * Sets receive_type
+     *
+     * @param string|null $receive_type Name used for the remittance. Allowed values depend on the user type: Corporate users: YOU (remit in your company's name), GATE (remit in Gate's name), RECIPIENT (remit in the recipient's name); Individual users: GATE (remit in Gate's name), PERSON (remit in the user's own name).
+     *
+     * @return $this
+     */
+    public function setReceiveType($receive_type)
+    {
+        $allowedValues = $this->getReceiveTypeAllowableValues();
+        if (!is_null($receive_type) && !in_array($receive_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'receive_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['receive_type'] = $receive_type;
 
         return $this;
     }

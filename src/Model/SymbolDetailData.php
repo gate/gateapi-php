@@ -226,7 +226,7 @@ class SymbolDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets total
      *
-     * @param int|null $total total
+     * @param int|null $total Total quantity
      *
      * @return $this
      */
@@ -250,7 +250,7 @@ class SymbolDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets total_page
      *
-     * @param int|null $total_page total_page
+     * @param int|null $total_page Total pages
      *
      * @return $this
      */

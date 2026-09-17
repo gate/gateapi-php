@@ -215,7 +215,7 @@ class CreateOrder2Data implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id Queue Task ID (not task ID)
+     * @param string|null $id Queue Task ID (not order ID)
      *
      * @return $this
      */

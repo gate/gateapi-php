@@ -62,6 +62,7 @@ class SymbolListItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'string',
         'symbol_desc' => 'string',
         'category' => 'string',
+        'asset_type' => 'string',
         'trade_status' => 'string',
         'trade_mode' => 'int',
         'order_fill_timing' => 'int',
@@ -90,6 +91,7 @@ class SymbolListItem implements ModelInterface, ArrayAccess
         'fx_rate' => null,
         'symbol_desc' => null,
         'category' => null,
+        'asset_type' => null,
         'trade_status' => null,
         'trade_mode' => null,
         'order_fill_timing' => null,
@@ -139,6 +141,7 @@ class SymbolListItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'fx_rate',
         'symbol_desc' => 'symbol_desc',
         'category' => 'category',
+        'asset_type' => 'asset_type',
         'trade_status' => 'trade_status',
         'trade_mode' => 'trade_mode',
         'order_fill_timing' => 'order_fill_timing',
@@ -167,6 +170,7 @@ class SymbolListItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'setFxRate',
         'symbol_desc' => 'setSymbolDesc',
         'category' => 'setCategory',
+        'asset_type' => 'setAssetType',
         'trade_status' => 'setTradeStatus',
         'trade_mode' => 'setTradeMode',
         'order_fill_timing' => 'setOrderFillTiming',
@@ -195,6 +199,7 @@ class SymbolListItem implements ModelInterface, ArrayAccess
         'fx_rate' => 'getFxRate',
         'symbol_desc' => 'getSymbolDesc',
         'category' => 'getCategory',
+        'asset_type' => 'getAssetType',
         'trade_status' => 'getTradeStatus',
         'trade_mode' => 'getTradeMode',
         'order_fill_timing' => 'getOrderFillTiming',
@@ -253,6 +258,18 @@ class SymbolListItem implements ModelInterface, ArrayAccess
     const EXCHANGE_US = 'us';
     const EXCHANGE_HK = 'hk';
     const EXCHANGE_KR = 'kr';
+    const EXCHANGE_JP = 'jp';
+    const CATEGORY_CS = 'CS';
+    const CATEGORY_ETF = 'ETF';
+    const CATEGORY_ADRC = 'ADRC';
+    const CATEGORY_ADR = 'ADR';
+    const CATEGORY_ETV = 'ETV';
+    const CATEGORY_PFD = 'PFD';
+    const CATEGORY_ETS = 'ETS';
+    const CATEGORY_ETN = 'ETN';
+    const CATEGORY_FUND = 'FUND';
+    const ASSET_TYPE_STOCK = 'STOCK';
+    const ASSET_TYPE_ETF = 'ETF';
     const TRADE_STATUS_PRE_MARKET = 'pre_market';
     const TRADE_STATUS_OPEN = 'open';
     const TRADE_STATUS_POST_MARKET = 'post_market';
@@ -279,6 +296,40 @@ class SymbolListItem implements ModelInterface, ArrayAccess
             self::EXCHANGE_US,
             self::EXCHANGE_HK,
             self::EXCHANGE_KR,
+            self::EXCHANGE_JP,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCategoryAllowableValues()
+    {
+        return [
+            self::CATEGORY_CS,
+            self::CATEGORY_ETF,
+            self::CATEGORY_ADRC,
+            self::CATEGORY_ADR,
+            self::CATEGORY_ETV,
+            self::CATEGORY_PFD,
+            self::CATEGORY_ETS,
+            self::CATEGORY_ETN,
+            self::CATEGORY_FUND,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAssetTypeAllowableValues()
+    {
+        return [
+            self::ASSET_TYPE_STOCK,
+            self::ASSET_TYPE_ETF,
         ];
     }
     
@@ -351,6 +402,7 @@ class SymbolListItem implements ModelInterface, ArrayAccess
         $this->container['fx_rate'] = isset($data['fx_rate']) ? $data['fx_rate'] : null;
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        $this->container['asset_type'] = isset($data['asset_type']) ? $data['asset_type'] : null;
         $this->container['trade_status'] = isset($data['trade_status']) ? $data['trade_status'] : null;
         $this->container['trade_mode'] = isset($data['trade_mode']) ? $data['trade_mode'] : null;
         $this->container['order_fill_timing'] = isset($data['order_fill_timing']) ? $data['order_fill_timing'] : null;
@@ -378,6 +430,22 @@ class SymbolListItem implements ModelInterface, ArrayAccess
         if (!is_null($this->container['exchange']) && !in_array($this->container['exchange'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'exchange', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'category', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAssetTypeAllowableValues();
+        if (!is_null($this->container['asset_type']) && !in_array($this->container['asset_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'asset_type', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -458,7 +526,7 @@ class SymbolListItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Exchange, supports us, hk, and kr
+     * @param string|null $exchange Exchange, supports us, hk, kr, and jp
      *
      * @return $this
      */
@@ -611,13 +679,55 @@ class SymbolListItem implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param string|null $category Category
+     * @param string|null $category Symbol category. - CS: Common stock. - ETF: Exchange-traded funds. - ADRC, ADR: Depositary receipts for foreign companies listed in the U.S. - ETV: Exchange-traded products. - PFD: Preferred stock. - ETS: Exchange-traded securities. - ETN: Exchange-traded notes. - FUND: Funds.
      *
      * @return $this
      */
     public function setCategory($category)
     {
+        $allowedValues = $this->getCategoryAllowableValues();
+        if (!is_null($category) && !in_array($category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'category', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets asset_type
+     *
+     * @return string|null
+     */
+    public function getAssetType()
+    {
+        return $this->container['asset_type'];
+    }
+
+    /**
+     * Sets asset_type
+     *
+     * @param string|null $asset_type Asset type. - STOCK: Stock. - ETF: Exchange-traded fund.
+     *
+     * @return $this
+     */
+    public function setAssetType($asset_type)
+    {
+        $allowedValues = $this->getAssetTypeAllowableValues();
+        if (!is_null($asset_type) && !in_array($asset_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'asset_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['asset_type'] = $asset_type;
 
         return $this;
     }

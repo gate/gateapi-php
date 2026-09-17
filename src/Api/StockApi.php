@@ -391,7 +391,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -414,7 +414,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -474,7 +474,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -500,7 +500,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -553,7 +553,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -716,7 +716,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -738,7 +738,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -797,7 +797,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -822,7 +822,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -874,7 +874,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -2836,7 +2836,7 @@ class StockApi
      * @param  int $pnl_calc_type PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) (optional)
      * @param  int $pnl_calc_price PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) (optional)
      * @param  string $symbol Symbol (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2858,7 +2858,7 @@ class StockApi
      * @param  int $pnl_calc_type PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) (optional)
      * @param  int $pnl_calc_price PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) (optional)
      * @param  string $symbol Symbol (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2917,7 +2917,7 @@ class StockApi
      * @param  int $pnl_calc_type PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) (optional)
      * @param  int $pnl_calc_price PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) (optional)
      * @param  string $symbol Symbol (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2942,7 +2942,7 @@ class StockApi
      * @param  int $pnl_calc_type PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) (optional)
      * @param  int $pnl_calc_price PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) (optional)
      * @param  string $symbol Symbol (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2994,7 +2994,7 @@ class StockApi
      * @param  int $pnl_calc_type PnL calculation cost type. Defaults to average cost price when omitted (1 &#x3D; average cost price, 2 &#x3D; diluted cost price) (optional)
      * @param  int $pnl_calc_price PnL calculation price type. Defaults to intraday price when omitted (1 &#x3D; intraday price, 2 &#x3D; latest extended-hours price) (optional)
      * @param  string $symbol Symbol (optional)
-     * @param  string $exchange Exchange, supports us, hk, and kr (optional)
+     * @param  string $exchange Exchange, supports us, hk, kr, and jp (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

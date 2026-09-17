@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **position_market_value** | **string** | Position market value | [optional] 
 **position_pnl** | **string** | Position P&amp;L | [optional] 
 **today_pnl** | **string** | Today&#39;s P&amp;L | [optional] 
+**option_position_market_value** | **string** | Option position market value | [optional] 
+**option_position_pnl** | **string** | Option position PnL | [optional] 
+**option_today_pnl** | **string** | Option today&#39;s PnL | [optional] 
 **user_exists** | **bool** | Whether the user has activated the service | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
