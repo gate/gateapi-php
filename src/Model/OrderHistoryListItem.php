@@ -256,6 +256,26 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     const EXCHANGE_JP = 'jp';
     const PRICE_TYPE_MARKET = 'market';
     const PRICE_TYPE_LIMIT = 'limit';
+    const STATUS_0 = 0;
+    const STATUS_1 = 1;
+    const STATUS_2 = 2;
+    const STATUS_3 = 3;
+    const STATUS_4 = 4;
+    const STATUS_5 = 5;
+    const STATUS_6 = 6;
+    const STATUS_7 = 7;
+    const STATUS_8 = 8;
+    const FINISH_AS_0 = 0;
+    const FINISH_AS_1 = 1;
+    const FINISH_AS_2 = 2;
+    const FINISH_AS_3 = 3;
+    const FINISH_AS_4 = 4;
+    const FINISH_AS_5 = 5;
+    const FINISH_AS_6 = 6;
+    const FINISH_AS_7 = 7;
+    const FINISH_AS_8 = 8;
+    const FINISH_AS_9 = 9;
+    const FINISH_AS_13 = 13;
     const SIDE_1 = 1;
     const SIDE_2 = 2;
     const TIME_IN_FORCE_DAY = 'day';
@@ -287,6 +307,48 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         return [
             self::PRICE_TYPE_MARKET,
             self::PRICE_TYPE_LIMIT,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_0,
+            self::STATUS_1,
+            self::STATUS_2,
+            self::STATUS_3,
+            self::STATUS_4,
+            self::STATUS_5,
+            self::STATUS_6,
+            self::STATUS_7,
+            self::STATUS_8,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFinishAsAllowableValues()
+    {
+        return [
+            self::FINISH_AS_0,
+            self::FINISH_AS_1,
+            self::FINISH_AS_2,
+            self::FINISH_AS_3,
+            self::FINISH_AS_4,
+            self::FINISH_AS_5,
+            self::FINISH_AS_6,
+            self::FINISH_AS_7,
+            self::FINISH_AS_8,
+            self::FINISH_AS_9,
+            self::FINISH_AS_13,
         ];
     }
     
@@ -374,6 +436,22 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFinishAsAllowableValues();
+        if (!is_null($this->container['finish_as']) && !in_array($this->container['finish_as'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'finish_as', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -608,12 +686,21 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param int|null $status Order status
+     * @param int|null $status Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
      *
      * @return $this
      */
     public function setStatus($status)
     {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['status'] = $status;
 
         return $this;
@@ -680,12 +767,21 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets finish_as
      *
-     * @param int|null $finish_as Order completion reason
+     * @param int|null $finish_as Order completion reason. - 0: Unknown. - 1: No quote found. - 2: No match found. - 3: Trigger price exceeded. - 4: Order value exceeds the limit. - 5: Unknown rejection. - 6: Unknown cancellation. - 7: Canceled by user. - 8: Canceled after the order time in force expired. - 9: Trading is not supported in the current session. - 13: Canceled due to corporate action.
      *
      * @return $this
      */
     public function setFinishAs($finish_as)
     {
+        $allowedValues = $this->getFinishAsAllowableValues();
+        if (!is_null($finish_as) && !in_array($finish_as, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'finish_as', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['finish_as'] = $finish_as;
 
         return $this;

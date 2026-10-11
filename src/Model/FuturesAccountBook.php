@@ -199,6 +199,7 @@ class FuturesAccountBook implements ModelInterface, ArrayAccess
     const TYPE_POINT_FEE = 'point_fee';
     const TYPE_POINT_REFR = 'point_refr';
     const TYPE_BONUS_OFFSET = 'bonus_offset';
+    const TYPE_DIVIDEND = 'dividend';
     
 
     
@@ -219,6 +220,7 @@ class FuturesAccountBook implements ModelInterface, ArrayAccess
             self::TYPE_POINT_FEE,
             self::TYPE_POINT_REFR,
             self::TYPE_BONUS_OFFSET,
+            self::TYPE_DIVIDEND,
         ];
     }
     
@@ -365,7 +367,7 @@ class FuturesAccountBook implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string|null $type Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction
+     * @param string|null $type Change types:  - dnw: Deposit and withdrawal - pnl: Profit and loss from position reduction - fee: Trading fees - refr: Referrer rebates - fund: Funding fees - point_dnw: Point card deposit and withdrawal - point_fee: Point card trading fees - point_refr: Point card referrer rebates - bonus_offset: Trial fund deduction - dividend: Dividend payout
      *
      * @return $this
      */

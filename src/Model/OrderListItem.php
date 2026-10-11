@@ -288,10 +288,23 @@ class OrderListItem implements ModelInterface, ArrayAccess
     const TRADE_MODE_1 = 1;
     const TRADE_MODE_2 = 2;
     const TRADE_MODE_4 = 4;
+    const TRADE_MODE_5 = 5;
+    const TRADE_MODE_6 = 6;
+    const TRADE_MODE_7 = 7;
+    const TRADE_MODE_8 = 8;
     const PRICE_TYPE_MARKET = 'market';
     const PRICE_TYPE_LIMIT = 'limit';
     const SIDE_1 = 1;
     const SIDE_2 = 2;
+    const STATUS_0 = 0;
+    const STATUS_1 = 1;
+    const STATUS_2 = 2;
+    const STATUS_3 = 3;
+    const STATUS_4 = 4;
+    const STATUS_5 = 5;
+    const STATUS_6 = 6;
+    const STATUS_7 = 7;
+    const STATUS_8 = 8;
     
 
     
@@ -338,6 +351,10 @@ class OrderListItem implements ModelInterface, ArrayAccess
             self::TRADE_MODE_1,
             self::TRADE_MODE_2,
             self::TRADE_MODE_4,
+            self::TRADE_MODE_5,
+            self::TRADE_MODE_6,
+            self::TRADE_MODE_7,
+            self::TRADE_MODE_8,
         ];
     }
     
@@ -364,6 +381,26 @@ class OrderListItem implements ModelInterface, ArrayAccess
         return [
             self::SIDE_1,
             self::SIDE_2,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_0,
+            self::STATUS_1,
+            self::STATUS_2,
+            self::STATUS_3,
+            self::STATUS_4,
+            self::STATUS_5,
+            self::STATUS_6,
+            self::STATUS_7,
+            self::STATUS_8,
         ];
     }
     
@@ -455,6 +492,14 @@ class OrderListItem implements ModelInterface, ArrayAccess
         if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -673,7 +718,7 @@ class OrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets trade_mode
      *
-     * @param int|null $trade_mode Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.
+     * @param int|null $trade_mode Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt).
      *
      * @return $this
      */
@@ -772,12 +817,21 @@ class OrderListItem implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param int|null $status Order status
+     * @param int|null $status Order status. - 0: Unknown. - 1: New order; the order has been validated and is waiting to be processed. - 2: Partially filled. - 3: Filled. - 4: Canceled. - 5: Order rejected. - 6: Cancellation rejected. - 7: Order update succeeded. - 8: Order update rejected.
      *
      * @return $this
      */
     public function setStatus($status)
     {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['status'] = $status;
 
         return $this;

@@ -309,6 +309,10 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     const TRADE_MODE_1 = 1;
     const TRADE_MODE_2 = 2;
     const TRADE_MODE_4 = 4;
+    const TRADE_MODE_5 = 5;
+    const TRADE_MODE_6 = 6;
+    const TRADE_MODE_7 = 7;
+    const TRADE_MODE_8 = 8;
     const ORDER_FILL_TIMING_1 = 1;
     const ORDER_FILL_TIMING_2 = 2;
     const ORDER_FILL_TIMING_3 = 3;
@@ -391,6 +395,10 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
             self::TRADE_MODE_1,
             self::TRADE_MODE_2,
             self::TRADE_MODE_4,
+            self::TRADE_MODE_5,
+            self::TRADE_MODE_6,
+            self::TRADE_MODE_7,
+            self::TRADE_MODE_8,
         ];
     }
     
@@ -1126,7 +1134,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     /**
      * Sets trade_mode
      *
-     * @param int|null $trade_mode Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported.
+     * @param int|null $trade_mode Current session trading mode. - 0: Trading disabled. - 1: Buy only. - 2: Sell only. - 4: Buy and sell supported. - 5: LP trading suspended (manual suspension). - 6: LP trading suspended (strategy exception). - 7: LP trading suspended (stock halt). - 8: LP trading suspended (stock circuit breaker halt).
      *
      * @return $this
      */

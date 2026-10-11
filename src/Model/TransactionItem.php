@@ -440,7 +440,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
     /**
      * Sets change
      *
-     * @param string|null $change Change amount
+     * @param string|null $change Change amount. A positive value means a credit, and a negative value means a debit.
      *
      * @return $this
      */

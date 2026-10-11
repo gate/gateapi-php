@@ -3378,7 +3378,7 @@ class StockApi
      * @param  int $begin_time Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  int $end_time End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  string $ref_id Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size (optional)
-     * @param  string $type Transaction type (optional)
+     * @param  string $type 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。 (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -3402,7 +3402,7 @@ class StockApi
      * @param  int $begin_time Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  int $end_time End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  string $ref_id Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size (optional)
-     * @param  string $type Transaction type (optional)
+     * @param  string $type 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。 (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -3463,7 +3463,7 @@ class StockApi
      * @param  int $begin_time Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  int $end_time End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  string $ref_id Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size (optional)
-     * @param  string $type Transaction type (optional)
+     * @param  string $type 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。 (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -3490,7 +3490,7 @@ class StockApi
      * @param  int $begin_time Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  int $end_time End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  string $ref_id Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size (optional)
-     * @param  string $type Transaction type (optional)
+     * @param  string $type 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。 (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *
@@ -3544,7 +3544,7 @@ class StockApi
      * @param  int $begin_time Start time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  int $end_time End time (Unix timestamp, seconds). When both begin_time and end_time are provided, end_time must be &gt;&#x3D; begin_time, query range must not exceed 3 months. (optional)
      * @param  string $ref_id Business idempotent ID. When ref_id is provided, the server queries by ref_id, ignoring other parameters such as begin_time, end_time, type, page, page_size (optional)
-     * @param  string $type Transaction type (optional)
+     * @param  string $type 流水类型。 - deposit: 资金转入，从现货账户转入到股票账户。 - withdraw: 资金转出，从股票账户转出到现货账户。 - fee: 交易手续费。 - dividend: 分红派息。 - sell: 卖出股票入账。 - buy: 买入股票出账。 - award: 空投奖励。 - stock_transfer_in: 股票转入。 - stock_transfer_out: 股票转出。 (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
      *

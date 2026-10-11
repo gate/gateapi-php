@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * TradFiSpotTransactionRequest Class Doc Comment
  *
  * @category Class
- * @description Transfer request parameters
+ * @description Fund transfer request parameters. Transfer in means moving funds from the spot account to the stock account; transfer out means moving funds from the stock account to the spot account.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -322,7 +322,7 @@ class TradFiSpotTransactionRequest implements ModelInterface, ArrayAccess
     /**
      * Sets change
      *
-     * @param string $change Change amount
+     * @param string $change Change amount, must be greater than 0
      *
      * @return $this
      */
@@ -346,7 +346,7 @@ class TradFiSpotTransactionRequest implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type Transaction type (deposit=deposit, withdraw=withdrawal)
+     * @param string $type Transaction type. deposit transfers funds from the spot account to the stock account; withdraw transfers funds from the stock account to the spot account.
      *
      * @return $this
      */
