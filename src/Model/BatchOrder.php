@@ -93,8 +93,8 @@ class BatchOrder implements ModelInterface, ArrayAccess
         'stp_act' => 'string',
         'finish_as' => 'string',
         'slippage' => 'string',
-        'stop_profit' => '\GateApi\Model\SpotOrderStopProfit',
-        'stop_loss' => '\GateApi\Model\SpotOrderStopLoss'
+        'stop_profit' => '\GateApi\Model\PatchSpotOrderStopProfit',
+        'stop_loss' => '\GateApi\Model\PatchSpotOrderStopLoss'
     ];
 
     /**
@@ -1611,7 +1611,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Gets stop_profit
      *
-     * @return \GateApi\Model\SpotOrderStopProfit|null
+     * @return \GateApi\Model\PatchSpotOrderStopProfit|null
      */
     public function getStopProfit()
     {
@@ -1621,7 +1621,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Sets stop_profit
      *
-     * @param \GateApi\Model\SpotOrderStopProfit|null $stop_profit stop_profit
+     * @param \GateApi\Model\PatchSpotOrderStopProfit|null $stop_profit stop_profit
      *
      * @return $this
      */
@@ -1635,7 +1635,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Gets stop_loss
      *
-     * @return \GateApi\Model\SpotOrderStopLoss|null
+     * @return \GateApi\Model\PatchSpotOrderStopLoss|null
      */
     public function getStopLoss()
     {
@@ -1645,7 +1645,7 @@ class BatchOrder implements ModelInterface, ArrayAccess
     /**
      * Sets stop_loss
      *
-     * @param \GateApi\Model\SpotOrderStopLoss|null $stop_loss stop_loss
+     * @param \GateApi\Model\PatchSpotOrderStopLoss|null $stop_loss stop_loss
      *
      * @return $this
      */

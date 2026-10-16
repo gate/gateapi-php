@@ -652,7 +652,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER`).
+     * @param string $exchange_type Exchange type (BINANCE / OKX / GATE / BYBIT / KRAKEN / HYPERLIQUID / DERIBIT / LIGHTER). Stocks and ETFs return the listing market (US / HK / KR / JP)
      *
      * @return $this
      */
@@ -676,7 +676,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets business_type
      *
-     * @param string $business_type Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin / `CONVERT` Flash Swap).
+     * @param string $business_type Business type (SPOT: spot / FUTURE: futures / MARGIN: margin / CONVERT: flash swap / STOCK: stocks / ETF: exchange-traded funds)
      *
      * @return $this
      */
@@ -748,7 +748,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string $price Order price.
+     * @param string $price Order price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      *
      * @return $this
      */
@@ -820,7 +820,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets executed_amount
      *
-     * @param string $executed_amount Filled quote amount.
+     * @param string $executed_amount Filled amount in the quote currency. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      *
      * @return $this
      */
@@ -844,7 +844,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets executed_avg_price
      *
-     * @param string $executed_avg_price Average Filled Price
+     * @param string $executed_avg_price Average fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      *
      * @return $this
      */
@@ -1012,7 +1012,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets last_executed_price
      *
-     * @param string $last_executed_price Price of the latest fill.
+     * @param string $last_executed_price Price of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      *
      * @return $this
      */
@@ -1036,7 +1036,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     /**
      * Sets last_executed_amount
      *
-     * @param string $last_executed_amount Quote amount of the latest fill.
+     * @param string $last_executed_amount Amount of the latest fill. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      *
      * @return $this
      */

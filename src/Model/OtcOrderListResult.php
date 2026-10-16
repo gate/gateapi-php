@@ -58,7 +58,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
         'ps' => 'int',
         'total_pn' => 'int',
         'count' => 'int',
-        'list' => '\GateApi\Model\OtcOrderListItem[]'
+        'lists' => '\GateApi\Model\OtcOrderListItem[]'
     ];
 
     /**
@@ -71,7 +71,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
         'ps' => null,
         'total_pn' => null,
         'count' => null,
-        'list' => null
+        'lists' => null
     ];
 
     /**
@@ -105,7 +105,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
         'ps' => 'ps',
         'total_pn' => 'total_pn',
         'count' => 'count',
-        'list' => 'list'
+        'lists' => 'lists'
     ];
 
     /**
@@ -118,7 +118,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
         'ps' => 'setPs',
         'total_pn' => 'setTotalPn',
         'count' => 'setCount',
-        'list' => 'setList'
+        'lists' => 'setLists'
     ];
 
     /**
@@ -131,7 +131,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
         'ps' => 'getPs',
         'total_pn' => 'getTotalPn',
         'count' => 'getCount',
-        'list' => 'getList'
+        'lists' => 'getLists'
     ];
 
     /**
@@ -198,7 +198,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
         $this->container['ps'] = isset($data['ps']) ? $data['ps'] : null;
         $this->container['total_pn'] = isset($data['total_pn']) ? $data['total_pn'] : null;
         $this->container['count'] = isset($data['count']) ? $data['count'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['lists'] = isset($data['lists']) ? $data['lists'] : null;
     }
 
     /**
@@ -222,8 +222,8 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
         if ($this->container['count'] === null) {
             $invalidProperties[] = "'count' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['lists'] === null) {
+            $invalidProperties[] = "'lists' can't be null";
         }
         return $invalidProperties;
     }
@@ -337,25 +337,25 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets list
+     * Gets lists
      *
      * @return \GateApi\Model\OtcOrderListItem[]
      */
-    public function getList()
+    public function getLists()
     {
-        return $this->container['list'];
+        return $this->container['lists'];
     }
 
     /**
-     * Sets list
+     * Sets lists
      *
-     * @param \GateApi\Model\OtcOrderListItem[] $list list
+     * @param \GateApi\Model\OtcOrderListItem[] $lists lists
      *
      * @return $this
      */
-    public function setList($list)
+    public function setLists($lists)
     {
-        $this->container['list'] = $list;
+        $this->container['lists'] = $lists;
 
         return $this;
     }

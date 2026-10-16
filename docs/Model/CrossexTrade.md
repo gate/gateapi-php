@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **business_type** | **string** | Business Type | [optional] 
 **side** | **string** | Buy/Sell Direction | [optional] 
 **qty** | **string** | Trading size | [optional] 
-**price** | **string** | Fill Price | [optional] 
+**price** | **string** | Fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY) | [optional] 
 **fee** | **string** | fee | [optional] 
 **fee_coin** | **string** | Fee currency | [optional] 
 **fee_rate** | **string** | Fee Rate | [optional] 

@@ -2275,6 +2275,2200 @@ class EarnApi
     }
 
     /**
+     * Operation listDualStockInvestmentPlans
+     *
+     * List stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_id Product/plan ID. If provided, only the matching product is returned (optional)
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency. Default: USDT (optional, default to 'USDT')
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\DualGetPlans[]
+     */
+    public function listDualStockInvestmentPlans($associative_array)
+    {
+        list($response) = $this->listDualStockInvestmentPlansWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listDualStockInvestmentPlansWithHttpInfo
+     *
+     * List stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_id Product/plan ID. If provided, only the matching product is returned (optional)
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency. Default: USDT (optional, default to 'USDT')
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\DualGetPlans[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDualStockInvestmentPlansWithHttpInfo($associative_array)
+    {
+        $request = $this->listDualStockInvestmentPlansRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\DualGetPlans[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listDualStockInvestmentPlansAsync
+     *
+     * List stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_id Product/plan ID. If provided, only the matching product is returned (optional)
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency. Default: USDT (optional, default to 'USDT')
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDualStockInvestmentPlansAsync($associative_array)
+    {
+        return $this->listDualStockInvestmentPlansAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDualStockInvestmentPlansAsyncWithHttpInfo
+     *
+     * List stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_id Product/plan ID. If provided, only the matching product is returned (optional)
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency. Default: USDT (optional, default to 'USDT')
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDualStockInvestmentPlansAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\DualGetPlans[]';
+        $request = $this->listDualStockInvestmentPlansRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDualStockInvestmentPlans'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $plan_id Product/plan ID. If provided, only the matching product is returned (optional)
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  string $quote_currency Settlement currency. Default: USDT (optional, default to 'USDT')
+     * @param  string $sort Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first (optional)
+     * @param  int $page page number (optional)
+     * @param  int $page_size Items per page，Maximum 100 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listDualStockInvestmentPlansRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $plan_id = array_key_exists('plan_id', $associative_array) ? $associative_array['plan_id'] : null;
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $quote_currency = array_key_exists('quote_currency', $associative_array) ? $associative_array['quote_currency'] : 'USDT';
+        $sort = array_key_exists('sort', $associative_array) ? $associative_array['sort'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling EarnApi.listDualStockInvestmentPlans, must be bigger than or equal to 1.');
+        }
+
+        if ($page_size !== null && $page_size > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling EarnApi.listDualStockInvestmentPlans, must be smaller than or equal to 100.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling EarnApi.listDualStockInvestmentPlans, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/earn/dual/stock/investment_plan';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($plan_id !== null) {
+            if('form' === 'form' && is_array($plan_id)) {
+                foreach($plan_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['plan_id'] = $plan_id;
+            }
+        }
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($quote_currency !== null) {
+            if('form' === 'form' && is_array($quote_currency)) {
+                foreach($quote_currency as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['quote_currency'] = $quote_currency;
+            }
+        }
+
+        // query params
+        if ($sort !== null) {
+            if('form' === 'form' && is_array($sort)) {
+                foreach($sort as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort'] = $sort;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDualStockProjectRecommend
+     *
+     * Get recommendations for stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $mode Recommendation mode. Default: normal normal: Regular users senior: Experienced users (optional, default to 'normal')
+     * @param  string $history_pids Previously recommended project IDs, separated by commas (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\DualProjectRecommend[]
+     */
+    public function getDualStockProjectRecommend($associative_array)
+    {
+        list($response) = $this->getDualStockProjectRecommendWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation getDualStockProjectRecommendWithHttpInfo
+     *
+     * Get recommendations for stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $mode Recommendation mode. Default: normal normal: Regular users senior: Experienced users (optional, default to 'normal')
+     * @param  string $history_pids Previously recommended project IDs, separated by commas (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\DualProjectRecommend[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDualStockProjectRecommendWithHttpInfo($associative_array)
+    {
+        $request = $this->getDualStockProjectRecommendRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\DualProjectRecommend[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getDualStockProjectRecommendAsync
+     *
+     * Get recommendations for stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $mode Recommendation mode. Default: normal normal: Regular users senior: Experienced users (optional, default to 'normal')
+     * @param  string $history_pids Previously recommended project IDs, separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualStockProjectRecommendAsync($associative_array)
+    {
+        return $this->getDualStockProjectRecommendAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDualStockProjectRecommendAsyncWithHttpInfo
+     *
+     * Get recommendations for stock dual investment products
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $mode Recommendation mode. Default: normal normal: Regular users senior: Experienced users (optional, default to 'normal')
+     * @param  string $history_pids Previously recommended project IDs, separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualStockProjectRecommendAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\DualProjectRecommend[]';
+        $request = $this->getDualStockProjectRecommendRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDualStockProjectRecommend'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Underlying currency (optional)
+     * @param  string $type &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low (optional)
+     * @param  string $mode Recommendation mode. Default: normal normal: Regular users senior: Experienced users (optional, default to 'normal')
+     * @param  string $history_pids Previously recommended project IDs, separated by commas (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getDualStockProjectRecommendRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $mode = array_key_exists('mode', $associative_array) ? $associative_array['mode'] : 'normal';
+        $history_pids = array_key_exists('history_pids', $associative_array) ? $associative_array['history_pids'] : null;
+
+
+        $resourcePath = '/earn/dual/stock/project-recommend';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($mode !== null) {
+            if('form' === 'form' && is_array($mode)) {
+                foreach($mode as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['mode'] = $mode;
+            }
+        }
+
+        // query params
+        if ($history_pids !== null) {
+            if('form' === 'form' && is_array($history_pids)) {
+                foreach($history_pids as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['history_pids'] = $history_pids;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listDualStockOrders
+     *
+     * List stock dual investment orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Investment Token (optional)
+     * @param  string $status Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders (optional, default to 'ALL')
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  int $from Start of the time range, in Unix seconds (optional)
+     * @param  int $to End of the time range, in Unix seconds (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page_size Number of records per page, up to 100. Defaults to 100 when omitted (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\DualGetOrders[]
+     */
+    public function listDualStockOrders($associative_array)
+    {
+        list($response) = $this->listDualStockOrdersWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listDualStockOrdersWithHttpInfo
+     *
+     * List stock dual investment orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Investment Token (optional)
+     * @param  string $status Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders (optional, default to 'ALL')
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  int $from Start of the time range, in Unix seconds (optional)
+     * @param  int $to End of the time range, in Unix seconds (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page_size Number of records per page, up to 100. Defaults to 100 when omitted (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\DualGetOrders[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDualStockOrdersWithHttpInfo($associative_array)
+    {
+        $request = $this->listDualStockOrdersRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\DualGetOrders[]';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listDualStockOrdersAsync
+     *
+     * List stock dual investment orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Investment Token (optional)
+     * @param  string $status Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders (optional, default to 'ALL')
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  int $from Start of the time range, in Unix seconds (optional)
+     * @param  int $to End of the time range, in Unix seconds (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page_size Number of records per page, up to 100. Defaults to 100 when omitted (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDualStockOrdersAsync($associative_array)
+    {
+        return $this->listDualStockOrdersAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDualStockOrdersAsyncWithHttpInfo
+     *
+     * List stock dual investment orders
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Investment Token (optional)
+     * @param  string $status Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders (optional, default to 'ALL')
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  int $from Start of the time range, in Unix seconds (optional)
+     * @param  int $to End of the time range, in Unix seconds (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page_size Number of records per page, up to 100. Defaults to 100 when omitted (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDualStockOrdersAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\DualGetOrders[]';
+        $request = $this->listDualStockOrdersRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDualStockOrders'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $coin Investment Token (optional)
+     * @param  string $status Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders (optional, default to 'ALL')
+     * @param  string $type Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high (optional)
+     * @param  int $from Start of the time range, in Unix seconds (optional)
+     * @param  int $to End of the time range, in Unix seconds (optional)
+     * @param  int $page Page number (optional, default to 1)
+     * @param  int $page_size Number of records per page, up to 100. Defaults to 100 when omitted (optional)
+     * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listDualStockOrdersRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $coin = array_key_exists('coin', $associative_array) ? $associative_array['coin'] : null;
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : 'ALL';
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $from = array_key_exists('from', $associative_array) ? $associative_array['from'] : null;
+        $to = array_key_exists('to', $associative_array) ? $associative_array['to'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : 1;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 100;
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling EarnApi.listDualStockOrders, must be bigger than or equal to 1.');
+        }
+
+        if ($page_size !== null && $page_size > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling EarnApi.listDualStockOrders, must be smaller than or equal to 100.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling EarnApi.listDualStockOrders, must be bigger than or equal to 1.');
+        }
+
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling EarnApi.listDualStockOrders, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling EarnApi.listDualStockOrders, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/earn/dual/stock/orders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($coin !== null) {
+            if('form' === 'form' && is_array($coin)) {
+                foreach($coin as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['coin'] = $coin;
+            }
+        }
+
+        // query params
+        if ($status !== null) {
+            if('form' === 'form' && is_array($status)) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($type !== null) {
+            if('form' === 'form' && is_array($type)) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            if('form' === 'form' && is_array($page)) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation placeDualStockOrder
+     *
+     * Place a stock dual investment order
+     *
+     * @param  \GateApi\Model\PlaceDualStockInvestmentOrderParams $place_dual_stock_investment_order_params place_dual_stock_investment_order_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\PlaceDualInvestmentOrder
+     */
+    public function placeDualStockOrder($place_dual_stock_investment_order_params)
+    {
+        list($response) = $this->placeDualStockOrderWithHttpInfo($place_dual_stock_investment_order_params);
+        return $response;
+    }
+
+    /**
+     * Operation placeDualStockOrderWithHttpInfo
+     *
+     * Place a stock dual investment order
+     *
+     * @param  \GateApi\Model\PlaceDualStockInvestmentOrderParams $place_dual_stock_investment_order_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\PlaceDualInvestmentOrder, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function placeDualStockOrderWithHttpInfo($place_dual_stock_investment_order_params)
+    {
+        $request = $this->placeDualStockOrderRequest($place_dual_stock_investment_order_params);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\PlaceDualInvestmentOrder';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation placeDualStockOrderAsync
+     *
+     * Place a stock dual investment order
+     *
+     * @param  \GateApi\Model\PlaceDualStockInvestmentOrderParams $place_dual_stock_investment_order_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function placeDualStockOrderAsync($place_dual_stock_investment_order_params)
+    {
+        return $this->placeDualStockOrderAsyncWithHttpInfo($place_dual_stock_investment_order_params)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation placeDualStockOrderAsyncWithHttpInfo
+     *
+     * Place a stock dual investment order
+     *
+     * @param  \GateApi\Model\PlaceDualStockInvestmentOrderParams $place_dual_stock_investment_order_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function placeDualStockOrderAsyncWithHttpInfo($place_dual_stock_investment_order_params)
+    {
+        $returnType = '\GateApi\Model\PlaceDualInvestmentOrder';
+        $request = $this->placeDualStockOrderRequest($place_dual_stock_investment_order_params);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'placeDualStockOrder'
+     *
+     * @param  \GateApi\Model\PlaceDualStockInvestmentOrderParams $place_dual_stock_investment_order_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function placeDualStockOrderRequest($place_dual_stock_investment_order_params)
+    {
+        // verify the required parameter 'place_dual_stock_investment_order_params' is set
+        if ($place_dual_stock_investment_order_params === null || (is_array($place_dual_stock_investment_order_params) && count($place_dual_stock_investment_order_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $place_dual_stock_investment_order_params when calling placeDualStockOrder'
+            );
+        }
+
+        $resourcePath = '/earn/dual/stock/orders';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($place_dual_stock_investment_order_params)) {
+            $_tempBody = $place_dual_stock_investment_order_params;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listDualStockBalance
+     *
+     * Get stock dual investment asset statistics
+     *
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\DualGetBalance
+     */
+    public function listDualStockBalance()
+    {
+        list($response) = $this->listDualStockBalanceWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation listDualStockBalanceWithHttpInfo
+     *
+     * Get stock dual investment asset statistics
+     *
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\DualGetBalance, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDualStockBalanceWithHttpInfo()
+    {
+        $request = $this->listDualStockBalanceRequest();
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\DualGetBalance';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listDualStockBalanceAsync
+     *
+     * Get stock dual investment asset statistics
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDualStockBalanceAsync()
+    {
+        return $this->listDualStockBalanceAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDualStockBalanceAsyncWithHttpInfo
+     *
+     * Get stock dual investment asset statistics
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDualStockBalanceAsyncWithHttpInfo()
+    {
+        $returnType = '\GateApi\Model\DualGetBalance';
+        $request = $this->listDualStockBalanceRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDualStockBalance'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listDualStockBalanceRequest()
+    {
+
+        $resourcePath = '/earn/dual/stock/balance';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDualStockOrderRefundPreview
+     *
+     * Preview stock dual investment redemption
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\DualOrderRefundPreview
+     */
+    public function getDualStockOrderRefundPreview($order_id)
+    {
+        list($response) = $this->getDualStockOrderRefundPreviewWithHttpInfo($order_id);
+        return $response;
+    }
+
+    /**
+     * Operation getDualStockOrderRefundPreviewWithHttpInfo
+     *
+     * Preview stock dual investment redemption
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\DualOrderRefundPreview, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDualStockOrderRefundPreviewWithHttpInfo($order_id)
+    {
+        $request = $this->getDualStockOrderRefundPreviewRequest($order_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\DualOrderRefundPreview';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation getDualStockOrderRefundPreviewAsync
+     *
+     * Preview stock dual investment redemption
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualStockOrderRefundPreviewAsync($order_id)
+    {
+        return $this->getDualStockOrderRefundPreviewAsyncWithHttpInfo($order_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDualStockOrderRefundPreviewAsyncWithHttpInfo
+     *
+     * Preview stock dual investment redemption
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDualStockOrderRefundPreviewAsyncWithHttpInfo($order_id)
+    {
+        $returnType = '\GateApi\Model\DualOrderRefundPreview';
+        $request = $this->getDualStockOrderRefundPreviewRequest($order_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDualStockOrderRefundPreview'
+     *
+     * @param  string $order_id Order ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getDualStockOrderRefundPreviewRequest($order_id)
+    {
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling getDualStockOrderRefundPreview'
+            );
+        }
+
+        $resourcePath = '/earn/dual/stock/order-refund-preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($order_id !== null) {
+            if('form' === 'form' && is_array($order_id)) {
+                foreach($order_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['order_id'] = $order_id;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation placeDualStockOrderRefund
+     *
+     * Redeem a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params dual_order_refund_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function placeDualStockOrderRefund($dual_order_refund_params)
+    {
+        $this->placeDualStockOrderRefundWithHttpInfo($dual_order_refund_params);
+    }
+
+    /**
+     * Operation placeDualStockOrderRefundWithHttpInfo
+     *
+     * Redeem a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function placeDualStockOrderRefundWithHttpInfo($dual_order_refund_params)
+    {
+        $request = $this->placeDualStockOrderRefundRequest($dual_order_refund_params);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        return [null, $statusCode, $response->getHeaders()];
+    }
+
+    /**
+     * Operation placeDualStockOrderRefundAsync
+     *
+     * Redeem a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function placeDualStockOrderRefundAsync($dual_order_refund_params)
+    {
+        return $this->placeDualStockOrderRefundAsyncWithHttpInfo($dual_order_refund_params)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation placeDualStockOrderRefundAsyncWithHttpInfo
+     *
+     * Redeem a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function placeDualStockOrderRefundAsyncWithHttpInfo($dual_order_refund_params)
+    {
+        $returnType = '';
+        $request = $this->placeDualStockOrderRefundRequest($dual_order_refund_params);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'placeDualStockOrderRefund'
+     *
+     * @param  \GateApi\Model\DualOrderRefundParams $dual_order_refund_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function placeDualStockOrderRefundRequest($dual_order_refund_params)
+    {
+        // verify the required parameter 'dual_order_refund_params' is set
+        if ($dual_order_refund_params === null || (is_array($dual_order_refund_params) && count($dual_order_refund_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dual_order_refund_params when calling placeDualStockOrderRefund'
+            );
+        }
+
+        $resourcePath = '/earn/dual/stock/order-refund';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($dual_order_refund_params)) {
+            $_tempBody = $dual_order_refund_params;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation modifyDualStockOrderReinvest
+     *
+     * Reinvest a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params dual_modify_order_reinvest_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function modifyDualStockOrderReinvest($dual_modify_order_reinvest_params)
+    {
+        $this->modifyDualStockOrderReinvestWithHttpInfo($dual_modify_order_reinvest_params);
+    }
+
+    /**
+     * Operation modifyDualStockOrderReinvestWithHttpInfo
+     *
+     * Reinvest a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function modifyDualStockOrderReinvestWithHttpInfo($dual_modify_order_reinvest_params)
+    {
+        $request = $this->modifyDualStockOrderReinvestRequest($dual_modify_order_reinvest_params);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        return [null, $statusCode, $response->getHeaders()];
+    }
+
+    /**
+     * Operation modifyDualStockOrderReinvestAsync
+     *
+     * Reinvest a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function modifyDualStockOrderReinvestAsync($dual_modify_order_reinvest_params)
+    {
+        return $this->modifyDualStockOrderReinvestAsyncWithHttpInfo($dual_modify_order_reinvest_params)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation modifyDualStockOrderReinvestAsyncWithHttpInfo
+     *
+     * Reinvest a stock dual investment order
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function modifyDualStockOrderReinvestAsyncWithHttpInfo($dual_modify_order_reinvest_params)
+    {
+        $returnType = '';
+        $request = $this->modifyDualStockOrderReinvestRequest($dual_modify_order_reinvest_params);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'modifyDualStockOrderReinvest'
+     *
+     * @param  \GateApi\Model\DualModifyOrderReinvestParams $dual_modify_order_reinvest_params (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function modifyDualStockOrderReinvestRequest($dual_modify_order_reinvest_params)
+    {
+        // verify the required parameter 'dual_modify_order_reinvest_params' is set
+        if ($dual_modify_order_reinvest_params === null || (is_array($dual_modify_order_reinvest_params) && count($dual_modify_order_reinvest_params) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dual_modify_order_reinvest_params when calling modifyDualStockOrderReinvest'
+            );
+        }
+
+        $resourcePath = '/earn/dual/stock/modify-order-reinvest';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($dual_modify_order_reinvest_params)) {
+            $_tempBody = $dual_modify_order_reinvest_params;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation findCoin
      *
      * Staking coins

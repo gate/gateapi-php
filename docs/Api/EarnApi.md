@@ -12,6 +12,14 @@ Method | HTTP request | Description
 [**placeDualOrderRefund**](EarnApi.md#placeDualOrderRefund) | **POST** /earn/dual/order-refund | Dual-currency order early redemption
 [**modifyDualOrderReinvest**](EarnApi.md#modifyDualOrderReinvest) | **POST** /earn/dual/modify-order-reinvest | Modify dual-currency order reinvest
 [**getDualProjectRecommend**](EarnApi.md#getDualProjectRecommend) | **GET** /earn/dual/project-recommend | Dual-currency recommended projects
+[**listDualStockInvestmentPlans**](EarnApi.md#listDualStockInvestmentPlans) | **GET** /earn/dual/stock/investment_plan | List stock dual investment products
+[**getDualStockProjectRecommend**](EarnApi.md#getDualStockProjectRecommend) | **GET** /earn/dual/stock/project-recommend | Get recommendations for stock dual investment products
+[**listDualStockOrders**](EarnApi.md#listDualStockOrders) | **GET** /earn/dual/stock/orders | List stock dual investment orders
+[**placeDualStockOrder**](EarnApi.md#placeDualStockOrder) | **POST** /earn/dual/stock/orders | Place a stock dual investment order
+[**listDualStockBalance**](EarnApi.md#listDualStockBalance) | **GET** /earn/dual/stock/balance | Get stock dual investment asset statistics
+[**getDualStockOrderRefundPreview**](EarnApi.md#getDualStockOrderRefundPreview) | **GET** /earn/dual/stock/order-refund-preview | Preview stock dual investment redemption
+[**placeDualStockOrderRefund**](EarnApi.md#placeDualStockOrderRefund) | **POST** /earn/dual/stock/order-refund | Redeem a stock dual investment order
+[**modifyDualStockOrderReinvest**](EarnApi.md#modifyDualStockOrderReinvest) | **POST** /earn/dual/stock/modify-order-reinvest | Reinvest a stock dual investment order
 [**findCoin**](EarnApi.md#findCoin) | **GET** /earn/staking/coins | Staking coins
 [**swapStakingCoin**](EarnApi.md#swapStakingCoin) | **POST** /earn/staking/swap | On-chain token swap for earned coins
 [**orderList**](EarnApi.md#orderList) | **GET** /earn/staking/order_list | List of on-chain coin-earning orders
@@ -536,6 +544,512 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listDualStockInvestmentPlans
+
+> \GateApi\Model\DualGetPlans[] listDualStockInvestmentPlans($plan_id, $coin, $type, $quote_currency, $sort, $page, $page_size)
+
+List stock dual investment products
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$associate_array['plan_id'] = '272'; // string | Product/plan ID. If provided, only the matching product is returned
+$associate_array['coin'] = 'BTC'; // string | Underlying currency
+$associate_array['type'] = 'call'; // string | Type enum: `put` — buy low; `call` — sell high
+$associate_array['quote_currency'] = 'USDT'; // string | Settlement currency. Default: USDT
+$associate_array['sort'] = 'sort_example'; // string | Sort field enum: `apy` — highest APY first `short-period` — shortest tenor first `multiple` — highest premium first
+$associate_array['page'] = 1; // int | page number
+$associate_array['page_size'] = 100; // int | Items per page，Maximum 100
+
+try {
+    $result = $apiInstance->listDualStockInvestmentPlans($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listDualStockInvestmentPlans: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plan_id** | **string**| Product/plan ID. If provided, only the matching product is returned | [optional]
+ **coin** | **string**| Underlying currency | [optional]
+ **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional]
+ **quote_currency** | **string**| Settlement currency. Default: USDT | [optional] [default to &#39;USDT&#39;]
+ **sort** | **string**| Sort field enum: &#x60;apy&#x60; — highest APY first &#x60;short-period&#x60; — shortest tenor first &#x60;multiple&#x60; — highest premium first | [optional]
+ **page** | **int**| page number | [optional]
+ **page_size** | **int**| Items per page，Maximum 100 | [optional]
+
+### Return type
+
+[**\GateApi\Model\DualGetPlans[]**](../Model/DualGetPlans.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getDualStockProjectRecommend
+
+> \GateApi\Model\DualProjectRecommend[] getDualStockProjectRecommend($coin, $type, $mode, $history_pids)
+
+Get recommendations for stock dual investment products
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$associate_array['coin'] = 'BTC'; // string | Underlying currency
+$associate_array['type'] = 'call'; // string | `call`: sell high; `put`: buy low
+$associate_array['mode'] = 'normal'; // string | Recommendation mode. Default: normal normal: Regular users senior: Experienced users
+$associate_array['history_pids'] = '1001,1002'; // string | Previously recommended project IDs, separated by commas
+
+try {
+    $result = $apiInstance->getDualStockProjectRecommend($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->getDualStockProjectRecommend: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coin** | **string**| Underlying currency | [optional]
+ **type** | **string**| &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low | [optional]
+ **mode** | **string**| Recommendation mode. Default: normal normal: Regular users senior: Experienced users | [optional] [default to &#39;normal&#39;]
+ **history_pids** | **string**| Previously recommended project IDs, separated by commas | [optional]
+
+### Return type
+
+[**\GateApi\Model\DualProjectRecommend[]**](../Model/DualProjectRecommend.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listDualStockOrders
+
+> \GateApi\Model\DualGetOrders[] listDualStockOrders($coin, $status, $type, $from, $to, $page, $page_size, $limit)
+
+List stock dual investment orders
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['coin'] = 'BTC'; // string | Investment Token
+$associate_array['status'] = 'ALL'; // string | Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders
+$associate_array['type'] = 'put'; // string | Type enum: `put` — buy low; `call` — sell high
+$associate_array['from'] = 1740727000; // int | Start of the time range, in Unix seconds
+$associate_array['to'] = 1740729000; // int | End of the time range, in Unix seconds
+$associate_array['page'] = 1; // int | Page number
+$associate_array['page_size'] = 100; // int | Number of records per page, up to 100. Defaults to 100 when omitted
+$associate_array['limit'] = 100; // int | Maximum number of records returned in a single list
+
+try {
+    $result = $apiInstance->listDualStockOrders($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listDualStockOrders: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coin** | **string**| Investment Token | [optional]
+ **status** | **string**| Filter by order status. Default: ALL HOLD: Current holdings REPAY: Historical holdings PROCESSING: Holding in progress SETTLEMENT_PROCESSING: Settlement in progress ALL: All orders | [optional] [default to &#39;ALL&#39;]
+ **type** | **string**| Type enum: &#x60;put&#x60; — buy low; &#x60;call&#x60; — sell high | [optional]
+ **from** | **int**| Start of the time range, in Unix seconds | [optional]
+ **to** | **int**| End of the time range, in Unix seconds | [optional]
+ **page** | **int**| Page number | [optional] [default to 1]
+ **page_size** | **int**| Number of records per page, up to 100. Defaults to 100 when omitted | [optional]
+ **limit** | **int**| Maximum number of records returned in a single list | [optional] [default to 100]
+
+### Return type
+
+[**\GateApi\Model\DualGetOrders[]**](../Model/DualGetOrders.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## placeDualStockOrder
+
+> \GateApi\Model\PlaceDualInvestmentOrder placeDualStockOrder($place_dual_stock_investment_order_params)
+
+Place a stock dual investment order
+
+For buy-low (put) products, optionally pass `hit_spot`, `hit_stock`, and `hit_simple` (`1` selects the corresponding funding account) to collect funds from the spot, stock, or Simple Earn accounts before subscribing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$place_dual_stock_investment_order_params = new \GateApi\Model\PlaceDualStockInvestmentOrderParams(); // \GateApi\Model\PlaceDualStockInvestmentOrderParams | 
+
+try {
+    $result = $apiInstance->placeDualStockOrder($place_dual_stock_investment_order_params);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->placeDualStockOrder: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **place_dual_stock_investment_order_params** | [**\GateApi\Model\PlaceDualStockInvestmentOrderParams**](../Model/PlaceDualStockInvestmentOrderParams.md)|  |
+
+### Return type
+
+[**\GateApi\Model\PlaceDualInvestmentOrder**](../Model/PlaceDualInvestmentOrder.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listDualStockBalance
+
+> \GateApi\Model\DualGetBalance listDualStockBalance()
+
+Get stock dual investment asset statistics
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listDualStockBalance();
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->listDualStockBalance: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\GateApi\Model\DualGetBalance**](../Model/DualGetBalance.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## getDualStockOrderRefundPreview
+
+> \GateApi\Model\DualOrderRefundPreview getDualStockOrderRefundPreview($order_id)
+
+Preview stock dual investment redemption
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$order_id = '9497'; // string | Order ID
+
+try {
+    $result = $apiInstance->getDualStockOrderRefundPreview($order_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->getDualStockOrderRefundPreview: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **string**| Order ID |
+
+### Return type
+
+[**\GateApi\Model\DualOrderRefundPreview**](../Model/DualOrderRefundPreview.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## placeDualStockOrderRefund
+
+> placeDualStockOrderRefund($dual_order_refund_params)
+
+Redeem a stock dual investment order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dual_order_refund_params = new \GateApi\Model\DualOrderRefundParams(); // \GateApi\Model\DualOrderRefundParams | 
+
+try {
+    $apiInstance->placeDualStockOrderRefund($dual_order_refund_params);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->placeDualStockOrderRefund: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dual_order_refund_params** | [**\GateApi\Model\DualOrderRefundParams**](../Model/DualOrderRefundParams.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## modifyDualStockOrderReinvest
+
+> modifyDualStockOrderReinvest($dual_modify_order_reinvest_params)
+
+Reinvest a stock dual investment order
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\EarnApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$dual_modify_order_reinvest_params = new \GateApi\Model\DualModifyOrderReinvestParams(); // \GateApi\Model\DualModifyOrderReinvestParams | 
+
+try {
+    $apiInstance->modifyDualStockOrderReinvest($dual_modify_order_reinvest_params);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling EarnApi->modifyDualStockOrderReinvest: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dual_modify_order_reinvest_params** | [**\GateApi\Model\DualModifyOrderReinvestParams**](../Model/DualModifyOrderReinvestParams.md)|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../../README.md#documentation-for-models)

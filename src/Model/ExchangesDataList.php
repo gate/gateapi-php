@@ -259,7 +259,7 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Trading market, supports us, hk, kr, and jp
+     * @param string|null $exchange Trading market. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      *
      * @return $this
      */

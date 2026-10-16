@@ -56,6 +56,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'id' => 'int',
         'instrument_name' => 'string',
+        'type' => 'string',
         'invest_currency' => 'string',
         'exercise_currency' => 'string',
         'exercise_price' => 'double',
@@ -75,6 +76,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'id' => 'int32',
         'instrument_name' => null,
+        'type' => null,
         'invest_currency' => null,
         'exercise_currency' => null,
         'exercise_price' => 'double',
@@ -115,6 +117,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'instrument_name' => 'instrument_name',
+        'type' => 'type',
         'invest_currency' => 'invest_currency',
         'exercise_currency' => 'exercise_currency',
         'exercise_price' => 'exercise_price',
@@ -134,6 +137,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'instrument_name' => 'setInstrumentName',
+        'type' => 'setType',
         'invest_currency' => 'setInvestCurrency',
         'exercise_currency' => 'setExerciseCurrency',
         'exercise_price' => 'setExercisePrice',
@@ -153,6 +157,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'instrument_name' => 'getInstrumentName',
+        'type' => 'getType',
         'invest_currency' => 'getInvestCurrency',
         'exercise_currency' => 'getExerciseCurrency',
         'exercise_price' => 'getExercisePrice',
@@ -226,6 +231,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['instrument_name'] = isset($data['instrument_name']) ? $data['instrument_name'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['invest_currency'] = isset($data['invest_currency']) ? $data['invest_currency'] : null;
         $this->container['exercise_currency'] = isset($data['exercise_currency']) ? $data['exercise_currency'] : null;
         $this->container['exercise_price'] = isset($data['exercise_price']) ? $data['exercise_price'] : null;
@@ -305,6 +311,30 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     public function setInstrumentName($instrument_name)
     {
         $this->container['instrument_name'] = $instrument_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type `call`: sell high; `put`: buy low
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

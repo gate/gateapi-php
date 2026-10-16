@@ -1547,6 +1547,343 @@ class FuturesApi
     }
 
     /**
+     * Operation listFuturesRPIOrderBook
+     *
+     * Query futures RPI order book
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
+     * @param  int $limit Number of depth levels (optional, default to 10)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\FuturesOrderBook
+     */
+    public function listFuturesRPIOrderBook($associative_array)
+    {
+        list($response) = $this->listFuturesRPIOrderBookWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation listFuturesRPIOrderBookWithHttpInfo
+     *
+     * Query futures RPI order book
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
+     * @param  int $limit Number of depth levels (optional, default to 10)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\FuturesOrderBook, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listFuturesRPIOrderBookWithHttpInfo($associative_array)
+    {
+        $request = $this->listFuturesRPIOrderBookRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\FuturesOrderBook';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation listFuturesRPIOrderBookAsync
+     *
+     * Query futures RPI order book
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
+     * @param  int $limit Number of depth levels (optional, default to 10)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listFuturesRPIOrderBookAsync($associative_array)
+    {
+        return $this->listFuturesRPIOrderBookAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listFuturesRPIOrderBookAsyncWithHttpInfo
+     *
+     * Query futures RPI order book
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
+     * @param  int $limit Number of depth levels (optional, default to 10)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listFuturesRPIOrderBookAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\FuturesOrderBook';
+        $request = $this->listFuturesRPIOrderBookRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listFuturesRPIOrderBook'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $contract Futures contract (required)
+     * @param  string $interval Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 (optional, default to '0')
+     * @param  int $limit Number of depth levels (optional, default to 10)
+     * @param  bool $with_id Whether to return depth update ID. This ID increments by 1 each time the depth changes (optional, default to false)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function listFuturesRPIOrderBookRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $settle = array_key_exists('settle', $associative_array) ? $associative_array['settle'] : null;
+        $contract = array_key_exists('contract', $associative_array) ? $associative_array['contract'] : null;
+        $interval = array_key_exists('interval', $associative_array) ? $associative_array['interval'] : '0';
+        $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : 10;
+        $with_id = array_key_exists('with_id', $associative_array) ? $associative_array['with_id'] : false;
+
+        // verify the required parameter 'settle' is set
+        if ($settle === null || (is_array($settle) && count($settle) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settle when calling listFuturesRPIOrderBook'
+            );
+        }
+        // verify the required parameter 'contract' is set
+        if ($contract === null || (is_array($contract) && count($contract) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $contract when calling listFuturesRPIOrderBook'
+            );
+        }
+        if ($limit !== null && $limit > 50) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling FuturesApi.listFuturesRPIOrderBook, must be smaller than or equal to 50.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling FuturesApi.listFuturesRPIOrderBook, must be bigger than or equal to 1.');
+        }
+
+
+        $resourcePath = '/futures/{settle}/rpi_order_book';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($contract !== null) {
+            if('form' === 'form' && is_array($contract)) {
+                foreach($contract as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['contract'] = $contract;
+            }
+        }
+
+        // query params
+        if ($interval !== null) {
+            if('form' === 'form' && is_array($interval)) {
+                foreach($interval as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['interval'] = $interval;
+            }
+        }
+
+        // query params
+        if ($limit !== null) {
+            if('form' === 'form' && is_array($limit)) {
+                foreach($limit as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limit'] = $limit;
+            }
+        }
+
+        // query params
+        if ($with_id !== null) {
+            if('form' === 'form' && is_array($with_id)) {
+                foreach($with_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['with_id'] = $with_id;
+            }
+        }
+
+        // path params
+        if ($settle !== null) {
+            $resourcePath = str_replace(
+                '{' . 'settle' . '}',
+                ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listFuturesTrades
      *
      * Futures market transaction records
@@ -21167,15 +21504,16 @@ class FuturesApi
      * Modify a Single Auto Order
      *
      * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order futures_update_price_triggered_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \GateApi\Model\TriggerOrderResponse
      */
-    public function updatePriceTriggeredOrder($settle, $futures_update_price_triggered_order)
+    public function updatePriceTriggeredOrder($settle, $order_id, $futures_update_price_triggered_order)
     {
-        list($response) = $this->updatePriceTriggeredOrderWithHttpInfo($settle, $futures_update_price_triggered_order);
+        list($response) = $this->updatePriceTriggeredOrderWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order);
         return $response;
     }
 
@@ -21185,15 +21523,16 @@ class FuturesApi
      * Modify a Single Auto Order
      *
      * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \GateApi\Model\TriggerOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePriceTriggeredOrderWithHttpInfo($settle, $futures_update_price_triggered_order)
+    public function updatePriceTriggeredOrderWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order)
     {
-        $request = $this->updatePriceTriggeredOrderRequest($settle, $futures_update_price_triggered_order);
+        $request = $this->updatePriceTriggeredOrderRequest($settle, $order_id, $futures_update_price_triggered_order);
 
         $options = $this->createHttpClientOption();
         try {
@@ -21240,14 +21579,15 @@ class FuturesApi
      * Modify a Single Auto Order
      *
      * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePriceTriggeredOrderAsync($settle, $futures_update_price_triggered_order)
+    public function updatePriceTriggeredOrderAsync($settle, $order_id, $futures_update_price_triggered_order)
     {
-        return $this->updatePriceTriggeredOrderAsyncWithHttpInfo($settle, $futures_update_price_triggered_order)
+        return $this->updatePriceTriggeredOrderAsyncWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -21261,15 +21601,16 @@ class FuturesApi
      * Modify a Single Auto Order
      *
      * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePriceTriggeredOrderAsyncWithHttpInfo($settle, $futures_update_price_triggered_order)
+    public function updatePriceTriggeredOrderAsyncWithHttpInfo($settle, $order_id, $futures_update_price_triggered_order)
     {
         $returnType = '\GateApi\Model\TriggerOrderResponse';
-        $request = $this->updatePriceTriggeredOrderRequest($settle, $futures_update_price_triggered_order);
+        $request = $this->updatePriceTriggeredOrderRequest($settle, $order_id, $futures_update_price_triggered_order);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -21309,17 +21650,24 @@ class FuturesApi
      * Create request for operation 'updatePriceTriggeredOrder'
      *
      * @param  string $settle Perpetual futures settlement currency (required)
+     * @param  string $order_id ID returned when order is successfully created (required)
      * @param  \GateApi\Model\FuturesUpdatePriceTriggeredOrder $futures_update_price_triggered_order (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updatePriceTriggeredOrderRequest($settle, $futures_update_price_triggered_order)
+    protected function updatePriceTriggeredOrderRequest($settle, $order_id, $futures_update_price_triggered_order)
     {
         // verify the required parameter 'settle' is set
         if ($settle === null || (is_array($settle) && count($settle) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $settle when calling updatePriceTriggeredOrder'
+            );
+        }
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling updatePriceTriggeredOrder'
             );
         }
         // verify the required parameter 'futures_update_price_triggered_order' is set
@@ -21329,7 +21677,7 @@ class FuturesApi
             );
         }
 
-        $resourcePath = '/futures/{settle}/price_orders/amend';
+        $resourcePath = '/futures/{settle}/price_orders/amend/{order_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -21341,6 +21689,15 @@ class FuturesApi
             $resourcePath = str_replace(
                 '{' . 'settle' . '}',
                 ObjectSerializer::toPathValue($settle),
+                $resourcePath
+            );
+        }
+
+        // path params
+        if ($order_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'order_id' . '}',
+                ObjectSerializer::toPathValue($order_id),
                 $resourcePath
             );
         }

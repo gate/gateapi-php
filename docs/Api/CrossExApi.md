@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**getCrossexInterestRate**](CrossExApi.md#getCrossexInterestRate) | **GET** /crossex/interest_rate | Query margin asset interest rates
 [**getCrossexFee**](CrossExApi.md#getCrossexFee) | **GET** /crossex/fee | Query User Fee Rates
 [**listCrossexPositions**](CrossExApi.md#listCrossexPositions) | **GET** /crossex/positions | Query Contract Positions
+[**listCrossexSecurityPositions**](CrossExApi.md#listCrossexSecurityPositions) | **GET** /crossex/security_positions | List security positions
 [**listCrossexMarginPositions**](CrossExApi.md#listCrossexMarginPositions) | **GET** /crossex/margin_positions | Query Leveraged Positions
 [**listCrossexAdlRank**](CrossExApi.md#listCrossexAdlRank) | **GET** /crossex/adl_rank | Query ADL Position Reduction Ranking
 [**listCrossexOpenOrders**](CrossExApi.md#listCrossexOpenOrders) | **GET** /crossex/open_orders | Query All Current Open Orders
@@ -49,7 +50,7 @@ Method | HTTP request | Description
 
 Query symbol information
 
-Query Trading Pair Information
+List trading pair information. Stock and ETF symbols use `{market}_{business_type}_{security_code}_USDT`, for example `US_STOCK_AAPL_USDT`, `HK_STOCK_00700_USDT`, or `US_ETF_SPY_USDT`.
 
 ### Example
 
@@ -63,7 +64,7 @@ $apiInstance = new GateApi\Api\CrossExApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$associate_array['symbols'] = 'symbols_example'; // string | List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT
+$associate_array['symbols'] = 'symbols_example'; // string | Comma-separated list of trading pairs Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT,US_STOCK_AAPL_USDT
 
 try {
     $result = $apiInstance->listCrossexRuleSymbols($associate_array);
@@ -83,7 +84,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbols** | **string**| List of trading pairs, comma-separated. Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT | [optional]
+ **symbols** | **string**| Comma-separated list of trading pairs Example: BINANCE_FUTURE_ADA_USDT,OKX_FUTURE_ADA_USDT,US_STOCK_AAPL_USDT | [optional]
 
 ### Return type
 
@@ -363,7 +364,7 @@ Name | Type | Description  | Notes
 
 Create order
 
-Rate Limit: 100 requests per 10 seconds, maximum 1,000 open orders per user
+Rate limit: 100 requests per 10 seconds; each user may have up to 1,000 open orders. Stocks and ETFs have an additional per-user limit of one request per second and support only cross-exchange account mode and GTC. Stock and ETF orders must use qty; quote_qty is not supported. Stock and ETF order prices use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
 
 ### Example
 
@@ -1594,6 +1595,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\CrossexPosition[]**](../Model/CrossexPosition.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listCrossexSecurityPositions
+
+> \GateApi\Model\CrossexSecurityPosition[] listCrossexSecurityPositions($symbol, $exchange_type)
+
+List security positions
+
+List stock and ETF positions. Rate limit: 200 requests per 10 seconds. Prices, position values, and unrealized profit and loss use the listing market currency: USD for US markets, HKD for Hong Kong, KRW for South Korea, and JPY for Japan.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\CrossExApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['symbol'] = 'US_STOCK_AAPL_USDT'; // string | Stock or ETF trading pair
+$associate_array['exchange_type'] = 'US'; // string | Stock market (US/HK/KR/JP)
+
+try {
+    $result = $apiInstance->listCrossexSecurityPositions($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling CrossExApi->listCrossexSecurityPositions: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Stock or ETF trading pair | [optional]
+ **exchange_type** | **string**| Stock market (US/HK/KR/JP) | [optional]
+
+### Return type
+
+[**\GateApi\Model\CrossexSecurityPosition[]**](../Model/CrossexSecurityPosition.md)
 
 ### Authorization
 

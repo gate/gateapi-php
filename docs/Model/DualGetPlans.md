@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | Product ID | [optional] 
 **instrument_name** | **string** | Product Name | [optional] 
+**type** | **string** | &#x60;call&#x60;: sell high; &#x60;put&#x60;: buy low | [optional] 
 **invest_currency** | **string** | Investment Token | [optional] 
 **exercise_currency** | **string** | Strike Token | [optional] 
 **exercise_price** | **double** | Strike price | [optional] 

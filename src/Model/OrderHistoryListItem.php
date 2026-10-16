@@ -548,7 +548,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Exchange, supports us, hk, kr, and jp
+     * @param string|null $exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      *
      * @return $this
      */

@@ -532,7 +532,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price Fill Price
+     * @param string|null $price Fill price. Stocks and ETFs use the listing market currency (USD/HKD/KRW/JPY)
      *
      * @return $this
      */

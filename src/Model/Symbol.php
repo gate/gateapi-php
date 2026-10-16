@@ -69,7 +69,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'liquidation_fee' => 'string',
         'delist_time' => 'string',
         'support_rpi' => 'string',
-        'support_cross' => 'string'
+        'support_cross' => 'string',
+        'tag' => 'string'
     ];
 
     /**
@@ -93,7 +94,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'liquidation_fee' => null,
         'delist_time' => null,
         'support_rpi' => null,
-        'support_cross' => null
+        'support_cross' => null,
+        'tag' => null
     ];
 
     /**
@@ -138,7 +140,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'liquidation_fee' => 'liquidation_fee',
         'delist_time' => 'delist_time',
         'support_rpi' => 'support_rpi',
-        'support_cross' => 'support_cross'
+        'support_cross' => 'support_cross',
+        'tag' => 'tag'
     ];
 
     /**
@@ -162,7 +165,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'liquidation_fee' => 'setLiquidationFee',
         'delist_time' => 'setDelistTime',
         'support_rpi' => 'setSupportRpi',
-        'support_cross' => 'setSupportCross'
+        'support_cross' => 'setSupportCross',
+        'tag' => 'setTag'
     ];
 
     /**
@@ -186,7 +190,8 @@ class Symbol implements ModelInterface, ArrayAccess
         'liquidation_fee' => 'getLiquidationFee',
         'delist_time' => 'getDelistTime',
         'support_rpi' => 'getSupportRpi',
-        'support_cross' => 'getSupportCross'
+        'support_cross' => 'getSupportCross',
+        'tag' => 'getTag'
     ];
 
     /**
@@ -265,6 +270,7 @@ class Symbol implements ModelInterface, ArrayAccess
         $this->container['delist_time'] = isset($data['delist_time']) ? $data['delist_time'] : null;
         $this->container['support_rpi'] = isset($data['support_rpi']) ? $data['support_rpi'] : null;
         $this->container['support_cross'] = isset($data['support_cross']) ? $data['support_cross'] : null;
+        $this->container['tag'] = isset($data['tag']) ? $data['tag'] : null;
     }
 
     /**
@@ -318,6 +324,9 @@ class Symbol implements ModelInterface, ArrayAccess
         if ($this->container['delist_time'] === null) {
             $invalidProperties[] = "'delist_time' can't be null";
         }
+        if ($this->container['tag'] === null) {
+            $invalidProperties[] = "'tag' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -346,7 +355,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string $symbol Unique trading pair identifier in the form ExchangeType_BusinessType_Base_Counter.
+     * @param string $symbol Unique trading pair identifier in the format ExchangeType_BusinessType_Base_Counter. Stocks and ETFs use the market as ExchangeType (US/HK/KR/JP) and STOCK or ETF as the business type, for example US_STOCK_AAPL_USDT, HK_STOCK_00700_USDT, or US_ETF_SPY_USDT.
      *
      * @return $this
      */
@@ -370,7 +379,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets exchange_type
      *
-     * @param string $exchange_type Venue bucket (`BINANCE` / `OKX` / `GATE` / `BYBIT` / `KRAKEN` / `HYPERLIQUID` / `DERIBIT` / `LIGHTER`).
+     * @param string $exchange_type Exchange type (BINANCE / OKX / GATE / BYBIT / KRAKEN / HYPERLIQUID / DERIBIT / LIGHTER). Stocks and ETFs return the listing market (US / HK / KR / JP)
      *
      * @return $this
      */
@@ -394,7 +403,7 @@ class Symbol implements ModelInterface, ArrayAccess
     /**
      * Sets business_type
      *
-     * @param string $business_type Business type (`SPOT` Spot / `FUTURE` Futures / `MARGIN` Margin).
+     * @param string $business_type Business type (SPOT: spot / FUTURE: futures / MARGIN: margin / STOCK: stocks / ETF: exchange-traded funds)
      *
      * @return $this
      */
@@ -713,6 +722,30 @@ class Symbol implements ModelInterface, ArrayAccess
     public function setSupportCross($support_cross)
     {
         $this->container['support_cross'] = $support_cross;
+
+        return $this;
+    }
+
+    /**
+     * Gets tag
+     *
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->container['tag'];
+    }
+
+    /**
+     * Sets tag
+     *
+     * @param string $tag Tag information. Hyperliquid returns DEX information, stocks and ETFs return the security description, and other businesses return an empty string
+     *
+     * @return $this
+     */
+    public function setTag($tag)
+    {
+        $this->container['tag'] = $tag;
 
         return $this;
     }

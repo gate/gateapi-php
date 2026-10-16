@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**getCurrencyPair**](SpotApi.md#getCurrencyPair) | **GET** /spot/currency_pairs/{currency_pair} | Query single currency pair details
 [**listTickers**](SpotApi.md#listTickers) | **GET** /spot/tickers | Get currency pair ticker information
 [**listOrderBook**](SpotApi.md#listOrderBook) | **GET** /spot/order_book | Get market depth information
+[**listSpotRpiOrderBook**](SpotApi.md#listSpotRpiOrderBook) | **GET** /spot/rpi_order_book | Get the RPI order book
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Query market transaction records
 [**listCandlesticks**](SpotApi.md#listCandlesticks) | **GET** /spot/candlesticks | Market K-line chart
 [**getFee**](SpotApi.md#getFee) | **GET** /spot/fee | Query account fee rates
@@ -355,6 +356,72 @@ try {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
 } catch (Exception $e) {
     echo 'Exception when calling SpotApi->listOrderBook: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency_pair** | **string**| Currency pair |
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
+ **limit** | **int**| Number of depth levels | [optional] [default to 10]
+ **with_id** | **bool**| Return order book update ID | [optional] [default to false]
+
+### Return type
+
+[**\GateApi\Model\OrderBook**](../Model/OrderBook.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listSpotRpiOrderBook
+
+> \GateApi\Model\OrderBook listSpotRpiOrderBook($currency_pair, $interval, $limit, $with_id)
+
+Get the RPI order book
+
+Get the RPI order book, with bids sorted by descending price and asks by ascending price.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\SpotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$associate_array['currency_pair'] = 'BTC_USDT'; // string | Currency pair
+$associate_array['interval'] = '0'; // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+$associate_array['limit'] = 10; // int | Number of depth levels
+$associate_array['with_id'] = false; // bool | Return order book update ID
+
+try {
+    $result = $apiInstance->listSpotRpiOrderBook($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling SpotApi->listSpotRpiOrderBook: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

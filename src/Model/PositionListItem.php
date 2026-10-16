@@ -312,8 +312,6 @@ class PositionListItem implements ModelInterface, ArrayAccess
     const TRADE_STATUS_PRE_MARKET = 'pre_market';
     const TRADE_STATUS_OPEN = 'open';
     const TRADE_STATUS_POST_MARKET = 'post_market';
-    const TRADE_STATUS_CLOSED = 'closed';
-    const TRADE_STATUS_GT_LP = 'gt_lp';
     
 
     
@@ -343,8 +341,6 @@ class PositionListItem implements ModelInterface, ArrayAccess
             self::TRADE_STATUS_PRE_MARKET,
             self::TRADE_STATUS_OPEN,
             self::TRADE_STATUS_POST_MARKET,
-            self::TRADE_STATUS_CLOSED,
-            self::TRADE_STATUS_GT_LP,
         ];
     }
     
@@ -474,7 +470,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets exchange
      *
-     * @param string|null $exchange Exchange, supports us, hk, kr, and jp
+     * @param string|null $exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
      *
      * @return $this
      */
@@ -579,7 +575,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
     /**
      * Sets trade_status
      *
-     * @param string|null $trade_status Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market. - closed: Market closed. - gt_lp: GT LP session.
+     * @param string|null $trade_status Trading status. - pre_market: Pre-market. - open: Regular trading session. - post_market: Post-market.
      *
      * @return $this
      */

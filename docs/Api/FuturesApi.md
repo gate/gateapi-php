@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getFuturesContract**](FuturesApi.md#getFuturesContract) | **GET** /futures/{settle}/contracts/{contract} | Query single contract information
 [**listFuturesADLRiskStates**](FuturesApi.md#listFuturesADLRiskStates) | **GET** /futures/{settle}/adl_risk_states | List market-level ADL risk states
 [**listFuturesOrderBook**](FuturesApi.md#listFuturesOrderBook) | **GET** /futures/{settle}/order_book | Query futures market depth information
+[**listFuturesRPIOrderBook**](FuturesApi.md#listFuturesRPIOrderBook) | **GET** /futures/{settle}/rpi_order_book | Query futures RPI order book
 [**listFuturesTrades**](FuturesApi.md#listFuturesTrades) | **GET** /futures/{settle}/trades | Futures market transaction records
 [**listFuturesCandlesticks**](FuturesApi.md#listFuturesCandlesticks) | **GET** /futures/{settle}/candlesticks | Futures market K-line chart
 [**listFuturesPremiumIndex**](FuturesApi.md#listFuturesPremiumIndex) | **GET** /futures/{settle}/premium_index | Premium Index K-line chart
@@ -74,7 +75,7 @@ Method | HTTP request | Description
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/{settle}/price_orders | Cancel all auto orders
 [**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/{settle}/price_orders/{order_id} | Query single auto order details
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/{settle}/price_orders/{order_id} | Cancel single auto order
-[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/amend | Modify a Single Auto Order
+[**updatePriceTriggeredOrder**](FuturesApi.md#updatePriceTriggeredOrder) | **PUT** /futures/{settle}/price_orders/amend/{order_id} | Modify a Single Auto Order
 
 
 ## listFuturesContracts
@@ -350,6 +351,74 @@ try {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
 } catch (Exception $e) {
     echo 'Exception when calling FuturesApi->listFuturesOrderBook: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **string**| Perpetual futures settlement currency |
+ **contract** | **string**| Futures contract |
+ **interval** | **string**| Price precision for merged depth. 0 means no merging. If not specified, defaults to 0 | [optional] [default to &#39;0&#39;]
+ **limit** | **int**| Number of depth levels | [optional] [default to 10]
+ **with_id** | **bool**| Whether to return depth update ID. This ID increments by 1 each time the depth changes | [optional] [default to false]
+
+### Return type
+
+[**\GateApi\Model\FuturesOrderBook**](../Model/FuturesOrderBook.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listFuturesRPIOrderBook
+
+> \GateApi\Model\FuturesOrderBook listFuturesRPIOrderBook($settle, $contract, $interval, $limit, $with_id)
+
+Query futures RPI order book
+
+Bids will be sorted by price from high to low, while asks sorted reversely
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+$apiInstance = new GateApi\Api\FuturesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
+$associate_array['contract'] = 'BTC_USDT'; // string | Futures contract
+$associate_array['interval'] = '0'; // string | Price precision for merged depth. 0 means no merging. If not specified, defaults to 0
+$associate_array['limit'] = 10; // int | Number of depth levels
+$associate_array['with_id'] = false; // bool | Whether to return depth update ID. This ID increments by 1 each time the depth changes
+
+try {
+    $result = $apiInstance->listFuturesRPIOrderBook($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FuturesApi->listFuturesRPIOrderBook: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -4717,7 +4786,7 @@ Name | Type | Description  | Notes
 
 ## updatePriceTriggeredOrder
 
-> \GateApi\Model\TriggerOrderResponse updatePriceTriggeredOrder($settle, $futures_update_price_triggered_order)
+> \GateApi\Model\TriggerOrderResponse updatePriceTriggeredOrder($settle, $order_id, $futures_update_price_triggered_order)
 
 Modify a Single Auto Order
 
@@ -4738,10 +4807,11 @@ $apiInstance = new GateApi\Api\FuturesApi(
     $config
 );
 $settle = 'usdt'; // string | Perpetual futures settlement currency
+$order_id = '2110911746238578688'; // string | ID returned when order is successfully created
 $futures_update_price_triggered_order = new \GateApi\Model\FuturesUpdatePriceTriggeredOrder(); // \GateApi\Model\FuturesUpdatePriceTriggeredOrder | 
 
 try {
-    $result = $apiInstance->updatePriceTriggeredOrder($settle, $futures_update_price_triggered_order);
+    $result = $apiInstance->updatePriceTriggeredOrder($settle, $order_id, $futures_update_price_triggered_order);
     print_r($result);
 } catch (GateApi\GateApiException $e) {
     echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
@@ -4757,6 +4827,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Perpetual futures settlement currency |
+ **order_id** | **string**| ID returned when order is successfully created |
  **futures_update_price_triggered_order** | [**\GateApi\Model\FuturesUpdatePriceTriggeredOrder**](../Model/FuturesUpdatePriceTriggeredOrder.md)|  |
 
 ### Return type

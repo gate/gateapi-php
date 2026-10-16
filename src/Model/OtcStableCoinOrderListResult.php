@@ -58,7 +58,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
         'page_size' => 'int',
         'page_number' => 'int',
         'total_page' => 'int',
-        'list' => '\GateApi\Model\OtcStableCoinOrderListItem[]'
+        'lists' => '\GateApi\Model\OtcStableCoinOrderListItem[]'
     ];
 
     /**
@@ -71,7 +71,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
         'page_size' => null,
         'page_number' => null,
         'total_page' => null,
-        'list' => null
+        'lists' => null
     ];
 
     /**
@@ -105,7 +105,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
         'page_size' => 'page_size',
         'page_number' => 'page_number',
         'total_page' => 'total_page',
-        'list' => 'list'
+        'lists' => 'lists'
     ];
 
     /**
@@ -118,7 +118,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
         'page_size' => 'setPageSize',
         'page_number' => 'setPageNumber',
         'total_page' => 'setTotalPage',
-        'list' => 'setList'
+        'lists' => 'setLists'
     ];
 
     /**
@@ -131,7 +131,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
         'page_size' => 'getPageSize',
         'page_number' => 'getPageNumber',
         'total_page' => 'getTotalPage',
-        'list' => 'getList'
+        'lists' => 'getLists'
     ];
 
     /**
@@ -198,7 +198,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
         $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
         $this->container['page_number'] = isset($data['page_number']) ? $data['page_number'] : null;
         $this->container['total_page'] = isset($data['total_page']) ? $data['total_page'] : null;
-        $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        $this->container['lists'] = isset($data['lists']) ? $data['lists'] : null;
     }
 
     /**
@@ -222,8 +222,8 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
         if ($this->container['total_page'] === null) {
             $invalidProperties[] = "'total_page' can't be null";
         }
-        if ($this->container['list'] === null) {
-            $invalidProperties[] = "'list' can't be null";
+        if ($this->container['lists'] === null) {
+            $invalidProperties[] = "'lists' can't be null";
         }
         return $invalidProperties;
     }
@@ -337,25 +337,25 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets list
+     * Gets lists
      *
      * @return \GateApi\Model\OtcStableCoinOrderListItem[]
      */
-    public function getList()
+    public function getLists()
     {
-        return $this->container['list'];
+        return $this->container['lists'];
     }
 
     /**
-     * Sets list
+     * Sets lists
      *
-     * @param \GateApi\Model\OtcStableCoinOrderListItem[] $list list
+     * @param \GateApi\Model\OtcStableCoinOrderListItem[] $lists lists
      *
      * @return $this
      */
-    public function setList($list)
+    public function setLists($lists)
     {
-        $this->container['list'] = $list;
+        $this->container['lists'] = $lists;
 
         return $this;
     }
