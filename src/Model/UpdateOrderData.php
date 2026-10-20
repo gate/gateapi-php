@@ -70,7 +70,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
+        'order_id' => 'int64',
         'symbol' => null,
         'state' => null,
         'volume' => null,

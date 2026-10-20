@@ -80,7 +80,7 @@ class OrderHistoryListDataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
+        'order_id' => 'int64',
         'symbol' => null,
         'symbol_desc' => null,
         'price_type' => null,

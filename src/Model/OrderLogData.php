@@ -71,8 +71,8 @@ class OrderLogData implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'order_id' => null,
-        'log_id' => null,
+        'order_id' => 'int64',
+        'log_id' => 'int64',
         'symbol' => null,
         'price_type' => null,
         'state' => null,

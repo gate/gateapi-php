@@ -72,7 +72,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'position_id' => null,
+        'position_id' => 'int64',
         'symbol' => null,
         'symbol_desc' => null,
         'margin' => null,
