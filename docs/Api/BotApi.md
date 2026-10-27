@@ -14,15 +14,17 @@ Method | HTTP request | Description
 [**getAIHubPortfolioRunning**](BotApi.md#getAIHubPortfolioRunning) | **GET** /bot/portfolio/running | Query the list of running policies
 [**getAIHubPortfolioDetail**](BotApi.md#getAIHubPortfolioDetail) | **GET** /bot/portfolio/detail | Query order policy details
 [**postAIHubPortfolioStop**](BotApi.md#postAIHubPortfolioStop) | **POST** /bot/portfolio/stop | Terminate a single running policy
+[**postAIHubSmartPositionCreate**](BotApi.md#postAIHubSmartPositionCreate) | **POST** /bot/smart-position/create | Create rebalance bot
+[**postAIHubFuturesComboCreate**](BotApi.md#postAIHubFuturesComboCreate) | **POST** /bot/futures-combo/create | Create futures-combo bot
 
 
 ## getAIHubStrategyRecommend
 
-> \GateApi\Model\AIHubDiscoverSuccessResponse getAIHubStrategyRecommend($market, $strategy_type, $direction, $invest_amount, $scene, $refresh_recommendation_id, $limit, $max_drawdown_lte, $backtest_apr_gte, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id)
+> \GateApi\Model\AIHubDiscoverSuccessResponse getAIHubStrategyRecommend($market, $strategy_type, $direction, $invest_amount, $scene, $refresh_recommendation_id, $limit, $max_drawdown_lte, $backtest_apr_gte, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id, $exclude_recommendation_id)
 
 Get AIHub strategy recommendations
 
-The only formal interface for the discover domain. Support scenarios: - `top1` - `bundle` - `filter` - `refresh` Constraints: - The active recommendation pool only contains `spot_grid`, `futures_grid`, `spot_martingale` - Can return but do not actively recommend `infinite_grid`, `margin_grid` - `contract_martingale`, `smart-position`, `spot-future-arbitrage` must not be returned - When `scene=filter` is used, only filtering by `market`, `backtest_apr_gte`, `max_drawdown_lte` is allowed - `scene=refresh` inherits the refresh context through `refresh_recommendation_id`; the official minimum format only requires `strategy_type|market` - If the upstream directly transmits the previous recommendation `recommendation_id`, the third paragraph `backtest_id` will currently be ignored.
+Six real official source types. Exact rebalance asset membership is filtered before ranking. contract_martingale and futures_combo are manual-only. Legacy APR/drawdown and ordinary two-segment refresh remain compatible. Exclusion binds one prior logical candidate before ranking; no alternative returns an empty list without relaxing constraints.
 
 ### Example
 
@@ -43,16 +45,17 @@ $apiInstance = new GateApi\Api\BotApi(
 $associate_array['market'] = 'market_example'; // string | Trading pair, such as `BTC_USDT`
 $associate_array['strategy_type'] = 'strategy_type_example'; // string | Recommended target policy type; `contract_martingale` not allowed
 $associate_array['direction'] = 'direction_example'; // string | Market direction
-$associate_array['invest_amount'] = 'invest_amount_example'; // string | Investment amount, string transparent transmission
+$associate_array['invest_amount'] = 'invest_amount_example'; // string | Context only. No budget eligibility filter; reported unsupported when not consumed.
 $associate_array['scene'] = 'scene_example'; // string | Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic.
 $associate_array['refresh_recommendation_id'] = 'refresh_recommendation_id_example'; // string | It is recommended to refresh the context. Used when `scene=refresh` is used; when `scene` is empty but the field exists, bot-service will also automatically determine as `refresh`. The official minimum format is `strategy_type|market`; if the `recommendation_id` of the previous recommendation is directly passed through, the third paragraph `backtest_id` will be ignored.
-$associate_array['limit'] = 56; // int | Return quantity; when `scene=filter` is used, the actual results are up to 10
+$associate_array['limit'] = 56; // int | Actual maximum result count, 1–10; defaults to 10.
 $associate_array['max_drawdown_lte'] = 'max_drawdown_lte_example'; // string | Maximum drawdown limit
 $associate_array['backtest_apr_gte'] = 'backtest_apr_gte_example'; // string | Backtest annualized lower limit
 $associate_array['x_gate_service_id'] = 'x_gate_service_id_example'; // string | Call source identifier; injected by APIv4 if necessary
 $associate_array['x_gate_app_lang'] = 'x_gate_app_lang_example'; // string | Language context, such as `zh-CN` / `en-US`
 $associate_array['x_request_id'] = 'x_request_id_example'; // string | Request link ID; caller can transmit transparently
 $associate_array['x_trace_id'] = 'x_trace_id_example'; // string | trace header; can be generated uniformly by APIv4
+$associate_array['exclude_recommendation_id'] = 'exclude_recommendation_id_example'; // string | Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan.
 
 try {
     $result = $apiInstance->getAIHubStrategyRecommend($associate_array);
@@ -75,16 +78,17 @@ Name | Type | Description  | Notes
  **market** | **string**| Trading pair, such as &#x60;BTC_USDT&#x60; | [optional]
  **strategy_type** | **string**| Recommended target policy type; &#x60;contract_martingale&#x60; not allowed | [optional]
  **direction** | **string**| Market direction | [optional]
- **invest_amount** | **string**| Investment amount, string transparent transmission | [optional]
+ **invest_amount** | **string**| Context only. No budget eligibility filter; reported unsupported when not consumed. | [optional]
  **scene** | **string**| Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. | [optional]
  **refresh_recommendation_id** | **string**| It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. | [optional]
- **limit** | **int**| Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 | [optional]
+ **limit** | **int**| Actual maximum result count, 1–10; defaults to 10. | [optional]
  **max_drawdown_lte** | **string**| Maximum drawdown limit | [optional]
  **backtest_apr_gte** | **string**| Backtest annualized lower limit | [optional]
  **x_gate_service_id** | **string**| Call source identifier; injected by APIv4 if necessary | [optional]
  **x_gate_app_lang** | **string**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | [optional]
  **x_request_id** | **string**| Request link ID; caller can transmit transparently | [optional]
  **x_trace_id** | **string**| trace header; can be generated uniformly by APIv4 | [optional]
+ **exclude_recommendation_id** | **string**| Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. | [optional]
 
 ### Return type
 
@@ -731,6 +735,146 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\GateApi\Model\AIHubPortfolioStopSuccessResponse**](../Model/AIHubPortfolioStopSuccessResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## postAIHubSmartPositionCreate
+
+> \GateApi\Model\AIHubCreateSuccessResponse postAIHubSmartPositionCreate($ai_hub_rebalance_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id)
+
+Create rebalance bot
+
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\BotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ai_hub_rebalance_create_request = new \GateApi\Model\AIHubRebalanceCreateRequest(); // \GateApi\Model\AIHubRebalanceCreateRequest | 
+$x_gate_service_id = 'x_gate_service_id_example'; // string | Call source identifier; injected by APIv4 if necessary
+$x_gate_app_lang = 'x_gate_app_lang_example'; // string | Language context, such as `zh-CN` / `en-US`
+$x_request_id = 'x_request_id_example'; // string | Request link ID; caller can transmit transparently
+$x_trace_id = 'x_trace_id_example'; // string | trace header; can be generated uniformly by APIv4
+
+try {
+    $result = $apiInstance->postAIHubSmartPositionCreate($ai_hub_rebalance_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling BotApi->postAIHubSmartPositionCreate: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ai_hub_rebalance_create_request** | [**\GateApi\Model\AIHubRebalanceCreateRequest**](../Model/AIHubRebalanceCreateRequest.md)|  |
+ **x_gate_service_id** | **string**| Call source identifier; injected by APIv4 if necessary | [optional]
+ **x_gate_app_lang** | **string**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | [optional]
+ **x_request_id** | **string**| Request link ID; caller can transmit transparently | [optional]
+ **x_trace_id** | **string**| trace header; can be generated uniformly by APIv4 | [optional]
+
+### Return type
+
+[**\GateApi\Model\AIHubCreateSuccessResponse**](../Model/AIHubCreateSuccessResponse.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## postAIHubFuturesComboCreate
+
+> \GateApi\Model\AIHubCreateSuccessResponse postAIHubFuturesComboCreate($ai_hub_futures_combo_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id)
+
+Create futures-combo bot
+
+Typed AIHub adapter; authenticated owner comes only from trusted gateway context.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\BotApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ai_hub_futures_combo_create_request = new \GateApi\Model\AIHubFuturesComboCreateRequest(); // \GateApi\Model\AIHubFuturesComboCreateRequest | 
+$x_gate_service_id = 'x_gate_service_id_example'; // string | Call source identifier; injected by APIv4 if necessary
+$x_gate_app_lang = 'x_gate_app_lang_example'; // string | Language context, such as `zh-CN` / `en-US`
+$x_request_id = 'x_request_id_example'; // string | Request link ID; caller can transmit transparently
+$x_trace_id = 'x_trace_id_example'; // string | trace header; can be generated uniformly by APIv4
+
+try {
+    $result = $apiInstance->postAIHubFuturesComboCreate($ai_hub_futures_combo_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling BotApi->postAIHubFuturesComboCreate: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ai_hub_futures_combo_create_request** | [**\GateApi\Model\AIHubFuturesComboCreateRequest**](../Model/AIHubFuturesComboCreateRequest.md)|  |
+ **x_gate_service_id** | **string**| Call source identifier; injected by APIv4 if necessary | [optional]
+ **x_gate_app_lang** | **string**| Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; | [optional]
+ **x_request_id** | **string**| Request link ID; caller can transmit transparently | [optional]
+ **x_trace_id** | **string**| trace header; can be generated uniformly by APIv4 | [optional]
+
+### Return type
+
+[**\GateApi\Model\AIHubCreateSuccessResponse**](../Model/AIHubCreateSuccessResponse.md)
 
 ### Authorization
 

@@ -124,16 +124,17 @@ class BotApi
      * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
      * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
      * @param  string $direction Market direction (optional)
-     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $invest_amount Context only. No budget eligibility filter; reported unsupported when not consumed. (optional)
      * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
      * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
-     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  int $limit Actual maximum result count, 1–10; defaults to 10. (optional)
      * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
      * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
      * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
      * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
      * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
      * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     * @param  string $exclude_recommendation_id Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -155,16 +156,17 @@ class BotApi
      * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
      * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
      * @param  string $direction Market direction (optional)
-     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $invest_amount Context only. No budget eligibility filter; reported unsupported when not consumed. (optional)
      * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
      * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
-     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  int $limit Actual maximum result count, 1–10; defaults to 10. (optional)
      * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
      * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
      * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
      * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
      * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
      * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     * @param  string $exclude_recommendation_id Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -226,16 +228,17 @@ class BotApi
      * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
      * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
      * @param  string $direction Market direction (optional)
-     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $invest_amount Context only. No budget eligibility filter; reported unsupported when not consumed. (optional)
      * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
      * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
-     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  int $limit Actual maximum result count, 1–10; defaults to 10. (optional)
      * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
      * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
      * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
      * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
      * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
      * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     * @param  string $exclude_recommendation_id Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -260,16 +263,17 @@ class BotApi
      * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
      * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
      * @param  string $direction Market direction (optional)
-     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $invest_amount Context only. No budget eligibility filter; reported unsupported when not consumed. (optional)
      * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
      * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
-     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  int $limit Actual maximum result count, 1–10; defaults to 10. (optional)
      * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
      * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
      * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
      * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
      * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
      * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     * @param  string $exclude_recommendation_id Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -325,16 +329,17 @@ class BotApi
      * @param  string $market Trading pair, such as &#x60;BTC_USDT&#x60; (optional)
      * @param  string $strategy_type Recommended target policy type; &#x60;contract_martingale&#x60; not allowed (optional)
      * @param  string $direction Market direction (optional)
-     * @param  string $invest_amount Investment amount, string transparent transmission (optional)
+     * @param  string $invest_amount Context only. No budget eligibility filter; reported unsupported when not consumed. (optional)
      * @param  string $scene Recommended scenario; when empty, bot-service can automatically infer according to the implementation logic. (optional)
      * @param  string $refresh_recommendation_id It is recommended to refresh the context. Used when &#x60;scene&#x3D;refresh&#x60; is used; when &#x60;scene&#x60; is empty but the field exists, bot-service will also automatically determine as &#x60;refresh&#x60;. The official minimum format is &#x60;strategy_type|market&#x60;; if the &#x60;recommendation_id&#x60; of the previous recommendation is directly passed through, the third paragraph &#x60;backtest_id&#x60; will be ignored. (optional)
-     * @param  int $limit Return quantity; when &#x60;scene&#x3D;filter&#x60; is used, the actual results are up to 10 (optional)
+     * @param  int $limit Actual maximum result count, 1–10; defaults to 10. (optional)
      * @param  string $max_drawdown_lte Maximum drawdown limit (optional)
      * @param  string $backtest_apr_gte Backtest annualized lower limit (optional)
      * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
      * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
      * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
      * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     * @param  string $exclude_recommendation_id Refresh-only previous returned identity: type|market|backtest_id, with an optional stable parameter discriminator for colliding source IDs. Ambiguous old identities are rejected; metric-only changes do not produce a new plan. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -355,7 +360,11 @@ class BotApi
         $x_gate_app_lang = array_key_exists('x_gate_app_lang', $associative_array) ? $associative_array['x_gate_app_lang'] : null;
         $x_request_id = array_key_exists('x_request_id', $associative_array) ? $associative_array['x_request_id'] : null;
         $x_trace_id = array_key_exists('x_trace_id', $associative_array) ? $associative_array['x_trace_id'] : null;
+        $exclude_recommendation_id = array_key_exists('exclude_recommendation_id', $associative_array) ? $associative_array['exclude_recommendation_id'] : null;
 
+        if ($limit !== null && $limit > 10) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling BotApi.getAIHubStrategyRecommend, must be smaller than or equal to 10.');
+        }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling BotApi.getAIHubStrategyRecommend, must be bigger than or equal to 1.');
         }
@@ -491,6 +500,20 @@ class BotApi
             }
             else {
                 $queryParams['backtest_apr_gte'] = $backtest_apr_gte;
+            }
+        }
+
+        // query params
+        if ($exclude_recommendation_id !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exclude_recommendation_id) && true) {
+                foreach($exclude_recommendation_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['exclude_recommendation_id'] = $exclude_recommendation_id;
             }
         }
 
@@ -3245,6 +3268,580 @@ class BotApi
         $_tempBody = null;
         if (isset($ai_hub_portfolio_stop_request)) {
             $_tempBody = $ai_hub_portfolio_stop_request;
+        }
+
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postAIHubSmartPositionCreate
+     *
+     * Create rebalance bot
+     *
+     * @param  \GateApi\Model\AIHubRebalanceCreateRequest $ai_hub_rebalance_create_request ai_hub_rebalance_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AIHubCreateSuccessResponse
+     */
+    public function postAIHubSmartPositionCreate($ai_hub_rebalance_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        list($response) = $this->postAIHubSmartPositionCreateWithHttpInfo($ai_hub_rebalance_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+        return $response;
+    }
+
+    /**
+     * Operation postAIHubSmartPositionCreateWithHttpInfo
+     *
+     * Create rebalance bot
+     *
+     * @param  \GateApi\Model\AIHubRebalanceCreateRequest $ai_hub_rebalance_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AIHubCreateSuccessResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postAIHubSmartPositionCreateWithHttpInfo($ai_hub_rebalance_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        $request = $this->postAIHubSmartPositionCreateRequest($ai_hub_rebalance_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AIHubCreateSuccessResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation postAIHubSmartPositionCreateAsync
+     *
+     * Create rebalance bot
+     *
+     * @param  \GateApi\Model\AIHubRebalanceCreateRequest $ai_hub_rebalance_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postAIHubSmartPositionCreateAsync($ai_hub_rebalance_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        return $this->postAIHubSmartPositionCreateAsyncWithHttpInfo($ai_hub_rebalance_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postAIHubSmartPositionCreateAsyncWithHttpInfo
+     *
+     * Create rebalance bot
+     *
+     * @param  \GateApi\Model\AIHubRebalanceCreateRequest $ai_hub_rebalance_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postAIHubSmartPositionCreateAsyncWithHttpInfo($ai_hub_rebalance_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        $returnType = '\GateApi\Model\AIHubCreateSuccessResponse';
+        $request = $this->postAIHubSmartPositionCreateRequest($ai_hub_rebalance_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postAIHubSmartPositionCreate'
+     *
+     * @param  \GateApi\Model\AIHubRebalanceCreateRequest $ai_hub_rebalance_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function postAIHubSmartPositionCreateRequest($ai_hub_rebalance_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        // verify the required parameter 'ai_hub_rebalance_create_request' is set
+        if ($ai_hub_rebalance_create_request === null || (is_array($ai_hub_rebalance_create_request) && count($ai_hub_rebalance_create_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ai_hub_rebalance_create_request when calling postAIHubSmartPositionCreate'
+            );
+        }
+
+        $resourcePath = '/bot/smart-position/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_gate_service_id !== null) {
+            $headerParams['X-Gate-Service-Id'] = ObjectSerializer::toHeaderValue($x_gate_service_id);
+        }
+
+        // header params
+        if ($x_gate_app_lang !== null) {
+            $headerParams['X-Gate-AppLang'] = ObjectSerializer::toHeaderValue($x_gate_app_lang);
+        }
+
+        // header params
+        if ($x_request_id !== null) {
+            $headerParams['X-Request-Id'] = ObjectSerializer::toHeaderValue($x_request_id);
+        }
+
+        // header params
+        if ($x_trace_id !== null) {
+            $headerParams['X-Trace-Id'] = ObjectSerializer::toHeaderValue($x_trace_id);
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($ai_hub_rebalance_create_request)) {
+            $_tempBody = $ai_hub_rebalance_create_request;
+        }
+
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('POST', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postAIHubFuturesComboCreate
+     *
+     * Create futures-combo bot
+     *
+     * @param  \GateApi\Model\AIHubFuturesComboCreateRequest $ai_hub_futures_combo_create_request ai_hub_futures_combo_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\AIHubCreateSuccessResponse
+     */
+    public function postAIHubFuturesComboCreate($ai_hub_futures_combo_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        list($response) = $this->postAIHubFuturesComboCreateWithHttpInfo($ai_hub_futures_combo_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+        return $response;
+    }
+
+    /**
+     * Operation postAIHubFuturesComboCreateWithHttpInfo
+     *
+     * Create futures-combo bot
+     *
+     * @param  \GateApi\Model\AIHubFuturesComboCreateRequest $ai_hub_futures_combo_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\AIHubCreateSuccessResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postAIHubFuturesComboCreateWithHttpInfo($ai_hub_futures_combo_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        $request = $this->postAIHubFuturesComboCreateRequest($ai_hub_futures_combo_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\AIHubCreateSuccessResponse';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation postAIHubFuturesComboCreateAsync
+     *
+     * Create futures-combo bot
+     *
+     * @param  \GateApi\Model\AIHubFuturesComboCreateRequest $ai_hub_futures_combo_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postAIHubFuturesComboCreateAsync($ai_hub_futures_combo_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        return $this->postAIHubFuturesComboCreateAsyncWithHttpInfo($ai_hub_futures_combo_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postAIHubFuturesComboCreateAsyncWithHttpInfo
+     *
+     * Create futures-combo bot
+     *
+     * @param  \GateApi\Model\AIHubFuturesComboCreateRequest $ai_hub_futures_combo_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postAIHubFuturesComboCreateAsyncWithHttpInfo($ai_hub_futures_combo_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        $returnType = '\GateApi\Model\AIHubCreateSuccessResponse';
+        $request = $this->postAIHubFuturesComboCreateRequest($ai_hub_futures_combo_create_request, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postAIHubFuturesComboCreate'
+     *
+     * @param  \GateApi\Model\AIHubFuturesComboCreateRequest $ai_hub_futures_combo_create_request (required)
+     * @param  string $x_gate_service_id Call source identifier; injected by APIv4 if necessary (optional)
+     * @param  string $x_gate_app_lang Language context, such as &#x60;zh-CN&#x60; / &#x60;en-US&#x60; (optional)
+     * @param  string $x_request_id Request link ID; caller can transmit transparently (optional)
+     * @param  string $x_trace_id trace header; can be generated uniformly by APIv4 (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function postAIHubFuturesComboCreateRequest($ai_hub_futures_combo_create_request, $x_gate_service_id = null, $x_gate_app_lang = null, $x_request_id = null, $x_trace_id = null)
+    {
+        // verify the required parameter 'ai_hub_futures_combo_create_request' is set
+        if ($ai_hub_futures_combo_create_request === null || (is_array($ai_hub_futures_combo_create_request) && count($ai_hub_futures_combo_create_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ai_hub_futures_combo_create_request when calling postAIHubFuturesComboCreate'
+            );
+        }
+
+        $resourcePath = '/bot/futures-combo/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_gate_service_id !== null) {
+            $headerParams['X-Gate-Service-Id'] = ObjectSerializer::toHeaderValue($x_gate_service_id);
+        }
+
+        // header params
+        if ($x_gate_app_lang !== null) {
+            $headerParams['X-Gate-AppLang'] = ObjectSerializer::toHeaderValue($x_gate_app_lang);
+        }
+
+        // header params
+        if ($x_request_id !== null) {
+            $headerParams['X-Request-Id'] = ObjectSerializer::toHeaderValue($x_request_id);
+        }
+
+        // header params
+        if ($x_trace_id !== null) {
+            $headerParams['X-Trace-Id'] = ObjectSerializer::toHeaderValue($x_trace_id);
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($ai_hub_futures_combo_create_request)) {
+            $_tempBody = $ai_hub_futures_combo_create_request;
         }
 
         // Preserve content-type preference when multiple encodings are allowed,

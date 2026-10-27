@@ -63,7 +63,9 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
         'pnl' => 'string',
         'pnl_rate' => 'string',
         'invest_amount' => 'string',
-        'created_at' => 'string'
+        'created_at' => 'string',
+        'assets' => 'string[]',
+        'markets' => 'string[]'
     ];
 
     /**
@@ -80,7 +82,9 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
         'pnl' => null,
         'pnl_rate' => null,
         'invest_amount' => null,
-        'created_at' => null
+        'created_at' => null,
+        'assets' => null,
+        'markets' => null
     ];
 
     /**
@@ -118,7 +122,9 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
         'pnl' => 'pnl',
         'pnl_rate' => 'pnl_rate',
         'invest_amount' => 'invest_amount',
-        'created_at' => 'created_at'
+        'created_at' => 'created_at',
+        'assets' => 'assets',
+        'markets' => 'markets'
     ];
 
     /**
@@ -135,7 +141,9 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
         'pnl' => 'setPnl',
         'pnl_rate' => 'setPnlRate',
         'invest_amount' => 'setInvestAmount',
-        'created_at' => 'setCreatedAt'
+        'created_at' => 'setCreatedAt',
+        'assets' => 'setAssets',
+        'markets' => 'setMarkets'
     ];
 
     /**
@@ -152,7 +160,9 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
         'pnl' => 'getPnl',
         'pnl_rate' => 'getPnlRate',
         'invest_amount' => 'getInvestAmount',
-        'created_at' => 'getCreatedAt'
+        'created_at' => 'getCreatedAt',
+        'assets' => 'getAssets',
+        'markets' => 'getMarkets'
     ];
 
     /**
@@ -224,6 +234,8 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
         $this->container['pnl_rate'] = isset($data['pnl_rate']) ? $data['pnl_rate'] : null;
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['assets'] = isset($data['assets']) ? $data['assets'] : null;
+        $this->container['markets'] = isset($data['markets']) ? $data['markets'] : null;
     }
 
     /**
@@ -350,7 +362,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
     /**
      * Sets market
      *
-     * @param string $market market
+     * @param string $market Single market, or empty string for a portfolio; use assets/markets for the latter.
      *
      * @return $this
      */
@@ -477,6 +489,54 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets assets
+     *
+     * @return string[]|null
+     */
+    public function getAssets()
+    {
+        return $this->container['assets'];
+    }
+
+    /**
+     * Sets assets
+     *
+     * @param string[]|null $assets assets
+     *
+     * @return $this
+     */
+    public function setAssets($assets)
+    {
+        $this->container['assets'] = $assets;
+
+        return $this;
+    }
+
+    /**
+     * Gets markets
+     *
+     * @return string[]|null
+     */
+    public function getMarkets()
+    {
+        return $this->container['markets'];
+    }
+
+    /**
+     * Sets markets
+     *
+     * @param string[]|null $markets markets
+     *
+     * @return $this
+     */
+    public function setMarkets($markets)
+    {
+        $this->container['markets'] = $markets;
 
         return $this;
     }

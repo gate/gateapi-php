@@ -62,7 +62,13 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         'base_info' => '\GateApi\Model\AIHubPortfolioBaseInfo',
         'metrics' => '\GateApi\Model\AIHubPortfolioMetrics',
         'position' => '\GateApi\Model\AIHubPortfolioPosition',
-        'stop_supported' => 'bool'
+        'stop_supported' => 'bool',
+        'assets' => 'string[]',
+        'markets' => 'string[]',
+        'positions' => '\GateApi\Model\AIHubPortfolioAssetPosition[]',
+        'positions_status' => 'string',
+        'configuration' => 'object',
+        'stop_progress' => '\GateApi\Model\AIHubStopProgress'
     ];
 
     /**
@@ -78,7 +84,13 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         'base_info' => null,
         'metrics' => null,
         'position' => null,
-        'stop_supported' => null
+        'stop_supported' => null,
+        'assets' => null,
+        'markets' => null,
+        'positions' => null,
+        'positions_status' => null,
+        'configuration' => null,
+        'stop_progress' => null
     ];
 
     /**
@@ -115,7 +127,13 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         'base_info' => 'base_info',
         'metrics' => 'metrics',
         'position' => 'position',
-        'stop_supported' => 'stop_supported'
+        'stop_supported' => 'stop_supported',
+        'assets' => 'assets',
+        'markets' => 'markets',
+        'positions' => 'positions',
+        'positions_status' => 'positions_status',
+        'configuration' => 'configuration',
+        'stop_progress' => 'stop_progress'
     ];
 
     /**
@@ -131,7 +149,13 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         'base_info' => 'setBaseInfo',
         'metrics' => 'setMetrics',
         'position' => 'setPosition',
-        'stop_supported' => 'setStopSupported'
+        'stop_supported' => 'setStopSupported',
+        'assets' => 'setAssets',
+        'markets' => 'setMarkets',
+        'positions' => 'setPositions',
+        'positions_status' => 'setPositionsStatus',
+        'configuration' => 'setConfiguration',
+        'stop_progress' => 'setStopProgress'
     ];
 
     /**
@@ -147,7 +171,13 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         'base_info' => 'getBaseInfo',
         'metrics' => 'getMetrics',
         'position' => 'getPosition',
-        'stop_supported' => 'getStopSupported'
+        'stop_supported' => 'getStopSupported',
+        'assets' => 'getAssets',
+        'markets' => 'getMarkets',
+        'positions' => 'getPositions',
+        'positions_status' => 'getPositionsStatus',
+        'configuration' => 'getConfiguration',
+        'stop_progress' => 'getStopProgress'
     ];
 
     /**
@@ -191,8 +221,27 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const POSITIONS_STATUS_VERIFIED = 'verified';
+    const POSITIONS_STATUS_PARTIAL = 'partial';
+    const POSITIONS_STATUS_UNVERIFIED = 'unverified';
+    const POSITIONS_STATUS_HISTORICAL = 'historical';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPositionsStatusAllowableValues()
+    {
+        return [
+            self::POSITIONS_STATUS_VERIFIED,
+            self::POSITIONS_STATUS_PARTIAL,
+            self::POSITIONS_STATUS_UNVERIFIED,
+            self::POSITIONS_STATUS_HISTORICAL,
+        ];
+    }
     
 
     /**
@@ -218,6 +267,12 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         $this->container['metrics'] = isset($data['metrics']) ? $data['metrics'] : null;
         $this->container['position'] = isset($data['position']) ? $data['position'] : null;
         $this->container['stop_supported'] = isset($data['stop_supported']) ? $data['stop_supported'] : null;
+        $this->container['assets'] = isset($data['assets']) ? $data['assets'] : null;
+        $this->container['markets'] = isset($data['markets']) ? $data['markets'] : null;
+        $this->container['positions'] = isset($data['positions']) ? $data['positions'] : null;
+        $this->container['positions_status'] = isset($data['positions_status']) ? $data['positions_status'] : null;
+        $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
+        $this->container['stop_progress'] = isset($data['stop_progress']) ? $data['stop_progress'] : null;
     }
 
     /**
@@ -250,6 +305,14 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
         if ($this->container['stop_supported'] === null) {
             $invalidProperties[] = "'stop_supported' can't be null";
         }
+        $allowedValues = $this->getPositionsStatusAllowableValues();
+        if (!is_null($this->container['positions_status']) && !in_array($this->container['positions_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'positions_status', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -326,7 +389,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     /**
      * Sets market
      *
-     * @param string $market market
+     * @param string $market Single market, or empty string for a portfolio; use assets/markets for the latter.
      *
      * @return $this
      */
@@ -453,6 +516,159 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     public function setStopSupported($stop_supported)
     {
         $this->container['stop_supported'] = $stop_supported;
+
+        return $this;
+    }
+
+    /**
+     * Gets assets
+     *
+     * @return string[]|null
+     */
+    public function getAssets()
+    {
+        return $this->container['assets'];
+    }
+
+    /**
+     * Sets assets
+     *
+     * @param string[]|null $assets assets
+     *
+     * @return $this
+     */
+    public function setAssets($assets)
+    {
+        $this->container['assets'] = $assets;
+
+        return $this;
+    }
+
+    /**
+     * Gets markets
+     *
+     * @return string[]|null
+     */
+    public function getMarkets()
+    {
+        return $this->container['markets'];
+    }
+
+    /**
+     * Sets markets
+     *
+     * @param string[]|null $markets markets
+     *
+     * @return $this
+     */
+    public function setMarkets($markets)
+    {
+        $this->container['markets'] = $markets;
+
+        return $this;
+    }
+
+    /**
+     * Gets positions
+     *
+     * @return \GateApi\Model\AIHubPortfolioAssetPosition[]|null
+     */
+    public function getPositions()
+    {
+        return $this->container['positions'];
+    }
+
+    /**
+     * Sets positions
+     *
+     * @param \GateApi\Model\AIHubPortfolioAssetPosition[]|null $positions positions
+     *
+     * @return $this
+     */
+    public function setPositions($positions)
+    {
+        $this->container['positions'] = $positions;
+
+        return $this;
+    }
+
+    /**
+     * Gets positions_status
+     *
+     * @return string|null
+     */
+    public function getPositionsStatus()
+    {
+        return $this->container['positions_status'];
+    }
+
+    /**
+     * Sets positions_status
+     *
+     * @param string|null $positions_status positions_status
+     *
+     * @return $this
+     */
+    public function setPositionsStatus($positions_status)
+    {
+        $allowedValues = $this->getPositionsStatusAllowableValues();
+        if (!is_null($positions_status) && !in_array($positions_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'positions_status', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['positions_status'] = $positions_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets configuration
+     *
+     * @return object|null
+     */
+    public function getConfiguration()
+    {
+        return $this->container['configuration'];
+    }
+
+    /**
+     * Sets configuration
+     *
+     * @param object|null $configuration Product-specific saved configuration. spot_martingale exposes AIHubSpotMartingaleConfiguration; absence is unverified. Runtime recovery internals are excluded.
+     *
+     * @return $this
+     */
+    public function setConfiguration($configuration)
+    {
+        $this->container['configuration'] = $configuration;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_progress
+     *
+     * @return \GateApi\Model\AIHubStopProgress|null
+     */
+    public function getStopProgress()
+    {
+        return $this->container['stop_progress'];
+    }
+
+    /**
+     * Sets stop_progress
+     *
+     * @param \GateApi\Model\AIHubStopProgress|null $stop_progress stop_progress
+     *
+     * @return $this
+     */
+    public function setStopProgress($stop_progress)
+    {
+        $this->container['stop_progress'] = $stop_progress;
 
         return $this;
     }

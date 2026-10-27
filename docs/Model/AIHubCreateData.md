@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**strategy_id** | **string** |  | 
-**strategy_type** | [**\GateApi\Model\StrategyType**](StrategyType.md) |  | 
-**market** | **string** |  | 
-**status** | **string** | The initial state after successful creation, usually &#x60;running&#x60; | 
+**strategy_id** | **string** |  | [optional] 
+**strategy_type** | [**\GateApi\Model\StrategyType**](StrategyType.md) |  | [optional] 
+**market** | **string** |  | [optional] 
+**status** | **string** | Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled. | [optional] 
 **jump_url** | **string** |  | [optional] 
+**operation_status** | **string** | pending when the write result requires verification; rejected for a proven pre-effect refusal. | [optional] 
+**recovery_required** | **bool** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

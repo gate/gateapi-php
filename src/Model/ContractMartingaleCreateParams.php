@@ -62,7 +62,8 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         'direction' => '\GateApi\Model\ContractMartingaleDirection',
         'leverage' => 'string',
         'stop_loss_price' => 'string',
-        'profit_sharing_ratio' => 'string'
+        'profit_sharing_ratio' => 'string',
+        'stop_loss_price_type' => 'string'
     ];
 
     /**
@@ -78,7 +79,8 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         'direction' => null,
         'leverage' => null,
         'stop_loss_price' => null,
-        'profit_sharing_ratio' => null
+        'profit_sharing_ratio' => null,
+        'stop_loss_price_type' => null
     ];
 
     /**
@@ -115,7 +117,8 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         'direction' => 'direction',
         'leverage' => 'leverage',
         'stop_loss_price' => 'stop_loss_price',
-        'profit_sharing_ratio' => 'profit_sharing_ratio'
+        'profit_sharing_ratio' => 'profit_sharing_ratio',
+        'stop_loss_price_type' => 'stop_loss_price_type'
     ];
 
     /**
@@ -131,7 +134,8 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         'direction' => 'setDirection',
         'leverage' => 'setLeverage',
         'stop_loss_price' => 'setStopLossPrice',
-        'profit_sharing_ratio' => 'setProfitSharingRatio'
+        'profit_sharing_ratio' => 'setProfitSharingRatio',
+        'stop_loss_price_type' => 'setStopLossPriceType'
     ];
 
     /**
@@ -147,7 +151,8 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         'direction' => 'getDirection',
         'leverage' => 'getLeverage',
         'stop_loss_price' => 'getStopLossPrice',
-        'profit_sharing_ratio' => 'getProfitSharingRatio'
+        'profit_sharing_ratio' => 'getProfitSharingRatio',
+        'stop_loss_price_type' => 'getStopLossPriceType'
     ];
 
     /**
@@ -191,8 +196,25 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const STOP_LOSS_PRICE_TYPE_LAST = 'last';
+    const STOP_LOSS_PRICE_TYPE_INDEX = 'index';
+    const STOP_LOSS_PRICE_TYPE_MARK = 'mark';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStopLossPriceTypeAllowableValues()
+    {
+        return [
+            self::STOP_LOSS_PRICE_TYPE_LAST,
+            self::STOP_LOSS_PRICE_TYPE_INDEX,
+            self::STOP_LOSS_PRICE_TYPE_MARK,
+        ];
+    }
     
 
     /**
@@ -218,6 +240,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
         $this->container['stop_loss_price'] = isset($data['stop_loss_price']) ? $data['stop_loss_price'] : null;
         $this->container['profit_sharing_ratio'] = isset($data['profit_sharing_ratio']) ? $data['profit_sharing_ratio'] : null;
+        $this->container['stop_loss_price_type'] = isset($data['stop_loss_price_type']) ? $data['stop_loss_price_type'] : null;
     }
 
     /**
@@ -251,6 +274,14 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         if ($this->container['leverage'] === null) {
             $invalidProperties[] = "'leverage' can't be null";
         }
+        $allowedValues = $this->getStopLossPriceTypeAllowableValues();
+        if (!is_null($this->container['stop_loss_price_type']) && !in_array($this->container['stop_loss_price_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'stop_loss_price_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -279,7 +310,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets invest_amount
      *
-     * @param string $invest_amount Margin allocated; the server converts it to initial contract size using live contract price, contract multiplier, and minimum lot size.
+     * @param string $invest_amount Total strategy budget, not first-order margin. The server uses the complete existing ladder formula, owner fee and live contract facts, quantizes quantity down and rechecks before allocation. Minimum infeasible budget is rejected.
      *
      * @return $this
      */
@@ -327,7 +358,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets max_orders
      *
-     * @param int $max_orders max_orders
+     * @param int $max_orders Maximum additional entries, excluding the first; preserve this legacy meaning.
      *
      * @return $this
      */
@@ -428,7 +459,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     /**
      * Sets stop_loss_price
      *
-     * @param string|null $stop_loss_price Legacy field name. The AIHub `contract_martingale` creation path does not map this field today; follow contract martingale rules from the underlying API. MCP tooling must match bot-service behavior.
+     * @param string|null $stop_loss_price Positive fixed stop price; requires explicit stop_loss_price_type. Missing both leaves the old no-fixed-stop request unchanged.
      *
      * @return $this
      */
@@ -459,6 +490,39 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     public function setProfitSharingRatio($profit_sharing_ratio)
     {
         $this->container['profit_sharing_ratio'] = $profit_sharing_ratio;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_loss_price_type
+     *
+     * @return string|null
+     */
+    public function getStopLossPriceType()
+    {
+        return $this->container['stop_loss_price_type'];
+    }
+
+    /**
+     * Sets stop_loss_price_type
+     *
+     * @param string|null $stop_loss_price_type stop_loss_price_type
+     *
+     * @return $this
+     */
+    public function setStopLossPriceType($stop_loss_price_type)
+    {
+        $allowedValues = $this->getStopLossPriceTypeAllowableValues();
+        if (!is_null($stop_loss_price_type) && !in_array($stop_loss_price_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'stop_loss_price_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['stop_loss_price_type'] = $stop_loss_price_type;
 
         return $this;
     }

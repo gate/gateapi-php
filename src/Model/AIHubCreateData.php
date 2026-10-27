@@ -59,7 +59,9 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
         'strategy_type' => '\GateApi\Model\StrategyType',
         'market' => 'string',
         'status' => 'string',
-        'jump_url' => 'string'
+        'jump_url' => 'string',
+        'operation_status' => 'string',
+        'recovery_required' => 'bool'
     ];
 
     /**
@@ -72,7 +74,9 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
         'strategy_type' => null,
         'market' => null,
         'status' => null,
-        'jump_url' => null
+        'jump_url' => null,
+        'operation_status' => null,
+        'recovery_required' => null
     ];
 
     /**
@@ -106,7 +110,9 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
         'strategy_type' => 'strategy_type',
         'market' => 'market',
         'status' => 'status',
-        'jump_url' => 'jump_url'
+        'jump_url' => 'jump_url',
+        'operation_status' => 'operation_status',
+        'recovery_required' => 'recovery_required'
     ];
 
     /**
@@ -119,7 +125,9 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
         'strategy_type' => 'setStrategyType',
         'market' => 'setMarket',
         'status' => 'setStatus',
-        'jump_url' => 'setJumpUrl'
+        'jump_url' => 'setJumpUrl',
+        'operation_status' => 'setOperationStatus',
+        'recovery_required' => 'setRecoveryRequired'
     ];
 
     /**
@@ -132,7 +140,9 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
         'strategy_type' => 'getStrategyType',
         'market' => 'getMarket',
         'status' => 'getStatus',
-        'jump_url' => 'getJumpUrl'
+        'jump_url' => 'getJumpUrl',
+        'operation_status' => 'getOperationStatus',
+        'recovery_required' => 'getRecoveryRequired'
     ];
 
     /**
@@ -200,6 +210,8 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['jump_url'] = isset($data['jump_url']) ? $data['jump_url'] : null;
+        $this->container['operation_status'] = isset($data['operation_status']) ? $data['operation_status'] : null;
+        $this->container['recovery_required'] = isset($data['recovery_required']) ? $data['recovery_required'] : null;
     }
 
     /**
@@ -211,18 +223,6 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['strategy_id'] === null) {
-            $invalidProperties[] = "'strategy_id' can't be null";
-        }
-        if ($this->container['strategy_type'] === null) {
-            $invalidProperties[] = "'strategy_type' can't be null";
-        }
-        if ($this->container['market'] === null) {
-            $invalidProperties[] = "'market' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -241,7 +241,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Gets strategy_id
      *
-     * @return string
+     * @return string|null
      */
     public function getStrategyId()
     {
@@ -251,7 +251,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Sets strategy_id
      *
-     * @param string $strategy_id strategy_id
+     * @param string|null $strategy_id strategy_id
      *
      * @return $this
      */
@@ -265,7 +265,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Gets strategy_type
      *
-     * @return \GateApi\Model\StrategyType
+     * @return \GateApi\Model\StrategyType|null
      */
     public function getStrategyType()
     {
@@ -275,7 +275,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Sets strategy_type
      *
-     * @param \GateApi\Model\StrategyType $strategy_type strategy_type
+     * @param \GateApi\Model\StrategyType|null $strategy_type strategy_type
      *
      * @return $this
      */
@@ -289,7 +289,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Gets market
      *
-     * @return string
+     * @return string|null
      */
     public function getMarket()
     {
@@ -299,7 +299,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Sets market
      *
-     * @param string $market market
+     * @param string|null $market market
      *
      * @return $this
      */
@@ -313,7 +313,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -323,7 +323,7 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status The initial state after successful creation, usually `running`
+     * @param string|null $status Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled.
      *
      * @return $this
      */
@@ -354,6 +354,54 @@ class AIHubCreateData implements ModelInterface, ArrayAccess
     public function setJumpUrl($jump_url)
     {
         $this->container['jump_url'] = $jump_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets operation_status
+     *
+     * @return string|null
+     */
+    public function getOperationStatus()
+    {
+        return $this->container['operation_status'];
+    }
+
+    /**
+     * Sets operation_status
+     *
+     * @param string|null $operation_status pending when the write result requires verification; rejected for a proven pre-effect refusal.
+     *
+     * @return $this
+     */
+    public function setOperationStatus($operation_status)
+    {
+        $this->container['operation_status'] = $operation_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets recovery_required
+     *
+     * @return bool|null
+     */
+    public function getRecoveryRequired()
+    {
+        return $this->container['recovery_required'];
+    }
+
+    /**
+     * Sets recovery_required
+     *
+     * @param bool|null $recovery_required recovery_required
+     *
+     * @return $this
+     */
+    public function setRecoveryRequired($recovery_required)
+    {
+        $this->container['recovery_required'] = $recovery_required;
 
         return $this;
     }

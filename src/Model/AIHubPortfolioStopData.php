@@ -58,7 +58,9 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
         'strategy_id' => 'string',
         'strategy_type' => '\GateApi\Model\StrategyType',
         'status' => 'string',
-        'result_message' => 'string'
+        'result_message' => 'string',
+        'operation_status' => 'string',
+        'recovery_required' => 'bool'
     ];
 
     /**
@@ -70,7 +72,9 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
         'strategy_id' => null,
         'strategy_type' => null,
         'status' => null,
-        'result_message' => null
+        'result_message' => null,
+        'operation_status' => null,
+        'recovery_required' => null
     ];
 
     /**
@@ -103,7 +107,9 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
         'strategy_id' => 'strategy_id',
         'strategy_type' => 'strategy_type',
         'status' => 'status',
-        'result_message' => 'result_message'
+        'result_message' => 'result_message',
+        'operation_status' => 'operation_status',
+        'recovery_required' => 'recovery_required'
     ];
 
     /**
@@ -115,7 +121,9 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
         'strategy_id' => 'setStrategyId',
         'strategy_type' => 'setStrategyType',
         'status' => 'setStatus',
-        'result_message' => 'setResultMessage'
+        'result_message' => 'setResultMessage',
+        'operation_status' => 'setOperationStatus',
+        'recovery_required' => 'setRecoveryRequired'
     ];
 
     /**
@@ -127,7 +135,9 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
         'strategy_id' => 'getStrategyId',
         'strategy_type' => 'getStrategyType',
         'status' => 'getStatus',
-        'result_message' => 'getResultMessage'
+        'result_message' => 'getResultMessage',
+        'operation_status' => 'getOperationStatus',
+        'recovery_required' => 'getRecoveryRequired'
     ];
 
     /**
@@ -194,6 +204,8 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['result_message'] = isset($data['result_message']) ? $data['result_message'] : null;
+        $this->container['operation_status'] = isset($data['operation_status']) ? $data['operation_status'] : null;
+        $this->container['recovery_required'] = isset($data['recovery_required']) ? $data['recovery_required'] : null;
     }
 
     /**
@@ -205,18 +217,6 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['strategy_id'] === null) {
-            $invalidProperties[] = "'strategy_id' can't be null";
-        }
-        if ($this->container['strategy_type'] === null) {
-            $invalidProperties[] = "'strategy_type' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        if ($this->container['result_message'] === null) {
-            $invalidProperties[] = "'result_message' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -235,7 +235,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Gets strategy_id
      *
-     * @return string
+     * @return string|null
      */
     public function getStrategyId()
     {
@@ -245,7 +245,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Sets strategy_id
      *
-     * @param string $strategy_id strategy_id
+     * @param string|null $strategy_id strategy_id
      *
      * @return $this
      */
@@ -259,7 +259,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Gets strategy_type
      *
-     * @return \GateApi\Model\StrategyType
+     * @return \GateApi\Model\StrategyType|null
      */
     public function getStrategyType()
     {
@@ -269,7 +269,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Sets strategy_type
      *
-     * @param \GateApi\Model\StrategyType $strategy_type strategy_type
+     * @param \GateApi\Model\StrategyType|null $strategy_type strategy_type
      *
      * @return $this
      */
@@ -283,7 +283,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -293,7 +293,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status The current implementation returns `stopping`
+     * @param string|null $status Observed product lifecycle state, or unknown. Creation acceptance/starting is not running; stopping/finished alone does not prove funds settled.
      *
      * @return $this
      */
@@ -307,7 +307,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Gets result_message
      *
-     * @return string
+     * @return string|null
      */
     public function getResultMessage()
     {
@@ -317,13 +317,61 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     /**
      * Sets result_message
      *
-     * @param string $result_message result_message
+     * @param string|null $result_message result_message
      *
      * @return $this
      */
     public function setResultMessage($result_message)
     {
         $this->container['result_message'] = $result_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets operation_status
+     *
+     * @return string|null
+     */
+    public function getOperationStatus()
+    {
+        return $this->container['operation_status'];
+    }
+
+    /**
+     * Sets operation_status
+     *
+     * @param string|null $operation_status pending when the write result requires verification; rejected for a proven pre-effect refusal.
+     *
+     * @return $this
+     */
+    public function setOperationStatus($operation_status)
+    {
+        $this->container['operation_status'] = $operation_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets recovery_required
+     *
+     * @return bool|null
+     */
+    public function getRecoveryRequired()
+    {
+        return $this->container['recovery_required'];
+    }
+
+    /**
+     * Sets recovery_required
+     *
+     * @param bool|null $recovery_required recovery_required
+     *
+     * @return $this
+     */
+    public function setRecoveryRequired($recovery_required)
+    {
+        $this->container['recovery_required'] = $recovery_required;
 
         return $this;
     }

@@ -58,7 +58,8 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
         'code' => 'int',
         'message' => 'string',
         'data' => '\GateApi\Model\AIHubPortfolioRunningData',
-        'trace_id' => 'string'
+        'trace_id' => 'string',
+        'label' => 'string'
     ];
 
     /**
@@ -70,7 +71,8 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
         'code' => 'int32',
         'message' => null,
         'data' => null,
-        'trace_id' => null
+        'trace_id' => null,
+        'label' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
         'code' => 'code',
         'message' => 'message',
         'data' => 'data',
-        'trace_id' => 'trace_id'
+        'trace_id' => 'trace_id',
+        'label' => 'label'
     ];
 
     /**
@@ -115,7 +118,8 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
         'code' => 'setCode',
         'message' => 'setMessage',
         'data' => 'setData',
-        'trace_id' => 'setTraceId'
+        'trace_id' => 'setTraceId',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -127,7 +131,8 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
         'code' => 'getCode',
         'message' => 'getMessage',
         'data' => 'getData',
-        'trace_id' => 'getTraceId'
+        'trace_id' => 'getTraceId',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -194,6 +199,7 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
         $this->container['trace_id'] = isset($data['trace_id']) ? $data['trace_id'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
     }
 
     /**
@@ -210,12 +216,6 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
         }
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['trace_id'] === null) {
-            $invalidProperties[] = "'trace_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -283,7 +283,7 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
     /**
      * Gets data
      *
-     * @return \GateApi\Model\AIHubPortfolioRunningData
+     * @return \GateApi\Model\AIHubPortfolioRunningData|null
      */
     public function getData()
     {
@@ -293,7 +293,7 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
     /**
      * Sets data
      *
-     * @param \GateApi\Model\AIHubPortfolioRunningData $data data
+     * @param \GateApi\Model\AIHubPortfolioRunningData|null $data data
      *
      * @return $this
      */
@@ -307,7 +307,7 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
     /**
      * Gets trace_id
      *
-     * @return string
+     * @return string|null
      */
     public function getTraceId()
     {
@@ -317,13 +317,37 @@ class AIHubPortfolioRunningSuccessResponse implements ModelInterface, ArrayAcces
     /**
      * Sets trace_id
      *
-     * @param string $trace_id trace_id
+     * @param string|null $trace_id trace_id
      *
      * @return $this
      */
     public function setTraceId($trace_id)
     {
         $this->container['trace_id'] = $trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     *
+     * @return string|null
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string|null $label Stable business error label when present. HTTP 200 can contain a non-200 business code; data may retain a real identity on failure.
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
 
         return $this;
     }

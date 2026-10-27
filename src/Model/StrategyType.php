@@ -47,6 +47,8 @@ class StrategyType
     const FUTURES_GRID = 'futures_grid';
     const SPOT_MARTINGALE = 'spot_martingale';
     const CONTRACT_MARTINGALE = 'contract_martingale';
+    const SMART_POSITION = 'smart_position';
+    const FUTURES_COMBO = 'futures_combo';
     
     /**
      * Gets allowable values of the enum
@@ -61,6 +63,8 @@ class StrategyType
             self::FUTURES_GRID,
             self::SPOT_MARTINGALE,
             self::CONTRACT_MARTINGALE,
+            self::SMART_POSITION,
+            self::FUTURES_COMBO,
         ];
     }
 }

@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AIHubPortfolioStopRequest Class Doc Comment
  *
  * @category Class
- * @description The request body to terminate a running policy.
+ * @description Single owner-scoped stop. Existing six-type ID/type requests retain default exits. smart_position requires explicit mode, limit requires options; futures_combo uses fixed whole-portfolio close/settlement.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -56,7 +56,9 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'strategy_id' => 'string',
-        'strategy_type' => '\GateApi\Model\StrategyType'
+        'strategy_type' => '\GateApi\Model\StrategyType',
+        'stop_mode' => 'string',
+        'stop_options' => '\GateApi\Model\AIHubRebalanceStopOptions'
     ];
 
     /**
@@ -66,7 +68,9 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'strategy_id' => null,
-        'strategy_type' => null
+        'strategy_type' => null,
+        'stop_mode' => null,
+        'stop_options' => null
     ];
 
     /**
@@ -97,7 +101,9 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'strategy_id' => 'strategy_id',
-        'strategy_type' => 'strategy_type'
+        'strategy_type' => 'strategy_type',
+        'stop_mode' => 'stop_mode',
+        'stop_options' => 'stop_options'
     ];
 
     /**
@@ -107,7 +113,9 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'strategy_id' => 'setStrategyId',
-        'strategy_type' => 'setStrategyType'
+        'strategy_type' => 'setStrategyType',
+        'stop_mode' => 'setStopMode',
+        'stop_options' => 'setStopOptions'
     ];
 
     /**
@@ -117,7 +125,9 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'strategy_id' => 'getStrategyId',
-        'strategy_type' => 'getStrategyType'
+        'strategy_type' => 'getStrategyType',
+        'stop_mode' => 'getStopMode',
+        'stop_options' => 'getStopOptions'
     ];
 
     /**
@@ -161,8 +171,25 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const STOP_MODE_MARKET = 'market';
+    const STOP_MODE_LIMIT = 'limit';
+    const STOP_MODE_NO_CLOSE = 'no_close';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStopModeAllowableValues()
+    {
+        return [
+            self::STOP_MODE_MARKET,
+            self::STOP_MODE_LIMIT,
+            self::STOP_MODE_NO_CLOSE,
+        ];
+    }
     
 
     /**
@@ -182,6 +209,8 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
     {
         $this->container['strategy_id'] = isset($data['strategy_id']) ? $data['strategy_id'] : null;
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        $this->container['stop_mode'] = isset($data['stop_mode']) ? $data['stop_mode'] : null;
+        $this->container['stop_options'] = isset($data['stop_options']) ? $data['stop_options'] : null;
     }
 
     /**
@@ -199,6 +228,14 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
         if ($this->container['strategy_type'] === null) {
             $invalidProperties[] = "'strategy_type' can't be null";
         }
+        $allowedValues = $this->getStopModeAllowableValues();
+        if (!is_null($this->container['stop_mode']) && !in_array($this->container['stop_mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'stop_mode', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -258,6 +295,63 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
     public function setStrategyType($strategy_type)
     {
         $this->container['strategy_type'] = $strategy_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_mode
+     *
+     * @return string|null
+     */
+    public function getStopMode()
+    {
+        return $this->container['stop_mode'];
+    }
+
+    /**
+     * Sets stop_mode
+     *
+     * @param string|null $stop_mode Required only for smart_position. Other types reject custom exit options.
+     *
+     * @return $this
+     */
+    public function setStopMode($stop_mode)
+    {
+        $allowedValues = $this->getStopModeAllowableValues();
+        if (!is_null($stop_mode) && !in_array($stop_mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'stop_mode', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['stop_mode'] = $stop_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets stop_options
+     *
+     * @return \GateApi\Model\AIHubRebalanceStopOptions|null
+     */
+    public function getStopOptions()
+    {
+        return $this->container['stop_options'];
+    }
+
+    /**
+     * Sets stop_options
+     *
+     * @param \GateApi\Model\AIHubRebalanceStopOptions|null $stop_options stop_options
+     *
+     * @return $this
+     */
+    public function setStopOptions($stop_options)
+    {
+        $this->container['stop_options'] = $stop_options;
 
         return $this;
     }
