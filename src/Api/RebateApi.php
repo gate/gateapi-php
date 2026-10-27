@@ -33,6 +33,7 @@ use GateApi\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -129,7 +130,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\AgencyTransactionHistory[]
+     * @return \GateApi\Model\AgencyTransactionHistory
      */
     public function agencyTransactionHistory($associative_array)
     {
@@ -153,7 +154,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\AgencyTransactionHistory[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\AgencyTransactionHistory, HTTP status code, HTTP response headers (array of strings)
      */
     public function agencyTransactionHistoryWithHttpInfo($associative_array)
     {
@@ -162,6 +163,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -183,7 +187,7 @@ class RebateApi
             );
         }
 
-        $returnType = '\GateApi\Model\AgencyTransactionHistory[]';
+        $returnType = '\GateApi\Model\AgencyTransactionHistory';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -192,7 +196,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -244,7 +248,7 @@ class RebateApi
      */
     public function agencyTransactionHistoryAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\AgencyTransactionHistory[]';
+        $returnType = '\GateApi\Model\AgencyTransactionHistory';
         $request = $this->agencyTransactionHistoryRequest($associative_array);
 
         return $this->client
@@ -259,12 +263,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -327,7 +335,9 @@ class RebateApi
 
         // query params
         if ($currency_pair !== null) {
-            if('form' === 'form' && is_array($currency_pair)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency_pair) && true) {
                 foreach($currency_pair as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -339,7 +349,9 @@ class RebateApi
 
         // query params
         if ($user_id !== null) {
-            if('form' === 'form' && is_array($user_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id) && true) {
                 foreach($user_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -351,7 +363,9 @@ class RebateApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -363,7 +377,9 @@ class RebateApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -375,7 +391,9 @@ class RebateApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -387,7 +405,9 @@ class RebateApi
 
         // query params
         if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($offset) && true) {
                 foreach($offset as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -400,14 +420,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -415,7 +437,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -430,13 +452,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -457,7 +480,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -483,7 +507,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\AgencyCommissionHistory[]
+     * @return \GateApi\Model\AgencyCommissionHistory
      */
     public function agencyCommissionsHistory($associative_array)
     {
@@ -508,7 +532,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\AgencyCommissionHistory[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\AgencyCommissionHistory, HTTP status code, HTTP response headers (array of strings)
      */
     public function agencyCommissionsHistoryWithHttpInfo($associative_array)
     {
@@ -517,6 +541,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -538,7 +565,7 @@ class RebateApi
             );
         }
 
-        $returnType = '\GateApi\Model\AgencyCommissionHistory[]';
+        $returnType = '\GateApi\Model\AgencyCommissionHistory';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -547,7 +574,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -601,7 +628,7 @@ class RebateApi
      */
     public function agencyCommissionsHistoryAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\AgencyCommissionHistory[]';
+        $returnType = '\GateApi\Model\AgencyCommissionHistory';
         $request = $this->agencyCommissionsHistoryRequest($associative_array);
 
         return $this->client
@@ -616,12 +643,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -686,7 +717,9 @@ class RebateApi
 
         // query params
         if ($currency !== null) {
-            if('form' === 'form' && is_array($currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency) && true) {
                 foreach($currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -698,7 +731,9 @@ class RebateApi
 
         // query params
         if ($commission_type !== null) {
-            if('form' === 'form' && is_array($commission_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($commission_type) && true) {
                 foreach($commission_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -710,7 +745,9 @@ class RebateApi
 
         // query params
         if ($user_id !== null) {
-            if('form' === 'form' && is_array($user_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id) && true) {
                 foreach($user_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -722,7 +759,9 @@ class RebateApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -734,7 +773,9 @@ class RebateApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -746,7 +787,9 @@ class RebateApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -758,7 +801,9 @@ class RebateApi
 
         // query params
         if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($offset) && true) {
                 foreach($offset as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -771,14 +816,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -786,7 +833,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -801,13 +848,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -828,7 +876,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -886,6 +935,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -916,7 +968,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -983,12 +1035,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1051,7 +1107,9 @@ class RebateApi
 
         // query params
         if ($currency_pair !== null) {
-            if('form' === 'form' && is_array($currency_pair)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency_pair) && true) {
                 foreach($currency_pair as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1063,7 +1121,9 @@ class RebateApi
 
         // query params
         if ($user_id !== null) {
-            if('form' === 'form' && is_array($user_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id) && true) {
                 foreach($user_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1075,7 +1135,9 @@ class RebateApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1087,7 +1149,9 @@ class RebateApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1099,7 +1163,9 @@ class RebateApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1111,7 +1177,9 @@ class RebateApi
 
         // query params
         if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($offset) && true) {
                 foreach($offset as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1124,14 +1192,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -1139,7 +1209,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1154,13 +1224,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1181,7 +1252,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1239,6 +1311,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1269,7 +1344,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1336,12 +1411,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1404,7 +1483,9 @@ class RebateApi
 
         // query params
         if ($currency !== null) {
-            if('form' === 'form' && is_array($currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency) && true) {
                 foreach($currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1416,7 +1497,9 @@ class RebateApi
 
         // query params
         if ($user_id !== null) {
-            if('form' === 'form' && is_array($user_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id) && true) {
                 foreach($user_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1428,7 +1511,9 @@ class RebateApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1440,7 +1525,9 @@ class RebateApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1452,7 +1539,9 @@ class RebateApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1464,7 +1553,9 @@ class RebateApi
 
         // query params
         if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($offset) && true) {
                 foreach($offset as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1477,14 +1568,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -1492,7 +1585,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1507,13 +1600,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1534,7 +1628,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1586,6 +1681,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1616,7 +1714,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1677,12 +1775,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1739,7 +1841,9 @@ class RebateApi
 
         // query params
         if ($user_id !== null) {
-            if('form' === 'form' && is_array($user_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id) && true) {
                 foreach($user_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1751,7 +1855,9 @@ class RebateApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1763,7 +1869,9 @@ class RebateApi
 
         // query params
         if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($offset) && true) {
                 foreach($offset as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1776,14 +1884,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -1791,7 +1901,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1806,13 +1916,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1833,7 +1944,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1857,7 +1969,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\BrokerCommission[]
+     * @return \GateApi\Model\BrokerCommission
      */
     public function rebateBrokerCommissionHistory($associative_array)
     {
@@ -1880,7 +1992,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\BrokerCommission[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\BrokerCommission, HTTP status code, HTTP response headers (array of strings)
      */
     public function rebateBrokerCommissionHistoryWithHttpInfo($associative_array)
     {
@@ -1889,6 +2001,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1910,7 +2025,7 @@ class RebateApi
             );
         }
 
-        $returnType = '\GateApi\Model\BrokerCommission[]';
+        $returnType = '\GateApi\Model\BrokerCommission';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -1919,7 +2034,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1969,7 +2084,7 @@ class RebateApi
      */
     public function rebateBrokerCommissionHistoryAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\BrokerCommission[]';
+        $returnType = '\GateApi\Model\BrokerCommission';
         $request = $this->rebateBrokerCommissionHistoryRequest($associative_array);
 
         return $this->client
@@ -1984,12 +2099,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2050,7 +2169,9 @@ class RebateApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2062,7 +2183,9 @@ class RebateApi
 
         // query params
         if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($offset) && true) {
                 foreach($offset as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2074,7 +2197,9 @@ class RebateApi
 
         // query params
         if ($user_id !== null) {
-            if('form' === 'form' && is_array($user_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id) && true) {
                 foreach($user_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2086,7 +2211,9 @@ class RebateApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2098,7 +2225,9 @@ class RebateApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2111,14 +2240,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2126,7 +2257,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2141,13 +2272,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2168,7 +2300,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2192,7 +2325,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\BrokerTransactionHistory[]
+     * @return \GateApi\Model\BrokerTransactionHistory
      */
     public function rebateBrokerTransactionHistory($associative_array)
     {
@@ -2215,7 +2348,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\BrokerTransactionHistory[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\BrokerTransactionHistory, HTTP status code, HTTP response headers (array of strings)
      */
     public function rebateBrokerTransactionHistoryWithHttpInfo($associative_array)
     {
@@ -2224,6 +2357,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2245,7 +2381,7 @@ class RebateApi
             );
         }
 
-        $returnType = '\GateApi\Model\BrokerTransactionHistory[]';
+        $returnType = '\GateApi\Model\BrokerTransactionHistory';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2254,7 +2390,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2304,7 +2440,7 @@ class RebateApi
      */
     public function rebateBrokerTransactionHistoryAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\BrokerTransactionHistory[]';
+        $returnType = '\GateApi\Model\BrokerTransactionHistory';
         $request = $this->rebateBrokerTransactionHistoryRequest($associative_array);
 
         return $this->client
@@ -2319,12 +2455,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2385,7 +2525,9 @@ class RebateApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2397,7 +2539,9 @@ class RebateApi
 
         // query params
         if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($offset) && true) {
                 foreach($offset as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2409,7 +2553,9 @@ class RebateApi
 
         // query params
         if ($user_id !== null) {
-            if('form' === 'form' && is_array($user_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id) && true) {
                 foreach($user_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2421,7 +2567,9 @@ class RebateApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2433,7 +2581,9 @@ class RebateApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2446,14 +2596,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2461,7 +2613,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2476,13 +2628,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2503,7 +2656,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2520,7 +2674,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\RebateUserInfo[]
+     * @return \GateApi\Model\RebateUserInfo
      */
     public function rebateUserInfo()
     {
@@ -2536,7 +2690,7 @@ class RebateApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\RebateUserInfo[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\RebateUserInfo, HTTP status code, HTTP response headers (array of strings)
      */
     public function rebateUserInfoWithHttpInfo()
     {
@@ -2545,6 +2699,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2566,7 +2723,7 @@ class RebateApi
             );
         }
 
-        $returnType = '\GateApi\Model\RebateUserInfo[]';
+        $returnType = '\GateApi\Model\RebateUserInfo';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -2575,7 +2732,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2611,7 +2768,7 @@ class RebateApi
      */
     public function rebateUserInfoAsyncWithHttpInfo()
     {
-        $returnType = '\GateApi\Model\RebateUserInfo[]';
+        $returnType = '\GateApi\Model\RebateUserInfo';
         $request = $this->rebateUserInfoRequest();
 
         return $this->client
@@ -2626,12 +2783,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2668,14 +2829,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2683,7 +2846,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2698,13 +2861,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2725,7 +2889,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2769,6 +2934,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2799,7 +2967,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2852,12 +3020,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2900,7 +3072,9 @@ class RebateApi
 
         // query params
         if ($user_id_list !== null) {
-            if('form' === 'form' && is_array($user_id_list)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($user_id_list) && true) {
                 foreach($user_id_list as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2913,14 +3087,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2928,7 +3104,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2943,13 +3119,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2970,7 +3147,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3012,6 +3190,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3042,7 +3223,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3093,12 +3274,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3135,14 +3320,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -3150,7 +3337,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3165,13 +3352,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3192,7 +3380,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3234,6 +3423,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3264,7 +3456,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3315,12 +3507,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3357,14 +3553,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -3372,7 +3570,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3387,13 +3585,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3414,7 +3613,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3466,6 +3666,9 @@ class RebateApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3496,7 +3699,7 @@ class RebateApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3557,12 +3760,16 @@ class RebateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3616,7 +3823,9 @@ class RebateApi
 
         // query params
         if ($start_date !== null) {
-            if('form' === 'form' && is_array($start_date)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($start_date) && true) {
                 foreach($start_date as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3628,7 +3837,9 @@ class RebateApi
 
         // query params
         if ($end_date !== null) {
-            if('form' === 'form' && is_array($end_date)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($end_date) && true) {
                 foreach($end_date as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3640,7 +3851,9 @@ class RebateApi
 
         // query params
         if ($business_type !== null) {
-            if('form' === 'form' && is_array($business_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($business_type) && true) {
                 foreach($business_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3653,14 +3866,16 @@ class RebateApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -3668,7 +3883,7 @@ class RebateApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3683,13 +3898,14 @@ class RebateApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3710,7 +3926,8 @@ class RebateApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

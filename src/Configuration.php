@@ -71,7 +71,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'OpenAPI-Generator/7.2.161/PHP';
+    protected $userAgent = 'OpenAPI-Generator/8.2.164/PHP';
 
     /**
      * Debug switch (default set to false)
@@ -387,8 +387,8 @@ class Configuration
         $report  = 'PHP SDK (GateApi) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    The version of the OpenAPI document: v4.106.161' . PHP_EOL;
-        $report .= '    SDK Package Version: 7.2.161' . PHP_EOL;
+        $report .= '    The version of the OpenAPI document: v4.106.164' . PHP_EOL;
+        $report .= '    SDK Package Version: 8.2.164' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
@@ -406,9 +406,33 @@ class Configuration
         $fullPath = parse_url($this->getHost(), PHP_URL_PATH) . $resourcePath;
         $fmt = "%s\n%s\n%s\n%s\n%s";
         $timestamp = time();
-        $hashedPayload = hash("sha512", ($payload != null) ? $payload : "");
+        if ($payload instanceof \Psr\Http\Message\StreamInterface) {
+            // Hash the finalized stream in bounded chunks, then restore its
+            // cursor so the HTTP client sends exactly the bytes we signed.
+            if (!$payload->isSeekable()) {
+                throw new \InvalidArgumentException('Signed request body must be seekable');
+            }
+            $position = $payload->tell();
+            $context = hash_init('sha512');
+            try {
+                $payload->rewind();
+                while (!$payload->eof()) {
+                    $chunk = $payload->read(8192);
+                    if ($chunk === '' && !$payload->eof()) {
+                        throw new \RuntimeException('Signed request body made no read progress');
+                    }
+                    hash_update($context, $chunk);
+                }
+                $hashedPayload = hash_final($context);
+            } finally {
+                $payload->seek($position);
+            }
+        } else {
+            $hashedPayload = hash("sha512", ($payload != null) ? $payload : "");
+        }
+        // Keep the raw query in the signature; only the removed PSR-7 function is replaced.
         $signatureString = sprintf($fmt, $method, $fullPath,
-            \GuzzleHttp\Psr7\build_query($queryParams, false),
+            ObjectSerializer::buildQuery($queryParams, false),
             $hashedPayload, $timestamp);
         $signature = hash_hmac("sha512", $signatureString, $this->getSecret());
         return [

@@ -33,6 +33,7 @@ use GateApi\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -152,6 +153,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -182,7 +186,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -239,12 +243,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -286,7 +294,9 @@ class CrossExApi
 
         // query params
         if ($symbols !== null) {
-            if('form' === 'form' && is_array($symbols)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbols) && true) {
                 foreach($symbols as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -299,14 +309,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -314,7 +326,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -329,13 +341,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -353,7 +366,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -397,6 +411,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -427,7 +444,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -480,12 +497,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -528,7 +549,9 @@ class CrossExApi
 
         // query params
         if ($symbols !== null) {
-            if('form' === 'form' && is_array($symbols)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbols) && true) {
                 foreach($symbols as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -541,14 +564,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -556,7 +581,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -571,13 +596,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -595,7 +621,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -643,6 +670,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -673,7 +703,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -730,12 +760,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -777,7 +811,9 @@ class CrossExApi
 
         // query params
         if ($coin !== null) {
-            if('form' === 'form' && is_array($coin)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($coin) && true) {
                 foreach($coin as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -790,14 +826,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -805,7 +843,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -820,13 +858,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -844,7 +883,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -902,6 +942,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -932,7 +975,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -999,12 +1042,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1056,7 +1103,9 @@ class CrossExApi
 
         // query params
         if ($coin !== null) {
-            if('form' === 'form' && is_array($coin)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($coin) && true) {
                 foreach($coin as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1068,7 +1117,9 @@ class CrossExApi
 
         // query params
         if ($order_id !== null) {
-            if('form' === 'form' && is_array($order_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($order_id) && true) {
                 foreach($order_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1080,7 +1131,9 @@ class CrossExApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1092,7 +1145,9 @@ class CrossExApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1104,7 +1159,9 @@ class CrossExApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1116,7 +1173,9 @@ class CrossExApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1129,14 +1188,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -1144,7 +1205,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1159,13 +1220,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1186,7 +1248,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1230,6 +1293,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1260,7 +1326,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1313,12 +1379,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1359,13 +1429,15 @@ class CrossExApi
             $_tempBody = $crossex_transfer_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -1374,7 +1446,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1389,13 +1461,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1416,7 +1489,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1460,6 +1534,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1490,7 +1567,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1543,12 +1620,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1589,13 +1670,15 @@ class CrossExApi
             $_tempBody = $crossex_order_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -1604,7 +1687,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1619,13 +1702,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1646,7 +1730,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1690,6 +1775,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1720,7 +1808,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1773,12 +1861,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1825,13 +1917,15 @@ class CrossExApi
             $_tempBody = $crossex_batch_cancel_order_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -1840,7 +1934,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1855,13 +1949,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1882,7 +1977,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1926,6 +2022,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1956,7 +2055,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2009,12 +2108,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2067,14 +2170,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2082,7 +2187,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2097,13 +2202,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2124,7 +2230,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2170,6 +2277,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2200,7 +2310,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2255,12 +2365,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2317,13 +2431,15 @@ class CrossExApi
             $_tempBody = $crossex_order_update_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -2332,7 +2448,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2347,13 +2463,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2374,7 +2491,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2418,6 +2536,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2448,7 +2569,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2501,12 +2622,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2559,14 +2684,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2574,7 +2701,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2589,13 +2716,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2616,7 +2744,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2660,6 +2789,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2690,7 +2822,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2743,12 +2875,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2789,13 +2925,15 @@ class CrossExApi
             $_tempBody = $crossex_convert_quote_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -2804,7 +2942,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2819,13 +2957,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2846,7 +2985,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2890,6 +3030,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2920,7 +3063,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2973,12 +3116,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3019,13 +3166,15 @@ class CrossExApi
             $_tempBody = $crossex_convert_order_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -3034,7 +3183,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3049,13 +3198,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3076,7 +3226,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3124,6 +3275,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3154,7 +3308,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3211,12 +3365,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3258,7 +3416,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3271,14 +3431,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -3286,7 +3448,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3301,13 +3463,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3328,7 +3491,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3372,6 +3536,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3402,7 +3569,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3455,12 +3622,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3501,13 +3672,15 @@ class CrossExApi
             $_tempBody = $crossex_account_update_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -3516,7 +3689,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3531,13 +3704,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3558,7 +3732,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3606,6 +3781,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3636,7 +3814,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3693,12 +3871,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3740,7 +3922,9 @@ class CrossExApi
 
         // query params
         if ($symbols !== null) {
-            if('form' === 'form' && is_array($symbols)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbols) && true) {
                 foreach($symbols as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3753,14 +3937,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -3768,7 +3954,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3783,13 +3969,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3810,7 +3997,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3854,6 +4042,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3884,7 +4075,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3937,12 +4128,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3983,13 +4178,15 @@ class CrossExApi
             $_tempBody = $crossex_leverage_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -3998,7 +4195,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4013,13 +4210,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -4040,7 +4238,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4088,6 +4287,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -4118,7 +4320,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -4175,12 +4377,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -4222,7 +4428,9 @@ class CrossExApi
 
         // query params
         if ($symbols !== null) {
-            if('form' === 'form' && is_array($symbols)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbols) && true) {
                 foreach($symbols as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4235,14 +4443,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -4250,7 +4460,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4265,13 +4475,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -4292,7 +4503,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4336,6 +4548,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -4366,7 +4581,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -4419,12 +4634,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -4465,13 +4684,15 @@ class CrossExApi
             $_tempBody = $crossex_leverage_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -4480,7 +4701,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4495,13 +4716,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -4522,7 +4744,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4566,6 +4789,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -4596,7 +4822,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -4649,12 +4875,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -4695,13 +4925,15 @@ class CrossExApi
             $_tempBody = $crossex_close_position_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -4710,7 +4942,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4725,13 +4957,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -4752,7 +4985,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4796,6 +5030,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -4826,7 +5063,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -4879,12 +5116,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -4927,7 +5168,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4940,14 +5183,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -4955,7 +5200,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4970,13 +5215,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -4997,7 +5243,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5041,6 +5288,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -5071,7 +5321,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -5124,12 +5374,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -5170,13 +5424,15 @@ class CrossExApi
             $_tempBody = $crossex_margin_mode_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -5185,7 +5441,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5200,13 +5456,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -5227,7 +5484,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5271,6 +5529,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -5301,7 +5562,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -5354,12 +5615,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -5400,13 +5665,15 @@ class CrossExApi
             $_tempBody = $crossex_isolated_margin_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -5415,7 +5682,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5430,13 +5697,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -5457,7 +5725,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5507,6 +5776,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -5537,7 +5809,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -5596,12 +5868,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -5645,7 +5921,9 @@ class CrossExApi
 
         // query params
         if ($coin !== null) {
-            if('form' === 'form' && is_array($coin)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($coin) && true) {
                 foreach($coin as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -5657,7 +5935,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -5670,14 +5950,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -5685,7 +5967,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5700,13 +5982,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -5727,7 +6010,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5769,6 +6053,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -5799,7 +6086,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -5850,12 +6137,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -5892,14 +6183,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -5907,7 +6200,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -5922,13 +6215,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -5949,7 +6243,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -5999,6 +6294,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -6029,7 +6327,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -6088,12 +6386,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -6137,7 +6439,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -6149,7 +6453,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -6162,14 +6468,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -6177,7 +6485,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6192,13 +6500,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -6219,7 +6528,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6269,6 +6579,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -6299,7 +6612,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -6358,12 +6671,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -6407,7 +6724,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -6419,7 +6738,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -6432,14 +6753,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -6447,7 +6770,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6462,13 +6785,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -6489,7 +6813,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6539,6 +6864,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -6569,7 +6897,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -6628,12 +6956,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -6677,7 +7009,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -6689,7 +7023,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -6702,14 +7038,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -6717,7 +7055,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6732,13 +7070,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -6759,7 +7098,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -6803,6 +7143,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -6833,7 +7176,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -6886,12 +7229,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -6934,7 +7281,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -6947,14 +7296,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -6962,7 +7313,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -6977,13 +7328,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -7004,7 +7356,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7056,6 +7409,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -7086,7 +7442,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -7147,12 +7503,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -7198,7 +7558,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7210,7 +7572,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7222,7 +7586,9 @@ class CrossExApi
 
         // query params
         if ($business_type !== null) {
-            if('form' === 'form' && is_array($business_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($business_type) && true) {
                 foreach($business_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7235,14 +7601,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -7250,7 +7618,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -7265,13 +7633,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -7292,7 +7661,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7350,6 +7720,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -7380,7 +7753,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -7447,12 +7820,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -7504,7 +7881,9 @@ class CrossExApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7516,7 +7895,9 @@ class CrossExApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7528,7 +7909,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7540,7 +7923,9 @@ class CrossExApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7552,7 +7937,9 @@ class CrossExApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7564,7 +7951,9 @@ class CrossExApi
 
         // query params
         if ($attributes !== null) {
-            if('form' === 'form' && is_array($attributes)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($attributes) && true) {
                 foreach($attributes as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7577,14 +7966,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -7592,7 +7983,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -7607,13 +7998,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -7634,7 +8026,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -7690,6 +8083,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -7720,7 +8116,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -7785,12 +8181,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -7840,7 +8240,9 @@ class CrossExApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7852,7 +8254,9 @@ class CrossExApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7864,7 +8268,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7876,7 +8282,9 @@ class CrossExApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7888,7 +8296,9 @@ class CrossExApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -7901,14 +8311,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -7916,7 +8328,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -7931,13 +8343,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -7958,7 +8371,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8014,6 +8428,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -8044,7 +8461,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -8109,12 +8526,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -8164,7 +8585,9 @@ class CrossExApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8176,7 +8599,9 @@ class CrossExApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8188,7 +8613,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8200,7 +8627,9 @@ class CrossExApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8212,7 +8641,9 @@ class CrossExApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8225,14 +8656,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -8240,7 +8673,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -8255,13 +8688,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -8282,7 +8716,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8340,6 +8775,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -8370,7 +8808,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -8437,12 +8875,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -8494,7 +8936,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8506,7 +8950,9 @@ class CrossExApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8518,7 +8964,9 @@ class CrossExApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8530,7 +8978,9 @@ class CrossExApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8542,7 +8992,9 @@ class CrossExApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8554,7 +9006,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8567,14 +9021,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -8582,7 +9038,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -8597,13 +9053,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -8624,7 +9081,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -8680,6 +9138,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -8710,7 +9171,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -8775,12 +9236,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -8830,7 +9295,9 @@ class CrossExApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8842,7 +9309,9 @@ class CrossExApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8854,7 +9323,9 @@ class CrossExApi
 
         // query params
         if ($symbol !== null) {
-            if('form' === 'form' && is_array($symbol)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
                 foreach($symbol as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8866,7 +9337,9 @@ class CrossExApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8878,7 +9351,9 @@ class CrossExApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -8891,14 +9366,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -8906,7 +9383,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -8921,13 +9398,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -8948,7 +9426,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9006,6 +9485,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -9036,7 +9518,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -9103,12 +9585,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -9160,7 +9646,9 @@ class CrossExApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9172,7 +9660,9 @@ class CrossExApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9184,7 +9674,9 @@ class CrossExApi
 
         // query params
         if ($coin !== null) {
-            if('form' === 'form' && is_array($coin)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($coin) && true) {
                 foreach($coin as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9196,7 +9688,9 @@ class CrossExApi
 
         // query params
         if ($statement_type !== null) {
-            if('form' === 'form' && is_array($statement_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($statement_type) && true) {
                 foreach($statement_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9208,7 +9702,9 @@ class CrossExApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9220,7 +9716,9 @@ class CrossExApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9233,14 +9731,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -9248,7 +9748,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -9263,13 +9763,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -9290,7 +9791,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9340,6 +9842,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -9370,7 +9875,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -9429,12 +9934,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -9478,7 +9987,9 @@ class CrossExApi
 
         // query params
         if ($coin !== null) {
-            if('form' === 'form' && is_array($coin)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($coin) && true) {
                 foreach($coin as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9490,7 +10001,9 @@ class CrossExApi
 
         // query params
         if ($exchange_type !== null) {
-            if('form' === 'form' && is_array($exchange_type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($exchange_type) && true) {
                 foreach($exchange_type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9503,14 +10016,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -9518,7 +10033,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -9533,13 +10048,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -9560,7 +10076,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9608,6 +10125,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -9638,7 +10158,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -9695,12 +10215,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -9742,7 +10266,9 @@ class CrossExApi
 
         // query params
         if ($symbols !== null) {
-            if('form' === 'form' && is_array($symbols)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbols) && true) {
                 foreach($symbols as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -9755,14 +10281,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -9770,7 +10298,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -9785,13 +10313,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -9812,7 +10341,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -9860,6 +10390,9 @@ class CrossExApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -9890,7 +10423,7 @@ class CrossExApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -9947,12 +10480,16 @@ class CrossExApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -9994,7 +10531,9 @@ class CrossExApi
 
         // query params
         if ($symbols !== null) {
-            if('form' === 'form' && is_array($symbols)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbols) && true) {
                 foreach($symbols as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -10007,14 +10546,16 @@ class CrossExApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -10022,7 +10563,7 @@ class CrossExApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -10037,13 +10578,14 @@ class CrossExApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -10064,7 +10606,8 @@ class CrossExApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

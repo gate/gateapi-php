@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 ## agencyTransactionHistory
 
-> \GateApi\Model\AgencyTransactionHistory[] agencyTransactionHistory($currency_pair, $user_id, $from, $to, $limit, $offset)
+> \GateApi\Model\AgencyTransactionHistory agencyTransactionHistory($currency_pair, $user_id, $from, $to, $limit, $offset)
 
 Broker obtains transaction history of recommended users
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\AgencyTransactionHistory[]**](../Model/AgencyTransactionHistory.md)
+[**\GateApi\Model\AgencyTransactionHistory**](../Model/AgencyTransactionHistory.md)
 
 ### Authorization
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## agencyCommissionsHistory
 
-> \GateApi\Model\AgencyCommissionHistory[] agencyCommissionsHistory($currency, $commission_type, $user_id, $from, $to, $limit, $offset)
+> \GateApi\Model\AgencyCommissionHistory agencyCommissionsHistory($currency, $commission_type, $user_id, $from, $to, $limit, $offset)
 
 Broker obtains rebate history of recommended users
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\AgencyCommissionHistory[]**](../Model/AgencyCommissionHistory.md)
+[**\GateApi\Model\AgencyCommissionHistory**](../Model/AgencyCommissionHistory.md)
 
 ### Authorization
 
@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 ## rebateBrokerCommissionHistory
 
-> \GateApi\Model\BrokerCommission[] rebateBrokerCommissionHistory($limit, $offset, $user_id, $from, $to)
+> \GateApi\Model\BrokerCommission rebateBrokerCommissionHistory($limit, $offset, $user_id, $from, $to)
 
 Broker obtains user's rebate records
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\BrokerCommission[]**](../Model/BrokerCommission.md)
+[**\GateApi\Model\BrokerCommission**](../Model/BrokerCommission.md)
 
 ### Authorization
 
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 ## rebateBrokerTransactionHistory
 
-> \GateApi\Model\BrokerTransactionHistory[] rebateBrokerTransactionHistory($limit, $offset, $user_id, $from, $to)
+> \GateApi\Model\BrokerTransactionHistory rebateBrokerTransactionHistory($limit, $offset, $user_id, $from, $to)
 
 Broker obtains user's trading history
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\BrokerTransactionHistory[]**](../Model/BrokerTransactionHistory.md)
+[**\GateApi\Model\BrokerTransactionHistory**](../Model/BrokerTransactionHistory.md)
 
 ### Authorization
 
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 ## rebateUserInfo
 
-> \GateApi\Model\RebateUserInfo[] rebateUserInfo()
+> \GateApi\Model\RebateUserInfo rebateUserInfo()
 
 User obtains rebate information
 
@@ -568,7 +568,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\GateApi\Model\RebateUserInfo[]**](../Model/RebateUserInfo.md)
+[**\GateApi\Model\RebateUserInfo**](../Model/RebateUserInfo.md)
 
 ### Authorization
 

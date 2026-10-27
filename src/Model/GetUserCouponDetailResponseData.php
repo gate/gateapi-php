@@ -81,7 +81,7 @@ class GetUserCouponDetailResponseData implements ModelInterface, ArrayAccess
         'task_start_at' => 'int',
         'task_expire_at' => 'int',
         'task_completed_at' => 'int',
-        'extra' => 'object[][]'
+        'extra' => '\GateApi\Model\CouponDetailExtraItem[][]'
     ];
 
     /**
@@ -1077,7 +1077,7 @@ class GetUserCouponDetailResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets extra
      *
-     * @return object[][]|null
+     * @return \GateApi\Model\CouponDetailExtraItem[][]|null
      */
     public function getExtra()
     {
@@ -1087,7 +1087,7 @@ class GetUserCouponDetailResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets extra
      *
-     * @param object[][]|null $extra [Detail endpoint only] Coupon detail attributes organized by display blocks. The frontend renders them as separate sections. Point card type always returns empty array []. Other types return a 2D array composed of blocks: block 1 = coupon name/source/status, block 2 = coupon core attributes, block 3 = time information. Each item contains: type (display type: string/timestamp/day/hour/status/btn), key (label text, i18n translated), value (string or integer, timestamp type is Unix timestamp)
+     * @param \GateApi\Model\CouponDetailExtraItem[][]|null $extra [Detail endpoint only] Coupon detail attributes organized by display blocks. The frontend renders them as separate sections. Point card type always returns empty array []. Other types return a 2D array composed of blocks: block 1 = coupon name/source/status, block 2 = coupon core attributes, block 3 = time information. Each item contains: type (display type: string/timestamp/day/hour/status/btn), key (label text, i18n translated), value (string or integer, timestamp type is Unix timestamp)
      *
      * @return $this
      */

@@ -33,6 +33,7 @@ use GateApi\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -146,6 +147,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -176,7 +180,7 @@ class MarginUniApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -227,12 +231,16 @@ class MarginUniApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -269,14 +277,16 @@ class MarginUniApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -284,7 +294,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -299,13 +309,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -323,7 +334,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -367,6 +379,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -397,7 +412,7 @@ class MarginUniApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -450,12 +465,16 @@ class MarginUniApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -508,14 +527,16 @@ class MarginUniApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -523,7 +544,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -538,13 +559,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -562,7 +584,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -606,6 +629,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -636,7 +662,7 @@ class MarginUniApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -689,12 +715,16 @@ class MarginUniApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -744,7 +774,9 @@ class MarginUniApi
 
         // query params
         if ($currencies !== null) {
-            if('form' === 'form' && is_array($currencies)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currencies) && false) {
                 foreach($currencies as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -757,14 +789,16 @@ class MarginUniApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -772,7 +806,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -787,13 +821,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -814,7 +849,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -868,6 +904,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -898,7 +937,7 @@ class MarginUniApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -961,12 +1000,16 @@ class MarginUniApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1025,7 +1068,9 @@ class MarginUniApi
 
         // query params
         if ($currency_pair !== null) {
-            if('form' === 'form' && is_array($currency_pair)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency_pair) && true) {
                 foreach($currency_pair as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1037,7 +1082,9 @@ class MarginUniApi
 
         // query params
         if ($currency !== null) {
-            if('form' === 'form' && is_array($currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency) && true) {
                 foreach($currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1049,7 +1096,9 @@ class MarginUniApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1061,7 +1110,9 @@ class MarginUniApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1074,14 +1125,16 @@ class MarginUniApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -1089,7 +1142,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1104,13 +1157,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1131,7 +1185,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1174,6 +1229,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1195,7 +1253,7 @@ class MarginUniApi
             );
         }
 
-        return [null, $statusCode, $response->getHeaders()];
+        return [null, $response->getStatusCode(), $response->getHeaders()];
     }
 
     /**
@@ -1240,6 +1298,10 @@ class MarginUniApi
                     return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1286,14 +1348,16 @@ class MarginUniApi
             $_tempBody = $create_uni_loan;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 []
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                [],
-                ['application/json']
             );
         }
 
@@ -1301,7 +1365,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1316,13 +1380,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1343,7 +1408,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1399,6 +1465,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1429,7 +1498,7 @@ class MarginUniApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1494,12 +1563,16 @@ class MarginUniApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1560,7 +1633,9 @@ class MarginUniApi
 
         // query params
         if ($type !== null) {
-            if('form' === 'form' && is_array($type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($type) && true) {
                 foreach($type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1572,7 +1647,9 @@ class MarginUniApi
 
         // query params
         if ($currency !== null) {
-            if('form' === 'form' && is_array($currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency) && true) {
                 foreach($currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1584,7 +1661,9 @@ class MarginUniApi
 
         // query params
         if ($currency_pair !== null) {
-            if('form' === 'form' && is_array($currency_pair)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency_pair) && true) {
                 foreach($currency_pair as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1596,7 +1675,9 @@ class MarginUniApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1608,7 +1689,9 @@ class MarginUniApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1621,14 +1704,16 @@ class MarginUniApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -1636,7 +1721,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1651,13 +1736,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1678,7 +1764,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1736,6 +1823,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1766,7 +1856,7 @@ class MarginUniApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1833,12 +1923,16 @@ class MarginUniApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1901,7 +1995,9 @@ class MarginUniApi
 
         // query params
         if ($currency_pair !== null) {
-            if('form' === 'form' && is_array($currency_pair)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency_pair) && true) {
                 foreach($currency_pair as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1913,7 +2009,9 @@ class MarginUniApi
 
         // query params
         if ($currency !== null) {
-            if('form' === 'form' && is_array($currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency) && true) {
                 foreach($currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1925,7 +2023,9 @@ class MarginUniApi
 
         // query params
         if ($page !== null) {
-            if('form' === 'form' && is_array($page)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
                 foreach($page as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1937,7 +2037,9 @@ class MarginUniApi
 
         // query params
         if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($limit) && true) {
                 foreach($limit as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1949,7 +2051,9 @@ class MarginUniApi
 
         // query params
         if ($from !== null) {
-            if('form' === 'form' && is_array($from)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($from) && true) {
                 foreach($from as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1961,7 +2065,9 @@ class MarginUniApi
 
         // query params
         if ($to !== null) {
-            if('form' === 'form' && is_array($to)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($to) && true) {
                 foreach($to as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -1974,14 +2080,16 @@ class MarginUniApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -1989,7 +2097,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2004,13 +2112,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2031,7 +2140,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2077,6 +2187,9 @@ class MarginUniApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2107,7 +2220,7 @@ class MarginUniApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2162,12 +2275,16 @@ class MarginUniApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2217,7 +2334,9 @@ class MarginUniApi
 
         // query params
         if ($currency !== null) {
-            if('form' === 'form' && is_array($currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency) && true) {
                 foreach($currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2229,7 +2348,9 @@ class MarginUniApi
 
         // query params
         if ($currency_pair !== null) {
-            if('form' === 'form' && is_array($currency_pair)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($currency_pair) && true) {
                 foreach($currency_pair as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2242,14 +2363,16 @@ class MarginUniApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2257,7 +2380,7 @@ class MarginUniApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2272,13 +2395,14 @@ class MarginUniApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2299,7 +2423,8 @@ class MarginUniApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

@@ -33,6 +33,7 @@ use GateApi\ObjectSerializer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
@@ -148,6 +149,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -178,7 +182,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -231,12 +235,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -283,13 +291,15 @@ class OTCApi
             $_tempBody = $otc_quote_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -298,7 +308,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -313,13 +323,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -340,7 +351,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -384,6 +396,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -414,7 +429,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -467,12 +482,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -519,13 +538,15 @@ class OTCApi
             $_tempBody = $otc_order_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -534,7 +555,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -549,13 +570,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -576,7 +598,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -620,6 +643,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -650,7 +676,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -703,12 +729,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -755,13 +785,15 @@ class OTCApi
             $_tempBody = $otc_stable_coin_order_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -770,7 +802,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -785,13 +817,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -812,7 +845,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -854,6 +888,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -884,7 +921,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -935,12 +972,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -977,14 +1018,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -992,7 +1035,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1007,13 +1050,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1034,7 +1078,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1100,6 +1145,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1130,7 +1178,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1205,12 +1253,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1355,14 +1407,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['multipart/form-data']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['multipart/form-data']
             );
         }
 
@@ -1370,7 +1424,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1385,13 +1439,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1412,7 +1467,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1456,6 +1512,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1486,7 +1545,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1539,12 +1598,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1591,13 +1654,15 @@ class OTCApi
             $_tempBody = $otc_bank_id_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -1606,7 +1671,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1621,13 +1686,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1648,7 +1714,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1692,6 +1759,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1722,7 +1792,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -1775,12 +1845,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -1827,13 +1901,15 @@ class OTCApi
             $_tempBody = $otc_bank_id_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -1842,7 +1918,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1857,13 +1933,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -1884,7 +1961,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -1928,6 +2006,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -1958,7 +2039,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2011,12 +2092,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2059,7 +2144,9 @@ class OTCApi
 
         // query params
         if ($bank_id !== null) {
-            if('form' === 'form' && is_array($bank_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($bank_id) && true) {
                 foreach($bank_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -2072,14 +2159,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -2087,7 +2176,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2102,13 +2191,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2129,7 +2219,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2181,6 +2272,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2211,7 +2305,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2272,12 +2366,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2350,14 +2448,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['multipart/form-data']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['multipart/form-data']
             );
         }
 
@@ -2365,7 +2465,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2380,13 +2480,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2407,7 +2508,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2467,6 +2569,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2497,7 +2602,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2566,12 +2671,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2668,14 +2777,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['multipart/form-data']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['multipart/form-data']
             );
         }
 
@@ -2683,7 +2794,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2698,13 +2809,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2725,7 +2837,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -2769,6 +2882,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -2799,7 +2915,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -2852,12 +2968,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -2904,13 +3024,15 @@ class OTCApi
             $_tempBody = $otc_upload_pre_upload_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -2919,7 +3041,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2934,13 +3056,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -2961,7 +3084,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3005,6 +3129,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3035,7 +3162,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3088,12 +3215,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3140,13 +3271,15 @@ class OTCApi
             $_tempBody = $otc_mark_order_paid_request;
         }
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
                 ['application/json']
             );
         }
@@ -3155,7 +3288,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3170,13 +3303,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3197,7 +3331,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3241,6 +3376,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3271,7 +3409,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3324,12 +3462,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3372,7 +3514,9 @@ class OTCApi
 
         // query params
         if ($order_id !== null) {
-            if('form' === 'form' && is_array($order_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($order_id) && true) {
                 foreach($order_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3385,14 +3529,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -3400,7 +3546,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3415,13 +3561,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3442,7 +3589,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3504,6 +3652,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3534,7 +3685,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3605,12 +3756,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -3666,7 +3821,9 @@ class OTCApi
 
         // query params
         if ($type !== null) {
-            if('form' === 'form' && is_array($type)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($type) && true) {
                 foreach($type as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3678,7 +3835,9 @@ class OTCApi
 
         // query params
         if ($fiat_currency !== null) {
-            if('form' === 'form' && is_array($fiat_currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($fiat_currency) && true) {
                 foreach($fiat_currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3690,7 +3849,9 @@ class OTCApi
 
         // query params
         if ($crypto_currency !== null) {
-            if('form' === 'form' && is_array($crypto_currency)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($crypto_currency) && true) {
                 foreach($crypto_currency as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3702,7 +3863,9 @@ class OTCApi
 
         // query params
         if ($start_time !== null) {
-            if('form' === 'form' && is_array($start_time)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($start_time) && true) {
                 foreach($start_time as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3714,7 +3877,9 @@ class OTCApi
 
         // query params
         if ($end_time !== null) {
-            if('form' === 'form' && is_array($end_time)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($end_time) && true) {
                 foreach($end_time as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3726,7 +3891,9 @@ class OTCApi
 
         // query params
         if ($status !== null) {
-            if('form' === 'form' && is_array($status)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($status) && true) {
                 foreach($status as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3738,7 +3905,9 @@ class OTCApi
 
         // query params
         if ($pn !== null) {
-            if('form' === 'form' && is_array($pn)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($pn) && true) {
                 foreach($pn as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3750,7 +3919,9 @@ class OTCApi
 
         // query params
         if ($ps !== null) {
-            if('form' === 'form' && is_array($ps)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($ps) && true) {
                 foreach($ps as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -3763,14 +3934,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -3778,7 +3951,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3793,13 +3966,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -3820,7 +3994,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -3878,6 +4053,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -3908,7 +4086,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -3975,12 +4153,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -4032,7 +4214,9 @@ class OTCApi
 
         // query params
         if ($page_size !== null) {
-            if('form' === 'form' && is_array($page_size)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page_size) && true) {
                 foreach($page_size as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4044,7 +4228,9 @@ class OTCApi
 
         // query params
         if ($page_number !== null) {
-            if('form' === 'form' && is_array($page_number)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page_number) && true) {
                 foreach($page_number as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4056,7 +4242,9 @@ class OTCApi
 
         // query params
         if ($coin_name !== null) {
-            if('form' === 'form' && is_array($coin_name)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($coin_name) && true) {
                 foreach($coin_name as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4068,7 +4256,9 @@ class OTCApi
 
         // query params
         if ($start_time !== null) {
-            if('form' === 'form' && is_array($start_time)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($start_time) && true) {
                 foreach($start_time as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4080,7 +4270,9 @@ class OTCApi
 
         // query params
         if ($end_time !== null) {
-            if('form' === 'form' && is_array($end_time)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($end_time) && true) {
                 foreach($end_time as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4092,7 +4284,9 @@ class OTCApi
 
         // query params
         if ($status !== null) {
-            if('form' === 'form' && is_array($status)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($status) && true) {
                 foreach($status as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4105,14 +4299,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -4120,7 +4316,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4135,13 +4331,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -4162,7 +4359,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
@@ -4206,6 +4404,9 @@ class OTCApi
         $options = $this->createHttpClientOption();
         try {
             $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
         } catch (RequestException $e) {
             $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
             if ($responseBody != null) {
@@ -4236,7 +4437,7 @@ class OTCApi
         }
 
         return [
-            ObjectSerializer::deserialize($content, $returnType, []),
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
             $response->getStatusCode(),
             $response->getHeaders()
         ];
@@ -4289,12 +4490,16 @@ class OTCApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 },
                 function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
                     $response = $exception->getResponse();
                     $statusCode = $response->getStatusCode();
                     throw new ApiException(
@@ -4337,7 +4542,9 @@ class OTCApi
 
         // query params
         if ($order_id !== null) {
-            if('form' === 'form' && is_array($order_id)) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($order_id) && true) {
                 foreach($order_id as $key => $value) {
                     $queryParams[$key] = $value;
                 }
@@ -4350,14 +4557,16 @@ class OTCApi
         // body params
         $_tempBody = null;
 
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
                 ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
             );
         }
 
@@ -4365,7 +4574,7 @@ class OTCApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4380,13 +4589,14 @@ class OTCApi
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
 
             } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+                $httpBody = ObjectSerializer::buildQuery($formParams);
             }
         }
 
@@ -4407,7 +4617,8 @@ class OTCApi
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

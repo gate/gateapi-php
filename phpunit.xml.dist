@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="./vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         stopOnFailure="false">
+<!-- Generic client regressions are generated even when operation/model stub tests are disabled. -->
+<phpunit bootstrap="./vendor/autoload.php" colors="true" failOnWarning="true">
     <testsuites>
-        <testsuite name="tests">
-            <directory>./test/Api</directory>
-            <directory>./test/Model</directory>
+        <testsuite name="client-contracts">
+            <directory suffix="Test.php">./test</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src/Api</directory>
-            <directory suffix=".php">./src/Model</directory>
-        </whitelist>
-    </filter>
     <php>
         <ini name="error_reporting" value="E_ALL" />
     </php>

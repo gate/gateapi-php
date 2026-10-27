@@ -57,7 +57,7 @@ class AccountKeyInfo implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'state' => 'int',
         'mode' => 'int',
-        'name' => 'string[]',
+        'name' => 'string',
         'currency_pairs' => 'string[]',
         'user_id' => 'int',
         'ip_whitelist' => 'string[]',
@@ -313,7 +313,7 @@ class AccountKeyInfo implements ModelInterface, ArrayAccess
     /**
      * Gets name
      *
-     * @return string[]|null
+     * @return string|null
      */
     public function getName()
     {
@@ -323,7 +323,7 @@ class AccountKeyInfo implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string[]|null $name API Key Remark
+     * @param string|null $name API Key Remark
      *
      * @return $this
      */

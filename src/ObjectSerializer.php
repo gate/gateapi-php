@@ -67,10 +67,19 @@ class ObjectSerializer
         } elseif ($data instanceof \DateTime) {
             return ($format === 'date') ? $data->format('Y-m-d') : $data->format(self::$dateTimeFormat);
         } elseif (is_array($data)) {
-            foreach ($data as $property => $value) {
-                $data[$property] = self::sanitizeForSerialization($value);
+            // PHP uses arrays for both lists and maps. Retain the declared
+            // container type so empty/numeric-key maps encode as JSON objects.
+            $isList = is_string($type) && substr($type, -2) === '[]';
+            $isMap = !$isList && is_string($type) && substr($type, 0, 4) === 'map[';
+            $childType = $isList ? substr($type, 0, -2) : null;
+            if ($isMap) {
+                $parts = explode(',', substr($type, 4, -1), 2);
+                $childType = $parts[1] ?? null;
             }
-            return $data;
+            foreach ($data as $property => $value) {
+                $data[$property] = self::sanitizeForSerialization($value, $childType);
+            }
+            return $isMap ? (object)$data : $data;
         } elseif (is_object($data)) {
             $values = [];
             if ($data instanceof ModelInterface) {
@@ -147,6 +156,24 @@ class ObjectSerializer
         } else {
             return self::toString($object);
         }
+    }
+
+    /**
+     * Preserve PSR-7 1 boolean coercion while using the supported PSR-7 2 query API.
+     * API serializers already produce strings; direct signing callers may pass booleans.
+     */
+    public static function buildQuery(array $params, $encoding = PHP_QUERY_RFC3986)
+    {
+        foreach ($params as $key => $value) {
+            if (is_array($value)) {
+                $params[$key] = array_map(function ($item) {
+                    return is_bool($item) ? (string) $item : $item;
+                }, $value);
+            } elseif (is_bool($value)) {
+                $params[$key] = (string) $value;
+            }
+        }
+        return \GuzzleHttp\Psr7\Query::build($params, $encoding);
     }
 
     /**
@@ -253,12 +280,31 @@ class ObjectSerializer
      *
      * @return object|array|null a single or an array of $class instances
      */
-    public static function deserialize($data, $class, $httpHeaders = null)
+    public static function deserialize($data, $class, $httpHeaders = null, $isJson = true)
     {
+        // Decode transport JSON once. Recursive values are already decoded;
+        // interpreting a nested scalar string as JSON would change its type.
+        if ($isJson && is_string($data) && $class !== '\\SplFileObject' && $class !== 'string') {
+            $decoded = json_decode($data);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $data = $decoded;
+            }
+        }
         if (null === $data) {
             return null;
+        } elseif (strpos($class, '|') !== false) {
+            // The source generator emits primitive unions without a model
+            // wrapper; retain the decoded value rather than coercing precision.
+            foreach (explode('|', $class) as $type) {
+                if (($type === 'string' && is_string($data))
+                    || ($type === 'int' && is_int($data))
+                    || ($type === 'float' && (is_float($data) || is_int($data)))
+                    || ($type === 'bool' && is_bool($data))) {
+                    return $data;
+                }
+            }
+            throw new \InvalidArgumentException('Response value does not match primitive union ' . $class);
         } elseif (substr($class, 0, 4) === 'map[') { // for associative array e.g. map[string,int]
-            $data = is_string($data) ? json_decode($data) : $data;
             settype($data, 'array');
             $inner = substr($class, 4, -1);
             $deserialized = [];
@@ -266,20 +312,20 @@ class ObjectSerializer
                 $subClass_array = explode(',', $inner, 2);
                 $subClass = $subClass_array[1];
                 foreach ($data as $key => $value) {
-                    $deserialized[$key] = self::deserialize($value, $subClass, null);
+                    $deserialized[$key] = self::deserialize($value, $subClass, null, false);
                 }
             }
             return $deserialized;
         } elseif (strcasecmp(substr($class, -2), '[]') === 0) {
-            $data = is_string($data) ? json_decode($data) : $data;
             $subClass = substr($class, 0, -2);
             $values = [];
             foreach ($data as $key => $value) {
-                $values[] = self::deserialize($value, $subClass, null);
+                $values[] = self::deserialize($value, $subClass, null, false);
             }
             return $values;
-        } elseif ($class === 'object') {
-            settype($data, 'array');
+        } elseif ($class === 'object' || $class === 'mixed') {
+            // Unrestricted object values may themselves be scalar, list, null,
+            // or object; preserve that JSON shape rather than coercing arrays.
             return $data;
         } elseif ($class === '\DateTime') {
             // Some API's return an invalid, empty string as a
@@ -321,7 +367,14 @@ class ObjectSerializer
             }
             return $data;
         } else {
-            $data = is_string($data) ? json_decode($data) : $data;
+            // The generator leaves map value model names unqualified even
+            // though ordinary model references use the full namespace.
+            if (!class_exists($class) && strpos($class, '\\') === false) {
+                $modelClass = '\\GateApi\\Model\\' . $class;
+                if (class_exists($modelClass)) {
+                    $class = $modelClass;
+                }
+            }
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
@@ -340,10 +393,34 @@ class ObjectSerializer
 
                 $propertyValue = $data->{$instance::attributeMap()[$property]};
                 if (isset($propertyValue)) {
-                    $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
+                    $instance->$propertySetter(self::deserialize($propertyValue, $type, null, false));
                 }
             }
             return $instance;
         }
+    }
+
+    /** Decode one HTTP response while preserving real non-JSON/file payloads. */
+    public static function deserializeResponse($data, $class, $httpHeaders = [])
+    {
+        if ($class === '\\SplFileObject' || !is_string($data)) {
+            return self::deserialize($data, $class, $httpHeaders, false);
+        }
+        $contentType = '';
+        foreach ($httpHeaders as $name => $value) {
+            if (strcasecmp($name, 'Content-Type') === 0) {
+                $contentType = is_array($value) ? implode(';', $value) : $value;
+                break;
+            }
+        }
+        $isJson = $contentType === '' || stripos($contentType, 'json') !== false;
+        if ($isJson) {
+            if ($data === '') {
+                return null;
+            }
+            // Invalid JSON is a decode error, never a successful empty model.
+            $data = json_decode($data, false, 512, JSON_THROW_ON_ERROR);
+        }
+        return self::deserialize($data, $class, $httpHeaders, false);
     }
 }
