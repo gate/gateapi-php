@@ -72,7 +72,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
         'point' => 'string',
         'currency' => 'string',
         'orders_limit' => 'int',
-        'position_notional_limit' => 'int'
+        'position_notional_limit' => 'string'
     ];
 
     /**
@@ -99,7 +99,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
         'point' => null,
         'currency' => null,
         'orders_limit' => 'int32',
-        'position_notional_limit' => 'int64'
+        'position_notional_limit' => null
     ];
 
     /**
@@ -780,7 +780,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Gets position_notional_limit
      *
-     * @return int|null
+     * @return string|null
      */
     public function getPositionNotionalLimit()
     {
@@ -790,7 +790,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Sets position_notional_limit
      *
-     * @param int|null $position_notional_limit Notional value upper limit, including the nominal value of positions and outstanding orders
+     * @param string|null $position_notional_limit Notional value upper limit, including the nominal value of positions and outstanding orders
      *
      * @return $this
      */

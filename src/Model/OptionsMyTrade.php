@@ -73,7 +73,7 @@ class OptionsMyTrade implements ModelInterface, ArrayAccess
         'id' => 'int64',
         'create_time' => 'double',
         'contract' => null,
-        'order_id' => null,
+        'order_id' => 'int64',
         'size' => 'int64',
         'price' => null,
         'underlying_price' => null,
