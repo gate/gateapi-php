@@ -56,6 +56,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'money' => 'string',
+        'asset_type' => 'int',
         'items' => '\GateApi\Model\AutoInvestMinInvestAmountItems[]'
     ];
 
@@ -66,6 +67,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'money' => null,
+        'asset_type' => 'int32',
         'items' => null
     ];
 
@@ -97,6 +99,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'money' => 'money',
+        'asset_type' => 'asset_type',
         'items' => 'items'
     ];
 
@@ -107,6 +110,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'money' => 'setMoney',
+        'asset_type' => 'setAssetType',
         'items' => 'setItems'
     ];
 
@@ -117,6 +121,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'money' => 'getMoney',
+        'asset_type' => 'getAssetType',
         'items' => 'getItems'
     ];
 
@@ -161,8 +166,23 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
+    const ASSET_TYPE_1 = 1;
+    const ASSET_TYPE_2 = 2;
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAssetTypeAllowableValues()
+    {
+        return [
+            self::ASSET_TYPE_1,
+            self::ASSET_TYPE_2,
+        ];
+    }
     
 
     /**
@@ -181,6 +201,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['money'] = isset($data['money']) ? $data['money'] : null;
+        $this->container['asset_type'] = isset($data['asset_type']) ? $data['asset_type'] : null;
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
@@ -196,6 +217,17 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
         if ($this->container['money'] === null) {
             $invalidProperties[] = "'money' can't be null";
         }
+        if ($this->container['asset_type'] === null) {
+            $invalidProperties[] = "'asset_type' can't be null";
+        }
+        $allowedValues = $this->getAssetTypeAllowableValues();
+        if (!is_null($this->container['asset_type']) && !in_array($this->container['asset_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'asset_type', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
         }
@@ -234,6 +266,39 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
     public function setMoney($money)
     {
         $this->container['money'] = $money;
+
+        return $this;
+    }
+
+    /**
+     * Gets asset_type
+     *
+     * @return int
+     */
+    public function getAssetType()
+    {
+        return $this->container['asset_type'];
+    }
+
+    /**
+     * Sets asset_type
+     *
+     * @param int $asset_type Asset type: 1 for cryptocurrency, 2 for TradFi stocks; must be provided explicitly
+     *
+     * @return $this
+     */
+    public function setAssetType($asset_type)
+    {
+        $allowedValues = $this->getAssetTypeAllowableValues();
+        if (!in_array($asset_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'asset_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['asset_type'] = $asset_type;
 
         return $this;
     }

@@ -2045,7 +2045,7 @@ Name | Type | Description  | Notes
 
 ## listEarnFixedTermProducts
 
-> \GateApi\Model\ListEarnFixedTermProductsResponse listEarnFixedTermProducts($page, $limit, $asset, $type)
+> \GateApi\Model\ListEarnFixedTermProductsResponse listEarnFixedTermProducts($page, $limit, $asset, $type, $status, $show_status)
 
 Get product list
 
@@ -2067,6 +2067,8 @@ $associate_array['page'] = 1; // int | Page number
 $associate_array['limit'] = 100; // int | Page size
 $associate_array['asset'] = 'USDT'; // string | Currency
 $associate_array['type'] = 1; // int | Product type: 1 for regular, 2 for VIP
+$associate_array['status'] = 2; // int | Product status filter. Pass 2 for products available for subscription.
+$associate_array['show_status'] = '2'; // string | Visibility status filter. Pass \"2\" for visible products.
 
 try {
     $result = $apiInstance->listEarnFixedTermProducts($associate_array);
@@ -2090,6 +2092,8 @@ Name | Type | Description  | Notes
  **limit** | **int**| Page size |
  **asset** | **string**| Currency | [optional]
  **type** | **int**| Product type: 1 for regular, 2 for VIP | [optional]
+ **status** | **int**| Product status filter. Pass 2 for products available for subscription. | [optional]
+ **show_status** | **string**| Visibility status filter. Pass \&quot;2\&quot; for visible products. | [optional]
 
 ### Return type
 

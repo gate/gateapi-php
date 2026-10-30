@@ -94,7 +94,8 @@ class Order implements ModelInterface, ArrayAccess
         'action_mode' => 'string',
         'slippage' => 'string',
         'stop_profit' => '\GateApi\Model\SpotOrderStopProfit',
-        'stop_loss' => '\GateApi\Model\SpotOrderStopLoss'
+        'stop_loss' => '\GateApi\Model\SpotOrderStopLoss',
+        'use_earn' => 'bool'
     ];
 
     /**
@@ -142,7 +143,8 @@ class Order implements ModelInterface, ArrayAccess
         'action_mode' => null,
         'slippage' => null,
         'stop_profit' => null,
-        'stop_loss' => null
+        'stop_loss' => null,
+        'use_earn' => null
     ];
 
     /**
@@ -211,7 +213,8 @@ class Order implements ModelInterface, ArrayAccess
         'action_mode' => 'action_mode',
         'slippage' => 'slippage',
         'stop_profit' => 'stop_profit',
-        'stop_loss' => 'stop_loss'
+        'stop_loss' => 'stop_loss',
+        'use_earn' => 'use_earn'
     ];
 
     /**
@@ -259,7 +262,8 @@ class Order implements ModelInterface, ArrayAccess
         'action_mode' => 'setActionMode',
         'slippage' => 'setSlippage',
         'stop_profit' => 'setStopProfit',
-        'stop_loss' => 'setStopLoss'
+        'stop_loss' => 'setStopLoss',
+        'use_earn' => 'setUseEarn'
     ];
 
     /**
@@ -307,7 +311,8 @@ class Order implements ModelInterface, ArrayAccess
         'action_mode' => 'getActionMode',
         'slippage' => 'getSlippage',
         'stop_profit' => 'getStopProfit',
-        'stop_loss' => 'getStopLoss'
+        'stop_loss' => 'getStopLoss',
+        'use_earn' => 'getUseEarn'
     ];
 
     /**
@@ -532,6 +537,7 @@ class Order implements ModelInterface, ArrayAccess
         $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
         $this->container['stop_profit'] = isset($data['stop_profit']) ? $data['stop_profit'] : null;
         $this->container['stop_loss'] = isset($data['stop_loss']) ? $data['stop_loss'] : null;
+        $this->container['use_earn'] = isset($data['use_earn']) ? $data['use_earn'] : null;
     }
 
     /**
@@ -1625,6 +1631,30 @@ class Order implements ModelInterface, ArrayAccess
     public function setStopLoss($stop_loss)
     {
         $this->container['stop_loss'] = $stop_loss;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_earn
+     *
+     * @return bool|null
+     */
+    public function getUseEarn()
+    {
+        return $this->container['use_earn'];
+    }
+
+    /**
+     * Sets use_earn
+     *
+     * @param bool|null $use_earn Redeem Simple Earn funds when placing an order
+     *
+     * @return $this
+     */
+    public function setUseEarn($use_earn)
+    {
+        $this->container['use_earn'] = $use_earn;
 
         return $this;
     }

@@ -8973,6 +8973,8 @@ class EarnApi
      * @param  int $limit Page size (required)
      * @param  string $asset Currency (optional)
      * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     * @param  int $status Product status filter. Pass 2 for products available for subscription. (optional)
+     * @param  string $show_status Visibility status filter. Pass \&quot;2\&quot; for visible products. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8995,6 +8997,8 @@ class EarnApi
      * @param  int $limit Page size (required)
      * @param  string $asset Currency (optional)
      * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     * @param  int $status Product status filter. Pass 2 for products available for subscription. (optional)
+     * @param  string $show_status Visibility status filter. Pass \&quot;2\&quot; for visible products. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9057,6 +9061,8 @@ class EarnApi
      * @param  int $limit Page size (required)
      * @param  string $asset Currency (optional)
      * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     * @param  int $status Product status filter. Pass 2 for products available for subscription. (optional)
+     * @param  string $show_status Visibility status filter. Pass \&quot;2\&quot; for visible products. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9082,6 +9088,8 @@ class EarnApi
      * @param  int $limit Page size (required)
      * @param  string $asset Currency (optional)
      * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     * @param  int $status Product status filter. Pass 2 for products available for subscription. (optional)
+     * @param  string $show_status Visibility status filter. Pass \&quot;2\&quot; for visible products. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9138,6 +9146,8 @@ class EarnApi
      * @param  int $limit Page size (required)
      * @param  string $asset Currency (optional)
      * @param  int $type Product type: 1 for regular, 2 for VIP (optional)
+     * @param  int $status Product status filter. Pass 2 for products available for subscription. (optional)
+     * @param  string $show_status Visibility status filter. Pass \&quot;2\&quot; for visible products. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9149,6 +9159,8 @@ class EarnApi
         $limit = array_key_exists('limit', $associative_array) ? $associative_array['limit'] : null;
         $asset = array_key_exists('asset', $associative_array) ? $associative_array['asset'] : null;
         $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $status = array_key_exists('status', $associative_array) ? $associative_array['status'] : null;
+        $show_status = array_key_exists('show_status', $associative_array) ? $associative_array['show_status'] : null;
 
         // verify the required parameter 'page' is set
         if ($page === null || (is_array($page) && count($page) === 0)) {
@@ -9195,6 +9207,34 @@ class EarnApi
             }
             else {
                 $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($status !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($status) && true) {
+                foreach($status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['status'] = $status;
+            }
+        }
+
+        // query params
+        if ($show_status !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($show_status) && true) {
+                foreach($show_status as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['show_status'] = $show_status;
             }
         }
 
