@@ -932,7 +932,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Trading symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  string $side Buy or sell orders - buy - sell (optional)
      * @param  int $status Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed (optional)
      * @param  int $from Start time for order query (optional)
@@ -957,7 +957,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Trading symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  string $side Buy or sell orders - buy - sell (optional)
      * @param  int $status Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed (optional)
      * @param  int $from Start time for order query (optional)
@@ -1022,7 +1022,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Trading symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  string $side Buy or sell orders - buy - sell (optional)
      * @param  int $status Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed (optional)
      * @param  int $from Start time for order query (optional)
@@ -1050,7 +1050,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Trading symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  string $side Buy or sell orders - buy - sell (optional)
      * @param  int $status Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed (optional)
      * @param  int $from Start time for order query (optional)
@@ -1109,7 +1109,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Trading symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  string $side Buy or sell orders - buy - sell (optional)
      * @param  int $status Order Status - &#x60;0&#x60; : All - &#x60;1&#x60; : Processing - &#x60;2&#x60; : Successful - &#x60;3&#x60; : Failed - &#x60;4&#x60; : Cancelled - &#x60;5&#x60; : Buy order placed but transfer not completed - &#x60;6&#x60; : Order cancelled but transfer not completed (optional)
      * @param  int $from Start time for order query (optional)
@@ -1833,7 +1833,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query currency information by currency symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -1854,7 +1854,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query currency information by currency symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -1915,7 +1915,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query currency information by currency symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -1939,7 +1939,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query currency information by currency symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -1994,7 +1994,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query currency information by currency symbol (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -2146,7 +2146,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query by specified currency name (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -2167,7 +2167,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query by specified currency name (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -2228,7 +2228,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query by specified currency name (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -2252,7 +2252,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query by specified currency name (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
@@ -2307,7 +2307,7 @@ class AlphaApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Query by specified currency name (optional)
+     * @param  string $currency Alpha currency ID, for example USDS02b5a8dd2f59a098, not the display symbol USDS. First call GET /alpha/currencies without currency, match the token by name, chain and address, and use the returned currency field. Paginate with page and limit. (optional)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 100)
      * @param  int $page Page number (optional, default to 1)
      *
