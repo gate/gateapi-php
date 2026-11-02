@@ -55,9 +55,9 @@ class TrailOrder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
-        'user_id' => 'int',
-        'user' => 'int',
+        'id' => 'string',
+        'user_id' => 'string',
+        'user' => 'string',
         'contract' => 'string',
         'settle' => 'string',
         'amount' => 'string',
@@ -68,22 +68,22 @@ class TrailOrder implements ModelInterface, ArrayAccess
         'text' => 'string',
         'reduce_only' => 'bool',
         'position_related' => 'bool',
-        'created_at' => 'int',
-        'activated_at' => 'int',
-        'finished_at' => 'int',
-        'create_time' => 'int',
-        'active_time' => 'int',
-        'finish_time' => 'int',
+        'created_at' => 'string',
+        'activated_at' => 'string',
+        'finished_at' => 'string',
+        'create_time' => 'string',
+        'active_time' => 'string',
+        'finish_time' => 'string',
         'reason' => 'string',
         'suborder_text' => 'string',
         'is_dual_mode' => 'bool',
         'trigger_price' => 'string',
-        'suborder_id' => 'int',
+        'suborder_id' => 'string',
         'side_label' => 'string',
         'original_status' => 'int',
         'status' => 'string',
         'position_side_output' => 'string',
-        'updated_at' => 'int',
+        'updated_at' => 'string',
         'extremum_price' => 'string',
         'status_code' => 'string',
         'created_at_precise' => 'string',
@@ -102,9 +102,9 @@ class TrailOrder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'id' => 'int64',
-        'user_id' => 'int64',
-        'user' => 'int64',
+        'id' => null,
+        'user_id' => null,
+        'user' => null,
         'contract' => null,
         'settle' => null,
         'amount' => null,
@@ -115,22 +115,22 @@ class TrailOrder implements ModelInterface, ArrayAccess
         'text' => null,
         'reduce_only' => null,
         'position_related' => null,
-        'created_at' => 'int64',
-        'activated_at' => 'int64',
-        'finished_at' => 'int64',
-        'create_time' => 'int64',
-        'active_time' => 'int64',
-        'finish_time' => 'int64',
+        'created_at' => null,
+        'activated_at' => null,
+        'finished_at' => null,
+        'create_time' => null,
+        'active_time' => null,
+        'finish_time' => null,
         'reason' => null,
         'suborder_text' => null,
         'is_dual_mode' => null,
         'trigger_price' => null,
-        'suborder_id' => 'int64',
+        'suborder_id' => null,
         'side_label' => null,
         'original_status' => 'int32',
         'status' => null,
         'position_side_output' => null,
-        'updated_at' => 'int64',
+        'updated_at' => null,
         'extremum_price' => null,
         'status_code' => null,
         'created_at_precise' => null,
@@ -543,7 +543,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getId()
     {
@@ -553,7 +553,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int|null $id Order ID
+     * @param string|null $id Order ID
      *
      * @return $this
      */
@@ -568,7 +568,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getUserId()
     {
@@ -578,7 +578,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param int|null $user_id User ID
+     * @param string|null $user_id User ID
      *
      * @return $this
      */
@@ -593,7 +593,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets user
      *
-     * @return int|null
+     * @return string|null
      */
     public function getUser()
     {
@@ -603,7 +603,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets user
      *
-     * @param int|null $user User ID
+     * @param string|null $user User ID
      *
      * @return $this
      */
@@ -877,7 +877,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets created_at
      *
-     * @return int|null
+     * @return string|null
      */
     public function getCreatedAt()
     {
@@ -887,7 +887,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets created_at
      *
-     * @param int|null $created_at Created time
+     * @param string|null $created_at Created time
      *
      * @return $this
      */
@@ -902,7 +902,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets activated_at
      *
-     * @return int|null
+     * @return string|null
      */
     public function getActivatedAt()
     {
@@ -912,7 +912,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets activated_at
      *
-     * @param int|null $activated_at Activation time
+     * @param string|null $activated_at Activation time
      *
      * @return $this
      */
@@ -927,7 +927,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets finished_at
      *
-     * @return int|null
+     * @return string|null
      */
     public function getFinishedAt()
     {
@@ -937,7 +937,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets finished_at
      *
-     * @param int|null $finished_at End time
+     * @param string|null $finished_at End time
      *
      * @return $this
      */
@@ -952,7 +952,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets create_time
      *
-     * @return int|null
+     * @return string|null
      */
     public function getCreateTime()
     {
@@ -962,7 +962,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets create_time
      *
-     * @param int|null $create_time Created time
+     * @param string|null $create_time Created time
      *
      * @return $this
      */
@@ -977,7 +977,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets active_time
      *
-     * @return int|null
+     * @return string|null
      */
     public function getActiveTime()
     {
@@ -987,7 +987,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets active_time
      *
-     * @param int|null $active_time Activation time
+     * @param string|null $active_time Activation time
      *
      * @return $this
      */
@@ -1002,7 +1002,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets finish_time
      *
-     * @return int|null
+     * @return string|null
      */
     public function getFinishTime()
     {
@@ -1012,7 +1012,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets finish_time
      *
-     * @param int|null $finish_time End time
+     * @param string|null $finish_time End time
      *
      * @return $this
      */
@@ -1127,7 +1127,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets suborder_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSuborderId()
     {
@@ -1137,7 +1137,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets suborder_id
      *
-     * @param int|null $suborder_id Child order ID.
+     * @param string|null $suborder_id Child order ID.
      *
      * @return $this
      */
@@ -1261,7 +1261,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets updated_at
      *
-     * @return int|null
+     * @return string|null
      */
     public function getUpdatedAt()
     {
@@ -1271,7 +1271,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets updated_at
      *
-     * @param int|null $updated_at Update time
+     * @param string|null $updated_at Update time
      *
      * @return $this
      */

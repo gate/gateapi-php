@@ -301,6 +301,9 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
+        if ($this->container['price_type'] === null) {
+            $invalidProperties[] = "'price_type' can't be null";
+        }
         $allowedValues = $this->getPriceTypeAllowableValues();
         if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -427,7 +430,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
     /**
      * Gets price_type
      *
-     * @return int|null
+     * @return int
      */
     public function getPriceType()
     {
@@ -437,14 +440,14 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets price_type
      *
-     * @param int|null $price_type Activation price type: 1-latest price, 2-index price, 3-mark price
+     * @param int $price_type Activation price type, required: 1-latest price, 2-index price, 3-mark price. The caller must specify it explicitly.
      *
      * @return $this
      */
     public function setPriceType($price_type)
     {
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($price_type) && !in_array($price_type, $allowedValues, true)) {
+        if (!in_array($price_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'price_type', must be one of '%s'",
