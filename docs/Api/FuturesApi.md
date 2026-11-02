@@ -3736,7 +3736,7 @@ Name | Type | Description  | Notes
 
 ## stopTrailOrder
 
-> \GateApi\Model\TrailOrderResponse stopTrailOrder($settle, $stop_trail_order)
+> \GateApi\Model\TrailOrderDetailResponse stopTrailOrder($settle, $stop_trail_order)
 
 Terminate trail order
 
@@ -3780,7 +3780,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\TrailOrderResponse**](../Model/TrailOrderResponse.md)
+[**\GateApi\Model\TrailOrderDetailResponse**](../Model/TrailOrderDetailResponse.md)
 
 ### Authorization
 
@@ -4008,7 +4008,7 @@ Name | Type | Description  | Notes
 
 ## updateTrailOrder
 
-> \GateApi\Model\TrailOrderResponse updateTrailOrder($settle, $update_trail_order)
+> \GateApi\Model\TrailOrderDetailResponse updateTrailOrder($settle, $update_trail_order)
 
 Update trail order
 
@@ -4052,7 +4052,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\TrailOrderResponse**](../Model/TrailOrderResponse.md)
+[**\GateApi\Model\TrailOrderDetailResponse**](../Model/TrailOrderDetailResponse.md)
 
 ### Authorization
 

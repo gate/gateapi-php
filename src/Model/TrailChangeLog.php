@@ -55,7 +55,7 @@ class TrailChangeLog implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'updated_at' => 'int',
+        'updated_at' => 'string',
         'amount' => 'string',
         'is_gte' => 'bool',
         'activation_price' => 'string',
@@ -70,7 +70,7 @@ class TrailChangeLog implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'updated_at' => 'int64',
+        'updated_at' => null,
         'amount' => null,
         'is_gte' => null,
         'activation_price' => null,
@@ -296,7 +296,7 @@ class TrailChangeLog implements ModelInterface, ArrayAccess
     /**
      * Gets updated_at
      *
-     * @return int|null
+     * @return string|null
      */
     public function getUpdatedAt()
     {
@@ -306,7 +306,7 @@ class TrailChangeLog implements ModelInterface, ArrayAccess
     /**
      * Sets updated_at
      *
-     * @param int|null $updated_at Update time
+     * @param string|null $updated_at Update time
      *
      * @return $this
      */

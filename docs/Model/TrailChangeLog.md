@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**updated_at** | **int** | Update time | [optional] [readonly] 
+**updated_at** | **string** | Update time | [optional] [readonly] 
 **amount** | **string** | Trading quantity in contracts, positive for buy, negative for sell | [optional] [readonly] 
 **is_gte** | **bool** | true: activate when market price &gt;&#x3D; activation price, false: &lt;&#x3D; activation price | [optional] [readonly] 
 **activation_price** | **string** | Activation price, 0 means trigger immediately | [optional] [readonly] 
