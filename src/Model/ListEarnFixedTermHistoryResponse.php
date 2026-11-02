@@ -93,6 +93,27 @@ class ListEarnFixedTermHistoryResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class ListEarnFixedTermHistoryResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class ListEarnFixedTermHistoryResponse implements ModelInterface, ArrayAccess
      */
     public function setCode($code)
     {
+        
         $this->container['code'] = $code;
 
         return $this;
@@ -262,6 +288,7 @@ class ListEarnFixedTermHistoryResponse implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;
@@ -286,6 +313,7 @@ class ListEarnFixedTermHistoryResponse implements ModelInterface, ArrayAccess
      */
     public function setData($data)
     {
+        
         $this->container['data'] = $data;
 
         return $this;
@@ -310,6 +338,7 @@ class ListEarnFixedTermHistoryResponse implements ModelInterface, ArrayAccess
      */
     public function setTimestamp($timestamp)
     {
+        
         $this->container['timestamp'] = $timestamp;
 
         return $this;

@@ -117,6 +117,27 @@ class TradeFee implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -250,21 +271,37 @@ class TradeFee implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['taker_fee'] = isset($data['taker_fee']) ? $data['taker_fee'] : null;
+        
         $this->container['maker_fee'] = isset($data['maker_fee']) ? $data['maker_fee'] : null;
+        
         $this->container['rpi_maker_fee'] = isset($data['rpi_maker_fee']) ? $data['rpi_maker_fee'] : null;
+        
         $this->container['gt_discount'] = isset($data['gt_discount']) ? $data['gt_discount'] : null;
+        
         $this->container['gt_taker_fee'] = isset($data['gt_taker_fee']) ? $data['gt_taker_fee'] : null;
+        
         $this->container['gt_maker_fee'] = isset($data['gt_maker_fee']) ? $data['gt_maker_fee'] : null;
+        
         $this->container['loan_fee'] = isset($data['loan_fee']) ? $data['loan_fee'] : null;
+        
         $this->container['point_type'] = isset($data['point_type']) ? $data['point_type'] : null;
+        
         $this->container['futures_taker_fee'] = isset($data['futures_taker_fee']) ? $data['futures_taker_fee'] : null;
+        
         $this->container['futures_maker_fee'] = isset($data['futures_maker_fee']) ? $data['futures_maker_fee'] : null;
+        
         $this->container['futures_rpi_maker_fee'] = isset($data['futures_rpi_maker_fee']) ? $data['futures_rpi_maker_fee'] : null;
+        
         $this->container['delivery_taker_fee'] = isset($data['delivery_taker_fee']) ? $data['delivery_taker_fee'] : null;
+        
         $this->container['delivery_maker_fee'] = isset($data['delivery_maker_fee']) ? $data['delivery_maker_fee'] : null;
+        
         $this->container['debit_fee'] = isset($data['debit_fee']) ? $data['debit_fee'] : null;
+        
         $this->container['rpi_mm'] = isset($data['rpi_mm']) ? $data['rpi_mm'] : null;
+        
     }
 
     /**
@@ -310,6 +347,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -334,6 +372,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setTakerFee($taker_fee)
     {
+        
         $this->container['taker_fee'] = $taker_fee;
 
         return $this;
@@ -358,6 +397,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setMakerFee($maker_fee)
     {
+        
         $this->container['maker_fee'] = $maker_fee;
 
         return $this;
@@ -382,6 +422,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setRpiMakerFee($rpi_maker_fee)
     {
+        
         $this->container['rpi_maker_fee'] = $rpi_maker_fee;
 
         return $this;
@@ -406,6 +447,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setGtDiscount($gt_discount)
     {
+        
         $this->container['gt_discount'] = $gt_discount;
 
         return $this;
@@ -430,6 +472,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setGtTakerFee($gt_taker_fee)
     {
+        
         $this->container['gt_taker_fee'] = $gt_taker_fee;
 
         return $this;
@@ -454,6 +497,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setGtMakerFee($gt_maker_fee)
     {
+        
         $this->container['gt_maker_fee'] = $gt_maker_fee;
 
         return $this;
@@ -478,6 +522,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setLoanFee($loan_fee)
     {
+        
         $this->container['loan_fee'] = $loan_fee;
 
         return $this;
@@ -502,6 +547,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setPointType($point_type)
     {
+        
         $this->container['point_type'] = $point_type;
 
         return $this;
@@ -526,6 +572,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setFuturesTakerFee($futures_taker_fee)
     {
+        
         $this->container['futures_taker_fee'] = $futures_taker_fee;
 
         return $this;
@@ -550,6 +597,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setFuturesMakerFee($futures_maker_fee)
     {
+        
         $this->container['futures_maker_fee'] = $futures_maker_fee;
 
         return $this;
@@ -574,6 +622,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setFuturesRpiMakerFee($futures_rpi_maker_fee)
     {
+        
         $this->container['futures_rpi_maker_fee'] = $futures_rpi_maker_fee;
 
         return $this;
@@ -598,6 +647,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setDeliveryTakerFee($delivery_taker_fee)
     {
+        
         $this->container['delivery_taker_fee'] = $delivery_taker_fee;
 
         return $this;
@@ -622,6 +672,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setDeliveryMakerFee($delivery_maker_fee)
     {
+        
         $this->container['delivery_maker_fee'] = $delivery_maker_fee;
 
         return $this;
@@ -646,6 +697,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setDebitFee($debit_fee)
     {
+        
         $this->container['debit_fee'] = $debit_fee;
 
         return $this;
@@ -670,6 +722,7 @@ class TradeFee implements ModelInterface, ArrayAccess
      */
     public function setRpiMm($rpi_mm)
     {
+        
         $this->container['rpi_mm'] = $rpi_mm;
 
         return $this;

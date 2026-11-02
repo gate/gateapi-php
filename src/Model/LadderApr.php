@@ -91,6 +91,27 @@ class LadderApr implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class LadderApr implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['apr'] = isset($data['apr']) ? $data['apr'] : null;
+        
         $this->container['left'] = isset($data['left']) ? $data['left'] : null;
+        
         $this->container['right'] = isset($data['right']) ? $data['right'] : null;
+        
     }
 
     /**
@@ -241,6 +265,7 @@ class LadderApr implements ModelInterface, ArrayAccess
      */
     public function setApr($apr)
     {
+        
         $this->container['apr'] = $apr;
 
         return $this;
@@ -265,6 +290,7 @@ class LadderApr implements ModelInterface, ArrayAccess
      */
     public function setLeft($left)
     {
+        
         $this->container['left'] = $left;
 
         return $this;
@@ -289,6 +315,7 @@ class LadderApr implements ModelInterface, ArrayAccess
      */
     public function setRight($right)
     {
+        
         $this->container['right'] = $right;
 
         return $this;

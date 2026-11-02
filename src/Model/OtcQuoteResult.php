@@ -113,6 +113,27 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -240,19 +261,33 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
+        
         $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
+        
         $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
+        
         $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
         $this->container['rate_reci'] = isset($data['rate_reci']) ? $data['rate_reci'] : null;
+        
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        
         $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
+        
         $this->container['validity_period'] = isset($data['validity_period']) ? $data['validity_period'] : null;
+        
         $this->container['refresh_limit'] = isset($data['refresh_limit']) ? $data['refresh_limit'] : null;
+        
         $this->container['refresh_limit_msg'] = isset($data['refresh_limit_msg']) ? $data['refresh_limit_msg'] : null;
+        
     }
 
     /**
@@ -331,6 +366,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -355,6 +391,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setPayCoin($pay_coin)
     {
+        
         $this->container['pay_coin'] = $pay_coin;
 
         return $this;
@@ -379,6 +416,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setGetCoin($get_coin)
     {
+        
         $this->container['get_coin'] = $get_coin;
 
         return $this;
@@ -403,6 +441,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setPayAmount($pay_amount)
     {
+        
         $this->container['pay_amount'] = $pay_amount;
 
         return $this;
@@ -427,6 +466,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setGetAmount($get_amount)
     {
+        
         $this->container['get_amount'] = $get_amount;
 
         return $this;
@@ -451,6 +491,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;
@@ -475,6 +516,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setRateReci($rate_reci)
     {
+        
         $this->container['rate_reci'] = $rate_reci;
 
         return $this;
@@ -499,6 +541,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setPromotionCode($promotion_code)
     {
+        
         $this->container['promotion_code'] = $promotion_code;
 
         return $this;
@@ -523,6 +566,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -547,6 +591,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setOrderType($order_type)
     {
+        
         $this->container['order_type'] = $order_type;
 
         return $this;
@@ -571,6 +616,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setQuoteToken($quote_token)
     {
+        
         $this->container['quote_token'] = $quote_token;
 
         return $this;
@@ -595,6 +641,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setValidityPeriod($validity_period)
     {
+        
         $this->container['validity_period'] = $validity_period;
 
         return $this;
@@ -619,6 +666,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setRefreshLimit($refresh_limit)
     {
+        
         $this->container['refresh_limit'] = $refresh_limit;
 
         return $this;
@@ -643,6 +691,7 @@ class OtcQuoteResult implements ModelInterface, ArrayAccess
      */
     public function setRefreshLimitMsg($refresh_limit_msg)
     {
+        
         $this->container['refresh_limit_msg'] = $refresh_limit_msg;
 
         return $this;

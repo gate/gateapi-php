@@ -407,7 +407,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. (optional)
+     * @param  string $exchange Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -430,7 +430,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. (optional)
+     * @param  string $exchange Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -493,7 +493,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. (optional)
+     * @param  string $exchange Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -519,7 +519,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. (optional)
+     * @param  string $exchange Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)
@@ -576,7 +576,7 @@ class StockApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $symbols Symbol list, multiple separated by commas (optional)
-     * @param  string $exchange Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. (optional)
+     * @param  string $exchange Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. (optional)
      * @param  bool $with_desc_i18n Whether to return multilingual symbol description (optional)
      * @param  int $page Page number, defaults to 1 (optional)
      * @param  int $page_size Page size, defaults to 10, max 500; server caps at 500 (optional)

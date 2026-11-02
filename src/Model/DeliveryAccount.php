@@ -137,6 +137,27 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -300,31 +321,57 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['unrealised_pnl'] = isset($data['unrealised_pnl']) ? $data['unrealised_pnl'] : null;
+        
         $this->container['position_margin'] = isset($data['position_margin']) ? $data['position_margin'] : null;
+        
         $this->container['order_margin'] = isset($data['order_margin']) ? $data['order_margin'] : null;
+        
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['point'] = isset($data['point']) ? $data['point'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['in_dual_mode'] = isset($data['in_dual_mode']) ? $data['in_dual_mode'] : null;
+        
         $this->container['enable_credit'] = isset($data['enable_credit']) ? $data['enable_credit'] : null;
+        
         $this->container['position_initial_margin'] = isset($data['position_initial_margin']) ? $data['position_initial_margin'] : null;
+        
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
+        
         $this->container['bonus'] = isset($data['bonus']) ? $data['bonus'] : null;
+        
         $this->container['enable_evolved_classic'] = isset($data['enable_evolved_classic']) ? $data['enable_evolved_classic'] : null;
+        
         $this->container['cross_order_margin'] = isset($data['cross_order_margin']) ? $data['cross_order_margin'] : null;
+        
         $this->container['cross_initial_margin'] = isset($data['cross_initial_margin']) ? $data['cross_initial_margin'] : null;
+        
         $this->container['cross_maintenance_margin'] = isset($data['cross_maintenance_margin']) ? $data['cross_maintenance_margin'] : null;
+        
         $this->container['cross_unrealised_pnl'] = isset($data['cross_unrealised_pnl']) ? $data['cross_unrealised_pnl'] : null;
+        
         $this->container['cross_available'] = isset($data['cross_available']) ? $data['cross_available'] : null;
+        
         $this->container['cross_margin_balance'] = isset($data['cross_margin_balance']) ? $data['cross_margin_balance'] : null;
+        
         $this->container['cross_mmr'] = isset($data['cross_mmr']) ? $data['cross_mmr'] : null;
+        
         $this->container['cross_imr'] = isset($data['cross_imr']) ? $data['cross_imr'] : null;
+        
         $this->container['isolated_position_margin'] = isset($data['isolated_position_margin']) ? $data['isolated_position_margin'] : null;
+        
         $this->container['enable_new_dual_mode'] = isset($data['enable_new_dual_mode']) ? $data['enable_new_dual_mode'] : null;
+        
         $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
+        
         $this->container['enable_tiered_mm'] = isset($data['enable_tiered_mm']) ? $data['enable_tiered_mm'] : null;
+        
         $this->container['history'] = isset($data['history']) ? $data['history'] : null;
+        
     }
 
     /**
@@ -370,6 +417,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -394,6 +442,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setUnrealisedPnl($unrealised_pnl)
     {
+        
         $this->container['unrealised_pnl'] = $unrealised_pnl;
 
         return $this;
@@ -418,6 +467,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setPositionMargin($position_margin)
     {
+        
         $this->container['position_margin'] = $position_margin;
 
         return $this;
@@ -442,6 +492,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setOrderMargin($order_margin)
     {
+        
         $this->container['order_margin'] = $order_margin;
 
         return $this;
@@ -466,6 +517,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -490,6 +542,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setPoint($point)
     {
+        
         $this->container['point'] = $point;
 
         return $this;
@@ -514,6 +567,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -538,6 +592,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setInDualMode($in_dual_mode)
     {
+        
         $this->container['in_dual_mode'] = $in_dual_mode;
 
         return $this;
@@ -562,6 +617,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setEnableCredit($enable_credit)
     {
+        
         $this->container['enable_credit'] = $enable_credit;
 
         return $this;
@@ -586,6 +642,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setPositionInitialMargin($position_initial_margin)
     {
+        
         $this->container['position_initial_margin'] = $position_initial_margin;
 
         return $this;
@@ -610,6 +667,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceMargin($maintenance_margin)
     {
+        
         $this->container['maintenance_margin'] = $maintenance_margin;
 
         return $this;
@@ -634,6 +692,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setBonus($bonus)
     {
+        
         $this->container['bonus'] = $bonus;
 
         return $this;
@@ -658,6 +717,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setEnableEvolvedClassic($enable_evolved_classic)
     {
+        
         $this->container['enable_evolved_classic'] = $enable_evolved_classic;
 
         return $this;
@@ -682,6 +742,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossOrderMargin($cross_order_margin)
     {
+        
         $this->container['cross_order_margin'] = $cross_order_margin;
 
         return $this;
@@ -706,6 +767,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossInitialMargin($cross_initial_margin)
     {
+        
         $this->container['cross_initial_margin'] = $cross_initial_margin;
 
         return $this;
@@ -730,6 +792,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossMaintenanceMargin($cross_maintenance_margin)
     {
+        
         $this->container['cross_maintenance_margin'] = $cross_maintenance_margin;
 
         return $this;
@@ -754,6 +817,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossUnrealisedPnl($cross_unrealised_pnl)
     {
+        
         $this->container['cross_unrealised_pnl'] = $cross_unrealised_pnl;
 
         return $this;
@@ -778,6 +842,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossAvailable($cross_available)
     {
+        
         $this->container['cross_available'] = $cross_available;
 
         return $this;
@@ -802,6 +867,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossMarginBalance($cross_margin_balance)
     {
+        
         $this->container['cross_margin_balance'] = $cross_margin_balance;
 
         return $this;
@@ -826,6 +892,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossMmr($cross_mmr)
     {
+        
         $this->container['cross_mmr'] = $cross_mmr;
 
         return $this;
@@ -850,6 +917,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setCrossImr($cross_imr)
     {
+        
         $this->container['cross_imr'] = $cross_imr;
 
         return $this;
@@ -874,6 +942,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setIsolatedPositionMargin($isolated_position_margin)
     {
+        
         $this->container['isolated_position_margin'] = $isolated_position_margin;
 
         return $this;
@@ -898,6 +967,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setEnableNewDualMode($enable_new_dual_mode)
     {
+        
         $this->container['enable_new_dual_mode'] = $enable_new_dual_mode;
 
         return $this;
@@ -922,6 +992,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setMarginMode($margin_mode)
     {
+        
         $this->container['margin_mode'] = $margin_mode;
 
         return $this;
@@ -946,6 +1017,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setEnableTieredMm($enable_tiered_mm)
     {
+        
         $this->container['enable_tiered_mm'] = $enable_tiered_mm;
 
         return $this;
@@ -970,6 +1042,7 @@ class DeliveryAccount implements ModelInterface, ArrayAccess
      */
     public function setHistory($history)
     {
+        
         $this->container['history'] = $history;
 
         return $this;

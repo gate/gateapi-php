@@ -136,6 +136,27 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -315,30 +336,55 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['base'] = isset($data['base']) ? $data['base'] : null;
+        
         $this->container['base_name'] = isset($data['base_name']) ? $data['base_name'] : null;
+        
         $this->container['quote'] = isset($data['quote']) ? $data['quote'] : null;
+        
         $this->container['quote_name'] = isset($data['quote_name']) ? $data['quote_name'] : null;
+        
         $this->container['trade_quotes'] = isset($data['trade_quotes']) ? $data['trade_quotes'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['min_base_amount'] = isset($data['min_base_amount']) ? $data['min_base_amount'] : null;
+        
         $this->container['min_quote_amount'] = isset($data['min_quote_amount']) ? $data['min_quote_amount'] : null;
+        
         $this->container['max_base_amount'] = isset($data['max_base_amount']) ? $data['max_base_amount'] : null;
+        
         $this->container['max_quote_amount'] = isset($data['max_quote_amount']) ? $data['max_quote_amount'] : null;
+        
         $this->container['amount_precision'] = isset($data['amount_precision']) ? $data['amount_precision'] : null;
+        
         $this->container['precision'] = isset($data['precision']) ? $data['precision'] : null;
+        
         $this->container['trade_status'] = isset($data['trade_status']) ? $data['trade_status'] : null;
+        
         $this->container['sell_start'] = isset($data['sell_start']) ? $data['sell_start'] : null;
+        
         $this->container['buy_start'] = isset($data['buy_start']) ? $data['buy_start'] : null;
+        
         $this->container['delisting_time'] = isset($data['delisting_time']) ? $data['delisting_time'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['trade_url'] = isset($data['trade_url']) ? $data['trade_url'] : null;
+        
         $this->container['st_tag'] = isset($data['st_tag']) ? $data['st_tag'] : null;
+        
         $this->container['up_rate'] = isset($data['up_rate']) ? $data['up_rate'] : null;
+        
         $this->container['down_rate'] = isset($data['down_rate']) ? $data['down_rate'] : null;
+        
         $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        
         $this->container['market_order_max_stock'] = isset($data['market_order_max_stock']) ? $data['market_order_max_stock'] : null;
+        
         $this->container['market_order_max_money'] = isset($data['market_order_max_money']) ? $data['market_order_max_money'] : null;
+        
     }
 
     /**
@@ -351,7 +397,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getTradeStatusAllowableValues();
-        if (!is_null($this->container['trade_status']) && !in_array($this->container['trade_status'], $allowedValues, true)) {
+        if ((isset($this->container['trade_status'])) && !in_array($this->container['trade_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'trade_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -392,6 +438,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -416,6 +463,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setBase($base)
     {
+        
         $this->container['base'] = $base;
 
         return $this;
@@ -440,6 +488,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setBaseName($base_name)
     {
+        
         $this->container['base_name'] = $base_name;
 
         return $this;
@@ -464,6 +513,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setQuote($quote)
     {
+        
         $this->container['quote'] = $quote;
 
         return $this;
@@ -488,6 +538,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setQuoteName($quote_name)
     {
+        
         $this->container['quote_name'] = $quote_name;
 
         return $this;
@@ -512,6 +563,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setTradeQuotes($trade_quotes)
     {
+        
         $this->container['trade_quotes'] = $trade_quotes;
 
         return $this;
@@ -536,6 +588,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -560,6 +613,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setMinBaseAmount($min_base_amount)
     {
+        
         $this->container['min_base_amount'] = $min_base_amount;
 
         return $this;
@@ -584,6 +638,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setMinQuoteAmount($min_quote_amount)
     {
+        
         $this->container['min_quote_amount'] = $min_quote_amount;
 
         return $this;
@@ -608,6 +663,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setMaxBaseAmount($max_base_amount)
     {
+        
         $this->container['max_base_amount'] = $max_base_amount;
 
         return $this;
@@ -632,6 +688,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setMaxQuoteAmount($max_quote_amount)
     {
+        
         $this->container['max_quote_amount'] = $max_quote_amount;
 
         return $this;
@@ -656,6 +713,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setAmountPrecision($amount_precision)
     {
+        
         $this->container['amount_precision'] = $amount_precision;
 
         return $this;
@@ -680,6 +738,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setPrecision($precision)
     {
+        
         $this->container['precision'] = $precision;
 
         return $this;
@@ -713,6 +772,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['trade_status'] = $trade_status;
 
         return $this;
@@ -737,6 +797,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setSellStart($sell_start)
     {
+        
         $this->container['sell_start'] = $sell_start;
 
         return $this;
@@ -761,6 +822,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setBuyStart($buy_start)
     {
+        
         $this->container['buy_start'] = $buy_start;
 
         return $this;
@@ -779,12 +841,13 @@ class CurrencyPair implements ModelInterface, ArrayAccess
     /**
      * Sets delisting_time
      *
-     * @param int|null $delisting_time Expected time to remove the shelves, Unix timestamp in seconds
+     * @param int|null $delisting_time Expected delisting time as a Unix timestamp in seconds.
      *
      * @return $this
      */
     public function setDelistingTime($delisting_time)
     {
+        
         $this->container['delisting_time'] = $delisting_time;
 
         return $this;
@@ -809,6 +872,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -833,6 +897,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setTradeUrl($trade_url)
     {
+        
         $this->container['trade_url'] = $trade_url;
 
         return $this;
@@ -857,6 +922,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setStTag($st_tag)
     {
+        
         $this->container['st_tag'] = $st_tag;
 
         return $this;
@@ -881,6 +947,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setUpRate($up_rate)
     {
+        
         $this->container['up_rate'] = $up_rate;
 
         return $this;
@@ -905,6 +972,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setDownRate($down_rate)
     {
+        
         $this->container['down_rate'] = $down_rate;
 
         return $this;
@@ -929,6 +997,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setSlippage($slippage)
     {
+        
         $this->container['slippage'] = $slippage;
 
         return $this;
@@ -953,6 +1022,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setMarketOrderMaxStock($market_order_max_stock)
     {
+        
         $this->container['market_order_max_stock'] = $market_order_max_stock;
 
         return $this;
@@ -977,6 +1047,7 @@ class CurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setMarketOrderMaxMoney($market_order_max_money)
     {
+        
         $this->container['market_order_max_money'] = $market_order_max_money;
 
         return $this;

@@ -92,6 +92,27 @@ class ProfitLossRange implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class ProfitLossRange implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['price_percentage'] = isset($data['price_percentage']) ? $data['price_percentage'] : null;
+        
         $this->container['implied_volatility_percentage'] = isset($data['implied_volatility_percentage']) ? $data['implied_volatility_percentage'] : null;
+        
         $this->container['profit_loss'] = isset($data['profit_loss']) ? $data['profit_loss'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class ProfitLossRange implements ModelInterface, ArrayAccess
      */
     public function setPricePercentage($price_percentage)
     {
+        
         $this->container['price_percentage'] = $price_percentage;
 
         return $this;
@@ -257,6 +282,7 @@ class ProfitLossRange implements ModelInterface, ArrayAccess
      */
     public function setImpliedVolatilityPercentage($implied_volatility_percentage)
     {
+        
         $this->container['implied_volatility_percentage'] = $implied_volatility_percentage;
 
         return $this;
@@ -281,6 +307,7 @@ class ProfitLossRange implements ModelInterface, ArrayAccess
      */
     public function setProfitLoss($profit_loss)
     {
+        
         $this->container['profit_loss'] = $profit_loss;
 
         return $this;

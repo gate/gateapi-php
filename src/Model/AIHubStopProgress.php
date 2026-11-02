@@ -96,6 +96,27 @@ class AIHubStopProgress implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,10 +217,15 @@ class AIHubStopProgress implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['trading_finished'] = isset($data['trading_finished']) ? $data['trading_finished'] : null;
+        
         $this->container['funds_returned'] = isset($data['funds_returned']) ? $data['funds_returned'] : null;
+        
         $this->container['refund_amount'] = isset($data['refund_amount']) ? $data['refund_amount'] : null;
+        
         $this->container['refund_currency'] = isset($data['refund_currency']) ? $data['refund_currency'] : null;
+        
         $this->container['account_released'] = isset($data['account_released']) ? $data['account_released'] : null;
+        
     }
 
     /**
@@ -245,6 +271,7 @@ class AIHubStopProgress implements ModelInterface, ArrayAccess
      */
     public function setTradingFinished($trading_finished)
     {
+        
         $this->container['trading_finished'] = $trading_finished;
 
         return $this;
@@ -269,6 +296,7 @@ class AIHubStopProgress implements ModelInterface, ArrayAccess
      */
     public function setFundsReturned($funds_returned)
     {
+        
         $this->container['funds_returned'] = $funds_returned;
 
         return $this;
@@ -293,6 +321,7 @@ class AIHubStopProgress implements ModelInterface, ArrayAccess
      */
     public function setRefundAmount($refund_amount)
     {
+        
         $this->container['refund_amount'] = $refund_amount;
 
         return $this;
@@ -317,6 +346,7 @@ class AIHubStopProgress implements ModelInterface, ArrayAccess
      */
     public function setRefundCurrency($refund_currency)
     {
+        
         $this->container['refund_currency'] = $refund_currency;
 
         return $this;
@@ -341,6 +371,7 @@ class AIHubStopProgress implements ModelInterface, ArrayAccess
      */
     public function setAccountReleased($account_released)
     {
+        
         $this->container['account_released'] = $account_released;
 
         return $this;

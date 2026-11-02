@@ -95,6 +95,27 @@ class P2pAdsListTradeMethod implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class P2pAdsListTradeMethod implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['icon_url_color'] = isset($data['icon_url_color']) ? $data['icon_url_color'] : null;
+        
         $this->container['identifier'] = isset($data['identifier']) ? $data['identifier'] : null;
+        
         $this->container['pay_id'] = isset($data['pay_id']) ? $data['pay_id'] : null;
+        
         $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
+        
         $this->container['trade_method_name'] = isset($data['trade_method_name']) ? $data['trade_method_name'] : null;
+        
     }
 
     /**
@@ -244,6 +270,7 @@ class P2pAdsListTradeMethod implements ModelInterface, ArrayAccess
      */
     public function setIconUrlColor($icon_url_color)
     {
+        
         $this->container['icon_url_color'] = $icon_url_color;
 
         return $this;
@@ -268,6 +295,7 @@ class P2pAdsListTradeMethod implements ModelInterface, ArrayAccess
      */
     public function setIdentifier($identifier)
     {
+        
         $this->container['identifier'] = $identifier;
 
         return $this;
@@ -292,6 +320,7 @@ class P2pAdsListTradeMethod implements ModelInterface, ArrayAccess
      */
     public function setPayId($pay_id)
     {
+        
         $this->container['pay_id'] = $pay_id;
 
         return $this;
@@ -316,6 +345,7 @@ class P2pAdsListTradeMethod implements ModelInterface, ArrayAccess
      */
     public function setPayType($pay_type)
     {
+        
         $this->container['pay_type'] = $pay_type;
 
         return $this;
@@ -340,6 +370,7 @@ class P2pAdsListTradeMethod implements ModelInterface, ArrayAccess
      */
     public function setTradeMethodName($trade_method_name)
     {
+        
         $this->container['trade_method_name'] = $trade_method_name;
 
         return $this;

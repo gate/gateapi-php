@@ -96,6 +96,27 @@ class CrossexBatchCancelOrderResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,10 +217,15 @@ class CrossexBatchCancelOrderResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['accepted'] = isset($data['accepted']) ? $data['accepted'] : null;
+        
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
     }
 
     /**
@@ -260,6 +286,7 @@ class CrossexBatchCancelOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -284,6 +311,7 @@ class CrossexBatchCancelOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -308,6 +336,7 @@ class CrossexBatchCancelOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setAccepted($accepted)
     {
+        
         $this->container['accepted'] = $accepted;
 
         return $this;
@@ -332,6 +361,7 @@ class CrossexBatchCancelOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setLabel($label)
     {
+        
         $this->container['label'] = $label;
 
         return $this;
@@ -356,6 +386,7 @@ class CrossexBatchCancelOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;

@@ -89,6 +89,27 @@ class QuickRepaymentRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -180,7 +201,9 @@ class QuickRepaymentRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['debt_currencies'] = isset($data['debt_currencies']) ? $data['debt_currencies'] : null;
+        
         $this->container['available_currencies'] = isset($data['available_currencies']) ? $data['available_currencies'] : null;
+        
     }
 
     /**
@@ -232,6 +255,7 @@ class QuickRepaymentRequest implements ModelInterface, ArrayAccess
      */
     public function setDebtCurrencies($debt_currencies)
     {
+        
         $this->container['debt_currencies'] = $debt_currencies;
 
         return $this;
@@ -256,6 +280,7 @@ class QuickRepaymentRequest implements ModelInterface, ArrayAccess
      */
     public function setAvailableCurrencies($available_currencies)
     {
+        
         $this->container['available_currencies'] = $available_currencies;
 
         return $this;

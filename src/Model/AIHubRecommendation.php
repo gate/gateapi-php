@@ -102,6 +102,27 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -211,13 +232,21 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['recommendation_id'] = isset($data['recommendation_id']) ? $data['recommendation_id'] : null;
+        
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        
         $this->container['strategy_name'] = isset($data['strategy_name']) ? $data['strategy_name'] : null;
+        
         $this->container['backtest_apr'] = isset($data['backtest_apr']) ? $data['backtest_apr'] : null;
+        
         $this->container['max_drawdown'] = isset($data['max_drawdown']) ? $data['max_drawdown'] : null;
+        
         $this->container['summary'] = isset($data['summary']) ? $data['summary'] : null;
+        
         $this->container['strategy_params_preview'] = isset($data['strategy_params_preview']) ? $data['strategy_params_preview'] : null;
+        
     }
 
     /**
@@ -278,6 +307,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setRecommendationId($recommendation_id)
     {
+        
         $this->container['recommendation_id'] = $recommendation_id;
 
         return $this;
@@ -302,6 +332,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setMarket($market)
     {
+        
         $this->container['market'] = $market;
 
         return $this;
@@ -326,6 +357,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setStrategyType($strategy_type)
     {
+        
         $this->container['strategy_type'] = $strategy_type;
 
         return $this;
@@ -350,6 +382,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setStrategyName($strategy_name)
     {
+        
         $this->container['strategy_name'] = $strategy_name;
 
         return $this;
@@ -374,6 +407,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setBacktestApr($backtest_apr)
     {
+        
         $this->container['backtest_apr'] = $backtest_apr;
 
         return $this;
@@ -398,6 +432,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setMaxDrawdown($max_drawdown)
     {
+        
         $this->container['max_drawdown'] = $max_drawdown;
 
         return $this;
@@ -422,6 +457,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setSummary($summary)
     {
+        
         $this->container['summary'] = $summary;
 
         return $this;
@@ -446,6 +482,7 @@ class AIHubRecommendation implements ModelInterface, ArrayAccess
      */
     public function setStrategyParamsPreview($strategy_params_preview)
     {
+        
         $this->container['strategy_params_preview'] = $strategy_params_preview;
 
         return $this;

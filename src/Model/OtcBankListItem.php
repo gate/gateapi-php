@@ -113,6 +113,27 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -240,19 +261,33 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['bank_account_name'] = isset($data['bank_account_name']) ? $data['bank_account_name'] : null;
+        
         $this->container['bank_name'] = isset($data['bank_name']) ? $data['bank_name'] : null;
+        
         $this->container['bank_country'] = isset($data['bank_country']) ? $data['bank_country'] : null;
+        
         $this->container['bank_address'] = isset($data['bank_address']) ? $data['bank_address'] : null;
+        
         $this->container['iban'] = isset($data['iban']) ? $data['iban'] : null;
+        
         $this->container['swift'] = isset($data['swift']) ? $data['swift'] : null;
+        
         $this->container['remittance_line_number'] = isset($data['remittance_line_number']) ? $data['remittance_line_number'] : null;
+        
         $this->container['agent_bank_name'] = isset($data['agent_bank_name']) ? $data['agent_bank_name'] : null;
+        
         $this->container['agent_bank_swift'] = isset($data['agent_bank_swift']) ? $data['agent_bank_swift'] : null;
+        
         $this->container['submit_time'] = isset($data['submit_time']) ? $data['submit_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['is_default'] = isset($data['is_default']) ? $data['is_default'] : null;
+        
     }
 
     /**
@@ -307,6 +342,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -331,6 +367,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setBankAccountName($bank_account_name)
     {
+        
         $this->container['bank_account_name'] = $bank_account_name;
 
         return $this;
@@ -355,6 +392,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setBankName($bank_name)
     {
+        
         $this->container['bank_name'] = $bank_name;
 
         return $this;
@@ -379,6 +417,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setBankCountry($bank_country)
     {
+        
         $this->container['bank_country'] = $bank_country;
 
         return $this;
@@ -403,6 +442,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setBankAddress($bank_address)
     {
+        
         $this->container['bank_address'] = $bank_address;
 
         return $this;
@@ -427,6 +467,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setIban($iban)
     {
+        
         $this->container['iban'] = $iban;
 
         return $this;
@@ -451,6 +492,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setSwift($swift)
     {
+        
         $this->container['swift'] = $swift;
 
         return $this;
@@ -475,6 +517,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setRemittanceLineNumber($remittance_line_number)
     {
+        
         $this->container['remittance_line_number'] = $remittance_line_number;
 
         return $this;
@@ -499,6 +542,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setAgentBankName($agent_bank_name)
     {
+        
         $this->container['agent_bank_name'] = $agent_bank_name;
 
         return $this;
@@ -523,6 +567,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setAgentBankSwift($agent_bank_swift)
     {
+        
         $this->container['agent_bank_swift'] = $agent_bank_swift;
 
         return $this;
@@ -547,6 +592,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setSubmitTime($submit_time)
     {
+        
         $this->container['submit_time'] = $submit_time;
 
         return $this;
@@ -571,6 +617,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;
@@ -595,6 +642,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -619,6 +667,7 @@ class OtcBankListItem implements ModelInterface, ArrayAccess
      */
     public function setIsDefault($is_default)
     {
+        
         $this->container['is_default'] = $is_default;
 
         return $this;

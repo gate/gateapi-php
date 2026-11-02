@@ -109,6 +109,27 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -230,17 +251,29 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['last_price'] = isset($data['last_price']) ? $data['last_price'] : null;
+        
         $this->container['open_24h'] = isset($data['open_24h']) ? $data['open_24h'] : null;
+        
         $this->container['low_24h'] = isset($data['low_24h']) ? $data['low_24h'] : null;
+        
         $this->container['high_24h'] = isset($data['high_24h']) ? $data['high_24h'] : null;
+        
         $this->container['volume_24h_base'] = isset($data['volume_24h_base']) ? $data['volume_24h_base'] : null;
+        
         $this->container['volume_24h_quote'] = isset($data['volume_24h_quote']) ? $data['volume_24h_quote'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['open_interest'] = isset($data['open_interest']) ? $data['open_interest'] : null;
+        
         $this->container['open_interest_quote'] = isset($data['open_interest_quote']) ? $data['open_interest_quote'] : null;
+        
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        
     }
 
     /**
@@ -292,6 +325,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -316,6 +350,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setLastPrice($last_price)
     {
+        
         $this->container['last_price'] = $last_price;
 
         return $this;
@@ -340,6 +375,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setOpen24h($open_24h)
     {
+        
         $this->container['open_24h'] = $open_24h;
 
         return $this;
@@ -364,6 +400,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setLow24h($low_24h)
     {
+        
         $this->container['low_24h'] = $low_24h;
 
         return $this;
@@ -388,6 +425,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setHigh24h($high_24h)
     {
+        
         $this->container['high_24h'] = $high_24h;
 
         return $this;
@@ -412,6 +450,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setVolume24hBase($volume_24h_base)
     {
+        
         $this->container['volume_24h_base'] = $volume_24h_base;
 
         return $this;
@@ -436,6 +475,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setVolume24hQuote($volume_24h_quote)
     {
+        
         $this->container['volume_24h_quote'] = $volume_24h_quote;
 
         return $this;
@@ -460,6 +500,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -484,6 +525,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -508,6 +550,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setOpenInterest($open_interest)
     {
+        
         $this->container['open_interest'] = $open_interest;
 
         return $this;
@@ -532,6 +575,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setOpenInterestQuote($open_interest_quote)
     {
+        
         $this->container['open_interest_quote'] = $open_interest_quote;
 
         return $this;
@@ -556,6 +600,7 @@ class InlineResponse2001 implements ModelInterface, ArrayAccess
      */
     public function setTimestamp($timestamp)
     {
+        
         $this->container['timestamp'] = $timestamp;
 
         return $this;

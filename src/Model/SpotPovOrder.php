@@ -118,6 +118,27 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -251,21 +272,37 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['participation_rate'] = isset($data['participation_rate']) ? $data['participation_rate'] : null;
+        
         $this->container['ttl'] = isset($data['ttl']) ? $data['ttl'] : null;
+        
         $this->container['limit_price'] = isset($data['limit_price']) ? $data['limit_price'] : null;
+        
         $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['terminated_as'] = isset($data['terminated_as']) ? $data['terminated_as'] : null;
+        
         $this->container['start_time_ms'] = isset($data['start_time_ms']) ? $data['start_time_ms'] : null;
+        
         $this->container['end_time_ms'] = isset($data['end_time_ms']) ? $data['end_time_ms'] : null;
+        
         $this->container['expire_time_ms'] = isset($data['expire_time_ms']) ? $data['expire_time_ms'] : null;
+        
         $this->container['create_time_ms'] = isset($data['create_time_ms']) ? $data['create_time_ms'] : null;
+        
         $this->container['update_time_ms'] = isset($data['update_time_ms']) ? $data['update_time_ms'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
     }
 
     /**
@@ -335,6 +372,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -359,6 +397,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -383,6 +422,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -407,6 +447,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -431,6 +472,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setParticipationRate($participation_rate)
     {
+        
         $this->container['participation_rate'] = $participation_rate;
 
         return $this;
@@ -455,6 +497,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setTtl($ttl)
     {
+        
         $this->container['ttl'] = $ttl;
 
         return $this;
@@ -479,6 +522,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setLimitPrice($limit_price)
     {
+        
         $this->container['limit_price'] = $limit_price;
 
         return $this;
@@ -503,6 +547,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setTriggerPrice($trigger_price)
     {
+        
         $this->container['trigger_price'] = $trigger_price;
 
         return $this;
@@ -527,6 +572,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -551,6 +597,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setTerminatedAs($terminated_as)
     {
+        
         $this->container['terminated_as'] = $terminated_as;
 
         return $this;
@@ -575,6 +622,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setStartTimeMs($start_time_ms)
     {
+        
         $this->container['start_time_ms'] = $start_time_ms;
 
         return $this;
@@ -599,6 +647,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setEndTimeMs($end_time_ms)
     {
+        
         $this->container['end_time_ms'] = $end_time_ms;
 
         return $this;
@@ -623,6 +672,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setExpireTimeMs($expire_time_ms)
     {
+        
         $this->container['expire_time_ms'] = $expire_time_ms;
 
         return $this;
@@ -647,6 +697,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTimeMs($create_time_ms)
     {
+        
         $this->container['create_time_ms'] = $create_time_ms;
 
         return $this;
@@ -671,6 +722,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setUpdateTimeMs($update_time_ms)
     {
+        
         $this->container['update_time_ms'] = $update_time_ms;
 
         return $this;
@@ -695,6 +747,7 @@ class SpotPovOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;

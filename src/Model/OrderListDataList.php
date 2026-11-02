@@ -112,6 +112,27 @@ class OrderListDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -281,18 +302,31 @@ class OrderListDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
         $this->container['state_desc'] = isset($data['state_desc']) ? $data['state_desc'] : null;
+        
         $this->container['finished'] = isset($data['finished']) ? $data['finished'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
+        
         $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
+        
         $this->container['time_setup'] = isset($data['time_setup']) ? $data['time_setup'] : null;
+        
     }
 
     /**
@@ -305,7 +339,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -313,7 +347,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getFinishedAllowableValues();
-        if (!is_null($this->container['finished']) && !in_array($this->container['finished'], $allowedValues, true)) {
+        if ((isset($this->container['finished'])) && !in_array($this->container['finished'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'finished', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -321,7 +355,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -362,6 +396,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -386,6 +421,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -410,6 +446,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbolDesc($symbol_desc)
     {
+        
         $this->container['symbol_desc'] = $symbol_desc;
 
         return $this;
@@ -443,6 +480,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -467,6 +505,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setState($state)
     {
+        
         $this->container['state'] = $state;
 
         return $this;
@@ -491,6 +530,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setStateDesc($state_desc)
     {
+        
         $this->container['state_desc'] = $state_desc;
 
         return $this;
@@ -524,6 +564,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['finished'] = $finished;
 
         return $this;
@@ -557,6 +598,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -581,6 +623,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setVolume($volume)
     {
+        
         $this->container['volume'] = $volume;
 
         return $this;
@@ -605,6 +648,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -629,6 +673,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setPriceTp($price_tp)
     {
+        
         $this->container['price_tp'] = $price_tp;
 
         return $this;
@@ -653,6 +698,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setPriceSl($price_sl)
     {
+        
         $this->container['price_sl'] = $price_sl;
 
         return $this;
@@ -677,6 +723,7 @@ class OrderListDataList implements ModelInterface, ArrayAccess
      */
     public function setTimeSetup($time_setup)
     {
+        
         $this->container['time_setup'] = $time_setup;
 
         return $this;

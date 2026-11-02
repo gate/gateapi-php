@@ -92,6 +92,27 @@ class AIHubFuturesComboAsset implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,8 +222,11 @@ class AIHubFuturesComboAsset implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
     }
 
     /**
@@ -221,7 +245,7 @@ class AIHubFuturesComboAsset implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'side' can't be null";
         }
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -265,6 +289,7 @@ class AIHubFuturesComboAsset implements ModelInterface, ArrayAccess
      */
     public function setMarket($market)
     {
+        
         $this->container['market'] = $market;
 
         return $this;
@@ -298,6 +323,7 @@ class AIHubFuturesComboAsset implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -322,6 +348,7 @@ class AIHubFuturesComboAsset implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;

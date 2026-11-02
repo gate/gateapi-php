@@ -104,6 +104,27 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -244,14 +265,23 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['begin_money_amount'] = isset($data['begin_money_amount']) ? $data['begin_money_amount'] : null;
+        
         $this->container['begin_money_currency'] = isset($data['begin_money_currency']) ? $data['begin_money_currency'] : null;
+        
         $this->container['asset_info'] = isset($data['asset_info']) ? $data['asset_info'] : null;
+        
         $this->container['period'] = isset($data['period']) ? $data['period'] : null;
+        
         $this->container['threshold'] = isset($data['threshold']) ? $data['threshold'] : null;
+        
         $this->container['close_flag'] = isset($data['close_flag']) ? $data['close_flag'] : self::CLOSE_FLAG_1;
+        
         $this->container['is_use_base'] = isset($data['is_use_base']) ? $data['is_use_base'] : null;
+        
         $this->container['stop_profit'] = isset($data['stop_profit']) ? $data['stop_profit'] : null;
+        
         $this->container['stop_loss'] = isset($data['stop_loss']) ? $data['stop_loss'] : null;
+        
     }
 
     /**
@@ -270,7 +300,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'begin_money_currency' can't be null";
         }
         $allowedValues = $this->getBeginMoneyCurrencyAllowableValues();
-        if (!is_null($this->container['begin_money_currency']) && !in_array($this->container['begin_money_currency'], $allowedValues, true)) {
+        if ((isset($this->container['begin_money_currency'])) && !in_array($this->container['begin_money_currency'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'begin_money_currency', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -281,7 +311,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'asset_info' can't be null";
         }
         $allowedValues = $this->getCloseFlagAllowableValues();
-        if (!is_null($this->container['close_flag']) && !in_array($this->container['close_flag'], $allowedValues, true)) {
+        if ((isset($this->container['close_flag'])) && !in_array($this->container['close_flag'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'close_flag', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -322,6 +352,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
      */
     public function setBeginMoneyAmount($begin_money_amount)
     {
+        
         $this->container['begin_money_amount'] = $begin_money_amount;
 
         return $this;
@@ -355,6 +386,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['begin_money_currency'] = $begin_money_currency;
 
         return $this;
@@ -379,6 +411,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
      */
     public function setAssetInfo($asset_info)
     {
+        
         $this->container['asset_info'] = $asset_info;
 
         return $this;
@@ -403,6 +436,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
      */
     public function setPeriod($period)
     {
+        
         $this->container['period'] = $period;
 
         return $this;
@@ -427,6 +461,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
      */
     public function setThreshold($threshold)
     {
+        
         $this->container['threshold'] = $threshold;
 
         return $this;
@@ -460,6 +495,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['close_flag'] = $close_flag;
 
         return $this;
@@ -484,6 +520,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
      */
     public function setIsUseBase($is_use_base)
     {
+        
         $this->container['is_use_base'] = $is_use_base;
 
         return $this;
@@ -508,6 +545,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
      */
     public function setStopProfit($stop_profit)
     {
+        
         $this->container['stop_profit'] = $stop_profit;
 
         return $this;
@@ -532,6 +570,7 @@ class AIHubRebalanceCreateParams implements ModelInterface, ArrayAccess
      */
     public function setStopLoss($stop_loss)
     {
+        
         $this->container['stop_loss'] = $stop_loss;
 
         return $this;

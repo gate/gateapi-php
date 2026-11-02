@@ -87,6 +87,27 @@ class P2pMerchantWorkHours implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -194,6 +215,7 @@ class P2pMerchantWorkHours implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['work_status'] = isset($data['work_status']) ? $data['work_status'] : null;
+        
     }
 
     /**
@@ -206,7 +228,7 @@ class P2pMerchantWorkHours implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getWorkStatusAllowableValues();
-        if (!is_null($this->container['work_status']) && !in_array($this->container['work_status'], $allowedValues, true)) {
+        if ((isset($this->container['work_status'])) && !in_array($this->container['work_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'work_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -256,6 +278,7 @@ class P2pMerchantWorkHours implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['work_status'] = $work_status;
 
         return $this;

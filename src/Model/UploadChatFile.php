@@ -90,6 +90,27 @@ class UploadChatFile implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,7 +221,9 @@ class UploadChatFile implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['image_content_type'] = isset($data['image_content_type']) ? $data['image_content_type'] : null;
+        
         $this->container['base64_img'] = isset($data['base64_img']) ? $data['base64_img'] : null;
+        
     }
 
     /**
@@ -216,7 +239,7 @@ class UploadChatFile implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'image_content_type' can't be null";
         }
         $allowedValues = $this->getImageContentTypeAllowableValues();
-        if (!is_null($this->container['image_content_type']) && !in_array($this->container['image_content_type'], $allowedValues, true)) {
+        if ((isset($this->container['image_content_type'])) && !in_array($this->container['image_content_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'image_content_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -269,6 +292,7 @@ class UploadChatFile implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['image_content_type'] = $image_content_type;
 
         return $this;
@@ -293,6 +317,7 @@ class UploadChatFile implements ModelInterface, ArrayAccess
      */
     public function setBase64Img($base64_img)
     {
+        
         $this->container['base64_img'] = $base64_img;
 
         return $this;

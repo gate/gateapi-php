@@ -117,6 +117,27 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -250,21 +271,37 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
+        
         $this->container['balances'] = isset($data['balances']) ? $data['balances'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['borrowed'] = isset($data['borrowed']) ? $data['borrowed'] : null;
+        
         $this->container['borrowed_net'] = isset($data['borrowed_net']) ? $data['borrowed_net'] : null;
+        
         $this->container['net'] = isset($data['net']) ? $data['net'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        
         $this->container['risk'] = isset($data['risk']) ? $data['risk'] : null;
+        
         $this->container['total_initial_margin'] = isset($data['total_initial_margin']) ? $data['total_initial_margin'] : null;
+        
         $this->container['total_margin_balance'] = isset($data['total_margin_balance']) ? $data['total_margin_balance'] : null;
+        
         $this->container['total_maintenance_margin'] = isset($data['total_maintenance_margin']) ? $data['total_maintenance_margin'] : null;
+        
         $this->container['total_initial_margin_rate'] = isset($data['total_initial_margin_rate']) ? $data['total_initial_margin_rate'] : null;
+        
         $this->container['total_maintenance_margin_rate'] = isset($data['total_maintenance_margin_rate']) ? $data['total_maintenance_margin_rate'] : null;
+        
         $this->container['total_available_margin'] = isset($data['total_available_margin']) ? $data['total_available_margin'] : null;
+        
     }
 
     /**
@@ -310,6 +347,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -334,6 +372,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setLocked($locked)
     {
+        
         $this->container['locked'] = $locked;
 
         return $this;
@@ -358,6 +397,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setBalances($balances)
     {
+        
         $this->container['balances'] = $balances;
 
         return $this;
@@ -382,6 +422,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -406,6 +447,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setBorrowed($borrowed)
     {
+        
         $this->container['borrowed'] = $borrowed;
 
         return $this;
@@ -430,6 +472,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setBorrowedNet($borrowed_net)
     {
+        
         $this->container['borrowed_net'] = $borrowed_net;
 
         return $this;
@@ -454,6 +497,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setNet($net)
     {
+        
         $this->container['net'] = $net;
 
         return $this;
@@ -478,6 +522,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -502,6 +547,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setInterest($interest)
     {
+        
         $this->container['interest'] = $interest;
 
         return $this;
@@ -526,6 +572,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setRisk($risk)
     {
+        
         $this->container['risk'] = $risk;
 
         return $this;
@@ -550,6 +597,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalInitialMargin($total_initial_margin)
     {
+        
         $this->container['total_initial_margin'] = $total_initial_margin;
 
         return $this;
@@ -574,6 +622,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalMarginBalance($total_margin_balance)
     {
+        
         $this->container['total_margin_balance'] = $total_margin_balance;
 
         return $this;
@@ -598,6 +647,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalMaintenanceMargin($total_maintenance_margin)
     {
+        
         $this->container['total_maintenance_margin'] = $total_maintenance_margin;
 
         return $this;
@@ -622,6 +672,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalInitialMarginRate($total_initial_margin_rate)
     {
+        
         $this->container['total_initial_margin_rate'] = $total_initial_margin_rate;
 
         return $this;
@@ -646,6 +697,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalMaintenanceMarginRate($total_maintenance_margin_rate)
     {
+        
         $this->container['total_maintenance_margin_rate'] = $total_maintenance_margin_rate;
 
         return $this;
@@ -670,6 +722,7 @@ class SubCrossMarginAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalAvailableMargin($total_available_margin)
     {
+        
         $this->container['total_available_margin'] = $total_available_margin;
 
         return $this;

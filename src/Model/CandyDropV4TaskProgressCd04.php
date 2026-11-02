@@ -95,6 +95,27 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['total_rewards'] = isset($data['total_rewards']) ? $data['total_rewards'] : null;
+        
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        
         $this->container['tasks'] = isset($data['tasks']) ? $data['tasks'] : null;
+        
     }
 
     /**
@@ -244,6 +270,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -268,6 +295,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
      */
     public function setTotalRewards($total_rewards)
     {
+        
         $this->container['total_rewards'] = $total_rewards;
 
         return $this;
@@ -292,6 +320,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
      */
     public function setStartTime($start_time)
     {
+        
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -316,6 +345,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
      */
     public function setEndTime($end_time)
     {
+        
         $this->container['end_time'] = $end_time;
 
         return $this;
@@ -340,6 +370,7 @@ class CandyDropV4TaskProgressCd04 implements ModelInterface, ArrayAccess
      */
     public function setTasks($tasks)
     {
+        
         $this->container['tasks'] = $tasks;
 
         return $this;

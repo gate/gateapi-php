@@ -101,6 +101,28 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            'trading_user_count' => true,
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -239,13 +261,28 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['rebate_amount'] = isset($data['rebate_amount']) ? $data['rebate_amount'] : null;
+        
         $this->container['trade_volume'] = isset($data['trade_volume']) ? $data['trade_volume'] : null;
+        
         $this->container['net_fee'] = isset($data['net_fee']) ? $data['net_fee'] : null;
+        
         $this->container['customer_count'] = isset($data['customer_count']) ? $data['customer_count'] : null;
+        
         $this->container['trading_user_count'] = isset($data['trading_user_count']) ? $data['trading_user_count'] : null;
+        
+        // Explicit null overrides a default; an absent null has no presence.
+        if ($data !== null && array_key_exists('trading_user_count', $data)) {
+            $this->container['trading_user_count'] = $data['trading_user_count'];
+        } elseif ($this->container['trading_user_count'] === null) {
+            unset($this->container['trading_user_count']);
+        }
+        
         $this->container['time_range_desc'] = isset($data['time_range_desc']) ? $data['time_range_desc'] : null;
+        
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
+        
         $this->container['business_type_desc'] = isset($data['business_type_desc']) ? $data['business_type_desc'] : null;
+        
     }
 
     /**
@@ -260,50 +297,67 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
         if ($this->container['rebate_amount'] === null) {
             $invalidProperties[] = "'rebate_amount' can't be null";
         }
+        
         if (!preg_match("/^\\d+(\\.\\d{1,6})?$/", $this->container['rebate_amount'])) {
             $invalidProperties[] = "invalid value for 'rebate_amount', must be conform to the pattern /^\\d+(\\.\\d{1,6})?$/.";
         }
 
+        
         if ($this->container['trade_volume'] === null) {
             $invalidProperties[] = "'trade_volume' can't be null";
         }
+        
         if (!preg_match("/^\\d+(\\.\\d{1,6})?$/", $this->container['trade_volume'])) {
             $invalidProperties[] = "invalid value for 'trade_volume', must be conform to the pattern /^\\d+(\\.\\d{1,6})?$/.";
         }
 
+        
         if ($this->container['net_fee'] === null) {
             $invalidProperties[] = "'net_fee' can't be null";
         }
+        
         if (!preg_match("/^\\d+(\\.\\d{1,6})?$/", $this->container['net_fee'])) {
             $invalidProperties[] = "invalid value for 'net_fee', must be conform to the pattern /^\\d+(\\.\\d{1,6})?$/.";
         }
 
+        
         if ($this->container['customer_count'] === null) {
             $invalidProperties[] = "'customer_count' can't be null";
         }
+        
         if (($this->container['customer_count'] < 0)) {
             $invalidProperties[] = "invalid value for 'customer_count', must be bigger than or equal to 0.";
         }
 
-        if ($this->container['trading_user_count'] === null) {
-            $invalidProperties[] = "'trading_user_count' can't be null";
+        
+        if (!array_key_exists('trading_user_count', $this->container)) {
+            $invalidProperties[] = "'trading_user_count' must be present";
         }
+        
+        // Typed constraints do not apply to an allowed null or an absent member.
+        if (isset($this->container['trading_user_count'])) {
+        
         if (!preg_match("/^\\d+$/", $this->container['trading_user_count'])) {
             $invalidProperties[] = "invalid value for 'trading_user_count', must be conform to the pattern /^\\d+$/.";
         }
 
+        
+        }
+        
         if ($this->container['time_range_desc'] === null) {
             $invalidProperties[] = "'time_range_desc' can't be null";
         }
+        
         if (!preg_match("/^\\d{4}-\\d{2}-\\d{2} ~ \\d{4}-\\d{2}-\\d{2}$/", $this->container['time_range_desc'])) {
             $invalidProperties[] = "invalid value for 'time_range_desc', must be conform to the pattern /^\\d{4}-\\d{2}-\\d{2} ~ \\d{4}-\\d{2}-\\d{2}$/.";
         }
 
+        
         if ($this->container['business_type'] === null) {
             $invalidProperties[] = "'business_type' can't be null";
         }
         $allowedValues = $this->getBusinessTypeAllowableValues();
-        if (!is_null($this->container['business_type']) && !in_array($this->container['business_type'], $allowedValues, true)) {
+        if ((isset($this->container['business_type'])) && !in_array($this->container['business_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'business_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -347,6 +401,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
      */
     public function setRebateAmount($rebate_amount)
     {
+        
 
         if ((!preg_match("/^\\d+(\\.\\d{1,6})?$/", $rebate_amount))) {
             throw new \InvalidArgumentException("invalid value for $rebate_amount when calling PartnerDataAggregated., must conform to the pattern /^\\d+(\\.\\d{1,6})?$/.");
@@ -376,6 +431,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
      */
     public function setTradeVolume($trade_volume)
     {
+        
 
         if ((!preg_match("/^\\d+(\\.\\d{1,6})?$/", $trade_volume))) {
             throw new \InvalidArgumentException("invalid value for $trade_volume when calling PartnerDataAggregated., must conform to the pattern /^\\d+(\\.\\d{1,6})?$/.");
@@ -405,6 +461,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
      */
     public function setNetFee($net_fee)
     {
+        
 
         if ((!preg_match("/^\\d+(\\.\\d{1,6})?$/", $net_fee))) {
             throw new \InvalidArgumentException("invalid value for $net_fee when calling PartnerDataAggregated., must conform to the pattern /^\\d+(\\.\\d{1,6})?$/.");
@@ -434,6 +491,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
      */
     public function setCustomerCount($customer_count)
     {
+        
 
         if (($customer_count < 0)) {
             throw new \InvalidArgumentException('invalid value for $customer_count when calling PartnerDataAggregated., must be bigger than or equal to 0.');
@@ -447,22 +505,29 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
     /**
      * Gets trading_user_count
      *
-     * @return string
+     * @return string|null
      */
     public function getTradingUserCount()
     {
-        return $this->container['trading_user_count'];
+        return $this->container['trading_user_count'] ?? null;
     }
 
     /**
      * Sets trading_user_count
      *
-     * @param string $trading_user_count Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
+     * @param string|null $trading_user_count Transaction participant count (string format, consistent with online JSON serialization) only returns a specific value when business_type=0(all), and returns nullfor other business types.
      *
      * @return $this
      */
     public function setTradingUserCount($trading_user_count)
     {
+        
+        // Keep enum membership above; only type-specific constraints skip null.
+        if ($trading_user_count === null) {
+            $this->container['trading_user_count'] = null;
+            return $this;
+        }
+        
 
         if ((!preg_match("/^\\d+$/", $trading_user_count))) {
             throw new \InvalidArgumentException("invalid value for $trading_user_count when calling PartnerDataAggregated., must conform to the pattern /^\\d+$/.");
@@ -492,6 +557,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
      */
     public function setTimeRangeDesc($time_range_desc)
     {
+        
 
         if ((!preg_match("/^\\d{4}-\\d{2}-\\d{2} ~ \\d{4}-\\d{2}-\\d{2}$/", $time_range_desc))) {
             throw new \InvalidArgumentException("invalid value for $time_range_desc when calling PartnerDataAggregated., must conform to the pattern /^\\d{4}-\\d{2}-\\d{2} ~ \\d{4}-\\d{2}-\\d{2}$/.");
@@ -530,6 +596,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['business_type'] = $business_type;
 
         return $this;
@@ -554,6 +621,7 @@ class PartnerDataAggregated implements ModelInterface, ArrayAccess
      */
     public function setBusinessTypeDesc($business_type_desc)
     {
+        
         $this->container['business_type_desc'] = $business_type_desc;
 
         return $this;

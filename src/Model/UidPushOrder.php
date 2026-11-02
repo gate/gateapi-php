@@ -103,6 +103,27 @@ class UidPushOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -215,14 +236,23 @@ class UidPushOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['push_uid'] = isset($data['push_uid']) ? $data['push_uid'] : null;
+        
         $this->container['receive_uid'] = isset($data['receive_uid']) ? $data['receive_uid'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
         $this->container['transaction_type'] = isset($data['transaction_type']) ? $data['transaction_type'] : null;
+        
     }
 
     /**
@@ -268,6 +298,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -292,6 +323,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setPushUid($push_uid)
     {
+        
         $this->container['push_uid'] = $push_uid;
 
         return $this;
@@ -316,6 +348,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setReceiveUid($receive_uid)
     {
+        
         $this->container['receive_uid'] = $receive_uid;
 
         return $this;
@@ -340,6 +373,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -364,6 +398,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -388,6 +423,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -412,6 +448,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -436,6 +473,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;
@@ -460,6 +498,7 @@ class UidPushOrder implements ModelInterface, ArrayAccess
      */
     public function setTransactionType($transaction_type)
     {
+        
         $this->container['transaction_type'] = $transaction_type;
 
         return $this;

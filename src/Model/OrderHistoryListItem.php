@@ -125,6 +125,27 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -394,25 +415,45 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['exchange'] = isset($data['exchange']) ? $data['exchange'] : null;
+        
         $this->container['quote_currency'] = isset($data['quote_currency']) ? $data['quote_currency'] : null;
+        
         $this->container['fx_rate'] = isset($data['fx_rate']) ? $data['fx_rate'] : null;
+        
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['status_desc'] = isset($data['status_desc']) ? $data['status_desc'] : null;
+        
         $this->container['status_detail'] = isset($data['status_detail']) ? $data['status_detail'] : null;
+        
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['time_in_force'] = isset($data['time_in_force']) ? $data['time_in_force'] : null;
+        
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        
         $this->container['fill_volume'] = isset($data['fill_volume']) ? $data['fill_volume'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['avg_fill_price'] = isset($data['avg_fill_price']) ? $data['avg_fill_price'] : null;
+        
         $this->container['commission'] = isset($data['commission']) ? $data['commission'] : null;
+        
         $this->container['time_setup'] = isset($data['time_setup']) ? $data['time_setup'] : null;
+        
         $this->container['time_done'] = isset($data['time_done']) ? $data['time_done'] : null;
+        
     }
 
     /**
@@ -425,7 +466,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getExchangeAllowableValues();
-        if (!is_null($this->container['exchange']) && !in_array($this->container['exchange'], $allowedValues, true)) {
+        if ((isset($this->container['exchange'])) && !in_array($this->container['exchange'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'exchange', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -433,7 +474,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -441,7 +482,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -449,7 +490,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getFinishAsAllowableValues();
-        if (!is_null($this->container['finish_as']) && !in_array($this->container['finish_as'], $allowedValues, true)) {
+        if ((isset($this->container['finish_as'])) && !in_array($this->container['finish_as'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'finish_as', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -457,7 +498,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -465,7 +506,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getTimeInForceAllowableValues();
-        if (!is_null($this->container['time_in_force']) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
+        if ((isset($this->container['time_in_force'])) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'time_in_force', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -506,6 +547,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -530,6 +572,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -563,6 +606,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['exchange'] = $exchange;
 
         return $this;
@@ -587,6 +631,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setQuoteCurrency($quote_currency)
     {
+        
         $this->container['quote_currency'] = $quote_currency;
 
         return $this;
@@ -611,6 +656,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setFxRate($fx_rate)
     {
+        
         $this->container['fx_rate'] = $fx_rate;
 
         return $this;
@@ -635,6 +681,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setSymbolDesc($symbol_desc)
     {
+        
         $this->container['symbol_desc'] = $symbol_desc;
 
         return $this;
@@ -668,6 +715,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -701,6 +749,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -725,6 +774,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setStatusDesc($status_desc)
     {
+        
         $this->container['status_desc'] = $status_desc;
 
         return $this;
@@ -749,6 +799,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setStatusDetail($status_detail)
     {
+        
         $this->container['status_detail'] = $status_detail;
 
         return $this;
@@ -782,6 +833,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['finish_as'] = $finish_as;
 
         return $this;
@@ -815,6 +867,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -848,6 +901,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['time_in_force'] = $time_in_force;
 
         return $this;
@@ -872,6 +926,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setVolume($volume)
     {
+        
         $this->container['volume'] = $volume;
 
         return $this;
@@ -896,6 +951,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setFillVolume($fill_volume)
     {
+        
         $this->container['fill_volume'] = $fill_volume;
 
         return $this;
@@ -920,6 +976,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -944,6 +1001,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setAvgFillPrice($avg_fill_price)
     {
+        
         $this->container['avg_fill_price'] = $avg_fill_price;
 
         return $this;
@@ -968,6 +1026,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setCommission($commission)
     {
+        
         $this->container['commission'] = $commission;
 
         return $this;
@@ -992,6 +1051,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setTimeSetup($time_setup)
     {
+        
         $this->container['time_setup'] = $time_setup;
 
         return $this;
@@ -1016,6 +1076,7 @@ class OrderHistoryListItem implements ModelInterface, ArrayAccess
      */
     public function setTimeDone($time_done)
     {
+        
         $this->container['time_done'] = $time_done;
 
         return $this;

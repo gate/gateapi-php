@@ -98,6 +98,27 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['hodler_id'] = isset($data['hodler_id']) ? $data['hodler_id'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['user_gt_avg_amount'] = isset($data['user_gt_avg_amount']) ? $data['user_gt_avg_amount'] : null;
+        
         $this->container['receive_amount_base'] = isset($data['receive_amount_base']) ? $data['receive_amount_base'] : null;
+        
         $this->container['receive_amount_ext'] = isset($data['receive_amount_ext']) ? $data['receive_amount_ext'] : null;
+        
         $this->container['close_timest'] = isset($data['close_timest']) ? $data['close_timest'] : null;
+        
     }
 
     /**
@@ -260,6 +287,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
      */
     public function setHodlerId($hodler_id)
     {
+        
         $this->container['hodler_id'] = $hodler_id;
 
         return $this;
@@ -284,6 +312,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -308,6 +337,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
      */
     public function setUserGtAvgAmount($user_gt_avg_amount)
     {
+        
         $this->container['user_gt_avg_amount'] = $user_gt_avg_amount;
 
         return $this;
@@ -332,6 +362,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
      */
     public function setReceiveAmountBase($receive_amount_base)
     {
+        
         $this->container['receive_amount_base'] = $receive_amount_base;
 
         return $this;
@@ -356,6 +387,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
      */
     public function setReceiveAmountExt($receive_amount_ext)
     {
+        
         $this->container['receive_amount_ext'] = $receive_amount_ext;
 
         return $this;
@@ -380,6 +412,7 @@ class HodlerAirdropV4UserOrderRecord implements ModelInterface, ArrayAccess
      */
     public function setCloseTimest($close_timest)
     {
+        
         $this->container['close_timest'] = $close_timest;
 
         return $this;

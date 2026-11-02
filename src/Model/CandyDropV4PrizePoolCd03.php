@@ -93,6 +93,27 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['prize_pool_type'] = isset($data['prize_pool_type']) ? $data['prize_pool_type'] : null;
+        
         $this->container['prize_all'] = isset($data['prize_all']) ? $data['prize_all'] : null;
+        
         $this->container['prize_limit'] = isset($data['prize_limit']) ? $data['prize_limit'] : null;
+        
         $this->container['tasks'] = isset($data['tasks']) ? $data['tasks'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
      */
     public function setPrizePoolType($prize_pool_type)
     {
+        
         $this->container['prize_pool_type'] = $prize_pool_type;
 
         return $this;
@@ -262,6 +288,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
      */
     public function setPrizeAll($prize_all)
     {
+        
         $this->container['prize_all'] = $prize_all;
 
         return $this;
@@ -286,6 +313,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
      */
     public function setPrizeLimit($prize_limit)
     {
+        
         $this->container['prize_limit'] = $prize_limit;
 
         return $this;
@@ -310,6 +338,7 @@ class CandyDropV4PrizePoolCd03 implements ModelInterface, ArrayAccess
      */
     public function setTasks($tasks)
     {
+        
         $this->container['tasks'] = $tasks;
 
         return $this;

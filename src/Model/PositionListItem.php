@@ -147,6 +147,27 @@ class PositionListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -361,36 +382,67 @@ class PositionListItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['exchange'] = isset($data['exchange']) ? $data['exchange'] : null;
+        
         $this->container['quote_currency'] = isset($data['quote_currency']) ? $data['quote_currency'] : null;
+        
         $this->container['quote_currency_precision'] = isset($data['quote_currency_precision']) ? $data['quote_currency_precision'] : null;
+        
         $this->container['fx_rate'] = isset($data['fx_rate']) ? $data['fx_rate'] : null;
+        
         $this->container['trade_status'] = isset($data['trade_status']) ? $data['trade_status'] : null;
+        
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
+        
         $this->container['position_pnl'] = isset($data['position_pnl']) ? $data['position_pnl'] : null;
+        
         $this->container['today_pnl'] = isset($data['today_pnl']) ? $data['today_pnl'] : null;
+        
         $this->container['pnl_rate'] = isset($data['pnl_rate']) ? $data['pnl_rate'] : null;
+        
         $this->container['today_sell_amount'] = isset($data['today_sell_amount']) ? $data['today_sell_amount'] : null;
+        
         $this->container['today_buy_amount'] = isset($data['today_buy_amount']) ? $data['today_buy_amount'] : null;
+        
         $this->container['today_sell_volume'] = isset($data['today_sell_volume']) ? $data['today_sell_volume'] : null;
+        
         $this->container['today_buy_volume'] = isset($data['today_buy_volume']) ? $data['today_buy_volume'] : null;
+        
         $this->container['yesterday_volume'] = isset($data['yesterday_volume']) ? $data['yesterday_volume'] : null;
+        
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['transfer_out_pending_qty'] = isset($data['transfer_out_pending_qty']) ? $data['transfer_out_pending_qty'] : null;
+        
         $this->container['avg_cost_price'] = isset($data['avg_cost_price']) ? $data['avg_cost_price'] : null;
+        
         $this->container['diluted_cost_price'] = isset($data['diluted_cost_price']) ? $data['diluted_cost_price'] : null;
+        
         $this->container['last_price'] = isset($data['last_price']) ? $data['last_price'] : null;
+        
         $this->container['extended_last_price'] = isset($data['extended_last_price']) ? $data['extended_last_price'] : null;
+        
         $this->container['max_order_volume'] = isset($data['max_order_volume']) ? $data['max_order_volume'] : null;
+        
         $this->container['step_order_volume'] = isset($data['step_order_volume']) ? $data['step_order_volume'] : null;
+        
         $this->container['min_order_volume'] = isset($data['min_order_volume']) ? $data['min_order_volume'] : null;
+        
         $this->container['price_precision'] = isset($data['price_precision']) ? $data['price_precision'] : null;
+        
         $this->container['price_protection'] = isset($data['price_protection']) ? $data['price_protection'] : null;
+        
         $this->container['sell_price_protection'] = isset($data['sell_price_protection']) ? $data['sell_price_protection'] : null;
+        
         $this->container['buy_price_protection'] = isset($data['buy_price_protection']) ? $data['buy_price_protection'] : null;
+        
         $this->container['commission_rate'] = isset($data['commission_rate']) ? $data['commission_rate'] : null;
+        
         $this->container['slippage_rate'] = isset($data['slippage_rate']) ? $data['slippage_rate'] : null;
+        
     }
 
     /**
@@ -403,7 +455,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getExchangeAllowableValues();
-        if (!is_null($this->container['exchange']) && !in_array($this->container['exchange'], $allowedValues, true)) {
+        if ((isset($this->container['exchange'])) && !in_array($this->container['exchange'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'exchange', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -411,7 +463,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getTradeStatusAllowableValues();
-        if (!is_null($this->container['trade_status']) && !in_array($this->container['trade_status'], $allowedValues, true)) {
+        if ((isset($this->container['trade_status'])) && !in_array($this->container['trade_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'trade_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -452,6 +504,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -485,6 +538,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['exchange'] = $exchange;
 
         return $this;
@@ -509,6 +563,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setQuoteCurrency($quote_currency)
     {
+        
         $this->container['quote_currency'] = $quote_currency;
 
         return $this;
@@ -533,6 +588,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setQuoteCurrencyPrecision($quote_currency_precision)
     {
+        
         $this->container['quote_currency_precision'] = $quote_currency_precision;
 
         return $this;
@@ -557,6 +613,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setFxRate($fx_rate)
     {
+        
         $this->container['fx_rate'] = $fx_rate;
 
         return $this;
@@ -590,6 +647,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['trade_status'] = $trade_status;
 
         return $this;
@@ -614,6 +672,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setSymbolDesc($symbol_desc)
     {
+        
         $this->container['symbol_desc'] = $symbol_desc;
 
         return $this;
@@ -638,6 +697,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setPositionPnl($position_pnl)
     {
+        
         $this->container['position_pnl'] = $position_pnl;
 
         return $this;
@@ -662,6 +722,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setTodayPnl($today_pnl)
     {
+        
         $this->container['today_pnl'] = $today_pnl;
 
         return $this;
@@ -686,6 +747,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setPnlRate($pnl_rate)
     {
+        
         $this->container['pnl_rate'] = $pnl_rate;
 
         return $this;
@@ -710,6 +772,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setTodaySellAmount($today_sell_amount)
     {
+        
         $this->container['today_sell_amount'] = $today_sell_amount;
 
         return $this;
@@ -734,6 +797,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setTodayBuyAmount($today_buy_amount)
     {
+        
         $this->container['today_buy_amount'] = $today_buy_amount;
 
         return $this;
@@ -758,6 +822,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setTodaySellVolume($today_sell_volume)
     {
+        
         $this->container['today_sell_volume'] = $today_sell_volume;
 
         return $this;
@@ -782,6 +847,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setTodayBuyVolume($today_buy_volume)
     {
+        
         $this->container['today_buy_volume'] = $today_buy_volume;
 
         return $this;
@@ -806,6 +872,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setYesterdayVolume($yesterday_volume)
     {
+        
         $this->container['yesterday_volume'] = $yesterday_volume;
 
         return $this;
@@ -830,6 +897,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setVolume($volume)
     {
+        
         $this->container['volume'] = $volume;
 
         return $this;
@@ -854,6 +922,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -878,6 +947,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setTransferOutPendingQty($transfer_out_pending_qty)
     {
+        
         $this->container['transfer_out_pending_qty'] = $transfer_out_pending_qty;
 
         return $this;
@@ -902,6 +972,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setAvgCostPrice($avg_cost_price)
     {
+        
         $this->container['avg_cost_price'] = $avg_cost_price;
 
         return $this;
@@ -926,6 +997,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setDilutedCostPrice($diluted_cost_price)
     {
+        
         $this->container['diluted_cost_price'] = $diluted_cost_price;
 
         return $this;
@@ -950,6 +1022,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setLastPrice($last_price)
     {
+        
         $this->container['last_price'] = $last_price;
 
         return $this;
@@ -974,6 +1047,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setExtendedLastPrice($extended_last_price)
     {
+        
         $this->container['extended_last_price'] = $extended_last_price;
 
         return $this;
@@ -998,6 +1072,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setMaxOrderVolume($max_order_volume)
     {
+        
         $this->container['max_order_volume'] = $max_order_volume;
 
         return $this;
@@ -1022,6 +1097,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setStepOrderVolume($step_order_volume)
     {
+        
         $this->container['step_order_volume'] = $step_order_volume;
 
         return $this;
@@ -1046,6 +1122,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setMinOrderVolume($min_order_volume)
     {
+        
         $this->container['min_order_volume'] = $min_order_volume;
 
         return $this;
@@ -1070,6 +1147,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setPricePrecision($price_precision)
     {
+        
         $this->container['price_precision'] = $price_precision;
 
         return $this;
@@ -1094,6 +1172,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setPriceProtection($price_protection)
     {
+        
         $this->container['price_protection'] = $price_protection;
 
         return $this;
@@ -1118,6 +1197,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setSellPriceProtection($sell_price_protection)
     {
+        
         $this->container['sell_price_protection'] = $sell_price_protection;
 
         return $this;
@@ -1142,6 +1222,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setBuyPriceProtection($buy_price_protection)
     {
+        
         $this->container['buy_price_protection'] = $buy_price_protection;
 
         return $this;
@@ -1166,6 +1247,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setCommissionRate($commission_rate)
     {
+        
         $this->container['commission_rate'] = $commission_rate;
 
         return $this;
@@ -1190,6 +1272,7 @@ class PositionListItem implements ModelInterface, ArrayAccess
      */
     public function setSlippageRate($slippage_rate)
     {
+        
         $this->container['slippage_rate'] = $slippage_rate;
 
         return $this;

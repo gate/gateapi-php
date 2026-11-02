@@ -110,6 +110,27 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -231,17 +252,29 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['title_query'] = isset($data['title_query']) ? $data['title_query'] : null;
+        
         $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        
         $this->container['timer'] = isset($data['timer']) ? $data['timer'] : null;
+        
         $this->container['cate_name'] = isset($data['cate_name']) ? $data['cate_name'] : null;
+        
         $this->container['cate_level'] = isset($data['cate_level']) ? $data['cate_level'] : null;
+        
         $this->container['sub_website_id'] = isset($data['sub_website_id']) ? $data['sub_website_id'] : '0';
+        
         $this->container['pinned'] = isset($data['pinned']) ? $data['pinned'] : 1;
+        
         $this->container['update_after'] = isset($data['update_after']) ? $data['update_after'] : null;
+        
         $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
+        
         $this->container['filter_empty_content'] = isset($data['filter_empty_content']) ? $data['filter_empty_content'] : 1;
+        
     }
 
     /**
@@ -287,6 +320,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setTitleQuery($title_query)
     {
+        
         $this->container['title_query'] = $title_query;
 
         return $this;
@@ -311,6 +345,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setPage($page)
     {
+        
         $this->container['page'] = $page;
 
         return $this;
@@ -335,6 +370,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -359,6 +395,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setTags($tags)
     {
+        
         $this->container['tags'] = $tags;
 
         return $this;
@@ -383,6 +420,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setTimer($timer)
     {
+        
         $this->container['timer'] = $timer;
 
         return $this;
@@ -407,6 +445,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setCateName($cate_name)
     {
+        
         $this->container['cate_name'] = $cate_name;
 
         return $this;
@@ -431,6 +470,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setCateLevel($cate_level)
     {
+        
         $this->container['cate_level'] = $cate_level;
 
         return $this;
@@ -455,6 +495,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setSubWebsiteId($sub_website_id)
     {
+        
         $this->container['sub_website_id'] = $sub_website_id;
 
         return $this;
@@ -479,6 +520,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setPinned($pinned)
     {
+        
         $this->container['pinned'] = $pinned;
 
         return $this;
@@ -503,6 +545,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setUpdateAfter($update_after)
     {
+        
         $this->container['update_after'] = $update_after;
 
         return $this;
@@ -527,6 +570,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setLang($lang)
     {
+        
         $this->container['lang'] = $lang;
 
         return $this;
@@ -551,6 +595,7 @@ class AnnouncementArticleListRequest implements ModelInterface, ArrayAccess
      */
     public function setFilterEmptyContent($filter_empty_content)
     {
+        
         $this->container['filter_empty_content'] = $filter_empty_content;
 
         return $this;

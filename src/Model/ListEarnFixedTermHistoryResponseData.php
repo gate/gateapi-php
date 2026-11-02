@@ -89,6 +89,27 @@ class ListEarnFixedTermHistoryResponseData implements ModelInterface, ArrayAcces
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -180,7 +201,9 @@ class ListEarnFixedTermHistoryResponseData implements ModelInterface, ArrayAcces
     public function __construct(array $data = null)
     {
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
     }
 
     /**
@@ -226,6 +249,7 @@ class ListEarnFixedTermHistoryResponseData implements ModelInterface, ArrayAcces
      */
     public function setList($list)
     {
+        
         $this->container['list'] = $list;
 
         return $this;
@@ -250,6 +274,7 @@ class ListEarnFixedTermHistoryResponseData implements ModelInterface, ArrayAcces
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;

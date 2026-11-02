@@ -88,6 +88,27 @@ class HodlerAirdropV4OrderRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -176,6 +197,7 @@ class HodlerAirdropV4OrderRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['hodler_id'] = isset($data['hodler_id']) ? $data['hodler_id'] : null;
+        
     }
 
     /**
@@ -190,10 +212,12 @@ class HodlerAirdropV4OrderRequest implements ModelInterface, ArrayAccess
         if ($this->container['hodler_id'] === null) {
             $invalidProperties[] = "'hodler_id' can't be null";
         }
+        
         if (($this->container['hodler_id'] < 1)) {
             $invalidProperties[] = "invalid value for 'hodler_id', must be bigger than or equal to 1.";
         }
 
+        
         return $invalidProperties;
     }
 
@@ -228,6 +252,7 @@ class HodlerAirdropV4OrderRequest implements ModelInterface, ArrayAccess
      */
     public function setHodlerId($hodler_id)
     {
+        
 
         if (($hodler_id < 1)) {
             throw new \InvalidArgumentException('invalid value for $hodler_id when calling HodlerAirdropV4OrderRequest., must be bigger than or equal to 1.');

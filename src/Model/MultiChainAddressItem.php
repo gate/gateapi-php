@@ -97,6 +97,27 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        
         $this->container['payment_id'] = isset($data['payment_id']) ? $data['payment_id'] : null;
+        
         $this->container['payment_name'] = isset($data['payment_name']) ? $data['payment_name'] : null;
+        
         $this->container['obtain_failed'] = isset($data['obtain_failed']) ? $data['obtain_failed'] : null;
+        
         $this->container['min_confirms'] = isset($data['min_confirms']) ? $data['min_confirms'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;
@@ -274,6 +302,7 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
      */
     public function setAddress($address)
     {
+        
         $this->container['address'] = $address;
 
         return $this;
@@ -292,12 +321,13 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
     /**
      * Sets payment_id
      *
-     * @param string|null $payment_id Notes that some currencies required(e.g., Tag, Memo) when depositing
+     * @param string|null $payment_id A memo required when depositing certain currencies, such as a Tag or Memo.
      *
      * @return $this
      */
     public function setPaymentId($payment_id)
     {
+        
         $this->container['payment_id'] = $payment_id;
 
         return $this;
@@ -322,6 +352,7 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
      */
     public function setPaymentName($payment_name)
     {
+        
         $this->container['payment_name'] = $payment_name;
 
         return $this;
@@ -340,12 +371,13 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
     /**
      * Sets obtain_failed
      *
-     * @param int|null $obtain_failed The obtain failed status- 0: address successfully obtained- 1: failed to obtain address
+     * @param int|null $obtain_failed Whether address retrieval failed: 0 means success; 1 means failure and retrieval may need to be retried.
      *
      * @return $this
      */
     public function setObtainFailed($obtain_failed)
     {
+        
         $this->container['obtain_failed'] = $obtain_failed;
 
         return $this;
@@ -370,6 +402,7 @@ class MultiChainAddressItem implements ModelInterface, ArrayAccess
      */
     public function setMinConfirms($min_confirms)
     {
+        
         $this->container['min_confirms'] = $min_confirms;
 
         return $this;

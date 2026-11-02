@@ -105,6 +105,27 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        
         $this->container['block_number'] = isset($data['block_number']) ? $data['block_number'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
     }
 
     /**
@@ -283,6 +314,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -307,6 +339,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -331,6 +364,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setTimestamp($timestamp)
     {
+        
         $this->container['timestamp'] = $timestamp;
 
         return $this;
@@ -355,6 +389,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -379,6 +414,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -403,6 +439,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setAddress($address)
     {
+        
         $this->container['address'] = $address;
 
         return $this;
@@ -427,6 +464,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setMemo($memo)
     {
+        
         $this->container['memo'] = $memo;
 
         return $this;
@@ -451,6 +489,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setBlockNumber($block_number)
     {
+        
         $this->container['block_number'] = $block_number;
 
         return $this;
@@ -475,6 +514,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -499,6 +539,7 @@ class WithdrawalsDel implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;

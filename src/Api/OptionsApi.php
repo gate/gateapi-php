@@ -8355,7 +8355,7 @@ class OptionsApi
     /**
      * Operation resetOptionsMMP
      *
-     * MMP Reset
+     * Reset MMP for the specified underlying.
      *
      * @param  \GateApi\Model\OptionsMMPReset $options_mmp_reset options_mmp_reset (required)
      *
@@ -8372,7 +8372,7 @@ class OptionsApi
     /**
      * Operation resetOptionsMMPWithHttpInfo
      *
-     * MMP Reset
+     * Reset MMP for the specified underlying.
      *
      * @param  \GateApi\Model\OptionsMMPReset $options_mmp_reset (required)
      *
@@ -8429,7 +8429,7 @@ class OptionsApi
     /**
      * Operation resetOptionsMMPAsync
      *
-     * MMP Reset
+     * Reset MMP for the specified underlying.
      *
      * @param  \GateApi\Model\OptionsMMPReset $options_mmp_reset (required)
      *
@@ -8449,7 +8449,7 @@ class OptionsApi
     /**
      * Operation resetOptionsMMPAsyncWithHttpInfo
      *
-     * MMP Reset
+     * Reset MMP for the specified underlying.
      *
      * @param  \GateApi\Model\OptionsMMPReset $options_mmp_reset (required)
      *

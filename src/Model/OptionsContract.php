@@ -136,6 +136,27 @@ class OptionsContract implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -296,30 +317,55 @@ class OptionsContract implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['tag'] = isset($data['tag']) ? $data['tag'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['expiration_time'] = isset($data['expiration_time']) ? $data['expiration_time'] : null;
+        
         $this->container['is_call'] = isset($data['is_call']) ? $data['is_call'] : null;
+        
         $this->container['multiplier'] = isset($data['multiplier']) ? $data['multiplier'] : null;
+        
         $this->container['underlying'] = isset($data['underlying']) ? $data['underlying'] : null;
+        
         $this->container['underlying_price'] = isset($data['underlying_price']) ? $data['underlying_price'] : null;
+        
         $this->container['last_price'] = isset($data['last_price']) ? $data['last_price'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['maker_fee_rate'] = isset($data['maker_fee_rate']) ? $data['maker_fee_rate'] : null;
+        
         $this->container['taker_fee_rate'] = isset($data['taker_fee_rate']) ? $data['taker_fee_rate'] : null;
+        
         $this->container['order_price_round'] = isset($data['order_price_round']) ? $data['order_price_round'] : null;
+        
         $this->container['mark_price_round'] = isset($data['mark_price_round']) ? $data['mark_price_round'] : null;
+        
         $this->container['order_size_min'] = isset($data['order_size_min']) ? $data['order_size_min'] : null;
+        
         $this->container['order_size_max'] = isset($data['order_size_max']) ? $data['order_size_max'] : null;
+        
         $this->container['order_price_deviate'] = isset($data['order_price_deviate']) ? $data['order_price_deviate'] : null;
+        
         $this->container['ref_discount_rate'] = isset($data['ref_discount_rate']) ? $data['ref_discount_rate'] : null;
+        
         $this->container['ref_rebate_rate'] = isset($data['ref_rebate_rate']) ? $data['ref_rebate_rate'] : null;
+        
         $this->container['orderbook_id'] = isset($data['orderbook_id']) ? $data['orderbook_id'] : null;
+        
         $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
+        
         $this->container['trade_size'] = isset($data['trade_size']) ? $data['trade_size'] : null;
+        
         $this->container['position_size'] = isset($data['position_size']) ? $data['position_size'] : null;
+        
         $this->container['orders_limit'] = isset($data['orders_limit']) ? $data['orders_limit'] : null;
+        
     }
 
     /**
@@ -365,6 +411,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -389,6 +436,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setTag($tag)
     {
+        
         $this->container['tag'] = $tag;
 
         return $this;
@@ -413,6 +461,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -437,6 +486,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setExpirationTime($expiration_time)
     {
+        
         $this->container['expiration_time'] = $expiration_time;
 
         return $this;
@@ -461,6 +511,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setIsCall($is_call)
     {
+        
         $this->container['is_call'] = $is_call;
 
         return $this;
@@ -485,6 +536,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setMultiplier($multiplier)
     {
+        
         $this->container['multiplier'] = $multiplier;
 
         return $this;
@@ -509,6 +561,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setUnderlying($underlying)
     {
+        
         $this->container['underlying'] = $underlying;
 
         return $this;
@@ -533,6 +586,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setUnderlyingPrice($underlying_price)
     {
+        
         $this->container['underlying_price'] = $underlying_price;
 
         return $this;
@@ -557,6 +611,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setLastPrice($last_price)
     {
+        
         $this->container['last_price'] = $last_price;
 
         return $this;
@@ -581,6 +636,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -605,6 +661,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -629,6 +686,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setMakerFeeRate($maker_fee_rate)
     {
+        
         $this->container['maker_fee_rate'] = $maker_fee_rate;
 
         return $this;
@@ -653,6 +711,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setTakerFeeRate($taker_fee_rate)
     {
+        
         $this->container['taker_fee_rate'] = $taker_fee_rate;
 
         return $this;
@@ -677,6 +736,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setOrderPriceRound($order_price_round)
     {
+        
         $this->container['order_price_round'] = $order_price_round;
 
         return $this;
@@ -701,6 +761,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setMarkPriceRound($mark_price_round)
     {
+        
         $this->container['mark_price_round'] = $mark_price_round;
 
         return $this;
@@ -725,6 +786,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setOrderSizeMin($order_size_min)
     {
+        
         $this->container['order_size_min'] = $order_size_min;
 
         return $this;
@@ -749,6 +811,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setOrderSizeMax($order_size_max)
     {
+        
         $this->container['order_size_max'] = $order_size_max;
 
         return $this;
@@ -773,6 +836,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setOrderPriceDeviate($order_price_deviate)
     {
+        
         $this->container['order_price_deviate'] = $order_price_deviate;
 
         return $this;
@@ -797,6 +861,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setRefDiscountRate($ref_discount_rate)
     {
+        
         $this->container['ref_discount_rate'] = $ref_discount_rate;
 
         return $this;
@@ -821,6 +886,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setRefRebateRate($ref_rebate_rate)
     {
+        
         $this->container['ref_rebate_rate'] = $ref_rebate_rate;
 
         return $this;
@@ -845,6 +911,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setOrderbookId($orderbook_id)
     {
+        
         $this->container['orderbook_id'] = $orderbook_id;
 
         return $this;
@@ -869,6 +936,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setTradeId($trade_id)
     {
+        
         $this->container['trade_id'] = $trade_id;
 
         return $this;
@@ -893,6 +961,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setTradeSize($trade_size)
     {
+        
         $this->container['trade_size'] = $trade_size;
 
         return $this;
@@ -917,6 +986,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setPositionSize($position_size)
     {
+        
         $this->container['position_size'] = $position_size;
 
         return $this;
@@ -941,6 +1011,7 @@ class OptionsContract implements ModelInterface, ArrayAccess
      */
     public function setOrdersLimit($orders_limit)
     {
+        
         $this->container['orders_limit'] = $orders_limit;
 
         return $this;

@@ -99,6 +99,27 @@ class EvaluateItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class EvaluateItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['asset_full_name'] = isset($data['asset_full_name']) ? $data['asset_full_name'] : null;
+        
         $this->container['asset_icon_url'] = isset($data['asset_icon_url']) ? $data['asset_icon_url'] : null;
+        
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['available_show'] = isset($data['available_show']) ? $data['available_show'] : null;
+        
         $this->container['evaluate_usdt'] = isset($data['evaluate_usdt']) ? $data['evaluate_usdt'] : null;
+        
         $this->container['evaluate_usdt_show'] = isset($data['evaluate_usdt_show']) ? $data['evaluate_usdt_show'] : null;
+        
     }
 
     /**
@@ -277,6 +305,7 @@ class EvaluateItem implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -301,6 +330,7 @@ class EvaluateItem implements ModelInterface, ArrayAccess
      */
     public function setAssetFullName($asset_full_name)
     {
+        
         $this->container['asset_full_name'] = $asset_full_name;
 
         return $this;
@@ -325,6 +355,7 @@ class EvaluateItem implements ModelInterface, ArrayAccess
      */
     public function setAssetIconUrl($asset_icon_url)
     {
+        
         $this->container['asset_icon_url'] = $asset_icon_url;
 
         return $this;
@@ -349,6 +380,7 @@ class EvaluateItem implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -373,6 +405,7 @@ class EvaluateItem implements ModelInterface, ArrayAccess
      */
     public function setAvailableShow($available_show)
     {
+        
         $this->container['available_show'] = $available_show;
 
         return $this;
@@ -397,6 +430,7 @@ class EvaluateItem implements ModelInterface, ArrayAccess
      */
     public function setEvaluateUsdt($evaluate_usdt)
     {
+        
         $this->container['evaluate_usdt'] = $evaluate_usdt;
 
         return $this;
@@ -421,6 +455,7 @@ class EvaluateItem implements ModelInterface, ArrayAccess
      */
     public function setEvaluateUsdtShow($evaluate_usdt_show)
     {
+        
         $this->container['evaluate_usdt_show'] = $evaluate_usdt_show;
 
         return $this;

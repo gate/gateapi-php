@@ -141,6 +141,27 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -310,33 +331,61 @@ class CrossexOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['attribute'] = isset($data['attribute']) ? $data['attribute'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
+        
         $this->container['qty'] = isset($data['qty']) ? $data['qty'] : null;
+        
         $this->container['quote_qty'] = isset($data['quote_qty']) ? $data['quote_qty'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['time_in_force'] = isset($data['time_in_force']) ? $data['time_in_force'] : null;
+        
         $this->container['executed_qty'] = isset($data['executed_qty']) ? $data['executed_qty'] : null;
+        
         $this->container['executed_amount'] = isset($data['executed_amount']) ? $data['executed_amount'] : null;
+        
         $this->container['executed_avg_price'] = isset($data['executed_avg_price']) ? $data['executed_avg_price'] : null;
+        
         $this->container['fee_coin'] = isset($data['fee_coin']) ? $data['fee_coin'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        
         $this->container['last_executed_qty'] = isset($data['last_executed_qty']) ? $data['last_executed_qty'] : null;
+        
         $this->container['last_executed_price'] = isset($data['last_executed_price']) ? $data['last_executed_price'] : null;
+        
         $this->container['last_executed_amount'] = isset($data['last_executed_amount']) ? $data['last_executed_amount'] : null;
+        
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
     }
 
     /**
@@ -466,6 +515,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -490,6 +540,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -514,6 +565,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -538,6 +590,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setState($state)
     {
+        
         $this->container['state'] = $state;
 
         return $this;
@@ -562,6 +615,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -586,6 +640,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -610,6 +665,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -634,6 +690,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setAttribute($attribute)
     {
+        
         $this->container['attribute'] = $attribute;
 
         return $this;
@@ -658,6 +715,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -682,6 +740,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setBusinessType($business_type)
     {
+        
         $this->container['business_type'] = $business_type;
 
         return $this;
@@ -706,6 +765,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setQty($qty)
     {
+        
         $this->container['qty'] = $qty;
 
         return $this;
@@ -730,6 +790,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setQuoteQty($quote_qty)
     {
+        
         $this->container['quote_qty'] = $quote_qty;
 
         return $this;
@@ -754,6 +815,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -778,6 +840,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setTimeInForce($time_in_force)
     {
+        
         $this->container['time_in_force'] = $time_in_force;
 
         return $this;
@@ -802,6 +865,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setExecutedQty($executed_qty)
     {
+        
         $this->container['executed_qty'] = $executed_qty;
 
         return $this;
@@ -826,6 +890,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setExecutedAmount($executed_amount)
     {
+        
         $this->container['executed_amount'] = $executed_amount;
 
         return $this;
@@ -850,6 +915,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setExecutedAvgPrice($executed_avg_price)
     {
+        
         $this->container['executed_avg_price'] = $executed_avg_price;
 
         return $this;
@@ -874,6 +940,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setFeeCoin($fee_coin)
     {
+        
         $this->container['fee_coin'] = $fee_coin;
 
         return $this;
@@ -898,6 +965,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -922,6 +990,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setReduceOnly($reduce_only)
     {
+        
         $this->container['reduce_only'] = $reduce_only;
 
         return $this;
@@ -946,6 +1015,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -970,6 +1040,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setReason($reason)
     {
+        
         $this->container['reason'] = $reason;
 
         return $this;
@@ -994,6 +1065,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setLastExecutedQty($last_executed_qty)
     {
+        
         $this->container['last_executed_qty'] = $last_executed_qty;
 
         return $this;
@@ -1018,6 +1090,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setLastExecutedPrice($last_executed_price)
     {
+        
         $this->container['last_executed_price'] = $last_executed_price;
 
         return $this;
@@ -1042,6 +1115,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setLastExecutedAmount($last_executed_amount)
     {
+        
         $this->container['last_executed_amount'] = $last_executed_amount;
 
         return $this;
@@ -1066,6 +1140,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionSide($position_side)
     {
+        
         $this->container['position_side'] = $position_side;
 
         return $this;
@@ -1090,6 +1165,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -1114,6 +1190,7 @@ class CrossexOrder implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;

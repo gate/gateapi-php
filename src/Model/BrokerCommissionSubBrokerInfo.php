@@ -94,6 +94,27 @@ class BrokerCommissionSubBrokerInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class BrokerCommissionSubBrokerInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['original_commission_rate'] = isset($data['original_commission_rate']) ? $data['original_commission_rate'] : null;
+        
         $this->container['relative_commission_rate'] = isset($data['relative_commission_rate']) ? $data['relative_commission_rate'] : null;
+        
         $this->container['commission_rate'] = isset($data['commission_rate']) ? $data['commission_rate'] : null;
+        
     }
 
     /**
@@ -239,6 +264,7 @@ class BrokerCommissionSubBrokerInfo implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -263,6 +289,7 @@ class BrokerCommissionSubBrokerInfo implements ModelInterface, ArrayAccess
      */
     public function setOriginalCommissionRate($original_commission_rate)
     {
+        
         $this->container['original_commission_rate'] = $original_commission_rate;
 
         return $this;
@@ -287,6 +314,7 @@ class BrokerCommissionSubBrokerInfo implements ModelInterface, ArrayAccess
      */
     public function setRelativeCommissionRate($relative_commission_rate)
     {
+        
         $this->container['relative_commission_rate'] = $relative_commission_rate;
 
         return $this;
@@ -311,6 +339,7 @@ class BrokerCommissionSubBrokerInfo implements ModelInterface, ArrayAccess
      */
     public function setCommissionRate($commission_rate)
     {
+        
         $this->container['commission_rate'] = $commission_rate;
 
         return $this;

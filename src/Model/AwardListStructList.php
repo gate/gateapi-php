@@ -103,6 +103,27 @@ class AwardListStructList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -215,14 +236,23 @@ class AwardListStructList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        
         $this->container['mortgage_coin'] = isset($data['mortgage_coin']) ? $data['mortgage_coin'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['reward_coin'] = isset($data['reward_coin']) ? $data['reward_coin'] : null;
+        
         $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['bonus_date'] = isset($data['bonus_date']) ? $data['bonus_date'] : null;
+        
         $this->container['should_bonus_stamp'] = isset($data['should_bonus_stamp']) ? $data['should_bonus_stamp'] : null;
+        
     }
 
     /**
@@ -295,6 +325,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setPid($pid)
     {
+        
         $this->container['pid'] = $pid;
 
         return $this;
@@ -319,6 +350,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setMortgageCoin($mortgage_coin)
     {
+        
         $this->container['mortgage_coin'] = $mortgage_coin;
 
         return $this;
@@ -343,6 +375,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -367,6 +400,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setRewardCoin($reward_coin)
     {
+        
         $this->container['reward_coin'] = $reward_coin;
 
         return $this;
@@ -391,6 +425,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setInterest($interest)
     {
+        
         $this->container['interest'] = $interest;
 
         return $this;
@@ -415,6 +450,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -439,6 +475,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -463,6 +500,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setBonusDate($bonus_date)
     {
+        
         $this->container['bonus_date'] = $bonus_date;
 
         return $this;
@@ -487,6 +525,7 @@ class AwardListStructList implements ModelInterface, ArrayAccess
      */
     public function setShouldBonusStamp($should_bonus_stamp)
     {
+        
         $this->container['should_bonus_stamp'] = $should_bonus_stamp;
 
         return $this;

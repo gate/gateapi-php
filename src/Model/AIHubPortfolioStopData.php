@@ -98,6 +98,27 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['strategy_id'] = isset($data['strategy_id']) ? $data['strategy_id'] : null;
+        
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['result_message'] = isset($data['result_message']) ? $data['result_message'] : null;
+        
         $this->container['operation_status'] = isset($data['operation_status']) ? $data['operation_status'] : null;
+        
         $this->container['recovery_required'] = isset($data['recovery_required']) ? $data['recovery_required'] : null;
+        
     }
 
     /**
@@ -251,6 +278,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
      */
     public function setStrategyId($strategy_id)
     {
+        
         $this->container['strategy_id'] = $strategy_id;
 
         return $this;
@@ -275,6 +303,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
      */
     public function setStrategyType($strategy_type)
     {
+        
         $this->container['strategy_type'] = $strategy_type;
 
         return $this;
@@ -299,6 +328,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -323,6 +353,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
      */
     public function setResultMessage($result_message)
     {
+        
         $this->container['result_message'] = $result_message;
 
         return $this;
@@ -347,6 +378,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
      */
     public function setOperationStatus($operation_status)
     {
+        
         $this->container['operation_status'] = $operation_status;
 
         return $this;
@@ -371,6 +403,7 @@ class AIHubPortfolioStopData implements ModelInterface, ArrayAccess
      */
     public function setRecoveryRequired($recovery_required)
     {
+        
         $this->container['recovery_required'] = $recovery_required;
 
         return $this;

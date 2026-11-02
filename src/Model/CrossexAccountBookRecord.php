@@ -105,6 +105,27 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['business_id'] = isset($data['business_id']) ? $data['business_id'] : null;
+        
         $this->container['statement_type'] = isset($data['statement_type']) ? $data['statement_type'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -301,6 +332,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -325,6 +357,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -349,6 +382,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setBusinessId($business_id)
     {
+        
         $this->container['business_id'] = $business_id;
 
         return $this;
@@ -373,6 +407,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setStatementType($statement_type)
     {
+        
         $this->container['statement_type'] = $statement_type;
 
         return $this;
@@ -397,6 +432,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -421,6 +457,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -445,6 +482,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -469,6 +507,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setChange($change)
     {
+        
         $this->container['change'] = $change;
 
         return $this;
@@ -493,6 +532,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setBalance($balance)
     {
+        
         $this->container['balance'] = $balance;
 
         return $this;
@@ -517,6 +557,7 @@ class CrossexAccountBookRecord implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

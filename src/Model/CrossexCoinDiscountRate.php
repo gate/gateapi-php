@@ -97,6 +97,27 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        
         $this->container['min_value'] = isset($data['min_value']) ? $data['min_value'] : null;
+        
         $this->container['max_value'] = isset($data['max_value']) ? $data['max_value'] : null;
+        
         $this->container['discount_rate'] = isset($data['discount_rate']) ? $data['discount_rate'] : null;
+        
     }
 
     /**
@@ -268,6 +295,7 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -292,6 +320,7 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -316,6 +345,7 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
      */
     public function setTier($tier)
     {
+        
         $this->container['tier'] = $tier;
 
         return $this;
@@ -340,6 +370,7 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
      */
     public function setMinValue($min_value)
     {
+        
         $this->container['min_value'] = $min_value;
 
         return $this;
@@ -364,6 +395,7 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
      */
     public function setMaxValue($max_value)
     {
+        
         $this->container['max_value'] = $max_value;
 
         return $this;
@@ -388,6 +420,7 @@ class CrossexCoinDiscountRate implements ModelInterface, ArrayAccess
      */
     public function setDiscountRate($discount_rate)
     {
+        
         $this->container['discount_rate'] = $discount_rate;
 
         return $this;

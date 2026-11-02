@@ -95,6 +95,27 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['min_trans_amount'] = isset($data['min_trans_amount']) ? $data['min_trans_amount'] : null;
+        
         $this->container['est_fee'] = isset($data['est_fee']) ? $data['est_fee'] : null;
+        
         $this->container['precision'] = isset($data['precision']) ? $data['precision'] : null;
+        
         $this->container['is_disabled'] = isset($data['is_disabled']) ? $data['is_disabled'] : null;
+        
     }
 
     /**
@@ -259,6 +285,7 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -283,6 +310,7 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
      */
     public function setMinTransAmount($min_trans_amount)
     {
+        
         $this->container['min_trans_amount'] = $min_trans_amount;
 
         return $this;
@@ -307,6 +335,7 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
      */
     public function setEstFee($est_fee)
     {
+        
         $this->container['est_fee'] = $est_fee;
 
         return $this;
@@ -331,6 +360,7 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
      */
     public function setPrecision($precision)
     {
+        
         $this->container['precision'] = $precision;
 
         return $this;
@@ -355,6 +385,7 @@ class CrossexTransferCoin implements ModelInterface, ArrayAccess
      */
     public function setIsDisabled($is_disabled)
     {
+        
         $this->container['is_disabled'] = $is_disabled;
 
         return $this;

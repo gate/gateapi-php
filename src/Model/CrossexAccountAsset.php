@@ -109,6 +109,27 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -230,17 +251,29 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        
         $this->container['upnl'] = isset($data['upnl']) ? $data['upnl'] : null;
+        
         $this->container['equity'] = isset($data['equity']) ? $data['equity'] : null;
+        
         $this->container['futures_initial_margin'] = isset($data['futures_initial_margin']) ? $data['futures_initial_margin'] : null;
+        
         $this->container['futures_maintenance_margin'] = isset($data['futures_maintenance_margin']) ? $data['futures_maintenance_margin'] : null;
+        
         $this->container['borrowing_initial_margin'] = isset($data['borrowing_initial_margin']) ? $data['borrowing_initial_margin'] : null;
+        
         $this->container['borrowing_maintenance_margin'] = isset($data['borrowing_maintenance_margin']) ? $data['borrowing_maintenance_margin'] : null;
+        
         $this->container['available_balance'] = isset($data['available_balance']) ? $data['available_balance'] : null;
+        
         $this->container['liability'] = isset($data['liability']) ? $data['liability'] : null;
+        
     }
 
     /**
@@ -292,6 +325,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -316,6 +350,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -340,6 +375,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -364,6 +400,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setBalance($balance)
     {
+        
         $this->container['balance'] = $balance;
 
         return $this;
@@ -388,6 +425,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setUpnl($upnl)
     {
+        
         $this->container['upnl'] = $upnl;
 
         return $this;
@@ -412,6 +450,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setEquity($equity)
     {
+        
         $this->container['equity'] = $equity;
 
         return $this;
@@ -436,6 +475,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setFuturesInitialMargin($futures_initial_margin)
     {
+        
         $this->container['futures_initial_margin'] = $futures_initial_margin;
 
         return $this;
@@ -460,6 +500,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setFuturesMaintenanceMargin($futures_maintenance_margin)
     {
+        
         $this->container['futures_maintenance_margin'] = $futures_maintenance_margin;
 
         return $this;
@@ -484,6 +525,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setBorrowingInitialMargin($borrowing_initial_margin)
     {
+        
         $this->container['borrowing_initial_margin'] = $borrowing_initial_margin;
 
         return $this;
@@ -508,6 +550,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setBorrowingMaintenanceMargin($borrowing_maintenance_margin)
     {
+        
         $this->container['borrowing_maintenance_margin'] = $borrowing_maintenance_margin;
 
         return $this;
@@ -532,6 +575,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setAvailableBalance($available_balance)
     {
+        
         $this->container['available_balance'] = $available_balance;
 
         return $this;
@@ -556,6 +600,7 @@ class CrossexAccountAsset implements ModelInterface, ArrayAccess
      */
     public function setLiability($liability)
     {
+        
         $this->container['liability'] = $liability;
 
         return $this;

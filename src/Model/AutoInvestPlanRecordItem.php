@@ -116,6 +116,27 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -246,20 +267,35 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['money'] = isset($data['money']) ? $data['money'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
+        
         $this->container['plan_version'] = isset($data['plan_version']) ? $data['plan_version'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['status_type'] = isset($data['status_type']) ? $data['status_type'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['status_message'] = isset($data['status_message']) ? $data['status_message'] : null;
+        
         $this->container['detail'] = isset($data['detail']) ? $data['detail'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
     }
 
     /**
@@ -344,6 +380,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -368,6 +405,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -392,6 +430,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setMoney($money)
     {
+        
         $this->container['money'] = $money;
 
         return $this;
@@ -416,6 +455,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -440,6 +480,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setPlanId($plan_id)
     {
+        
         $this->container['plan_id'] = $plan_id;
 
         return $this;
@@ -464,6 +505,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setPlanVersion($plan_version)
     {
+        
         $this->container['plan_version'] = $plan_version;
 
         return $this;
@@ -488,6 +530,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -512,6 +555,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -536,6 +580,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;
@@ -560,6 +605,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -584,6 +630,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setStatusType($status_type)
     {
+        
         $this->container['status_type'] = $status_type;
 
         return $this;
@@ -608,6 +655,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -632,6 +680,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setStatusMessage($status_message)
     {
+        
         $this->container['status_message'] = $status_message;
 
         return $this;
@@ -656,6 +705,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setDetail($detail)
     {
+        
         $this->container['detail'] = $detail;
 
         return $this;
@@ -680,6 +730,7 @@ class AutoInvestPlanRecordItem implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;

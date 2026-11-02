@@ -104,6 +104,27 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -233,14 +254,23 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
+        
         $this->container['price_deviation'] = isset($data['price_deviation']) ? $data['price_deviation'] : null;
+        
         $this->container['max_orders'] = isset($data['max_orders']) ? $data['max_orders'] : null;
+        
         $this->container['take_profit_ratio'] = isset($data['take_profit_ratio']) ? $data['take_profit_ratio'] : null;
+        
         $this->container['direction'] = isset($data['direction']) ? $data['direction'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['stop_loss_price'] = isset($data['stop_loss_price']) ? $data['stop_loss_price'] : null;
+        
         $this->container['profit_sharing_ratio'] = isset($data['profit_sharing_ratio']) ? $data['profit_sharing_ratio'] : null;
+        
         $this->container['stop_loss_price_type'] = isset($data['stop_loss_price_type']) ? $data['stop_loss_price_type'] : null;
+        
     }
 
     /**
@@ -261,10 +291,12 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
         if ($this->container['max_orders'] === null) {
             $invalidProperties[] = "'max_orders' can't be null";
         }
+        
         if (($this->container['max_orders'] < 1)) {
             $invalidProperties[] = "invalid value for 'max_orders', must be bigger than or equal to 1.";
         }
 
+        
         if ($this->container['take_profit_ratio'] === null) {
             $invalidProperties[] = "'take_profit_ratio' can't be null";
         }
@@ -275,7 +307,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'leverage' can't be null";
         }
         $allowedValues = $this->getStopLossPriceTypeAllowableValues();
-        if (!is_null($this->container['stop_loss_price_type']) && !in_array($this->container['stop_loss_price_type'], $allowedValues, true)) {
+        if ((isset($this->container['stop_loss_price_type'])) && !in_array($this->container['stop_loss_price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'stop_loss_price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -316,6 +348,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setInvestAmount($invest_amount)
     {
+        
         $this->container['invest_amount'] = $invest_amount;
 
         return $this;
@@ -340,6 +373,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setPriceDeviation($price_deviation)
     {
+        
         $this->container['price_deviation'] = $price_deviation;
 
         return $this;
@@ -364,6 +398,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setMaxOrders($max_orders)
     {
+        
 
         if (($max_orders < 1)) {
             throw new \InvalidArgumentException('invalid value for $max_orders when calling ContractMartingaleCreateParams., must be bigger than or equal to 1.');
@@ -393,6 +428,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setTakeProfitRatio($take_profit_ratio)
     {
+        
         $this->container['take_profit_ratio'] = $take_profit_ratio;
 
         return $this;
@@ -417,6 +453,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setDirection($direction)
     {
+        
         $this->container['direction'] = $direction;
 
         return $this;
@@ -441,6 +478,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -465,6 +503,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setStopLossPrice($stop_loss_price)
     {
+        
         $this->container['stop_loss_price'] = $stop_loss_price;
 
         return $this;
@@ -489,6 +528,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
      */
     public function setProfitSharingRatio($profit_sharing_ratio)
     {
+        
         $this->container['profit_sharing_ratio'] = $profit_sharing_ratio;
 
         return $this;
@@ -522,6 +562,7 @@ class ContractMartingaleCreateParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['stop_loss_price_type'] = $stop_loss_price_type;
 
         return $this;

@@ -93,6 +93,27 @@ class UnifiedSettings implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class UnifiedSettings implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['usdt_futures'] = isset($data['usdt_futures']) ? $data['usdt_futures'] : null;
+        
         $this->container['spot_hedge'] = isset($data['spot_hedge']) ? $data['spot_hedge'] : null;
+        
         $this->container['use_funding'] = isset($data['use_funding']) ? $data['use_funding'] : null;
+        
         $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class UnifiedSettings implements ModelInterface, ArrayAccess
      */
     public function setUsdtFutures($usdt_futures)
     {
+        
         $this->container['usdt_futures'] = $usdt_futures;
 
         return $this;
@@ -262,6 +288,7 @@ class UnifiedSettings implements ModelInterface, ArrayAccess
      */
     public function setSpotHedge($spot_hedge)
     {
+        
         $this->container['spot_hedge'] = $spot_hedge;
 
         return $this;
@@ -286,6 +313,7 @@ class UnifiedSettings implements ModelInterface, ArrayAccess
      */
     public function setUseFunding($use_funding)
     {
+        
         $this->container['use_funding'] = $use_funding;
 
         return $this;
@@ -310,6 +338,7 @@ class UnifiedSettings implements ModelInterface, ArrayAccess
      */
     public function setOptions($options)
     {
+        
         $this->container['options'] = $options;
 
         return $this;

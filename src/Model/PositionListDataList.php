@@ -104,6 +104,27 @@ class PositionListDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -216,14 +237,23 @@ class PositionListDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['position_id'] = isset($data['position_id']) ? $data['position_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
+        
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        
         $this->container['unrealized_pnl'] = isset($data['unrealized_pnl']) ? $data['unrealized_pnl'] : null;
+        
         $this->container['unrealized_pnl_rate'] = isset($data['unrealized_pnl_rate']) ? $data['unrealized_pnl_rate'] : null;
+        
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        
         $this->container['price_open'] = isset($data['price_open']) ? $data['price_open'] : null;
+        
         $this->container['position_dir'] = isset($data['position_dir']) ? $data['position_dir'] : null;
+        
     }
 
     /**
@@ -269,6 +299,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setPositionId($position_id)
     {
+        
         $this->container['position_id'] = $position_id;
 
         return $this;
@@ -293,6 +324,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -317,6 +349,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbolDesc($symbol_desc)
     {
+        
         $this->container['symbol_desc'] = $symbol_desc;
 
         return $this;
@@ -341,6 +374,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setMargin($margin)
     {
+        
         $this->container['margin'] = $margin;
 
         return $this;
@@ -365,6 +399,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setUnrealizedPnl($unrealized_pnl)
     {
+        
         $this->container['unrealized_pnl'] = $unrealized_pnl;
 
         return $this;
@@ -389,6 +424,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setUnrealizedPnlRate($unrealized_pnl_rate)
     {
+        
         $this->container['unrealized_pnl_rate'] = $unrealized_pnl_rate;
 
         return $this;
@@ -413,6 +449,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setVolume($volume)
     {
+        
         $this->container['volume'] = $volume;
 
         return $this;
@@ -437,6 +474,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setPriceOpen($price_open)
     {
+        
         $this->container['price_open'] = $price_open;
 
         return $this;
@@ -461,6 +499,7 @@ class PositionListDataList implements ModelInterface, ArrayAccess
      */
     public function setPositionDir($position_dir)
     {
+        
         $this->container['position_dir'] = $position_dir;
 
         return $this;

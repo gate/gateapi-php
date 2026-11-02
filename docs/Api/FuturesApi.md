@@ -2372,7 +2372,7 @@ Name | Type | Description  | Notes
 
 Query futures order list
 
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.  If you need to query data for a longer period, please use `GET /futures/{settle}/orders_timerange`.
 
 ### Example
 
@@ -2446,7 +2446,7 @@ Name | Type | Description  | Notes
 
 Place futures order
 
-- When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In dual warehouse mode,   - Reduce position: reduce_only=true, size is a positive number that indicates short position, negative number that indicates long position  - Add number that indicates adding long positions, and negative numbers indicate adding short positions  - Close position: size=0, set the direction of closing position according to auto_size, and set `reduce_only` to true  at the same time - reduce_only: Make sure to only perform position reduction operations to prevent increased positions - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
+- When placing an order, the number of contracts is specified `size`, not the number of coins. The number of coins corresponding to each contract is returned in the contract details interface `quanto_multiplier` - 0 The order that was completed cannot be obtained after 10 minutes of withdrawal, and the order will be mentioned that the order does not exist - Setting `reduce_only` to `true` can prevent the position from being penetrated when reducing the position - In single-position mode, if you need to close the position, you need to set `size` to 0 and `close` to `true` - In hedge mode:   - Reduce a position: with `reduce_only=true`, a positive `size` reduces the short position and a negative `size` reduces the long position.   - Increase a position: with `reduce_only=false`, a positive `size` increases the long position and a negative `size` increases the short position.   - Close a position: set `size=0`, select the closing side with `auto_size`, and set `reduce_only=true`.   - `reduce_only` ensures position reduction only and prevents increasing the position. - Set `stp_act` to determine the use of a strategy that restricts user transactions. For detailed usage, refer to the body parameter `stp_act`
 
 ### Example
 
@@ -2724,7 +2724,7 @@ Name | Type | Description  | Notes
 
 Query single order details
 
-- Zero-fill order cannot be retrieved for 10 minutes after cancellation - Historical orders, by default, only data within the past 6 months is supported.
+- Cancelled orders with no fills are no longer retrievable through this endpoint 10 minutes after cancellation. - Historical orders, by default, only data within the past 6 months is supported.
 
 ### Example
 
@@ -3090,7 +3090,7 @@ $associate_array['limit'] = 100; // int | Maximum number of records returned in 
 $associate_array['offset'] = 0; // int | List offset, starting from 0
 $associate_array['from'] = 1547706332; // int | Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit)
 $associate_array['to'] = 1547706332; // int | Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp
-$associate_array['side'] = 'short'; // string | Query side. long or shot
+$associate_array['side'] = 'short'; // string | Direction filter: long or short.
 $associate_array['pnl'] = 'profit'; // string | Query profit or loss
 
 try {
@@ -3117,7 +3117,7 @@ Name | Type | Description  | Notes
  **offset** | **int**| List offset, starting from 0 | [optional] [default to 0]
  **from** | **int**| Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) | [optional]
  **to** | **int**| Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp | [optional]
- **side** | **string**| Query side. long or shot | [optional]
+ **side** | **string**| Direction filter: long or short. | [optional]
  **pnl** | **string**| Query profit or loss | [optional]
 
 ### Return type
@@ -3860,7 +3860,7 @@ Name | Type | Description  | Notes
 
 ## getTrailOrders
 
-> \GateApi\Model\TrailOrderListResponse getTrailOrders($settle, $contract, $is_finished, $start_at, $end_at, $page_num, $page_size, $sort_by, $hide_cancel, $related_position, $sort_by_trigger, $reduce_only, $side)
+> \GateApi\Model\TrailOrderListResponseEnvelope getTrailOrders($settle, $contract, $is_finished, $start_at, $end_at, $page_num, $page_size, $sort_by, $hide_cancel, $related_position, $sort_by_trigger, $reduce_only, $side)
 
 Get trail order list
 
@@ -3928,7 +3928,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\TrailOrderListResponse**](../Model/TrailOrderListResponse.md)
+[**\GateApi\Model\TrailOrderListResponseEnvelope**](../Model/TrailOrderListResponseEnvelope.md)
 
 ### Authorization
 
@@ -4345,7 +4345,7 @@ $apiInstance = new GateApi\Api\FuturesApi(
     $config
 );
 $associate_array['settle'] = 'usdt'; // string | Perpetual futures settlement currency
-$associate_array['sort_by'] = 56; // int | Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0
+$associate_array['sort_by'] = 56; // int | Sort field: 1 for creation time; 2 for finish time. 0 is not accepted.
 $associate_array['contract'] = 'contract_example'; // string | Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase
 $associate_array['is_finished'] = True; // bool | true to query finished orders, false to query in-progress orders
 $associate_array['start_at'] = 56; // int | Lower time bound for the history list, paired with end_at. Required when is_finished is true
@@ -4375,7 +4375,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **string**| Perpetual futures settlement currency |
- **sort_by** | **int**| Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 |
+ **sort_by** | **int**| Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. |
  **contract** | **string**| Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase | [optional]
  **is_finished** | **bool**| true to query finished orders, false to query in-progress orders | [optional]
  **start_at** | **int**| Lower time bound for the history list, paired with end_at. Required when is_finished is true | [optional]

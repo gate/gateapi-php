@@ -109,6 +109,27 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -230,17 +251,29 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['name_cn'] = isset($data['name_cn']) ? $data['name_cn'] : null;
+        
         $this->container['deposit'] = isset($data['deposit']) ? $data['deposit'] : null;
+        
         $this->container['withdraw_percent'] = isset($data['withdraw_percent']) ? $data['withdraw_percent'] : null;
+        
         $this->container['withdraw_fix'] = isset($data['withdraw_fix']) ? $data['withdraw_fix'] : null;
+        
         $this->container['withdraw_day_limit'] = isset($data['withdraw_day_limit']) ? $data['withdraw_day_limit'] : null;
+        
         $this->container['withdraw_amount_mini'] = isset($data['withdraw_amount_mini']) ? $data['withdraw_amount_mini'] : null;
+        
         $this->container['withdraw_day_limit_remain'] = isset($data['withdraw_day_limit_remain']) ? $data['withdraw_day_limit_remain'] : null;
+        
         $this->container['withdraw_eachtime_limit'] = isset($data['withdraw_eachtime_limit']) ? $data['withdraw_eachtime_limit'] : null;
+        
         $this->container['withdraw_fix_on_chains'] = isset($data['withdraw_fix_on_chains']) ? $data['withdraw_fix_on_chains'] : null;
+        
         $this->container['withdraw_percent_on_chains'] = isset($data['withdraw_percent_on_chains']) ? $data['withdraw_percent_on_chains'] : null;
+        
     }
 
     /**
@@ -286,6 +319,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -310,6 +344,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -334,6 +369,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setNameCn($name_cn)
     {
+        
         $this->container['name_cn'] = $name_cn;
 
         return $this;
@@ -358,6 +394,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setDeposit($deposit)
     {
+        
         $this->container['deposit'] = $deposit;
 
         return $this;
@@ -382,6 +419,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawPercent($withdraw_percent)
     {
+        
         $this->container['withdraw_percent'] = $withdraw_percent;
 
         return $this;
@@ -406,6 +444,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawFix($withdraw_fix)
     {
+        
         $this->container['withdraw_fix'] = $withdraw_fix;
 
         return $this;
@@ -430,6 +469,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawDayLimit($withdraw_day_limit)
     {
+        
         $this->container['withdraw_day_limit'] = $withdraw_day_limit;
 
         return $this;
@@ -454,6 +494,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawAmountMini($withdraw_amount_mini)
     {
+        
         $this->container['withdraw_amount_mini'] = $withdraw_amount_mini;
 
         return $this;
@@ -478,6 +519,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawDayLimitRemain($withdraw_day_limit_remain)
     {
+        
         $this->container['withdraw_day_limit_remain'] = $withdraw_day_limit_remain;
 
         return $this;
@@ -502,6 +544,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawEachtimeLimit($withdraw_eachtime_limit)
     {
+        
         $this->container['withdraw_eachtime_limit'] = $withdraw_eachtime_limit;
 
         return $this;
@@ -526,6 +569,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawFixOnChains($withdraw_fix_on_chains)
     {
+        
         $this->container['withdraw_fix_on_chains'] = $withdraw_fix_on_chains;
 
         return $this;
@@ -550,6 +594,7 @@ class WithdrawStatus implements ModelInterface, ArrayAccess
      */
     public function setWithdrawPercentOnChains($withdraw_percent_on_chains)
     {
+        
         $this->container['withdraw_percent_on_chains'] = $withdraw_percent_on_chains;
 
         return $this;

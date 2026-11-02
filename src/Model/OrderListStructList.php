@@ -103,6 +103,27 @@ class OrderListStructList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -215,14 +236,23 @@ class OrderListStructList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['redeem_stamp'] = isset($data['redeem_stamp']) ? $data['redeem_stamp'] : null;
+        
         $this->container['create_stamp'] = isset($data['create_stamp']) ? $data['create_stamp'] : null;
+        
         $this->container['exchange_amount'] = isset($data['exchange_amount']) ? $data['exchange_amount'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
     }
 
     /**
@@ -295,6 +325,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setPid($pid)
     {
+        
         $this->container['pid'] = $pid;
 
         return $this;
@@ -319,6 +350,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -343,6 +375,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -367,6 +400,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -391,6 +425,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -415,6 +450,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setRedeemStamp($redeem_stamp)
     {
+        
         $this->container['redeem_stamp'] = $redeem_stamp;
 
         return $this;
@@ -439,6 +475,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setCreateStamp($create_stamp)
     {
+        
         $this->container['create_stamp'] = $create_stamp;
 
         return $this;
@@ -463,6 +500,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setExchangeAmount($exchange_amount)
     {
+        
         $this->container['exchange_amount'] = $exchange_amount;
 
         return $this;
@@ -487,6 +525,7 @@ class OrderListStructList implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;

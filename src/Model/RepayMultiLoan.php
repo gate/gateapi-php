@@ -90,6 +90,27 @@ class RepayMultiLoan implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -181,7 +202,9 @@ class RepayMultiLoan implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['repay_items'] = isset($data['repay_items']) ? $data['repay_items'] : null;
+        
     }
 
     /**
@@ -233,6 +256,7 @@ class RepayMultiLoan implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -257,6 +281,7 @@ class RepayMultiLoan implements ModelInterface, ArrayAccess
      */
     public function setRepayItems($repay_items)
     {
+        
         $this->container['repay_items'] = $repay_items;
 
         return $this;

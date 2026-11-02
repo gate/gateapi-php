@@ -93,6 +93,27 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -209,9 +230,13 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['exchange'] = isset($data['exchange']) ? $data['exchange'] : null;
+        
         $this->container['exchange_desc'] = isset($data['exchange_desc']) ? $data['exchange_desc'] : null;
+        
         $this->container['icon_link'] = isset($data['icon_link']) ? $data['icon_link'] : null;
+        
         $this->container['support_transfer'] = isset($data['support_transfer']) ? $data['support_transfer'] : null;
+        
     }
 
     /**
@@ -224,7 +249,7 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getExchangeAllowableValues();
-        if (!is_null($this->container['exchange']) && !in_array($this->container['exchange'], $allowedValues, true)) {
+        if ((isset($this->container['exchange'])) && !in_array($this->container['exchange'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'exchange', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -274,6 +299,7 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['exchange'] = $exchange;
 
         return $this;
@@ -298,6 +324,7 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
      */
     public function setExchangeDesc($exchange_desc)
     {
+        
         $this->container['exchange_desc'] = $exchange_desc;
 
         return $this;
@@ -322,6 +349,7 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
      */
     public function setIconLink($icon_link)
     {
+        
         $this->container['icon_link'] = $icon_link;
 
         return $this;
@@ -346,6 +374,7 @@ class ExchangesDataList implements ModelInterface, ArrayAccess
      */
     public function setSupportTransfer($support_transfer)
     {
+        
         $this->container['support_transfer'] = $support_transfer;
 
         return $this;

@@ -125,6 +125,27 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -270,25 +291,45 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['type_id'] = isset($data['type_id']) ? $data['type_id'] : null;
+        
         $this->container['type_name'] = isset($data['type_name']) ? $data['type_name'] : null;
+        
         $this->container['competition_name'] = isset($data['competition_name']) ? $data['competition_name'] : null;
+        
         $this->container['start_at'] = isset($data['start_at']) ? $data['start_at'] : null;
+        
         $this->container['end_at'] = isset($data['end_at']) ? $data['end_at'] : null;
+        
         $this->container['img'] = isset($data['img']) ? $data['img'] : null;
+        
         $this->container['img_dark'] = isset($data['img_dark']) ? $data['img_dark'] : null;
+        
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        
         $this->container['hot'] = isset($data['hot']) ? $data['hot'] : null;
+        
         $this->container['master_one_line'] = isset($data['master_one_line']) ? $data['master_one_line'] : null;
+        
         $this->container['master_two_line'] = isset($data['master_two_line']) ? $data['master_two_line'] : null;
+        
         $this->container['slave_one_line'] = isset($data['slave_one_line']) ? $data['slave_one_line'] : null;
+        
         $this->container['slave_two_line'] = isset($data['slave_two_line']) ? $data['slave_two_line'] : null;
+        
         $this->container['competition_title'] = isset($data['competition_title']) ? $data['competition_title'] : null;
+        
         $this->container['top_id'] = isset($data['top_id']) ? $data['top_id'] : null;
+        
         $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
+        
         $this->container['new_img'] = isset($data['new_img']) ? $data['new_img'] : null;
+        
         $this->container['new_img_dark'] = isset($data['new_img_dark']) ? $data['new_img_dark'] : null;
+        
         $this->container['tag'] = isset($data['tag']) ? $data['tag'] : null;
+        
     }
 
     /**
@@ -394,6 +435,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -418,6 +460,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTypeId($type_id)
     {
+        
         $this->container['type_id'] = $type_id;
 
         return $this;
@@ -442,6 +485,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTypeName($type_name)
     {
+        
         $this->container['type_name'] = $type_name;
 
         return $this;
@@ -466,6 +510,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setCompetitionName($competition_name)
     {
+        
         $this->container['competition_name'] = $competition_name;
 
         return $this;
@@ -490,6 +535,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setStartAt($start_at)
     {
+        
         $this->container['start_at'] = $start_at;
 
         return $this;
@@ -514,6 +560,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setEndAt($end_at)
     {
+        
         $this->container['end_at'] = $end_at;
 
         return $this;
@@ -538,6 +585,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setImg($img)
     {
+        
         $this->container['img'] = $img;
 
         return $this;
@@ -562,6 +610,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setImgDark($img_dark)
     {
+        
         $this->container['img_dark'] = $img_dark;
 
         return $this;
@@ -586,6 +635,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setUrl($url)
     {
+        
         $this->container['url'] = $url;
 
         return $this;
@@ -610,6 +660,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setHot($hot)
     {
+        
         $this->container['hot'] = $hot;
 
         return $this;
@@ -634,6 +685,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setMasterOneLine($master_one_line)
     {
+        
         $this->container['master_one_line'] = $master_one_line;
 
         return $this;
@@ -658,6 +710,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setMasterTwoLine($master_two_line)
     {
+        
         $this->container['master_two_line'] = $master_two_line;
 
         return $this;
@@ -682,6 +735,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setSlaveOneLine($slave_one_line)
     {
+        
         $this->container['slave_one_line'] = $slave_one_line;
 
         return $this;
@@ -706,6 +760,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setSlaveTwoLine($slave_two_line)
     {
+        
         $this->container['slave_two_line'] = $slave_two_line;
 
         return $this;
@@ -730,6 +785,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setCompetitionTitle($competition_title)
     {
+        
         $this->container['competition_title'] = $competition_title;
 
         return $this;
@@ -754,6 +810,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTopId($top_id)
     {
+        
         $this->container['top_id'] = $top_id;
 
         return $this;
@@ -778,6 +835,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setParentId($parent_id)
     {
+        
         $this->container['parent_id'] = $parent_id;
 
         return $this;
@@ -802,6 +860,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setNewImg($new_img)
     {
+        
         $this->container['new_img'] = $new_img;
 
         return $this;
@@ -826,6 +885,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setNewImgDark($new_img_dark)
     {
+        
         $this->container['new_img_dark'] = $new_img_dark;
 
         return $this;
@@ -850,6 +910,7 @@ class ListActivitiesResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTag($tag)
     {
+        
         $this->container['tag'] = $tag;
 
         return $this;

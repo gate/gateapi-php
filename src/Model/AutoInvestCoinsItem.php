@@ -94,6 +94,27 @@ class AutoInvestCoinsItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class AutoInvestCoinsItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        
         $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        
         $this->container['asset_icon_url'] = isset($data['asset_icon_url']) ? $data['asset_icon_url'] : null;
+        
         $this->container['sort'] = isset($data['sort']) ? $data['sort'] : null;
+        
     }
 
     /**
@@ -248,6 +273,7 @@ class AutoInvestCoinsItem implements ModelInterface, ArrayAccess
      */
     public function setKey($key)
     {
+        
         $this->container['key'] = $key;
 
         return $this;
@@ -272,6 +298,7 @@ class AutoInvestCoinsItem implements ModelInterface, ArrayAccess
      */
     public function setValue($value)
     {
+        
         $this->container['value'] = $value;
 
         return $this;
@@ -296,6 +323,7 @@ class AutoInvestCoinsItem implements ModelInterface, ArrayAccess
      */
     public function setAssetIconUrl($asset_icon_url)
     {
+        
         $this->container['asset_icon_url'] = $asset_icon_url;
 
         return $this;
@@ -320,6 +348,7 @@ class AutoInvestCoinsItem implements ModelInterface, ArrayAccess
      */
     public function setSort($sort)
     {
+        
         $this->container['sort'] = $sort;
 
         return $this;

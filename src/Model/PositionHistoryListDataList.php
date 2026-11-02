@@ -120,6 +120,27 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -271,22 +292,39 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['position_id'] = isset($data['position_id']) ? $data['position_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['realized_pnl'] = isset($data['realized_pnl']) ? $data['realized_pnl'] : null;
+        
         $this->container['realized_pnl_rate'] = isset($data['realized_pnl_rate']) ? $data['realized_pnl_rate'] : null;
+        
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        
         $this->container['volume_closed'] = isset($data['volume_closed']) ? $data['volume_closed'] : null;
+        
         $this->container['price_open'] = isset($data['price_open']) ? $data['price_open'] : null;
+        
         $this->container['position_dir'] = isset($data['position_dir']) ? $data['position_dir'] : null;
+        
         $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
+        
         $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
+        
         $this->container['counterparty_price'] = isset($data['counterparty_price']) ? $data['counterparty_price'] : null;
+        
         $this->container['close_price'] = isset($data['close_price']) ? $data['close_price'] : null;
+        
         $this->container['time_create'] = isset($data['time_create']) ? $data['time_create'] : null;
+        
         $this->container['time_close'] = isset($data['time_close']) ? $data['time_close'] : null;
+        
         $this->container['position_status'] = isset($data['position_status']) ? $data['position_status'] : null;
+        
         $this->container['close_detail'] = isset($data['close_detail']) ? $data['close_detail'] : null;
+        
         $this->container['realized_pnl_detail'] = isset($data['realized_pnl_detail']) ? $data['realized_pnl_detail'] : null;
+        
     }
 
     /**
@@ -320,7 +358,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'position_dir' can't be null";
         }
         $allowedValues = $this->getPositionDirAllowableValues();
-        if (!is_null($this->container['position_dir']) && !in_array($this->container['position_dir'], $allowedValues, true)) {
+        if ((isset($this->container['position_dir'])) && !in_array($this->container['position_dir'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'position_dir', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -376,6 +414,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setPositionId($position_id)
     {
+        
         $this->container['position_id'] = $position_id;
 
         return $this;
@@ -400,6 +439,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -424,6 +464,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setRealizedPnl($realized_pnl)
     {
+        
         $this->container['realized_pnl'] = $realized_pnl;
 
         return $this;
@@ -448,6 +489,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setRealizedPnlRate($realized_pnl_rate)
     {
+        
         $this->container['realized_pnl_rate'] = $realized_pnl_rate;
 
         return $this;
@@ -472,6 +514,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setVolume($volume)
     {
+        
         $this->container['volume'] = $volume;
 
         return $this;
@@ -496,6 +539,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setVolumeClosed($volume_closed)
     {
+        
         $this->container['volume_closed'] = $volume_closed;
 
         return $this;
@@ -520,6 +564,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setPriceOpen($price_open)
     {
+        
         $this->container['price_open'] = $price_open;
 
         return $this;
@@ -553,6 +598,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['position_dir'] = $position_dir;
 
         return $this;
@@ -577,6 +623,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setPriceTp($price_tp)
     {
+        
         $this->container['price_tp'] = $price_tp;
 
         return $this;
@@ -601,6 +648,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setPriceSl($price_sl)
     {
+        
         $this->container['price_sl'] = $price_sl;
 
         return $this;
@@ -625,6 +673,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setCounterpartyPrice($counterparty_price)
     {
+        
         $this->container['counterparty_price'] = $counterparty_price;
 
         return $this;
@@ -649,6 +698,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setClosePrice($close_price)
     {
+        
         $this->container['close_price'] = $close_price;
 
         return $this;
@@ -673,6 +723,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setTimeCreate($time_create)
     {
+        
         $this->container['time_create'] = $time_create;
 
         return $this;
@@ -697,6 +748,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setTimeClose($time_close)
     {
+        
         $this->container['time_close'] = $time_close;
 
         return $this;
@@ -721,6 +773,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setPositionStatus($position_status)
     {
+        
         $this->container['position_status'] = $position_status;
 
         return $this;
@@ -745,6 +798,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setCloseDetail($close_detail)
     {
+        
         $this->container['close_detail'] = $close_detail;
 
         return $this;
@@ -769,6 +823,7 @@ class PositionHistoryListDataList implements ModelInterface, ArrayAccess
      */
     public function setRealizedPnlDetail($realized_pnl_detail)
     {
+        
         $this->container['realized_pnl_detail'] = $realized_pnl_detail;
 
         return $this;

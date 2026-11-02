@@ -122,6 +122,27 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -261,23 +282,41 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['stream_id'] = isset($data['stream_id']) ? $data['stream_id'] : null;
+        
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        
         $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
+        
         $this->container['nick'] = isset($data['nick']) ? $data['nick'] : null;
+        
         $this->container['nick_en'] = isset($data['nick_en']) ? $data['nick_en'] : null;
+        
         $this->container['cover'] = isset($data['cover']) ? $data['cover'] : null;
+        
         $this->container['watched'] = isset($data['watched']) ? $data['watched'] : null;
+        
         $this->container['subscription_required'] = isset($data['subscription_required']) ? $data['subscription_required'] : null;
+        
         $this->container['has_subscribed'] = isset($data['has_subscribed']) ? $data['has_subscribed'] : null;
+        
         $this->container['duration'] = isset($data['duration']) ? $data['duration'] : null;
+        
         $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        
         $this->container['moments_uid'] = isset($data['moments_uid']) ? $data['moments_uid'] : null;
+        
         $this->container['session_id'] = isset($data['session_id']) ? $data['session_id'] : null;
+        
         $this->container['ended_at_format'] = isset($data['ended_at_format']) ? $data['ended_at_format'] : null;
+        
         $this->container['ended_at_type'] = isset($data['ended_at_type']) ? $data['ended_at_type'] : null;
+        
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        
         $this->container['tag'] = isset($data['tag']) ? $data['tag'] : null;
+        
     }
 
     /**
@@ -323,6 +362,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -347,6 +387,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setStreamId($stream_id)
     {
+        
         $this->container['stream_id'] = $stream_id;
 
         return $this;
@@ -371,6 +412,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setTitle($title)
     {
+        
         $this->container['title'] = $title;
 
         return $this;
@@ -395,6 +437,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setAvatar($avatar)
     {
+        
         $this->container['avatar'] = $avatar;
 
         return $this;
@@ -419,6 +462,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setNick($nick)
     {
+        
         $this->container['nick'] = $nick;
 
         return $this;
@@ -443,6 +487,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setNickEn($nick_en)
     {
+        
         $this->container['nick_en'] = $nick_en;
 
         return $this;
@@ -467,6 +512,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setCover($cover)
     {
+        
         $this->container['cover'] = $cover;
 
         return $this;
@@ -491,6 +537,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setWatched($watched)
     {
+        
         $this->container['watched'] = $watched;
 
         return $this;
@@ -515,6 +562,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setSubscriptionRequired($subscription_required)
     {
+        
         $this->container['subscription_required'] = $subscription_required;
 
         return $this;
@@ -539,6 +587,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setHasSubscribed($has_subscribed)
     {
+        
         $this->container['has_subscribed'] = $has_subscribed;
 
         return $this;
@@ -563,6 +612,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setDuration($duration)
     {
+        
         $this->container['duration'] = $duration;
 
         return $this;
@@ -587,6 +637,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setWeight($weight)
     {
+        
         $this->container['weight'] = $weight;
 
         return $this;
@@ -611,6 +662,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setMomentsUid($moments_uid)
     {
+        
         $this->container['moments_uid'] = $moments_uid;
 
         return $this;
@@ -635,6 +687,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setSessionId($session_id)
     {
+        
         $this->container['session_id'] = $session_id;
 
         return $this;
@@ -659,6 +712,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setEndedAtFormat($ended_at_format)
     {
+        
         $this->container['ended_at_format'] = $ended_at_format;
 
         return $this;
@@ -683,6 +737,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setEndedAtType($ended_at_type)
     {
+        
         $this->container['ended_at_type'] = $ended_at_type;
 
         return $this;
@@ -707,6 +762,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setTier($tier)
     {
+        
         $this->container['tier'] = $tier;
 
         return $this;
@@ -731,6 +787,7 @@ class ListLiveReplayResponseDataVideo implements ModelInterface, ArrayAccess
      */
     public function setTag($tag)
     {
+        
         $this->container['tag'] = $tag;
 
         return $this;

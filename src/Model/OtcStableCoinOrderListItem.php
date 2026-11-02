@@ -111,6 +111,27 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -235,18 +256,31 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['trade_no'] = isset($data['trade_no']) ? $data['trade_no'] : null;
+        
         $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
+        
         $this->container['pay_icon'] = isset($data['pay_icon']) ? $data['pay_icon'] : null;
+        
         $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
+        
         $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
+        
         $this->container['get_icon'] = isset($data['get_icon']) ? $data['get_icon'] : null;
+        
         $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
         $this->container['rate_reci'] = isset($data['rate_reci']) ? $data['rate_reci'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['create_timest'] = isset($data['create_timest']) ? $data['create_timest'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -292,6 +326,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -316,6 +351,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setTradeNo($trade_no)
     {
+        
         $this->container['trade_no'] = $trade_no;
 
         return $this;
@@ -340,6 +376,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setPayCoin($pay_coin)
     {
+        
         $this->container['pay_coin'] = $pay_coin;
 
         return $this;
@@ -364,6 +401,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setPayIcon($pay_icon)
     {
+        
         $this->container['pay_icon'] = $pay_icon;
 
         return $this;
@@ -388,6 +426,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setPayAmount($pay_amount)
     {
+        
         $this->container['pay_amount'] = $pay_amount;
 
         return $this;
@@ -412,6 +451,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setGetCoin($get_coin)
     {
+        
         $this->container['get_coin'] = $get_coin;
 
         return $this;
@@ -436,6 +476,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setGetIcon($get_icon)
     {
+        
         $this->container['get_icon'] = $get_icon;
 
         return $this;
@@ -460,6 +501,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setGetAmount($get_amount)
     {
+        
         $this->container['get_amount'] = $get_amount;
 
         return $this;
@@ -484,6 +526,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;
@@ -508,6 +551,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setRateReci($rate_reci)
     {
+        
         $this->container['rate_reci'] = $rate_reci;
 
         return $this;
@@ -532,6 +576,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -556,6 +601,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setCreateTimest($create_timest)
     {
+        
         $this->container['create_timest'] = $create_timest;
 
         return $this;
@@ -580,6 +626,7 @@ class OtcStableCoinOrderListItem implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

@@ -110,6 +110,27 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -231,17 +252,29 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
+        
         $this->container['category_id'] = isset($data['category_id']) ? $data['category_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['trade_mode'] = isset($data['trade_mode']) ? $data['trade_mode'] : null;
+        
         $this->container['icon_link'] = isset($data['icon_link']) ? $data['icon_link'] : null;
+        
         $this->container['close_time'] = isset($data['close_time']) ? $data['close_time'] : null;
+        
         $this->container['open_time'] = isset($data['open_time']) ? $data['open_time'] : null;
+        
         $this->container['next_open_time'] = isset($data['next_open_time']) ? $data['next_open_time'] : null;
+        
         $this->container['settlement_currency'] = isset($data['settlement_currency']) ? $data['settlement_currency'] : null;
+        
         $this->container['settlement_currency_symbol'] = isset($data['settlement_currency_symbol']) ? $data['settlement_currency_symbol'] : null;
+        
         $this->container['price_precision'] = isset($data['price_precision']) ? $data['price_precision'] : null;
+        
     }
 
     /**
@@ -287,6 +320,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -311,6 +345,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbolDesc($symbol_desc)
     {
+        
         $this->container['symbol_desc'] = $symbol_desc;
 
         return $this;
@@ -335,6 +370,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setCategoryId($category_id)
     {
+        
         $this->container['category_id'] = $category_id;
 
         return $this;
@@ -359,6 +395,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -383,6 +420,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setTradeMode($trade_mode)
     {
+        
         $this->container['trade_mode'] = $trade_mode;
 
         return $this;
@@ -407,6 +445,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setIconLink($icon_link)
     {
+        
         $this->container['icon_link'] = $icon_link;
 
         return $this;
@@ -431,6 +470,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setCloseTime($close_time)
     {
+        
         $this->container['close_time'] = $close_time;
 
         return $this;
@@ -455,6 +495,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setOpenTime($open_time)
     {
+        
         $this->container['open_time'] = $open_time;
 
         return $this;
@@ -479,6 +520,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setNextOpenTime($next_open_time)
     {
+        
         $this->container['next_open_time'] = $next_open_time;
 
         return $this;
@@ -503,6 +545,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setSettlementCurrency($settlement_currency)
     {
+        
         $this->container['settlement_currency'] = $settlement_currency;
 
         return $this;
@@ -527,6 +570,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setSettlementCurrencySymbol($settlement_currency_symbol)
     {
+        
         $this->container['settlement_currency_symbol'] = $settlement_currency_symbol;
 
         return $this;
@@ -551,6 +595,7 @@ class SymbolsDataList implements ModelInterface, ArrayAccess
      */
     public function setPricePrecision($price_precision)
     {
+        
         $this->container['price_precision'] = $price_precision;
 
         return $this;

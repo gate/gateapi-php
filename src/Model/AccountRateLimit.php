@@ -93,6 +93,27 @@ class AccountRateLimit implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class AccountRateLimit implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        
         $this->container['ratio'] = isset($data['ratio']) ? $data['ratio'] : null;
+        
         $this->container['main_ratio'] = isset($data['main_ratio']) ? $data['main_ratio'] : null;
+        
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class AccountRateLimit implements ModelInterface, ArrayAccess
      */
     public function setTier($tier)
     {
+        
         $this->container['tier'] = $tier;
 
         return $this;
@@ -262,6 +288,7 @@ class AccountRateLimit implements ModelInterface, ArrayAccess
      */
     public function setRatio($ratio)
     {
+        
         $this->container['ratio'] = $ratio;
 
         return $this;
@@ -286,6 +313,7 @@ class AccountRateLimit implements ModelInterface, ArrayAccess
      */
     public function setMainRatio($main_ratio)
     {
+        
         $this->container['main_ratio'] = $main_ratio;
 
         return $this;
@@ -310,6 +338,7 @@ class AccountRateLimit implements ModelInterface, ArrayAccess
      */
     public function setUpdatedAt($updated_at)
     {
+        
         $this->container['updated_at'] = $updated_at;
 
         return $this;

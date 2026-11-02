@@ -114,6 +114,27 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -241,19 +262,33 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        
         $this->container['fixed_type'] = isset($data['fixed_type']) ? $data['fixed_type'] : null;
+        
         $this->container['fixed_rate'] = isset($data['fixed_rate']) ? $data['fixed_rate'] : null;
+        
         $this->container['expire_time'] = isset($data['expire_time']) ? $data['expire_time'] : null;
+        
         $this->container['auto_renew'] = isset($data['auto_renew']) ? $data['auto_renew'] : null;
+        
         $this->container['auto_repay'] = isset($data['auto_repay']) ? $data['auto_repay'] : null;
+        
         $this->container['current_ltv'] = isset($data['current_ltv']) ? $data['current_ltv'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['borrow_time'] = isset($data['borrow_time']) ? $data['borrow_time'] : null;
+        
         $this->container['total_left_repay_usdt'] = isset($data['total_left_repay_usdt']) ? $data['total_left_repay_usdt'] : null;
+        
         $this->container['total_left_collateral_usdt'] = isset($data['total_left_collateral_usdt']) ? $data['total_left_collateral_usdt'] : null;
+        
         $this->container['borrow_currencies'] = isset($data['borrow_currencies']) ? $data['borrow_currencies'] : null;
+        
         $this->container['collateral_currencies'] = isset($data['collateral_currencies']) ? $data['collateral_currencies'] : null;
+        
     }
 
     /**
@@ -299,6 +334,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -323,6 +359,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderType($order_type)
     {
+        
         $this->container['order_type'] = $order_type;
 
         return $this;
@@ -347,6 +384,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setFixedType($fixed_type)
     {
+        
         $this->container['fixed_type'] = $fixed_type;
 
         return $this;
@@ -371,6 +409,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setFixedRate($fixed_rate)
     {
+        
         $this->container['fixed_rate'] = $fixed_rate;
 
         return $this;
@@ -395,6 +434,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setExpireTime($expire_time)
     {
+        
         $this->container['expire_time'] = $expire_time;
 
         return $this;
@@ -419,6 +459,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoRenew($auto_renew)
     {
+        
         $this->container['auto_renew'] = $auto_renew;
 
         return $this;
@@ -443,6 +484,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoRepay($auto_repay)
     {
+        
         $this->container['auto_repay'] = $auto_repay;
 
         return $this;
@@ -467,6 +509,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setCurrentLtv($current_ltv)
     {
+        
         $this->container['current_ltv'] = $current_ltv;
 
         return $this;
@@ -491,6 +534,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -515,6 +559,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setBorrowTime($borrow_time)
     {
+        
         $this->container['borrow_time'] = $borrow_time;
 
         return $this;
@@ -539,6 +584,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setTotalLeftRepayUsdt($total_left_repay_usdt)
     {
+        
         $this->container['total_left_repay_usdt'] = $total_left_repay_usdt;
 
         return $this;
@@ -563,6 +609,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setTotalLeftCollateralUsdt($total_left_collateral_usdt)
     {
+        
         $this->container['total_left_collateral_usdt'] = $total_left_collateral_usdt;
 
         return $this;
@@ -587,6 +634,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setBorrowCurrencies($borrow_currencies)
     {
+        
         $this->container['borrow_currencies'] = $borrow_currencies;
 
         return $this;
@@ -611,6 +659,7 @@ class MultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setCollateralCurrencies($collateral_currencies)
     {
+        
         $this->container['collateral_currencies'] = $collateral_currencies;
 
         return $this;

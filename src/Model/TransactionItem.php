@@ -107,6 +107,27 @@ class TransactionItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -254,16 +275,27 @@ class TransactionItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['symbol_display'] = isset($data['symbol_display']) ? $data['symbol_display'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['type_desc'] = isset($data['type_desc']) ? $data['type_desc'] : null;
+        
         $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        
         $this->container['ref_id'] = isset($data['ref_id']) ? $data['ref_id'] : null;
+        
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['unit_text'] = isset($data['unit_text']) ? $data['unit_text'] : null;
+        
         $this->container['detail'] = isset($data['detail']) ? $data['detail'] : null;
+        
     }
 
     /**
@@ -276,7 +308,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -317,6 +349,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -341,6 +374,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -365,6 +399,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setSymbolDisplay($symbol_display)
     {
+        
         $this->container['symbol_display'] = $symbol_display;
 
         return $this;
@@ -398,6 +433,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -422,6 +458,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setTypeDesc($type_desc)
     {
+        
         $this->container['type_desc'] = $type_desc;
 
         return $this;
@@ -446,6 +483,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setChange($change)
     {
+        
         $this->container['change'] = $change;
 
         return $this;
@@ -470,6 +508,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setBalance($balance)
     {
+        
         $this->container['balance'] = $balance;
 
         return $this;
@@ -494,6 +533,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setRefId($ref_id)
     {
+        
         $this->container['ref_id'] = $ref_id;
 
         return $this;
@@ -518,6 +558,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -542,6 +583,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setUnitText($unit_text)
     {
+        
         $this->container['unit_text'] = $unit_text;
 
         return $this;
@@ -566,6 +608,7 @@ class TransactionItem implements ModelInterface, ArrayAccess
      */
     public function setDetail($detail)
     {
+        
         $this->container['detail'] = $detail;
 
         return $this;

@@ -124,6 +124,27 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -266,24 +287,43 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['product_id'] = isset($data['product_id']) ? $data['product_id'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['bonus_asset'] = isset($data['bonus_asset']) ? $data['bonus_asset'] : null;
+        
         $this->container['kyc_limit'] = isset($data['kyc_limit']) ? $data['kyc_limit'] : null;
+        
         $this->container['ladder_apr'] = isset($data['ladder_apr']) ? $data['ladder_apr'] : null;
+        
         $this->container['total_bonus_amount'] = isset($data['total_bonus_amount']) ? $data['total_bonus_amount'] : null;
+        
         $this->container['user_total_bonus_amount'] = isset($data['user_total_bonus_amount']) ? $data['user_total_bonus_amount'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['start_at'] = isset($data['start_at']) ? $data['start_at'] : null;
+        
         $this->container['end_at'] = isset($data['end_at']) ? $data['end_at'] : null;
+        
         $this->container['total_issued_amount'] = isset($data['total_issued_amount']) ? $data['total_issued_amount'] : null;
+        
         $this->container['user_total_issued_amount'] = isset($data['user_total_issued_amount']) ? $data['user_total_issued_amount'] : null;
+        
         $this->container['bonus_asset_price'] = isset($data['bonus_asset_price']) ? $data['bonus_asset_price'] : null;
+        
         $this->container['product_asset_price'] = isset($data['product_asset_price']) ? $data['product_asset_price'] : null;
+        
         $this->container['product_year_rate'] = isset($data['product_year_rate']) ? $data['product_year_rate'] : null;
+        
     }
 
     /**
@@ -329,6 +369,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -353,6 +394,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setProductId($product_id)
     {
+        
         $this->container['product_id'] = $product_id;
 
         return $this;
@@ -377,6 +419,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -401,6 +444,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setBonusAsset($bonus_asset)
     {
+        
         $this->container['bonus_asset'] = $bonus_asset;
 
         return $this;
@@ -425,6 +469,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setKycLimit($kyc_limit)
     {
+        
         $this->container['kyc_limit'] = $kyc_limit;
 
         return $this;
@@ -449,6 +494,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setLadderApr($ladder_apr)
     {
+        
         $this->container['ladder_apr'] = $ladder_apr;
 
         return $this;
@@ -473,6 +519,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setTotalBonusAmount($total_bonus_amount)
     {
+        
         $this->container['total_bonus_amount'] = $total_bonus_amount;
 
         return $this;
@@ -497,6 +544,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setUserTotalBonusAmount($user_total_bonus_amount)
     {
+        
         $this->container['user_total_bonus_amount'] = $user_total_bonus_amount;
 
         return $this;
@@ -521,6 +569,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -545,6 +594,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setStartTime($start_time)
     {
+        
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -569,6 +619,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setEndTime($end_time)
     {
+        
         $this->container['end_time'] = $end_time;
 
         return $this;
@@ -593,6 +644,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -617,6 +669,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setStartAt($start_at)
     {
+        
         $this->container['start_at'] = $start_at;
 
         return $this;
@@ -641,6 +694,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setEndAt($end_at)
     {
+        
         $this->container['end_at'] = $end_at;
 
         return $this;
@@ -665,6 +719,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setTotalIssuedAmount($total_issued_amount)
     {
+        
         $this->container['total_issued_amount'] = $total_issued_amount;
 
         return $this;
@@ -689,6 +744,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setUserTotalIssuedAmount($user_total_issued_amount)
     {
+        
         $this->container['user_total_issued_amount'] = $user_total_issued_amount;
 
         return $this;
@@ -713,6 +769,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setBonusAssetPrice($bonus_asset_price)
     {
+        
         $this->container['bonus_asset_price'] = $bonus_asset_price;
 
         return $this;
@@ -737,6 +794,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setProductAssetPrice($product_asset_price)
     {
+        
         $this->container['product_asset_price'] = $product_asset_price;
 
         return $this;
@@ -761,6 +819,7 @@ class FixedTermBonusInfo implements ModelInterface, ArrayAccess
      */
     public function setProductYearRate($product_year_rate)
     {
+        
         $this->container['product_year_rate'] = $product_year_rate;
 
         return $this;

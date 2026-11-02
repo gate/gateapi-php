@@ -98,6 +98,27 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['actual_rate'] = isset($data['actual_rate']) ? $data['actual_rate'] : null;
+        
         $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        
         $this->container['interest_status'] = isset($data['interest_status']) ? $data['interest_status'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -251,6 +278,7 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -275,6 +303,7 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -299,6 +328,7 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setActualRate($actual_rate)
     {
+        
         $this->container['actual_rate'] = $actual_rate;
 
         return $this;
@@ -323,6 +353,7 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setInterest($interest)
     {
+        
         $this->container['interest'] = $interest;
 
         return $this;
@@ -347,6 +378,7 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setInterestStatus($interest_status)
     {
+        
         $this->container['interest_status'] = $interest_status;
 
         return $this;
@@ -371,6 +403,7 @@ class UniInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

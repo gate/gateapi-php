@@ -90,6 +90,27 @@ class CrossexMarginModeRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,7 +217,9 @@ class CrossexMarginModeRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
+        
     }
 
     /**
@@ -215,7 +238,7 @@ class CrossexMarginModeRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'margin_mode' can't be null";
         }
         $allowedValues = $this->getMarginModeAllowableValues();
-        if (!is_null($this->container['margin_mode']) && !in_array($this->container['margin_mode'], $allowedValues, true)) {
+        if ((isset($this->container['margin_mode'])) && !in_array($this->container['margin_mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'margin_mode', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -256,6 +279,7 @@ class CrossexMarginModeRequest implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -289,6 +313,7 @@ class CrossexMarginModeRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['margin_mode'] = $margin_mode;
 
         return $this;

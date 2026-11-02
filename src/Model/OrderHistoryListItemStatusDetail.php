@@ -90,6 +90,27 @@ class OrderHistoryListItemStatusDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -181,7 +202,9 @@ class OrderHistoryListItemStatusDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
     }
 
     /**
@@ -227,6 +250,7 @@ class OrderHistoryListItemStatusDetail implements ModelInterface, ArrayAccess
      */
     public function setTitle($title)
     {
+        
         $this->container['title'] = $title;
 
         return $this;
@@ -251,6 +275,7 @@ class OrderHistoryListItemStatusDetail implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;

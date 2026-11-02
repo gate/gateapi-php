@@ -105,6 +105,27 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['transaction_time'] = isset($data['transaction_time']) ? $data['transaction_time'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['group_name'] = isset($data['group_name']) ? $data['group_name'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['fee_asset'] = isset($data['fee_asset']) ? $data['fee_asset'] : null;
+        
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        
         $this->container['sub_broker_info'] = isset($data['sub_broker_info']) ? $data['sub_broker_info'] : null;
+        
         $this->container['alpha_contract_addr'] = isset($data['alpha_contract_addr']) ? $data['alpha_contract_addr'] : null;
+        
     }
 
     /**
@@ -274,6 +305,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setTransactionTime($transaction_time)
     {
+        
         $this->container['transaction_time'] = $transaction_time;
 
         return $this;
@@ -298,6 +330,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -322,6 +355,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setGroupName($group_name)
     {
+        
         $this->container['group_name'] = $group_name;
 
         return $this;
@@ -346,6 +380,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -370,6 +405,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -394,6 +430,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -418,6 +455,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setFeeAsset($fee_asset)
     {
+        
         $this->container['fee_asset'] = $fee_asset;
 
         return $this;
@@ -442,6 +480,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setSource($source)
     {
+        
         $this->container['source'] = $source;
 
         return $this;
@@ -466,6 +505,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setSubBrokerInfo($sub_broker_info)
     {
+        
         $this->container['sub_broker_info'] = $sub_broker_info;
 
         return $this;
@@ -490,6 +530,7 @@ class BrokerTransaction implements ModelInterface, ArrayAccess
      */
     public function setAlphaContractAddr($alpha_contract_addr)
     {
+        
         $this->container['alpha_contract_addr'] = $alpha_contract_addr;
 
         return $this;

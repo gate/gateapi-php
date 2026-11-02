@@ -147,6 +147,27 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -325,36 +346,67 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['is_self'] = isset($data['is_self']) ? $data['is_self'] : null;
+        
         $this->container['user_timest'] = isset($data['user_timest']) ? $data['user_timest'] : null;
+        
         $this->container['counterparties_num'] = isset($data['counterparties_num']) ? $data['counterparties_num'] : null;
+        
         $this->container['email_verified'] = isset($data['email_verified']) ? $data['email_verified'] : null;
+        
         $this->container['verified'] = isset($data['verified']) ? $data['verified'] : null;
+        
         $this->container['has_phone'] = isset($data['has_phone']) ? $data['has_phone'] : null;
+        
         $this->container['user_name'] = isset($data['user_name']) ? $data['user_name'] : null;
+        
         $this->container['user_note'] = isset($data['user_note']) ? $data['user_note'] : null;
+        
         $this->container['complete_transactions'] = isset($data['complete_transactions']) ? $data['complete_transactions'] : null;
+        
         $this->container['paid_transactions'] = isset($data['paid_transactions']) ? $data['paid_transactions'] : null;
+        
         $this->container['accepted_transactions'] = isset($data['accepted_transactions']) ? $data['accepted_transactions'] : null;
+        
         $this->container['transactions_used_time'] = isset($data['transactions_used_time']) ? $data['transactions_used_time'] : null;
+        
         $this->container['cancelled_used_time_month'] = isset($data['cancelled_used_time_month']) ? $data['cancelled_used_time_month'] : null;
+        
         $this->container['complete_transactions_month'] = isset($data['complete_transactions_month']) ? $data['complete_transactions_month'] : null;
+        
         $this->container['complete_rate_month'] = isset($data['complete_rate_month']) ? $data['complete_rate_month'] : null;
+        
         $this->container['orders_buy_rate_month'] = isset($data['orders_buy_rate_month']) ? $data['orders_buy_rate_month'] : null;
+        
         $this->container['is_black'] = isset($data['is_black']) ? $data['is_black'] : null;
+        
         $this->container['is_follow'] = isset($data['is_follow']) ? $data['is_follow'] : null;
+        
         $this->container['have_traded'] = isset($data['have_traded']) ? $data['have_traded'] : null;
+        
         $this->container['biz_uid'] = isset($data['biz_uid']) ? $data['biz_uid'] : null;
+        
         $this->container['blue_vip'] = isset($data['blue_vip']) ? $data['blue_vip'] : null;
+        
         $this->container['work_status'] = isset($data['work_status']) ? $data['work_status'] : null;
+        
         $this->container['registration_days'] = isset($data['registration_days']) ? $data['registration_days'] : null;
+        
         $this->container['first_trade_days'] = isset($data['first_trade_days']) ? $data['first_trade_days'] : null;
+        
         $this->container['need_replenish'] = isset($data['need_replenish']) ? $data['need_replenish'] : null;
+        
         $this->container['merchant_info'] = isset($data['merchant_info']) ? $data['merchant_info'] : null;
+        
         $this->container['online_status'] = isset($data['online_status']) ? $data['online_status'] : null;
+        
         $this->container['work_hours'] = isset($data['work_hours']) ? $data['work_hours'] : null;
+        
         $this->container['transactions_month'] = isset($data['transactions_month']) ? $data['transactions_month'] : null;
+        
         $this->container['transactions_all'] = isset($data['transactions_all']) ? $data['transactions_all'] : null;
+        
         $this->container['trade_versatile'] = isset($data['trade_versatile']) ? $data['trade_versatile'] : null;
+        
     }
 
     /**
@@ -400,6 +452,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setIsSelf($is_self)
     {
+        
         $this->container['is_self'] = $is_self;
 
         return $this;
@@ -424,6 +477,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setUserTimest($user_timest)
     {
+        
         $this->container['user_timest'] = $user_timest;
 
         return $this;
@@ -448,6 +502,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setCounterpartiesNum($counterparties_num)
     {
+        
         $this->container['counterparties_num'] = $counterparties_num;
 
         return $this;
@@ -472,6 +527,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setEmailVerified($email_verified)
     {
+        
         $this->container['email_verified'] = $email_verified;
 
         return $this;
@@ -496,6 +552,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setVerified($verified)
     {
+        
         $this->container['verified'] = $verified;
 
         return $this;
@@ -520,6 +577,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setHasPhone($has_phone)
     {
+        
         $this->container['has_phone'] = $has_phone;
 
         return $this;
@@ -544,6 +602,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setUserName($user_name)
     {
+        
         $this->container['user_name'] = $user_name;
 
         return $this;
@@ -568,6 +627,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setUserNote($user_note)
     {
+        
         $this->container['user_note'] = $user_note;
 
         return $this;
@@ -592,6 +652,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setCompleteTransactions($complete_transactions)
     {
+        
         $this->container['complete_transactions'] = $complete_transactions;
 
         return $this;
@@ -616,6 +677,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setPaidTransactions($paid_transactions)
     {
+        
         $this->container['paid_transactions'] = $paid_transactions;
 
         return $this;
@@ -640,6 +702,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setAcceptedTransactions($accepted_transactions)
     {
+        
         $this->container['accepted_transactions'] = $accepted_transactions;
 
         return $this;
@@ -664,6 +727,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setTransactionsUsedTime($transactions_used_time)
     {
+        
         $this->container['transactions_used_time'] = $transactions_used_time;
 
         return $this;
@@ -688,6 +752,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setCancelledUsedTimeMonth($cancelled_used_time_month)
     {
+        
         $this->container['cancelled_used_time_month'] = $cancelled_used_time_month;
 
         return $this;
@@ -712,6 +777,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setCompleteTransactionsMonth($complete_transactions_month)
     {
+        
         $this->container['complete_transactions_month'] = $complete_transactions_month;
 
         return $this;
@@ -736,6 +802,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setCompleteRateMonth($complete_rate_month)
     {
+        
         $this->container['complete_rate_month'] = $complete_rate_month;
 
         return $this;
@@ -760,6 +827,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setOrdersBuyRateMonth($orders_buy_rate_month)
     {
+        
         $this->container['orders_buy_rate_month'] = $orders_buy_rate_month;
 
         return $this;
@@ -784,6 +852,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setIsBlack($is_black)
     {
+        
         $this->container['is_black'] = $is_black;
 
         return $this;
@@ -808,6 +877,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setIsFollow($is_follow)
     {
+        
         $this->container['is_follow'] = $is_follow;
 
         return $this;
@@ -832,6 +902,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setHaveTraded($have_traded)
     {
+        
         $this->container['have_traded'] = $have_traded;
 
         return $this;
@@ -856,6 +927,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setBizUid($biz_uid)
     {
+        
         $this->container['biz_uid'] = $biz_uid;
 
         return $this;
@@ -880,6 +952,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setBlueVip($blue_vip)
     {
+        
         $this->container['blue_vip'] = $blue_vip;
 
         return $this;
@@ -904,6 +977,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setWorkStatus($work_status)
     {
+        
         $this->container['work_status'] = $work_status;
 
         return $this;
@@ -928,6 +1002,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setRegistrationDays($registration_days)
     {
+        
         $this->container['registration_days'] = $registration_days;
 
         return $this;
@@ -952,6 +1027,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setFirstTradeDays($first_trade_days)
     {
+        
         $this->container['first_trade_days'] = $first_trade_days;
 
         return $this;
@@ -976,6 +1052,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setNeedReplenish($need_replenish)
     {
+        
         $this->container['need_replenish'] = $need_replenish;
 
         return $this;
@@ -1000,6 +1077,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setMerchantInfo($merchant_info)
     {
+        
         $this->container['merchant_info'] = $merchant_info;
 
         return $this;
@@ -1024,6 +1102,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setOnlineStatus($online_status)
     {
+        
         $this->container['online_status'] = $online_status;
 
         return $this;
@@ -1048,6 +1127,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setWorkHours($work_hours)
     {
+        
         $this->container['work_hours'] = $work_hours;
 
         return $this;
@@ -1072,6 +1152,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setTransactionsMonth($transactions_month)
     {
+        
         $this->container['transactions_month'] = $transactions_month;
 
         return $this;
@@ -1096,6 +1177,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setTransactionsAll($transactions_all)
     {
+        
         $this->container['transactions_all'] = $transactions_all;
 
         return $this;
@@ -1120,6 +1202,7 @@ class P2pMerchantUserInfo implements ModelInterface, ArrayAccess
      */
     public function setTradeVersatile($trade_versatile)
     {
+        
         $this->container['trade_versatile'] = $trade_versatile;
 
         return $this;

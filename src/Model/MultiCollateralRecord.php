@@ -100,6 +100,27 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['record_id'] = isset($data['record_id']) ? $data['record_id'] : null;
+        
         $this->container['before_ltv'] = isset($data['before_ltv']) ? $data['before_ltv'] : null;
+        
         $this->container['after_ltv'] = isset($data['after_ltv']) ? $data['after_ltv'] : null;
+        
         $this->container['operate_time'] = isset($data['operate_time']) ? $data['operate_time'] : null;
+        
         $this->container['borrow_currencies'] = isset($data['borrow_currencies']) ? $data['borrow_currencies'] : null;
+        
         $this->container['collateral_currencies'] = isset($data['collateral_currencies']) ? $data['collateral_currencies'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -281,6 +310,7 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
      */
     public function setRecordId($record_id)
     {
+        
         $this->container['record_id'] = $record_id;
 
         return $this;
@@ -305,6 +335,7 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
      */
     public function setBeforeLtv($before_ltv)
     {
+        
         $this->container['before_ltv'] = $before_ltv;
 
         return $this;
@@ -329,6 +360,7 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
      */
     public function setAfterLtv($after_ltv)
     {
+        
         $this->container['after_ltv'] = $after_ltv;
 
         return $this;
@@ -353,6 +385,7 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
      */
     public function setOperateTime($operate_time)
     {
+        
         $this->container['operate_time'] = $operate_time;
 
         return $this;
@@ -377,6 +410,7 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
      */
     public function setBorrowCurrencies($borrow_currencies)
     {
+        
         $this->container['borrow_currencies'] = $borrow_currencies;
 
         return $this;
@@ -401,6 +435,7 @@ class MultiCollateralRecord implements ModelInterface, ArrayAccess
      */
     public function setCollateralCurrencies($collateral_currencies)
     {
+        
         $this->container['collateral_currencies'] = $collateral_currencies;
 
         return $this;

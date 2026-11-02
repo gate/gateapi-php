@@ -112,6 +112,27 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -236,18 +257,31 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['price_limit'] = isset($data['price_limit']) ? $data['price_limit'] : null;
+        
         $this->container['offset_limit'] = isset($data['offset_limit']) ? $data['offset_limit'] : null;
+        
         $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['is_dual_mode'] = isset($data['is_dual_mode']) ? $data['is_dual_mode'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['price_gap_type'] = isset($data['price_gap_type']) ? $data['price_gap_type'] : null;
+        
         $this->container['price_gap_value'] = isset($data['price_gap_value']) ? $data['price_gap_value'] : null;
+        
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        
     }
 
     /**
@@ -302,6 +336,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -326,6 +361,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setSettle($settle)
     {
+        
         $this->container['settle'] = $settle;
 
         return $this;
@@ -350,6 +386,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -374,6 +411,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setPriceLimit($price_limit)
     {
+        
         $this->container['price_limit'] = $price_limit;
 
         return $this;
@@ -398,6 +436,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setOffsetLimit($offset_limit)
     {
+        
         $this->container['offset_limit'] = $offset_limit;
 
         return $this;
@@ -422,6 +461,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setReduceOnly($reduce_only)
     {
+        
         $this->container['reduce_only'] = $reduce_only;
 
         return $this;
@@ -446,6 +486,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -470,6 +511,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setIsDualMode($is_dual_mode)
     {
+        
         $this->container['is_dual_mode'] = $is_dual_mode;
 
         return $this;
@@ -494,6 +536,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setPriceType($price_type)
     {
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -518,6 +561,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setPriceGapType($price_gap_type)
     {
+        
         $this->container['price_gap_type'] = $price_gap_type;
 
         return $this;
@@ -542,6 +586,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setPriceGapValue($price_gap_value)
     {
+        
         $this->container['price_gap_value'] = $price_gap_value;
 
         return $this;
@@ -566,6 +611,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setPosMarginMode($pos_margin_mode)
     {
+        
         $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;
@@ -590,6 +636,7 @@ class CreateChaseOrderReq implements ModelInterface, ArrayAccess
      */
     public function setPositionMode($position_mode)
     {
+        
         $this->container['position_mode'] = $position_mode;
 
         return $this;

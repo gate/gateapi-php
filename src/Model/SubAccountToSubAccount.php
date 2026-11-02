@@ -99,6 +99,27 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['sub_account_type'] = isset($data['sub_account_type']) ? $data['sub_account_type'] : null;
+        
         $this->container['sub_account_from'] = isset($data['sub_account_from']) ? $data['sub_account_from'] : null;
+        
         $this->container['sub_account_from_type'] = isset($data['sub_account_from_type']) ? $data['sub_account_from_type'] : null;
+        
         $this->container['sub_account_to'] = isset($data['sub_account_to']) ? $data['sub_account_to'] : null;
+        
         $this->container['sub_account_to_type'] = isset($data['sub_account_to_type']) ? $data['sub_account_to_type'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
     }
 
     /**
@@ -274,6 +302,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -298,6 +327,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
      */
     public function setSubAccountType($sub_account_type)
     {
+        
         $this->container['sub_account_type'] = $sub_account_type;
 
         return $this;
@@ -322,6 +352,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
      */
     public function setSubAccountFrom($sub_account_from)
     {
+        
         $this->container['sub_account_from'] = $sub_account_from;
 
         return $this;
@@ -346,6 +377,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
      */
     public function setSubAccountFromType($sub_account_from_type)
     {
+        
         $this->container['sub_account_from_type'] = $sub_account_from_type;
 
         return $this;
@@ -370,6 +402,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
      */
     public function setSubAccountTo($sub_account_to)
     {
+        
         $this->container['sub_account_to'] = $sub_account_to;
 
         return $this;
@@ -394,6 +427,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
      */
     public function setSubAccountToType($sub_account_to_type)
     {
+        
         $this->container['sub_account_to_type'] = $sub_account_to_type;
 
         return $this;
@@ -418,6 +452,7 @@ class SubAccountToSubAccount implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;

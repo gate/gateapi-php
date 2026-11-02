@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **int** | User ID | [optional] [readonly] 
-**mode** | **int** | Mode: 1 - classic 2 - portfolio account | [optional] 
+**mode** | **int** | Account mode: 1 for a classic account; 2 for a unified account. | [optional] 
 **name** | **string** | API Key Name | [optional] 
 **perms** | [**\GateApi\Model\SubAccountKeyPerms[]**](SubAccountKeyPerms.md) |  | [optional] 
 **ip_whitelist** | **string[]** | IP whitelist (list will be cleared if no value is passed) | [optional] 

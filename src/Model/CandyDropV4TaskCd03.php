@@ -91,6 +91,27 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['task_name'] = isset($data['task_name']) ? $data['task_name'] : null;
+        
         $this->container['task_desc'] = isset($data['task_desc']) ? $data['task_desc'] : null;
+        
         $this->container['exclusive_label'] = isset($data['exclusive_label']) ? $data['exclusive_label'] : null;
+        
     }
 
     /**
@@ -232,6 +256,7 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
      */
     public function setTaskName($task_name)
     {
+        
         $this->container['task_name'] = $task_name;
 
         return $this;
@@ -256,6 +281,7 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
      */
     public function setTaskDesc($task_desc)
     {
+        
         $this->container['task_desc'] = $task_desc;
 
         return $this;
@@ -280,6 +306,7 @@ class CandyDropV4TaskCd03 implements ModelInterface, ArrayAccess
      */
     public function setExclusiveLabel($exclusive_label)
     {
+        
         $this->container['exclusive_label'] = $exclusive_label;
 
         return $this;

@@ -115,6 +115,27 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -245,20 +266,35 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['subtype'] = isset($data['subtype']) ? $data['subtype'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['exchange_rate'] = isset($data['exchange_rate']) ? $data['exchange_rate'] : null;
+        
         $this->container['exchange_amount'] = isset($data['exchange_amount']) ? $data['exchange_amount'] : null;
+        
         $this->container['update_stamp'] = isset($data['update_stamp']) ? $data['update_stamp'] : null;
+        
         $this->container['create_stamp'] = isset($data['create_stamp']) ? $data['create_stamp'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['protocol_type'] = isset($data['protocol_type']) ? $data['protocol_type'] : null;
+        
         $this->container['client_order_id'] = isset($data['client_order_id']) ? $data['client_order_id'] : null;
+        
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        
     }
 
     /**
@@ -304,6 +340,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -328,6 +365,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setPid($pid)
     {
+        
         $this->container['pid'] = $pid;
 
         return $this;
@@ -352,6 +390,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -376,6 +415,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -400,6 +440,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -424,6 +465,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setSubtype($subtype)
     {
+        
         $this->container['subtype'] = $subtype;
 
         return $this;
@@ -448,6 +490,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -472,6 +515,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setExchangeRate($exchange_rate)
     {
+        
         $this->container['exchange_rate'] = $exchange_rate;
 
         return $this;
@@ -496,6 +540,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setExchangeAmount($exchange_amount)
     {
+        
         $this->container['exchange_amount'] = $exchange_amount;
 
         return $this;
@@ -520,6 +565,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setUpdateStamp($update_stamp)
     {
+        
         $this->container['update_stamp'] = $update_stamp;
 
         return $this;
@@ -544,6 +590,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setCreateStamp($create_stamp)
     {
+        
         $this->container['create_stamp'] = $create_stamp;
 
         return $this;
@@ -568,6 +615,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -592,6 +640,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setProtocolType($protocol_type)
     {
+        
         $this->container['protocol_type'] = $protocol_type;
 
         return $this;
@@ -616,6 +665,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setClientOrderId($client_order_id)
     {
+        
         $this->container['client_order_id'] = $client_order_id;
 
         return $this;
@@ -640,6 +690,7 @@ class SwapCoinStruct implements ModelInterface, ArrayAccess
      */
     public function setSource($source)
     {
+        
         $this->container['source'] = $source;
 
         return $this;

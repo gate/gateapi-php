@@ -91,6 +91,27 @@ class MultiCollateralItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class MultiCollateralItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['discount'] = isset($data['discount']) ? $data['discount'] : null;
+        
     }
 
     /**
@@ -232,6 +256,7 @@ class MultiCollateralItem implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -256,6 +281,7 @@ class MultiCollateralItem implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -280,6 +306,7 @@ class MultiCollateralItem implements ModelInterface, ArrayAccess
      */
     public function setDiscount($discount)
     {
+        
         $this->container['discount'] = $discount;
 
         return $this;

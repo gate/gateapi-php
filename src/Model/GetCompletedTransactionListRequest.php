@@ -106,6 +106,27 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -221,15 +242,25 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
+        
         $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
+        
         $this->container['select_type'] = isset($data['select_type']) ? $data['select_type'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        
         $this->container['query_dispute'] = isset($data['query_dispute']) ? $data['query_dispute'] : null;
+        
         $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        
         $this->container['per_page'] = isset($data['per_page']) ? $data['per_page'] : null;
+        
     }
 
     /**
@@ -281,6 +312,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setCryptoCurrency($crypto_currency)
     {
+        
         $this->container['crypto_currency'] = $crypto_currency;
 
         return $this;
@@ -305,6 +337,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setFiatCurrency($fiat_currency)
     {
+        
         $this->container['fiat_currency'] = $fiat_currency;
 
         return $this;
@@ -329,6 +362,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setSelectType($select_type)
     {
+        
         $this->container['select_type'] = $select_type;
 
         return $this;
@@ -353,6 +387,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -377,6 +412,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -401,6 +437,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setStartTime($start_time)
     {
+        
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -425,6 +462,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setEndTime($end_time)
     {
+        
         $this->container['end_time'] = $end_time;
 
         return $this;
@@ -449,6 +487,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setQueryDispute($query_dispute)
     {
+        
         $this->container['query_dispute'] = $query_dispute;
 
         return $this;
@@ -473,6 +512,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setPage($page)
     {
+        
         $this->container['page'] = $page;
 
         return $this;
@@ -497,6 +537,7 @@ class GetCompletedTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setPerPage($per_page)
     {
+        
         $this->container['per_page'] = $per_page;
 
         return $this;

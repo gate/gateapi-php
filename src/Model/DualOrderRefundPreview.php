@@ -117,6 +117,27 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -250,21 +271,37 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['create_timest'] = isset($data['create_timest']) ? $data['create_timest'] : null;
+        
         $this->container['delivery_timest'] = isset($data['delivery_timest']) ? $data['delivery_timest'] : null;
+        
         $this->container['exercise_price'] = isset($data['exercise_price']) ? $data['exercise_price'] : null;
+        
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
+        
         $this->container['invest_currency'] = isset($data['invest_currency']) ? $data['invest_currency'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['req_id'] = isset($data['req_id']) ? $data['req_id'] : null;
+        
         $this->container['refund_service_charge'] = isset($data['refund_service_charge']) ? $data['refund_service_charge'] : null;
+        
         $this->container['settle_price'] = isset($data['settle_price']) ? $data['settle_price'] : null;
+        
         $this->container['settlement_amount'] = isset($data['settlement_amount']) ? $data['settlement_amount'] : null;
+        
         $this->container['settlement_currency'] = isset($data['settlement_currency']) ? $data['settlement_currency'] : null;
+        
         $this->container['settlement_interest'] = isset($data['settlement_interest']) ? $data['settlement_interest'] : null;
+        
         $this->container['settlement_principle'] = isset($data['settlement_principle']) ? $data['settlement_principle'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['money_back_timest'] = isset($data['money_back_timest']) ? $data['money_back_timest'] : null;
+        
     }
 
     /**
@@ -310,6 +347,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setCreateTimest($create_timest)
     {
+        
         $this->container['create_timest'] = $create_timest;
 
         return $this;
@@ -334,6 +372,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setDeliveryTimest($delivery_timest)
     {
+        
         $this->container['delivery_timest'] = $delivery_timest;
 
         return $this;
@@ -358,6 +397,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setExercisePrice($exercise_price)
     {
+        
         $this->container['exercise_price'] = $exercise_price;
 
         return $this;
@@ -382,6 +422,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setInvestAmount($invest_amount)
     {
+        
         $this->container['invest_amount'] = $invest_amount;
 
         return $this;
@@ -406,6 +447,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setInvestCurrency($invest_currency)
     {
+        
         $this->container['invest_currency'] = $invest_currency;
 
         return $this;
@@ -430,6 +472,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -454,6 +497,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -472,12 +516,13 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
     /**
      * Sets req_id
      *
-     * @param string|null $req_id Request ID used for actual redemption
+     * @param string|null $req_id Request ID used for redemption, returned by GET /earn/dual/order-refund-preview. The request to POST /earn/dual/order-refund requires order_id and req_id.
      *
      * @return $this
      */
     public function setReqId($req_id)
     {
+        
         $this->container['req_id'] = $req_id;
 
         return $this;
@@ -502,6 +547,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setRefundServiceCharge($refund_service_charge)
     {
+        
         $this->container['refund_service_charge'] = $refund_service_charge;
 
         return $this;
@@ -526,6 +572,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setSettlePrice($settle_price)
     {
+        
         $this->container['settle_price'] = $settle_price;
 
         return $this;
@@ -550,6 +597,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setSettlementAmount($settlement_amount)
     {
+        
         $this->container['settlement_amount'] = $settlement_amount;
 
         return $this;
@@ -574,6 +622,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setSettlementCurrency($settlement_currency)
     {
+        
         $this->container['settlement_currency'] = $settlement_currency;
 
         return $this;
@@ -598,6 +647,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setSettlementInterest($settlement_interest)
     {
+        
         $this->container['settlement_interest'] = $settlement_interest;
 
         return $this;
@@ -622,6 +672,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setSettlementPrinciple($settlement_principle)
     {
+        
         $this->container['settlement_principle'] = $settlement_principle;
 
         return $this;
@@ -646,6 +697,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -670,6 +722,7 @@ class DualOrderRefundPreview implements ModelInterface, ArrayAccess
      */
     public function setMoneyBackTimest($money_back_timest)
     {
+        
         $this->container['money_back_timest'] = $money_back_timest;
 
         return $this;

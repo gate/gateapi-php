@@ -105,6 +105,27 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -237,15 +258,25 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['repaid'] = isset($data['repaid']) ? $data['repaid'] : null;
+        
         $this->container['repaid_interest'] = isset($data['repaid_interest']) ? $data['repaid_interest'] : null;
+        
         $this->container['unpaid_interest'] = isset($data['unpaid_interest']) ? $data['unpaid_interest'] : null;
+        
     }
 
     /**
@@ -264,7 +295,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'amount' can't be null";
         }
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -305,6 +336,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -329,6 +361,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -353,6 +386,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;
@@ -377,6 +411,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -401,6 +436,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -425,6 +461,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -458,6 +495,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -482,6 +520,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setRepaid($repaid)
     {
+        
         $this->container['repaid'] = $repaid;
 
         return $this;
@@ -506,6 +545,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setRepaidInterest($repaid_interest)
     {
+        
         $this->container['repaid_interest'] = $repaid_interest;
 
         return $this;
@@ -530,6 +570,7 @@ class CrossMarginLoan implements ModelInterface, ArrayAccess
      */
     public function setUnpaidInterest($unpaid_interest)
     {
+        
         $this->container['unpaid_interest'] = $unpaid_interest;
 
         return $this;

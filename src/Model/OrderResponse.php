@@ -112,6 +112,27 @@ class OrderResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -236,18 +257,31 @@ class OrderResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['tx_hash'] = isset($data['tx_hash']) ? $data['tx_hash'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['usdt_amount'] = isset($data['usdt_amount']) ? $data['usdt_amount'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['currency_amount'] = isset($data['currency_amount']) ? $data['currency_amount'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['gas_mode'] = isset($data['gas_mode']) ? $data['gas_mode'] : null;
+        
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
         $this->container['gas_fee'] = isset($data['gas_fee']) ? $data['gas_fee'] : null;
+        
         $this->container['transaction_fee'] = isset($data['transaction_fee']) ? $data['transaction_fee'] : null;
+        
         $this->container['failed_reason'] = isset($data['failed_reason']) ? $data['failed_reason'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -293,6 +327,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -317,6 +352,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setTxHash($tx_hash)
     {
+        
         $this->container['tx_hash'] = $tx_hash;
 
         return $this;
@@ -341,6 +377,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -365,6 +402,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setUsdtAmount($usdt_amount)
     {
+        
         $this->container['usdt_amount'] = $usdt_amount;
 
         return $this;
@@ -389,6 +427,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -413,6 +452,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setCurrencyAmount($currency_amount)
     {
+        
         $this->container['currency_amount'] = $currency_amount;
 
         return $this;
@@ -437,6 +477,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -461,6 +502,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setGasMode($gas_mode)
     {
+        
         $this->container['gas_mode'] = $gas_mode;
 
         return $this;
@@ -485,6 +527,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;
@@ -509,6 +552,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setGasFee($gas_fee)
     {
+        
         $this->container['gas_fee'] = $gas_fee;
 
         return $this;
@@ -533,6 +577,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setTransactionFee($transaction_fee)
     {
+        
         $this->container['transaction_fee'] = $transaction_fee;
 
         return $this;
@@ -557,6 +602,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setFailedReason($failed_reason)
     {
+        
         $this->container['failed_reason'] = $failed_reason;
 
         return $this;
@@ -581,6 +627,7 @@ class OrderResponse implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

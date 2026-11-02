@@ -137,6 +137,27 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -358,31 +379,57 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['details_id'] = isset($data['details_id']) ? $data['details_id'] : null;
+        
         $this->container['coupon_type'] = isset($data['coupon_type']) ? $data['coupon_type'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['origin_amount'] = isset($data['origin_amount']) ? $data['origin_amount'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['rule_new'] = isset($data['rule_new']) ? $data['rule_new'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['jump_url'] = isset($data['jump_url']) ? $data['jump_url'] : null;
+        
         $this->container['help_url'] = isset($data['help_url']) ? $data['help_url'] : null;
+        
         $this->container['expire_time'] = isset($data['expire_time']) ? $data['expire_time'] : null;
+        
         $this->container['expire_time_order_by'] = isset($data['expire_time_order_by']) ? $data['expire_time_order_by'] : null;
+        
         $this->container['expire_second'] = isset($data['expire_second']) ? $data['expire_second'] : null;
+        
         $this->container['has_usage_history'] = isset($data['has_usage_history']) ? $data['has_usage_history'] : null;
+        
         $this->container['has_progress'] = isset($data['has_progress']) ? $data['has_progress'] : null;
+        
         $this->container['progress_config'] = isset($data['progress_config']) ? $data['progress_config'] : null;
+        
         $this->container['activation_info'] = isset($data['activation_info']) ? $data['activation_info'] : null;
+        
         $this->container['is_task_coupon'] = isset($data['is_task_coupon']) ? $data['is_task_coupon'] : null;
+        
         $this->container['upgrade_toast'] = isset($data['upgrade_toast']) ? $data['upgrade_toast'] : null;
+        
         $this->container['task_title'] = isset($data['task_title']) ? $data['task_title'] : null;
+        
         $this->container['task_desc'] = isset($data['task_desc']) ? $data['task_desc'] : null;
+        
         $this->container['task_start_at'] = isset($data['task_start_at']) ? $data['task_start_at'] : null;
+        
         $this->container['task_expire_at'] = isset($data['task_expire_at']) ? $data['task_expire_at'] : null;
+        
         $this->container['task_completed_at'] = isset($data['task_completed_at']) ? $data['task_completed_at'] : null;
+        
         $this->container['extra'] = isset($data['extra']) ? $data['extra'] : null;
+        
     }
 
     /**
@@ -395,7 +442,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -403,7 +450,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getIsTaskCouponAllowableValues();
-        if (!is_null($this->container['is_task_coupon']) && !in_array($this->container['is_task_coupon'], $allowedValues, true)) {
+        if ((isset($this->container['is_task_coupon'])) && !in_array($this->container['is_task_coupon'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'is_task_coupon', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -444,6 +491,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -468,6 +516,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setDetailsId($details_id)
     {
+        
         $this->container['details_id'] = $details_id;
 
         return $this;
@@ -492,6 +541,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setCouponType($coupon_type)
     {
+        
         $this->container['coupon_type'] = $coupon_type;
 
         return $this;
@@ -516,6 +566,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -540,6 +591,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -564,6 +616,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setOriginAmount($origin_amount)
     {
+        
         $this->container['origin_amount'] = $origin_amount;
 
         return $this;
@@ -588,6 +641,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -612,6 +666,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setRuleNew($rule_new)
     {
+        
         $this->container['rule_new'] = $rule_new;
 
         return $this;
@@ -645,6 +700,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -669,6 +725,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setJumpUrl($jump_url)
     {
+        
         $this->container['jump_url'] = $jump_url;
 
         return $this;
@@ -693,6 +750,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setHelpUrl($help_url)
     {
+        
         $this->container['help_url'] = $help_url;
 
         return $this;
@@ -717,6 +775,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setExpireTime($expire_time)
     {
+        
         $this->container['expire_time'] = $expire_time;
 
         return $this;
@@ -741,6 +800,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setExpireTimeOrderBy($expire_time_order_by)
     {
+        
         $this->container['expire_time_order_by'] = $expire_time_order_by;
 
         return $this;
@@ -765,6 +825,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setExpireSecond($expire_second)
     {
+        
         $this->container['expire_second'] = $expire_second;
 
         return $this;
@@ -789,6 +850,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setHasUsageHistory($has_usage_history)
     {
+        
         $this->container['has_usage_history'] = $has_usage_history;
 
         return $this;
@@ -813,6 +875,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setHasProgress($has_progress)
     {
+        
         $this->container['has_progress'] = $has_progress;
 
         return $this;
@@ -837,6 +900,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setProgressConfig($progress_config)
     {
+        
         $this->container['progress_config'] = $progress_config;
 
         return $this;
@@ -861,6 +925,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setActivationInfo($activation_info)
     {
+        
         $this->container['activation_info'] = $activation_info;
 
         return $this;
@@ -894,6 +959,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['is_task_coupon'] = $is_task_coupon;
 
         return $this;
@@ -918,6 +984,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setUpgradeToast($upgrade_toast)
     {
+        
         $this->container['upgrade_toast'] = $upgrade_toast;
 
         return $this;
@@ -942,6 +1009,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTaskTitle($task_title)
     {
+        
         $this->container['task_title'] = $task_title;
 
         return $this;
@@ -966,6 +1034,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTaskDesc($task_desc)
     {
+        
         $this->container['task_desc'] = $task_desc;
 
         return $this;
@@ -990,6 +1059,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTaskStartAt($task_start_at)
     {
+        
         $this->container['task_start_at'] = $task_start_at;
 
         return $this;
@@ -1014,6 +1084,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTaskExpireAt($task_expire_at)
     {
+        
         $this->container['task_expire_at'] = $task_expire_at;
 
         return $this;
@@ -1038,6 +1109,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setTaskCompletedAt($task_completed_at)
     {
+        
         $this->container['task_completed_at'] = $task_completed_at;
 
         return $this;
@@ -1062,6 +1134,7 @@ class ListUserCouponsResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setExtra($extra)
     {
+        
         $this->container['extra'] = $extra;
 
         return $this;

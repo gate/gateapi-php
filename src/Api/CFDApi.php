@@ -584,7 +584,7 @@ class CFDApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required (optional)
+     * @param  string $symbols Comma-separated instrument symbols. Provide at least one of symbols and category_code. (optional)
      * @param  string $category_code List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -604,7 +604,7 @@ class CFDApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required (optional)
+     * @param  string $symbols Comma-separated instrument symbols. Provide at least one of symbols and category_code. (optional)
      * @param  string $category_code List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -664,7 +664,7 @@ class CFDApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required (optional)
+     * @param  string $symbols Comma-separated instrument symbols. Provide at least one of symbols and category_code. (optional)
      * @param  string $category_code List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required (optional)
      *
      * @throws \InvalidArgumentException
@@ -687,7 +687,7 @@ class CFDApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required (optional)
+     * @param  string $symbols Comma-separated instrument symbols. Provide at least one of symbols and category_code. (optional)
      * @param  string $category_code List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required (optional)
      *
      * @throws \InvalidArgumentException
@@ -741,7 +741,7 @@ class CFDApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $symbols List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required (optional)
+     * @param  string $symbols Comma-separated instrument symbols. Provide at least one of symbols and category_code. (optional)
      * @param  string $category_code List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required (optional)
      *
      * @throws \InvalidArgumentException
@@ -5368,7 +5368,7 @@ class CFDApi
      *
      * @param  int $page Page number; defaults to 1 if omitted. (optional)
      * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
-     * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
+     * @param  int $begin_time Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
      * @param  string $position_dir Position direction (Long&#x3D;long position, Short&#x3D;short position) (optional)
@@ -5392,7 +5392,7 @@ class CFDApi
      *
      * @param  int $page Page number; defaults to 1 if omitted. (optional)
      * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
-     * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
+     * @param  int $begin_time Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
      * @param  string $position_dir Position direction (Long&#x3D;long position, Short&#x3D;short position) (optional)
@@ -5456,7 +5456,7 @@ class CFDApi
      *
      * @param  int $page Page number; defaults to 1 if omitted. (optional)
      * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
-     * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
+     * @param  int $begin_time Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
      * @param  string $position_dir Position direction (Long&#x3D;long position, Short&#x3D;short position) (optional)
@@ -5483,7 +5483,7 @@ class CFDApi
      *
      * @param  int $page Page number; defaults to 1 if omitted. (optional)
      * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
-     * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
+     * @param  int $begin_time Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
      * @param  string $position_dir Position direction (Long&#x3D;long position, Short&#x3D;short position) (optional)
@@ -5541,7 +5541,7 @@ class CFDApi
      *
      * @param  int $page Page number; defaults to 1 if omitted. (optional)
      * @param  int $page_size Page size; defaults to 10 if omitted. Maximum 100. (optional)
-     * @param  int $begin_time Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago (optional)
+     * @param  int $begin_time Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. (optional)
      * @param  int $end_time End time (timestamp in seconds) (optional)
      * @param  string $symbol Trading symbol (e.g., EURUSD) (optional)
      * @param  string $position_dir Position direction (Long&#x3D;long position, Short&#x3D;short position) (optional)

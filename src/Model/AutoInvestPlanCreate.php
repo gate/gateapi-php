@@ -108,6 +108,27 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -226,16 +247,27 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['plan_name'] = isset($data['plan_name']) ? $data['plan_name'] : null;
+        
         $this->container['plan_des'] = isset($data['plan_des']) ? $data['plan_des'] : null;
+        
         $this->container['plan_money'] = isset($data['plan_money']) ? $data['plan_money'] : null;
+        
         $this->container['plan_amount'] = isset($data['plan_amount']) ? $data['plan_amount'] : null;
+        
         $this->container['plan_period_type'] = isset($data['plan_period_type']) ? $data['plan_period_type'] : null;
+        
         $this->container['plan_period_day'] = isset($data['plan_period_day']) ? $data['plan_period_day'] : null;
+        
         $this->container['plan_period_hour'] = isset($data['plan_period_hour']) ? $data['plan_period_hour'] : null;
+        
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        
         $this->container['fund_source'] = isset($data['fund_source']) ? $data['fund_source'] : null;
+        
         $this->container['fund_flow'] = isset($data['fund_flow']) ? $data['fund_flow'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
     }
 
     /**
@@ -299,6 +331,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setPlanName($plan_name)
     {
+        
         $this->container['plan_name'] = $plan_name;
 
         return $this;
@@ -323,6 +356,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setPlanDes($plan_des)
     {
+        
         $this->container['plan_des'] = $plan_des;
 
         return $this;
@@ -347,6 +381,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setPlanMoney($plan_money)
     {
+        
         $this->container['plan_money'] = $plan_money;
 
         return $this;
@@ -371,6 +406,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setPlanAmount($plan_amount)
     {
+        
         $this->container['plan_amount'] = $plan_amount;
 
         return $this;
@@ -395,6 +431,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setPlanPeriodType($plan_period_type)
     {
+        
         $this->container['plan_period_type'] = $plan_period_type;
 
         return $this;
@@ -419,6 +456,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setPlanPeriodDay($plan_period_day)
     {
+        
         $this->container['plan_period_day'] = $plan_period_day;
 
         return $this;
@@ -443,6 +481,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setPlanPeriodHour($plan_period_hour)
     {
+        
         $this->container['plan_period_hour'] = $plan_period_hour;
 
         return $this;
@@ -467,6 +506,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setItems($items)
     {
+        
         $this->container['items'] = $items;
 
         return $this;
@@ -491,6 +531,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setFundSource($fund_source)
     {
+        
         $this->container['fund_source'] = $fund_source;
 
         return $this;
@@ -515,6 +556,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setFundFlow($fund_flow)
     {
+        
         $this->container['fund_flow'] = $fund_flow;
 
         return $this;
@@ -539,6 +581,7 @@ class AutoInvestPlanCreate implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;

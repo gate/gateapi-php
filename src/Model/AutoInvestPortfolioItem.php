@@ -102,6 +102,27 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -211,13 +232,21 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['ratio'] = isset($data['ratio']) ? $data['ratio'] : null;
+        
         $this->container['cum_invest'] = isset($data['cum_invest']) ? $data['cum_invest'] : null;
+        
         $this->container['cum_hold'] = isset($data['cum_hold']) ? $data['cum_hold'] : null;
+        
         $this->container['cum_redeem'] = isset($data['cum_redeem']) ? $data['cum_redeem'] : null;
+        
         $this->container['avg_price'] = isset($data['avg_price']) ? $data['avg_price'] : null;
+        
         $this->container['redeem_status'] = isset($data['redeem_status']) ? $data['redeem_status'] : null;
+        
         $this->container['lend_amount'] = isset($data['lend_amount']) ? $data['lend_amount'] : null;
+        
     }
 
     /**
@@ -287,6 +316,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -311,6 +341,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setRatio($ratio)
     {
+        
         $this->container['ratio'] = $ratio;
 
         return $this;
@@ -335,6 +366,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setCumInvest($cum_invest)
     {
+        
         $this->container['cum_invest'] = $cum_invest;
 
         return $this;
@@ -359,6 +391,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setCumHold($cum_hold)
     {
+        
         $this->container['cum_hold'] = $cum_hold;
 
         return $this;
@@ -383,6 +416,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setCumRedeem($cum_redeem)
     {
+        
         $this->container['cum_redeem'] = $cum_redeem;
 
         return $this;
@@ -407,6 +441,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setAvgPrice($avg_price)
     {
+        
         $this->container['avg_price'] = $avg_price;
 
         return $this;
@@ -431,6 +466,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setRedeemStatus($redeem_status)
     {
+        
         $this->container['redeem_status'] = $redeem_status;
 
         return $this;
@@ -455,6 +491,7 @@ class AutoInvestPortfolioItem implements ModelInterface, ArrayAccess
      */
     public function setLendAmount($lend_amount)
     {
+        
         $this->container['lend_amount'] = $lend_amount;
 
         return $this;

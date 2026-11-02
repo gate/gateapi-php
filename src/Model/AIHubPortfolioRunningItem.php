@@ -108,6 +108,27 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -226,16 +247,27 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['strategy_id'] = isset($data['strategy_id']) ? $data['strategy_id'] : null;
+        
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        
         $this->container['strategy_name'] = isset($data['strategy_name']) ? $data['strategy_name'] : null;
+        
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['pnl'] = isset($data['pnl']) ? $data['pnl'] : null;
+        
         $this->container['pnl_rate'] = isset($data['pnl_rate']) ? $data['pnl_rate'] : null;
+        
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
+        
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        
         $this->container['assets'] = isset($data['assets']) ? $data['assets'] : null;
+        
         $this->container['markets'] = isset($data['markets']) ? $data['markets'] : null;
+        
     }
 
     /**
@@ -296,6 +328,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setStrategyId($strategy_id)
     {
+        
         $this->container['strategy_id'] = $strategy_id;
 
         return $this;
@@ -320,6 +353,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setStrategyType($strategy_type)
     {
+        
         $this->container['strategy_type'] = $strategy_type;
 
         return $this;
@@ -344,6 +378,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setStrategyName($strategy_name)
     {
+        
         $this->container['strategy_name'] = $strategy_name;
 
         return $this;
@@ -368,6 +403,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setMarket($market)
     {
+        
         $this->container['market'] = $market;
 
         return $this;
@@ -392,6 +428,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -416,6 +453,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setPnl($pnl)
     {
+        
         $this->container['pnl'] = $pnl;
 
         return $this;
@@ -440,6 +478,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setPnlRate($pnl_rate)
     {
+        
         $this->container['pnl_rate'] = $pnl_rate;
 
         return $this;
@@ -464,6 +503,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setInvestAmount($invest_amount)
     {
+        
         $this->container['invest_amount'] = $invest_amount;
 
         return $this;
@@ -488,6 +528,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setCreatedAt($created_at)
     {
+        
         $this->container['created_at'] = $created_at;
 
         return $this;
@@ -512,6 +553,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setAssets($assets)
     {
+        
         $this->container['assets'] = $assets;
 
         return $this;
@@ -536,6 +578,7 @@ class AIHubPortfolioRunningItem implements ModelInterface, ArrayAccess
      */
     public function setMarkets($markets)
     {
+        
         $this->container['markets'] = $markets;
 
         return $this;

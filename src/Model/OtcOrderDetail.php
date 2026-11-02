@@ -141,6 +141,27 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -310,33 +331,61 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
+        
         $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
+        
         $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
+        
         $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
         $this->container['bank_account_name'] = isset($data['bank_account_name']) ? $data['bank_account_name'] : null;
+        
         $this->container['bank_name'] = isset($data['bank_name']) ? $data['bank_name'] : null;
+        
         $this->container['bank_country'] = isset($data['bank_country']) ? $data['bank_country'] : null;
+        
         $this->container['bank_address'] = isset($data['bank_address']) ? $data['bank_address'] : null;
+        
         $this->container['bank_account_number_iban'] = isset($data['bank_account_number_iban']) ? $data['bank_account_number_iban'] : null;
+        
         $this->container['swift_code'] = isset($data['swift_code']) ? $data['swift_code'] : null;
+        
         $this->container['intermediate_bank_name'] = isset($data['intermediate_bank_name']) ? $data['intermediate_bank_name'] : null;
+        
         $this->container['intermediary_bank_swift_code'] = isset($data['intermediary_bank_swift_code']) ? $data['intermediary_bank_swift_code'] : null;
+        
         $this->container['gate_bank_account_name'] = isset($data['gate_bank_account_name']) ? $data['gate_bank_account_name'] : null;
+        
         $this->container['gate_bank_name'] = isset($data['gate_bank_name']) ? $data['gate_bank_name'] : null;
+        
         $this->container['gate_bank_country'] = isset($data['gate_bank_country']) ? $data['gate_bank_country'] : null;
+        
         $this->container['gate_bank_address'] = isset($data['gate_bank_address']) ? $data['gate_bank_address'] : null;
+        
         $this->container['gate_bank_account_number_iban'] = isset($data['gate_bank_account_number_iban']) ? $data['gate_bank_account_number_iban'] : null;
+        
         $this->container['gate_swift_code'] = isset($data['gate_swift_code']) ? $data['gate_swift_code'] : null;
+        
         $this->container['gate_intermediary_bank_name'] = isset($data['gate_intermediary_bank_name']) ? $data['gate_intermediary_bank_name'] : null;
+        
         $this->container['gate_intermediary_bank_swift_code'] = isset($data['gate_intermediary_bank_swift_code']) ? $data['gate_intermediary_bank_swift_code'] : null;
+        
         $this->container['gate_transfer_remark'] = isset($data['gate_transfer_remark']) ? $data['gate_transfer_remark'] : null;
+        
         $this->container['gate_reference_code'] = isset($data['gate_reference_code']) ? $data['gate_reference_code'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -412,6 +461,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -436,6 +486,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -460,6 +511,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -484,6 +536,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setFiatCurrency($fiat_currency)
     {
+        
         $this->container['fiat_currency'] = $fiat_currency;
 
         return $this;
@@ -508,6 +561,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setFiatAmount($fiat_amount)
     {
+        
         $this->container['fiat_amount'] = $fiat_amount;
 
         return $this;
@@ -532,6 +586,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setCryptoCurrency($crypto_currency)
     {
+        
         $this->container['crypto_currency'] = $crypto_currency;
 
         return $this;
@@ -556,6 +611,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setCryptoAmount($crypto_amount)
     {
+        
         $this->container['crypto_amount'] = $crypto_amount;
 
         return $this;
@@ -580,6 +636,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;
@@ -604,6 +661,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setBankAccountName($bank_account_name)
     {
+        
         $this->container['bank_account_name'] = $bank_account_name;
 
         return $this;
@@ -628,6 +686,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setBankName($bank_name)
     {
+        
         $this->container['bank_name'] = $bank_name;
 
         return $this;
@@ -652,6 +711,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setBankCountry($bank_country)
     {
+        
         $this->container['bank_country'] = $bank_country;
 
         return $this;
@@ -676,6 +736,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setBankAddress($bank_address)
     {
+        
         $this->container['bank_address'] = $bank_address;
 
         return $this;
@@ -700,6 +761,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setBankAccountNumberIban($bank_account_number_iban)
     {
+        
         $this->container['bank_account_number_iban'] = $bank_account_number_iban;
 
         return $this;
@@ -724,6 +786,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setSwiftCode($swift_code)
     {
+        
         $this->container['swift_code'] = $swift_code;
 
         return $this;
@@ -748,6 +811,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setIntermediateBankName($intermediate_bank_name)
     {
+        
         $this->container['intermediate_bank_name'] = $intermediate_bank_name;
 
         return $this;
@@ -772,6 +836,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setIntermediaryBankSwiftCode($intermediary_bank_swift_code)
     {
+        
         $this->container['intermediary_bank_swift_code'] = $intermediary_bank_swift_code;
 
         return $this;
@@ -796,6 +861,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateBankAccountName($gate_bank_account_name)
     {
+        
         $this->container['gate_bank_account_name'] = $gate_bank_account_name;
 
         return $this;
@@ -820,6 +886,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateBankName($gate_bank_name)
     {
+        
         $this->container['gate_bank_name'] = $gate_bank_name;
 
         return $this;
@@ -844,6 +911,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateBankCountry($gate_bank_country)
     {
+        
         $this->container['gate_bank_country'] = $gate_bank_country;
 
         return $this;
@@ -868,6 +936,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateBankAddress($gate_bank_address)
     {
+        
         $this->container['gate_bank_address'] = $gate_bank_address;
 
         return $this;
@@ -892,6 +961,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateBankAccountNumberIban($gate_bank_account_number_iban)
     {
+        
         $this->container['gate_bank_account_number_iban'] = $gate_bank_account_number_iban;
 
         return $this;
@@ -916,6 +986,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateSwiftCode($gate_swift_code)
     {
+        
         $this->container['gate_swift_code'] = $gate_swift_code;
 
         return $this;
@@ -940,6 +1011,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateIntermediaryBankName($gate_intermediary_bank_name)
     {
+        
         $this->container['gate_intermediary_bank_name'] = $gate_intermediary_bank_name;
 
         return $this;
@@ -964,6 +1036,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateIntermediaryBankSwiftCode($gate_intermediary_bank_swift_code)
     {
+        
         $this->container['gate_intermediary_bank_swift_code'] = $gate_intermediary_bank_swift_code;
 
         return $this;
@@ -988,6 +1061,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateTransferRemark($gate_transfer_remark)
     {
+        
         $this->container['gate_transfer_remark'] = $gate_transfer_remark;
 
         return $this;
@@ -1012,6 +1086,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setGateReferenceCode($gate_reference_code)
     {
+        
         $this->container['gate_reference_code'] = $gate_reference_code;
 
         return $this;
@@ -1036,6 +1111,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -1060,6 +1136,7 @@ class OtcOrderDetail implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

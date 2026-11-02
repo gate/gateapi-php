@@ -100,6 +100,27 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -236,12 +257,19 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
     public function __construct(array $data = null)
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        
         $this->container['msg'] = isset($data['msg']) ? $data['msg'] : null;
+        
         $this->container['action'] = isset($data['action']) ? $data['action'] : null;
+        
         $this->container['content_risk_type'] = isset($data['content_risk_type']) ? $data['content_risk_type'] : null;
+        
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        
         $this->container['auto_reply'] = isset($data['auto_reply']) ? $data['auto_reply'] : null;
+        
     }
 
     /**
@@ -254,7 +282,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -262,7 +290,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
         }
 
         $allowedValues = $this->getContentRiskTypeAllowableValues();
-        if (!is_null($this->container['content_risk_type']) && !in_array($this->container['content_risk_type'], $allowedValues, true)) {
+        if ((isset($this->container['content_risk_type'])) && !in_array($this->container['content_risk_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'content_risk_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -312,6 +340,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -336,6 +365,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
      */
     public function setTitle($title)
     {
+        
         $this->container['title'] = $title;
 
         return $this;
@@ -360,6 +390,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
      */
     public function setMsg($msg)
     {
+        
         $this->container['msg'] = $msg;
 
         return $this;
@@ -384,6 +415,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
      */
     public function setAction($action)
     {
+        
         $this->container['action'] = $action;
 
         return $this;
@@ -417,6 +449,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
                 )
             );
         }
+        
         $this->container['content_risk_type'] = $content_risk_type;
 
         return $this;
@@ -441,6 +474,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
      */
     public function setTradeTips($trade_tips)
     {
+        
         $this->container['trade_tips'] = $trade_tips;
 
         return $this;
@@ -465,6 +499,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEvent implements ModelInt
      */
     public function setAutoReply($auto_reply)
     {
+        
         $this->container['auto_reply'] = $auto_reply;
 
         return $this;

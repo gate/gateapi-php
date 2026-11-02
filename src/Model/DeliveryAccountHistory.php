@@ -106,6 +106,27 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -221,15 +242,25 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['dnw'] = isset($data['dnw']) ? $data['dnw'] : null;
+        
         $this->container['pnl'] = isset($data['pnl']) ? $data['pnl'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['refr'] = isset($data['refr']) ? $data['refr'] : null;
+        
         $this->container['fund'] = isset($data['fund']) ? $data['fund'] : null;
+        
         $this->container['point_dnw'] = isset($data['point_dnw']) ? $data['point_dnw'] : null;
+        
         $this->container['point_fee'] = isset($data['point_fee']) ? $data['point_fee'] : null;
+        
         $this->container['point_refr'] = isset($data['point_refr']) ? $data['point_refr'] : null;
+        
         $this->container['bonus_dnw'] = isset($data['bonus_dnw']) ? $data['bonus_dnw'] : null;
+        
         $this->container['bonus_offset'] = isset($data['bonus_offset']) ? $data['bonus_offset'] : null;
+        
     }
 
     /**
@@ -275,6 +306,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setDnw($dnw)
     {
+        
         $this->container['dnw'] = $dnw;
 
         return $this;
@@ -299,6 +331,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setPnl($pnl)
     {
+        
         $this->container['pnl'] = $pnl;
 
         return $this;
@@ -323,6 +356,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -347,6 +381,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setRefr($refr)
     {
+        
         $this->container['refr'] = $refr;
 
         return $this;
@@ -371,6 +406,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setFund($fund)
     {
+        
         $this->container['fund'] = $fund;
 
         return $this;
@@ -395,6 +431,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setPointDnw($point_dnw)
     {
+        
         $this->container['point_dnw'] = $point_dnw;
 
         return $this;
@@ -419,6 +456,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setPointFee($point_fee)
     {
+        
         $this->container['point_fee'] = $point_fee;
 
         return $this;
@@ -443,6 +481,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setPointRefr($point_refr)
     {
+        
         $this->container['point_refr'] = $point_refr;
 
         return $this;
@@ -467,6 +506,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setBonusDnw($bonus_dnw)
     {
+        
         $this->container['bonus_dnw'] = $bonus_dnw;
 
         return $this;
@@ -491,6 +531,7 @@ class DeliveryAccountHistory implements ModelInterface, ArrayAccess
      */
     public function setBonusOffset($bonus_offset)
     {
+        
         $this->container['bonus_offset'] = $bonus_offset;
 
         return $this;

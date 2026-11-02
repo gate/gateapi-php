@@ -91,6 +91,27 @@ class ListLiveReplayResponseDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class ListLiveReplayResponseDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        
         $this->container['live'] = isset($data['live']) ? $data['live'] : null;
+        
         $this->container['video'] = isset($data['video']) ? $data['video'] : null;
+        
     }
 
     /**
@@ -232,6 +256,7 @@ class ListLiveReplayResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setContentType($content_type)
     {
+        
         $this->container['content_type'] = $content_type;
 
         return $this;
@@ -256,6 +281,7 @@ class ListLiveReplayResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setLive($live)
     {
+        
         $this->container['live'] = $live;
 
         return $this;
@@ -280,6 +306,7 @@ class ListLiveReplayResponseDataList implements ModelInterface, ArrayAccess
      */
     public function setVideo($video)
     {
+        
         $this->container['video'] = $video;
 
         return $this;

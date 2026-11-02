@@ -105,6 +105,27 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['cross_leverage_limit'] = isset($data['cross_leverage_limit']) ? $data['cross_leverage_limit'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['fill_price'] = isset($data['fill_price']) ? $data['fill_price'] : null;
+        
         $this->container['trade_size'] = isset($data['trade_size']) ? $data['trade_size'] : null;
+        
         $this->container['position_size'] = isset($data['position_size']) ? $data['position_size'] : null;
+        
     }
 
     /**
@@ -274,6 +305,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -298,6 +330,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -322,6 +355,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -346,6 +380,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -370,6 +405,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -394,6 +430,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setCrossLeverageLimit($cross_leverage_limit)
     {
+        
         $this->container['cross_leverage_limit'] = $cross_leverage_limit;
 
         return $this;
@@ -418,6 +455,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -442,6 +480,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setFillPrice($fill_price)
     {
+        
         $this->container['fill_price'] = $fill_price;
 
         return $this;
@@ -466,6 +505,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setTradeSize($trade_size)
     {
+        
         $this->container['trade_size'] = $trade_size;
 
         return $this;
@@ -490,6 +530,7 @@ class FuturesAutoDeleverage implements ModelInterface, ArrayAccess
      */
     public function setPositionSize($position_size)
     {
+        
         $this->container['position_size'] = $position_size;
 
         return $this;

@@ -113,6 +113,27 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -270,19 +291,33 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['index'] = isset($data['index']) ? $data['index'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['fiat_unit'] = isset($data['fiat_unit']) ? $data['fiat_unit'] : null;
+        
         $this->container['adv_no'] = isset($data['adv_no']) ? $data['adv_no'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['surplus_amount'] = isset($data['surplus_amount']) ? $data['surplus_amount'] : null;
+        
         $this->container['max_single_trans_amount'] = isset($data['max_single_trans_amount']) ? $data['max_single_trans_amount'] : null;
+        
         $this->container['min_single_trans_amount'] = isset($data['min_single_trans_amount']) ? $data['min_single_trans_amount'] : null;
+        
         $this->container['fiat_min_amount'] = isset($data['fiat_min_amount']) ? $data['fiat_min_amount'] : null;
+        
         $this->container['fiat_max_amount'] = isset($data['fiat_max_amount']) ? $data['fiat_max_amount'] : null;
+        
         $this->container['limit_basis'] = isset($data['limit_basis']) ? $data['limit_basis'] : null;
+        
         $this->container['limit_basis_text'] = isset($data['limit_basis_text']) ? $data['limit_basis_text'] : null;
+        
         $this->container['trade_methods'] = isset($data['trade_methods']) ? $data['trade_methods'] : null;
+        
         $this->container['nick_name'] = isset($data['nick_name']) ? $data['nick_name'] : null;
+        
     }
 
     /**
@@ -295,7 +330,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getLimitBasisAllowableValues();
-        if (!is_null($this->container['limit_basis']) && !in_array($this->container['limit_basis'], $allowedValues, true)) {
+        if ((isset($this->container['limit_basis'])) && !in_array($this->container['limit_basis'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'limit_basis', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -303,7 +338,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getLimitBasisTextAllowableValues();
-        if (!is_null($this->container['limit_basis_text']) && !in_array($this->container['limit_basis_text'], $allowedValues, true)) {
+        if ((isset($this->container['limit_basis_text'])) && !in_array($this->container['limit_basis_text'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'limit_basis_text', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -344,6 +379,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setIndex($index)
     {
+        
         $this->container['index'] = $index;
 
         return $this;
@@ -368,6 +404,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -392,6 +429,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setFiatUnit($fiat_unit)
     {
+        
         $this->container['fiat_unit'] = $fiat_unit;
 
         return $this;
@@ -416,6 +454,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setAdvNo($adv_no)
     {
+        
         $this->container['adv_no'] = $adv_no;
 
         return $this;
@@ -440,6 +479,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -464,6 +504,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setSurplusAmount($surplus_amount)
     {
+        
         $this->container['surplus_amount'] = $surplus_amount;
 
         return $this;
@@ -488,6 +529,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setMaxSingleTransAmount($max_single_trans_amount)
     {
+        
         $this->container['max_single_trans_amount'] = $max_single_trans_amount;
 
         return $this;
@@ -512,6 +554,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setMinSingleTransAmount($min_single_trans_amount)
     {
+        
         $this->container['min_single_trans_amount'] = $min_single_trans_amount;
 
         return $this;
@@ -536,6 +579,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setFiatMinAmount($fiat_min_amount)
     {
+        
         $this->container['fiat_min_amount'] = $fiat_min_amount;
 
         return $this;
@@ -560,6 +604,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setFiatMaxAmount($fiat_max_amount)
     {
+        
         $this->container['fiat_max_amount'] = $fiat_max_amount;
 
         return $this;
@@ -593,6 +638,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['limit_basis'] = $limit_basis;
 
         return $this;
@@ -626,6 +672,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['limit_basis_text'] = $limit_basis_text;
 
         return $this;
@@ -650,6 +697,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setTradeMethods($trade_methods)
     {
+        
         $this->container['trade_methods'] = $trade_methods;
 
         return $this;
@@ -674,6 +722,7 @@ class P2pAdsListItem implements ModelInterface, ArrayAccess
      */
     public function setNickName($nick_name)
     {
+        
         $this->container['nick_name'] = $nick_name;
 
         return $this;

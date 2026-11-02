@@ -101,6 +101,27 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -210,13 +231,21 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['diluted_cost_price'] = isset($data['diluted_cost_price']) ? $data['diluted_cost_price'] : null;
+        
         $this->container['upnl'] = isset($data['upnl']) ? $data['upnl'] : null;
+        
         $this->container['position_qty'] = isset($data['position_qty']) ? $data['position_qty'] : null;
+        
         $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
+        
     }
 
     /**
@@ -286,6 +315,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -310,6 +340,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -334,6 +365,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -358,6 +390,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -382,6 +415,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setDilutedCostPrice($diluted_cost_price)
     {
+        
         $this->container['diluted_cost_price'] = $diluted_cost_price;
 
         return $this;
@@ -406,6 +440,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setUpnl($upnl)
     {
+        
         $this->container['upnl'] = $upnl;
 
         return $this;
@@ -430,6 +465,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionQty($position_qty)
     {
+        
         $this->container['position_qty'] = $position_qty;
 
         return $this;
@@ -454,6 +490,7 @@ class CrossexSecurityPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionValue($position_value)
     {
+        
         $this->container['position_value'] = $position_value;
 
         return $this;

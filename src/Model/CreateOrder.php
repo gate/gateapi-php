@@ -103,6 +103,27 @@ class CreateOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -215,14 +236,23 @@ class CreateOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['from'] = isset($data['from']) ? $data['from'] : null;
+        
         $this->container['to'] = isset($data['to']) ? $data['to'] : null;
+        
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        
         $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
+        
         $this->container['client_req_id'] = isset($data['client_req_id']) ? $data['client_req_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -295,6 +325,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -319,6 +350,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -343,6 +375,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setFrom($from)
     {
+        
         $this->container['from'] = $from;
 
         return $this;
@@ -367,6 +400,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setTo($to)
     {
+        
         $this->container['to'] = $to;
 
         return $this;
@@ -391,6 +425,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setSource($source)
     {
+        
         $this->container['source'] = $source;
 
         return $this;
@@ -415,6 +450,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setAppId($app_id)
     {
+        
         $this->container['app_id'] = $app_id;
 
         return $this;
@@ -439,6 +475,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setClientReqId($client_req_id)
     {
+        
         $this->container['client_req_id'] = $client_req_id;
 
         return $this;
@@ -463,6 +500,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -487,6 +525,7 @@ class CreateOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

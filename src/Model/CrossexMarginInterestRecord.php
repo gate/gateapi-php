@@ -107,6 +107,27 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -225,16 +246,27 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['interest_id'] = isset($data['interest_id']) ? $data['interest_id'] : null;
+        
         $this->container['liability_id'] = isset($data['liability_id']) ? $data['liability_id'] : null;
+        
         $this->container['liability'] = isset($data['liability']) ? $data['liability'] : null;
+        
         $this->container['liability_coin'] = isset($data['liability_coin']) ? $data['liability_coin'] : null;
+        
         $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        
         $this->container['interest_rate'] = isset($data['interest_rate']) ? $data['interest_rate'] : null;
+        
         $this->container['interest_type'] = isset($data['interest_type']) ? $data['interest_type'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
     }
 
     /**
@@ -313,6 +345,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -337,6 +370,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -361,6 +395,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setInterestId($interest_id)
     {
+        
         $this->container['interest_id'] = $interest_id;
 
         return $this;
@@ -385,6 +420,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setLiabilityId($liability_id)
     {
+        
         $this->container['liability_id'] = $liability_id;
 
         return $this;
@@ -409,6 +445,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setLiability($liability)
     {
+        
         $this->container['liability'] = $liability;
 
         return $this;
@@ -433,6 +470,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setLiabilityCoin($liability_coin)
     {
+        
         $this->container['liability_coin'] = $liability_coin;
 
         return $this;
@@ -457,6 +495,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setInterest($interest)
     {
+        
         $this->container['interest'] = $interest;
 
         return $this;
@@ -481,6 +520,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setInterestRate($interest_rate)
     {
+        
         $this->container['interest_rate'] = $interest_rate;
 
         return $this;
@@ -505,6 +545,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setInterestType($interest_type)
     {
+        
         $this->container['interest_type'] = $interest_type;
 
         return $this;
@@ -529,6 +570,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -553,6 +595,7 @@ class CrossexMarginInterestRecord implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;

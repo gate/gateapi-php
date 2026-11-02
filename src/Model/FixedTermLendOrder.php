@@ -144,6 +144,27 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -316,34 +337,63 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['business'] = isset($data['business']) ? $data['business'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['product_id'] = isset($data['product_id']) ? $data['product_id'] : null;
+        
         $this->container['lock_up_period'] = isset($data['lock_up_period']) ? $data['lock_up_period'] : null;
+        
         $this->container['principal'] = isset($data['principal']) ? $data['principal'] : null;
+        
         $this->container['year_rate'] = isset($data['year_rate']) ? $data['year_rate'] : null;
+        
         $this->container['product_type'] = isset($data['product_type']) ? $data['product_type'] : null;
+        
         $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['reinvest_status'] = isset($data['reinvest_status']) ? $data['reinvest_status'] : null;
+        
         $this->container['redeem_account_type'] = isset($data['redeem_account_type']) ? $data['redeem_account_type'] : null;
+        
         $this->container['origin_order'] = isset($data['origin_order']) ? $data['origin_order'] : null;
+        
         $this->container['redeem_type'] = isset($data['redeem_type']) ? $data['redeem_type'] : null;
+        
         $this->container['redeem_time'] = isset($data['redeem_time']) ? $data['redeem_time'] : null;
+        
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['year_rate_perent'] = isset($data['year_rate_perent']) ? $data['year_rate_perent'] : null;
+        
         $this->container['total_year_rate_percent'] = isset($data['total_year_rate_percent']) ? $data['total_year_rate_percent'] : null;
+        
         $this->container['total_interest'] = isset($data['total_interest']) ? $data['total_interest'] : null;
+        
         $this->container['product_info'] = isset($data['product_info']) ? $data['product_info'] : null;
+        
         $this->container['bonus_info'] = isset($data['bonus_info']) ? $data['bonus_info'] : null;
+        
         $this->container['coupon_info'] = isset($data['coupon_info']) ? $data['coupon_info'] : null;
+        
         $this->container['redeem_at'] = isset($data['redeem_at']) ? $data['redeem_at'] : null;
+        
         $this->container['finish_at'] = isset($data['finish_at']) ? $data['finish_at'] : null;
+        
         $this->container['create_at'] = isset($data['create_at']) ? $data['create_at'] : null;
+        
         $this->container['icon'] = isset($data['icon']) ? $data['icon'] : null;
+        
     }
 
     /**
@@ -389,6 +439,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -413,6 +464,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setBusiness($business)
     {
+        
         $this->container['business'] = $business;
 
         return $this;
@@ -437,6 +489,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -461,6 +514,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -485,6 +539,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -509,6 +564,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setProductId($product_id)
     {
+        
         $this->container['product_id'] = $product_id;
 
         return $this;
@@ -533,6 +589,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setLockUpPeriod($lock_up_period)
     {
+        
         $this->container['lock_up_period'] = $lock_up_period;
 
         return $this;
@@ -557,6 +614,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setPrincipal($principal)
     {
+        
         $this->container['principal'] = $principal;
 
         return $this;
@@ -581,6 +639,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setYearRate($year_rate)
     {
+        
         $this->container['year_rate'] = $year_rate;
 
         return $this;
@@ -605,6 +664,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setProductType($product_type)
     {
+        
         $this->container['product_type'] = $product_type;
 
         return $this;
@@ -629,6 +689,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setInterest($interest)
     {
+        
         $this->container['interest'] = $interest;
 
         return $this;
@@ -653,6 +714,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -677,6 +739,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setReinvestStatus($reinvest_status)
     {
+        
         $this->container['reinvest_status'] = $reinvest_status;
 
         return $this;
@@ -701,6 +764,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setRedeemAccountType($redeem_account_type)
     {
+        
         $this->container['redeem_account_type'] = $redeem_account_type;
 
         return $this;
@@ -725,6 +789,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setOriginOrder($origin_order)
     {
+        
         $this->container['origin_order'] = $origin_order;
 
         return $this;
@@ -749,6 +814,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setRedeemType($redeem_type)
     {
+        
         $this->container['redeem_type'] = $redeem_type;
 
         return $this;
@@ -773,6 +839,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setRedeemTime($redeem_time)
     {
+        
         $this->container['redeem_time'] = $redeem_time;
 
         return $this;
@@ -797,6 +864,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishTime($finish_time)
     {
+        
         $this->container['finish_time'] = $finish_time;
 
         return $this;
@@ -821,6 +889,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -845,6 +914,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setYearRatePerent($year_rate_perent)
     {
+        
         $this->container['year_rate_perent'] = $year_rate_perent;
 
         return $this;
@@ -869,6 +939,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setTotalYearRatePercent($total_year_rate_percent)
     {
+        
         $this->container['total_year_rate_percent'] = $total_year_rate_percent;
 
         return $this;
@@ -893,6 +964,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setTotalInterest($total_interest)
     {
+        
         $this->container['total_interest'] = $total_interest;
 
         return $this;
@@ -917,6 +989,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setProductInfo($product_info)
     {
+        
         $this->container['product_info'] = $product_info;
 
         return $this;
@@ -941,6 +1014,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setBonusInfo($bonus_info)
     {
+        
         $this->container['bonus_info'] = $bonus_info;
 
         return $this;
@@ -965,6 +1039,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setCouponInfo($coupon_info)
     {
+        
         $this->container['coupon_info'] = $coupon_info;
 
         return $this;
@@ -989,6 +1064,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setRedeemAt($redeem_at)
     {
+        
         $this->container['redeem_at'] = $redeem_at;
 
         return $this;
@@ -1013,6 +1089,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishAt($finish_at)
     {
+        
         $this->container['finish_at'] = $finish_at;
 
         return $this;
@@ -1037,6 +1114,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateAt($create_at)
     {
+        
         $this->container['create_at'] = $create_at;
 
         return $this;
@@ -1061,6 +1139,7 @@ class FixedTermLendOrder implements ModelInterface, ArrayAccess
      */
     public function setIcon($icon)
     {
+        
         $this->container['icon'] = $icon;
 
         return $this;

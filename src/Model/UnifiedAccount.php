@@ -129,6 +129,27 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -280,27 +301,49 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['mode'] = isset($data['mode']) ? $data['mode'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['refresh_time'] = isset($data['refresh_time']) ? $data['refresh_time'] : null;
+        
         $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
+        
         $this->container['balances'] = isset($data['balances']) ? $data['balances'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['borrowed'] = isset($data['borrowed']) ? $data['borrowed'] : null;
+        
         $this->container['total_initial_margin'] = isset($data['total_initial_margin']) ? $data['total_initial_margin'] : null;
+        
         $this->container['total_margin_balance'] = isset($data['total_margin_balance']) ? $data['total_margin_balance'] : null;
+        
         $this->container['total_maintenance_margin'] = isset($data['total_maintenance_margin']) ? $data['total_maintenance_margin'] : null;
+        
         $this->container['total_initial_margin_rate'] = isset($data['total_initial_margin_rate']) ? $data['total_initial_margin_rate'] : null;
+        
         $this->container['total_maintenance_margin_rate'] = isset($data['total_maintenance_margin_rate']) ? $data['total_maintenance_margin_rate'] : null;
+        
         $this->container['total_available_margin'] = isset($data['total_available_margin']) ? $data['total_available_margin'] : null;
+        
         $this->container['unified_account_total'] = isset($data['unified_account_total']) ? $data['unified_account_total'] : null;
+        
         $this->container['unified_account_total_liab'] = isset($data['unified_account_total_liab']) ? $data['unified_account_total_liab'] : null;
+        
         $this->container['unified_account_total_equity'] = isset($data['unified_account_total_equity']) ? $data['unified_account_total_equity'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['spot_order_loss'] = isset($data['spot_order_loss']) ? $data['spot_order_loss'] : null;
+        
         $this->container['options_order_loss'] = isset($data['options_order_loss']) ? $data['options_order_loss'] : null;
+        
         $this->container['spot_hedge'] = isset($data['spot_hedge']) ? $data['spot_hedge'] : null;
+        
         $this->container['use_funding'] = isset($data['use_funding']) ? $data['use_funding'] : null;
+        
         $this->container['is_all_collateral'] = isset($data['is_all_collateral']) ? $data['is_all_collateral'] : null;
+        
     }
 
     /**
@@ -346,6 +389,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setMode($mode)
     {
+        
         $this->container['mode'] = $mode;
 
         return $this;
@@ -370,6 +414,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -394,6 +439,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setRefreshTime($refresh_time)
     {
+        
         $this->container['refresh_time'] = $refresh_time;
 
         return $this;
@@ -412,12 +458,13 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
     /**
      * Sets locked
      *
-     * @param bool|null $locked Whether the account is locked, valid in cross-currency margin/combined margin mode, false in other modes such as single-currency margin mode
+     * @param bool|null $locked Whether the account is locked. Applicable in multi-currency margin and portfolio margin modes; false in other modes, such as single-currency margin mode.
      *
      * @return $this
      */
     public function setLocked($locked)
     {
+        
         $this->container['locked'] = $locked;
 
         return $this;
@@ -442,6 +489,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setBalances($balances)
     {
+        
         $this->container['balances'] = $balances;
 
         return $this;
@@ -466,6 +514,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -490,6 +539,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setBorrowed($borrowed)
     {
+        
         $this->container['borrowed'] = $borrowed;
 
         return $this;
@@ -514,6 +564,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalInitialMargin($total_initial_margin)
     {
+        
         $this->container['total_initial_margin'] = $total_initial_margin;
 
         return $this;
@@ -538,6 +589,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalMarginBalance($total_margin_balance)
     {
+        
         $this->container['total_margin_balance'] = $total_margin_balance;
 
         return $this;
@@ -562,6 +614,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalMaintenanceMargin($total_maintenance_margin)
     {
+        
         $this->container['total_maintenance_margin'] = $total_maintenance_margin;
 
         return $this;
@@ -586,6 +639,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalInitialMarginRate($total_initial_margin_rate)
     {
+        
         $this->container['total_initial_margin_rate'] = $total_initial_margin_rate;
 
         return $this;
@@ -610,6 +664,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalMaintenanceMarginRate($total_maintenance_margin_rate)
     {
+        
         $this->container['total_maintenance_margin_rate'] = $total_maintenance_margin_rate;
 
         return $this;
@@ -634,6 +689,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setTotalAvailableMargin($total_available_margin)
     {
+        
         $this->container['total_available_margin'] = $total_available_margin;
 
         return $this;
@@ -658,6 +714,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setUnifiedAccountTotal($unified_account_total)
     {
+        
         $this->container['unified_account_total'] = $unified_account_total;
 
         return $this;
@@ -682,6 +739,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setUnifiedAccountTotalLiab($unified_account_total_liab)
     {
+        
         $this->container['unified_account_total_liab'] = $unified_account_total_liab;
 
         return $this;
@@ -706,6 +764,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setUnifiedAccountTotalEquity($unified_account_total_equity)
     {
+        
         $this->container['unified_account_total_equity'] = $unified_account_total_equity;
 
         return $this;
@@ -730,6 +789,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -754,6 +814,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setSpotOrderLoss($spot_order_loss)
     {
+        
         $this->container['spot_order_loss'] = $spot_order_loss;
 
         return $this;
@@ -778,6 +839,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setOptionsOrderLoss($options_order_loss)
     {
+        
         $this->container['options_order_loss'] = $options_order_loss;
 
         return $this;
@@ -802,6 +864,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setSpotHedge($spot_hedge)
     {
+        
         $this->container['spot_hedge'] = $spot_hedge;
 
         return $this;
@@ -826,6 +889,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setUseFunding($use_funding)
     {
+        
         $this->container['use_funding'] = $use_funding;
 
         return $this;
@@ -850,6 +914,7 @@ class UnifiedAccount implements ModelInterface, ArrayAccess
      */
     public function setIsAllCollateral($is_all_collateral)
     {
+        
         $this->container['is_all_collateral'] = $is_all_collateral;
 
         return $this;

@@ -92,6 +92,27 @@ class CategoriesDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class CategoriesDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['category_id'] = isset($data['category_id']) ? $data['category_id'] : null;
+        
         $this->container['is_favorite'] = isset($data['is_favorite']) ? $data['is_favorite'] : null;
+        
         $this->container['category_name'] = isset($data['category_name']) ? $data['category_name'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class CategoriesDataList implements ModelInterface, ArrayAccess
      */
     public function setCategoryId($category_id)
     {
+        
         $this->container['category_id'] = $category_id;
 
         return $this;
@@ -257,6 +282,7 @@ class CategoriesDataList implements ModelInterface, ArrayAccess
      */
     public function setIsFavorite($is_favorite)
     {
+        
         $this->container['is_favorite'] = $is_favorite;
 
         return $this;
@@ -281,6 +307,7 @@ class CategoriesDataList implements ModelInterface, ArrayAccess
      */
     public function setCategoryName($category_name)
     {
+        
         $this->container['category_name'] = $category_name;
 
         return $this;

@@ -112,6 +112,27 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -236,18 +257,31 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['grid_profit'] = isset($data['grid_profit']) ? $data['grid_profit'] : null;
+        
         $this->container['floating_pnl'] = isset($data['floating_pnl']) ? $data['floating_pnl'] : null;
+        
         $this->container['arbitrage_count'] = isset($data['arbitrage_count']) ? $data['arbitrage_count'] : null;
+        
         $this->container['price_range'] = isset($data['price_range']) ? $data['price_range'] : null;
+        
         $this->container['grid_count'] = isset($data['grid_count']) ? $data['grid_count'] : null;
+        
         $this->container['estimated_liquidation_price'] = isset($data['estimated_liquidation_price']) ? $data['estimated_liquidation_price'] : null;
+        
         $this->container['price_floor'] = isset($data['price_floor']) ? $data['price_floor'] : null;
+        
         $this->container['grid_profit_rate'] = isset($data['grid_profit_rate']) ? $data['grid_profit_rate'] : null;
+        
         $this->container['realized_pnl'] = isset($data['realized_pnl']) ? $data['realized_pnl'] : null;
+        
         $this->container['finished_rounds'] = isset($data['finished_rounds']) ? $data['finished_rounds'] : null;
+        
         $this->container['avg_cost'] = isset($data['avg_cost']) ? $data['avg_cost'] : null;
+        
         $this->container['take_profit_price'] = isset($data['take_profit_price']) ? $data['take_profit_price'] : null;
+        
         $this->container['maintenance_margin_ratio'] = isset($data['maintenance_margin_ratio']) ? $data['maintenance_margin_ratio'] : null;
+        
     }
 
     /**
@@ -293,6 +327,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setGridProfit($grid_profit)
     {
+        
         $this->container['grid_profit'] = $grid_profit;
 
         return $this;
@@ -317,6 +352,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setFloatingPnl($floating_pnl)
     {
+        
         $this->container['floating_pnl'] = $floating_pnl;
 
         return $this;
@@ -341,6 +377,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setArbitrageCount($arbitrage_count)
     {
+        
         $this->container['arbitrage_count'] = $arbitrage_count;
 
         return $this;
@@ -365,6 +402,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setPriceRange($price_range)
     {
+        
         $this->container['price_range'] = $price_range;
 
         return $this;
@@ -389,6 +427,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setGridCount($grid_count)
     {
+        
         $this->container['grid_count'] = $grid_count;
 
         return $this;
@@ -413,6 +452,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setEstimatedLiquidationPrice($estimated_liquidation_price)
     {
+        
         $this->container['estimated_liquidation_price'] = $estimated_liquidation_price;
 
         return $this;
@@ -437,6 +477,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setPriceFloor($price_floor)
     {
+        
         $this->container['price_floor'] = $price_floor;
 
         return $this;
@@ -461,6 +502,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setGridProfitRate($grid_profit_rate)
     {
+        
         $this->container['grid_profit_rate'] = $grid_profit_rate;
 
         return $this;
@@ -485,6 +527,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setRealizedPnl($realized_pnl)
     {
+        
         $this->container['realized_pnl'] = $realized_pnl;
 
         return $this;
@@ -509,6 +552,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setFinishedRounds($finished_rounds)
     {
+        
         $this->container['finished_rounds'] = $finished_rounds;
 
         return $this;
@@ -533,6 +577,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setAvgCost($avg_cost)
     {
+        
         $this->container['avg_cost'] = $avg_cost;
 
         return $this;
@@ -557,6 +602,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setTakeProfitPrice($take_profit_price)
     {
+        
         $this->container['take_profit_price'] = $take_profit_price;
 
         return $this;
@@ -581,6 +627,7 @@ class AIHubPortfolioMetrics implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceMarginRatio($maintenance_margin_ratio)
     {
+        
         $this->container['maintenance_margin_ratio'] = $maintenance_margin_ratio;
 
         return $this;

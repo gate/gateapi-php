@@ -101,6 +101,27 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -210,13 +231,21 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['spot_maker_fee'] = isset($data['spot_maker_fee']) ? $data['spot_maker_fee'] : null;
+        
         $this->container['spot_taker_fee'] = isset($data['spot_taker_fee']) ? $data['spot_taker_fee'] : null;
+        
         $this->container['spot_rpi_maker_fee'] = isset($data['spot_rpi_maker_fee']) ? $data['spot_rpi_maker_fee'] : null;
+        
         $this->container['future_maker_fee'] = isset($data['future_maker_fee']) ? $data['future_maker_fee'] : null;
+        
         $this->container['future_taker_fee'] = isset($data['future_taker_fee']) ? $data['future_taker_fee'] : null;
+        
         $this->container['future_rpi_maker_fee'] = isset($data['future_rpi_maker_fee']) ? $data['future_rpi_maker_fee'] : null;
+        
         $this->container['special_fee_list'] = isset($data['special_fee_list']) ? $data['special_fee_list'] : null;
+        
     }
 
     /**
@@ -277,6 +306,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -301,6 +331,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setSpotMakerFee($spot_maker_fee)
     {
+        
         $this->container['spot_maker_fee'] = $spot_maker_fee;
 
         return $this;
@@ -325,6 +356,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setSpotTakerFee($spot_taker_fee)
     {
+        
         $this->container['spot_taker_fee'] = $spot_taker_fee;
 
         return $this;
@@ -349,6 +381,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setSpotRpiMakerFee($spot_rpi_maker_fee)
     {
+        
         $this->container['spot_rpi_maker_fee'] = $spot_rpi_maker_fee;
 
         return $this;
@@ -373,6 +406,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setFutureMakerFee($future_maker_fee)
     {
+        
         $this->container['future_maker_fee'] = $future_maker_fee;
 
         return $this;
@@ -397,6 +431,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setFutureTakerFee($future_taker_fee)
     {
+        
         $this->container['future_taker_fee'] = $future_taker_fee;
 
         return $this;
@@ -421,6 +456,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setFutureRpiMakerFee($future_rpi_maker_fee)
     {
+        
         $this->container['future_rpi_maker_fee'] = $future_rpi_maker_fee;
 
         return $this;
@@ -445,6 +481,7 @@ class InlineResponse200 implements ModelInterface, ArrayAccess
      */
     public function setSpecialFeeList($special_fee_list)
     {
+        
         $this->container['special_fee_list'] = $special_fee_list;
 
         return $this;

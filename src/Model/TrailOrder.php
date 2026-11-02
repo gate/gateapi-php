@@ -164,6 +164,27 @@ class TrailOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -400,44 +421,83 @@ class TrailOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['is_gte'] = isset($data['is_gte']) ? $data['is_gte'] : null;
+        
         $this->container['activation_price'] = isset($data['activation_price']) ? $data['activation_price'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['price_offset'] = isset($data['price_offset']) ? $data['price_offset'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : null;
+        
         $this->container['position_related'] = isset($data['position_related']) ? $data['position_related'] : null;
+        
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        
         $this->container['activated_at'] = isset($data['activated_at']) ? $data['activated_at'] : null;
+        
         $this->container['finished_at'] = isset($data['finished_at']) ? $data['finished_at'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['active_time'] = isset($data['active_time']) ? $data['active_time'] : null;
+        
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
+        
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        
         $this->container['suborder_text'] = isset($data['suborder_text']) ? $data['suborder_text'] : null;
+        
         $this->container['is_dual_mode'] = isset($data['is_dual_mode']) ? $data['is_dual_mode'] : null;
+        
         $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
+        
         $this->container['suborder_id'] = isset($data['suborder_id']) ? $data['suborder_id'] : null;
+        
         $this->container['side_label'] = isset($data['side_label']) ? $data['side_label'] : null;
+        
         $this->container['original_status'] = isset($data['original_status']) ? $data['original_status'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['position_side_output'] = isset($data['position_side_output']) ? $data['position_side_output'] : null;
+        
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        
         $this->container['extremum_price'] = isset($data['extremum_price']) ? $data['extremum_price'] : null;
+        
         $this->container['status_code'] = isset($data['status_code']) ? $data['status_code'] : null;
+        
         $this->container['created_at_precise'] = isset($data['created_at_precise']) ? $data['created_at_precise'] : null;
+        
         $this->container['finished_at_precise'] = isset($data['finished_at_precise']) ? $data['finished_at_precise'] : null;
+        
         $this->container['activated_at_precise'] = isset($data['activated_at_precise']) ? $data['activated_at_precise'] : null;
+        
         $this->container['status_label'] = isset($data['status_label']) ? $data['status_label'] : null;
+        
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        
         $this->container['error_label'] = isset($data['error_label']) ? $data['error_label'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
     }
 
     /**
@@ -450,7 +510,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -458,7 +518,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -499,6 +559,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -523,6 +584,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -547,6 +609,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -571,6 +634,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -595,6 +659,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setSettle($settle)
     {
+        
         $this->container['settle'] = $settle;
 
         return $this;
@@ -619,6 +684,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -643,6 +709,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setIsGte($is_gte)
     {
+        
         $this->container['is_gte'] = $is_gte;
 
         return $this;
@@ -667,6 +734,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setActivationPrice($activation_price)
     {
+        
         $this->container['activation_price'] = $activation_price;
 
         return $this;
@@ -700,6 +768,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -724,6 +793,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceOffset($price_offset)
     {
+        
         $this->container['price_offset'] = $price_offset;
 
         return $this;
@@ -748,6 +818,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -772,6 +843,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setReduceOnly($reduce_only)
     {
+        
         $this->container['reduce_only'] = $reduce_only;
 
         return $this;
@@ -796,6 +868,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionRelated($position_related)
     {
+        
         $this->container['position_related'] = $position_related;
 
         return $this;
@@ -820,6 +893,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setCreatedAt($created_at)
     {
+        
         $this->container['created_at'] = $created_at;
 
         return $this;
@@ -844,6 +918,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setActivatedAt($activated_at)
     {
+        
         $this->container['activated_at'] = $activated_at;
 
         return $this;
@@ -868,6 +943,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishedAt($finished_at)
     {
+        
         $this->container['finished_at'] = $finished_at;
 
         return $this;
@@ -892,6 +968,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -916,6 +993,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setActiveTime($active_time)
     {
+        
         $this->container['active_time'] = $active_time;
 
         return $this;
@@ -940,6 +1018,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishTime($finish_time)
     {
+        
         $this->container['finish_time'] = $finish_time;
 
         return $this;
@@ -964,6 +1043,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setReason($reason)
     {
+        
         $this->container['reason'] = $reason;
 
         return $this;
@@ -982,12 +1062,13 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets suborder_text
      *
-     * @param string|null $suborder_text Sub-order text field
+     * @param string|null $suborder_text The child order's text field.
      *
      * @return $this
      */
     public function setSuborderText($suborder_text)
     {
+        
         $this->container['suborder_text'] = $suborder_text;
 
         return $this;
@@ -1012,6 +1093,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setIsDualMode($is_dual_mode)
     {
+        
         $this->container['is_dual_mode'] = $is_dual_mode;
 
         return $this;
@@ -1036,6 +1118,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setTriggerPrice($trigger_price)
     {
+        
         $this->container['trigger_price'] = $trigger_price;
 
         return $this;
@@ -1054,12 +1137,13 @@ class TrailOrder implements ModelInterface, ArrayAccess
     /**
      * Sets suborder_id
      *
-     * @param int|null $suborder_id Sub-order ID
+     * @param int|null $suborder_id Child order ID.
      *
      * @return $this
      */
     public function setSuborderId($suborder_id)
     {
+        
         $this->container['suborder_id'] = $suborder_id;
 
         return $this;
@@ -1084,6 +1168,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setSideLabel($side_label)
     {
+        
         $this->container['side_label'] = $side_label;
 
         return $this;
@@ -1108,6 +1193,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setOriginalStatus($original_status)
     {
+        
         $this->container['original_status'] = $original_status;
 
         return $this;
@@ -1141,6 +1227,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -1165,6 +1252,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionSideOutput($position_side_output)
     {
+        
         $this->container['position_side_output'] = $position_side_output;
 
         return $this;
@@ -1189,6 +1277,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setUpdatedAt($updated_at)
     {
+        
         $this->container['updated_at'] = $updated_at;
 
         return $this;
@@ -1213,6 +1302,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setExtremumPrice($extremum_price)
     {
+        
         $this->container['extremum_price'] = $extremum_price;
 
         return $this;
@@ -1237,6 +1327,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setStatusCode($status_code)
     {
+        
         $this->container['status_code'] = $status_code;
 
         return $this;
@@ -1261,6 +1352,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setCreatedAtPrecise($created_at_precise)
     {
+        
         $this->container['created_at_precise'] = $created_at_precise;
 
         return $this;
@@ -1285,6 +1377,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishedAtPrecise($finished_at_precise)
     {
+        
         $this->container['finished_at_precise'] = $finished_at_precise;
 
         return $this;
@@ -1309,6 +1402,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setActivatedAtPrecise($activated_at_precise)
     {
+        
         $this->container['activated_at_precise'] = $activated_at_precise;
 
         return $this;
@@ -1333,6 +1427,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setStatusLabel($status_label)
     {
+        
         $this->container['status_label'] = $status_label;
 
         return $this;
@@ -1357,6 +1452,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPosMarginMode($pos_margin_mode)
     {
+        
         $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;
@@ -1381,6 +1477,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionMode($position_mode)
     {
+        
         $this->container['position_mode'] = $position_mode;
 
         return $this;
@@ -1405,6 +1502,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setErrorLabel($error_label)
     {
+        
         $this->container['error_label'] = $error_label;
 
         return $this;
@@ -1429,6 +1527,7 @@ class TrailOrder implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;

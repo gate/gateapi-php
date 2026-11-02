@@ -97,6 +97,27 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['messages'] = isset($data['messages']) ? $data['messages'] : null;
+        
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        
         $this->container['has_history'] = isset($data['has_history']) ? $data['has_history'] : null;
+        
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['srvtm'] = isset($data['srvtm']) ? $data['srvtm'] : null;
+        
         $this->container['order_status'] = isset($data['order_status']) ? $data['order_status'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
      */
     public function setMessages($messages)
     {
+        
         $this->container['messages'] = $messages;
 
         return $this;
@@ -274,6 +302,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
      */
     public function setMemo($memo)
     {
+        
         $this->container['memo'] = $memo;
 
         return $this;
@@ -298,6 +327,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
      */
     public function setHasHistory($has_history)
     {
+        
         $this->container['has_history'] = $has_history;
 
         return $this;
@@ -322,6 +352,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -346,6 +377,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
      */
     public function setSrvtm($srvtm)
     {
+        
         $this->container['srvtm'] = $srvtm;
 
         return $this;
@@ -370,6 +402,7 @@ class P2pChatListResult implements ModelInterface, ArrayAccess
      */
     public function setOrderStatus($order_status)
     {
+        
         $this->container['order_status'] = $order_status;
 
         return $this;

@@ -94,6 +94,27 @@ class ListUserCouponsResponseDataProgressConfig implements ModelInterface, Array
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class ListUserCouponsResponseDataProgressConfig implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->container['total_balance'] = isset($data['total_balance']) ? $data['total_balance'] : null;
+        
         $this->container['current_used'] = isset($data['current_used']) ? $data['current_used'] : null;
+        
         $this->container['current_achived'] = isset($data['current_achived']) ? $data['current_achived'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
     }
 
     /**
@@ -239,6 +264,7 @@ class ListUserCouponsResponseDataProgressConfig implements ModelInterface, Array
      */
     public function setTotalBalance($total_balance)
     {
+        
         $this->container['total_balance'] = $total_balance;
 
         return $this;
@@ -263,6 +289,7 @@ class ListUserCouponsResponseDataProgressConfig implements ModelInterface, Array
      */
     public function setCurrentUsed($current_used)
     {
+        
         $this->container['current_used'] = $current_used;
 
         return $this;
@@ -287,6 +314,7 @@ class ListUserCouponsResponseDataProgressConfig implements ModelInterface, Array
      */
     public function setCurrentAchived($current_achived)
     {
+        
         $this->container['current_achived'] = $current_achived;
 
         return $this;
@@ -311,6 +339,7 @@ class ListUserCouponsResponseDataProgressConfig implements ModelInterface, Array
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;

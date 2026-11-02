@@ -103,6 +103,27 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -215,14 +236,23 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        
         $this->container['fixed_type'] = isset($data['fixed_type']) ? $data['fixed_type'] : null;
+        
         $this->container['fixed_rate'] = isset($data['fixed_rate']) ? $data['fixed_rate'] : null;
+        
         $this->container['auto_renew'] = isset($data['auto_renew']) ? $data['auto_renew'] : null;
+        
         $this->container['auto_repay'] = isset($data['auto_repay']) ? $data['auto_repay'] : null;
+        
         $this->container['borrow_currency'] = isset($data['borrow_currency']) ? $data['borrow_currency'] : null;
+        
         $this->container['borrow_amount'] = isset($data['borrow_amount']) ? $data['borrow_amount'] : null;
+        
         $this->container['collateral_currencies'] = isset($data['collateral_currencies']) ? $data['collateral_currencies'] : null;
+        
     }
 
     /**
@@ -274,6 +304,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -298,6 +329,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderType($order_type)
     {
+        
         $this->container['order_type'] = $order_type;
 
         return $this;
@@ -322,6 +354,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setFixedType($fixed_type)
     {
+        
         $this->container['fixed_type'] = $fixed_type;
 
         return $this;
@@ -346,6 +379,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setFixedRate($fixed_rate)
     {
+        
         $this->container['fixed_rate'] = $fixed_rate;
 
         return $this;
@@ -370,6 +404,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoRenew($auto_renew)
     {
+        
         $this->container['auto_renew'] = $auto_renew;
 
         return $this;
@@ -394,6 +429,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoRepay($auto_repay)
     {
+        
         $this->container['auto_repay'] = $auto_repay;
 
         return $this;
@@ -418,6 +454,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setBorrowCurrency($borrow_currency)
     {
+        
         $this->container['borrow_currency'] = $borrow_currency;
 
         return $this;
@@ -442,6 +479,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setBorrowAmount($borrow_amount)
     {
+        
         $this->container['borrow_amount'] = $borrow_amount;
 
         return $this;
@@ -466,6 +504,7 @@ class CreateMultiCollateralOrder implements ModelInterface, ArrayAccess
      */
     public function setCollateralCurrencies($collateral_currencies)
     {
+        
         $this->container['collateral_currencies'] = $collateral_currencies;
 
         return $this;

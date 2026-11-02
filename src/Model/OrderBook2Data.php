@@ -91,6 +91,27 @@ class OrderBook2Data implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class OrderBook2Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['bids'] = isset($data['bids']) ? $data['bids'] : null;
+        
         $this->container['asks'] = isset($data['asks']) ? $data['asks'] : null;
+        
     }
 
     /**
@@ -232,6 +256,7 @@ class OrderBook2Data implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -256,6 +281,7 @@ class OrderBook2Data implements ModelInterface, ArrayAccess
      */
     public function setBids($bids)
     {
+        
         $this->container['bids'] = $bids;
 
         return $this;
@@ -280,6 +306,7 @@ class OrderBook2Data implements ModelInterface, ArrayAccess
      */
     public function setAsks($asks)
     {
+        
         $this->container['asks'] = $asks;
 
         return $this;

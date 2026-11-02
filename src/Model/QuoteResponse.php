@@ -106,6 +106,27 @@ class QuoteResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -221,15 +242,25 @@ class QuoteResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
+        
         $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
+        
         $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        
         $this->container['estimate_gas_fee_amount_usdt'] = isset($data['estimate_gas_fee_amount_usdt']) ? $data['estimate_gas_fee_amount_usdt'] : null;
+        
         $this->container['order_fee'] = isset($data['order_fee']) ? $data['order_fee'] : null;
+        
         $this->container['target_token_min_amount'] = isset($data['target_token_min_amount']) ? $data['target_token_min_amount'] : null;
+        
         $this->container['target_token_max_amount'] = isset($data['target_token_max_amount']) ? $data['target_token_max_amount'] : null;
+        
         $this->container['error_type'] = isset($data['error_type']) ? $data['error_type'] : null;
+        
     }
 
     /**
@@ -275,6 +306,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setQuoteId($quote_id)
     {
+        
         $this->container['quote_id'] = $quote_id;
 
         return $this;
@@ -299,6 +331,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setMinAmount($min_amount)
     {
+        
         $this->container['min_amount'] = $min_amount;
 
         return $this;
@@ -323,6 +356,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setMaxAmount($max_amount)
     {
+        
         $this->container['max_amount'] = $max_amount;
 
         return $this;
@@ -347,6 +381,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -371,6 +406,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setSlippage($slippage)
     {
+        
         $this->container['slippage'] = $slippage;
 
         return $this;
@@ -395,6 +431,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setEstimateGasFeeAmountUsdt($estimate_gas_fee_amount_usdt)
     {
+        
         $this->container['estimate_gas_fee_amount_usdt'] = $estimate_gas_fee_amount_usdt;
 
         return $this;
@@ -419,6 +456,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setOrderFee($order_fee)
     {
+        
         $this->container['order_fee'] = $order_fee;
 
         return $this;
@@ -443,6 +481,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setTargetTokenMinAmount($target_token_min_amount)
     {
+        
         $this->container['target_token_min_amount'] = $target_token_min_amount;
 
         return $this;
@@ -467,6 +506,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setTargetTokenMaxAmount($target_token_max_amount)
     {
+        
         $this->container['target_token_max_amount'] = $target_token_max_amount;
 
         return $this;
@@ -491,6 +531,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function setErrorType($error_type)
     {
+        
         $this->container['error_type'] = $error_type;
 
         return $this;

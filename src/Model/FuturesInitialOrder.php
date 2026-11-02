@@ -107,6 +107,27 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -240,16 +261,27 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['close'] = isset($data['close']) ? $data['close'] : false;
+        
         $this->container['tif'] = isset($data['tif']) ? $data['tif'] : 'gtc';
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : false;
+        
         $this->container['auto_size'] = isset($data['auto_size']) ? $data['auto_size'] : null;
+        
         $this->container['is_reduce_only'] = isset($data['is_reduce_only']) ? $data['is_reduce_only'] : null;
+        
         $this->container['is_close'] = isset($data['is_close']) ? $data['is_close'] : null;
+        
     }
 
     /**
@@ -268,7 +300,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'price' can't be null";
         }
         $allowedValues = $this->getTifAllowableValues();
-        if (!is_null($this->container['tif']) && !in_array($this->container['tif'], $allowedValues, true)) {
+        if ((isset($this->container['tif'])) && !in_array($this->container['tif'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'tif', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -309,6 +341,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -333,6 +366,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -357,6 +391,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -381,6 +416,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -405,6 +441,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setClose($close)
     {
+        
         $this->container['close'] = $close;
 
         return $this;
@@ -438,6 +475,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['tif'] = $tif;
 
         return $this;
@@ -462,6 +500,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -486,6 +525,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setReduceOnly($reduce_only)
     {
+        
         $this->container['reduce_only'] = $reduce_only;
 
         return $this;
@@ -510,6 +550,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoSize($auto_size)
     {
+        
         $this->container['auto_size'] = $auto_size;
 
         return $this;
@@ -534,6 +575,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setIsReduceOnly($is_reduce_only)
     {
+        
         $this->container['is_reduce_only'] = $is_reduce_only;
 
         return $this;
@@ -558,6 +600,7 @@ class FuturesInitialOrder implements ModelInterface, ArrayAccess
      */
     public function setIsClose($is_close)
     {
+        
         $this->container['is_close'] = $is_close;
 
         return $this;

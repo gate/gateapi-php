@@ -92,6 +92,27 @@ class AIHubRebalanceStopOptions implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class AIHubRebalanceStopOptions implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['expiration'] = isset($data['expiration']) ? $data['expiration'] : null;
+        
         $this->container['slip'] = isset($data['slip']) ? $data['slip'] : null;
+        
     }
 
     /**
@@ -205,10 +229,12 @@ class AIHubRebalanceStopOptions implements ModelInterface, ArrayAccess
         if ($this->container['expiration'] === null) {
             $invalidProperties[] = "'expiration' can't be null";
         }
+        
         if (($this->container['expiration'] < 1)) {
             $invalidProperties[] = "invalid value for 'expiration', must be bigger than or equal to 1.";
         }
 
+        
         return $invalidProperties;
     }
 
@@ -243,6 +269,7 @@ class AIHubRebalanceStopOptions implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -267,6 +294,7 @@ class AIHubRebalanceStopOptions implements ModelInterface, ArrayAccess
      */
     public function setExpiration($expiration)
     {
+        
 
         if (($expiration < 1)) {
             throw new \InvalidArgumentException('invalid value for $expiration when calling AIHubRebalanceStopOptions., must be bigger than or equal to 1.');
@@ -296,6 +324,7 @@ class AIHubRebalanceStopOptions implements ModelInterface, ArrayAccess
      */
     public function setSlip($slip)
     {
+        
         $this->container['slip'] = $slip;
 
         return $this;

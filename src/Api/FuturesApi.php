@@ -14543,7 +14543,7 @@ class FuturesApi
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $side Query side. long or shot (optional)
+     * @param  string $side Direction filter: long or short. (optional)
      * @param  string $pnl Query profit or loss (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -14569,7 +14569,7 @@ class FuturesApi
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $side Query side. long or shot (optional)
+     * @param  string $side Direction filter: long or short. (optional)
      * @param  string $pnl Query profit or loss (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -14635,7 +14635,7 @@ class FuturesApi
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $side Query side. long or shot (optional)
+     * @param  string $side Direction filter: long or short. (optional)
      * @param  string $pnl Query profit or loss (optional)
      *
      * @throws \InvalidArgumentException
@@ -14664,7 +14664,7 @@ class FuturesApi
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $side Query side. long or shot (optional)
+     * @param  string $side Direction filter: long or short. (optional)
      * @param  string $pnl Query profit or loss (optional)
      *
      * @throws \InvalidArgumentException
@@ -14724,7 +14724,7 @@ class FuturesApi
      * @param  int $offset List offset, starting from 0 (optional, default to 0)
      * @param  int $from Start timestamp  Specify start time, time format is Unix timestamp. If not specified, it defaults to (the data start time of the time range actually returned by to and limit) (optional)
      * @param  int $to Termination Timestamp  Specify the end time. If not specified, it defaults to the current time, and the time format is a Unix timestamp (optional)
-     * @param  string $side Query side. long or shot (optional)
+     * @param  string $side Direction filter: long or short. (optional)
      * @param  string $pnl Query profit or loss (optional)
      *
      * @throws \InvalidArgumentException
@@ -18224,7 +18224,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\TrailOrderListResponse
+     * @return \GateApi\Model\TrailOrderListResponseEnvelope
      */
     public function getTrailOrders($associative_array)
     {
@@ -18255,7 +18255,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\TrailOrderListResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderListResponseEnvelope, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrailOrdersWithHttpInfo($associative_array)
     {
@@ -18288,7 +18288,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\TrailOrderListResponse';
+        $returnType = '\GateApi\Model\TrailOrderListResponseEnvelope';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -18363,7 +18363,7 @@ class FuturesApi
      */
     public function getTrailOrdersAsyncWithHttpInfo($associative_array)
     {
-        $returnType = '\GateApi\Model\TrailOrderListResponse';
+        $returnType = '\GateApi\Model\TrailOrderListResponseEnvelope';
         $request = $this->getTrailOrdersRequest($associative_array);
 
         return $this->client
@@ -20393,7 +20393,7 @@ class FuturesApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $settle Perpetual futures settlement currency (required)
-     * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
+     * @param  int $sort_by Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
      * @param  int $start_at Lower time bound for the history list, paired with end_at. Required when is_finished is true (optional)
@@ -20422,7 +20422,7 @@ class FuturesApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $settle Perpetual futures settlement currency (required)
-     * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
+     * @param  int $sort_by Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
      * @param  int $start_at Lower time bound for the history list, paired with end_at. Required when is_finished is true (optional)
@@ -20491,7 +20491,7 @@ class FuturesApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $settle Perpetual futures settlement currency (required)
-     * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
+     * @param  int $sort_by Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
      * @param  int $start_at Lower time bound for the history list, paired with end_at. Required when is_finished is true (optional)
@@ -20523,7 +20523,7 @@ class FuturesApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $settle Perpetual futures settlement currency (required)
-     * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
+     * @param  int $sort_by Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
      * @param  int $start_at Lower time bound for the history list, paired with end_at. Required when is_finished is true (optional)
@@ -20586,7 +20586,7 @@ class FuturesApi
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
      * @param  string $settle Perpetual futures settlement currency (required)
-     * @param  int $sort_by Sort field: 1 ORDER_SORT_CREATED_AT, 2 ORDER_SORT_FINISHED_AT; cannot be 0 (required)
+     * @param  int $sort_by Sort field: 1 for creation time; 2 for finish time. 0 is not accepted. (required)
      * @param  string $contract Optional. When non-empty, must be a valid contract (validated against the market cache for the path settle); server-side converted to uppercase (optional)
      * @param  bool $is_finished true to query finished orders, false to query in-progress orders (optional)
      * @param  int $start_at Lower time bound for the history list, paired with end_at. Required when is_finished is true (optional)
@@ -22058,7 +22058,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\FuturesPriceTriggeredOrder
+     * @return \GateApi\Model\FuturesPriceTriggeredOrder|\GateApi\Model\FuturesPriceTriggeredOrderError
      */
     public function getPriceTriggeredOrder($settle, $order_id)
     {
@@ -22076,7 +22076,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\FuturesPriceTriggeredOrder, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\FuturesPriceTriggeredOrder|\GateApi\Model\FuturesPriceTriggeredOrderError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPriceTriggeredOrderWithHttpInfo($settle, $order_id)
     {
@@ -22107,6 +22107,10 @@ class FuturesApi
                 $e->getResponse() ? $e->getResponse()->getHeaders() : null,
                 $responseBody
             );
+        }
+        // This status is an error only for this operation's YAML contract.
+        if ($response->getStatusCode() === 205) {
+            throw ApiException::fromResponse($response);
         }
 
         $returnType = '\GateApi\Model\FuturesPriceTriggeredOrder';
@@ -22165,6 +22169,9 @@ class FuturesApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
+                    if ($response->getStatusCode() === 205) {
+                        throw ApiException::fromResponse($response);
+                    }
                     $responseBody = $response->getBody();
                     if ($returnType === '\SplFileObject') {
                         $content = $responseBody; //stream goes to serializer

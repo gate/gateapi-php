@@ -90,6 +90,27 @@ class AIHubRebalanceCreateRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -194,7 +215,9 @@ class AIHubRebalanceCreateRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        
         $this->container['create_params'] = isset($data['create_params']) ? $data['create_params'] : null;
+        
     }
 
     /**
@@ -210,7 +233,7 @@ class AIHubRebalanceCreateRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'strategy_type' can't be null";
         }
         $allowedValues = $this->getStrategyTypeAllowableValues();
-        if (!is_null($this->container['strategy_type']) && !in_array($this->container['strategy_type'], $allowedValues, true)) {
+        if ((isset($this->container['strategy_type'])) && !in_array($this->container['strategy_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'strategy_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -263,6 +286,7 @@ class AIHubRebalanceCreateRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['strategy_type'] = $strategy_type;
 
         return $this;
@@ -287,6 +311,7 @@ class AIHubRebalanceCreateRequest implements ModelInterface, ArrayAccess
      */
     public function setCreateParams($create_params)
     {
+        
         $this->container['create_params'] = $create_params;
 
         return $this;

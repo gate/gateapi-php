@@ -104,6 +104,27 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -216,14 +237,23 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['spot_in_use'] = isset($data['spot_in_use']) ? $data['spot_in_use'] : null;
+        
         $this->container['maintain_margin'] = isset($data['maintain_margin']) ? $data['maintain_margin'] : null;
+        
         $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
+        
         $this->container['margin_result'] = isset($data['margin_result']) ? $data['margin_result'] : null;
+        
         $this->container['delta'] = isset($data['delta']) ? $data['delta'] : null;
+        
         $this->container['gamma'] = isset($data['gamma']) ? $data['gamma'] : null;
+        
         $this->container['theta'] = isset($data['theta']) ? $data['theta'] : null;
+        
         $this->container['vega'] = isset($data['vega']) ? $data['vega'] : null;
+        
     }
 
     /**
@@ -269,6 +299,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -293,6 +324,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setSpotInUse($spot_in_use)
     {
+        
         $this->container['spot_in_use'] = $spot_in_use;
 
         return $this;
@@ -317,6 +349,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setMaintainMargin($maintain_margin)
     {
+        
         $this->container['maintain_margin'] = $maintain_margin;
 
         return $this;
@@ -341,6 +374,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setInitialMargin($initial_margin)
     {
+        
         $this->container['initial_margin'] = $initial_margin;
 
         return $this;
@@ -365,6 +399,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setMarginResult($margin_result)
     {
+        
         $this->container['margin_result'] = $margin_result;
 
         return $this;
@@ -389,6 +424,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setDelta($delta)
     {
+        
         $this->container['delta'] = $delta;
 
         return $this;
@@ -413,6 +449,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setGamma($gamma)
     {
+        
         $this->container['gamma'] = $gamma;
 
         return $this;
@@ -437,6 +474,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setTheta($theta)
     {
+        
         $this->container['theta'] = $theta;
 
         return $this;
@@ -461,6 +499,7 @@ class MockRiskUnit implements ModelInterface, ArrayAccess
      */
     public function setVega($vega)
     {
+        
         $this->container['vega'] = $vega;
 
         return $this;

@@ -95,6 +95,27 @@ class EvaluateResp implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class EvaluateResp implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['cursor'] = isset($data['cursor']) ? $data['cursor'] : null;
+        
         $this->container['total_available'] = isset($data['total_available']) ? $data['total_available'] : null;
+        
         $this->container['total_available_show'] = isset($data['total_available_show']) ? $data['total_available_show'] : null;
+        
     }
 
     /**
@@ -259,6 +285,7 @@ class EvaluateResp implements ModelInterface, ArrayAccess
      */
     public function setList($list)
     {
+        
         $this->container['list'] = $list;
 
         return $this;
@@ -283,6 +310,7 @@ class EvaluateResp implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -307,6 +335,7 @@ class EvaluateResp implements ModelInterface, ArrayAccess
      */
     public function setCursor($cursor)
     {
+        
         $this->container['cursor'] = $cursor;
 
         return $this;
@@ -331,6 +360,7 @@ class EvaluateResp implements ModelInterface, ArrayAccess
      */
     public function setTotalAvailable($total_available)
     {
+        
         $this->container['total_available'] = $total_available;
 
         return $this;
@@ -355,6 +385,7 @@ class EvaluateResp implements ModelInterface, ArrayAccess
      */
     public function setTotalAvailableShow($total_available_show)
     {
+        
         $this->container['total_available_show'] = $total_available_show;
 
         return $this;

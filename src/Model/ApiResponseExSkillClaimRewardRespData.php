@@ -90,6 +90,27 @@ class ApiResponseExSkillClaimRewardRespData implements ModelInterface, ArrayAcce
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -181,7 +202,9 @@ class ApiResponseExSkillClaimRewardRespData implements ModelInterface, ArrayAcce
     public function __construct(array $data = null)
     {
         $this->container['has_m_n_task'] = isset($data['has_m_n_task']) ? $data['has_m_n_task'] : null;
+        
         $this->container['coupon_full_name'] = isset($data['coupon_full_name']) ? $data['coupon_full_name'] : null;
+        
     }
 
     /**
@@ -227,6 +250,7 @@ class ApiResponseExSkillClaimRewardRespData implements ModelInterface, ArrayAcce
      */
     public function setHasMNTask($has_m_n_task)
     {
+        
         $this->container['has_m_n_task'] = $has_m_n_task;
 
         return $this;
@@ -251,6 +275,7 @@ class ApiResponseExSkillClaimRewardRespData implements ModelInterface, ArrayAcce
      */
     public function setCouponFullName($coupon_full_name)
     {
+        
         $this->container['coupon_full_name'] = $coupon_full_name;
 
         return $this;

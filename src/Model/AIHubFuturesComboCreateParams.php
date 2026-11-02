@@ -102,6 +102,27 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -255,13 +276,21 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['begin_money_amount'] = isset($data['begin_money_amount']) ? $data['begin_money_amount'] : null;
+        
         $this->container['begin_money_currency'] = isset($data['begin_money_currency']) ? $data['begin_money_currency'] : null;
+        
         $this->container['asset_info'] = isset($data['asset_info']) ? $data['asset_info'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['period'] = isset($data['period']) ? $data['period'] : null;
+        
         $this->container['threshold'] = isset($data['threshold']) ? $data['threshold'] : null;
+        
         $this->container['stop_profit'] = isset($data['stop_profit']) ? $data['stop_profit'] : null;
+        
         $this->container['stop_loss'] = isset($data['stop_loss']) ? $data['stop_loss'] : null;
+        
     }
 
     /**
@@ -280,7 +309,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'begin_money_currency' can't be null";
         }
         $allowedValues = $this->getBeginMoneyCurrencyAllowableValues();
-        if (!is_null($this->container['begin_money_currency']) && !in_array($this->container['begin_money_currency'], $allowedValues, true)) {
+        if ((isset($this->container['begin_money_currency'])) && !in_array($this->container['begin_money_currency'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'begin_money_currency', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -293,6 +322,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
         if ($this->container['leverage'] === null) {
             $invalidProperties[] = "'leverage' can't be null";
         }
+        
         if (($this->container['leverage'] > 100)) {
             $invalidProperties[] = "invalid value for 'leverage', must be smaller than or equal to 100.";
         }
@@ -301,8 +331,9 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'leverage', must be bigger than or equal to 1.";
         }
 
+        
         $allowedValues = $this->getPeriodAllowableValues();
-        if (!is_null($this->container['period']) && !in_array($this->container['period'], $allowedValues, true)) {
+        if ((isset($this->container['period'])) && !in_array($this->container['period'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'period', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -343,6 +374,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
      */
     public function setBeginMoneyAmount($begin_money_amount)
     {
+        
         $this->container['begin_money_amount'] = $begin_money_amount;
 
         return $this;
@@ -376,6 +408,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['begin_money_currency'] = $begin_money_currency;
 
         return $this;
@@ -400,6 +433,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
      */
     public function setAssetInfo($asset_info)
     {
+        
         $this->container['asset_info'] = $asset_info;
 
         return $this;
@@ -424,6 +458,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
 
         if (($leverage > 100)) {
             throw new \InvalidArgumentException('invalid value for $leverage when calling AIHubFuturesComboCreateParams., must be smaller than or equal to 100.');
@@ -465,6 +500,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['period'] = $period;
 
         return $this;
@@ -489,6 +525,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
      */
     public function setThreshold($threshold)
     {
+        
         $this->container['threshold'] = $threshold;
 
         return $this;
@@ -513,6 +550,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
      */
     public function setStopProfit($stop_profit)
     {
+        
         $this->container['stop_profit'] = $stop_profit;
 
         return $this;
@@ -537,6 +575,7 @@ class AIHubFuturesComboCreateParams implements ModelInterface, ArrayAccess
      */
     public function setStopLoss($stop_loss)
     {
+        
         $this->container['stop_loss'] = $stop_loss;
 
         return $this;

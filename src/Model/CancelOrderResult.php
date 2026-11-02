@@ -100,6 +100,27 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['succeeded'] = isset($data['succeeded']) ? $data['succeeded'] : null;
+        
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
         $this->container['account'] = isset($data['account']) ? $data['account'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -281,6 +310,7 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -305,6 +335,7 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -329,6 +360,7 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setSucceeded($succeeded)
     {
+        
         $this->container['succeeded'] = $succeeded;
 
         return $this;
@@ -353,6 +385,7 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setLabel($label)
     {
+        
         $this->container['label'] = $label;
 
         return $this;
@@ -377,6 +410,7 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;
@@ -401,6 +435,7 @@ class CancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setAccount($account)
     {
+        
         $this->container['account'] = $account;
 
         return $this;

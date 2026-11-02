@@ -101,6 +101,27 @@ class SubAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -210,13 +231,21 @@ class SubAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['remark'] = isset($data['remark']) ? $data['remark'] : null;
+        
         $this->container['login_name'] = isset($data['login_name']) ? $data['login_name'] : null;
+        
         $this->container['password'] = isset($data['password']) ? $data['password'] : null;
+        
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -265,6 +294,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setRemark($remark)
     {
+        
         $this->container['remark'] = $remark;
 
         return $this;
@@ -289,6 +319,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setLoginName($login_name)
     {
+        
         $this->container['login_name'] = $login_name;
 
         return $this;
@@ -313,6 +344,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setPassword($password)
     {
+        
         $this->container['password'] = $password;
 
         return $this;
@@ -337,6 +369,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setEmail($email)
     {
+        
         $this->container['email'] = $email;
 
         return $this;
@@ -361,6 +394,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setState($state)
     {
+        
         $this->container['state'] = $state;
 
         return $this;
@@ -385,6 +419,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -409,6 +444,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -433,6 +469,7 @@ class SubAccount implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

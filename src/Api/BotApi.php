@@ -2335,7 +2335,7 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunning
      *
-     * Query the list of running policies
+     * List running strategies.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2361,7 +2361,7 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunningWithHttpInfo
      *
-     * Query the list of running policies
+     * List running strategies.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2427,7 +2427,7 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunningAsync
      *
-     * Query the list of running policies
+     * List running strategies.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -2456,7 +2456,7 @@ class BotApi
     /**
      * Operation getAIHubPortfolioRunningAsyncWithHttpInfo
      *
-     * Query the list of running policies
+     * List running strategies.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *

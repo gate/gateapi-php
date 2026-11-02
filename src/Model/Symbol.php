@@ -119,6 +119,27 @@ class Symbol implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -255,22 +276,39 @@ class Symbol implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
+        
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
         $this->container['min_size'] = isset($data['min_size']) ? $data['min_size'] : null;
+        
         $this->container['min_notional'] = isset($data['min_notional']) ? $data['min_notional'] : null;
+        
         $this->container['lot_size'] = isset($data['lot_size']) ? $data['lot_size'] : null;
+        
         $this->container['tick_size'] = isset($data['tick_size']) ? $data['tick_size'] : null;
+        
         $this->container['max_num_orders'] = isset($data['max_num_orders']) ? $data['max_num_orders'] : null;
+        
         $this->container['max_market_size'] = isset($data['max_market_size']) ? $data['max_market_size'] : null;
+        
         $this->container['max_limit_size'] = isset($data['max_limit_size']) ? $data['max_limit_size'] : null;
+        
         $this->container['contract_size'] = isset($data['contract_size']) ? $data['contract_size'] : null;
+        
         $this->container['liquidation_fee'] = isset($data['liquidation_fee']) ? $data['liquidation_fee'] : null;
+        
         $this->container['delist_time'] = isset($data['delist_time']) ? $data['delist_time'] : null;
+        
         $this->container['support_rpi'] = isset($data['support_rpi']) ? $data['support_rpi'] : null;
+        
         $this->container['support_cross'] = isset($data['support_cross']) ? $data['support_cross'] : null;
+        
         $this->container['tag'] = isset($data['tag']) ? $data['tag'] : null;
+        
     }
 
     /**
@@ -361,6 +399,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -385,6 +424,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -409,6 +449,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setBusinessType($business_type)
     {
+        
         $this->container['business_type'] = $business_type;
 
         return $this;
@@ -433,6 +474,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setState($state)
     {
+        
         $this->container['state'] = $state;
 
         return $this;
@@ -457,6 +499,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setMinSize($min_size)
     {
+        
         $this->container['min_size'] = $min_size;
 
         return $this;
@@ -481,6 +524,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setMinNotional($min_notional)
     {
+        
         $this->container['min_notional'] = $min_notional;
 
         return $this;
@@ -505,6 +549,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setLotSize($lot_size)
     {
+        
         $this->container['lot_size'] = $lot_size;
 
         return $this;
@@ -529,6 +574,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setTickSize($tick_size)
     {
+        
         $this->container['tick_size'] = $tick_size;
 
         return $this;
@@ -553,6 +599,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setMaxNumOrders($max_num_orders)
     {
+        
         $this->container['max_num_orders'] = $max_num_orders;
 
         return $this;
@@ -577,6 +624,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setMaxMarketSize($max_market_size)
     {
+        
         $this->container['max_market_size'] = $max_market_size;
 
         return $this;
@@ -601,6 +649,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setMaxLimitSize($max_limit_size)
     {
+        
         $this->container['max_limit_size'] = $max_limit_size;
 
         return $this;
@@ -625,6 +674,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setContractSize($contract_size)
     {
+        
         $this->container['contract_size'] = $contract_size;
 
         return $this;
@@ -649,6 +699,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setLiquidationFee($liquidation_fee)
     {
+        
         $this->container['liquidation_fee'] = $liquidation_fee;
 
         return $this;
@@ -673,6 +724,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setDelistTime($delist_time)
     {
+        
         $this->container['delist_time'] = $delist_time;
 
         return $this;
@@ -697,6 +749,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setSupportRpi($support_rpi)
     {
+        
         $this->container['support_rpi'] = $support_rpi;
 
         return $this;
@@ -721,6 +774,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setSupportCross($support_cross)
     {
+        
         $this->container['support_cross'] = $support_cross;
 
         return $this;
@@ -745,6 +799,7 @@ class Symbol implements ModelInterface, ArrayAccess
      */
     public function setTag($tag)
     {
+        
         $this->container['tag'] = $tag;
 
         return $this;

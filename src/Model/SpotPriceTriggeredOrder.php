@@ -106,6 +106,27 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -221,15 +242,25 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['trigger'] = isset($data['trigger']) ? $data['trigger'] : null;
+        
         $this->container['put'] = isset($data['put']) ? $data['put'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        
         $this->container['ctime'] = isset($data['ctime']) ? $data['ctime'] : null;
+        
         $this->container['ftime'] = isset($data['ftime']) ? $data['ftime'] : null;
+        
         $this->container['fired_order_id'] = isset($data['fired_order_id']) ? $data['fired_order_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        
     }
 
     /**
@@ -284,6 +315,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setTrigger($trigger)
     {
+        
         $this->container['trigger'] = $trigger;
 
         return $this;
@@ -308,6 +340,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setPut($put)
     {
+        
         $this->container['put'] = $put;
 
         return $this;
@@ -332,6 +365,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -356,6 +390,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -380,6 +415,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setMarket($market)
     {
+        
         $this->container['market'] = $market;
 
         return $this;
@@ -404,6 +440,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setCtime($ctime)
     {
+        
         $this->container['ctime'] = $ctime;
 
         return $this;
@@ -428,6 +465,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setFtime($ftime)
     {
+        
         $this->container['ftime'] = $ftime;
 
         return $this;
@@ -452,6 +490,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setFiredOrderId($fired_order_id)
     {
+        
         $this->container['fired_order_id'] = $fired_order_id;
 
         return $this;
@@ -476,6 +515,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -500,6 +540,7 @@ class SpotPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setReason($reason)
     {
+        
         $this->container['reason'] = $reason;
 
         return $this;

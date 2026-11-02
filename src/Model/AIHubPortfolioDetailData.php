@@ -114,6 +114,27 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -260,19 +281,33 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['strategy_id'] = isset($data['strategy_id']) ? $data['strategy_id'] : null;
+        
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['base_info'] = isset($data['base_info']) ? $data['base_info'] : null;
+        
         $this->container['metrics'] = isset($data['metrics']) ? $data['metrics'] : null;
+        
         $this->container['position'] = isset($data['position']) ? $data['position'] : null;
+        
         $this->container['stop_supported'] = isset($data['stop_supported']) ? $data['stop_supported'] : null;
+        
         $this->container['assets'] = isset($data['assets']) ? $data['assets'] : null;
+        
         $this->container['markets'] = isset($data['markets']) ? $data['markets'] : null;
+        
         $this->container['positions'] = isset($data['positions']) ? $data['positions'] : null;
+        
         $this->container['positions_status'] = isset($data['positions_status']) ? $data['positions_status'] : null;
+        
         $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
+        
         $this->container['stop_progress'] = isset($data['stop_progress']) ? $data['stop_progress'] : null;
+        
     }
 
     /**
@@ -306,7 +341,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'stop_supported' can't be null";
         }
         $allowedValues = $this->getPositionsStatusAllowableValues();
-        if (!is_null($this->container['positions_status']) && !in_array($this->container['positions_status'], $allowedValues, true)) {
+        if ((isset($this->container['positions_status'])) && !in_array($this->container['positions_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'positions_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -347,6 +382,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setStrategyId($strategy_id)
     {
+        
         $this->container['strategy_id'] = $strategy_id;
 
         return $this;
@@ -371,6 +407,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setStrategyType($strategy_type)
     {
+        
         $this->container['strategy_type'] = $strategy_type;
 
         return $this;
@@ -395,6 +432,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setMarket($market)
     {
+        
         $this->container['market'] = $market;
 
         return $this;
@@ -419,6 +457,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -443,6 +482,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setBaseInfo($base_info)
     {
+        
         $this->container['base_info'] = $base_info;
 
         return $this;
@@ -467,6 +507,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setMetrics($metrics)
     {
+        
         $this->container['metrics'] = $metrics;
 
         return $this;
@@ -491,6 +532,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setPosition($position)
     {
+        
         $this->container['position'] = $position;
 
         return $this;
@@ -515,6 +557,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setStopSupported($stop_supported)
     {
+        
         $this->container['stop_supported'] = $stop_supported;
 
         return $this;
@@ -539,6 +582,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setAssets($assets)
     {
+        
         $this->container['assets'] = $assets;
 
         return $this;
@@ -563,6 +607,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setMarkets($markets)
     {
+        
         $this->container['markets'] = $markets;
 
         return $this;
@@ -587,6 +632,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setPositions($positions)
     {
+        
         $this->container['positions'] = $positions;
 
         return $this;
@@ -620,6 +666,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['positions_status'] = $positions_status;
 
         return $this;
@@ -644,6 +691,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setConfiguration($configuration)
     {
+        
         $this->container['configuration'] = $configuration;
 
         return $this;
@@ -668,6 +716,7 @@ class AIHubPortfolioDetailData implements ModelInterface, ArrayAccess
      */
     public function setStopProgress($stop_progress)
     {
+        
         $this->container['stop_progress'] = $stop_progress;
 
         return $this;

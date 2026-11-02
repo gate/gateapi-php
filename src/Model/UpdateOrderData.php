@@ -100,6 +100,27 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['price_tp'] = isset($data['price_tp']) ? $data['price_tp'] : null;
+        
         $this->container['price_sl'] = isset($data['price_sl']) ? $data['price_sl'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -281,6 +310,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -305,6 +335,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
      */
     public function setState($state)
     {
+        
         $this->container['state'] = $state;
 
         return $this;
@@ -329,6 +360,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
      */
     public function setVolume($volume)
     {
+        
         $this->container['volume'] = $volume;
 
         return $this;
@@ -353,6 +385,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -377,6 +410,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
      */
     public function setPriceTp($price_tp)
     {
+        
         $this->container['price_tp'] = $price_tp;
 
         return $this;
@@ -401,6 +435,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
      */
     public function setPriceSl($price_sl)
     {
+        
         $this->container['price_sl'] = $price_sl;
 
         return $this;

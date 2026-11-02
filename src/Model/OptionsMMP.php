@@ -100,6 +100,27 @@ class OptionsMMP implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class OptionsMMP implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['underlying'] = isset($data['underlying']) ? $data['underlying'] : null;
+        
         $this->container['window'] = isset($data['window']) ? $data['window'] : null;
+        
         $this->container['frozen_period'] = isset($data['frozen_period']) ? $data['frozen_period'] : null;
+        
         $this->container['qty_limit'] = isset($data['qty_limit']) ? $data['qty_limit'] : null;
+        
         $this->container['delta_limit'] = isset($data['delta_limit']) ? $data['delta_limit'] : null;
+        
         $this->container['trigger_time_ms'] = isset($data['trigger_time_ms']) ? $data['trigger_time_ms'] : null;
+        
         $this->container['frozen_until_ms'] = isset($data['frozen_until_ms']) ? $data['frozen_until_ms'] : null;
+        
     }
 
     /**
@@ -272,6 +300,7 @@ class OptionsMMP implements ModelInterface, ArrayAccess
      */
     public function setUnderlying($underlying)
     {
+        
         $this->container['underlying'] = $underlying;
 
         return $this;
@@ -296,6 +325,7 @@ class OptionsMMP implements ModelInterface, ArrayAccess
      */
     public function setWindow($window)
     {
+        
         $this->container['window'] = $window;
 
         return $this;
@@ -320,6 +350,7 @@ class OptionsMMP implements ModelInterface, ArrayAccess
      */
     public function setFrozenPeriod($frozen_period)
     {
+        
         $this->container['frozen_period'] = $frozen_period;
 
         return $this;
@@ -344,6 +375,7 @@ class OptionsMMP implements ModelInterface, ArrayAccess
      */
     public function setQtyLimit($qty_limit)
     {
+        
         $this->container['qty_limit'] = $qty_limit;
 
         return $this;
@@ -368,6 +400,7 @@ class OptionsMMP implements ModelInterface, ArrayAccess
      */
     public function setDeltaLimit($delta_limit)
     {
+        
         $this->container['delta_limit'] = $delta_limit;
 
         return $this;
@@ -392,6 +425,7 @@ class OptionsMMP implements ModelInterface, ArrayAccess
      */
     public function setTriggerTimeMs($trigger_time_ms)
     {
+        
         $this->container['trigger_time_ms'] = $trigger_time_ms;
 
         return $this;
@@ -416,6 +450,7 @@ class OptionsMMP implements ModelInterface, ArrayAccess
      */
     public function setFrozenUntilMs($frozen_until_ms)
     {
+        
         $this->container['frozen_until_ms'] = $frozen_until_ms;
 
         return $this;

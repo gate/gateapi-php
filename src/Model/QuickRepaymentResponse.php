@@ -92,6 +92,27 @@ class QuickRepaymentResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class QuickRepaymentResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['repaid_infos'] = isset($data['repaid_infos']) ? $data['repaid_infos'] : null;
+        
         $this->container['used_infos'] = isset($data['used_infos']) ? $data['used_infos'] : null;
+        
     }
 
     /**
@@ -242,6 +266,7 @@ class QuickRepaymentResponse implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -260,12 +285,13 @@ class QuickRepaymentResponse implements ModelInterface, ArrayAccess
     /**
      * Sets repaid_infos
      *
-     * @param \GateApi\Model\UnifiedQuickRepayRepaidInfo[] $repaid_infos Repaid currency details
+     * @param \GateApi\Model\UnifiedQuickRepayRepaidInfo[] $repaid_infos Repayment currency details: currency is the currency name, repaid is the amount repaid, and left is the remaining liability amount.
      *
      * @return $this
      */
     public function setRepaidInfos($repaid_infos)
     {
+        
         $this->container['repaid_infos'] = $repaid_infos;
 
         return $this;
@@ -284,12 +310,13 @@ class QuickRepaymentResponse implements ModelInterface, ArrayAccess
     /**
      * Sets used_infos
      *
-     * @param \GateApi\Model\UnifiedQuickRepayUsedInfo[] $used_infos Currencies used for repayment
+     * @param \GateApi\Model\UnifiedQuickRepayUsedInfo[] $used_infos Details of currencies used for repayment: currency is the currency name, and used is the amount exchanged.
      *
      * @return $this
      */
     public function setUsedInfos($used_infos)
     {
+        
         $this->container['used_infos'] = $used_infos;
 
         return $this;

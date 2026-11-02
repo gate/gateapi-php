@@ -94,6 +94,27 @@ class FlashSwapMultiCurrencyManyToOneOrderCreateRespData implements ModelInterfa
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class FlashSwapMultiCurrencyManyToOneOrderCreateRespData implements ModelInterfa
     public function __construct(array $data = null)
     {
         $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
+        
         $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        
         $this->container['exchange_time_ms'] = isset($data['exchange_time_ms']) ? $data['exchange_time_ms'] : null;
+        
         $this->container['total_acquire_amount'] = isset($data['total_acquire_amount']) ? $data['total_acquire_amount'] : null;
+        
     }
 
     /**
@@ -251,6 +276,7 @@ class FlashSwapMultiCurrencyManyToOneOrderCreateRespData implements ModelInterfa
      */
     public function setOrders($orders)
     {
+        
         $this->container['orders'] = $orders;
 
         return $this;
@@ -275,6 +301,7 @@ class FlashSwapMultiCurrencyManyToOneOrderCreateRespData implements ModelInterfa
      */
     public function setAccountMode($account_mode)
     {
+        
         $this->container['account_mode'] = $account_mode;
 
         return $this;
@@ -299,6 +326,7 @@ class FlashSwapMultiCurrencyManyToOneOrderCreateRespData implements ModelInterfa
      */
     public function setExchangeTimeMs($exchange_time_ms)
     {
+        
         $this->container['exchange_time_ms'] = $exchange_time_ms;
 
         return $this;
@@ -323,6 +351,7 @@ class FlashSwapMultiCurrencyManyToOneOrderCreateRespData implements ModelInterfa
      */
     public function setTotalAcquireAmount($total_acquire_amount)
     {
+        
         $this->container['total_acquire_amount'] = $total_acquire_amount;
 
         return $this;

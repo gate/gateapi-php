@@ -106,6 +106,27 @@ class UniLend implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -221,15 +242,25 @@ class UniLend implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['current_amount'] = isset($data['current_amount']) ? $data['current_amount'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['lent_amount'] = isset($data['lent_amount']) ? $data['lent_amount'] : null;
+        
         $this->container['frozen_amount'] = isset($data['frozen_amount']) ? $data['frozen_amount'] : null;
+        
         $this->container['min_rate'] = isset($data['min_rate']) ? $data['min_rate'] : null;
+        
         $this->container['interest_status'] = isset($data['interest_status']) ? $data['interest_status'] : null;
+        
         $this->container['reinvest_left_amount'] = isset($data['reinvest_left_amount']) ? $data['reinvest_left_amount'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
     }
 
     /**
@@ -275,6 +306,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -299,6 +331,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setCurrentAmount($current_amount)
     {
+        
         $this->container['current_amount'] = $current_amount;
 
         return $this;
@@ -323,6 +356,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -347,6 +381,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setLentAmount($lent_amount)
     {
+        
         $this->container['lent_amount'] = $lent_amount;
 
         return $this;
@@ -371,6 +406,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setFrozenAmount($frozen_amount)
     {
+        
         $this->container['frozen_amount'] = $frozen_amount;
 
         return $this;
@@ -395,6 +431,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setMinRate($min_rate)
     {
+        
         $this->container['min_rate'] = $min_rate;
 
         return $this;
@@ -419,6 +456,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setInterestStatus($interest_status)
     {
+        
         $this->container['interest_status'] = $interest_status;
 
         return $this;
@@ -443,6 +481,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setReinvestLeftAmount($reinvest_left_amount)
     {
+        
         $this->container['reinvest_left_amount'] = $reinvest_left_amount;
 
         return $this;
@@ -467,6 +506,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -491,6 +531,7 @@ class UniLend implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;

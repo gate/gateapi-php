@@ -97,6 +97,27 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['prec'] = isset($data['prec']) ? $data['prec'] : null;
+        
         $this->container['min_borrow_amount'] = isset($data['min_borrow_amount']) ? $data['min_borrow_amount'] : null;
+        
         $this->container['user_max_borrow_amount'] = isset($data['user_max_borrow_amount']) ? $data['user_max_borrow_amount'] : null;
+        
         $this->container['total_max_borrow_amount'] = isset($data['total_max_borrow_amount']) ? $data['total_max_borrow_amount'] : null;
+        
         $this->container['loan_status'] = isset($data['loan_status']) ? $data['loan_status'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -274,6 +302,7 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
      */
     public function setPrec($prec)
     {
+        
         $this->container['prec'] = $prec;
 
         return $this;
@@ -298,6 +327,7 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
      */
     public function setMinBorrowAmount($min_borrow_amount)
     {
+        
         $this->container['min_borrow_amount'] = $min_borrow_amount;
 
         return $this;
@@ -322,6 +352,7 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
      */
     public function setUserMaxBorrowAmount($user_max_borrow_amount)
     {
+        
         $this->container['user_max_borrow_amount'] = $user_max_borrow_amount;
 
         return $this;
@@ -346,6 +377,7 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
      */
     public function setTotalMaxBorrowAmount($total_max_borrow_amount)
     {
+        
         $this->container['total_max_borrow_amount'] = $total_max_borrow_amount;
 
         return $this;
@@ -370,6 +402,7 @@ class UnifiedCurrency implements ModelInterface, ArrayAccess
      */
     public function setLoanStatus($loan_status)
     {
+        
         $this->container['loan_status'] = $loan_status;
 
         return $this;

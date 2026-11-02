@@ -89,6 +89,27 @@ class PatchUniLend implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -180,7 +201,9 @@ class PatchUniLend implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['min_rate'] = isset($data['min_rate']) ? $data['min_rate'] : null;
+        
     }
 
     /**
@@ -226,6 +249,7 @@ class PatchUniLend implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -244,12 +268,13 @@ class PatchUniLend implements ModelInterface, ArrayAccess
     /**
      * Sets min_rate
      *
-     * @param string|null $min_rate Minimum interest rate
+     * @param string|null $min_rate Minimum hourly interest rate.
      *
      * @return $this
      */
     public function setMinRate($min_rate)
     {
+        
         $this->container['min_rate'] = $min_rate;
 
         return $this;

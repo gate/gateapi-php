@@ -120,6 +120,27 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -256,22 +277,39 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['business'] = isset($data['business']) ? $data['business'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['financial_rate_id'] = isset($data['financial_rate_id']) ? $data['financial_rate_id'] : null;
+        
         $this->container['buy_limit_low'] = isset($data['buy_limit_low']) ? $data['buy_limit_low'] : null;
+        
         $this->container['buy_limit_high'] = isset($data['buy_limit_high']) ? $data['buy_limit_high'] : null;
+        
         $this->container['rate_day'] = isset($data['rate_day']) ? $data['rate_day'] : null;
+        
         $this->container['rate_ratio'] = isset($data['rate_ratio']) ? $data['rate_ratio'] : null;
+        
         $this->container['coupon_days'] = isset($data['coupon_days']) ? $data['coupon_days'] : null;
+        
         $this->container['coupon_principal'] = isset($data['coupon_principal']) ? $data['coupon_principal'] : null;
+        
         $this->container['coupon_year_rate'] = isset($data['coupon_year_rate']) ? $data['coupon_year_rate'] : null;
+        
         $this->container['coupon_interest'] = isset($data['coupon_interest']) ? $data['coupon_interest'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -368,6 +406,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -392,6 +431,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setBusiness($business)
     {
+        
         $this->container['business'] = $business;
 
         return $this;
@@ -416,6 +456,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -440,6 +481,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -464,6 +506,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -488,6 +531,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setFinancialRateId($financial_rate_id)
     {
+        
         $this->container['financial_rate_id'] = $financial_rate_id;
 
         return $this;
@@ -512,6 +556,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setBuyLimitLow($buy_limit_low)
     {
+        
         $this->container['buy_limit_low'] = $buy_limit_low;
 
         return $this;
@@ -536,6 +581,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setBuyLimitHigh($buy_limit_high)
     {
+        
         $this->container['buy_limit_high'] = $buy_limit_high;
 
         return $this;
@@ -560,6 +606,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setRateDay($rate_day)
     {
+        
         $this->container['rate_day'] = $rate_day;
 
         return $this;
@@ -584,6 +631,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setRateRatio($rate_ratio)
     {
+        
         $this->container['rate_ratio'] = $rate_ratio;
 
         return $this;
@@ -608,6 +656,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setCouponDays($coupon_days)
     {
+        
         $this->container['coupon_days'] = $coupon_days;
 
         return $this;
@@ -632,6 +681,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setCouponPrincipal($coupon_principal)
     {
+        
         $this->container['coupon_principal'] = $coupon_principal;
 
         return $this;
@@ -656,6 +706,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setCouponYearRate($coupon_year_rate)
     {
+        
         $this->container['coupon_year_rate'] = $coupon_year_rate;
 
         return $this;
@@ -680,6 +731,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setCouponInterest($coupon_interest)
     {
+        
         $this->container['coupon_interest'] = $coupon_interest;
 
         return $this;
@@ -704,6 +756,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -728,6 +781,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setFinishTime($finish_time)
     {
+        
         $this->container['finish_time'] = $finish_time;
 
         return $this;
@@ -752,6 +806,7 @@ class FixedTermCouponInfo implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

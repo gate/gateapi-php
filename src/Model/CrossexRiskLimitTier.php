@@ -97,6 +97,27 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['min_risk_limit_value'] = isset($data['min_risk_limit_value']) ? $data['min_risk_limit_value'] : null;
+        
         $this->container['max_risk_limit_value'] = isset($data['max_risk_limit_value']) ? $data['max_risk_limit_value'] : null;
+        
         $this->container['quick_cal_amount'] = isset($data['quick_cal_amount']) ? $data['quick_cal_amount'] : null;
+        
         $this->container['leverage_max'] = isset($data['leverage_max']) ? $data['leverage_max'] : null;
+        
         $this->container['maintenance_rate'] = isset($data['maintenance_rate']) ? $data['maintenance_rate'] : null;
+        
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        
     }
 
     /**
@@ -268,6 +295,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
      */
     public function setMinRiskLimitValue($min_risk_limit_value)
     {
+        
         $this->container['min_risk_limit_value'] = $min_risk_limit_value;
 
         return $this;
@@ -292,6 +320,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
      */
     public function setMaxRiskLimitValue($max_risk_limit_value)
     {
+        
         $this->container['max_risk_limit_value'] = $max_risk_limit_value;
 
         return $this;
@@ -316,6 +345,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
      */
     public function setQuickCalAmount($quick_cal_amount)
     {
+        
         $this->container['quick_cal_amount'] = $quick_cal_amount;
 
         return $this;
@@ -340,6 +370,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
      */
     public function setLeverageMax($leverage_max)
     {
+        
         $this->container['leverage_max'] = $leverage_max;
 
         return $this;
@@ -364,6 +395,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceRate($maintenance_rate)
     {
+        
         $this->container['maintenance_rate'] = $maintenance_rate;
 
         return $this;
@@ -388,6 +420,7 @@ class CrossexRiskLimitTier implements ModelInterface, ArrayAccess
      */
     public function setTier($tier)
     {
+        
         $this->container['tier'] = $tier;
 
         return $this;

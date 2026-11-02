@@ -100,6 +100,27 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['min_quota'] = isset($data['min_quota']) ? $data['min_quota'] : null;
+        
         $this->container['left_quota'] = isset($data['left_quota']) ? $data['left_quota'] : null;
+        
         $this->container['left_quote_usdt'] = isset($data['left_quote_usdt']) ? $data['left_quote_usdt'] : null;
+        
         $this->container['left_quota_fixed'] = isset($data['left_quota_fixed']) ? $data['left_quota_fixed'] : null;
+        
         $this->container['left_quote_usdt_fixed'] = isset($data['left_quote_usdt_fixed']) ? $data['left_quote_usdt_fixed'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -281,6 +310,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -305,6 +335,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
      */
     public function setMinQuota($min_quota)
     {
+        
         $this->container['min_quota'] = $min_quota;
 
         return $this;
@@ -329,6 +360,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
      */
     public function setLeftQuota($left_quota)
     {
+        
         $this->container['left_quota'] = $left_quota;
 
         return $this;
@@ -353,6 +385,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
      */
     public function setLeftQuoteUsdt($left_quote_usdt)
     {
+        
         $this->container['left_quote_usdt'] = $left_quote_usdt;
 
         return $this;
@@ -377,6 +410,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
      */
     public function setLeftQuotaFixed($left_quota_fixed)
     {
+        
         $this->container['left_quota_fixed'] = $left_quota_fixed;
 
         return $this;
@@ -401,6 +435,7 @@ class CurrencyQuota implements ModelInterface, ArrayAccess
      */
     public function setLeftQuoteUsdtFixed($left_quote_usdt_fixed)
     {
+        
         $this->container['left_quote_usdt_fixed'] = $left_quote_usdt_fixed;
 
         return $this;

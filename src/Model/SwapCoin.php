@@ -94,6 +94,27 @@ class SwapCoin implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class SwapCoin implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        
     }
 
     /**
@@ -248,6 +273,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -272,6 +298,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -296,6 +323,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -320,6 +348,7 @@ class SwapCoin implements ModelInterface, ArrayAccess
      */
     public function setPid($pid)
     {
+        
         $this->container['pid'] = $pid;
 
         return $this;

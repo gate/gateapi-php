@@ -104,6 +104,27 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -216,14 +237,23 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
     public function __construct(array $data = null)
     {
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
+        
         $this->container['investment_currency'] = isset($data['investment_currency']) ? $data['investment_currency'] : null;
+        
         $this->container['price_deviation'] = isset($data['price_deviation']) ? $data['price_deviation'] : null;
+        
         $this->container['take_profit_ratio'] = isset($data['take_profit_ratio']) ? $data['take_profit_ratio'] : null;
+        
         $this->container['direction'] = isset($data['direction']) ? $data['direction'] : null;
+        
         $this->container['first_order_size'] = isset($data['first_order_size']) ? $data['first_order_size'] : null;
+        
         $this->container['max_orders'] = isset($data['max_orders']) ? $data['max_orders'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['stop_loss_price_rule'] = isset($data['stop_loss_price_rule']) ? $data['stop_loss_price_rule'] : null;
+        
     }
 
     /**
@@ -269,6 +299,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setInvestAmount($invest_amount)
     {
+        
         $this->container['invest_amount'] = $invest_amount;
 
         return $this;
@@ -293,6 +324,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setInvestmentCurrency($investment_currency)
     {
+        
         $this->container['investment_currency'] = $investment_currency;
 
         return $this;
@@ -317,6 +349,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setPriceDeviation($price_deviation)
     {
+        
         $this->container['price_deviation'] = $price_deviation;
 
         return $this;
@@ -341,6 +374,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setTakeProfitRatio($take_profit_ratio)
     {
+        
         $this->container['take_profit_ratio'] = $take_profit_ratio;
 
         return $this;
@@ -365,6 +399,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setDirection($direction)
     {
+        
         $this->container['direction'] = $direction;
 
         return $this;
@@ -389,6 +424,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setFirstOrderSize($first_order_size)
     {
+        
         $this->container['first_order_size'] = $first_order_size;
 
         return $this;
@@ -413,6 +449,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setMaxOrders($max_orders)
     {
+        
         $this->container['max_orders'] = $max_orders;
 
         return $this;
@@ -437,6 +474,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -461,6 +499,7 @@ class AIHubContractMartingaleConfiguration implements ModelInterface, ArrayAcces
      */
     public function setStopLossPriceRule($stop_loss_price_rule)
     {
+        
         $this->container['stop_loss_price_rule'] = $stop_loss_price_rule;
 
         return $this;

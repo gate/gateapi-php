@@ -96,6 +96,27 @@ class AccountsResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,10 +217,15 @@ class AccountsResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
+        
         $this->container['token_address'] = isset($data['token_address']) ? $data['token_address'] : null;
+        
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
     }
 
     /**
@@ -245,6 +271,7 @@ class AccountsResponse implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -269,6 +296,7 @@ class AccountsResponse implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -293,6 +321,7 @@ class AccountsResponse implements ModelInterface, ArrayAccess
      */
     public function setLocked($locked)
     {
+        
         $this->container['locked'] = $locked;
 
         return $this;
@@ -317,6 +346,7 @@ class AccountsResponse implements ModelInterface, ArrayAccess
      */
     public function setTokenAddress($token_address)
     {
+        
         $this->container['token_address'] = $token_address;
 
         return $this;
@@ -341,6 +371,7 @@ class AccountsResponse implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;

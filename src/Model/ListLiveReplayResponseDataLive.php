@@ -110,6 +110,27 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -231,17 +252,29 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['chat_group_id'] = isset($data['chat_group_id']) ? $data['chat_group_id'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['cover'] = isset($data['cover']) ? $data['cover'] : null;
+        
         $this->container['started_at'] = isset($data['started_at']) ? $data['started_at'] : null;
+        
         $this->container['subscription_required'] = isset($data['subscription_required']) ? $data['subscription_required'] : null;
+        
         $this->container['hot_weight'] = isset($data['hot_weight']) ? $data['hot_weight'] : null;
+        
         $this->container['live_type'] = isset($data['live_type']) ? $data['live_type'] : null;
+        
         $this->container['session_id'] = isset($data['session_id']) ? $data['session_id'] : null;
+        
         $this->container['host'] = isset($data['host']) ? $data['host'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
     }
 
     /**
@@ -287,6 +320,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -311,6 +345,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -335,6 +370,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setChatGroupId($chat_group_id)
     {
+        
         $this->container['chat_group_id'] = $chat_group_id;
 
         return $this;
@@ -359,6 +395,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -383,6 +420,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setCover($cover)
     {
+        
         $this->container['cover'] = $cover;
 
         return $this;
@@ -407,6 +445,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setStartedAt($started_at)
     {
+        
         $this->container['started_at'] = $started_at;
 
         return $this;
@@ -431,6 +470,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setSubscriptionRequired($subscription_required)
     {
+        
         $this->container['subscription_required'] = $subscription_required;
 
         return $this;
@@ -455,6 +495,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setHotWeight($hot_weight)
     {
+        
         $this->container['hot_weight'] = $hot_weight;
 
         return $this;
@@ -479,6 +520,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setLiveType($live_type)
     {
+        
         $this->container['live_type'] = $live_type;
 
         return $this;
@@ -503,6 +545,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setSessionId($session_id)
     {
+        
         $this->container['session_id'] = $session_id;
 
         return $this;
@@ -527,6 +570,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setHost($host)
     {
+        
         $this->container['host'] = $host;
 
         return $this;
@@ -551,6 +595,7 @@ class ListLiveReplayResponseDataLive implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;

@@ -98,6 +98,27 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -233,11 +254,17 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['work_status'] = isset($data['work_status']) ? $data['work_status'] : null;
+        
         $this->container['cycle_type'] = isset($data['cycle_type']) ? $data['cycle_type'] : null;
+        
         $this->container['day_of_week'] = isset($data['day_of_week']) ? $data['day_of_week'] : null;
+        
         $this->container['time_zone'] = isset($data['time_zone']) ? $data['time_zone'] : null;
+        
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        
     }
 
     /**
@@ -253,7 +280,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'work_status' can't be null";
         }
         $allowedValues = $this->getWorkStatusAllowableValues();
-        if (!is_null($this->container['work_status']) && !in_array($this->container['work_status'], $allowedValues, true)) {
+        if ((isset($this->container['work_status'])) && !in_array($this->container['work_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'work_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -261,7 +288,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getCycleTypeAllowableValues();
-        if (!is_null($this->container['cycle_type']) && !in_array($this->container['cycle_type'], $allowedValues, true)) {
+        if ((isset($this->container['cycle_type'])) && !in_array($this->container['cycle_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'cycle_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -311,6 +338,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['work_status'] = $work_status;
 
         return $this;
@@ -344,6 +372,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['cycle_type'] = $cycle_type;
 
         return $this;
@@ -368,6 +397,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
      */
     public function setDayOfWeek($day_of_week)
     {
+        
         $this->container['day_of_week'] = $day_of_week;
 
         return $this;
@@ -392,6 +422,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
      */
     public function setTimeZone($time_zone)
     {
+        
         $this->container['time_zone'] = $time_zone;
 
         return $this;
@@ -416,6 +447,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
      */
     public function setStartTime($start_time)
     {
+        
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -440,6 +472,7 @@ class SetMerchantWorkHoursRequest implements ModelInterface, ArrayAccess
      */
     public function setEndTime($end_time)
     {
+        
         $this->container['end_time'] = $end_time;
 
         return $this;

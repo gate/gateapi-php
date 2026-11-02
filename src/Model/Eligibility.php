@@ -91,6 +91,27 @@ class Eligibility implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -210,8 +231,11 @@ class Eligibility implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['eligible'] = isset($data['eligible']) ? $data['eligible'] : null;
+        
         $this->container['block_reasons'] = isset($data['block_reasons']) ? $data['block_reasons'] : null;
+        
         $this->container['block_reason_codes'] = isset($data['block_reason_codes']) ? $data['block_reason_codes'] : null;
+        
     }
 
     /**
@@ -266,6 +290,7 @@ class Eligibility implements ModelInterface, ArrayAccess
      */
     public function setEligible($eligible)
     {
+        
         $this->container['eligible'] = $eligible;
 
         return $this;
@@ -290,6 +315,7 @@ class Eligibility implements ModelInterface, ArrayAccess
      */
     public function setBlockReasons($block_reasons)
     {
+        
         $this->container['block_reasons'] = $block_reasons;
 
         return $this;
@@ -323,6 +349,7 @@ class Eligibility implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['block_reason_codes'] = $block_reason_codes;
 
         return $this;

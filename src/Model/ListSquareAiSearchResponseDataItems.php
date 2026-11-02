@@ -99,6 +99,27 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['content'] = isset($data['content']) ? $data['content'] : null;
+        
         $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        
         $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
+        
         $this->container['nickname'] = isset($data['nickname']) ? $data['nickname'] : null;
+        
         $this->container['like_count'] = isset($data['like_count']) ? $data['like_count'] : null;
+        
         $this->container['page_view'] = isset($data['page_view']) ? $data['page_view'] : null;
+        
     }
 
     /**
@@ -256,6 +284,7 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -280,6 +309,7 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
      */
     public function setContent($content)
     {
+        
         $this->container['content'] = $content;
 
         return $this;
@@ -304,6 +334,7 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
      */
     public function setImage($image)
     {
+        
         $this->container['image'] = $image;
 
         return $this;
@@ -328,6 +359,7 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
      */
     public function setAvatar($avatar)
     {
+        
         $this->container['avatar'] = $avatar;
 
         return $this;
@@ -352,6 +384,7 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
      */
     public function setNickname($nickname)
     {
+        
         $this->container['nickname'] = $nickname;
 
         return $this;
@@ -376,6 +409,7 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
      */
     public function setLikeCount($like_count)
     {
+        
         $this->container['like_count'] = $like_count;
 
         return $this;
@@ -400,6 +434,7 @@ class ListSquareAiSearchResponseDataItems implements ModelInterface, ArrayAccess
      */
     public function setPageView($page_view)
     {
+        
         $this->container['page_view'] = $page_view;
 
         return $this;

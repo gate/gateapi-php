@@ -94,6 +94,27 @@ class SmallBalance implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class SmallBalance implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['available_balance'] = isset($data['available_balance']) ? $data['available_balance'] : null;
+        
         $this->container['estimated_as_btc'] = isset($data['estimated_as_btc']) ? $data['estimated_as_btc'] : null;
+        
         $this->container['convertible_to_gt'] = isset($data['convertible_to_gt']) ? $data['convertible_to_gt'] : null;
+        
     }
 
     /**
@@ -239,6 +264,7 @@ class SmallBalance implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -263,6 +289,7 @@ class SmallBalance implements ModelInterface, ArrayAccess
      */
     public function setAvailableBalance($available_balance)
     {
+        
         $this->container['available_balance'] = $available_balance;
 
         return $this;
@@ -287,6 +314,7 @@ class SmallBalance implements ModelInterface, ArrayAccess
      */
     public function setEstimatedAsBtc($estimated_as_btc)
     {
+        
         $this->container['estimated_as_btc'] = $estimated_as_btc;
 
         return $this;
@@ -311,6 +339,7 @@ class SmallBalance implements ModelInterface, ArrayAccess
      */
     public function setConvertibleToGt($convertible_to_gt)
     {
+        
         $this->container['convertible_to_gt'] = $convertible_to_gt;
 
         return $this;

@@ -118,6 +118,27 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -251,21 +272,37 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['record_id'] = isset($data['record_id']) ? $data['record_id'] : null;
+        
         $this->container['total_money'] = isset($data['total_money']) ? $data['total_money'] : null;
+        
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['fund_flow'] = isset($data['fund_flow']) ? $data['fund_flow'] : null;
+        
         $this->container['error_code'] = isset($data['error_code']) ? $data['error_code'] : null;
+        
         $this->container['error_msg'] = isset($data['error_msg']) ? $data['error_msg'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
     }
 
     /**
@@ -359,6 +396,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -383,6 +421,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -407,6 +446,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -431,6 +471,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setPlanId($plan_id)
     {
+        
         $this->container['plan_id'] = $plan_id;
 
         return $this;
@@ -455,6 +496,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -479,6 +521,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -503,6 +546,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setRecordId($record_id)
     {
+        
         $this->container['record_id'] = $record_id;
 
         return $this;
@@ -527,6 +571,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setTotalMoney($total_money)
     {
+        
         $this->container['total_money'] = $total_money;
 
         return $this;
@@ -551,6 +596,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setMarket($market)
     {
+        
         $this->container['market'] = $market;
 
         return $this;
@@ -575,6 +621,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -599,6 +646,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -623,6 +671,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -647,6 +696,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setFundFlow($fund_flow)
     {
+        
         $this->container['fund_flow'] = $fund_flow;
 
         return $this;
@@ -671,6 +721,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setErrorCode($error_code)
     {
+        
         $this->container['error_code'] = $error_code;
 
         return $this;
@@ -695,6 +746,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setErrorMsg($error_msg)
     {
+        
         $this->container['error_msg'] = $error_msg;
 
         return $this;
@@ -719,6 +771,7 @@ class AutoInvestOrderItem implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;

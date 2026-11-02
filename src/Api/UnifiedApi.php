@@ -918,7 +918,7 @@ class UnifiedApi
     /**
      * Operation getUnifiedTransferables
      *
-     * Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+     * Get maximum transferable amounts for multiple unified-account currencies
      *
      * @param  string $currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time (required)
      *
@@ -935,7 +935,7 @@ class UnifiedApi
     /**
      * Operation getUnifiedTransferablesWithHttpInfo
      *
-     * Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+     * Get maximum transferable amounts for multiple unified-account currencies
      *
      * @param  string $currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time (required)
      *
@@ -992,7 +992,7 @@ class UnifiedApi
     /**
      * Operation getUnifiedTransferablesAsync
      *
-     * Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+     * Get maximum transferable amounts for multiple unified-account currencies
      *
      * @param  string $currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time (required)
      *
@@ -1012,7 +1012,7 @@ class UnifiedApi
     /**
      * Operation getUnifiedTransferablesAsyncWithHttpInfo
      *
-     * Batch query maximum transferable amount for unified accounts. Each currency shows the maximum value. After user withdrawal, the transferable amount for all currencies will change
+     * Get maximum transferable amounts for multiple unified-account currencies
      *
      * @param  string $currencies Specify the currency name to query in batches, and support up to 100 pass parameters at a time (required)
      *
@@ -3678,7 +3678,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiers
      *
-     * Query unified account tiered
+     * Get currency margin discount tiers for unified accounts
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3694,7 +3694,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiersWithHttpInfo
      *
-     * Query unified account tiered
+     * Get currency margin discount tiers for unified accounts
      *
      *
      * @throws \GateApi\ApiException on non-2xx response
@@ -3750,7 +3750,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiersAsync
      *
-     * Query unified account tiered
+     * Get currency margin discount tiers for unified accounts
      *
      *
      * @throws \InvalidArgumentException
@@ -3769,7 +3769,7 @@ class UnifiedApi
     /**
      * Operation listCurrencyDiscountTiersAsyncWithHttpInfo
      *
-     * Query unified account tiered
+     * Get currency margin discount tiers for unified accounts
      *
      *
      * @throws \InvalidArgumentException

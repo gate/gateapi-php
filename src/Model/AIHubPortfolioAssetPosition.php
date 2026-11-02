@@ -106,6 +106,27 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -221,15 +242,25 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['market'] = isset($data['market']) ? $data['market'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['amount_unit'] = isset($data['amount_unit']) ? $data['amount_unit'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
+        
         $this->container['position_value_unit'] = isset($data['position_value_unit']) ? $data['position_value_unit'] : null;
+        
         $this->container['target_weight'] = isset($data['target_weight']) ? $data['target_weight'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
     }
 
     /**
@@ -275,6 +306,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -299,6 +331,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setMarket($market)
     {
+        
         $this->container['market'] = $market;
 
         return $this;
@@ -323,6 +356,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -347,6 +381,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -371,6 +406,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setAmountUnit($amount_unit)
     {
+        
         $this->container['amount_unit'] = $amount_unit;
 
         return $this;
@@ -395,6 +431,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -419,6 +456,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionValue($position_value)
     {
+        
         $this->container['position_value'] = $position_value;
 
         return $this;
@@ -443,6 +481,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionValueUnit($position_value_unit)
     {
+        
         $this->container['position_value_unit'] = $position_value_unit;
 
         return $this;
@@ -467,6 +506,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setTargetWeight($target_weight)
     {
+        
         $this->container['target_weight'] = $target_weight;
 
         return $this;
@@ -491,6 +531,7 @@ class AIHubPortfolioAssetPosition implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;

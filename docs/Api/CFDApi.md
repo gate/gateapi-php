@@ -157,7 +157,7 @@ $apiInstance = new GateApi\Api\CFDApi(
     new GuzzleHttp\Client(),
     $config
 );
-$associate_array['symbols'] = 'AUDUSD,XAUUSD'; // string | List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required
+$associate_array['symbols'] = 'AUDUSD,XAUUSD'; // string | Comma-separated instrument symbols. Provide at least one of symbols and category_code.
 $associate_array['category_code'] = 'forex-外汇,metal-金属,index-指数,commodity-大宗商品,stock-股票'; // string | List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required
 
 try {
@@ -178,7 +178,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbols** | **string**| List of symbol codes (multiple codes separated by commas). At least one of symbol and category_code is required | [optional]
+ **symbols** | **string**| Comma-separated instrument symbols. Provide at least one of symbols and category_code. | [optional]
  **category_code** | **string**| List of category codes (multiple codes separated by commas). When provided together with symbols, filters symbols by category. At least one of symbol and category_code is required | [optional]
 
 ### Return type
@@ -1247,7 +1247,7 @@ $apiInstance = new GateApi\Api\CFDApi(
 );
 $associate_array['page'] = 1; // int | Page number; defaults to 1 if omitted.
 $associate_array['page_size'] = 10; // int | Page size; defaults to 10 if omitted. Maximum 100.
-$associate_array['begin_time'] = 56; // int | Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago
+$associate_array['begin_time'] = 56; // int | Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago.
 $associate_array['end_time'] = 56; // int | End time (timestamp in seconds)
 $associate_array['symbol'] = 'symbol_example'; // string | Trading symbol (e.g., EURUSD)
 $associate_array['position_dir'] = 'position_dir_example'; // string | Position direction (Long=long position, Short=short position)
@@ -1272,7 +1272,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| Page number; defaults to 1 if omitted. | [optional]
  **page_size** | **int**| Page size; defaults to 10 if omitted. Maximum 100. | [optional]
- **begin_time** | **int**| Start Time (Unix Timestamp, seconds). The earliest queryable time is one month ago | [optional]
+ **begin_time** | **int**| Start time as a Unix timestamp in seconds. The earliest supported start time is one month ago. | [optional]
  **end_time** | **int**| End time (timestamp in seconds) | [optional]
  **symbol** | **string**| Trading symbol (e.g., EURUSD) | [optional]
  **position_dir** | **string**| Position direction (Long&#x3D;long position, Short&#x3D;short position) | [optional]

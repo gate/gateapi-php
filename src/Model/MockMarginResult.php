@@ -100,6 +100,27 @@ class MockMarginResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class MockMarginResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['profit_loss_ranges'] = isset($data['profit_loss_ranges']) ? $data['profit_loss_ranges'] : null;
+        
         $this->container['max_loss'] = isset($data['max_loss']) ? $data['max_loss'] : null;
+        
         $this->container['mr1'] = isset($data['mr1']) ? $data['mr1'] : null;
+        
         $this->container['mr2'] = isset($data['mr2']) ? $data['mr2'] : null;
+        
         $this->container['mr3'] = isset($data['mr3']) ? $data['mr3'] : null;
+        
         $this->container['mr4'] = isset($data['mr4']) ? $data['mr4'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class MockMarginResult implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -281,6 +310,7 @@ class MockMarginResult implements ModelInterface, ArrayAccess
      */
     public function setProfitLossRanges($profit_loss_ranges)
     {
+        
         $this->container['profit_loss_ranges'] = $profit_loss_ranges;
 
         return $this;
@@ -305,6 +335,7 @@ class MockMarginResult implements ModelInterface, ArrayAccess
      */
     public function setMaxLoss($max_loss)
     {
+        
         $this->container['max_loss'] = $max_loss;
 
         return $this;
@@ -329,6 +360,7 @@ class MockMarginResult implements ModelInterface, ArrayAccess
      */
     public function setMr1($mr1)
     {
+        
         $this->container['mr1'] = $mr1;
 
         return $this;
@@ -353,6 +385,7 @@ class MockMarginResult implements ModelInterface, ArrayAccess
      */
     public function setMr2($mr2)
     {
+        
         $this->container['mr2'] = $mr2;
 
         return $this;
@@ -377,6 +410,7 @@ class MockMarginResult implements ModelInterface, ArrayAccess
      */
     public function setMr3($mr3)
     {
+        
         $this->container['mr3'] = $mr3;
 
         return $this;
@@ -401,6 +435,7 @@ class MockMarginResult implements ModelInterface, ArrayAccess
      */
     public function setMr4($mr4)
     {
+        
         $this->container['mr4'] = $mr4;
 
         return $this;

@@ -102,6 +102,27 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -269,13 +290,21 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['volume'] = isset($data['volume']) ? $data['volume'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['trading_session'] = isset($data['trading_session']) ? $data['trading_session'] : null;
+        
         $this->container['time_in_force'] = isset($data['time_in_force']) ? $data['time_in_force'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['client_order_id'] = isset($data['client_order_id']) ? $data['client_order_id'] : null;
+        
     }
 
     /**
@@ -297,7 +326,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'side' can't be null";
         }
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -308,7 +337,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'price_type' can't be null";
         }
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -319,7 +348,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'trading_session' can't be null";
         }
         $allowedValues = $this->getTradingSessionAllowableValues();
-        if (!is_null($this->container['trading_session']) && !in_array($this->container['trading_session'], $allowedValues, true)) {
+        if ((isset($this->container['trading_session'])) && !in_array($this->container['trading_session'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'trading_session', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -330,7 +359,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'time_in_force' can't be null";
         }
         $allowedValues = $this->getTimeInForceAllowableValues();
-        if (!is_null($this->container['time_in_force']) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
+        if ((isset($this->container['time_in_force'])) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'time_in_force', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -371,6 +400,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setVolume($volume)
     {
+        
         $this->container['volume'] = $volume;
 
         return $this;
@@ -395,6 +425,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -428,6 +459,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -461,6 +493,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -494,6 +527,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['trading_session'] = $trading_session;
 
         return $this;
@@ -527,6 +561,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['time_in_force'] = $time_in_force;
 
         return $this;
@@ -551,6 +586,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -575,6 +611,7 @@ class TradFiSpotOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setClientOrderId($client_order_id)
     {
+        
         $this->container['client_order_id'] = $client_order_id;
 
         return $this;

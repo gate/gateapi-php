@@ -98,6 +98,27 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['gas_mode'] = isset($data['gas_mode']) ? $data['gas_mode'] : null;
+        
         $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        
         $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
+        
     }
 
     /**
@@ -266,6 +293,7 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -290,6 +318,7 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -314,6 +343,7 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -338,6 +368,7 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setGasMode($gas_mode)
     {
+        
         $this->container['gas_mode'] = $gas_mode;
 
         return $this;
@@ -356,12 +387,13 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
     /**
      * Sets slippage
      *
-     * @param string|null $slippage Slippage tolerance (10 means 10% tolerance)
+     * @param string|null $slippage Slippage percentage: \"10\" means 10%.
      *
      * @return $this
      */
     public function setSlippage($slippage)
     {
+        
         $this->container['slippage'] = $slippage;
 
         return $this;
@@ -386,6 +418,7 @@ class PlaceOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setQuoteId($quote_id)
     {
+        
         $this->container['quote_id'] = $quote_id;
 
         return $this;

@@ -100,6 +100,27 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['product_id'] = isset($data['product_id']) ? $data['product_id'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['year_rate'] = isset($data['year_rate']) ? $data['year_rate'] : null;
+        
         $this->container['reinvest_status'] = isset($data['reinvest_status']) ? $data['reinvest_status'] : null;
+        
         $this->container['redeem_account_type'] = isset($data['redeem_account_type']) ? $data['redeem_account_type'] : null;
+        
         $this->container['financial_rate_id'] = isset($data['financial_rate_id']) ? $data['financial_rate_id'] : null;
+        
         $this->container['sub_business'] = isset($data['sub_business']) ? $data['sub_business'] : null;
+        
     }
 
     /**
@@ -263,6 +291,7 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
      */
     public function setProductId($product_id)
     {
+        
         $this->container['product_id'] = $product_id;
 
         return $this;
@@ -287,6 +316,7 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -311,6 +341,7 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
      */
     public function setYearRate($year_rate)
     {
+        
         $this->container['year_rate'] = $year_rate;
 
         return $this;
@@ -335,6 +366,7 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
      */
     public function setReinvestStatus($reinvest_status)
     {
+        
         $this->container['reinvest_status'] = $reinvest_status;
 
         return $this;
@@ -359,6 +391,7 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
      */
     public function setRedeemAccountType($redeem_account_type)
     {
+        
         $this->container['redeem_account_type'] = $redeem_account_type;
 
         return $this;
@@ -383,6 +416,7 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
      */
     public function setFinancialRateId($financial_rate_id)
     {
+        
         $this->container['financial_rate_id'] = $financial_rate_id;
 
         return $this;
@@ -407,6 +441,7 @@ class FixedTermLendRequest implements ModelInterface, ArrayAccess
      */
     public function setSubBusiness($sub_business)
     {
+        
         $this->container['sub_business'] = $sub_business;
 
         return $this;

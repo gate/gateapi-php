@@ -118,6 +118,27 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -251,21 +272,37 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['uniq_time'] = isset($data['uniq_time']) ? $data['uniq_time'] : null;
+        
         $this->container['bonus_id'] = isset($data['bonus_id']) ? $data['bonus_id'] : null;
+        
         $this->container['product_id'] = isset($data['product_id']) ? $data['product_id'] : null;
+        
         $this->container['bonus_asset'] = isset($data['bonus_asset']) ? $data['bonus_asset'] : null;
+        
         $this->container['total_principal'] = isset($data['total_principal']) ? $data['total_principal'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['asset_price'] = isset($data['asset_price']) ? $data['asset_price'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['detail'] = isset($data['detail']) ? $data['detail'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['create_at'] = isset($data['create_at']) ? $data['create_at'] : null;
+        
         $this->container['lock_up_period'] = isset($data['lock_up_period']) ? $data['lock_up_period'] : null;
+        
     }
 
     /**
@@ -332,6 +369,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -356,6 +394,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -380,6 +419,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -404,6 +444,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -428,6 +469,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setUniqTime($uniq_time)
     {
+        
         $this->container['uniq_time'] = $uniq_time;
 
         return $this;
@@ -452,6 +494,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setBonusId($bonus_id)
     {
+        
         $this->container['bonus_id'] = $bonus_id;
 
         return $this;
@@ -476,6 +519,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setProductId($product_id)
     {
+        
         $this->container['product_id'] = $product_id;
 
         return $this;
@@ -500,6 +544,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setBonusAsset($bonus_asset)
     {
+        
         $this->container['bonus_asset'] = $bonus_asset;
 
         return $this;
@@ -524,6 +569,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setTotalPrincipal($total_principal)
     {
+        
         $this->container['total_principal'] = $total_principal;
 
         return $this;
@@ -548,6 +594,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -572,6 +619,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setAssetPrice($asset_price)
     {
+        
         $this->container['asset_price'] = $asset_price;
 
         return $this;
@@ -596,6 +644,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -620,6 +669,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setDetail($detail)
     {
+        
         $this->container['detail'] = $detail;
 
         return $this;
@@ -644,6 +694,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -668,6 +719,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setCreateAt($create_at)
     {
+        
         $this->container['create_at'] = $create_at;
 
         return $this;
@@ -692,6 +744,7 @@ class FixedTermHistoryRecord implements ModelInterface, ArrayAccess
      */
     public function setLockUpPeriod($lock_up_period)
     {
+        
         $this->container['lock_up_period'] = $lock_up_period;
 
         return $this;

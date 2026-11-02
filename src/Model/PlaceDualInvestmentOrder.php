@@ -117,6 +117,27 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -250,21 +271,37 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
+        
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
+        
         $this->container['settlement_amount'] = isset($data['settlement_amount']) ? $data['settlement_amount'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['complete_time'] = isset($data['complete_time']) ? $data['complete_time'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['invest_currency'] = isset($data['invest_currency']) ? $data['invest_currency'] : null;
+        
         $this->container['exercise_currency'] = isset($data['exercise_currency']) ? $data['exercise_currency'] : null;
+        
         $this->container['exercise_price'] = isset($data['exercise_price']) ? $data['exercise_price'] : null;
+        
         $this->container['settlement_price'] = isset($data['settlement_price']) ? $data['settlement_price'] : null;
+        
         $this->container['settlement_currency'] = isset($data['settlement_currency']) ? $data['settlement_currency'] : null;
+        
         $this->container['apy_display'] = isset($data['apy_display']) ? $data['apy_display'] : null;
+        
         $this->container['apy_settlement'] = isset($data['apy_settlement']) ? $data['apy_settlement'] : null;
+        
         $this->container['delivery_time'] = isset($data['delivery_time']) ? $data['delivery_time'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
     }
 
     /**
@@ -310,6 +347,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -334,6 +372,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setPlanId($plan_id)
     {
+        
         $this->container['plan_id'] = $plan_id;
 
         return $this;
@@ -358,6 +397,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setInvestAmount($invest_amount)
     {
+        
         $this->container['invest_amount'] = $invest_amount;
 
         return $this;
@@ -382,6 +422,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setSettlementAmount($settlement_amount)
     {
+        
         $this->container['settlement_amount'] = $settlement_amount;
 
         return $this;
@@ -406,6 +447,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -430,6 +472,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setCompleteTime($complete_time)
     {
+        
         $this->container['complete_time'] = $complete_time;
 
         return $this;
@@ -454,6 +497,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -478,6 +522,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setInvestCurrency($invest_currency)
     {
+        
         $this->container['invest_currency'] = $invest_currency;
 
         return $this;
@@ -502,6 +547,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setExerciseCurrency($exercise_currency)
     {
+        
         $this->container['exercise_currency'] = $exercise_currency;
 
         return $this;
@@ -526,6 +572,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setExercisePrice($exercise_price)
     {
+        
         $this->container['exercise_price'] = $exercise_price;
 
         return $this;
@@ -550,6 +597,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setSettlementPrice($settlement_price)
     {
+        
         $this->container['settlement_price'] = $settlement_price;
 
         return $this;
@@ -574,6 +622,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setSettlementCurrency($settlement_currency)
     {
+        
         $this->container['settlement_currency'] = $settlement_currency;
 
         return $this;
@@ -598,6 +647,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setApyDisplay($apy_display)
     {
+        
         $this->container['apy_display'] = $apy_display;
 
         return $this;
@@ -622,6 +672,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setApySettlement($apy_settlement)
     {
+        
         $this->container['apy_settlement'] = $apy_settlement;
 
         return $this;
@@ -646,6 +697,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setDeliveryTime($delivery_time)
     {
+        
         $this->container['delivery_time'] = $delivery_time;
 
         return $this;
@@ -670,6 +722,7 @@ class PlaceDualInvestmentOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;

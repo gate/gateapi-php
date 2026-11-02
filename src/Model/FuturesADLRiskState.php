@@ -89,6 +89,27 @@ class FuturesADLRiskState implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -197,7 +218,9 @@ class FuturesADLRiskState implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
         $this->container['calculated_at_ms'] = isset($data['calculated_at_ms']) ? $data['calculated_at_ms'] : null;
+        
     }
 
     /**
@@ -213,7 +236,7 @@ class FuturesADLRiskState implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'state' can't be null";
         }
         $allowedValues = $this->getStateAllowableValues();
-        if (!is_null($this->container['state']) && !in_array($this->container['state'], $allowedValues, true)) {
+        if ((isset($this->container['state'])) && !in_array($this->container['state'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'state', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -266,6 +289,7 @@ class FuturesADLRiskState implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['state'] = $state;
 
         return $this;
@@ -290,6 +314,7 @@ class FuturesADLRiskState implements ModelInterface, ArrayAccess
      */
     public function setCalculatedAtMs($calculated_at_ms)
     {
+        
         $this->container['calculated_at_ms'] = $calculated_at_ms;
 
         return $this;

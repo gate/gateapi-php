@@ -90,6 +90,27 @@ class FuturesFee implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -181,7 +202,9 @@ class FuturesFee implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['taker_fee'] = isset($data['taker_fee']) ? $data['taker_fee'] : null;
+        
         $this->container['maker_fee'] = isset($data['maker_fee']) ? $data['maker_fee'] : null;
+        
     }
 
     /**
@@ -227,6 +250,7 @@ class FuturesFee implements ModelInterface, ArrayAccess
      */
     public function setTakerFee($taker_fee)
     {
+        
         $this->container['taker_fee'] = $taker_fee;
 
         return $this;
@@ -251,6 +275,7 @@ class FuturesFee implements ModelInterface, ArrayAccess
      */
     public function setMakerFee($maker_fee)
     {
+        
         $this->container['maker_fee'] = $maker_fee;
 
         return $this;

@@ -94,6 +94,27 @@ class CreateUniLend implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,9 +227,13 @@ class CreateUniLend implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['min_rate'] = isset($data['min_rate']) ? $data['min_rate'] : null;
+        
     }
 
     /**
@@ -230,7 +255,7 @@ class CreateUniLend implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'type' can't be null";
         }
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -271,6 +296,7 @@ class CreateUniLend implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -295,6 +321,7 @@ class CreateUniLend implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -328,6 +355,7 @@ class CreateUniLend implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -352,6 +380,7 @@ class CreateUniLend implements ModelInterface, ArrayAccess
      */
     public function setMinRate($min_rate)
     {
+        
         $this->container['min_rate'] = $min_rate;
 
         return $this;

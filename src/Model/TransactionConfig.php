@@ -89,6 +89,27 @@ class TransactionConfig implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -180,7 +201,9 @@ class TransactionConfig implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['transaction_amount'] = isset($data['transaction_amount']) ? $data['transaction_amount'] : null;
+        
         $this->container['mortgage_limit'] = isset($data['mortgage_limit']) ? $data['mortgage_limit'] : null;
+        
     }
 
     /**
@@ -226,6 +249,7 @@ class TransactionConfig implements ModelInterface, ArrayAccess
      */
     public function setTransactionAmount($transaction_amount)
     {
+        
         $this->container['transaction_amount'] = $transaction_amount;
 
         return $this;
@@ -250,6 +274,7 @@ class TransactionConfig implements ModelInterface, ArrayAccess
      */
     public function setMortgageLimit($mortgage_limit)
     {
+        
         $this->container['mortgage_limit'] = $mortgage_limit;
 
         return $this;

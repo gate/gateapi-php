@@ -107,6 +107,27 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -225,16 +246,27 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['from_account_type'] = isset($data['from_account_type']) ? $data['from_account_type'] : null;
+        
         $this->container['to_account_type'] = isset($data['to_account_type']) ? $data['to_account_type'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['actual_receive'] = isset($data['actual_receive']) ? $data['actual_receive'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['fail_reason'] = isset($data['fail_reason']) ? $data['fail_reason'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
     }
 
     /**
@@ -307,6 +339,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -331,6 +364,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -355,6 +389,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setFromAccountType($from_account_type)
     {
+        
         $this->container['from_account_type'] = $from_account_type;
 
         return $this;
@@ -379,6 +414,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setToAccountType($to_account_type)
     {
+        
         $this->container['to_account_type'] = $to_account_type;
 
         return $this;
@@ -403,6 +439,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -427,6 +464,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -451,6 +489,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setActualReceive($actual_receive)
     {
+        
         $this->container['actual_receive'] = $actual_receive;
 
         return $this;
@@ -475,6 +514,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -499,6 +539,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setFailReason($fail_reason)
     {
+        
         $this->container['fail_reason'] = $fail_reason;
 
         return $this;
@@ -523,6 +564,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -547,6 +589,7 @@ class CrossexTransferRecord implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;

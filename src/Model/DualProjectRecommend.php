@@ -113,6 +113,27 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -240,19 +261,33 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['invest_currency'] = isset($data['invest_currency']) ? $data['invest_currency'] : null;
+        
         $this->container['exercise_currency'] = isset($data['exercise_currency']) ? $data['exercise_currency'] : null;
+        
         $this->container['apy_display'] = isset($data['apy_display']) ? $data['apy_display'] : null;
+        
         $this->container['exercise_price'] = isset($data['exercise_price']) ? $data['exercise_price'] : null;
+        
         $this->container['delivery_timest'] = isset($data['delivery_timest']) ? $data['delivery_timest'] : null;
+        
         $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
+        
         $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
+        
         $this->container['min_copies'] = isset($data['min_copies']) ? $data['min_copies'] : null;
+        
         $this->container['max_copies'] = isset($data['max_copies']) ? $data['max_copies'] : null;
+        
         $this->container['invest_days'] = isset($data['invest_days']) ? $data['invest_days'] : null;
+        
         $this->container['invest_hours'] = isset($data['invest_hours']) ? $data['invest_hours'] : null;
+        
     }
 
     /**
@@ -298,6 +333,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -322,6 +358,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setCategory($category)
     {
+        
         $this->container['category'] = $category;
 
         return $this;
@@ -346,6 +383,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -370,6 +408,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setInvestCurrency($invest_currency)
     {
+        
         $this->container['invest_currency'] = $invest_currency;
 
         return $this;
@@ -394,6 +433,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setExerciseCurrency($exercise_currency)
     {
+        
         $this->container['exercise_currency'] = $exercise_currency;
 
         return $this;
@@ -418,6 +458,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setApyDisplay($apy_display)
     {
+        
         $this->container['apy_display'] = $apy_display;
 
         return $this;
@@ -442,6 +483,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setExercisePrice($exercise_price)
     {
+        
         $this->container['exercise_price'] = $exercise_price;
 
         return $this;
@@ -466,6 +508,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setDeliveryTimest($delivery_timest)
     {
+        
         $this->container['delivery_timest'] = $delivery_timest;
 
         return $this;
@@ -490,6 +533,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setMinAmount($min_amount)
     {
+        
         $this->container['min_amount'] = $min_amount;
 
         return $this;
@@ -514,6 +558,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setMaxAmount($max_amount)
     {
+        
         $this->container['max_amount'] = $max_amount;
 
         return $this;
@@ -538,6 +583,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setMinCopies($min_copies)
     {
+        
         $this->container['min_copies'] = $min_copies;
 
         return $this;
@@ -562,6 +608,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setMaxCopies($max_copies)
     {
+        
         $this->container['max_copies'] = $max_copies;
 
         return $this;
@@ -586,6 +633,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setInvestDays($invest_days)
     {
+        
         $this->container['invest_days'] = $invest_days;
 
         return $this;
@@ -610,6 +658,7 @@ class DualProjectRecommend implements ModelInterface, ArrayAccess
      */
     public function setInvestHours($invest_hours)
     {
+        
         $this->container['invest_hours'] = $invest_hours;
 
         return $this;

@@ -92,6 +92,27 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['upper_limit'] = isset($data['upper_limit']) ? $data['upper_limit'] : null;
+        
         $this->container['mmr'] = isset($data['mmr']) ? $data['mmr'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
      */
     public function setUpperLimit($upper_limit)
     {
+        
         $this->container['upper_limit'] = $upper_limit;
 
         return $this;
@@ -257,6 +282,7 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
      */
     public function setMmr($mmr)
     {
+        
         $this->container['mmr'] = $mmr;
 
         return $this;
@@ -281,6 +307,7 @@ class MarginLeverageTier implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;

@@ -96,6 +96,27 @@ class FlashSwapOrderRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,10 +217,15 @@ class FlashSwapOrderRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['preview_id'] = isset($data['preview_id']) ? $data['preview_id'] : null;
+        
         $this->container['sell_currency'] = isset($data['sell_currency']) ? $data['sell_currency'] : null;
+        
         $this->container['sell_amount'] = isset($data['sell_amount']) ? $data['sell_amount'] : null;
+        
         $this->container['buy_currency'] = isset($data['buy_currency']) ? $data['buy_currency'] : null;
+        
         $this->container['buy_amount'] = isset($data['buy_amount']) ? $data['buy_amount'] : null;
+        
     }
 
     /**
@@ -260,6 +286,7 @@ class FlashSwapOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setPreviewId($preview_id)
     {
+        
         $this->container['preview_id'] = $preview_id;
 
         return $this;
@@ -284,6 +311,7 @@ class FlashSwapOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setSellCurrency($sell_currency)
     {
+        
         $this->container['sell_currency'] = $sell_currency;
 
         return $this;
@@ -308,6 +336,7 @@ class FlashSwapOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setSellAmount($sell_amount)
     {
+        
         $this->container['sell_amount'] = $sell_amount;
 
         return $this;
@@ -332,6 +361,7 @@ class FlashSwapOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setBuyCurrency($buy_currency)
     {
+        
         $this->container['buy_currency'] = $buy_currency;
 
         return $this;
@@ -356,6 +386,7 @@ class FlashSwapOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setBuyAmount($buy_amount)
     {
+        
         $this->container['buy_amount'] = $buy_amount;
 
         return $this;

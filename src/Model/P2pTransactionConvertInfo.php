@@ -106,6 +106,27 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -221,15 +242,25 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['convert_type'] = isset($data['convert_type']) ? $data['convert_type'] : null;
+        
         $this->container['convert_status'] = isset($data['convert_status']) ? $data['convert_status'] : null;
+        
         $this->container['pre_rate'] = isset($data['pre_rate']) ? $data['pre_rate'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
         $this->container['pre_fiat_rate'] = isset($data['pre_fiat_rate']) ? $data['pre_fiat_rate'] : null;
+        
         $this->container['fiat_rate'] = isset($data['fiat_rate']) ? $data['fiat_rate'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['convert_amount'] = isset($data['convert_amount']) ? $data['convert_amount'] : null;
+        
         $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
     }
 
     /**
@@ -275,6 +306,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setConvertType($convert_type)
     {
+        
         $this->container['convert_type'] = $convert_type;
 
         return $this;
@@ -299,6 +331,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setConvertStatus($convert_status)
     {
+        
         $this->container['convert_status'] = $convert_status;
 
         return $this;
@@ -323,6 +356,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setPreRate($pre_rate)
     {
+        
         $this->container['pre_rate'] = $pre_rate;
 
         return $this;
@@ -347,6 +381,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;
@@ -371,6 +406,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setPreFiatRate($pre_fiat_rate)
     {
+        
         $this->container['pre_fiat_rate'] = $pre_fiat_rate;
 
         return $this;
@@ -395,6 +431,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setFiatRate($fiat_rate)
     {
+        
         $this->container['fiat_rate'] = $fiat_rate;
 
         return $this;
@@ -419,6 +456,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -443,6 +481,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setConvertAmount($convert_amount)
     {
+        
         $this->container['convert_amount'] = $convert_amount;
 
         return $this;
@@ -467,6 +506,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setSlippage($slippage)
     {
+        
         $this->container['slippage'] = $slippage;
 
         return $this;
@@ -491,6 +531,7 @@ class P2pTransactionConvertInfo implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;

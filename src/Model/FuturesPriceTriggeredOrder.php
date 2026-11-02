@@ -114,6 +114,27 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -294,19 +315,33 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['initial'] = isset($data['initial']) ? $data['initial'] : null;
+        
         $this->container['trigger'] = isset($data['trigger']) ? $data['trigger'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['id_string'] = isset($data['id_string']) ? $data['id_string'] : null;
+        
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
+        
         $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
+        
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        
         $this->container['me_order_id'] = isset($data['me_order_id']) ? $data['me_order_id'] : null;
+        
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        
     }
 
     /**
@@ -325,7 +360,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'trigger' can't be null";
         }
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -333,7 +368,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getFinishAsAllowableValues();
-        if (!is_null($this->container['finish_as']) && !in_array($this->container['finish_as'], $allowedValues, true)) {
+        if ((isset($this->container['finish_as'])) && !in_array($this->container['finish_as'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'finish_as', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -341,7 +376,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getPosMarginModeAllowableValues();
-        if (!is_null($this->container['pos_margin_mode']) && !in_array($this->container['pos_margin_mode'], $allowedValues, true)) {
+        if ((isset($this->container['pos_margin_mode'])) && !in_array($this->container['pos_margin_mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'pos_margin_mode', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -382,6 +417,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setInitial($initial)
     {
+        
         $this->container['initial'] = $initial;
 
         return $this;
@@ -406,6 +442,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setTrigger($trigger)
     {
+        
         $this->container['trigger'] = $trigger;
 
         return $this;
@@ -430,6 +467,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -454,6 +492,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setIdString($id_string)
     {
+        
         $this->container['id_string'] = $id_string;
 
         return $this;
@@ -478,6 +517,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -502,6 +542,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -526,6 +567,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishTime($finish_time)
     {
+        
         $this->container['finish_time'] = $finish_time;
 
         return $this;
@@ -550,6 +592,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setTradeId($trade_id)
     {
+        
         $this->container['trade_id'] = $trade_id;
 
         return $this;
@@ -583,6 +626,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -616,6 +660,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['finish_as'] = $finish_as;
 
         return $this;
@@ -640,6 +685,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setReason($reason)
     {
+        
         $this->container['reason'] = $reason;
 
         return $this;
@@ -664,6 +710,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderType($order_type)
     {
+        
         $this->container['order_type'] = $order_type;
 
         return $this;
@@ -688,6 +735,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setMeOrderId($me_order_id)
     {
+        
         $this->container['me_order_id'] = $me_order_id;
 
         return $this;
@@ -721,6 +769,7 @@ class FuturesPriceTriggeredOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;

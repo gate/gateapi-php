@@ -104,6 +104,27 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -233,14 +254,23 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['auto_size'] = isset($data['auto_size']) ? $data['auto_size'] : null;
+        
         $this->container['close'] = isset($data['close']) ? $data['close'] : null;
+        
     }
 
     /**
@@ -256,7 +286,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'order_id' can't be null";
         }
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -297,6 +327,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setSettle($settle)
     {
+        
         $this->container['settle'] = $settle;
 
         return $this;
@@ -321,6 +352,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -345,6 +377,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -369,6 +402,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -393,6 +427,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -417,6 +452,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setTriggerPrice($trigger_price)
     {
+        
         $this->container['trigger_price'] = $trigger_price;
 
         return $this;
@@ -450,6 +486,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -474,6 +511,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoSize($auto_size)
     {
+        
         $this->container['auto_size'] = $auto_size;
 
         return $this;
@@ -498,6 +536,7 @@ class FuturesUpdatePriceTriggeredOrder implements ModelInterface, ArrayAccess
      */
     public function setClose($close)
     {
+        
         $this->container['close'] = $close;
 
         return $this;

@@ -133,6 +133,27 @@ class CrossexPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -290,29 +311,53 @@ class CrossexPosition implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['position_id'] = isset($data['position_id']) ? $data['position_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        
         $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
+        
         $this->container['isolated_margin'] = isset($data['isolated_margin']) ? $data['isolated_margin'] : null;
+        
         $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
+        
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
+        
         $this->container['position_qty'] = isset($data['position_qty']) ? $data['position_qty'] : null;
+        
         $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
+        
         $this->container['upnl'] = isset($data['upnl']) ? $data['upnl'] : null;
+        
         $this->container['upnl_rate'] = isset($data['upnl_rate']) ? $data['upnl_rate'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['liq_price'] = isset($data['liq_price']) ? $data['liq_price'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['max_leverage'] = isset($data['max_leverage']) ? $data['max_leverage'] : null;
+        
         $this->container['risk_limit'] = isset($data['risk_limit']) ? $data['risk_limit'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['funding_fee'] = isset($data['funding_fee']) ? $data['funding_fee'] : null;
+        
         $this->container['funding_time'] = isset($data['funding_time']) ? $data['funding_time'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
         $this->container['closed_pnl'] = isset($data['closed_pnl']) ? $data['closed_pnl'] : null;
+        
     }
 
     /**
@@ -358,6 +403,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -382,6 +428,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionId($position_id)
     {
+        
         $this->container['position_id'] = $position_id;
 
         return $this;
@@ -406,6 +453,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -430,6 +478,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionSide($position_side)
     {
+        
         $this->container['position_side'] = $position_side;
 
         return $this;
@@ -454,6 +503,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setInitialMargin($initial_margin)
     {
+        
         $this->container['initial_margin'] = $initial_margin;
 
         return $this;
@@ -478,6 +528,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setIsolatedMargin($isolated_margin)
     {
+        
         $this->container['isolated_margin'] = $isolated_margin;
 
         return $this;
@@ -502,6 +553,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setMarginMode($margin_mode)
     {
+        
         $this->container['margin_mode'] = $margin_mode;
 
         return $this;
@@ -526,6 +578,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceMargin($maintenance_margin)
     {
+        
         $this->container['maintenance_margin'] = $maintenance_margin;
 
         return $this;
@@ -550,6 +603,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionQty($position_qty)
     {
+        
         $this->container['position_qty'] = $position_qty;
 
         return $this;
@@ -574,6 +628,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionValue($position_value)
     {
+        
         $this->container['position_value'] = $position_value;
 
         return $this;
@@ -598,6 +653,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setUpnl($upnl)
     {
+        
         $this->container['upnl'] = $upnl;
 
         return $this;
@@ -622,6 +678,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setUpnlRate($upnl_rate)
     {
+        
         $this->container['upnl_rate'] = $upnl_rate;
 
         return $this;
@@ -646,6 +703,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -670,6 +728,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setLiqPrice($liq_price)
     {
+        
         $this->container['liq_price'] = $liq_price;
 
         return $this;
@@ -694,6 +753,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -718,6 +778,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -742,6 +803,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setMaxLeverage($max_leverage)
     {
+        
         $this->container['max_leverage'] = $max_leverage;
 
         return $this;
@@ -766,6 +828,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setRiskLimit($risk_limit)
     {
+        
         $this->container['risk_limit'] = $risk_limit;
 
         return $this;
@@ -790,6 +853,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -814,6 +878,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setFundingFee($funding_fee)
     {
+        
         $this->container['funding_fee'] = $funding_fee;
 
         return $this;
@@ -838,6 +903,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setFundingTime($funding_time)
     {
+        
         $this->container['funding_time'] = $funding_time;
 
         return $this;
@@ -862,6 +928,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -886,6 +953,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;
@@ -910,6 +978,7 @@ class CrossexPosition implements ModelInterface, ArrayAccess
      */
     public function setClosedPnl($closed_pnl)
     {
+        
         $this->container['closed_pnl'] = $closed_pnl;
 
         return $this;

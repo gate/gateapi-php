@@ -95,6 +95,27 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -242,10 +263,15 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['rule'] = isset($data['rule']) ? $data['rule'] : null;
+        
         $this->container['expiration'] = isset($data['expiration']) ? $data['expiration'] : null;
+        
     }
 
     /**
@@ -258,7 +284,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getStrategyTypeAllowableValues();
-        if (!is_null($this->container['strategy_type']) && !in_array($this->container['strategy_type'], $allowedValues, true)) {
+        if ((isset($this->container['strategy_type'])) && !in_array($this->container['strategy_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'strategy_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -266,7 +292,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -280,7 +306,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'rule' can't be null";
         }
         $allowedValues = $this->getRuleAllowableValues();
-        if (!is_null($this->container['rule']) && !in_array($this->container['rule'], $allowedValues, true)) {
+        if ((isset($this->container['rule'])) && !in_array($this->container['rule'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'rule', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -330,6 +356,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['strategy_type'] = $strategy_type;
 
         return $this;
@@ -363,6 +390,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -387,6 +415,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -420,6 +449,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['rule'] = $rule;
 
         return $this;
@@ -444,6 +474,7 @@ class FuturesPriceTrigger implements ModelInterface, ArrayAccess
      */
     public function setExpiration($expiration)
     {
+        
         $this->container['expiration'] = $expiration;
 
         return $this;

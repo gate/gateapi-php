@@ -93,6 +93,27 @@ class ListUserCouponsResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -207,9 +228,13 @@ class ListUserCouponsResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        
     }
 
     /**
@@ -222,7 +247,7 @@ class ListUserCouponsResponse implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getCodeAllowableValues();
-        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+        if ((isset($this->container['code'])) && !in_array($this->container['code'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'code', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -272,6 +297,7 @@ class ListUserCouponsResponse implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['code'] = $code;
 
         return $this;
@@ -296,6 +322,7 @@ class ListUserCouponsResponse implements ModelInterface, ArrayAccess
      */
     public function setLabel($label)
     {
+        
         $this->container['label'] = $label;
 
         return $this;
@@ -320,6 +347,7 @@ class ListUserCouponsResponse implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;
@@ -344,6 +372,7 @@ class ListUserCouponsResponse implements ModelInterface, ArrayAccess
      */
     public function setData($data)
     {
+        
         $this->container['data'] = $data;
 
         return $this;

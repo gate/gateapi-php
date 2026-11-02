@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**postAIHubFuturesGridCreate**](BotApi.md#postAIHubFuturesGridCreate) | **POST** /bot/futures-grid/create | Create a contract grid
 [**postAIHubSpotMartingaleCreate**](BotApi.md#postAIHubSpotMartingaleCreate) | **POST** /bot/spot-martingale/create | Create Spot Martin
 [**postAIHubContractMartingaleCreate**](BotApi.md#postAIHubContractMartingaleCreate) | **POST** /bot/contract-martingale/create | Create contract martin
-[**getAIHubPortfolioRunning**](BotApi.md#getAIHubPortfolioRunning) | **GET** /bot/portfolio/running | Query the list of running policies
+[**getAIHubPortfolioRunning**](BotApi.md#getAIHubPortfolioRunning) | **GET** /bot/portfolio/running | List running strategies.
 [**getAIHubPortfolioDetail**](BotApi.md#getAIHubPortfolioDetail) | **GET** /bot/portfolio/detail | Query order policy details
 [**postAIHubPortfolioStop**](BotApi.md#postAIHubPortfolioStop) | **POST** /bot/portfolio/stop | Terminate a single running policy
 [**postAIHubSmartPositionCreate**](BotApi.md#postAIHubSmartPositionCreate) | **POST** /bot/smart-position/create | Create rebalance bot
@@ -532,7 +532,7 @@ Name | Type | Description  | Notes
 
 > \GateApi\Model\AIHubPortfolioRunningSuccessResponse getAIHubPortfolioRunning($strategy_type, $market, $page, $page_size, $x_gate_service_id, $x_gate_app_lang, $x_request_id, $x_trace_id)
 
-Query the list of running policies
+List running strategies.
 
 Query the list of AIHub strategies currently running by the user, and support filtering by strategy type, trading pair and paging conditions.
 

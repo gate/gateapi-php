@@ -94,6 +94,27 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -208,9 +229,13 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['strategy_id'] = isset($data['strategy_id']) ? $data['strategy_id'] : null;
+        
         $this->container['strategy_type'] = isset($data['strategy_type']) ? $data['strategy_type'] : null;
+        
         $this->container['stop_mode'] = isset($data['stop_mode']) ? $data['stop_mode'] : null;
+        
         $this->container['stop_options'] = isset($data['stop_options']) ? $data['stop_options'] : null;
+        
     }
 
     /**
@@ -229,7 +254,7 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'strategy_type' can't be null";
         }
         $allowedValues = $this->getStopModeAllowableValues();
-        if (!is_null($this->container['stop_mode']) && !in_array($this->container['stop_mode'], $allowedValues, true)) {
+        if ((isset($this->container['stop_mode'])) && !in_array($this->container['stop_mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'stop_mode', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -270,6 +295,7 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
      */
     public function setStrategyId($strategy_id)
     {
+        
         $this->container['strategy_id'] = $strategy_id;
 
         return $this;
@@ -294,6 +320,7 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
      */
     public function setStrategyType($strategy_type)
     {
+        
         $this->container['strategy_type'] = $strategy_type;
 
         return $this;
@@ -327,6 +354,7 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['stop_mode'] = $stop_mode;
 
         return $this;
@@ -351,6 +379,7 @@ class AIHubPortfolioStopRequest implements ModelInterface, ArrayAccess
      */
     public function setStopOptions($stop_options)
     {
+        
         $this->container['stop_options'] = $stop_options;
 
         return $this;

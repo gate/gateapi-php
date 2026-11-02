@@ -121,6 +121,27 @@ class CrossexTrade implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -260,23 +281,41 @@ class CrossexTrade implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['transaction_id'] = isset($data['transaction_id']) ? $data['transaction_id'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['qty'] = isset($data['qty']) ? $data['qty'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['fee_coin'] = isset($data['fee_coin']) ? $data['fee_coin'] : null;
+        
         $this->container['fee_rate'] = isset($data['fee_rate']) ? $data['fee_rate'] : null;
+        
         $this->container['match_role'] = isset($data['match_role']) ? $data['match_role'] : null;
+        
         $this->container['rpnl'] = isset($data['rpnl']) ? $data['rpnl'] : null;
+        
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
     }
 
     /**
@@ -322,6 +361,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -346,6 +386,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setTransactionId($transaction_id)
     {
+        
         $this->container['transaction_id'] = $transaction_id;
 
         return $this;
@@ -370,6 +411,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -394,6 +436,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -418,6 +461,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -442,6 +486,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -466,6 +511,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setBusinessType($business_type)
     {
+        
         $this->container['business_type'] = $business_type;
 
         return $this;
@@ -490,6 +536,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -514,6 +561,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setQty($qty)
     {
+        
         $this->container['qty'] = $qty;
 
         return $this;
@@ -538,6 +586,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -562,6 +611,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -586,6 +636,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setFeeCoin($fee_coin)
     {
+        
         $this->container['fee_coin'] = $fee_coin;
 
         return $this;
@@ -610,6 +661,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setFeeRate($fee_rate)
     {
+        
         $this->container['fee_rate'] = $fee_rate;
 
         return $this;
@@ -634,6 +686,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setMatchRole($match_role)
     {
+        
         $this->container['match_role'] = $match_role;
 
         return $this;
@@ -658,6 +711,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setRpnl($rpnl)
     {
+        
         $this->container['rpnl'] = $rpnl;
 
         return $this;
@@ -682,6 +736,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setPositionMode($position_mode)
     {
+        
         $this->container['position_mode'] = $position_mode;
 
         return $this;
@@ -706,6 +761,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setPositionSide($position_side)
     {
+        
         $this->container['position_side'] = $position_side;
 
         return $this;
@@ -730,6 +786,7 @@ class CrossexTrade implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;

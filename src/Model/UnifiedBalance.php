@@ -127,6 +127,27 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -275,26 +296,47 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['freeze'] = isset($data['freeze']) ? $data['freeze'] : null;
+        
         $this->container['borrowed'] = isset($data['borrowed']) ? $data['borrowed'] : null;
+        
         $this->container['negative_liab'] = isset($data['negative_liab']) ? $data['negative_liab'] : null;
+        
         $this->container['futures_pos_liab'] = isset($data['futures_pos_liab']) ? $data['futures_pos_liab'] : null;
+        
         $this->container['equity'] = isset($data['equity']) ? $data['equity'] : null;
+        
         $this->container['total_freeze'] = isset($data['total_freeze']) ? $data['total_freeze'] : null;
+        
         $this->container['total_liab'] = isset($data['total_liab']) ? $data['total_liab'] : null;
+        
         $this->container['spot_in_use'] = isset($data['spot_in_use']) ? $data['spot_in_use'] : null;
+        
         $this->container['funding'] = isset($data['funding']) ? $data['funding'] : null;
+        
         $this->container['funding_version'] = isset($data['funding_version']) ? $data['funding_version'] : null;
+        
         $this->container['cross_balance'] = isset($data['cross_balance']) ? $data['cross_balance'] : null;
+        
         $this->container['iso_balance'] = isset($data['iso_balance']) ? $data['iso_balance'] : null;
+        
         $this->container['im'] = isset($data['im']) ? $data['im'] : null;
+        
         $this->container['mm'] = isset($data['mm']) ? $data['mm'] : null;
+        
         $this->container['imr'] = isset($data['imr']) ? $data['imr'] : null;
+        
         $this->container['mmr'] = isset($data['mmr']) ? $data['mmr'] : null;
+        
         $this->container['margin_balance'] = isset($data['margin_balance']) ? $data['margin_balance'] : null;
+        
         $this->container['available_margin'] = isset($data['available_margin']) ? $data['available_margin'] : null;
+        
         $this->container['enabled_collateral'] = isset($data['enabled_collateral']) ? $data['enabled_collateral'] : null;
+        
         $this->container['balance_version'] = isset($data['balance_version']) ? $data['balance_version'] : null;
+        
     }
 
     /**
@@ -340,6 +382,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -364,6 +407,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setFreeze($freeze)
     {
+        
         $this->container['freeze'] = $freeze;
 
         return $this;
@@ -388,6 +432,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setBorrowed($borrowed)
     {
+        
         $this->container['borrowed'] = $borrowed;
 
         return $this;
@@ -412,6 +457,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setNegativeLiab($negative_liab)
     {
+        
         $this->container['negative_liab'] = $negative_liab;
 
         return $this;
@@ -436,6 +482,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setFuturesPosLiab($futures_pos_liab)
     {
+        
         $this->container['futures_pos_liab'] = $futures_pos_liab;
 
         return $this;
@@ -460,6 +507,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setEquity($equity)
     {
+        
         $this->container['equity'] = $equity;
 
         return $this;
@@ -484,6 +532,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setTotalFreeze($total_freeze)
     {
+        
         $this->container['total_freeze'] = $total_freeze;
 
         return $this;
@@ -508,6 +557,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setTotalLiab($total_liab)
     {
+        
         $this->container['total_liab'] = $total_liab;
 
         return $this;
@@ -532,6 +582,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setSpotInUse($spot_in_use)
     {
+        
         $this->container['spot_in_use'] = $spot_in_use;
 
         return $this;
@@ -556,6 +607,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setFunding($funding)
     {
+        
         $this->container['funding'] = $funding;
 
         return $this;
@@ -580,6 +632,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setFundingVersion($funding_version)
     {
+        
         $this->container['funding_version'] = $funding_version;
 
         return $this;
@@ -604,6 +657,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setCrossBalance($cross_balance)
     {
+        
         $this->container['cross_balance'] = $cross_balance;
 
         return $this;
@@ -628,6 +682,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setIsoBalance($iso_balance)
     {
+        
         $this->container['iso_balance'] = $iso_balance;
 
         return $this;
@@ -652,6 +707,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setIm($im)
     {
+        
         $this->container['im'] = $im;
 
         return $this;
@@ -676,6 +732,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setMm($mm)
     {
+        
         $this->container['mm'] = $mm;
 
         return $this;
@@ -700,6 +757,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setImr($imr)
     {
+        
         $this->container['imr'] = $imr;
 
         return $this;
@@ -724,6 +782,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setMmr($mmr)
     {
+        
         $this->container['mmr'] = $mmr;
 
         return $this;
@@ -748,6 +807,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setMarginBalance($margin_balance)
     {
+        
         $this->container['margin_balance'] = $margin_balance;
 
         return $this;
@@ -772,6 +832,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setAvailableMargin($available_margin)
     {
+        
         $this->container['available_margin'] = $available_margin;
 
         return $this;
@@ -796,6 +857,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setEnabledCollateral($enabled_collateral)
     {
+        
         $this->container['enabled_collateral'] = $enabled_collateral;
 
         return $this;
@@ -820,6 +882,7 @@ class UnifiedBalance implements ModelInterface, ArrayAccess
      */
     public function setBalanceVersion($balance_version)
     {
+        
         $this->container['balance_version'] = $balance_version;
 
         return $this;

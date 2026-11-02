@@ -94,6 +94,27 @@ class AIHubPortfolioRunningData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class AIHubPortfolioRunningData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        
         $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        
         $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
     }
 
     /**
@@ -251,6 +276,7 @@ class AIHubPortfolioRunningData implements ModelInterface, ArrayAccess
      */
     public function setItems($items)
     {
+        
         $this->container['items'] = $items;
 
         return $this;
@@ -275,6 +301,7 @@ class AIHubPortfolioRunningData implements ModelInterface, ArrayAccess
      */
     public function setPage($page)
     {
+        
         $this->container['page'] = $page;
 
         return $this;
@@ -299,6 +326,7 @@ class AIHubPortfolioRunningData implements ModelInterface, ArrayAccess
      */
     public function setPageSize($page_size)
     {
+        
         $this->container['page_size'] = $page_size;
 
         return $this;
@@ -323,6 +351,7 @@ class AIHubPortfolioRunningData implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;

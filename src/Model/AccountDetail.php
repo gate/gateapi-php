@@ -98,6 +98,27 @@ class AccountDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class AccountDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['ip_whitelist'] = isset($data['ip_whitelist']) ? $data['ip_whitelist'] : null;
+        
         $this->container['currency_pairs'] = isset($data['currency_pairs']) ? $data['currency_pairs'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        
         $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        
         $this->container['copy_trading_role'] = isset($data['copy_trading_role']) ? $data['copy_trading_role'] : null;
+        
     }
 
     /**
@@ -251,6 +278,7 @@ class AccountDetail implements ModelInterface, ArrayAccess
      */
     public function setIpWhitelist($ip_whitelist)
     {
+        
         $this->container['ip_whitelist'] = $ip_whitelist;
 
         return $this;
@@ -275,6 +303,7 @@ class AccountDetail implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPairs($currency_pairs)
     {
+        
         $this->container['currency_pairs'] = $currency_pairs;
 
         return $this;
@@ -299,6 +328,7 @@ class AccountDetail implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -323,6 +353,7 @@ class AccountDetail implements ModelInterface, ArrayAccess
      */
     public function setTier($tier)
     {
+        
         $this->container['tier'] = $tier;
 
         return $this;
@@ -347,6 +378,7 @@ class AccountDetail implements ModelInterface, ArrayAccess
      */
     public function setKey($key)
     {
+        
         $this->container['key'] = $key;
 
         return $this;
@@ -371,6 +403,7 @@ class AccountDetail implements ModelInterface, ArrayAccess
      */
     public function setCopyTradingRole($copy_trading_role)
     {
+        
         $this->container['copy_trading_role'] = $copy_trading_role;
 
         return $this;

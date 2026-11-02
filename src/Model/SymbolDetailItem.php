@@ -139,6 +139,27 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -429,32 +450,59 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['exchange'] = isset($data['exchange']) ? $data['exchange'] : null;
+        
         $this->container['exchange_desc'] = isset($data['exchange_desc']) ? $data['exchange_desc'] : null;
+        
         $this->container['quote_currency'] = isset($data['quote_currency']) ? $data['quote_currency'] : null;
+        
         $this->container['quote_currency_precision'] = isset($data['quote_currency_precision']) ? $data['quote_currency_precision'] : null;
+        
         $this->container['fx_rate'] = isset($data['fx_rate']) ? $data['fx_rate'] : null;
+        
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
+        
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        
         $this->container['asset_type'] = isset($data['asset_type']) ? $data['asset_type'] : null;
+        
         $this->container['settlement_currency'] = isset($data['settlement_currency']) ? $data['settlement_currency'] : null;
+        
         $this->container['max_order_volume'] = isset($data['max_order_volume']) ? $data['max_order_volume'] : null;
+        
         $this->container['step_order_volume'] = isset($data['step_order_volume']) ? $data['step_order_volume'] : null;
+        
         $this->container['min_order_volume'] = isset($data['min_order_volume']) ? $data['min_order_volume'] : null;
+        
         $this->container['price_precision'] = isset($data['price_precision']) ? $data['price_precision'] : null;
+        
         $this->container['volume_precision'] = isset($data['volume_precision']) ? $data['volume_precision'] : null;
+        
         $this->container['is_ipo'] = isset($data['is_ipo']) ? $data['is_ipo'] : null;
+        
         $this->container['ipo_price'] = isset($data['ipo_price']) ? $data['ipo_price'] : null;
+        
         $this->container['price_protection'] = isset($data['price_protection']) ? $data['price_protection'] : null;
+        
         $this->container['sell_price_protection'] = isset($data['sell_price_protection']) ? $data['sell_price_protection'] : null;
+        
         $this->container['buy_price_protection'] = isset($data['buy_price_protection']) ? $data['buy_price_protection'] : null;
+        
         $this->container['slippage_rate'] = isset($data['slippage_rate']) ? $data['slippage_rate'] : null;
+        
         $this->container['commission_rate'] = isset($data['commission_rate']) ? $data['commission_rate'] : null;
+        
         $this->container['trade_status'] = isset($data['trade_status']) ? $data['trade_status'] : null;
+        
         $this->container['trade_mode'] = isset($data['trade_mode']) ? $data['trade_mode'] : null;
+        
         $this->container['order_fill_timing'] = isset($data['order_fill_timing']) ? $data['order_fill_timing'] : null;
+        
         $this->container['symbol_descs'] = isset($data['symbol_descs']) ? $data['symbol_descs'] : null;
+        
         $this->container['icon_link'] = isset($data['icon_link']) ? $data['icon_link'] : null;
+        
     }
 
     /**
@@ -467,7 +515,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getExchangeAllowableValues();
-        if (!is_null($this->container['exchange']) && !in_array($this->container['exchange'], $allowedValues, true)) {
+        if ((isset($this->container['exchange'])) && !in_array($this->container['exchange'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'exchange', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -475,7 +523,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getCategoryAllowableValues();
-        if (!is_null($this->container['category']) && !in_array($this->container['category'], $allowedValues, true)) {
+        if ((isset($this->container['category'])) && !in_array($this->container['category'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'category', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -483,7 +531,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getAssetTypeAllowableValues();
-        if (!is_null($this->container['asset_type']) && !in_array($this->container['asset_type'], $allowedValues, true)) {
+        if ((isset($this->container['asset_type'])) && !in_array($this->container['asset_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'asset_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -491,7 +539,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getTradeStatusAllowableValues();
-        if (!is_null($this->container['trade_status']) && !in_array($this->container['trade_status'], $allowedValues, true)) {
+        if ((isset($this->container['trade_status'])) && !in_array($this->container['trade_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'trade_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -499,7 +547,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getTradeModeAllowableValues();
-        if (!is_null($this->container['trade_mode']) && !in_array($this->container['trade_mode'], $allowedValues, true)) {
+        if ((isset($this->container['trade_mode'])) && !in_array($this->container['trade_mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'trade_mode', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -507,7 +555,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getOrderFillTimingAllowableValues();
-        if (!is_null($this->container['order_fill_timing']) && !in_array($this->container['order_fill_timing'], $allowedValues, true)) {
+        if ((isset($this->container['order_fill_timing'])) && !in_array($this->container['order_fill_timing'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'order_fill_timing', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -548,6 +596,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -581,6 +630,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['exchange'] = $exchange;
 
         return $this;
@@ -605,6 +655,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setExchangeDesc($exchange_desc)
     {
+        
         $this->container['exchange_desc'] = $exchange_desc;
 
         return $this;
@@ -629,6 +680,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setQuoteCurrency($quote_currency)
     {
+        
         $this->container['quote_currency'] = $quote_currency;
 
         return $this;
@@ -653,6 +705,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setQuoteCurrencyPrecision($quote_currency_precision)
     {
+        
         $this->container['quote_currency_precision'] = $quote_currency_precision;
 
         return $this;
@@ -677,6 +730,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setFxRate($fx_rate)
     {
+        
         $this->container['fx_rate'] = $fx_rate;
 
         return $this;
@@ -701,6 +755,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setSymbolDesc($symbol_desc)
     {
+        
         $this->container['symbol_desc'] = $symbol_desc;
 
         return $this;
@@ -734,6 +789,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['category'] = $category;
 
         return $this;
@@ -767,6 +823,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['asset_type'] = $asset_type;
 
         return $this;
@@ -791,6 +848,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setSettlementCurrency($settlement_currency)
     {
+        
         $this->container['settlement_currency'] = $settlement_currency;
 
         return $this;
@@ -815,6 +873,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setMaxOrderVolume($max_order_volume)
     {
+        
         $this->container['max_order_volume'] = $max_order_volume;
 
         return $this;
@@ -839,6 +898,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setStepOrderVolume($step_order_volume)
     {
+        
         $this->container['step_order_volume'] = $step_order_volume;
 
         return $this;
@@ -863,6 +923,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setMinOrderVolume($min_order_volume)
     {
+        
         $this->container['min_order_volume'] = $min_order_volume;
 
         return $this;
@@ -887,6 +948,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setPricePrecision($price_precision)
     {
+        
         $this->container['price_precision'] = $price_precision;
 
         return $this;
@@ -911,6 +973,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setVolumePrecision($volume_precision)
     {
+        
         $this->container['volume_precision'] = $volume_precision;
 
         return $this;
@@ -935,6 +998,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setIsIpo($is_ipo)
     {
+        
         $this->container['is_ipo'] = $is_ipo;
 
         return $this;
@@ -959,6 +1023,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setIpoPrice($ipo_price)
     {
+        
         $this->container['ipo_price'] = $ipo_price;
 
         return $this;
@@ -983,6 +1048,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setPriceProtection($price_protection)
     {
+        
         $this->container['price_protection'] = $price_protection;
 
         return $this;
@@ -1007,6 +1073,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setSellPriceProtection($sell_price_protection)
     {
+        
         $this->container['sell_price_protection'] = $sell_price_protection;
 
         return $this;
@@ -1031,6 +1098,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setBuyPriceProtection($buy_price_protection)
     {
+        
         $this->container['buy_price_protection'] = $buy_price_protection;
 
         return $this;
@@ -1055,6 +1123,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setSlippageRate($slippage_rate)
     {
+        
         $this->container['slippage_rate'] = $slippage_rate;
 
         return $this;
@@ -1079,6 +1148,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setCommissionRate($commission_rate)
     {
+        
         $this->container['commission_rate'] = $commission_rate;
 
         return $this;
@@ -1112,6 +1182,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['trade_status'] = $trade_status;
 
         return $this;
@@ -1145,6 +1216,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['trade_mode'] = $trade_mode;
 
         return $this;
@@ -1178,6 +1250,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['order_fill_timing'] = $order_fill_timing;
 
         return $this;
@@ -1202,6 +1275,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setSymbolDescs($symbol_descs)
     {
+        
         $this->container['symbol_descs'] = $symbol_descs;
 
         return $this;
@@ -1226,6 +1300,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function setIconLink($icon_link)
     {
+        
         $this->container['icon_link'] = $icon_link;
 
         return $this;

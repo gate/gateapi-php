@@ -98,6 +98,27 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['strategy_name'] = isset($data['strategy_name']) ? $data['strategy_name'] : null;
+        
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        
         $this->container['running_duration'] = isset($data['running_duration']) ? $data['running_duration'] : null;
+        
         $this->container['invest_amount'] = isset($data['invest_amount']) ? $data['invest_amount'] : null;
+        
         $this->container['total_profit'] = isset($data['total_profit']) ? $data['total_profit'] : null;
+        
         $this->container['profit_rate'] = isset($data['profit_rate']) ? $data['profit_rate'] : null;
+        
     }
 
     /**
@@ -269,6 +296,7 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
      */
     public function setStrategyName($strategy_name)
     {
+        
         $this->container['strategy_name'] = $strategy_name;
 
         return $this;
@@ -293,6 +321,7 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
      */
     public function setCreatedAt($created_at)
     {
+        
         $this->container['created_at'] = $created_at;
 
         return $this;
@@ -317,6 +346,7 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
      */
     public function setRunningDuration($running_duration)
     {
+        
         $this->container['running_duration'] = $running_duration;
 
         return $this;
@@ -341,6 +371,7 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
      */
     public function setInvestAmount($invest_amount)
     {
+        
         $this->container['invest_amount'] = $invest_amount;
 
         return $this;
@@ -365,6 +396,7 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
      */
     public function setTotalProfit($total_profit)
     {
+        
         $this->container['total_profit'] = $total_profit;
 
         return $this;
@@ -389,6 +421,7 @@ class AIHubPortfolioBaseInfo implements ModelInterface, ArrayAccess
      */
     public function setProfitRate($profit_rate)
     {
+        
         $this->container['profit_rate'] = $profit_rate;
 
         return $this;

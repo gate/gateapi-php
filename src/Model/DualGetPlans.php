@@ -109,6 +109,27 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -230,17 +251,29 @@ class DualGetPlans implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['instrument_name'] = isset($data['instrument_name']) ? $data['instrument_name'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['invest_currency'] = isset($data['invest_currency']) ? $data['invest_currency'] : null;
+        
         $this->container['exercise_currency'] = isset($data['exercise_currency']) ? $data['exercise_currency'] : null;
+        
         $this->container['exercise_price'] = isset($data['exercise_price']) ? $data['exercise_price'] : null;
+        
         $this->container['delivery_time'] = isset($data['delivery_time']) ? $data['delivery_time'] : null;
+        
         $this->container['apy_display'] = isset($data['apy_display']) ? $data['apy_display'] : null;
+        
         $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
+        
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
     }
 
     /**
@@ -286,6 +319,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -310,6 +344,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setInstrumentName($instrument_name)
     {
+        
         $this->container['instrument_name'] = $instrument_name;
 
         return $this;
@@ -334,6 +369,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -358,6 +394,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setInvestCurrency($invest_currency)
     {
+        
         $this->container['invest_currency'] = $invest_currency;
 
         return $this;
@@ -382,6 +419,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setExerciseCurrency($exercise_currency)
     {
+        
         $this->container['exercise_currency'] = $exercise_currency;
 
         return $this;
@@ -406,6 +444,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setExercisePrice($exercise_price)
     {
+        
         $this->container['exercise_price'] = $exercise_price;
 
         return $this;
@@ -430,6 +469,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setDeliveryTime($delivery_time)
     {
+        
         $this->container['delivery_time'] = $delivery_time;
 
         return $this;
@@ -454,6 +494,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setApyDisplay($apy_display)
     {
+        
         $this->container['apy_display'] = $apy_display;
 
         return $this;
@@ -478,6 +519,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setMinAmount($min_amount)
     {
+        
         $this->container['min_amount'] = $min_amount;
 
         return $this;
@@ -502,6 +544,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setStartTime($start_time)
     {
+        
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -526,6 +569,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setEndTime($end_time)
     {
+        
         $this->container['end_time'] = $end_time;
 
         return $this;
@@ -550,6 +594,7 @@ class DualGetPlans implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;

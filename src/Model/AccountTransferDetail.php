@@ -102,6 +102,29 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            'settle' => true,
+            'currency_pair' => true,
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -274,13 +297,35 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['tx_id'] = isset($data['tx_id']) ? $data['tx_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['from_account'] = isset($data['from_account']) ? $data['from_account'] : null;
+        
         $this->container['to_account'] = isset($data['to_account']) ? $data['to_account'] : null;
+        
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        
+        // Explicit null overrides a default; an absent null has no presence.
+        if ($data !== null && array_key_exists('settle', $data)) {
+            $this->container['settle'] = $data['settle'];
+        } elseif ($this->container['settle'] === null) {
+            unset($this->container['settle']);
+        }
+        
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
+        // Explicit null overrides a default; an absent null has no presence.
+        if ($data !== null && array_key_exists('currency_pair', $data)) {
+            $this->container['currency_pair'] = $data['currency_pair'];
+        } elseif ($this->container['currency_pair'] === null) {
+            unset($this->container['currency_pair']);
+        }
+        
     }
 
     /**
@@ -299,7 +344,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'status' can't be null";
         }
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -316,7 +361,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'from_account' can't be null";
         }
         $allowedValues = $this->getFromAccountAllowableValues();
-        if (!is_null($this->container['from_account']) && !in_array($this->container['from_account'], $allowedValues, true)) {
+        if ((isset($this->container['from_account'])) && !in_array($this->container['from_account'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'from_account', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -327,18 +372,18 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'to_account' can't be null";
         }
         $allowedValues = $this->getToAccountAllowableValues();
-        if (!is_null($this->container['to_account']) && !in_array($this->container['to_account'], $allowedValues, true)) {
+        if ((isset($this->container['to_account'])) && !in_array($this->container['to_account'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'to_account', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['settle'] === null) {
-            $invalidProperties[] = "'settle' can't be null";
+        if (!array_key_exists('settle', $this->container)) {
+            $invalidProperties[] = "'settle' must be present";
         }
-        if ($this->container['currency_pair'] === null) {
-            $invalidProperties[] = "'currency_pair' can't be null";
+        if (!array_key_exists('currency_pair', $this->container)) {
+            $invalidProperties[] = "'currency_pair' must be present";
         }
         return $invalidProperties;
     }
@@ -374,6 +419,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
      */
     public function setTxId($tx_id)
     {
+        
         $this->container['tx_id'] = $tx_id;
 
         return $this;
@@ -407,6 +453,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -431,6 +478,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -455,6 +503,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -488,6 +537,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['from_account'] = $from_account;
 
         return $this;
@@ -521,6 +571,7 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['to_account'] = $to_account;
 
         return $this;
@@ -529,22 +580,29 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
     /**
      * Gets settle
      *
-     * @return string
+     * @return string|null
      */
     public function getSettle()
     {
-        return $this->container['settle'];
+        return $this->container['settle'] ?? null;
     }
 
     /**
      * Sets settle
      *
-     * @param string $settle Settlement currency for futures, delivery, and options transfers; otherwise, null
+     * @param string|null $settle Settlement currency for futures, delivery, and options transfers; otherwise, null
      *
      * @return $this
      */
     public function setSettle($settle)
     {
+        
+        // Keep enum membership above; only type-specific constraints skip null.
+        if ($settle === null) {
+            $this->container['settle'] = null;
+            return $this;
+        }
+        
         $this->container['settle'] = $settle;
 
         return $this;
@@ -553,22 +611,29 @@ class AccountTransferDetail implements ModelInterface, ArrayAccess
     /**
      * Gets currency_pair
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrencyPair()
     {
-        return $this->container['currency_pair'];
+        return $this->container['currency_pair'] ?? null;
     }
 
     /**
      * Sets currency_pair
      *
-     * @param string $currency_pair Currency pair for margin transfers; otherwise, null
+     * @param string|null $currency_pair Currency pair for margin transfers; otherwise, null
      *
      * @return $this
      */
     public function setCurrencyPair($currency_pair)
     {
+        
+        // Keep enum membership above; only type-specific constraints skip null.
+        if ($currency_pair === null) {
+            $this->container['currency_pair'] = null;
+            return $this;
+        }
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;

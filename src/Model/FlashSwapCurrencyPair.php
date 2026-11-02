@@ -100,6 +100,27 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['sell_currency'] = isset($data['sell_currency']) ? $data['sell_currency'] : null;
+        
         $this->container['buy_currency'] = isset($data['buy_currency']) ? $data['buy_currency'] : null;
+        
         $this->container['sell_min_amount'] = isset($data['sell_min_amount']) ? $data['sell_min_amount'] : null;
+        
         $this->container['sell_max_amount'] = isset($data['sell_max_amount']) ? $data['sell_max_amount'] : null;
+        
         $this->container['buy_min_amount'] = isset($data['buy_min_amount']) ? $data['buy_min_amount'] : null;
+        
         $this->container['buy_max_amount'] = isset($data['buy_max_amount']) ? $data['buy_max_amount'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -281,6 +310,7 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setSellCurrency($sell_currency)
     {
+        
         $this->container['sell_currency'] = $sell_currency;
 
         return $this;
@@ -305,6 +335,7 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setBuyCurrency($buy_currency)
     {
+        
         $this->container['buy_currency'] = $buy_currency;
 
         return $this;
@@ -329,6 +360,7 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setSellMinAmount($sell_min_amount)
     {
+        
         $this->container['sell_min_amount'] = $sell_min_amount;
 
         return $this;
@@ -353,6 +385,7 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setSellMaxAmount($sell_max_amount)
     {
+        
         $this->container['sell_max_amount'] = $sell_max_amount;
 
         return $this;
@@ -377,6 +410,7 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setBuyMinAmount($buy_min_amount)
     {
+        
         $this->container['buy_min_amount'] = $buy_min_amount;
 
         return $this;
@@ -401,6 +435,7 @@ class FlashSwapCurrencyPair implements ModelInterface, ArrayAccess
      */
     public function setBuyMaxAmount($buy_max_amount)
     {
+        
         $this->container['buy_max_amount'] = $buy_max_amount;
 
         return $this;

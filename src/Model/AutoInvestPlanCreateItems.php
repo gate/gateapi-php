@@ -89,6 +89,27 @@ class AutoInvestPlanCreateItems implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -180,7 +201,9 @@ class AutoInvestPlanCreateItems implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['ratio'] = isset($data['ratio']) ? $data['ratio'] : null;
+        
     }
 
     /**
@@ -232,6 +255,7 @@ class AutoInvestPlanCreateItems implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -256,6 +280,7 @@ class AutoInvestPlanCreateItems implements ModelInterface, ArrayAccess
      */
     public function setRatio($ratio)
     {
+        
         $this->container['ratio'] = $ratio;
 
         return $this;

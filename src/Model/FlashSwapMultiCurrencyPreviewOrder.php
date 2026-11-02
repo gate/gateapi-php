@@ -111,6 +111,27 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -235,18 +256,31 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
+        
         $this->container['hedge_type'] = isset($data['hedge_type']) ? $data['hedge_type'] : null;
+        
         $this->container['sell_asset'] = isset($data['sell_asset']) ? $data['sell_asset'] : null;
+        
         $this->container['sell_amount'] = isset($data['sell_amount']) ? $data['sell_amount'] : null;
+        
         $this->container['sell_amount_show'] = isset($data['sell_amount_show']) ? $data['sell_amount_show'] : null;
+        
         $this->container['buy_asset'] = isset($data['buy_asset']) ? $data['buy_asset'] : null;
+        
         $this->container['buy_amount'] = isset($data['buy_amount']) ? $data['buy_amount'] : null;
+        
         $this->container['buy_amount_show'] = isset($data['buy_amount_show']) ? $data['buy_amount_show'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['price_diff'] = isset($data['price_diff']) ? $data['price_diff'] : null;
+        
         $this->container['reverse_price'] = isset($data['reverse_price']) ? $data['reverse_price'] : null;
+        
         $this->container['valid_timestamp'] = isset($data['valid_timestamp']) ? $data['valid_timestamp'] : null;
+        
         $this->container['error'] = isset($data['error']) ? $data['error'] : null;
+        
     }
 
     /**
@@ -295,6 +329,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setQuoteId($quote_id)
     {
+        
         $this->container['quote_id'] = $quote_id;
 
         return $this;
@@ -319,6 +354,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setHedgeType($hedge_type)
     {
+        
         $this->container['hedge_type'] = $hedge_type;
 
         return $this;
@@ -343,6 +379,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setSellAsset($sell_asset)
     {
+        
         $this->container['sell_asset'] = $sell_asset;
 
         return $this;
@@ -367,6 +404,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setSellAmount($sell_amount)
     {
+        
         $this->container['sell_amount'] = $sell_amount;
 
         return $this;
@@ -391,6 +429,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setSellAmountShow($sell_amount_show)
     {
+        
         $this->container['sell_amount_show'] = $sell_amount_show;
 
         return $this;
@@ -415,6 +454,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setBuyAsset($buy_asset)
     {
+        
         $this->container['buy_asset'] = $buy_asset;
 
         return $this;
@@ -439,6 +479,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setBuyAmount($buy_amount)
     {
+        
         $this->container['buy_amount'] = $buy_amount;
 
         return $this;
@@ -463,6 +504,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setBuyAmountShow($buy_amount_show)
     {
+        
         $this->container['buy_amount_show'] = $buy_amount_show;
 
         return $this;
@@ -487,6 +529,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -511,6 +554,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceDiff($price_diff)
     {
+        
         $this->container['price_diff'] = $price_diff;
 
         return $this;
@@ -535,6 +579,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setReversePrice($reverse_price)
     {
+        
         $this->container['reverse_price'] = $reverse_price;
 
         return $this;
@@ -559,6 +604,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setValidTimestamp($valid_timestamp)
     {
+        
         $this->container['valid_timestamp'] = $valid_timestamp;
 
         return $this;
@@ -583,6 +629,7 @@ class FlashSwapMultiCurrencyPreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setError($error)
     {
+        
         $this->container['error'] = $error;
 
         return $this;

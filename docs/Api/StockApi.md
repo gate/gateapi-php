@@ -109,7 +109,7 @@ $apiInstance = new GateApi\Api\StockApi(
     new GuzzleHttp\Client()
 );
 $associate_array['symbols'] = 'AAPL,TSLA'; // string | Symbol list, multiple separated by commas
-$associate_array['exchange'] = 'us'; // string | Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks.
+$associate_array['exchange'] = 'us'; // string | Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks.
 $associate_array['with_desc_i18n'] = true; // bool | Whether to return multilingual symbol description
 $associate_array['page'] = 1; // int | Page number, defaults to 1
 $associate_array['page_size'] = 100; // int | Page size, defaults to 10, max 500; server caps at 500
@@ -133,7 +133,7 @@ Note: the input parameter is an associative array with the keys listed as the pa
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbols** | **string**| Symbol list, multiple separated by commas | [optional]
- **exchange** | **string**| Exchange. - us: US stocks. - hk: Hong Kong stocks. - kr: Korean stocks. - jp: Japanese stocks. | [optional]
+ **exchange** | **string**| Trading market code. - us: US stocks. - hk: Hong Kong stocks. - kr: South Korean stocks. - jp: Japanese stocks. | [optional]
  **with_desc_i18n** | **bool**| Whether to return multilingual symbol description | [optional]
  **page** | **int**| Page number, defaults to 1 | [optional]
  **page_size** | **int**| Page size, defaults to 10, max 500; server caps at 500 | [optional]

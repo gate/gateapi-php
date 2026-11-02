@@ -105,6 +105,27 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset_evaluate_range'] = isset($data['asset_evaluate_range']) ? $data['asset_evaluate_range'] : null;
+        
         $this->container['banner_reappear_interval_hours'] = isset($data['banner_reappear_interval_hours']) ? $data['banner_reappear_interval_hours'] : null;
+        
         $this->container['convert_currencies'] = isset($data['convert_currencies']) ? $data['convert_currencies'] : null;
+        
         $this->container['convert_currencies_v2'] = isset($data['convert_currencies_v2']) ? $data['convert_currencies_v2'] : null;
+        
         $this->container['default'] = isset($data['default']) ? $data['default'] : null;
+        
         $this->container['max_select_currencies'] = isset($data['max_select_currencies']) ? $data['max_select_currencies'] : null;
+        
         $this->container['min_evaluate_value'] = isset($data['min_evaluate_value']) ? $data['min_evaluate_value'] : null;
+        
         $this->container['recommend'] = isset($data['recommend']) ? $data['recommend'] : null;
+        
         $this->container['recommend_v2'] = isset($data['recommend_v2']) ? $data['recommend_v2'] : null;
+        
         $this->container['title_tips'] = isset($data['title_tips']) ? $data['title_tips'] : null;
+        
     }
 
     /**
@@ -304,6 +335,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setAssetEvaluateRange($asset_evaluate_range)
     {
+        
         $this->container['asset_evaluate_range'] = $asset_evaluate_range;
 
         return $this;
@@ -328,6 +360,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setBannerReappearIntervalHours($banner_reappear_interval_hours)
     {
+        
         $this->container['banner_reappear_interval_hours'] = $banner_reappear_interval_hours;
 
         return $this;
@@ -352,6 +385,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setConvertCurrencies($convert_currencies)
     {
+        
         $this->container['convert_currencies'] = $convert_currencies;
 
         return $this;
@@ -376,6 +410,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setConvertCurrenciesV2($convert_currencies_v2)
     {
+        
         $this->container['convert_currencies_v2'] = $convert_currencies_v2;
 
         return $this;
@@ -400,6 +435,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setDefault($default)
     {
+        
         $this->container['default'] = $default;
 
         return $this;
@@ -424,6 +460,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setMaxSelectCurrencies($max_select_currencies)
     {
+        
         $this->container['max_select_currencies'] = $max_select_currencies;
 
         return $this;
@@ -448,6 +485,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setMinEvaluateValue($min_evaluate_value)
     {
+        
         $this->container['min_evaluate_value'] = $min_evaluate_value;
 
         return $this;
@@ -472,6 +510,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setRecommend($recommend)
     {
+        
         $this->container['recommend'] = $recommend;
 
         return $this;
@@ -496,6 +535,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setRecommendV2($recommend_v2)
     {
+        
         $this->container['recommend_v2'] = $recommend_v2;
 
         return $this;
@@ -520,6 +560,7 @@ class AssetSwapFrontend implements ModelInterface, ArrayAccess
      */
     public function setTitleTips($title_tips)
     {
+        
         $this->container['title_tips'] = $title_tips;
 
         return $this;

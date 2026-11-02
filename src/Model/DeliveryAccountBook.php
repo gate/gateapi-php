@@ -101,6 +101,27 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -239,13 +260,21 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
     }
 
     /**
@@ -258,7 +287,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -299,6 +328,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -323,6 +353,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
      */
     public function setChange($change)
     {
+        
         $this->container['change'] = $change;
 
         return $this;
@@ -347,6 +378,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
      */
     public function setBalance($balance)
     {
+        
         $this->container['balance'] = $balance;
 
         return $this;
@@ -380,6 +412,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -404,6 +437,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -428,6 +462,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -452,6 +487,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
      */
     public function setTradeId($trade_id)
     {
+        
         $this->container['trade_id'] = $trade_id;
 
         return $this;
@@ -476,6 +512,7 @@ class DeliveryAccountBook implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;

@@ -97,6 +97,27 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -219,11 +240,17 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['type_desc'] = isset($data['type_desc']) ? $data['type_desc'] : null;
+        
         $this->container['change'] = isset($data['change']) ? $data['change'] : null;
+        
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
     }
 
     /**
@@ -236,7 +263,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -277,6 +304,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -310,6 +338,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -334,6 +363,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
      */
     public function setTypeDesc($type_desc)
     {
+        
         $this->container['type_desc'] = $type_desc;
 
         return $this;
@@ -358,6 +388,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
      */
     public function setChange($change)
     {
+        
         $this->container['change'] = $change;
 
         return $this;
@@ -382,6 +413,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
      */
     public function setBalance($balance)
     {
+        
         $this->container['balance'] = $balance;
 
         return $this;
@@ -406,6 +438,7 @@ class TransactionListDataList implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;

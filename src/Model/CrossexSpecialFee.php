@@ -93,6 +93,27 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['taker_fee_rate'] = isset($data['taker_fee_rate']) ? $data['taker_fee_rate'] : null;
+        
         $this->container['maker_fee_rate'] = isset($data['maker_fee_rate']) ? $data['maker_fee_rate'] : null;
+        
         $this->container['rpi_fee_rate'] = isset($data['rpi_fee_rate']) ? $data['rpi_fee_rate'] : null;
+        
     }
 
     /**
@@ -247,6 +272,7 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -271,6 +297,7 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
      */
     public function setTakerFeeRate($taker_fee_rate)
     {
+        
         $this->container['taker_fee_rate'] = $taker_fee_rate;
 
         return $this;
@@ -295,6 +322,7 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
      */
     public function setMakerFeeRate($maker_fee_rate)
     {
+        
         $this->container['maker_fee_rate'] = $maker_fee_rate;
 
         return $this;
@@ -319,6 +347,7 @@ class CrossexSpecialFee implements ModelInterface, ArrayAccess
      */
     public function setRpiFeeRate($rpi_fee_rate)
     {
+        
         $this->container['rpi_fee_rate'] = $rpi_fee_rate;
 
         return $this;

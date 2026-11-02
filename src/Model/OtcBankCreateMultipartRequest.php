@@ -110,6 +110,27 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -231,17 +252,29 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['bank_account_name'] = isset($data['bank_account_name']) ? $data['bank_account_name'] : null;
+        
         $this->container['bank_name'] = isset($data['bank_name']) ? $data['bank_name'] : null;
+        
         $this->container['bank_country'] = isset($data['bank_country']) ? $data['bank_country'] : null;
+        
         $this->container['bank_address'] = isset($data['bank_address']) ? $data['bank_address'] : null;
+        
         $this->container['iban'] = isset($data['iban']) ? $data['iban'] : null;
+        
         $this->container['swift'] = isset($data['swift']) ? $data['swift'] : null;
+        
         $this->container['remittance_line_number'] = isset($data['remittance_line_number']) ? $data['remittance_line_number'] : null;
+        
         $this->container['agent_bank_name'] = isset($data['agent_bank_name']) ? $data['agent_bank_name'] : null;
+        
         $this->container['agent_bank_swift'] = isset($data['agent_bank_swift']) ? $data['agent_bank_swift'] : null;
+        
         $this->container['documentation_file'] = isset($data['documentation_file']) ? $data['documentation_file'] : null;
+        
         $this->container['documentation_file_key'] = isset($data['documentation_file_key']) ? $data['documentation_file_key'] : null;
+        
         $this->container['file_type'] = isset($data['file_type']) ? $data['file_type'] : null;
+        
     }
 
     /**
@@ -305,6 +338,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setBankAccountName($bank_account_name)
     {
+        
         $this->container['bank_account_name'] = $bank_account_name;
 
         return $this;
@@ -329,6 +363,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setBankName($bank_name)
     {
+        
         $this->container['bank_name'] = $bank_name;
 
         return $this;
@@ -353,6 +388,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setBankCountry($bank_country)
     {
+        
         $this->container['bank_country'] = $bank_country;
 
         return $this;
@@ -377,6 +413,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setBankAddress($bank_address)
     {
+        
         $this->container['bank_address'] = $bank_address;
 
         return $this;
@@ -401,6 +438,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setIban($iban)
     {
+        
         $this->container['iban'] = $iban;
 
         return $this;
@@ -425,6 +463,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setSwift($swift)
     {
+        
         $this->container['swift'] = $swift;
 
         return $this;
@@ -449,6 +488,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setRemittanceLineNumber($remittance_line_number)
     {
+        
         $this->container['remittance_line_number'] = $remittance_line_number;
 
         return $this;
@@ -473,6 +513,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setAgentBankName($agent_bank_name)
     {
+        
         $this->container['agent_bank_name'] = $agent_bank_name;
 
         return $this;
@@ -497,6 +538,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setAgentBankSwift($agent_bank_swift)
     {
+        
         $this->container['agent_bank_swift'] = $agent_bank_swift;
 
         return $this;
@@ -521,6 +563,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setDocumentationFile($documentation_file)
     {
+        
         $this->container['documentation_file'] = $documentation_file;
 
         return $this;
@@ -545,6 +588,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setDocumentationFileKey($documentation_file_key)
     {
+        
         $this->container['documentation_file_key'] = $documentation_file_key;
 
         return $this;
@@ -569,6 +613,7 @@ class OtcBankCreateMultipartRequest implements ModelInterface, ArrayAccess
      */
     public function setFileType($file_type)
     {
+        
         $this->container['file_type'] = $file_type;
 
         return $this;

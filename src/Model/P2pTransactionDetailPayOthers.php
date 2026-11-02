@@ -99,6 +99,27 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['account_des'] = isset($data['account_des']) ? $data['account_des'] : null;
+        
         $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
+        
         $this->container['account'] = isset($data['account']) ? $data['account'] : null;
+        
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        
         $this->container['pay_name'] = isset($data['pay_name']) ? $data['pay_name'] : null;
+        
     }
 
     /**
@@ -256,6 +284,7 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -280,6 +309,7 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
      */
     public function setAccountDes($account_des)
     {
+        
         $this->container['account_des'] = $account_des;
 
         return $this;
@@ -304,6 +334,7 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
      */
     public function setPayType($pay_type)
     {
+        
         $this->container['pay_type'] = $pay_type;
 
         return $this;
@@ -328,6 +359,7 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
      */
     public function setAccount($account)
     {
+        
         $this->container['account'] = $account;
 
         return $this;
@@ -352,6 +384,7 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
      */
     public function setMemo($memo)
     {
+        
         $this->container['memo'] = $memo;
 
         return $this;
@@ -376,6 +409,7 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
      */
     public function setTradeTips($trade_tips)
     {
+        
         $this->container['trade_tips'] = $trade_tips;
 
         return $this;
@@ -400,6 +434,7 @@ class P2pTransactionDetailPayOthers implements ModelInterface, ArrayAccess
      */
     public function setPayName($pay_name)
     {
+        
         $this->container['pay_name'] = $pay_name;
 
         return $this;

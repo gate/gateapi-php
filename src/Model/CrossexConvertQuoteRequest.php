@@ -94,6 +94,27 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['from_coin'] = isset($data['from_coin']) ? $data['from_coin'] : null;
+        
         $this->container['to_coin'] = isset($data['to_coin']) ? $data['to_coin'] : null;
+        
         $this->container['from_amount'] = isset($data['from_amount']) ? $data['from_amount'] : null;
+        
     }
 
     /**
@@ -251,6 +276,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -275,6 +301,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setFromCoin($from_coin)
     {
+        
         $this->container['from_coin'] = $from_coin;
 
         return $this;
@@ -299,6 +326,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setToCoin($to_coin)
     {
+        
         $this->container['to_coin'] = $to_coin;
 
         return $this;
@@ -323,6 +351,7 @@ class CrossexConvertQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setFromAmount($from_amount)
     {
+        
         $this->container['from_amount'] = $from_amount;
 
         return $this;

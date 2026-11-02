@@ -124,6 +124,27 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -266,24 +287,43 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        
         $this->container['app_id'] = isset($data['app_id']) ? $data['app_id'] : null;
+        
         $this->container['client_req_id'] = isset($data['client_req_id']) ? $data['client_req_id'] : null;
+        
         $this->container['sell_asset'] = isset($data['sell_asset']) ? $data['sell_asset'] : null;
+        
         $this->container['sell_amount'] = isset($data['sell_amount']) ? $data['sell_amount'] : null;
+        
         $this->container['sell_amount_show'] = isset($data['sell_amount_show']) ? $data['sell_amount_show'] : null;
+        
         $this->container['buy_asset'] = isset($data['buy_asset']) ? $data['buy_asset'] : null;
+        
         $this->container['buy_amount'] = isset($data['buy_amount']) ? $data['buy_amount'] : null;
+        
         $this->container['buy_amount_show'] = isset($data['buy_amount_show']) ? $data['buy_amount_show'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['quote_id'] = isset($data['quote_id']) ? $data['quote_id'] : null;
+        
         $this->container['failed_code'] = isset($data['failed_code']) ? $data['failed_code'] : null;
+        
         $this->container['failed_reason'] = isset($data['failed_reason']) ? $data['failed_reason'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['create_time_ms'] = isset($data['create_time_ms']) ? $data['create_time_ms'] : null;
+        
         $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        
     }
 
     /**
@@ -332,6 +372,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -356,6 +397,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -380,6 +422,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setSource($source)
     {
+        
         $this->container['source'] = $source;
 
         return $this;
@@ -404,6 +447,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setAppId($app_id)
     {
+        
         $this->container['app_id'] = $app_id;
 
         return $this;
@@ -428,6 +472,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setClientReqId($client_req_id)
     {
+        
         $this->container['client_req_id'] = $client_req_id;
 
         return $this;
@@ -452,6 +497,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setSellAsset($sell_asset)
     {
+        
         $this->container['sell_asset'] = $sell_asset;
 
         return $this;
@@ -476,6 +522,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setSellAmount($sell_amount)
     {
+        
         $this->container['sell_amount'] = $sell_amount;
 
         return $this;
@@ -500,6 +547,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setSellAmountShow($sell_amount_show)
     {
+        
         $this->container['sell_amount_show'] = $sell_amount_show;
 
         return $this;
@@ -524,6 +572,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setBuyAsset($buy_asset)
     {
+        
         $this->container['buy_asset'] = $buy_asset;
 
         return $this;
@@ -548,6 +597,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setBuyAmount($buy_amount)
     {
+        
         $this->container['buy_amount'] = $buy_amount;
 
         return $this;
@@ -572,6 +622,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setBuyAmountShow($buy_amount_show)
     {
+        
         $this->container['buy_amount_show'] = $buy_amount_show;
 
         return $this;
@@ -596,6 +647,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -620,6 +672,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -644,6 +697,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setQuoteId($quote_id)
     {
+        
         $this->container['quote_id'] = $quote_id;
 
         return $this;
@@ -668,6 +722,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setFailedCode($failed_code)
     {
+        
         $this->container['failed_code'] = $failed_code;
 
         return $this;
@@ -692,6 +747,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setFailedReason($failed_reason)
     {
+        
         $this->container['failed_reason'] = $failed_reason;
 
         return $this;
@@ -716,6 +772,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -740,6 +797,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setCreateTimeMs($create_time_ms)
     {
+        
         $this->container['create_time_ms'] = $create_time_ms;
 
         return $this;
@@ -764,6 +822,7 @@ class FlashSwapOrderCreateRespData implements ModelInterface, ArrayAccess
      */
     public function setAccountMode($account_mode)
     {
+        
         $this->container['account_mode'] = $account_mode;
 
         return $this;

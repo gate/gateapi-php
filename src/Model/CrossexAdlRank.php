@@ -93,6 +93,27 @@ class CrossexAdlRank implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class CrossexAdlRank implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['crossex_adl_rank'] = isset($data['crossex_adl_rank']) ? $data['crossex_adl_rank'] : null;
+        
         $this->container['exchange_adl_rank'] = isset($data['exchange_adl_rank']) ? $data['exchange_adl_rank'] : null;
+        
     }
 
     /**
@@ -250,6 +275,7 @@ class CrossexAdlRank implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -274,6 +300,7 @@ class CrossexAdlRank implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -298,6 +325,7 @@ class CrossexAdlRank implements ModelInterface, ArrayAccess
      */
     public function setCrossexAdlRank($crossex_adl_rank)
     {
+        
         $this->container['crossex_adl_rank'] = $crossex_adl_rank;
 
         return $this;
@@ -322,6 +350,7 @@ class CrossexAdlRank implements ModelInterface, ArrayAccess
      */
     public function setExchangeAdlRank($exchange_adl_rank)
     {
+        
         $this->container['exchange_adl_rank'] = $exchange_adl_rank;
 
         return $this;

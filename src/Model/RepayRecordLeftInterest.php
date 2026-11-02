@@ -97,6 +97,27 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['before_amount'] = isset($data['before_amount']) ? $data['before_amount'] : null;
+        
         $this->container['before_amount_usdt'] = isset($data['before_amount_usdt']) ? $data['before_amount_usdt'] : null;
+        
         $this->container['after_amount'] = isset($data['after_amount']) ? $data['after_amount'] : null;
+        
         $this->container['after_amount_usdt'] = isset($data['after_amount_usdt']) ? $data['after_amount_usdt'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -274,6 +302,7 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -298,6 +327,7 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
      */
     public function setBeforeAmount($before_amount)
     {
+        
         $this->container['before_amount'] = $before_amount;
 
         return $this;
@@ -322,6 +352,7 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
      */
     public function setBeforeAmountUsdt($before_amount_usdt)
     {
+        
         $this->container['before_amount_usdt'] = $before_amount_usdt;
 
         return $this;
@@ -346,6 +377,7 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
      */
     public function setAfterAmount($after_amount)
     {
+        
         $this->container['after_amount'] = $after_amount;
 
         return $this;
@@ -370,6 +402,7 @@ class RepayRecordLeftInterest implements ModelInterface, ArrayAccess
      */
     public function setAfterAmountUsdt($after_amount_usdt)
     {
+        
         $this->container['after_amount_usdt'] = $after_amount_usdt;
 
         return $this;

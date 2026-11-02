@@ -84,6 +84,8 @@ class ObjectSerializer
             $values = [];
             if ($data instanceof ModelInterface) {
                 $formats = $data::openAPIFormats();
+                $requiredNullable = method_exists($data, 'openAPIRequiredNullable')
+                    && is_callable([$data, 'openAPIRequiredNullable']) ? $data::openAPIRequiredNullable() : [];
                 foreach ($data::openAPITypes() as $property => $openAPIType) {
                     $getter = $data::getters()[$property];
                     $value = $data->$getter();
@@ -94,7 +96,10 @@ class ObjectSerializer
                         $imploded = implode("', '", $openAPIType::getAllowableEnumValues());
                         throw new \InvalidArgumentException("Invalid value for enum '$openAPIType', must be one of: '$imploded'");
                     }
-                    if ($value !== null) {
+                    // Emit only explicitly present required-nullable nulls.
+                    // Optional-null omission and older custom models stay unchanged.
+                    if ($value !== null || (isset($requiredNullable[$property])
+                        && is_callable([$data, 'isRequiredNullableSet']) && $data->isRequiredNullableSet($property))) {
                         $values[$data::attributeMap()[$property]] = self::sanitizeForSerialization($value, $openAPIType, $formats[$property]);
                     }
                 }
@@ -384,15 +389,21 @@ class ObjectSerializer
                 }
             }
             $instance = new $class();
+            $requiredNullable = method_exists($class, 'openAPIRequiredNullable')
+                && is_callable([$class, 'openAPIRequiredNullable']) ? $class::openAPIRequiredNullable() : [];
             foreach ($instance::openAPITypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];
-
-                if (!isset($propertySetter) || !isset($data->{$instance::attributeMap()[$property]})) {
+                $wireName = $instance::attributeMap()[$property];
+                // isset conflates missing JSON members and explicit null. Retain
+                // the distinction only for declared required-nullable members.
+                $explicitNull = isset($requiredNullable[$property]) && is_object($data)
+                    && property_exists($data, $wireName) && $data->{$wireName} === null;
+                if (!isset($propertySetter) || (!isset($data->{$wireName}) && !$explicitNull)) {
                     continue;
                 }
 
-                $propertyValue = $data->{$instance::attributeMap()[$property]};
-                if (isset($propertyValue)) {
+                $propertyValue = $data->{$wireName};
+                if (isset($propertyValue) || $explicitNull) {
                     $instance->$propertySetter(self::deserialize($propertyValue, $type, null, false));
                 }
             }

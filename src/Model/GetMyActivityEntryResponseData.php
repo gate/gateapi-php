@@ -98,6 +98,27 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['icon_url'] = isset($data['icon_url']) ? $data['icon_url'] : null;
+        
         $this->container['icon_url_dark'] = isset($data['icon_url_dark']) ? $data['icon_url_dark'] : null;
+        
         $this->container['source_type'] = isset($data['source_type']) ? $data['source_type'] : null;
+        
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        
         $this->container['url_type'] = isset($data['url_type']) ? $data['url_type'] : null;
+        
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        
     }
 
     /**
@@ -269,6 +296,7 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
      */
     public function setIconUrl($icon_url)
     {
+        
         $this->container['icon_url'] = $icon_url;
 
         return $this;
@@ -293,6 +321,7 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
      */
     public function setIconUrlDark($icon_url_dark)
     {
+        
         $this->container['icon_url_dark'] = $icon_url_dark;
 
         return $this;
@@ -317,6 +346,7 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
      */
     public function setSourceType($source_type)
     {
+        
         $this->container['source_type'] = $source_type;
 
         return $this;
@@ -341,6 +371,7 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
      */
     public function setTitle($title)
     {
+        
         $this->container['title'] = $title;
 
         return $this;
@@ -365,6 +396,7 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
      */
     public function setUrlType($url_type)
     {
+        
         $this->container['url_type'] = $url_type;
 
         return $this;
@@ -389,6 +421,7 @@ class GetMyActivityEntryResponseData implements ModelInterface, ArrayAccess
      */
     public function setUrl($url)
     {
+        
         $this->container['url'] = $url;
 
         return $this;

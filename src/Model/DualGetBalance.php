@@ -93,6 +93,27 @@ class DualGetBalance implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class DualGetBalance implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_asset_usdt'] = isset($data['user_asset_usdt']) ? $data['user_asset_usdt'] : null;
+        
         $this->container['user_asset_btc'] = isset($data['user_asset_btc']) ? $data['user_asset_btc'] : null;
+        
         $this->container['user_total_interest_usdt'] = isset($data['user_total_interest_usdt']) ? $data['user_total_interest_usdt'] : null;
+        
         $this->container['user_total_interest_btc'] = isset($data['user_total_interest_btc']) ? $data['user_total_interest_btc'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class DualGetBalance implements ModelInterface, ArrayAccess
      */
     public function setUserAssetUsdt($user_asset_usdt)
     {
+        
         $this->container['user_asset_usdt'] = $user_asset_usdt;
 
         return $this;
@@ -262,6 +288,7 @@ class DualGetBalance implements ModelInterface, ArrayAccess
      */
     public function setUserAssetBtc($user_asset_btc)
     {
+        
         $this->container['user_asset_btc'] = $user_asset_btc;
 
         return $this;
@@ -286,6 +313,7 @@ class DualGetBalance implements ModelInterface, ArrayAccess
      */
     public function setUserTotalInterestUsdt($user_total_interest_usdt)
     {
+        
         $this->container['user_total_interest_usdt'] = $user_total_interest_usdt;
 
         return $this;
@@ -310,6 +338,7 @@ class DualGetBalance implements ModelInterface, ArrayAccess
      */
     public function setUserTotalInterestBtc($user_total_interest_btc)
     {
+        
         $this->container['user_total_interest_btc'] = $user_total_interest_btc;
 
         return $this;

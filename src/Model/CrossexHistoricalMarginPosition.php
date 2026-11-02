@@ -121,6 +121,27 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -260,23 +281,41 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['position_id'] = isset($data['position_id']) ? $data['position_id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['closed_type'] = isset($data['closed_type']) ? $data['closed_type'] : null;
+        
         $this->container['closed_pnl'] = isset($data['closed_pnl']) ? $data['closed_pnl'] : null;
+        
         $this->container['closed_pnl_rate'] = isset($data['closed_pnl_rate']) ? $data['closed_pnl_rate'] : null;
+        
         $this->container['open_avg_price'] = isset($data['open_avg_price']) ? $data['open_avg_price'] : null;
+        
         $this->container['closed_avg_price'] = isset($data['closed_avg_price']) ? $data['closed_avg_price'] : null;
+        
         $this->container['max_position_qty'] = isset($data['max_position_qty']) ? $data['max_position_qty'] : null;
+        
         $this->container['closed_qty'] = isset($data['closed_qty']) ? $data['closed_qty'] : null;
+        
         $this->container['closed_value'] = isset($data['closed_value']) ? $data['closed_value'] : null;
+        
         $this->container['liq_fee'] = isset($data['liq_fee']) ? $data['liq_fee'] : null;
+        
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['interest'] = isset($data['interest']) ? $data['interest'] : null;
+        
         $this->container['business_type'] = isset($data['business_type']) ? $data['business_type'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
     }
 
     /**
@@ -328,6 +367,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionId($position_id)
     {
+        
         $this->container['position_id'] = $position_id;
 
         return $this;
@@ -352,6 +392,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -376,6 +417,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -400,6 +442,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setClosedType($closed_type)
     {
+        
         $this->container['closed_type'] = $closed_type;
 
         return $this;
@@ -424,6 +467,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setClosedPnl($closed_pnl)
     {
+        
         $this->container['closed_pnl'] = $closed_pnl;
 
         return $this;
@@ -448,6 +492,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setClosedPnlRate($closed_pnl_rate)
     {
+        
         $this->container['closed_pnl_rate'] = $closed_pnl_rate;
 
         return $this;
@@ -472,6 +517,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setOpenAvgPrice($open_avg_price)
     {
+        
         $this->container['open_avg_price'] = $open_avg_price;
 
         return $this;
@@ -496,6 +542,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setClosedAvgPrice($closed_avg_price)
     {
+        
         $this->container['closed_avg_price'] = $closed_avg_price;
 
         return $this;
@@ -520,6 +567,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setMaxPositionQty($max_position_qty)
     {
+        
         $this->container['max_position_qty'] = $max_position_qty;
 
         return $this;
@@ -544,6 +592,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setClosedQty($closed_qty)
     {
+        
         $this->container['closed_qty'] = $closed_qty;
 
         return $this;
@@ -568,6 +617,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setClosedValue($closed_value)
     {
+        
         $this->container['closed_value'] = $closed_value;
 
         return $this;
@@ -592,6 +642,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setLiqFee($liq_fee)
     {
+        
         $this->container['liq_fee'] = $liq_fee;
 
         return $this;
@@ -616,6 +667,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionSide($position_side)
     {
+        
         $this->container['position_side'] = $position_side;
 
         return $this;
@@ -640,6 +692,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -664,6 +717,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setInterest($interest)
     {
+        
         $this->container['interest'] = $interest;
 
         return $this;
@@ -688,6 +742,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setBusinessType($business_type)
     {
+        
         $this->container['business_type'] = $business_type;
 
         return $this;
@@ -712,6 +767,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -736,6 +792,7 @@ class CrossexHistoricalMarginPosition implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;

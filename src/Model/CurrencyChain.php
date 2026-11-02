@@ -103,6 +103,27 @@ class CurrencyChain implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -215,14 +236,23 @@ class CurrencyChain implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
         $this->container['name_cn'] = isset($data['name_cn']) ? $data['name_cn'] : null;
+        
         $this->container['name_en'] = isset($data['name_en']) ? $data['name_en'] : null;
+        
         $this->container['contract_address'] = isset($data['contract_address']) ? $data['contract_address'] : null;
+        
         $this->container['is_disabled'] = isset($data['is_disabled']) ? $data['is_disabled'] : null;
+        
         $this->container['is_deposit_disabled'] = isset($data['is_deposit_disabled']) ? $data['is_deposit_disabled'] : null;
+        
         $this->container['is_withdraw_disabled'] = isset($data['is_withdraw_disabled']) ? $data['is_withdraw_disabled'] : null;
+        
         $this->container['decimal'] = isset($data['decimal']) ? $data['decimal'] : null;
+        
         $this->container['is_tag'] = isset($data['is_tag']) ? $data['is_tag'] : null;
+        
     }
 
     /**
@@ -268,6 +298,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;
@@ -292,6 +323,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setNameCn($name_cn)
     {
+        
         $this->container['name_cn'] = $name_cn;
 
         return $this;
@@ -316,6 +348,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setNameEn($name_en)
     {
+        
         $this->container['name_en'] = $name_en;
 
         return $this;
@@ -340,6 +373,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setContractAddress($contract_address)
     {
+        
         $this->container['contract_address'] = $contract_address;
 
         return $this;
@@ -364,6 +398,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setIsDisabled($is_disabled)
     {
+        
         $this->container['is_disabled'] = $is_disabled;
 
         return $this;
@@ -388,6 +423,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setIsDepositDisabled($is_deposit_disabled)
     {
+        
         $this->container['is_deposit_disabled'] = $is_deposit_disabled;
 
         return $this;
@@ -412,6 +448,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setIsWithdrawDisabled($is_withdraw_disabled)
     {
+        
         $this->container['is_withdraw_disabled'] = $is_withdraw_disabled;
 
         return $this;
@@ -436,6 +473,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setDecimal($decimal)
     {
+        
         $this->container['decimal'] = $decimal;
 
         return $this;
@@ -460,6 +498,7 @@ class CurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setIsTag($is_tag)
     {
+        
         $this->container['is_tag'] = $is_tag;
 
         return $this;

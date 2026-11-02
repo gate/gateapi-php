@@ -120,6 +120,27 @@ class PositionTimerange implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -256,22 +277,39 @@ class PositionTimerange implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['risk_limit'] = isset($data['risk_limit']) ? $data['risk_limit'] : null;
+        
         $this->container['leverage_max'] = isset($data['leverage_max']) ? $data['leverage_max'] : null;
+        
         $this->container['maintenance_rate'] = isset($data['maintenance_rate']) ? $data['maintenance_rate'] : null;
+        
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        
         $this->container['liq_price'] = isset($data['liq_price']) ? $data['liq_price'] : null;
+        
         $this->container['realised_pnl'] = isset($data['realised_pnl']) ? $data['realised_pnl'] : null;
+        
         $this->container['history_pnl'] = isset($data['history_pnl']) ? $data['history_pnl'] : null;
+        
         $this->container['last_close_pnl'] = isset($data['last_close_pnl']) ? $data['last_close_pnl'] : null;
+        
         $this->container['realised_point'] = isset($data['realised_point']) ? $data['realised_point'] : null;
+        
         $this->container['history_point'] = isset($data['history_point']) ? $data['history_point'] : null;
+        
         $this->container['mode'] = isset($data['mode']) ? $data['mode'] : null;
+        
         $this->container['cross_leverage_limit'] = isset($data['cross_leverage_limit']) ? $data['cross_leverage_limit'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
     }
 
     /**
@@ -317,6 +355,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -341,6 +380,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -365,6 +405,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -389,6 +430,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setRiskLimit($risk_limit)
     {
+        
         $this->container['risk_limit'] = $risk_limit;
 
         return $this;
@@ -413,6 +455,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setLeverageMax($leverage_max)
     {
+        
         $this->container['leverage_max'] = $leverage_max;
 
         return $this;
@@ -437,6 +480,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceRate($maintenance_rate)
     {
+        
         $this->container['maintenance_rate'] = $maintenance_rate;
 
         return $this;
@@ -461,6 +505,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setMargin($margin)
     {
+        
         $this->container['margin'] = $margin;
 
         return $this;
@@ -485,6 +530,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setLiqPrice($liq_price)
     {
+        
         $this->container['liq_price'] = $liq_price;
 
         return $this;
@@ -509,6 +555,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setRealisedPnl($realised_pnl)
     {
+        
         $this->container['realised_pnl'] = $realised_pnl;
 
         return $this;
@@ -533,6 +580,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setHistoryPnl($history_pnl)
     {
+        
         $this->container['history_pnl'] = $history_pnl;
 
         return $this;
@@ -557,6 +605,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setLastClosePnl($last_close_pnl)
     {
+        
         $this->container['last_close_pnl'] = $last_close_pnl;
 
         return $this;
@@ -581,6 +630,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setRealisedPoint($realised_point)
     {
+        
         $this->container['realised_point'] = $realised_point;
 
         return $this;
@@ -605,6 +655,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setHistoryPoint($history_point)
     {
+        
         $this->container['history_point'] = $history_point;
 
         return $this;
@@ -629,6 +680,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setMode($mode)
     {
+        
         $this->container['mode'] = $mode;
 
         return $this;
@@ -653,6 +705,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setCrossLeverageLimit($cross_leverage_limit)
     {
+        
         $this->container['cross_leverage_limit'] = $cross_leverage_limit;
 
         return $this;
@@ -677,6 +730,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -701,6 +755,7 @@ class PositionTimerange implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;

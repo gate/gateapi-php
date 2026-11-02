@@ -91,6 +91,27 @@ class UidPushWithdrawal implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class UidPushWithdrawal implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['receive_uid'] = isset($data['receive_uid']) ? $data['receive_uid'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
     }
 
     /**
@@ -241,6 +265,7 @@ class UidPushWithdrawal implements ModelInterface, ArrayAccess
      */
     public function setReceiveUid($receive_uid)
     {
+        
         $this->container['receive_uid'] = $receive_uid;
 
         return $this;
@@ -265,6 +290,7 @@ class UidPushWithdrawal implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -289,6 +315,7 @@ class UidPushWithdrawal implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;

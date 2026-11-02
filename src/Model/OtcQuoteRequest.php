@@ -100,6 +100,27 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['pay_coin'] = isset($data['pay_coin']) ? $data['pay_coin'] : null;
+        
         $this->container['get_coin'] = isset($data['get_coin']) ? $data['get_coin'] : null;
+        
         $this->container['pay_amount'] = isset($data['pay_amount']) ? $data['pay_amount'] : null;
+        
         $this->container['get_amount'] = isset($data['get_amount']) ? $data['get_amount'] : null;
+        
         $this->container['create_quote_token'] = isset($data['create_quote_token']) ? $data['create_quote_token'] : null;
+        
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        
     }
 
     /**
@@ -266,6 +294,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -290,6 +319,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setPayCoin($pay_coin)
     {
+        
         $this->container['pay_coin'] = $pay_coin;
 
         return $this;
@@ -314,6 +344,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setGetCoin($get_coin)
     {
+        
         $this->container['get_coin'] = $get_coin;
 
         return $this;
@@ -338,6 +369,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setPayAmount($pay_amount)
     {
+        
         $this->container['pay_amount'] = $pay_amount;
 
         return $this;
@@ -362,6 +394,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setGetAmount($get_amount)
     {
+        
         $this->container['get_amount'] = $get_amount;
 
         return $this;
@@ -386,6 +419,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setCreateQuoteToken($create_quote_token)
     {
+        
         $this->container['create_quote_token'] = $create_quote_token;
 
         return $this;
@@ -410,6 +444,7 @@ class OtcQuoteRequest implements ModelInterface, ArrayAccess
      */
     public function setPromotionCode($promotion_code)
     {
+        
         $this->container['promotion_code'] = $promotion_code;
 
         return $this;

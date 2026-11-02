@@ -100,6 +100,27 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        
         $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        
         $this->container['x_amz_credential'] = isset($data['x_amz_credential']) ? $data['x_amz_credential'] : null;
+        
         $this->container['x_amz_algorithm'] = isset($data['x_amz_algorithm']) ? $data['x_amz_algorithm'] : null;
+        
         $this->container['x_amz_date'] = isset($data['x_amz_date']) ? $data['x_amz_date'] : null;
+        
         $this->container['policy'] = isset($data['policy']) ? $data['policy'] : null;
+        
         $this->container['x_amz_signature'] = isset($data['x_amz_signature']) ? $data['x_amz_signature'] : null;
+        
     }
 
     /**
@@ -278,6 +306,7 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
      */
     public function setKey($key)
     {
+        
         $this->container['key'] = $key;
 
         return $this;
@@ -302,6 +331,7 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
      */
     public function setContentType($content_type)
     {
+        
         $this->container['content_type'] = $content_type;
 
         return $this;
@@ -326,6 +356,7 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
      */
     public function setXAmzCredential($x_amz_credential)
     {
+        
         $this->container['x_amz_credential'] = $x_amz_credential;
 
         return $this;
@@ -350,6 +381,7 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
      */
     public function setXAmzAlgorithm($x_amz_algorithm)
     {
+        
         $this->container['x_amz_algorithm'] = $x_amz_algorithm;
 
         return $this;
@@ -374,6 +406,7 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
      */
     public function setXAmzDate($x_amz_date)
     {
+        
         $this->container['x_amz_date'] = $x_amz_date;
 
         return $this;
@@ -398,6 +431,7 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
      */
     public function setPolicy($policy)
     {
+        
         $this->container['policy'] = $policy;
 
         return $this;
@@ -422,6 +456,7 @@ class OtcUploadPreUploadPolicyFields implements ModelInterface, ArrayAccess
      */
     public function setXAmzSignature($x_amz_signature)
     {
+        
         $this->container['x_amz_signature'] = $x_amz_signature;
 
         return $this;

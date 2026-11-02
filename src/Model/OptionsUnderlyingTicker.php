@@ -92,6 +92,27 @@ class OptionsUnderlyingTicker implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class OptionsUnderlyingTicker implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['trade_put'] = isset($data['trade_put']) ? $data['trade_put'] : null;
+        
         $this->container['trade_call'] = isset($data['trade_call']) ? $data['trade_call'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class OptionsUnderlyingTicker implements ModelInterface, ArrayAccess
      */
     public function setTradePut($trade_put)
     {
+        
         $this->container['trade_put'] = $trade_put;
 
         return $this;
@@ -257,6 +282,7 @@ class OptionsUnderlyingTicker implements ModelInterface, ArrayAccess
      */
     public function setTradeCall($trade_call)
     {
+        
         $this->container['trade_call'] = $trade_call;
 
         return $this;
@@ -281,6 +307,7 @@ class OptionsUnderlyingTicker implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;

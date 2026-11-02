@@ -92,6 +92,27 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,8 +222,11 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['money'] = isset($data['money']) ? $data['money'] : null;
+        
         $this->container['asset_type'] = isset($data['asset_type']) ? $data['asset_type'] : null;
+        
         $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        
     }
 
     /**
@@ -221,7 +245,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'asset_type' can't be null";
         }
         $allowedValues = $this->getAssetTypeAllowableValues();
-        if (!is_null($this->container['asset_type']) && !in_array($this->container['asset_type'], $allowedValues, true)) {
+        if ((isset($this->container['asset_type'])) && !in_array($this->container['asset_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'asset_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -265,6 +289,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
      */
     public function setMoney($money)
     {
+        
         $this->container['money'] = $money;
 
         return $this;
@@ -298,6 +323,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['asset_type'] = $asset_type;
 
         return $this;
@@ -322,6 +348,7 @@ class AutoInvestMinInvestAmount implements ModelInterface, ArrayAccess
      */
     public function setItems($items)
     {
+        
         $this->container['items'] = $items;
 
         return $this;

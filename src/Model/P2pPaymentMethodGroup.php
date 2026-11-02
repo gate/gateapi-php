@@ -93,6 +93,27 @@ class P2pPaymentMethodGroup implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class P2pPaymentMethodGroup implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
+        
         $this->container['pay_name'] = isset($data['pay_name']) ? $data['pay_name'] : null;
+        
         $this->container['ids'] = isset($data['ids']) ? $data['ids'] : null;
+        
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class P2pPaymentMethodGroup implements ModelInterface, ArrayAccess
      */
     public function setPayType($pay_type)
     {
+        
         $this->container['pay_type'] = $pay_type;
 
         return $this;
@@ -262,6 +288,7 @@ class P2pPaymentMethodGroup implements ModelInterface, ArrayAccess
      */
     public function setPayName($pay_name)
     {
+        
         $this->container['pay_name'] = $pay_name;
 
         return $this;
@@ -286,6 +313,7 @@ class P2pPaymentMethodGroup implements ModelInterface, ArrayAccess
      */
     public function setIds($ids)
     {
+        
         $this->container['ids'] = $ids;
 
         return $this;
@@ -310,6 +338,7 @@ class P2pPaymentMethodGroup implements ModelInterface, ArrayAccess
      */
     public function setList($list)
     {
+        
         $this->container['list'] = $list;
 
         return $this;

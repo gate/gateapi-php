@@ -98,6 +98,27 @@ class Transfer implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -243,11 +264,17 @@ class Transfer implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['from'] = isset($data['from']) ? $data['from'] : null;
+        
         $this->container['to'] = isset($data['to']) ? $data['to'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        
     }
 
     /**
@@ -266,7 +293,7 @@ class Transfer implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'from' can't be null";
         }
         $allowedValues = $this->getFromAllowableValues();
-        if (!is_null($this->container['from']) && !in_array($this->container['from'], $allowedValues, true)) {
+        if ((isset($this->container['from'])) && !in_array($this->container['from'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'from', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -277,7 +304,7 @@ class Transfer implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'to' can't be null";
         }
         $allowedValues = $this->getToAllowableValues();
-        if (!is_null($this->container['to']) && !in_array($this->container['to'], $allowedValues, true)) {
+        if ((isset($this->container['to'])) && !in_array($this->container['to'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'to', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -321,6 +348,7 @@ class Transfer implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -354,6 +382,7 @@ class Transfer implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['from'] = $from;
 
         return $this;
@@ -387,6 +416,7 @@ class Transfer implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['to'] = $to;
 
         return $this;
@@ -411,6 +441,7 @@ class Transfer implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -435,6 +466,7 @@ class Transfer implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -459,6 +491,7 @@ class Transfer implements ModelInterface, ArrayAccess
      */
     public function setSettle($settle)
     {
+        
         $this->container['settle'] = $settle;
 
         return $this;

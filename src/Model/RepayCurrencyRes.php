@@ -97,6 +97,27 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['succeeded'] = isset($data['succeeded']) ? $data['succeeded'] : null;
+        
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['repaid_principal'] = isset($data['repaid_principal']) ? $data['repaid_principal'] : null;
+        
         $this->container['repaid_interest'] = isset($data['repaid_interest']) ? $data['repaid_interest'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
      */
     public function setSucceeded($succeeded)
     {
+        
         $this->container['succeeded'] = $succeeded;
 
         return $this;
@@ -274,6 +302,7 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
      */
     public function setLabel($label)
     {
+        
         $this->container['label'] = $label;
 
         return $this;
@@ -298,6 +327,7 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;
@@ -322,6 +352,7 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -346,6 +377,7 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
      */
     public function setRepaidPrincipal($repaid_principal)
     {
+        
         $this->container['repaid_principal'] = $repaid_principal;
 
         return $this;
@@ -370,6 +402,7 @@ class RepayCurrencyRes implements ModelInterface, ArrayAccess
      */
     public function setRepaidInterest($repaid_interest)
     {
+        
         $this->container['repaid_interest'] = $repaid_interest;
 
         return $this;

@@ -89,6 +89,27 @@ class OrderPreviewV1Resp implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -180,7 +201,9 @@ class OrderPreviewV1Resp implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order'] = isset($data['order']) ? $data['order'] : null;
+        
         $this->container['transaction_fee'] = isset($data['transaction_fee']) ? $data['transaction_fee'] : null;
+        
     }
 
     /**
@@ -232,6 +255,7 @@ class OrderPreviewV1Resp implements ModelInterface, ArrayAccess
      */
     public function setOrder($order)
     {
+        
         $this->container['order'] = $order;
 
         return $this;
@@ -256,6 +280,7 @@ class OrderPreviewV1Resp implements ModelInterface, ArrayAccess
      */
     public function setTransactionFee($transaction_fee)
     {
+        
         $this->container['transaction_fee'] = $transaction_fee;
 
         return $this;

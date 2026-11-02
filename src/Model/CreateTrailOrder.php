@@ -107,6 +107,27 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -242,16 +263,27 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['activation_price'] = isset($data['activation_price']) ? $data['activation_price'] : '0';
+        
         $this->container['is_gte'] = isset($data['is_gte']) ? $data['is_gte'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['price_offset'] = isset($data['price_offset']) ? $data['price_offset'] : null;
+        
         $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : false;
+        
         $this->container['position_related'] = isset($data['position_related']) ? $data['position_related'] : false;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : 'apiv4';
+        
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        
     }
 
     /**
@@ -270,7 +302,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'amount' can't be null";
         }
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -311,6 +343,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -335,6 +368,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -359,6 +393,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setActivationPrice($activation_price)
     {
+        
         $this->container['activation_price'] = $activation_price;
 
         return $this;
@@ -383,6 +418,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setIsGte($is_gte)
     {
+        
         $this->container['is_gte'] = $is_gte;
 
         return $this;
@@ -416,6 +452,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -440,6 +477,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceOffset($price_offset)
     {
+        
         $this->container['price_offset'] = $price_offset;
 
         return $this;
@@ -464,6 +502,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setReduceOnly($reduce_only)
     {
+        
         $this->container['reduce_only'] = $reduce_only;
 
         return $this;
@@ -488,6 +527,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionRelated($position_related)
     {
+        
         $this->container['position_related'] = $position_related;
 
         return $this;
@@ -512,6 +552,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -536,6 +577,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPosMarginMode($pos_margin_mode)
     {
+        
         $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;
@@ -560,6 +602,7 @@ class CreateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionMode($position_mode)
     {
+        
         $this->container['position_mode'] = $position_mode;
 
         return $this;

@@ -95,6 +95,27 @@ class LaunchPoolV4RewardRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class LaunchPoolV4RewardRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['reward_timest'] = isset($data['reward_timest']) ? $data['reward_timest'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['valid_mortgage_amount'] = isset($data['valid_mortgage_amount']) ? $data['valid_mortgage_amount'] : null;
+        
         $this->container['amount_base'] = isset($data['amount_base']) ? $data['amount_base'] : null;
+        
         $this->container['amount_ext'] = isset($data['amount_ext']) ? $data['amount_ext'] : null;
+        
     }
 
     /**
@@ -259,6 +285,7 @@ class LaunchPoolV4RewardRecord implements ModelInterface, ArrayAccess
      */
     public function setRewardTimest($reward_timest)
     {
+        
         $this->container['reward_timest'] = $reward_timest;
 
         return $this;
@@ -283,6 +310,7 @@ class LaunchPoolV4RewardRecord implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -307,6 +335,7 @@ class LaunchPoolV4RewardRecord implements ModelInterface, ArrayAccess
      */
     public function setValidMortgageAmount($valid_mortgage_amount)
     {
+        
         $this->container['valid_mortgage_amount'] = $valid_mortgage_amount;
 
         return $this;
@@ -331,6 +360,7 @@ class LaunchPoolV4RewardRecord implements ModelInterface, ArrayAccess
      */
     public function setAmountBase($amount_base)
     {
+        
         $this->container['amount_base'] = $amount_base;
 
         return $this;
@@ -355,6 +385,7 @@ class LaunchPoolV4RewardRecord implements ModelInterface, ArrayAccess
      */
     public function setAmountExt($amount_ext)
     {
+        
         $this->container['amount_ext'] = $amount_ext;
 
         return $this;

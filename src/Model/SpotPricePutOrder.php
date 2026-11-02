@@ -103,6 +103,27 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -277,14 +298,23 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : 'limit';
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['account'] = isset($data['account']) ? $data['account'] : 'normal';
+        
         $this->container['time_in_force'] = isset($data['time_in_force']) ? $data['time_in_force'] : 'gtc';
+        
         $this->container['auto_borrow'] = isset($data['auto_borrow']) ? $data['auto_borrow'] : false;
+        
         $this->container['auto_repay'] = isset($data['auto_repay']) ? $data['auto_repay'] : false;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
     }
 
     /**
@@ -297,7 +327,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -308,7 +338,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'side' can't be null";
         }
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -325,7 +355,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'account' can't be null";
         }
         $allowedValues = $this->getAccountAllowableValues();
-        if (!is_null($this->container['account']) && !in_array($this->container['account'], $allowedValues, true)) {
+        if ((isset($this->container['account'])) && !in_array($this->container['account'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'account', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -336,7 +366,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'time_in_force' can't be null";
         }
         $allowedValues = $this->getTimeInForceAllowableValues();
-        if (!is_null($this->container['time_in_force']) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
+        if ((isset($this->container['time_in_force'])) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'time_in_force', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -386,6 +416,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -419,6 +450,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -443,6 +475,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -467,6 +500,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -500,6 +534,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['account'] = $account;
 
         return $this;
@@ -533,6 +568,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['time_in_force'] = $time_in_force;
 
         return $this;
@@ -557,6 +593,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoBorrow($auto_borrow)
     {
+        
         $this->container['auto_borrow'] = $auto_borrow;
 
         return $this;
@@ -581,6 +618,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoRepay($auto_repay)
     {
+        
         $this->container['auto_repay'] = $auto_repay;
 
         return $this;
@@ -605,6 +643,7 @@ class SpotPricePutOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;

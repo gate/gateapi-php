@@ -33,7 +33,7 @@ use \GateApi\ObjectSerializer;
  * AutoInvestPlanUpdate Class Doc Comment
  *
  * @category Class
- * @description Update auto invest plan request
+ * @description Request to update an auto-invest plan. The current model contains plan_id, fund_source, and fund_flow.
  * @package  GateApi
  * @author   Gate
  * @link     https://www.gate.com
@@ -89,6 +89,27 @@ class AutoInvestPlanUpdate implements ModelInterface, ArrayAccess
     public static function openAPIFormats()
     {
         return self::$openAPIFormats;
+    }
+
+    /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
     }
 
     /**
@@ -186,8 +207,11 @@ class AutoInvestPlanUpdate implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
+        
         $this->container['fund_source'] = isset($data['fund_source']) ? $data['fund_source'] : null;
+        
         $this->container['fund_flow'] = isset($data['fund_flow']) ? $data['fund_flow'] : null;
+        
     }
 
     /**
@@ -236,6 +260,7 @@ class AutoInvestPlanUpdate implements ModelInterface, ArrayAccess
      */
     public function setPlanId($plan_id)
     {
+        
         $this->container['plan_id'] = $plan_id;
 
         return $this;
@@ -260,6 +285,7 @@ class AutoInvestPlanUpdate implements ModelInterface, ArrayAccess
      */
     public function setFundSource($fund_source)
     {
+        
         $this->container['fund_source'] = $fund_source;
 
         return $this;
@@ -284,6 +310,7 @@ class AutoInvestPlanUpdate implements ModelInterface, ArrayAccess
      */
     public function setFundFlow($fund_flow)
     {
+        
         $this->container['fund_flow'] = $fund_flow;
 
         return $this;

@@ -116,6 +116,27 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -246,20 +267,35 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        
         $this->container['brief'] = isset($data['brief']) ? $data['brief'] : null;
+        
         $this->container['created'] = isset($data['created']) ? $data['created'] : null;
+        
         $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
+        
         $this->container['release_time'] = isset($data['release_time']) ? $data['release_time'] : null;
+        
         $this->container['views'] = isset($data['views']) ? $data['views'] : null;
+        
         $this->container['author'] = isset($data['author']) ? $data['author'] : null;
+        
         $this->container['author_id'] = isset($data['author_id']) ? $data['author_id'] : null;
+        
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        
         $this->container['cate'] = isset($data['cate']) ? $data['cate'] : null;
+        
         $this->container['is_top'] = isset($data['is_top']) ? $data['is_top'] : null;
+        
         $this->container['cate_id'] = isset($data['cate_id']) ? $data['cate_id'] : null;
+        
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        
         $this->container['content_lang_list'] = isset($data['content_lang_list']) ? $data['content_lang_list'] : null;
+        
     }
 
     /**
@@ -350,6 +386,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -374,6 +411,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setTitle($title)
     {
+        
         $this->container['title'] = $title;
 
         return $this;
@@ -398,6 +436,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setBrief($brief)
     {
+        
         $this->container['brief'] = $brief;
 
         return $this;
@@ -422,6 +461,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setCreated($created)
     {
+        
         $this->container['created'] = $created;
 
         return $this;
@@ -446,6 +486,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setUpdated($updated)
     {
+        
         $this->container['updated'] = $updated;
 
         return $this;
@@ -470,6 +511,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setReleaseTime($release_time)
     {
+        
         $this->container['release_time'] = $release_time;
 
         return $this;
@@ -494,6 +536,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setViews($views)
     {
+        
         $this->container['views'] = $views;
 
         return $this;
@@ -518,6 +561,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setAuthor($author)
     {
+        
         $this->container['author'] = $author;
 
         return $this;
@@ -542,6 +586,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setAuthorId($author_id)
     {
+        
         $this->container['author_id'] = $author_id;
 
         return $this;
@@ -566,6 +611,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setTags($tags)
     {
+        
         $this->container['tags'] = $tags;
 
         return $this;
@@ -590,6 +636,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setCate($cate)
     {
+        
         $this->container['cate'] = $cate;
 
         return $this;
@@ -614,6 +661,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setIsTop($is_top)
     {
+        
         $this->container['is_top'] = $is_top;
 
         return $this;
@@ -638,6 +686,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setCateId($cate_id)
     {
+        
         $this->container['cate_id'] = $cate_id;
 
         return $this;
@@ -662,6 +711,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setSource($source)
     {
+        
         $this->container['source'] = $source;
 
         return $this;
@@ -686,6 +736,7 @@ class AnnouncementArticle implements ModelInterface, ArrayAccess
      */
     public function setContentLangList($content_lang_list)
     {
+        
         $this->container['content_lang_list'] = $content_lang_list;
 
         return $this;

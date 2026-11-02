@@ -93,6 +93,27 @@ class CollateralCurrencyInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class CollateralCurrencyInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['left_collateral'] = isset($data['left_collateral']) ? $data['left_collateral'] : null;
+        
         $this->container['left_collateral_usdt'] = isset($data['left_collateral_usdt']) ? $data['left_collateral_usdt'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class CollateralCurrencyInfo implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -262,6 +288,7 @@ class CollateralCurrencyInfo implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -286,6 +313,7 @@ class CollateralCurrencyInfo implements ModelInterface, ArrayAccess
      */
     public function setLeftCollateral($left_collateral)
     {
+        
         $this->container['left_collateral'] = $left_collateral;
 
         return $this;
@@ -310,6 +338,7 @@ class CollateralCurrencyInfo implements ModelInterface, ArrayAccess
      */
     public function setLeftCollateralUsdt($left_collateral_usdt)
     {
+        
         $this->container['left_collateral_usdt'] = $left_collateral_usdt;
 
         return $this;

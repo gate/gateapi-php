@@ -124,7 +124,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -146,7 +146,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used. (optional)
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -208,7 +208,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -233,7 +233,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -289,7 +289,7 @@ class MultiCollateralLoanApi
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of records returned in a single list (optional, default to 10)
      * @param  string $sort Sort type: time_desc - Default descending by creation time, ltv_asc - Ascending by LTV ratio, ltv_desc - Descending by LTV ratio (optional)
-     * @param  string $order_type Order type: current - Query current orders, fixed - Query fixed orders, defaults to current orders if not specified (optional)
+     * @param  string $order_type Order type: current for flexible-term orders; fixed for fixed-term orders. If omitted, current is used. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -4757,7 +4757,7 @@ class CrossExApi
     /**
      * Operation closeCrossexPosition
      *
-     * Full Close Position
+     * Close a position in full.
      *
      * @param  \GateApi\Model\CrossexClosePositionRequest $crossex_close_position_request crossex_close_position_request (optional)
      *
@@ -4774,7 +4774,7 @@ class CrossExApi
     /**
      * Operation closeCrossexPositionWithHttpInfo
      *
-     * Full Close Position
+     * Close a position in full.
      *
      * @param  \GateApi\Model\CrossexClosePositionRequest $crossex_close_position_request (optional)
      *
@@ -4831,7 +4831,7 @@ class CrossExApi
     /**
      * Operation closeCrossexPositionAsync
      *
-     * Full Close Position
+     * Close a position in full.
      *
      * @param  \GateApi\Model\CrossexClosePositionRequest $crossex_close_position_request (optional)
      *
@@ -4851,7 +4851,7 @@ class CrossExApi
     /**
      * Operation closeCrossexPositionAsyncWithHttpInfo
      *
-     * Full Close Position
+     * Close a position in full.
      *
      * @param  \GateApi\Model\CrossexClosePositionRequest $crossex_close_position_request (optional)
      *

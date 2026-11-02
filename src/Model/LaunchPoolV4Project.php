@@ -101,6 +101,27 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -227,13 +248,21 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['total_amount'] = isset($data['total_amount']) ? $data['total_amount'] : null;
+        
         $this->container['start_timest'] = isset($data['start_timest']) ? $data['start_timest'] : null;
+        
         $this->container['end_timest'] = isset($data['end_timest']) ? $data['end_timest'] : null;
+        
         $this->container['days'] = isset($data['days']) ? $data['days'] : null;
+        
         $this->container['project_state'] = isset($data['project_state']) ? $data['project_state'] : null;
+        
         $this->container['reward_pools'] = isset($data['reward_pools']) ? $data['reward_pools'] : null;
+        
     }
 
     /**
@@ -267,7 +296,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'project_state' can't be null";
         }
         $allowedValues = $this->getProjectStateAllowableValues();
-        if (!is_null($this->container['project_state']) && !in_array($this->container['project_state'], $allowedValues, true)) {
+        if ((isset($this->container['project_state'])) && !in_array($this->container['project_state'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'project_state', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -311,6 +340,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
      */
     public function setPid($pid)
     {
+        
         $this->container['pid'] = $pid;
 
         return $this;
@@ -335,6 +365,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -359,6 +390,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
      */
     public function setTotalAmount($total_amount)
     {
+        
         $this->container['total_amount'] = $total_amount;
 
         return $this;
@@ -383,6 +415,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
      */
     public function setStartTimest($start_timest)
     {
+        
         $this->container['start_timest'] = $start_timest;
 
         return $this;
@@ -407,6 +440,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
      */
     public function setEndTimest($end_timest)
     {
+        
         $this->container['end_timest'] = $end_timest;
 
         return $this;
@@ -431,6 +465,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
      */
     public function setDays($days)
     {
+        
         $this->container['days'] = $days;
 
         return $this;
@@ -464,6 +499,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['project_state'] = $project_state;
 
         return $this;
@@ -488,6 +524,7 @@ class LaunchPoolV4Project implements ModelInterface, ArrayAccess
      */
     public function setRewardPools($reward_pools)
     {
+        
         $this->container['reward_pools'] = $reward_pools;
 
         return $this;

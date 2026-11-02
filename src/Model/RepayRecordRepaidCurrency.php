@@ -97,6 +97,27 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['repaid_amount'] = isset($data['repaid_amount']) ? $data['repaid_amount'] : null;
+        
         $this->container['repaid_principal'] = isset($data['repaid_principal']) ? $data['repaid_principal'] : null;
+        
         $this->container['repaid_interest'] = isset($data['repaid_interest']) ? $data['repaid_interest'] : null;
+        
         $this->container['repaid_amount_usdt'] = isset($data['repaid_amount_usdt']) ? $data['repaid_amount_usdt'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -274,6 +302,7 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -298,6 +327,7 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
      */
     public function setRepaidAmount($repaid_amount)
     {
+        
         $this->container['repaid_amount'] = $repaid_amount;
 
         return $this;
@@ -322,6 +352,7 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
      */
     public function setRepaidPrincipal($repaid_principal)
     {
+        
         $this->container['repaid_principal'] = $repaid_principal;
 
         return $this;
@@ -346,6 +377,7 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
      */
     public function setRepaidInterest($repaid_interest)
     {
+        
         $this->container['repaid_interest'] = $repaid_interest;
 
         return $this;
@@ -370,6 +402,7 @@ class RepayRecordRepaidCurrency implements ModelInterface, ArrayAccess
      */
     public function setRepaidAmountUsdt($repaid_amount_usdt)
     {
+        
         $this->container['repaid_amount_usdt'] = $repaid_amount_usdt;
 
         return $this;

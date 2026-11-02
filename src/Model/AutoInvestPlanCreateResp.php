@@ -104,6 +104,27 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -216,14 +237,23 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['money'] = isset($data['money']) ? $data['money'] : null;
+        
         $this->container['next_time'] = isset($data['next_time']) ? $data['next_time'] : null;
+        
         $this->container['period_type'] = isset($data['period_type']) ? $data['period_type'] : null;
+        
         $this->container['period_day'] = isset($data['period_day']) ? $data['period_day'] : null;
+        
         $this->container['period_hour'] = isset($data['period_hour']) ? $data['period_hour'] : null;
+        
         $this->container['fund_flow'] = isset($data['fund_flow']) ? $data['fund_flow'] : null;
+        
         $this->container['fund_source'] = isset($data['fund_source']) ? $data['fund_source'] : null;
+        
     }
 
     /**
@@ -272,6 +302,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -296,6 +327,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -320,6 +352,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setMoney($money)
     {
+        
         $this->container['money'] = $money;
 
         return $this;
@@ -344,6 +377,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setNextTime($next_time)
     {
+        
         $this->container['next_time'] = $next_time;
 
         return $this;
@@ -368,6 +402,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setPeriodType($period_type)
     {
+        
         $this->container['period_type'] = $period_type;
 
         return $this;
@@ -392,6 +427,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setPeriodDay($period_day)
     {
+        
         $this->container['period_day'] = $period_day;
 
         return $this;
@@ -416,6 +452,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setPeriodHour($period_hour)
     {
+        
         $this->container['period_hour'] = $period_hour;
 
         return $this;
@@ -440,6 +477,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setFundFlow($fund_flow)
     {
+        
         $this->container['fund_flow'] = $fund_flow;
 
         return $this;
@@ -464,6 +502,7 @@ class AutoInvestPlanCreateResp implements ModelInterface, ArrayAccess
      */
     public function setFundSource($fund_source)
     {
+        
         $this->container['fund_source'] = $fund_source;
 
         return $this;

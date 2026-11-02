@@ -163,6 +163,27 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -365,44 +386,83 @@ class P2pMyAd implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
         $this->container['original_rate'] = isset($data['original_rate']) ? $data['original_rate'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['limit_total'] = isset($data['limit_total']) ? $data['limit_total'] : null;
+        
         $this->container['limit_fiat'] = isset($data['limit_fiat']) ? $data['limit_fiat'] : null;
+        
         $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
+        
         $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
+        
         $this->container['pay_type_num'] = isset($data['pay_type_num']) ? $data['pay_type_num'] : null;
+        
         $this->container['pay_type_json'] = isset($data['pay_type_json']) ? $data['pay_type_json'] : null;
+        
         $this->container['expire_min'] = isset($data['expire_min']) ? $data['expire_min'] : null;
+        
         $this->container['tier_limit'] = isset($data['tier_limit']) ? $data['tier_limit'] : null;
+        
         $this->container['advertisers_limit'] = isset($data['advertisers_limit']) ? $data['advertisers_limit'] : null;
+        
         $this->container['reg_time_limit'] = isset($data['reg_time_limit']) ? $data['reg_time_limit'] : null;
+        
         $this->container['verified_limit'] = isset($data['verified_limit']) ? $data['verified_limit'] : null;
+        
         $this->container['min_completed_limit'] = isset($data['min_completed_limit']) ? $data['min_completed_limit'] : null;
+        
         $this->container['max_completed_limit'] = isset($data['max_completed_limit']) ? $data['max_completed_limit'] : null;
+        
         $this->container['user_country_limit'] = isset($data['user_country_limit']) ? $data['user_country_limit'] : null;
+        
         $this->container['completed_rate_limit'] = isset($data['completed_rate_limit']) ? $data['completed_rate_limit'] : null;
+        
         $this->container['user_orders_limit'] = isset($data['user_orders_limit']) ? $data['user_orders_limit'] : null;
+        
         $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
+        
         $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
+        
         $this->container['want_type'] = isset($data['want_type']) ? $data['want_type'] : null;
+        
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        
         $this->container['new_hand'] = isset($data['new_hand']) ? $data['new_hand'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['locked_amount'] = isset($data['locked_amount']) ? $data['locked_amount'] : null;
+        
         $this->container['hide_rate'] = isset($data['hide_rate']) ? $data['hide_rate'] : null;
+        
         $this->container['is_out_time'] = isset($data['is_out_time']) ? $data['is_out_time'] : null;
+        
         $this->container['rate_ref_id'] = isset($data['rate_ref_id']) ? $data['rate_ref_id'] : null;
+        
         $this->container['rate_offset'] = isset($data['rate_offset']) ? $data['rate_offset'] : null;
+        
         $this->container['rate_fixed'] = isset($data['rate_fixed']) ? $data['rate_fixed'] : null;
+        
         $this->container['float_trend'] = isset($data['float_trend']) ? $data['float_trend'] : null;
+        
         $this->container['in_dispute'] = isset($data['in_dispute']) ? $data['in_dispute'] : null;
+        
         $this->container['auto_reply'] = isset($data['auto_reply']) ? $data['auto_reply'] : null;
+        
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        
         $this->container['is_hedge'] = isset($data['is_hedge']) ? $data['is_hedge'] : null;
+        
     }
 
     /**
@@ -448,6 +508,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -472,6 +533,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;
@@ -496,6 +558,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setOriginalRate($original_rate)
     {
+        
         $this->container['original_rate'] = $original_rate;
 
         return $this;
@@ -520,6 +583,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -544,6 +608,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -568,6 +633,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setLimitTotal($limit_total)
     {
+        
         $this->container['limit_total'] = $limit_total;
 
         return $this;
@@ -592,6 +658,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setLimitFiat($limit_fiat)
     {
+        
         $this->container['limit_fiat'] = $limit_fiat;
 
         return $this;
@@ -616,6 +683,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setMinAmount($min_amount)
     {
+        
         $this->container['min_amount'] = $min_amount;
 
         return $this;
@@ -640,6 +708,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setMaxAmount($max_amount)
     {
+        
         $this->container['max_amount'] = $max_amount;
 
         return $this;
@@ -664,6 +733,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setPayTypeNum($pay_type_num)
     {
+        
         $this->container['pay_type_num'] = $pay_type_num;
 
         return $this;
@@ -688,6 +758,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setPayTypeJson($pay_type_json)
     {
+        
         $this->container['pay_type_json'] = $pay_type_json;
 
         return $this;
@@ -712,6 +783,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setExpireMin($expire_min)
     {
+        
         $this->container['expire_min'] = $expire_min;
 
         return $this;
@@ -736,6 +808,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setTierLimit($tier_limit)
     {
+        
         $this->container['tier_limit'] = $tier_limit;
 
         return $this;
@@ -760,6 +833,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setAdvertisersLimit($advertisers_limit)
     {
+        
         $this->container['advertisers_limit'] = $advertisers_limit;
 
         return $this;
@@ -784,6 +858,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setRegTimeLimit($reg_time_limit)
     {
+        
         $this->container['reg_time_limit'] = $reg_time_limit;
 
         return $this;
@@ -808,6 +883,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setVerifiedLimit($verified_limit)
     {
+        
         $this->container['verified_limit'] = $verified_limit;
 
         return $this;
@@ -832,6 +908,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setMinCompletedLimit($min_completed_limit)
     {
+        
         $this->container['min_completed_limit'] = $min_completed_limit;
 
         return $this;
@@ -856,6 +933,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setMaxCompletedLimit($max_completed_limit)
     {
+        
         $this->container['max_completed_limit'] = $max_completed_limit;
 
         return $this;
@@ -880,6 +958,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setUserCountryLimit($user_country_limit)
     {
+        
         $this->container['user_country_limit'] = $user_country_limit;
 
         return $this;
@@ -904,6 +983,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setCompletedRateLimit($completed_rate_limit)
     {
+        
         $this->container['completed_rate_limit'] = $completed_rate_limit;
 
         return $this;
@@ -928,6 +1008,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setUserOrdersLimit($user_orders_limit)
     {
+        
         $this->container['user_orders_limit'] = $user_orders_limit;
 
         return $this;
@@ -952,6 +1033,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setHidePayment($hide_payment)
     {
+        
         $this->container['hide_payment'] = $hide_payment;
 
         return $this;
@@ -976,6 +1058,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setCurrencyType($currency_type)
     {
+        
         $this->container['currency_type'] = $currency_type;
 
         return $this;
@@ -1000,6 +1083,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setWantType($want_type)
     {
+        
         $this->container['want_type'] = $want_type;
 
         return $this;
@@ -1024,6 +1108,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setTradeTips($trade_tips)
     {
+        
         $this->container['trade_tips'] = $trade_tips;
 
         return $this;
@@ -1048,6 +1133,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setNewHand($new_hand)
     {
+        
         $this->container['new_hand'] = $new_hand;
 
         return $this;
@@ -1072,6 +1158,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -1096,6 +1183,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -1120,6 +1208,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setLockedAmount($locked_amount)
     {
+        
         $this->container['locked_amount'] = $locked_amount;
 
         return $this;
@@ -1144,6 +1233,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setHideRate($hide_rate)
     {
+        
         $this->container['hide_rate'] = $hide_rate;
 
         return $this;
@@ -1168,6 +1258,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setIsOutTime($is_out_time)
     {
+        
         $this->container['is_out_time'] = $is_out_time;
 
         return $this;
@@ -1192,6 +1283,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setRateRefId($rate_ref_id)
     {
+        
         $this->container['rate_ref_id'] = $rate_ref_id;
 
         return $this;
@@ -1216,6 +1308,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setRateOffset($rate_offset)
     {
+        
         $this->container['rate_offset'] = $rate_offset;
 
         return $this;
@@ -1240,6 +1333,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setRateFixed($rate_fixed)
     {
+        
         $this->container['rate_fixed'] = $rate_fixed;
 
         return $this;
@@ -1264,6 +1358,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setFloatTrend($float_trend)
     {
+        
         $this->container['float_trend'] = $float_trend;
 
         return $this;
@@ -1288,6 +1383,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setInDispute($in_dispute)
     {
+        
         $this->container['in_dispute'] = $in_dispute;
 
         return $this;
@@ -1312,6 +1408,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setAutoReply($auto_reply)
     {
+        
         $this->container['auto_reply'] = $auto_reply;
 
         return $this;
@@ -1336,6 +1433,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setTimestamp($timestamp)
     {
+        
         $this->container['timestamp'] = $timestamp;
 
         return $this;
@@ -1360,6 +1458,7 @@ class P2pMyAd implements ModelInterface, ArrayAccess
      */
     public function setIsHedge($is_hedge)
     {
+        
         $this->container['is_hedge'] = $is_hedge;
 
         return $this;

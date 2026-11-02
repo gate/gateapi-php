@@ -100,6 +100,27 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        
         $this->container['risk_limit'] = isset($data['risk_limit']) ? $data['risk_limit'] : null;
+        
         $this->container['initial_rate'] = isset($data['initial_rate']) ? $data['initial_rate'] : null;
+        
         $this->container['maintenance_rate'] = isset($data['maintenance_rate']) ? $data['maintenance_rate'] : null;
+        
         $this->container['leverage_max'] = isset($data['leverage_max']) ? $data['leverage_max'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['deduction'] = isset($data['deduction']) ? $data['deduction'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
      */
     public function setTier($tier)
     {
+        
         $this->container['tier'] = $tier;
 
         return $this;
@@ -281,6 +310,7 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
      */
     public function setRiskLimit($risk_limit)
     {
+        
         $this->container['risk_limit'] = $risk_limit;
 
         return $this;
@@ -305,6 +335,7 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
      */
     public function setInitialRate($initial_rate)
     {
+        
         $this->container['initial_rate'] = $initial_rate;
 
         return $this;
@@ -329,6 +360,7 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceRate($maintenance_rate)
     {
+        
         $this->container['maintenance_rate'] = $maintenance_rate;
 
         return $this;
@@ -353,6 +385,7 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
      */
     public function setLeverageMax($leverage_max)
     {
+        
         $this->container['leverage_max'] = $leverage_max;
 
         return $this;
@@ -377,6 +410,7 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -401,6 +435,7 @@ class DeliveryLimitRiskTiers implements ModelInterface, ArrayAccess
      */
     public function setDeduction($deduction)
     {
+        
         $this->container['deduction'] = $deduction;
 
         return $this;

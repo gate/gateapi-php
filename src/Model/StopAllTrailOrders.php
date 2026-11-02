@@ -89,6 +89,27 @@ class StopAllTrailOrders implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,7 +216,9 @@ class StopAllTrailOrders implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['related_position'] = isset($data['related_position']) ? $data['related_position'] : null;
+        
     }
 
     /**
@@ -208,7 +231,7 @@ class StopAllTrailOrders implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getRelatedPositionAllowableValues();
-        if (!is_null($this->container['related_position']) && !in_array($this->container['related_position'], $allowedValues, true)) {
+        if ((isset($this->container['related_position'])) && !in_array($this->container['related_position'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'related_position', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -249,6 +272,7 @@ class StopAllTrailOrders implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -282,6 +306,7 @@ class StopAllTrailOrders implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['related_position'] = $related_position;
 
         return $this;

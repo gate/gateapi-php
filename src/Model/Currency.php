@@ -111,6 +111,27 @@ class Currency implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -235,18 +256,31 @@ class Currency implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['delisted'] = isset($data['delisted']) ? $data['delisted'] : null;
+        
         $this->container['withdraw_disabled'] = isset($data['withdraw_disabled']) ? $data['withdraw_disabled'] : null;
+        
         $this->container['withdraw_delayed'] = isset($data['withdraw_delayed']) ? $data['withdraw_delayed'] : null;
+        
         $this->container['deposit_disabled'] = isset($data['deposit_disabled']) ? $data['deposit_disabled'] : null;
+        
         $this->container['trade_disabled'] = isset($data['trade_disabled']) ? $data['trade_disabled'] : null;
+        
         $this->container['fixed_rate'] = isset($data['fixed_rate']) ? $data['fixed_rate'] : null;
+        
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
         $this->container['chains'] = isset($data['chains']) ? $data['chains'] : null;
+        
         $this->container['total_supply'] = isset($data['total_supply']) ? $data['total_supply'] : null;
+        
         $this->container['market_cap'] = isset($data['market_cap']) ? $data['market_cap'] : null;
+        
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
+        
     }
 
     /**
@@ -292,6 +326,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -316,6 +351,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -340,6 +376,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setDelisted($delisted)
     {
+        
         $this->container['delisted'] = $delisted;
 
         return $this;
@@ -364,6 +401,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setWithdrawDisabled($withdraw_disabled)
     {
+        
         $this->container['withdraw_disabled'] = $withdraw_disabled;
 
         return $this;
@@ -388,6 +426,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setWithdrawDelayed($withdraw_delayed)
     {
+        
         $this->container['withdraw_delayed'] = $withdraw_delayed;
 
         return $this;
@@ -412,6 +451,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setDepositDisabled($deposit_disabled)
     {
+        
         $this->container['deposit_disabled'] = $deposit_disabled;
 
         return $this;
@@ -436,6 +476,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setTradeDisabled($trade_disabled)
     {
+        
         $this->container['trade_disabled'] = $trade_disabled;
 
         return $this;
@@ -460,6 +501,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setFixedRate($fixed_rate)
     {
+        
         $this->container['fixed_rate'] = $fixed_rate;
 
         return $this;
@@ -484,6 +526,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;
@@ -502,12 +545,13 @@ class Currency implements ModelInterface, ArrayAccess
     /**
      * Sets chains
      *
-     * @param \GateApi\Model\SpotCurrencyChain[]|null $chains All links corresponding to coins
+     * @param \GateApi\Model\SpotCurrencyChain[]|null $chains All blockchains associated with this currency.
      *
      * @return $this
      */
     public function setChains($chains)
     {
+        
         $this->container['chains'] = $chains;
 
         return $this;
@@ -532,6 +576,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setTotalSupply($total_supply)
     {
+        
         $this->container['total_supply'] = $total_supply;
 
         return $this;
@@ -556,6 +601,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setMarketCap($market_cap)
     {
+        
         $this->container['market_cap'] = $market_cap;
 
         return $this;
@@ -580,6 +626,7 @@ class Currency implements ModelInterface, ArrayAccess
      */
     public function setCategory($category)
     {
+        
         $this->container['category'] = $category;
 
         return $this;

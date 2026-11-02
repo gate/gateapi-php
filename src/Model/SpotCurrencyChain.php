@@ -95,6 +95,27 @@ class SpotCurrencyChain implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class SpotCurrencyChain implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['addr'] = isset($data['addr']) ? $data['addr'] : null;
+        
         $this->container['withdraw_disabled'] = isset($data['withdraw_disabled']) ? $data['withdraw_disabled'] : null;
+        
         $this->container['withdraw_delayed'] = isset($data['withdraw_delayed']) ? $data['withdraw_delayed'] : null;
+        
         $this->container['deposit_disabled'] = isset($data['deposit_disabled']) ? $data['deposit_disabled'] : null;
+        
     }
 
     /**
@@ -244,6 +270,7 @@ class SpotCurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -268,6 +295,7 @@ class SpotCurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setAddr($addr)
     {
+        
         $this->container['addr'] = $addr;
 
         return $this;
@@ -292,6 +320,7 @@ class SpotCurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setWithdrawDisabled($withdraw_disabled)
     {
+        
         $this->container['withdraw_disabled'] = $withdraw_disabled;
 
         return $this;
@@ -316,6 +345,7 @@ class SpotCurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setWithdrawDelayed($withdraw_delayed)
     {
+        
         $this->container['withdraw_delayed'] = $withdraw_delayed;
 
         return $this;
@@ -340,6 +370,7 @@ class SpotCurrencyChain implements ModelInterface, ArrayAccess
      */
     public function setDepositDisabled($deposit_disabled)
     {
+        
         $this->container['deposit_disabled'] = $deposit_disabled;
 
         return $this;

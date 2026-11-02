@@ -91,6 +91,27 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['locking'] = isset($data['locking']) ? $data['locking'] : null;
+        
     }
 
     /**
@@ -232,6 +256,7 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -256,6 +281,7 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -280,6 +306,7 @@ class SubAccountBalance implements ModelInterface, ArrayAccess
      */
     public function setLocking($locking)
     {
+        
         $this->container['locking'] = $locking;
 
         return $this;

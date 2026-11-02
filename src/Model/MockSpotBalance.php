@@ -90,6 +90,27 @@ class MockSpotBalance implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -181,7 +202,9 @@ class MockSpotBalance implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['equity'] = isset($data['equity']) ? $data['equity'] : null;
+        
     }
 
     /**
@@ -233,6 +256,7 @@ class MockSpotBalance implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -251,12 +275,13 @@ class MockSpotBalance implements ModelInterface, ArrayAccess
     /**
      * Sets equity
      *
-     * @param string $equity Currency equity, where equity = balance - borrowed, represents the net delta exposure of your spot positions
+     * @param string $equity Currency equity = balance - borrowed amount. It represents net spot delta exposure and may be negative.
      *
      * @return $this
      */
     public function setEquity($equity)
     {
+        
         $this->container['equity'] = $equity;
 
         return $this;

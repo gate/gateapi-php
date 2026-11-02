@@ -92,6 +92,27 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['fiat_unit'] = isset($data['fiat_unit']) ? $data['fiat_unit'] : null;
+        
         $this->container['trade_type'] = isset($data['trade_type']) ? $data['trade_type'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -257,6 +282,7 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
      */
     public function setFiatUnit($fiat_unit)
     {
+        
         $this->container['fiat_unit'] = $fiat_unit;
 
         return $this;
@@ -281,6 +307,7 @@ class MyAdsListRequest implements ModelInterface, ArrayAccess
      */
     public function setTradeType($trade_type)
     {
+        
         $this->container['trade_type'] = $trade_type;
 
         return $this;

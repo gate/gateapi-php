@@ -149,6 +149,27 @@ class PartnerApplication implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -330,37 +351,69 @@ class PartnerApplication implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['language'] = isset($data['language']) ? $data['language'] : null;
+        
         $this->container['country_id'] = isset($data['country_id']) ? $data['country_id'] : null;
+        
         $this->container['firstname'] = isset($data['firstname']) ? $data['firstname'] : null;
+        
         $this->container['lastname'] = isset($data['lastname']) ? $data['lastname'] : null;
+        
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        
         $this->container['join_uid'] = isset($data['join_uid']) ? $data['join_uid'] : null;
+        
         $this->container['join_country_id'] = isset($data['join_country_id']) ? $data['join_country_id'] : null;
+        
         $this->container['identity_comment'] = isset($data['identity_comment']) ? $data['identity_comment'] : null;
+        
         $this->container['promotion_channels'] = isset($data['promotion_channels']) ? $data['promotion_channels'] : null;
+        
         $this->container['contact_details'] = isset($data['contact_details']) ? $data['contact_details'] : null;
+        
         $this->container['know_details'] = isset($data['know_details']) ? $data['know_details'] : null;
+        
         $this->container['question_lang'] = isset($data['question_lang']) ? $data['question_lang'] : null;
+        
         $this->container['create_timest'] = isset($data['create_timest']) ? $data['create_timest'] : null;
+        
         $this->container['update_timest'] = isset($data['update_timest']) ? $data['update_timest'] : null;
+        
         $this->container['apply_type'] = isset($data['apply_type']) ? $data['apply_type'] : null;
+        
         $this->container['audit_status'] = isset($data['audit_status']) ? $data['audit_status'] : null;
+        
         $this->container['edit_counts'] = isset($data['edit_counts']) ? $data['edit_counts'] : null;
+        
         $this->container['proof_images'] = isset($data['proof_images']) ? $data['proof_images'] : null;
+        
         $this->container['proof_videos'] = isset($data['proof_videos']) ? $data['proof_videos'] : null;
+        
         $this->container['proof_url'] = isset($data['proof_url']) ? $data['proof_url'] : null;
+        
         $this->container['audit_reason'] = isset($data['audit_reason']) ? $data['audit_reason'] : null;
+        
         $this->container['channel_type'] = isset($data['channel_type']) ? $data['channel_type'] : null;
+        
         $this->container['region'] = isset($data['region']) ? $data['region'] : null;
+        
         $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
+        
         $this->container['telegram'] = isset($data['telegram']) ? $data['telegram'] : null;
+        
         $this->container['other_contact'] = isset($data['other_contact']) ? $data['other_contact'] : null;
+        
         $this->container['proof_images_url_list'] = isset($data['proof_images_url_list']) ? $data['proof_images_url_list'] : null;
+        
         $this->container['proof_videos_url_list'] = isset($data['proof_videos_url_list']) ? $data['proof_videos_url_list'] : null;
+        
         $this->container['apply_msg'] = isset($data['apply_msg']) ? $data['apply_msg'] : null;
+        
         $this->container['jump_url'] = isset($data['jump_url']) ? $data['jump_url'] : null;
+        
     }
 
     /**
@@ -406,6 +459,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -430,6 +484,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -454,6 +509,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setLanguage($language)
     {
+        
         $this->container['language'] = $language;
 
         return $this;
@@ -478,6 +534,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setCountryId($country_id)
     {
+        
         $this->container['country_id'] = $country_id;
 
         return $this;
@@ -502,6 +559,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setFirstname($firstname)
     {
+        
         $this->container['firstname'] = $firstname;
 
         return $this;
@@ -526,6 +584,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setLastname($lastname)
     {
+        
         $this->container['lastname'] = $lastname;
 
         return $this;
@@ -550,6 +609,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setEmail($email)
     {
+        
         $this->container['email'] = $email;
 
         return $this;
@@ -574,6 +634,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setJoinUid($join_uid)
     {
+        
         $this->container['join_uid'] = $join_uid;
 
         return $this;
@@ -598,6 +659,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setJoinCountryId($join_country_id)
     {
+        
         $this->container['join_country_id'] = $join_country_id;
 
         return $this;
@@ -622,6 +684,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setIdentityComment($identity_comment)
     {
+        
         $this->container['identity_comment'] = $identity_comment;
 
         return $this;
@@ -646,6 +709,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setPromotionChannels($promotion_channels)
     {
+        
         $this->container['promotion_channels'] = $promotion_channels;
 
         return $this;
@@ -670,6 +734,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setContactDetails($contact_details)
     {
+        
         $this->container['contact_details'] = $contact_details;
 
         return $this;
@@ -694,6 +759,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setKnowDetails($know_details)
     {
+        
         $this->container['know_details'] = $know_details;
 
         return $this;
@@ -718,6 +784,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setQuestionLang($question_lang)
     {
+        
         $this->container['question_lang'] = $question_lang;
 
         return $this;
@@ -742,6 +809,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setCreateTimest($create_timest)
     {
+        
         $this->container['create_timest'] = $create_timest;
 
         return $this;
@@ -766,6 +834,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setUpdateTimest($update_timest)
     {
+        
         $this->container['update_timest'] = $update_timest;
 
         return $this;
@@ -790,6 +859,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setApplyType($apply_type)
     {
+        
         $this->container['apply_type'] = $apply_type;
 
         return $this;
@@ -814,6 +884,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setAuditStatus($audit_status)
     {
+        
         $this->container['audit_status'] = $audit_status;
 
         return $this;
@@ -838,6 +909,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setEditCounts($edit_counts)
     {
+        
         $this->container['edit_counts'] = $edit_counts;
 
         return $this;
@@ -862,6 +934,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setProofImages($proof_images)
     {
+        
         $this->container['proof_images'] = $proof_images;
 
         return $this;
@@ -886,6 +959,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setProofVideos($proof_videos)
     {
+        
         $this->container['proof_videos'] = $proof_videos;
 
         return $this;
@@ -910,6 +984,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setProofUrl($proof_url)
     {
+        
         $this->container['proof_url'] = $proof_url;
 
         return $this;
@@ -934,6 +1009,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setAuditReason($audit_reason)
     {
+        
         $this->container['audit_reason'] = $audit_reason;
 
         return $this;
@@ -958,6 +1034,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setChannelType($channel_type)
     {
+        
         $this->container['channel_type'] = $channel_type;
 
         return $this;
@@ -982,6 +1059,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setRegion($region)
     {
+        
         $this->container['region'] = $region;
 
         return $this;
@@ -1006,6 +1084,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setPhone($phone)
     {
+        
         $this->container['phone'] = $phone;
 
         return $this;
@@ -1030,6 +1109,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setTelegram($telegram)
     {
+        
         $this->container['telegram'] = $telegram;
 
         return $this;
@@ -1054,6 +1134,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setOtherContact($other_contact)
     {
+        
         $this->container['other_contact'] = $other_contact;
 
         return $this;
@@ -1078,6 +1159,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setProofImagesUrlList($proof_images_url_list)
     {
+        
         $this->container['proof_images_url_list'] = $proof_images_url_list;
 
         return $this;
@@ -1102,6 +1184,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setProofVideosUrlList($proof_videos_url_list)
     {
+        
         $this->container['proof_videos_url_list'] = $proof_videos_url_list;
 
         return $this;
@@ -1126,6 +1209,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setApplyMsg($apply_msg)
     {
+        
         $this->container['apply_msg'] = $apply_msg;
 
         return $this;
@@ -1150,6 +1234,7 @@ class PartnerApplication implements ModelInterface, ArrayAccess
      */
     public function setJumpUrl($jump_url)
     {
+        
         $this->container['jump_url'] = $jump_url;
 
         return $this;

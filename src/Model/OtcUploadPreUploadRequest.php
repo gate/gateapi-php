@@ -90,6 +90,27 @@ class OtcUploadPreUploadRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -219,7 +240,9 @@ class OtcUploadPreUploadRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        
         $this->container['scene'] = isset($data['scene']) ? $data['scene'] : 'general';
+        
     }
 
     /**
@@ -235,7 +258,7 @@ class OtcUploadPreUploadRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'content_type' can't be null";
         }
         $allowedValues = $this->getContentTypeAllowableValues();
-        if (!is_null($this->container['content_type']) && !in_array($this->container['content_type'], $allowedValues, true)) {
+        if ((isset($this->container['content_type'])) && !in_array($this->container['content_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'content_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -243,7 +266,7 @@ class OtcUploadPreUploadRequest implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getSceneAllowableValues();
-        if (!is_null($this->container['scene']) && !in_array($this->container['scene'], $allowedValues, true)) {
+        if ((isset($this->container['scene'])) && !in_array($this->container['scene'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'scene', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -293,6 +316,7 @@ class OtcUploadPreUploadRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['content_type'] = $content_type;
 
         return $this;
@@ -326,6 +350,7 @@ class OtcUploadPreUploadRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['scene'] = $scene;
 
         return $this;

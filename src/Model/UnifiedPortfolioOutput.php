@@ -94,6 +94,27 @@ class UnifiedPortfolioOutput implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class UnifiedPortfolioOutput implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['maintain_margin_total'] = isset($data['maintain_margin_total']) ? $data['maintain_margin_total'] : null;
+        
         $this->container['initial_margin_total'] = isset($data['initial_margin_total']) ? $data['initial_margin_total'] : null;
+        
         $this->container['calculate_time'] = isset($data['calculate_time']) ? $data['calculate_time'] : null;
+        
         $this->container['risk_unit'] = isset($data['risk_unit']) ? $data['risk_unit'] : null;
+        
     }
 
     /**
@@ -239,6 +264,7 @@ class UnifiedPortfolioOutput implements ModelInterface, ArrayAccess
      */
     public function setMaintainMarginTotal($maintain_margin_total)
     {
+        
         $this->container['maintain_margin_total'] = $maintain_margin_total;
 
         return $this;
@@ -263,6 +289,7 @@ class UnifiedPortfolioOutput implements ModelInterface, ArrayAccess
      */
     public function setInitialMarginTotal($initial_margin_total)
     {
+        
         $this->container['initial_margin_total'] = $initial_margin_total;
 
         return $this;
@@ -287,6 +314,7 @@ class UnifiedPortfolioOutput implements ModelInterface, ArrayAccess
      */
     public function setCalculateTime($calculate_time)
     {
+        
         $this->container['calculate_time'] = $calculate_time;
 
         return $this;
@@ -311,6 +339,7 @@ class UnifiedPortfolioOutput implements ModelInterface, ArrayAccess
      */
     public function setRiskUnit($risk_unit)
     {
+        
         $this->container['risk_unit'] = $risk_unit;
 
         return $this;

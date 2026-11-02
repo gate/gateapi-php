@@ -120,6 +120,27 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -256,22 +277,39 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['symbol_desc'] = isset($data['symbol_desc']) ? $data['symbol_desc'] : null;
+        
         $this->container['category_name'] = isset($data['category_name']) ? $data['category_name'] : null;
+        
         $this->container['contract_volume'] = isset($data['contract_volume']) ? $data['contract_volume'] : null;
+        
         $this->container['settlement_currency'] = isset($data['settlement_currency']) ? $data['settlement_currency'] : null;
+        
         $this->container['max_order_volume'] = isset($data['max_order_volume']) ? $data['max_order_volume'] : null;
+        
         $this->container['min_order_volume'] = isset($data['min_order_volume']) ? $data['min_order_volume'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['price_precision'] = isset($data['price_precision']) ? $data['price_precision'] : null;
+        
         $this->container['price_sl_level'] = isset($data['price_sl_level']) ? $data['price_sl_level'] : null;
+        
         $this->container['swap_cost_type'] = isset($data['swap_cost_type']) ? $data['swap_cost_type'] : null;
+        
         $this->container['buy_swap_cost_rate'] = isset($data['buy_swap_cost_rate']) ? $data['buy_swap_cost_rate'] : null;
+        
         $this->container['sell_swap_cost_rate'] = isset($data['sell_swap_cost_rate']) ? $data['sell_swap_cost_rate'] : null;
+        
         $this->container['swap_cost_3day'] = isset($data['swap_cost_3day']) ? $data['swap_cost_3day'] : null;
+        
         $this->container['trade_timezone'] = isset($data['trade_timezone']) ? $data['trade_timezone'] : null;
+        
         $this->container['trade_mode'] = isset($data['trade_mode']) ? $data['trade_mode'] : null;
+        
         $this->container['icon_link'] = isset($data['icon_link']) ? $data['icon_link'] : null;
+        
     }
 
     /**
@@ -317,6 +355,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -341,6 +380,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbolDesc($symbol_desc)
     {
+        
         $this->container['symbol_desc'] = $symbol_desc;
 
         return $this;
@@ -365,6 +405,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setCategoryName($category_name)
     {
+        
         $this->container['category_name'] = $category_name;
 
         return $this;
@@ -389,6 +430,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setContractVolume($contract_volume)
     {
+        
         $this->container['contract_volume'] = $contract_volume;
 
         return $this;
@@ -413,6 +455,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setSettlementCurrency($settlement_currency)
     {
+        
         $this->container['settlement_currency'] = $settlement_currency;
 
         return $this;
@@ -437,6 +480,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setMaxOrderVolume($max_order_volume)
     {
+        
         $this->container['max_order_volume'] = $max_order_volume;
 
         return $this;
@@ -461,6 +505,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setMinOrderVolume($min_order_volume)
     {
+        
         $this->container['min_order_volume'] = $min_order_volume;
 
         return $this;
@@ -485,6 +530,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -509,6 +555,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setPricePrecision($price_precision)
     {
+        
         $this->container['price_precision'] = $price_precision;
 
         return $this;
@@ -533,6 +580,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setPriceSlLevel($price_sl_level)
     {
+        
         $this->container['price_sl_level'] = $price_sl_level;
 
         return $this;
@@ -557,6 +605,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setSwapCostType($swap_cost_type)
     {
+        
         $this->container['swap_cost_type'] = $swap_cost_type;
 
         return $this;
@@ -581,6 +630,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setBuySwapCostRate($buy_swap_cost_rate)
     {
+        
         $this->container['buy_swap_cost_rate'] = $buy_swap_cost_rate;
 
         return $this;
@@ -605,6 +655,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setSellSwapCostRate($sell_swap_cost_rate)
     {
+        
         $this->container['sell_swap_cost_rate'] = $sell_swap_cost_rate;
 
         return $this;
@@ -629,6 +680,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setSwapCost3day($swap_cost_3day)
     {
+        
         $this->container['swap_cost_3day'] = $swap_cost_3day;
 
         return $this;
@@ -653,6 +705,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setTradeTimezone($trade_timezone)
     {
+        
         $this->container['trade_timezone'] = $trade_timezone;
 
         return $this;
@@ -677,6 +730,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setTradeMode($trade_mode)
     {
+        
         $this->container['trade_mode'] = $trade_mode;
 
         return $this;
@@ -701,6 +755,7 @@ class ContractDetailDataList implements ModelInterface, ArrayAccess
      */
     public function setIconLink($icon_link)
     {
+        
         $this->container['icon_link'] = $icon_link;
 
         return $this;

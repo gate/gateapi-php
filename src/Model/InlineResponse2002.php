@@ -93,6 +93,27 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['funding_rate'] = isset($data['funding_rate']) ? $data['funding_rate'] : null;
+        
         $this->container['funding_interval'] = isset($data['funding_interval']) ? $data['funding_interval'] : null;
+        
         $this->container['funding_time'] = isset($data['funding_time']) ? $data['funding_time'] : null;
+        
     }
 
     /**
@@ -250,6 +275,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -274,6 +300,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      */
     public function setFundingRate($funding_rate)
     {
+        
         $this->container['funding_rate'] = $funding_rate;
 
         return $this;
@@ -298,6 +325,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      */
     public function setFundingInterval($funding_interval)
     {
+        
         $this->container['funding_interval'] = $funding_interval;
 
         return $this;
@@ -322,6 +350,7 @@ class InlineResponse2002 implements ModelInterface, ArrayAccess
      */
     public function setFundingTime($funding_time)
     {
+        
         $this->container['funding_time'] = $funding_time;
 
         return $this;

@@ -111,6 +111,27 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -250,18 +271,31 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['pnl'] = isset($data['pnl']) ? $data['pnl'] : null;
+        
         $this->container['pnl_pnl'] = isset($data['pnl_pnl']) ? $data['pnl_pnl'] : null;
+        
         $this->container['pnl_fund'] = isset($data['pnl_fund']) ? $data['pnl_fund'] : null;
+        
         $this->container['pnl_fee'] = isset($data['pnl_fee']) ? $data['pnl_fee'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['max_size'] = isset($data['max_size']) ? $data['max_size'] : null;
+        
         $this->container['accum_size'] = isset($data['accum_size']) ? $data['accum_size'] : null;
+        
         $this->container['first_open_time'] = isset($data['first_open_time']) ? $data['first_open_time'] : null;
+        
         $this->container['long_price'] = isset($data['long_price']) ? $data['long_price'] : null;
+        
         $this->container['short_price'] = isset($data['short_price']) ? $data['short_price'] : null;
+        
     }
 
     /**
@@ -274,7 +308,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -315,6 +349,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -339,6 +374,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -372,6 +408,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -396,6 +433,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setPnl($pnl)
     {
+        
         $this->container['pnl'] = $pnl;
 
         return $this;
@@ -420,6 +458,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setPnlPnl($pnl_pnl)
     {
+        
         $this->container['pnl_pnl'] = $pnl_pnl;
 
         return $this;
@@ -444,6 +483,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setPnlFund($pnl_fund)
     {
+        
         $this->container['pnl_fund'] = $pnl_fund;
 
         return $this;
@@ -468,6 +508,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setPnlFee($pnl_fee)
     {
+        
         $this->container['pnl_fee'] = $pnl_fee;
 
         return $this;
@@ -492,6 +533,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -516,6 +558,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setMaxSize($max_size)
     {
+        
         $this->container['max_size'] = $max_size;
 
         return $this;
@@ -540,6 +583,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setAccumSize($accum_size)
     {
+        
         $this->container['accum_size'] = $accum_size;
 
         return $this;
@@ -564,6 +608,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setFirstOpenTime($first_open_time)
     {
+        
         $this->container['first_open_time'] = $first_open_time;
 
         return $this;
@@ -588,6 +633,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setLongPrice($long_price)
     {
+        
         $this->container['long_price'] = $long_price;
 
         return $this;
@@ -612,6 +658,7 @@ class DeliveryPositionClose implements ModelInterface, ArrayAccess
      */
     public function setShortPrice($short_price)
     {
+        
         $this->container['short_price'] = $short_price;
 
         return $this;

@@ -91,6 +91,27 @@ class UnifiedCollateralReq implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,8 +221,11 @@ class UnifiedCollateralReq implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['collateral_type'] = isset($data['collateral_type']) ? $data['collateral_type'] : null;
+        
         $this->container['enable_list'] = isset($data['enable_list']) ? $data['enable_list'] : null;
+        
         $this->container['disable_list'] = isset($data['disable_list']) ? $data['disable_list'] : null;
+        
     }
 
     /**
@@ -214,7 +238,7 @@ class UnifiedCollateralReq implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getCollateralTypeAllowableValues();
-        if (!is_null($this->container['collateral_type']) && !in_array($this->container['collateral_type'], $allowedValues, true)) {
+        if ((isset($this->container['collateral_type'])) && !in_array($this->container['collateral_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'collateral_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -264,6 +288,7 @@ class UnifiedCollateralReq implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['collateral_type'] = $collateral_type;
 
         return $this;
@@ -288,6 +313,7 @@ class UnifiedCollateralReq implements ModelInterface, ArrayAccess
      */
     public function setEnableList($enable_list)
     {
+        
         $this->container['enable_list'] = $enable_list;
 
         return $this;
@@ -312,6 +338,7 @@ class UnifiedCollateralReq implements ModelInterface, ArrayAccess
      */
     public function setDisableList($disable_list)
     {
+        
         $this->container['disable_list'] = $disable_list;
 
         return $this;

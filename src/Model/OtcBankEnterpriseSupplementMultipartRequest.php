@@ -104,6 +104,27 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -216,14 +237,23 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
     public function __construct(array $data = null)
     {
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
+        
         $this->container['certificate'] = isset($data['certificate']) ? $data['certificate'] : null;
+        
         $this->container['share_holders'] = isset($data['share_holders']) ? $data['share_holders'] : null;
+        
         $this->container['passport'] = isset($data['passport']) ? $data['passport'] : null;
+        
         $this->container['share_holding_structure'] = isset($data['share_holding_structure']) ? $data['share_holding_structure'] : null;
+        
         $this->container['funds_statement'] = isset($data['funds_statement']) ? $data['funds_statement'] : null;
+        
         $this->container['additional'] = isset($data['additional']) ? $data['additional'] : null;
+        
         $this->container['relationship_proof'] = isset($data['relationship_proof']) ? $data['relationship_proof'] : null;
+        
     }
 
     /**
@@ -272,6 +302,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -296,6 +327,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setBankId($bank_id)
     {
+        
         $this->container['bank_id'] = $bank_id;
 
         return $this;
@@ -320,6 +352,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setCertificate($certificate)
     {
+        
         $this->container['certificate'] = $certificate;
 
         return $this;
@@ -344,6 +377,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setShareHolders($share_holders)
     {
+        
         $this->container['share_holders'] = $share_holders;
 
         return $this;
@@ -368,6 +402,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setPassport($passport)
     {
+        
         $this->container['passport'] = $passport;
 
         return $this;
@@ -392,6 +427,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setShareHoldingStructure($share_holding_structure)
     {
+        
         $this->container['share_holding_structure'] = $share_holding_structure;
 
         return $this;
@@ -416,6 +452,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setFundsStatement($funds_statement)
     {
+        
         $this->container['funds_statement'] = $funds_statement;
 
         return $this;
@@ -440,6 +477,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setAdditional($additional)
     {
+        
         $this->container['additional'] = $additional;
 
         return $this;
@@ -464,6 +502,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function setRelationshipProof($relationship_proof)
     {
+        
         $this->container['relationship_proof'] = $relationship_proof;
 
         return $this;

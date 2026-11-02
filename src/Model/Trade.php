@@ -121,6 +121,27 @@ class Trade implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -290,23 +311,41 @@ class Trade implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['create_time_ms'] = isset($data['create_time_ms']) ? $data['create_time_ms'] : null;
+        
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['role'] = isset($data['role']) ? $data['role'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['fee_currency'] = isset($data['fee_currency']) ? $data['fee_currency'] : null;
+        
         $this->container['point_fee'] = isset($data['point_fee']) ? $data['point_fee'] : null;
+        
         $this->container['gt_fee'] = isset($data['gt_fee']) ? $data['gt_fee'] : null;
+        
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
+        
         $this->container['sequence_id'] = isset($data['sequence_id']) ? $data['sequence_id'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['deal'] = isset($data['deal']) ? $data['deal'] : null;
+        
         $this->container['trade_quote'] = isset($data['trade_quote']) ? $data['trade_quote'] : null;
+        
     }
 
     /**
@@ -319,7 +358,7 @@ class Trade implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -327,7 +366,7 @@ class Trade implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getRoleAllowableValues();
-        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
+        if ((isset($this->container['role'])) && !in_array($this->container['role'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'role', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -368,6 +407,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -392,6 +432,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -416,6 +457,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setCreateTimeMs($create_time_ms)
     {
+        
         $this->container['create_time_ms'] = $create_time_ms;
 
         return $this;
@@ -440,6 +482,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -473,6 +516,7 @@ class Trade implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -506,6 +550,7 @@ class Trade implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['role'] = $role;
 
         return $this;
@@ -530,6 +575,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -548,12 +594,13 @@ class Trade implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price Order price
+     * @param string|null $price Trade price.
      *
      * @return $this
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -578,6 +625,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -602,6 +650,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -626,6 +675,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setFeeCurrency($fee_currency)
     {
+        
         $this->container['fee_currency'] = $fee_currency;
 
         return $this;
@@ -650,6 +700,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setPointFee($point_fee)
     {
+        
         $this->container['point_fee'] = $point_fee;
 
         return $this;
@@ -674,6 +725,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setGtFee($gt_fee)
     {
+        
         $this->container['gt_fee'] = $gt_fee;
 
         return $this;
@@ -698,6 +750,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setAmendText($amend_text)
     {
+        
         $this->container['amend_text'] = $amend_text;
 
         return $this;
@@ -722,6 +775,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setSequenceId($sequence_id)
     {
+        
         $this->container['sequence_id'] = $sequence_id;
 
         return $this;
@@ -746,6 +800,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -770,6 +825,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setDeal($deal)
     {
+        
         $this->container['deal'] = $deal;
 
         return $this;
@@ -794,6 +850,7 @@ class Trade implements ModelInterface, ArrayAccess
      */
     public function setTradeQuote($trade_quote)
     {
+        
         $this->container['trade_quote'] = $trade_quote;
 
         return $this;

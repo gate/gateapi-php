@@ -92,6 +92,27 @@ class PositionHistoryListDataRealizedPnlDetail implements ModelInterface, ArrayA
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class PositionHistoryListDataRealizedPnlDetail implements ModelInterface, ArrayA
     public function __construct(array $data = null)
     {
         $this->container['closed_pnl'] = isset($data['closed_pnl']) ? $data['closed_pnl'] : null;
+        
         $this->container['swap'] = isset($data['swap']) ? $data['swap'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class PositionHistoryListDataRealizedPnlDetail implements ModelInterface, ArrayA
      */
     public function setClosedPnl($closed_pnl)
     {
+        
         $this->container['closed_pnl'] = $closed_pnl;
 
         return $this;
@@ -257,6 +282,7 @@ class PositionHistoryListDataRealizedPnlDetail implements ModelInterface, ArrayA
      */
     public function setSwap($swap)
     {
+        
         $this->container['swap'] = $swap;
 
         return $this;
@@ -281,6 +307,7 @@ class PositionHistoryListDataRealizedPnlDetail implements ModelInterface, ArrayA
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;

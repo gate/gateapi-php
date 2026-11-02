@@ -182,6 +182,27 @@ class Contract implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -441,53 +462,101 @@ class Contract implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['quanto_multiplier'] = isset($data['quanto_multiplier']) ? $data['quanto_multiplier'] : null;
+        
         $this->container['leverage_min'] = isset($data['leverage_min']) ? $data['leverage_min'] : null;
+        
         $this->container['leverage_max'] = isset($data['leverage_max']) ? $data['leverage_max'] : null;
+        
         $this->container['maintenance_rate'] = isset($data['maintenance_rate']) ? $data['maintenance_rate'] : null;
+        
         $this->container['mark_type'] = isset($data['mark_type']) ? $data['mark_type'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['last_price'] = isset($data['last_price']) ? $data['last_price'] : null;
+        
         $this->container['maker_fee_rate'] = isset($data['maker_fee_rate']) ? $data['maker_fee_rate'] : null;
+        
         $this->container['taker_fee_rate'] = isset($data['taker_fee_rate']) ? $data['taker_fee_rate'] : null;
+        
         $this->container['order_price_round'] = isset($data['order_price_round']) ? $data['order_price_round'] : null;
+        
         $this->container['mark_price_round'] = isset($data['mark_price_round']) ? $data['mark_price_round'] : null;
+        
         $this->container['funding_rate'] = isset($data['funding_rate']) ? $data['funding_rate'] : null;
+        
         $this->container['funding_interval'] = isset($data['funding_interval']) ? $data['funding_interval'] : null;
+        
         $this->container['funding_next_apply'] = isset($data['funding_next_apply']) ? $data['funding_next_apply'] : null;
+        
         $this->container['risk_limit_base'] = isset($data['risk_limit_base']) ? $data['risk_limit_base'] : null;
+        
         $this->container['interest_rate'] = isset($data['interest_rate']) ? $data['interest_rate'] : null;
+        
         $this->container['risk_limit_step'] = isset($data['risk_limit_step']) ? $data['risk_limit_step'] : null;
+        
         $this->container['risk_limit_max'] = isset($data['risk_limit_max']) ? $data['risk_limit_max'] : null;
+        
         $this->container['order_size_min'] = isset($data['order_size_min']) ? $data['order_size_min'] : null;
+        
         $this->container['enable_decimal'] = isset($data['enable_decimal']) ? $data['enable_decimal'] : null;
+        
         $this->container['order_size_max'] = isset($data['order_size_max']) ? $data['order_size_max'] : null;
+        
         $this->container['order_price_deviate'] = isset($data['order_price_deviate']) ? $data['order_price_deviate'] : null;
+        
         $this->container['ref_discount_rate'] = isset($data['ref_discount_rate']) ? $data['ref_discount_rate'] : null;
+        
         $this->container['ref_rebate_rate'] = isset($data['ref_rebate_rate']) ? $data['ref_rebate_rate'] : null;
+        
         $this->container['orderbook_id'] = isset($data['orderbook_id']) ? $data['orderbook_id'] : null;
+        
         $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
+        
         $this->container['trade_size'] = isset($data['trade_size']) ? $data['trade_size'] : null;
+        
         $this->container['position_size'] = isset($data['position_size']) ? $data['position_size'] : null;
+        
         $this->container['config_change_time'] = isset($data['config_change_time']) ? $data['config_change_time'] : null;
+        
         $this->container['in_delisting'] = isset($data['in_delisting']) ? $data['in_delisting'] : null;
+        
         $this->container['orders_limit'] = isset($data['orders_limit']) ? $data['orders_limit'] : null;
+        
         $this->container['enable_bonus'] = isset($data['enable_bonus']) ? $data['enable_bonus'] : null;
+        
         $this->container['enable_credit'] = isset($data['enable_credit']) ? $data['enable_credit'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['funding_cap_ratio'] = isset($data['funding_cap_ratio']) ? $data['funding_cap_ratio'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['launch_time'] = isset($data['launch_time']) ? $data['launch_time'] : null;
+        
         $this->container['delisting_time'] = isset($data['delisting_time']) ? $data['delisting_time'] : null;
+        
         $this->container['delisted_time'] = isset($data['delisted_time']) ? $data['delisted_time'] : null;
+        
         $this->container['market_order_slip_ratio'] = isset($data['market_order_slip_ratio']) ? $data['market_order_slip_ratio'] : null;
+        
         $this->container['market_order_size_max'] = isset($data['market_order_size_max']) ? $data['market_order_size_max'] : null;
+        
         $this->container['funding_rate_limit'] = isset($data['funding_rate_limit']) ? $data['funding_rate_limit'] : null;
+        
         $this->container['contract_type'] = isset($data['contract_type']) ? $data['contract_type'] : null;
+        
         $this->container['funding_impact_value'] = isset($data['funding_impact_value']) ? $data['funding_impact_value'] : null;
+        
         $this->container['enable_circuit_breaker'] = isset($data['enable_circuit_breaker']) ? $data['enable_circuit_breaker'] : null;
+        
     }
 
     /**
@@ -500,7 +569,7 @@ class Contract implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -508,7 +577,7 @@ class Contract implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getMarkTypeAllowableValues();
-        if (!is_null($this->container['mark_type']) && !in_array($this->container['mark_type'], $allowedValues, true)) {
+        if ((isset($this->container['mark_type'])) && !in_array($this->container['mark_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'mark_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -549,6 +618,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -582,6 +652,7 @@ class Contract implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -606,6 +677,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setQuantoMultiplier($quanto_multiplier)
     {
+        
         $this->container['quanto_multiplier'] = $quanto_multiplier;
 
         return $this;
@@ -630,6 +702,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setLeverageMin($leverage_min)
     {
+        
         $this->container['leverage_min'] = $leverage_min;
 
         return $this;
@@ -654,6 +727,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setLeverageMax($leverage_max)
     {
+        
         $this->container['leverage_max'] = $leverage_max;
 
         return $this;
@@ -678,6 +752,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceRate($maintenance_rate)
     {
+        
         $this->container['maintenance_rate'] = $maintenance_rate;
 
         return $this;
@@ -711,6 +786,7 @@ class Contract implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['mark_type'] = $mark_type;
 
         return $this;
@@ -735,6 +811,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -759,6 +836,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -783,6 +861,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setLastPrice($last_price)
     {
+        
         $this->container['last_price'] = $last_price;
 
         return $this;
@@ -807,6 +886,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setMakerFeeRate($maker_fee_rate)
     {
+        
         $this->container['maker_fee_rate'] = $maker_fee_rate;
 
         return $this;
@@ -831,6 +911,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setTakerFeeRate($taker_fee_rate)
     {
+        
         $this->container['taker_fee_rate'] = $taker_fee_rate;
 
         return $this;
@@ -855,6 +936,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setOrderPriceRound($order_price_round)
     {
+        
         $this->container['order_price_round'] = $order_price_round;
 
         return $this;
@@ -879,6 +961,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setMarkPriceRound($mark_price_round)
     {
+        
         $this->container['mark_price_round'] = $mark_price_round;
 
         return $this;
@@ -903,6 +986,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setFundingRate($funding_rate)
     {
+        
         $this->container['funding_rate'] = $funding_rate;
 
         return $this;
@@ -927,6 +1011,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setFundingInterval($funding_interval)
     {
+        
         $this->container['funding_interval'] = $funding_interval;
 
         return $this;
@@ -951,6 +1036,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setFundingNextApply($funding_next_apply)
     {
+        
         $this->container['funding_next_apply'] = $funding_next_apply;
 
         return $this;
@@ -975,6 +1061,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setRiskLimitBase($risk_limit_base)
     {
+        
         $this->container['risk_limit_base'] = $risk_limit_base;
 
         return $this;
@@ -999,6 +1086,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setInterestRate($interest_rate)
     {
+        
         $this->container['interest_rate'] = $interest_rate;
 
         return $this;
@@ -1023,6 +1111,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setRiskLimitStep($risk_limit_step)
     {
+        
         $this->container['risk_limit_step'] = $risk_limit_step;
 
         return $this;
@@ -1047,6 +1136,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setRiskLimitMax($risk_limit_max)
     {
+        
         $this->container['risk_limit_max'] = $risk_limit_max;
 
         return $this;
@@ -1071,6 +1161,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setOrderSizeMin($order_size_min)
     {
+        
         $this->container['order_size_min'] = $order_size_min;
 
         return $this;
@@ -1095,6 +1186,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setEnableDecimal($enable_decimal)
     {
+        
         $this->container['enable_decimal'] = $enable_decimal;
 
         return $this;
@@ -1119,6 +1211,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setOrderSizeMax($order_size_max)
     {
+        
         $this->container['order_size_max'] = $order_size_max;
 
         return $this;
@@ -1143,6 +1236,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setOrderPriceDeviate($order_price_deviate)
     {
+        
         $this->container['order_price_deviate'] = $order_price_deviate;
 
         return $this;
@@ -1167,6 +1261,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setRefDiscountRate($ref_discount_rate)
     {
+        
         $this->container['ref_discount_rate'] = $ref_discount_rate;
 
         return $this;
@@ -1191,6 +1286,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setRefRebateRate($ref_rebate_rate)
     {
+        
         $this->container['ref_rebate_rate'] = $ref_rebate_rate;
 
         return $this;
@@ -1215,6 +1311,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setOrderbookId($orderbook_id)
     {
+        
         $this->container['orderbook_id'] = $orderbook_id;
 
         return $this;
@@ -1239,6 +1336,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setTradeId($trade_id)
     {
+        
         $this->container['trade_id'] = $trade_id;
 
         return $this;
@@ -1263,6 +1361,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setTradeSize($trade_size)
     {
+        
         $this->container['trade_size'] = $trade_size;
 
         return $this;
@@ -1287,6 +1386,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setPositionSize($position_size)
     {
+        
         $this->container['position_size'] = $position_size;
 
         return $this;
@@ -1311,6 +1411,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setConfigChangeTime($config_change_time)
     {
+        
         $this->container['config_change_time'] = $config_change_time;
 
         return $this;
@@ -1335,6 +1436,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setInDelisting($in_delisting)
     {
+        
         $this->container['in_delisting'] = $in_delisting;
 
         return $this;
@@ -1359,6 +1461,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setOrdersLimit($orders_limit)
     {
+        
         $this->container['orders_limit'] = $orders_limit;
 
         return $this;
@@ -1383,6 +1486,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setEnableBonus($enable_bonus)
     {
+        
         $this->container['enable_bonus'] = $enable_bonus;
 
         return $this;
@@ -1401,12 +1505,13 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets enable_credit
      *
-     * @param bool|null $enable_credit Whether portfolio margin account is enabled
+     * @param bool|null $enable_credit Whether this contract supports unified accounts.
      *
      * @return $this
      */
     public function setEnableCredit($enable_credit)
     {
+        
         $this->container['enable_credit'] = $enable_credit;
 
         return $this;
@@ -1431,6 +1536,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -1455,6 +1561,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setFundingCapRatio($funding_cap_ratio)
     {
+        
         $this->container['funding_cap_ratio'] = $funding_cap_ratio;
 
         return $this;
@@ -1479,6 +1586,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -1497,12 +1605,13 @@ class Contract implements ModelInterface, ArrayAccess
     /**
      * Sets launch_time
      *
-     * @param int|null $launch_time Contract expiry timestamp
+     * @param int|null $launch_time Contract trading start time.
      *
      * @return $this
      */
     public function setLaunchTime($launch_time)
     {
+        
         $this->container['launch_time'] = $launch_time;
 
         return $this;
@@ -1527,6 +1636,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setDelistingTime($delisting_time)
     {
+        
         $this->container['delisting_time'] = $delisting_time;
 
         return $this;
@@ -1551,6 +1661,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setDelistedTime($delisted_time)
     {
+        
         $this->container['delisted_time'] = $delisted_time;
 
         return $this;
@@ -1575,6 +1686,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setMarketOrderSlipRatio($market_order_slip_ratio)
     {
+        
         $this->container['market_order_slip_ratio'] = $market_order_slip_ratio;
 
         return $this;
@@ -1599,6 +1711,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setMarketOrderSizeMax($market_order_size_max)
     {
+        
         $this->container['market_order_size_max'] = $market_order_size_max;
 
         return $this;
@@ -1623,6 +1736,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setFundingRateLimit($funding_rate_limit)
     {
+        
         $this->container['funding_rate_limit'] = $funding_rate_limit;
 
         return $this;
@@ -1647,6 +1761,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setContractType($contract_type)
     {
+        
         $this->container['contract_type'] = $contract_type;
 
         return $this;
@@ -1671,6 +1786,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setFundingImpactValue($funding_impact_value)
     {
+        
         $this->container['funding_impact_value'] = $funding_impact_value;
 
         return $this;
@@ -1695,6 +1811,7 @@ class Contract implements ModelInterface, ArrayAccess
      */
     public function setEnableCircuitBreaker($enable_circuit_breaker)
     {
+        
         $this->container['enable_circuit_breaker'] = $enable_circuit_breaker;
 
         return $this;

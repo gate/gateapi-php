@@ -93,6 +93,27 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -216,9 +237,13 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
     public function __construct(array $data = null)
     {
         $this->container['action_type'] = isset($data['action_type']) ? $data['action_type'] : null;
+        
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        
         $this->container['mainly'] = isset($data['mainly']) ? $data['mainly'] : null;
+        
         $this->container['action_data'] = isset($data['action_data']) ? $data['action_data'] : null;
+        
     }
 
     /**
@@ -231,7 +256,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
         $invalidProperties = [];
 
         $allowedValues = $this->getActionTypeAllowableValues();
-        if (!is_null($this->container['action_type']) && !in_array($this->container['action_type'], $allowedValues, true)) {
+        if ((isset($this->container['action_type'])) && !in_array($this->container['action_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'action_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -239,7 +264,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
         }
 
         $allowedValues = $this->getMainlyAllowableValues();
-        if (!is_null($this->container['mainly']) && !in_array($this->container['mainly'], $allowedValues, true)) {
+        if ((isset($this->container['mainly'])) && !in_array($this->container['mainly'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'mainly', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -289,6 +314,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
                 )
             );
         }
+        
         $this->container['action_type'] = $action_type;
 
         return $this;
@@ -313,6 +339,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
      */
     public function setTitle($title)
     {
+        
         $this->container['title'] = $title;
 
         return $this;
@@ -346,6 +373,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
                 )
             );
         }
+        
         $this->container['mainly'] = $mainly;
 
         return $this;
@@ -370,6 +398,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseDataRiskEventAction implements Mo
      */
     public function setActionData($action_data)
     {
+        
         $this->container['action_data'] = $action_data;
 
         return $this;

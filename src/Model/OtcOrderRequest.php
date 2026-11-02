@@ -106,6 +106,27 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -240,15 +261,25 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
+        
         $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
+        
         $this->container['crypto_amount'] = isset($data['crypto_amount']) ? $data['crypto_amount'] : null;
+        
         $this->container['fiat_amount'] = isset($data['fiat_amount']) ? $data['fiat_amount'] : null;
+        
         $this->container['promotion_code'] = isset($data['promotion_code']) ? $data['promotion_code'] : null;
+        
         $this->container['quote_token'] = isset($data['quote_token']) ? $data['quote_token'] : null;
+        
         $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
+        
         $this->container['receive_type'] = isset($data['receive_type']) ? $data['receive_type'] : null;
+        
     }
 
     /**
@@ -285,7 +316,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'bank_id' can't be null";
         }
         $allowedValues = $this->getReceiveTypeAllowableValues();
-        if (!is_null($this->container['receive_type']) && !in_array($this->container['receive_type'], $allowedValues, true)) {
+        if ((isset($this->container['receive_type'])) && !in_array($this->container['receive_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'receive_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -326,6 +357,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -350,6 +382,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -374,6 +407,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setCryptoCurrency($crypto_currency)
     {
+        
         $this->container['crypto_currency'] = $crypto_currency;
 
         return $this;
@@ -398,6 +432,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setFiatCurrency($fiat_currency)
     {
+        
         $this->container['fiat_currency'] = $fiat_currency;
 
         return $this;
@@ -422,6 +457,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setCryptoAmount($crypto_amount)
     {
+        
         $this->container['crypto_amount'] = $crypto_amount;
 
         return $this;
@@ -446,6 +482,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setFiatAmount($fiat_amount)
     {
+        
         $this->container['fiat_amount'] = $fiat_amount;
 
         return $this;
@@ -470,6 +507,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setPromotionCode($promotion_code)
     {
+        
         $this->container['promotion_code'] = $promotion_code;
 
         return $this;
@@ -494,6 +532,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setQuoteToken($quote_token)
     {
+        
         $this->container['quote_token'] = $quote_token;
 
         return $this;
@@ -518,6 +557,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
      */
     public function setBankId($bank_id)
     {
+        
         $this->container['bank_id'] = $bank_id;
 
         return $this;
@@ -551,6 +591,7 @@ class OtcOrderRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['receive_type'] = $receive_type;
 
         return $this;

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **chain** | **string** | Name of the chain | [optional] 
 **address** | **string** | Deposit address | [optional] 
-**payment_id** | **string** | Notes that some currencies required(e.g., Tag, Memo) when depositing | [optional] 
+**payment_id** | **string** | A memo required when depositing certain currencies, such as a Tag or Memo. | [optional] 
 **payment_name** | **string** | Note type, &#x60;Tag&#x60; or &#x60;Memo&#x60; | [optional] 
-**obtain_failed** | **int** | The obtain failed status- 0: address successfully obtained- 1: failed to obtain address | [optional] 
+**obtain_failed** | **int** | Whether address retrieval failed: 0 means success; 1 means failure and retrieval may need to be retried. | [optional] 
 **min_confirms** | **int** | Minimum Confirmation Count | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)

@@ -5463,7 +5463,7 @@ class SpotApi
     /**
      * Operation cancelOrders
      *
-     * Cancel all `open` orders in specified currency pair
+     * Cancel `open` orders in bulk, optionally filtered by currency pair
      *
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
@@ -5485,7 +5485,7 @@ class SpotApi
     /**
      * Operation cancelOrdersWithHttpInfo
      *
-     * Cancel all `open` orders in specified currency pair
+     * Cancel `open` orders in bulk, optionally filtered by currency pair
      *
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
@@ -5547,7 +5547,7 @@ class SpotApi
     /**
      * Operation cancelOrdersAsync
      *
-     * Cancel all `open` orders in specified currency pair
+     * Cancel `open` orders in bulk, optionally filtered by currency pair
      *
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
@@ -5572,7 +5572,7 @@ class SpotApi
     /**
      * Operation cancelOrdersAsyncWithHttpInfo
      *
-     * Cancel all `open` orders in specified currency pair
+     * Cancel `open` orders in bulk, optionally filtered by currency pair
      *
      * @param  string $currency_pair Currency pair (optional)
      * @param  string $side Specify all bids or all asks, both included if not specified (optional)
@@ -10274,7 +10274,7 @@ class SpotApi
     /**
      * Operation createSpotPovOrder
      *
-     * Create a Spot POV order
+     * Create a spot percentage-of-volume (POV) strategy order
      *
      * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator spot_pov_order_creator (required)
      *
@@ -10291,7 +10291,7 @@ class SpotApi
     /**
      * Operation createSpotPovOrderWithHttpInfo
      *
-     * Create a Spot POV order
+     * Create a spot percentage-of-volume (POV) strategy order
      *
      * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator (required)
      *
@@ -10348,7 +10348,7 @@ class SpotApi
     /**
      * Operation createSpotPovOrderAsync
      *
-     * Create a Spot POV order
+     * Create a spot percentage-of-volume (POV) strategy order
      *
      * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator (required)
      *
@@ -10368,7 +10368,7 @@ class SpotApi
     /**
      * Operation createSpotPovOrderAsyncWithHttpInfo
      *
-     * Create a Spot POV order
+     * Create a spot percentage-of-volume (POV) strategy order
      *
      * @param  \GateApi\Model\SpotPovOrderCreator $spot_pov_order_creator (required)
      *

@@ -106,6 +106,27 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -238,15 +259,25 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['hodler_id'] = isset($data['hodler_id']) ? $data['hodler_id'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['total_amount'] = isset($data['total_amount']) ? $data['total_amount'] : null;
+        
         $this->container['open_timest'] = isset($data['open_timest']) ? $data['open_timest'] : null;
+        
         $this->container['close_timest'] = isset($data['close_timest']) ? $data['close_timest'] : null;
+        
         $this->container['per_gt_reward_token'] = isset($data['per_gt_reward_token']) ? $data['per_gt_reward_token'] : null;
+        
         $this->container['user_count'] = isset($data['user_count']) ? $data['user_count'] : null;
+        
         $this->container['max_queue_amount'] = isset($data['max_queue_amount']) ? $data['max_queue_amount'] : null;
+        
     }
 
     /**
@@ -271,7 +302,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'status' can't be null";
         }
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -321,6 +352,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setHodlerId($hodler_id)
     {
+        
         $this->container['hodler_id'] = $hodler_id;
 
         return $this;
@@ -345,6 +377,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -369,6 +402,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -402,6 +436,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -426,6 +461,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setTotalAmount($total_amount)
     {
+        
         $this->container['total_amount'] = $total_amount;
 
         return $this;
@@ -450,6 +486,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setOpenTimest($open_timest)
     {
+        
         $this->container['open_timest'] = $open_timest;
 
         return $this;
@@ -474,6 +511,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setCloseTimest($close_timest)
     {
+        
         $this->container['close_timest'] = $close_timest;
 
         return $this;
@@ -498,6 +536,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setPerGtRewardToken($per_gt_reward_token)
     {
+        
         $this->container['per_gt_reward_token'] = $per_gt_reward_token;
 
         return $this;
@@ -522,6 +561,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setUserCount($user_count)
     {
+        
         $this->container['user_count'] = $user_count;
 
         return $this;
@@ -546,6 +586,7 @@ class HodlerAirdropV4ProjectItem implements ModelInterface, ArrayAccess
      */
     public function setMaxQueueAmount($max_queue_amount)
     {
+        
         $this->container['max_queue_amount'] = $max_queue_amount;
 
         return $this;

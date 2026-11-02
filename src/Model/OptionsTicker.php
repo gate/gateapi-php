@@ -122,6 +122,27 @@ class OptionsTicker implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -261,23 +282,41 @@ class OptionsTicker implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['last_price'] = isset($data['last_price']) ? $data['last_price'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['ask1_size'] = isset($data['ask1_size']) ? $data['ask1_size'] : null;
+        
         $this->container['ask1_price'] = isset($data['ask1_price']) ? $data['ask1_price'] : null;
+        
         $this->container['bid1_size'] = isset($data['bid1_size']) ? $data['bid1_size'] : null;
+        
         $this->container['bid1_price'] = isset($data['bid1_price']) ? $data['bid1_price'] : null;
+        
         $this->container['position_size'] = isset($data['position_size']) ? $data['position_size'] : null;
+        
         $this->container['mark_iv'] = isset($data['mark_iv']) ? $data['mark_iv'] : null;
+        
         $this->container['bid_iv'] = isset($data['bid_iv']) ? $data['bid_iv'] : null;
+        
         $this->container['ask_iv'] = isset($data['ask_iv']) ? $data['ask_iv'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['delta'] = isset($data['delta']) ? $data['delta'] : null;
+        
         $this->container['gamma'] = isset($data['gamma']) ? $data['gamma'] : null;
+        
         $this->container['vega'] = isset($data['vega']) ? $data['vega'] : null;
+        
         $this->container['theta'] = isset($data['theta']) ? $data['theta'] : null;
+        
         $this->container['rho'] = isset($data['rho']) ? $data['rho'] : null;
+        
     }
 
     /**
@@ -323,6 +362,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -347,6 +387,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setLastPrice($last_price)
     {
+        
         $this->container['last_price'] = $last_price;
 
         return $this;
@@ -371,6 +412,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -395,6 +437,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -419,6 +462,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setAsk1Size($ask1_size)
     {
+        
         $this->container['ask1_size'] = $ask1_size;
 
         return $this;
@@ -443,6 +487,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setAsk1Price($ask1_price)
     {
+        
         $this->container['ask1_price'] = $ask1_price;
 
         return $this;
@@ -467,6 +512,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setBid1Size($bid1_size)
     {
+        
         $this->container['bid1_size'] = $bid1_size;
 
         return $this;
@@ -491,6 +537,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setBid1Price($bid1_price)
     {
+        
         $this->container['bid1_price'] = $bid1_price;
 
         return $this;
@@ -515,6 +562,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setPositionSize($position_size)
     {
+        
         $this->container['position_size'] = $position_size;
 
         return $this;
@@ -539,6 +587,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setMarkIv($mark_iv)
     {
+        
         $this->container['mark_iv'] = $mark_iv;
 
         return $this;
@@ -563,6 +612,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setBidIv($bid_iv)
     {
+        
         $this->container['bid_iv'] = $bid_iv;
 
         return $this;
@@ -587,6 +637,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setAskIv($ask_iv)
     {
+        
         $this->container['ask_iv'] = $ask_iv;
 
         return $this;
@@ -611,6 +662,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -635,6 +687,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setDelta($delta)
     {
+        
         $this->container['delta'] = $delta;
 
         return $this;
@@ -659,6 +712,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setGamma($gamma)
     {
+        
         $this->container['gamma'] = $gamma;
 
         return $this;
@@ -683,6 +737,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setVega($vega)
     {
+        
         $this->container['vega'] = $vega;
 
         return $this;
@@ -707,6 +762,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setTheta($theta)
     {
+        
         $this->container['theta'] = $theta;
 
         return $this;
@@ -731,6 +787,7 @@ class OptionsTicker implements ModelInterface, ArrayAccess
      */
     public function setRho($rho)
     {
+        
         $this->container['rho'] = $rho;
 
         return $this;

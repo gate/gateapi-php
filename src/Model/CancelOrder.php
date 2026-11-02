@@ -92,6 +92,27 @@ class CancelOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class CancelOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
+        
         $this->container['reason_memo'] = isset($data['reason_memo']) ? $data['reason_memo'] : null;
+        
     }
 
     /**
@@ -236,6 +260,7 @@ class CancelOrder implements ModelInterface, ArrayAccess
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -260,6 +285,7 @@ class CancelOrder implements ModelInterface, ArrayAccess
      */
     public function setReasonId($reason_id)
     {
+        
         $this->container['reason_id'] = $reason_id;
 
         return $this;
@@ -284,6 +310,7 @@ class CancelOrder implements ModelInterface, ArrayAccess
      */
     public function setReasonMemo($reason_memo)
     {
+        
         $this->container['reason_memo'] = $reason_memo;
 
         return $this;

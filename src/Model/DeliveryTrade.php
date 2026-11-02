@@ -99,6 +99,27 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['create_time_ms'] = isset($data['create_time_ms']) ? $data['create_time_ms'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['is_internal'] = isset($data['is_internal']) ? $data['is_internal'] : null;
+        
     }
 
     /**
@@ -256,6 +284,7 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -280,6 +309,7 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -304,6 +334,7 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
      */
     public function setCreateTimeMs($create_time_ms)
     {
+        
         $this->container['create_time_ms'] = $create_time_ms;
 
         return $this;
@@ -328,6 +359,7 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -352,6 +384,7 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -376,6 +409,7 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -400,6 +434,7 @@ class DeliveryTrade implements ModelInterface, ArrayAccess
      */
     public function setIsInternal($is_internal)
     {
+        
         $this->container['is_internal'] = $is_internal;
 
         return $this;

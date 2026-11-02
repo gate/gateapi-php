@@ -96,6 +96,27 @@ class FixedTermProductInfo implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,10 +217,15 @@ class FixedTermProductInfo implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['pre_redeem'] = isset($data['pre_redeem']) ? $data['pre_redeem'] : null;
+        
         $this->container['reinvest'] = isset($data['reinvest']) ? $data['reinvest'] : null;
+        
         $this->container['redeem_account'] = isset($data['redeem_account']) ? $data['redeem_account'] : null;
+        
         $this->container['min_vip'] = isset($data['min_vip']) ? $data['min_vip'] : null;
+        
         $this->container['max_vip'] = isset($data['max_vip']) ? $data['max_vip'] : null;
+        
     }
 
     /**
@@ -260,6 +286,7 @@ class FixedTermProductInfo implements ModelInterface, ArrayAccess
      */
     public function setPreRedeem($pre_redeem)
     {
+        
         $this->container['pre_redeem'] = $pre_redeem;
 
         return $this;
@@ -284,6 +311,7 @@ class FixedTermProductInfo implements ModelInterface, ArrayAccess
      */
     public function setReinvest($reinvest)
     {
+        
         $this->container['reinvest'] = $reinvest;
 
         return $this;
@@ -308,6 +336,7 @@ class FixedTermProductInfo implements ModelInterface, ArrayAccess
      */
     public function setRedeemAccount($redeem_account)
     {
+        
         $this->container['redeem_account'] = $redeem_account;
 
         return $this;
@@ -332,6 +361,7 @@ class FixedTermProductInfo implements ModelInterface, ArrayAccess
      */
     public function setMinVip($min_vip)
     {
+        
         $this->container['min_vip'] = $min_vip;
 
         return $this;
@@ -356,6 +386,7 @@ class FixedTermProductInfo implements ModelInterface, ArrayAccess
      */
     public function setMaxVip($max_vip)
     {
+        
         $this->container['max_vip'] = $max_vip;
 
         return $this;

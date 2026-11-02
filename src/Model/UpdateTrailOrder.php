@@ -97,6 +97,27 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -219,11 +240,17 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['activation_price'] = isset($data['activation_price']) ? $data['activation_price'] : null;
+        
         $this->container['is_gte_str'] = isset($data['is_gte_str']) ? $data['is_gte_str'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['price_offset'] = isset($data['price_offset']) ? $data['price_offset'] : null;
+        
     }
 
     /**
@@ -239,7 +266,7 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'id' can't be null";
         }
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -280,6 +307,7 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -304,6 +332,7 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -328,6 +357,7 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setActivationPrice($activation_price)
     {
+        
         $this->container['activation_price'] = $activation_price;
 
         return $this;
@@ -352,6 +382,7 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setIsGteStr($is_gte_str)
     {
+        
         $this->container['is_gte_str'] = $is_gte_str;
 
         return $this;
@@ -385,6 +416,7 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -409,6 +441,7 @@ class UpdateTrailOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceOffset($price_offset)
     {
+        
         $this->container['price_offset'] = $price_offset;
 
         return $this;

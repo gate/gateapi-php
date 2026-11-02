@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **side** | **string** | Buy or sell order | [optional] 
 **role** | **string** | Trade role, not returned in public endpoints | [optional] 
 **amount** | **string** | Trade amount | [optional] 
-**price** | **string** | Order price | [optional] 
+**price** | **string** | Trade price. | [optional] 
 **order_id** | **string** | Related order ID, not returned in public endpoints | [optional] 
 **fee** | **string** | Fee deducted, not returned in public endpoints | [optional] 
 **fee_currency** | **string** | Fee currency unit, not returned in public endpoints | [optional] 

@@ -168,6 +168,27 @@ class Order implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -498,46 +519,87 @@ class Order implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
         $this->container['create_time_ms'] = isset($data['create_time_ms']) ? $data['create_time_ms'] : null;
+        
         $this->container['update_time_ms'] = isset($data['update_time_ms']) ? $data['update_time_ms'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['trade_quote'] = isset($data['trade_quote']) ? $data['trade_quote'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : 'limit';
+        
         $this->container['account'] = isset($data['account']) ? $data['account'] : 'spot';
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['time_in_force'] = isset($data['time_in_force']) ? $data['time_in_force'] : 'gtc';
+        
         $this->container['iceberg'] = isset($data['iceberg']) ? $data['iceberg'] : null;
+        
         $this->container['auto_borrow'] = isset($data['auto_borrow']) ? $data['auto_borrow'] : null;
+        
         $this->container['auto_repay'] = isset($data['auto_repay']) ? $data['auto_repay'] : null;
+        
         $this->container['left'] = isset($data['left']) ? $data['left'] : null;
+        
         $this->container['filled_amount'] = isset($data['filled_amount']) ? $data['filled_amount'] : null;
+        
         $this->container['fill_price'] = isset($data['fill_price']) ? $data['fill_price'] : null;
+        
         $this->container['filled_total'] = isset($data['filled_total']) ? $data['filled_total'] : null;
+        
         $this->container['avg_deal_price'] = isset($data['avg_deal_price']) ? $data['avg_deal_price'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['fee_currency'] = isset($data['fee_currency']) ? $data['fee_currency'] : null;
+        
         $this->container['point_fee'] = isset($data['point_fee']) ? $data['point_fee'] : null;
+        
         $this->container['gt_fee'] = isset($data['gt_fee']) ? $data['gt_fee'] : null;
+        
         $this->container['gt_maker_fee'] = isset($data['gt_maker_fee']) ? $data['gt_maker_fee'] : null;
+        
         $this->container['gt_taker_fee'] = isset($data['gt_taker_fee']) ? $data['gt_taker_fee'] : null;
+        
         $this->container['gt_discount'] = isset($data['gt_discount']) ? $data['gt_discount'] : null;
+        
         $this->container['rebated_fee'] = isset($data['rebated_fee']) ? $data['rebated_fee'] : null;
+        
         $this->container['rebated_fee_currency'] = isset($data['rebated_fee_currency']) ? $data['rebated_fee_currency'] : null;
+        
         $this->container['stp_id'] = isset($data['stp_id']) ? $data['stp_id'] : null;
+        
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
+        
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
+        
         $this->container['action_mode'] = isset($data['action_mode']) ? $data['action_mode'] : null;
+        
         $this->container['slippage'] = isset($data['slippage']) ? $data['slippage'] : null;
+        
         $this->container['stop_profit'] = isset($data['stop_profit']) ? $data['stop_profit'] : null;
+        
         $this->container['stop_loss'] = isset($data['stop_loss']) ? $data['stop_loss'] : null;
+        
         $this->container['use_earn'] = isset($data['use_earn']) ? $data['use_earn'] : null;
+        
     }
 
     /**
@@ -550,7 +612,7 @@ class Order implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -561,7 +623,7 @@ class Order implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'currency_pair' can't be null";
         }
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -572,7 +634,7 @@ class Order implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'side' can't be null";
         }
         $allowedValues = $this->getSideAllowableValues();
-        if (!is_null($this->container['side']) && !in_array($this->container['side'], $allowedValues, true)) {
+        if ((isset($this->container['side'])) && !in_array($this->container['side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -583,7 +645,7 @@ class Order implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'amount' can't be null";
         }
         $allowedValues = $this->getTimeInForceAllowableValues();
-        if (!is_null($this->container['time_in_force']) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
+        if ((isset($this->container['time_in_force'])) && !in_array($this->container['time_in_force'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'time_in_force', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -591,7 +653,7 @@ class Order implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getStpActAllowableValues();
-        if (!is_null($this->container['stp_act']) && !in_array($this->container['stp_act'], $allowedValues, true)) {
+        if ((isset($this->container['stp_act'])) && !in_array($this->container['stp_act'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'stp_act', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -599,7 +661,7 @@ class Order implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getFinishAsAllowableValues();
-        if (!is_null($this->container['finish_as']) && !in_array($this->container['finish_as'], $allowedValues, true)) {
+        if ((isset($this->container['finish_as'])) && !in_array($this->container['finish_as'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'finish_as', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -640,6 +702,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -664,6 +727,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -688,6 +752,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setAmendText($amend_text)
     {
+        
         $this->container['amend_text'] = $amend_text;
 
         return $this;
@@ -712,6 +777,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -736,6 +802,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;
@@ -760,6 +827,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setCreateTimeMs($create_time_ms)
     {
+        
         $this->container['create_time_ms'] = $create_time_ms;
 
         return $this;
@@ -784,6 +852,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setUpdateTimeMs($update_time_ms)
     {
+        
         $this->container['update_time_ms'] = $update_time_ms;
 
         return $this;
@@ -802,7 +871,7 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Order status  - `open`: to be filled - `closed`: closed order - `cancelled`: cancelled
+     * @param string|null $status Order status:  - `open`: pending - `closed`: ended - `cancelled`: cancelled
      *
      * @return $this
      */
@@ -817,6 +886,7 @@ class Order implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -841,6 +911,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -865,6 +936,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setTradeQuote($trade_quote)
     {
+        
         $this->container['trade_quote'] = $trade_quote;
 
         return $this;
@@ -898,6 +970,7 @@ class Order implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -922,6 +995,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setAccount($account)
     {
+        
         $this->container['account'] = $account;
 
         return $this;
@@ -955,6 +1029,7 @@ class Order implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -973,12 +1048,13 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param string $amount Trade amount When `type` is `limit`, this is the base currency to trade (the currency being bought or sold), e.g. `BTC` in `BTC_USDT`. When `type` is `market`, the meaning depends on the side: - `side`: `buy` refers to the quote currency, e.g. `USDT` in `BTC_USDT` - `side`: `sell` refers to the base currency, e.g. `BTC` in `BTC_USDT`
+     * @param string $amount Order amount.  - `type=limit`: measured in the base currency. - `type=market`: `side=buy` uses the quote currency; `side=sell` uses the base currency.  For `BTC_USDT`, the base currency is `BTC` and the quote currency is `USDT`.
      *
      * @return $this
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -1003,6 +1079,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -1021,7 +1098,7 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Sets time_in_force
      *
-     * @param string|null $time_in_force Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee - fok: FillOrKill, fill either completely or none Only `ioc` and `fok` are supported when `type`=`market`
+     * @param string|null $time_in_force Time in force:  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, immediate execution or cancellation, taker-only - poc: PendingOrCancelled, post-only, maker-only - fok: FillOrKill, fill in full or cancel in full  For `type=market`, only `ioc` and `fok` are supported.
      *
      * @return $this
      */
@@ -1036,6 +1113,7 @@ class Order implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['time_in_force'] = $time_in_force;
 
         return $this;
@@ -1054,12 +1132,13 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Sets iceberg
      *
-     * @param string|null $iceberg Amount to display for the iceberg order. Null or 0 for normal orders. Hiding all amount is not supported
+     * @param string|null $iceberg Displayed amount of an iceberg order. Omit this field or pass \"0\" for a regular order. Fully hidden orders are not supported.
      *
      * @return $this
      */
     public function setIceberg($iceberg)
     {
+        
         $this->container['iceberg'] = $iceberg;
 
         return $this;
@@ -1084,6 +1163,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setAutoBorrow($auto_borrow)
     {
+        
         $this->container['auto_borrow'] = $auto_borrow;
 
         return $this;
@@ -1108,6 +1188,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setAutoRepay($auto_repay)
     {
+        
         $this->container['auto_repay'] = $auto_repay;
 
         return $this;
@@ -1132,6 +1213,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setLeft($left)
     {
+        
         $this->container['left'] = $left;
 
         return $this;
@@ -1156,6 +1238,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setFilledAmount($filled_amount)
     {
+        
         $this->container['filled_amount'] = $filled_amount;
 
         return $this;
@@ -1180,6 +1263,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setFillPrice($fill_price)
     {
+        
         $this->container['fill_price'] = $fill_price;
 
         return $this;
@@ -1204,6 +1288,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setFilledTotal($filled_total)
     {
+        
         $this->container['filled_total'] = $filled_total;
 
         return $this;
@@ -1228,6 +1313,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setAvgDealPrice($avg_deal_price)
     {
+        
         $this->container['avg_deal_price'] = $avg_deal_price;
 
         return $this;
@@ -1252,6 +1338,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -1276,6 +1363,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setFeeCurrency($fee_currency)
     {
+        
         $this->container['fee_currency'] = $fee_currency;
 
         return $this;
@@ -1300,6 +1388,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setPointFee($point_fee)
     {
+        
         $this->container['point_fee'] = $point_fee;
 
         return $this;
@@ -1324,6 +1413,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setGtFee($gt_fee)
     {
+        
         $this->container['gt_fee'] = $gt_fee;
 
         return $this;
@@ -1348,6 +1438,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setGtMakerFee($gt_maker_fee)
     {
+        
         $this->container['gt_maker_fee'] = $gt_maker_fee;
 
         return $this;
@@ -1372,6 +1463,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setGtTakerFee($gt_taker_fee)
     {
+        
         $this->container['gt_taker_fee'] = $gt_taker_fee;
 
         return $this;
@@ -1396,6 +1488,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setGtDiscount($gt_discount)
     {
+        
         $this->container['gt_discount'] = $gt_discount;
 
         return $this;
@@ -1420,6 +1513,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setRebatedFee($rebated_fee)
     {
+        
         $this->container['rebated_fee'] = $rebated_fee;
 
         return $this;
@@ -1444,6 +1538,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setRebatedFeeCurrency($rebated_fee_currency)
     {
+        
         $this->container['rebated_fee_currency'] = $rebated_fee_currency;
 
         return $this;
@@ -1468,6 +1563,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setStpId($stp_id)
     {
+        
         $this->container['stp_id'] = $stp_id;
 
         return $this;
@@ -1501,6 +1597,7 @@ class Order implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['stp_act'] = $stp_act;
 
         return $this;
@@ -1534,6 +1631,7 @@ class Order implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['finish_as'] = $finish_as;
 
         return $this;
@@ -1558,6 +1656,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setActionMode($action_mode)
     {
+        
         $this->container['action_mode'] = $action_mode;
 
         return $this;
@@ -1582,6 +1681,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setSlippage($slippage)
     {
+        
         $this->container['slippage'] = $slippage;
 
         return $this;
@@ -1606,6 +1706,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setStopProfit($stop_profit)
     {
+        
         $this->container['stop_profit'] = $stop_profit;
 
         return $this;
@@ -1630,6 +1731,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setStopLoss($stop_loss)
     {
+        
         $this->container['stop_loss'] = $stop_loss;
 
         return $this;
@@ -1654,6 +1756,7 @@ class Order implements ModelInterface, ArrayAccess
      */
     public function setUseEarn($use_earn)
     {
+        
         $this->container['use_earn'] = $use_earn;
 
         return $this;

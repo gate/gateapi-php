@@ -90,6 +90,27 @@ class P2pMerchantBooksPlaceBizPushOrderResponseData implements ModelInterface, A
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -181,7 +202,9 @@ class P2pMerchantBooksPlaceBizPushOrderResponseData implements ModelInterface, A
     public function __construct(array $data = null)
     {
         $this->container['risk_code'] = isset($data['risk_code']) ? $data['risk_code'] : null;
+        
         $this->container['risk_event'] = isset($data['risk_event']) ? $data['risk_event'] : null;
+        
     }
 
     /**
@@ -227,6 +250,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseData implements ModelInterface, A
      */
     public function setRiskCode($risk_code)
     {
+        
         $this->container['risk_code'] = $risk_code;
 
         return $this;
@@ -251,6 +275,7 @@ class P2pMerchantBooksPlaceBizPushOrderResponseData implements ModelInterface, A
      */
     public function setRiskEvent($risk_event)
     {
+        
         $this->container['risk_event'] = $risk_event;
 
         return $this;

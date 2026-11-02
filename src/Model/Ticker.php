@@ -119,6 +119,27 @@ class Ticker implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -255,22 +276,39 @@ class Ticker implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['last'] = isset($data['last']) ? $data['last'] : null;
+        
         $this->container['lowest_ask'] = isset($data['lowest_ask']) ? $data['lowest_ask'] : null;
+        
         $this->container['lowest_size'] = isset($data['lowest_size']) ? $data['lowest_size'] : null;
+        
         $this->container['highest_bid'] = isset($data['highest_bid']) ? $data['highest_bid'] : null;
+        
         $this->container['highest_size'] = isset($data['highest_size']) ? $data['highest_size'] : null;
+        
         $this->container['change_percentage'] = isset($data['change_percentage']) ? $data['change_percentage'] : null;
+        
         $this->container['change_utc0'] = isset($data['change_utc0']) ? $data['change_utc0'] : null;
+        
         $this->container['change_utc8'] = isset($data['change_utc8']) ? $data['change_utc8'] : null;
+        
         $this->container['base_volume'] = isset($data['base_volume']) ? $data['base_volume'] : null;
+        
         $this->container['quote_volume'] = isset($data['quote_volume']) ? $data['quote_volume'] : null;
+        
         $this->container['high_24h'] = isset($data['high_24h']) ? $data['high_24h'] : null;
+        
         $this->container['low_24h'] = isset($data['low_24h']) ? $data['low_24h'] : null;
+        
         $this->container['etf_net_value'] = isset($data['etf_net_value']) ? $data['etf_net_value'] : null;
+        
         $this->container['etf_pre_net_value'] = isset($data['etf_pre_net_value']) ? $data['etf_pre_net_value'] : null;
+        
         $this->container['etf_pre_timestamp'] = isset($data['etf_pre_timestamp']) ? $data['etf_pre_timestamp'] : null;
+        
         $this->container['etf_leverage'] = isset($data['etf_leverage']) ? $data['etf_leverage'] : null;
+        
     }
 
     /**
@@ -316,6 +354,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -340,6 +379,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setLast($last)
     {
+        
         $this->container['last'] = $last;
 
         return $this;
@@ -364,6 +404,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setLowestAsk($lowest_ask)
     {
+        
         $this->container['lowest_ask'] = $lowest_ask;
 
         return $this;
@@ -388,6 +429,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setLowestSize($lowest_size)
     {
+        
         $this->container['lowest_size'] = $lowest_size;
 
         return $this;
@@ -412,6 +454,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setHighestBid($highest_bid)
     {
+        
         $this->container['highest_bid'] = $highest_bid;
 
         return $this;
@@ -436,6 +479,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setHighestSize($highest_size)
     {
+        
         $this->container['highest_size'] = $highest_size;
 
         return $this;
@@ -460,6 +504,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setChangePercentage($change_percentage)
     {
+        
         $this->container['change_percentage'] = $change_percentage;
 
         return $this;
@@ -484,6 +529,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setChangeUtc0($change_utc0)
     {
+        
         $this->container['change_utc0'] = $change_utc0;
 
         return $this;
@@ -508,6 +554,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setChangeUtc8($change_utc8)
     {
+        
         $this->container['change_utc8'] = $change_utc8;
 
         return $this;
@@ -532,6 +579,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setBaseVolume($base_volume)
     {
+        
         $this->container['base_volume'] = $base_volume;
 
         return $this;
@@ -556,6 +604,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setQuoteVolume($quote_volume)
     {
+        
         $this->container['quote_volume'] = $quote_volume;
 
         return $this;
@@ -580,6 +629,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setHigh24h($high_24h)
     {
+        
         $this->container['high_24h'] = $high_24h;
 
         return $this;
@@ -604,6 +654,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setLow24h($low_24h)
     {
+        
         $this->container['low_24h'] = $low_24h;
 
         return $this;
@@ -628,6 +679,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setEtfNetValue($etf_net_value)
     {
+        
         $this->container['etf_net_value'] = $etf_net_value;
 
         return $this;
@@ -652,6 +704,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setEtfPreNetValue($etf_pre_net_value)
     {
+        
         $this->container['etf_pre_net_value'] = $etf_pre_net_value;
 
         return $this;
@@ -676,6 +729,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setEtfPreTimestamp($etf_pre_timestamp)
     {
+        
         $this->container['etf_pre_timestamp'] = $etf_pre_timestamp;
 
         return $this;
@@ -700,6 +754,7 @@ class Ticker implements ModelInterface, ArrayAccess
      */
     public function setEtfLeverage($etf_leverage)
     {
+        
         $this->container['etf_leverage'] = $etf_leverage;
 
         return $this;

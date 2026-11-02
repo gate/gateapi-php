@@ -93,6 +93,27 @@ class DepositAddress implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class DepositAddress implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        
         $this->container['min_deposit_amount'] = isset($data['min_deposit_amount']) ? $data['min_deposit_amount'] : null;
+        
         $this->container['multichain_addresses'] = isset($data['multichain_addresses']) ? $data['multichain_addresses'] : null;
+        
     }
 
     /**
@@ -244,6 +269,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -268,6 +294,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
      */
     public function setAddress($address)
     {
+        
         $this->container['address'] = $address;
 
         return $this;
@@ -292,6 +319,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
      */
     public function setMinDepositAmount($min_deposit_amount)
     {
+        
         $this->container['min_deposit_amount'] = $min_deposit_amount;
 
         return $this;
@@ -316,6 +344,7 @@ class DepositAddress implements ModelInterface, ArrayAccess
      */
     public function setMultichainAddresses($multichain_addresses)
     {
+        
         $this->container['multichain_addresses'] = $multichain_addresses;
 
         return $this;

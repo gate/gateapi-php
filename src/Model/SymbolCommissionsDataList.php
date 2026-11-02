@@ -92,6 +92,27 @@ class SymbolCommissionsDataList implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class SymbolCommissionsDataList implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['category_code'] = isset($data['category_code']) ? $data['category_code'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['fee_per_lot'] = isset($data['fee_per_lot']) ? $data['fee_per_lot'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class SymbolCommissionsDataList implements ModelInterface, ArrayAccess
      */
     public function setCategoryCode($category_code)
     {
+        
         $this->container['category_code'] = $category_code;
 
         return $this;
@@ -257,6 +282,7 @@ class SymbolCommissionsDataList implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -281,6 +307,7 @@ class SymbolCommissionsDataList implements ModelInterface, ArrayAccess
      */
     public function setFeePerLot($fee_per_lot)
     {
+        
         $this->container['fee_per_lot'] = $fee_per_lot;
 
         return $this;

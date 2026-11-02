@@ -148,6 +148,27 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -375,36 +396,67 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['unit_price'] = isset($data['unit_price']) ? $data['unit_price'] : null;
+        
         $this->container['number'] = isset($data['number']) ? $data['number'] : null;
+        
         $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
+        
         $this->container['pay_type_json'] = isset($data['pay_type_json']) ? $data['pay_type_json'] : null;
+        
         $this->container['rate_fixed'] = isset($data['rate_fixed']) ? $data['rate_fixed'] : null;
+        
         $this->container['oid'] = isset($data['oid']) ? $data['oid'] : null;
+        
         $this->container['min_amount'] = isset($data['min_amount']) ? $data['min_amount'] : null;
+        
         $this->container['max_amount'] = isset($data['max_amount']) ? $data['max_amount'] : null;
+        
         $this->container['limit_basis'] = isset($data['limit_basis']) ? $data['limit_basis'] : null;
+        
         $this->container['fiat_min_amount'] = isset($data['fiat_min_amount']) ? $data['fiat_min_amount'] : null;
+        
         $this->container['fiat_max_amount'] = isset($data['fiat_max_amount']) ? $data['fiat_max_amount'] : null;
+        
         $this->container['tier_limit'] = isset($data['tier_limit']) ? $data['tier_limit'] : null;
+        
         $this->container['verified_limit'] = isset($data['verified_limit']) ? $data['verified_limit'] : null;
+        
         $this->container['reg_time_limit'] = isset($data['reg_time_limit']) ? $data['reg_time_limit'] : null;
+        
         $this->container['advertisers_limit'] = isset($data['advertisers_limit']) ? $data['advertisers_limit'] : null;
+        
         $this->container['polymarket_limit'] = isset($data['polymarket_limit']) ? $data['polymarket_limit'] : null;
+        
         $this->container['expire_min'] = isset($data['expire_min']) ? $data['expire_min'] : null;
+        
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        
         $this->container['auto_reply'] = isset($data['auto_reply']) ? $data['auto_reply'] : null;
+        
         $this->container['min_completed_limit'] = isset($data['min_completed_limit']) ? $data['min_completed_limit'] : null;
+        
         $this->container['max_completed_limit'] = isset($data['max_completed_limit']) ? $data['max_completed_limit'] : null;
+        
         $this->container['completed_rate_limit'] = isset($data['completed_rate_limit']) ? $data['completed_rate_limit'] : null;
+        
         $this->container['user_country_limit'] = isset($data['user_country_limit']) ? $data['user_country_limit'] : null;
+        
         $this->container['user_order_limit'] = isset($data['user_order_limit']) ? $data['user_order_limit'] : null;
+        
         $this->container['rate_reference_id'] = isset($data['rate_reference_id']) ? $data['rate_reference_id'] : null;
+        
         $this->container['rate_offset'] = isset($data['rate_offset']) ? $data['rate_offset'] : null;
+        
         $this->container['float_trend'] = isset($data['float_trend']) ? $data['float_trend'] : null;
+        
         $this->container['team_payment_uid'] = isset($data['team_payment_uid']) ? $data['team_payment_uid'] : null;
+        
     }
 
     /**
@@ -426,7 +478,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'type' can't be null";
         }
         $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ((isset($this->container['type'])) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -443,7 +495,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'pay_type' can't be null";
         }
         $allowedValues = $this->getLimitBasisAllowableValues();
-        if (!is_null($this->container['limit_basis']) && !in_array($this->container['limit_basis'], $allowedValues, true)) {
+        if ((isset($this->container['limit_basis'])) && !in_array($this->container['limit_basis'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'limit_basis', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -451,7 +503,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getPolymarketLimitAllowableValues();
-        if (!is_null($this->container['polymarket_limit']) && !in_array($this->container['polymarket_limit'], $allowedValues, true)) {
+        if ((isset($this->container['polymarket_limit'])) && !in_array($this->container['polymarket_limit'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'polymarket_limit', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -492,6 +544,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setCurrencyType($currency_type)
     {
+        
         $this->container['currency_type'] = $currency_type;
 
         return $this;
@@ -516,6 +569,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -549,6 +603,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -573,6 +628,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setUnitPrice($unit_price)
     {
+        
         $this->container['unit_price'] = $unit_price;
 
         return $this;
@@ -597,6 +653,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setNumber($number)
     {
+        
         $this->container['number'] = $number;
 
         return $this;
@@ -621,6 +678,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setPayType($pay_type)
     {
+        
         $this->container['pay_type'] = $pay_type;
 
         return $this;
@@ -645,6 +703,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setPayTypeJson($pay_type_json)
     {
+        
         $this->container['pay_type_json'] = $pay_type_json;
 
         return $this;
@@ -669,6 +728,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setRateFixed($rate_fixed)
     {
+        
         $this->container['rate_fixed'] = $rate_fixed;
 
         return $this;
@@ -693,6 +753,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setOid($oid)
     {
+        
         $this->container['oid'] = $oid;
 
         return $this;
@@ -717,6 +778,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setMinAmount($min_amount)
     {
+        
         $this->container['min_amount'] = $min_amount;
 
         return $this;
@@ -741,6 +803,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setMaxAmount($max_amount)
     {
+        
         $this->container['max_amount'] = $max_amount;
 
         return $this;
@@ -774,6 +837,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['limit_basis'] = $limit_basis;
 
         return $this;
@@ -798,6 +862,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setFiatMinAmount($fiat_min_amount)
     {
+        
         $this->container['fiat_min_amount'] = $fiat_min_amount;
 
         return $this;
@@ -822,6 +887,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setFiatMaxAmount($fiat_max_amount)
     {
+        
         $this->container['fiat_max_amount'] = $fiat_max_amount;
 
         return $this;
@@ -846,6 +912,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setTierLimit($tier_limit)
     {
+        
         $this->container['tier_limit'] = $tier_limit;
 
         return $this;
@@ -870,6 +937,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setVerifiedLimit($verified_limit)
     {
+        
         $this->container['verified_limit'] = $verified_limit;
 
         return $this;
@@ -894,6 +962,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setRegTimeLimit($reg_time_limit)
     {
+        
         $this->container['reg_time_limit'] = $reg_time_limit;
 
         return $this;
@@ -918,6 +987,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setAdvertisersLimit($advertisers_limit)
     {
+        
         $this->container['advertisers_limit'] = $advertisers_limit;
 
         return $this;
@@ -951,6 +1021,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['polymarket_limit'] = $polymarket_limit;
 
         return $this;
@@ -975,6 +1046,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setExpireMin($expire_min)
     {
+        
         $this->container['expire_min'] = $expire_min;
 
         return $this;
@@ -999,6 +1071,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setTradeTips($trade_tips)
     {
+        
         $this->container['trade_tips'] = $trade_tips;
 
         return $this;
@@ -1023,6 +1096,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setAutoReply($auto_reply)
     {
+        
         $this->container['auto_reply'] = $auto_reply;
 
         return $this;
@@ -1047,6 +1121,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setMinCompletedLimit($min_completed_limit)
     {
+        
         $this->container['min_completed_limit'] = $min_completed_limit;
 
         return $this;
@@ -1071,6 +1146,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setMaxCompletedLimit($max_completed_limit)
     {
+        
         $this->container['max_completed_limit'] = $max_completed_limit;
 
         return $this;
@@ -1095,6 +1171,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setCompletedRateLimit($completed_rate_limit)
     {
+        
         $this->container['completed_rate_limit'] = $completed_rate_limit;
 
         return $this;
@@ -1119,6 +1196,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setUserCountryLimit($user_country_limit)
     {
+        
         $this->container['user_country_limit'] = $user_country_limit;
 
         return $this;
@@ -1143,6 +1221,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setUserOrderLimit($user_order_limit)
     {
+        
         $this->container['user_order_limit'] = $user_order_limit;
 
         return $this;
@@ -1167,6 +1246,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setRateReferenceId($rate_reference_id)
     {
+        
         $this->container['rate_reference_id'] = $rate_reference_id;
 
         return $this;
@@ -1191,6 +1271,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setRateOffset($rate_offset)
     {
+        
         $this->container['rate_offset'] = $rate_offset;
 
         return $this;
@@ -1215,6 +1296,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setFloatTrend($float_trend)
     {
+        
         $this->container['float_trend'] = $float_trend;
 
         return $this;
@@ -1239,6 +1321,7 @@ class PlaceBizPushOrder implements ModelInterface, ArrayAccess
      */
     public function setTeamPaymentUid($team_payment_uid)
     {
+        
         $this->container['team_payment_uid'] = $team_payment_uid;
 
         return $this;

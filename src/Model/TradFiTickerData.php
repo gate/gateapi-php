@@ -118,6 +118,27 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -251,21 +272,37 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['highest_price'] = isset($data['highest_price']) ? $data['highest_price'] : null;
+        
         $this->container['lowest_price'] = isset($data['lowest_price']) ? $data['lowest_price'] : null;
+        
         $this->container['price_change'] = isset($data['price_change']) ? $data['price_change'] : null;
+        
         $this->container['price_change_amount'] = isset($data['price_change_amount']) ? $data['price_change_amount'] : null;
+        
         $this->container['today_open_price'] = isset($data['today_open_price']) ? $data['today_open_price'] : null;
+        
         $this->container['last_today_close_price'] = isset($data['last_today_close_price']) ? $data['last_today_close_price'] : null;
+        
         $this->container['last_price'] = isset($data['last_price']) ? $data['last_price'] : null;
+        
         $this->container['bid_price'] = isset($data['bid_price']) ? $data['bid_price'] : null;
+        
         $this->container['ask_price'] = isset($data['ask_price']) ? $data['ask_price'] : null;
+        
         $this->container['favorite'] = isset($data['favorite']) ? $data['favorite'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['close_time'] = isset($data['close_time']) ? $data['close_time'] : null;
+        
         $this->container['open_time'] = isset($data['open_time']) ? $data['open_time'] : null;
+        
         $this->container['next_open_time'] = isset($data['next_open_time']) ? $data['next_open_time'] : null;
+        
         $this->container['trade_mode'] = isset($data['trade_mode']) ? $data['trade_mode'] : null;
+        
         $this->container['category_name'] = isset($data['category_name']) ? $data['category_name'] : null;
+        
     }
 
     /**
@@ -311,6 +348,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setHighestPrice($highest_price)
     {
+        
         $this->container['highest_price'] = $highest_price;
 
         return $this;
@@ -335,6 +373,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setLowestPrice($lowest_price)
     {
+        
         $this->container['lowest_price'] = $lowest_price;
 
         return $this;
@@ -359,6 +398,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setPriceChange($price_change)
     {
+        
         $this->container['price_change'] = $price_change;
 
         return $this;
@@ -383,6 +423,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setPriceChangeAmount($price_change_amount)
     {
+        
         $this->container['price_change_amount'] = $price_change_amount;
 
         return $this;
@@ -407,6 +448,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setTodayOpenPrice($today_open_price)
     {
+        
         $this->container['today_open_price'] = $today_open_price;
 
         return $this;
@@ -431,6 +473,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setLastTodayClosePrice($last_today_close_price)
     {
+        
         $this->container['last_today_close_price'] = $last_today_close_price;
 
         return $this;
@@ -455,6 +498,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setLastPrice($last_price)
     {
+        
         $this->container['last_price'] = $last_price;
 
         return $this;
@@ -479,6 +523,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setBidPrice($bid_price)
     {
+        
         $this->container['bid_price'] = $bid_price;
 
         return $this;
@@ -503,6 +548,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setAskPrice($ask_price)
     {
+        
         $this->container['ask_price'] = $ask_price;
 
         return $this;
@@ -527,6 +573,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setFavorite($favorite)
     {
+        
         $this->container['favorite'] = $favorite;
 
         return $this;
@@ -551,6 +598,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -575,6 +623,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setCloseTime($close_time)
     {
+        
         $this->container['close_time'] = $close_time;
 
         return $this;
@@ -599,6 +648,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setOpenTime($open_time)
     {
+        
         $this->container['open_time'] = $open_time;
 
         return $this;
@@ -623,6 +673,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setNextOpenTime($next_open_time)
     {
+        
         $this->container['next_open_time'] = $next_open_time;
 
         return $this;
@@ -647,6 +698,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setTradeMode($trade_mode)
     {
+        
         $this->container['trade_mode'] = $trade_mode;
 
         return $this;
@@ -671,6 +723,7 @@ class TradFiTickerData implements ModelInterface, ArrayAccess
      */
     public function setCategoryName($category_name)
     {
+        
         $this->container['category_name'] = $category_name;
 
         return $this;

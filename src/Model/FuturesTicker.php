@@ -137,6 +137,27 @@ class FuturesTicker implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -300,31 +321,57 @@ class FuturesTicker implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['last'] = isset($data['last']) ? $data['last'] : null;
+        
         $this->container['change_percentage'] = isset($data['change_percentage']) ? $data['change_percentage'] : null;
+        
         $this->container['total_size'] = isset($data['total_size']) ? $data['total_size'] : null;
+        
         $this->container['low_24h'] = isset($data['low_24h']) ? $data['low_24h'] : null;
+        
         $this->container['high_24h'] = isset($data['high_24h']) ? $data['high_24h'] : null;
+        
         $this->container['volume_24h'] = isset($data['volume_24h']) ? $data['volume_24h'] : null;
+        
         $this->container['volume_24h_btc'] = isset($data['volume_24h_btc']) ? $data['volume_24h_btc'] : null;
+        
         $this->container['volume_24h_usd'] = isset($data['volume_24h_usd']) ? $data['volume_24h_usd'] : null;
+        
         $this->container['volume_24h_base'] = isset($data['volume_24h_base']) ? $data['volume_24h_base'] : null;
+        
         $this->container['volume_24h_quote'] = isset($data['volume_24h_quote']) ? $data['volume_24h_quote'] : null;
+        
         $this->container['volume_24h_settle'] = isset($data['volume_24h_settle']) ? $data['volume_24h_settle'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['funding_rate'] = isset($data['funding_rate']) ? $data['funding_rate'] : null;
+        
         $this->container['funding_rate_indicative'] = isset($data['funding_rate_indicative']) ? $data['funding_rate_indicative'] : null;
+        
         $this->container['index_price'] = isset($data['index_price']) ? $data['index_price'] : null;
+        
         $this->container['quanto_base_rate'] = isset($data['quanto_base_rate']) ? $data['quanto_base_rate'] : null;
+        
         $this->container['lowest_ask'] = isset($data['lowest_ask']) ? $data['lowest_ask'] : null;
+        
         $this->container['lowest_size'] = isset($data['lowest_size']) ? $data['lowest_size'] : null;
+        
         $this->container['highest_bid'] = isset($data['highest_bid']) ? $data['highest_bid'] : null;
+        
         $this->container['highest_size'] = isset($data['highest_size']) ? $data['highest_size'] : null;
+        
         $this->container['change_utc0'] = isset($data['change_utc0']) ? $data['change_utc0'] : null;
+        
         $this->container['change_utc8'] = isset($data['change_utc8']) ? $data['change_utc8'] : null;
+        
         $this->container['change_price'] = isset($data['change_price']) ? $data['change_price'] : null;
+        
         $this->container['change_utc0_price'] = isset($data['change_utc0_price']) ? $data['change_utc0_price'] : null;
+        
         $this->container['change_utc8_price'] = isset($data['change_utc8_price']) ? $data['change_utc8_price'] : null;
+        
     }
 
     /**
@@ -370,6 +417,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -394,6 +442,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setLast($last)
     {
+        
         $this->container['last'] = $last;
 
         return $this;
@@ -418,6 +467,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setChangePercentage($change_percentage)
     {
+        
         $this->container['change_percentage'] = $change_percentage;
 
         return $this;
@@ -442,6 +492,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setTotalSize($total_size)
     {
+        
         $this->container['total_size'] = $total_size;
 
         return $this;
@@ -466,6 +517,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setLow24h($low_24h)
     {
+        
         $this->container['low_24h'] = $low_24h;
 
         return $this;
@@ -490,6 +542,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setHigh24h($high_24h)
     {
+        
         $this->container['high_24h'] = $high_24h;
 
         return $this;
@@ -514,6 +567,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setVolume24h($volume_24h)
     {
+        
         $this->container['volume_24h'] = $volume_24h;
 
         return $this;
@@ -538,6 +592,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setVolume24hBtc($volume_24h_btc)
     {
+        
         $this->container['volume_24h_btc'] = $volume_24h_btc;
 
         return $this;
@@ -562,6 +617,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setVolume24hUsd($volume_24h_usd)
     {
+        
         $this->container['volume_24h_usd'] = $volume_24h_usd;
 
         return $this;
@@ -586,6 +642,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setVolume24hBase($volume_24h_base)
     {
+        
         $this->container['volume_24h_base'] = $volume_24h_base;
 
         return $this;
@@ -610,6 +667,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setVolume24hQuote($volume_24h_quote)
     {
+        
         $this->container['volume_24h_quote'] = $volume_24h_quote;
 
         return $this;
@@ -634,6 +692,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setVolume24hSettle($volume_24h_settle)
     {
+        
         $this->container['volume_24h_settle'] = $volume_24h_settle;
 
         return $this;
@@ -658,6 +717,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -682,6 +742,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setFundingRate($funding_rate)
     {
+        
         $this->container['funding_rate'] = $funding_rate;
 
         return $this;
@@ -706,6 +767,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setFundingRateIndicative($funding_rate_indicative)
     {
+        
         $this->container['funding_rate_indicative'] = $funding_rate_indicative;
 
         return $this;
@@ -730,6 +792,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setIndexPrice($index_price)
     {
+        
         $this->container['index_price'] = $index_price;
 
         return $this;
@@ -754,6 +817,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setQuantoBaseRate($quanto_base_rate)
     {
+        
         $this->container['quanto_base_rate'] = $quanto_base_rate;
 
         return $this;
@@ -778,6 +842,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setLowestAsk($lowest_ask)
     {
+        
         $this->container['lowest_ask'] = $lowest_ask;
 
         return $this;
@@ -802,6 +867,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setLowestSize($lowest_size)
     {
+        
         $this->container['lowest_size'] = $lowest_size;
 
         return $this;
@@ -826,6 +892,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setHighestBid($highest_bid)
     {
+        
         $this->container['highest_bid'] = $highest_bid;
 
         return $this;
@@ -850,6 +917,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setHighestSize($highest_size)
     {
+        
         $this->container['highest_size'] = $highest_size;
 
         return $this;
@@ -874,6 +942,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setChangeUtc0($change_utc0)
     {
+        
         $this->container['change_utc0'] = $change_utc0;
 
         return $this;
@@ -898,6 +967,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setChangeUtc8($change_utc8)
     {
+        
         $this->container['change_utc8'] = $change_utc8;
 
         return $this;
@@ -922,6 +992,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setChangePrice($change_price)
     {
+        
         $this->container['change_price'] = $change_price;
 
         return $this;
@@ -946,6 +1017,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setChangeUtc0Price($change_utc0_price)
     {
+        
         $this->container['change_utc0_price'] = $change_utc0_price;
 
         return $this;
@@ -970,6 +1042,7 @@ class FuturesTicker implements ModelInterface, ArrayAccess
      */
     public function setChangeUtc8Price($change_utc8_price)
     {
+        
         $this->container['change_utc8_price'] = $change_utc8_price;
 
         return $this;

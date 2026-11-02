@@ -99,6 +99,27 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['rid'] = isset($data['rid']) ? $data['rid'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['rate_year'] = isset($data['rate_year']) ? $data['rate_year'] : null;
+        
         $this->container['already_buy_total_amount'] = isset($data['already_buy_total_amount']) ? $data['already_buy_total_amount'] : null;
+        
         $this->container['personal_max_amount'] = isset($data['personal_max_amount']) ? $data['personal_max_amount'] : null;
+        
         $this->container['personal_min_amount'] = isset($data['personal_min_amount']) ? $data['personal_min_amount'] : null;
+        
         $this->container['transaction_config'] = isset($data['transaction_config']) ? $data['transaction_config'] : null;
+        
     }
 
     /**
@@ -274,6 +302,7 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
      */
     public function setRid($rid)
     {
+        
         $this->container['rid'] = $rid;
 
         return $this;
@@ -298,6 +327,7 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -322,6 +352,7 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
      */
     public function setRateYear($rate_year)
     {
+        
         $this->container['rate_year'] = $rate_year;
 
         return $this;
@@ -346,6 +377,7 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
      */
     public function setAlreadyBuyTotalAmount($already_buy_total_amount)
     {
+        
         $this->container['already_buy_total_amount'] = $already_buy_total_amount;
 
         return $this;
@@ -370,6 +402,7 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
      */
     public function setPersonalMaxAmount($personal_max_amount)
     {
+        
         $this->container['personal_max_amount'] = $personal_max_amount;
 
         return $this;
@@ -394,6 +427,7 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
      */
     public function setPersonalMinAmount($personal_min_amount)
     {
+        
         $this->container['personal_min_amount'] = $personal_min_amount;
 
         return $this;
@@ -418,6 +452,7 @@ class LaunchPoolV4RewardPool implements ModelInterface, ArrayAccess
      */
     public function setTransactionConfig($transaction_config)
     {
+        
         $this->container['transaction_config'] = $transaction_config;
 
         return $this;

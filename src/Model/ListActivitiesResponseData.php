@@ -98,6 +98,27 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['list'] = isset($data['list']) ? $data['list'] : null;
+        
         $this->container['page'] = isset($data['page']) ? $data['page'] : null;
+        
         $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        
         $this->container['page_count'] = isset($data['page_count']) ? $data['page_count'] : null;
+        
         $this->container['total_count'] = isset($data['total_count']) ? $data['total_count'] : null;
+        
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        
     }
 
     /**
@@ -269,6 +296,7 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
      */
     public function setList($list)
     {
+        
         $this->container['list'] = $list;
 
         return $this;
@@ -293,6 +321,7 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
      */
     public function setPage($page)
     {
+        
         $this->container['page'] = $page;
 
         return $this;
@@ -317,6 +346,7 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
      */
     public function setPageSize($page_size)
     {
+        
         $this->container['page_size'] = $page_size;
 
         return $this;
@@ -341,6 +371,7 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
      */
     public function setPageCount($page_count)
     {
+        
         $this->container['page_count'] = $page_count;
 
         return $this;
@@ -365,6 +396,7 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
      */
     public function setTotalCount($total_count)
     {
+        
         $this->container['total_count'] = $total_count;
 
         return $this;
@@ -389,6 +421,7 @@ class ListActivitiesResponseData implements ModelInterface, ArrayAccess
      */
     public function setUrl($url)
     {
+        
         $this->container['url'] = $url;
 
         return $this;

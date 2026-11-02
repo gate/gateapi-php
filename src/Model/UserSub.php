@@ -93,6 +93,27 @@ class UserSub implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class UserSub implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['belong'] = isset($data['belong']) ? $data['belong'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['ref_uid'] = isset($data['ref_uid']) ? $data['ref_uid'] : null;
+        
     }
 
     /**
@@ -238,6 +263,7 @@ class UserSub implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -262,6 +288,7 @@ class UserSub implements ModelInterface, ArrayAccess
      */
     public function setBelong($belong)
     {
+        
         $this->container['belong'] = $belong;
 
         return $this;
@@ -286,6 +313,7 @@ class UserSub implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -310,6 +338,7 @@ class UserSub implements ModelInterface, ArrayAccess
      */
     public function setRefUid($ref_uid)
     {
+        
         $this->container['ref_uid'] = $ref_uid;
 
         return $this;

@@ -92,6 +92,27 @@ class DualModifyOrderReinvestParams implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class DualModifyOrderReinvestParams implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['effective_time_duration'] = isset($data['effective_time_duration']) ? $data['effective_time_duration'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class DualModifyOrderReinvestParams implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -257,6 +282,7 @@ class DualModifyOrderReinvestParams implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -281,6 +307,7 @@ class DualModifyOrderReinvestParams implements ModelInterface, ArrayAccess
      */
     public function setEffectiveTimeDuration($effective_time_duration)
     {
+        
         $this->container['effective_time_duration'] = $effective_time_duration;
 
         return $this;

@@ -95,6 +95,27 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['current'] = isset($data['current']) ? $data['current'] : null;
+        
         $this->container['update'] = isset($data['update']) ? $data['update'] : null;
+        
         $this->container['asks'] = isset($data['asks']) ? $data['asks'] : null;
+        
         $this->container['bids'] = isset($data['bids']) ? $data['bids'] : null;
+        
     }
 
     /**
@@ -250,6 +276,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -274,6 +301,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
      */
     public function setCurrent($current)
     {
+        
         $this->container['current'] = $current;
 
         return $this;
@@ -298,6 +326,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
      */
     public function setUpdate($update)
     {
+        
         $this->container['update'] = $update;
 
         return $this;
@@ -322,6 +351,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
      */
     public function setAsks($asks)
     {
+        
         $this->container['asks'] = $asks;
 
         return $this;
@@ -346,6 +376,7 @@ class DeliveryOrderBook implements ModelInterface, ArrayAccess
      */
     public function setBids($bids)
     {
+        
         $this->container['bids'] = $bids;
 
         return $this;

@@ -106,6 +106,27 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -236,15 +257,25 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['money'] = isset($data['money']) ? $data['money'] : null;
+        
         $this->container['low_price'] = isset($data['low_price']) ? $data['low_price'] : null;
+        
         $this->container['high_price'] = isset($data['high_price']) ? $data['high_price'] : null;
+        
         $this->container['grid_num'] = isset($data['grid_num']) ? $data['grid_num'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['trigger_price'] = isset($data['trigger_price']) ? $data['trigger_price'] : null;
+        
         $this->container['stop_profit'] = isset($data['stop_profit']) ? $data['stop_profit'] : null;
+        
         $this->container['stop_loss'] = isset($data['stop_loss']) ? $data['stop_loss'] : null;
+        
         $this->container['profit_sharing_ratio'] = isset($data['profit_sharing_ratio']) ? $data['profit_sharing_ratio'] : null;
+        
         $this->container['is_use_base'] = isset($data['is_use_base']) ? $data['is_use_base'] : null;
+        
     }
 
     /**
@@ -268,15 +299,17 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
         if ($this->container['grid_num'] === null) {
             $invalidProperties[] = "'grid_num' can't be null";
         }
+        
         if (($this->container['grid_num'] < 1)) {
             $invalidProperties[] = "invalid value for 'grid_num', must be bigger than or equal to 1.";
         }
 
+        
         if ($this->container['price_type'] === null) {
             $invalidProperties[] = "'price_type' can't be null";
         }
         $allowedValues = $this->getPriceTypeAllowableValues();
-        if (!is_null($this->container['price_type']) && !in_array($this->container['price_type'], $allowedValues, true)) {
+        if ((isset($this->container['price_type'])) && !in_array($this->container['price_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'price_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -317,6 +350,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setMoney($money)
     {
+        
         $this->container['money'] = $money;
 
         return $this;
@@ -341,6 +375,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setLowPrice($low_price)
     {
+        
         $this->container['low_price'] = $low_price;
 
         return $this;
@@ -365,6 +400,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setHighPrice($high_price)
     {
+        
         $this->container['high_price'] = $high_price;
 
         return $this;
@@ -389,6 +425,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setGridNum($grid_num)
     {
+        
 
         if (($grid_num < 1)) {
             throw new \InvalidArgumentException('invalid value for $grid_num when calling SpotGridCreateParams., must be bigger than or equal to 1.');
@@ -427,6 +464,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -451,6 +489,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setTriggerPrice($trigger_price)
     {
+        
         $this->container['trigger_price'] = $trigger_price;
 
         return $this;
@@ -475,6 +514,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setStopProfit($stop_profit)
     {
+        
         $this->container['stop_profit'] = $stop_profit;
 
         return $this;
@@ -499,6 +539,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setStopLoss($stop_loss)
     {
+        
         $this->container['stop_loss'] = $stop_loss;
 
         return $this;
@@ -523,6 +564,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setProfitSharingRatio($profit_sharing_ratio)
     {
+        
         $this->container['profit_sharing_ratio'] = $profit_sharing_ratio;
 
         return $this;
@@ -547,6 +589,7 @@ class SpotGridCreateParams implements ModelInterface, ArrayAccess
      */
     public function setIsUseBase($is_use_base)
     {
+        
         $this->container['is_use_base'] = $is_use_base;
 
         return $this;

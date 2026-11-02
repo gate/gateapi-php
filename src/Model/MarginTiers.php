@@ -95,6 +95,27 @@ class MarginTiers implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class MarginTiers implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        
         $this->container['margin_rate'] = isset($data['margin_rate']) ? $data['margin_rate'] : null;
+        
         $this->container['lower_limit'] = isset($data['lower_limit']) ? $data['lower_limit'] : null;
+        
         $this->container['upper_limit'] = isset($data['upper_limit']) ? $data['upper_limit'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
     }
 
     /**
@@ -244,6 +270,7 @@ class MarginTiers implements ModelInterface, ArrayAccess
      */
     public function setTier($tier)
     {
+        
         $this->container['tier'] = $tier;
 
         return $this;
@@ -268,6 +295,7 @@ class MarginTiers implements ModelInterface, ArrayAccess
      */
     public function setMarginRate($margin_rate)
     {
+        
         $this->container['margin_rate'] = $margin_rate;
 
         return $this;
@@ -292,6 +320,7 @@ class MarginTiers implements ModelInterface, ArrayAccess
      */
     public function setLowerLimit($lower_limit)
     {
+        
         $this->container['lower_limit'] = $lower_limit;
 
         return $this;
@@ -316,6 +345,7 @@ class MarginTiers implements ModelInterface, ArrayAccess
      */
     public function setUpperLimit($upper_limit)
     {
+        
         $this->container['upper_limit'] = $upper_limit;
 
         return $this;
@@ -340,6 +370,7 @@ class MarginTiers implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;

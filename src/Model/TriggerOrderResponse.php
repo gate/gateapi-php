@@ -89,6 +89,27 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -180,7 +201,9 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['id_string'] = isset($data['id_string']) ? $data['id_string'] : null;
+        
     }
 
     /**
@@ -226,6 +249,7 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -250,6 +274,7 @@ class TriggerOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setIdString($id_string)
     {
+        
         $this->container['id_string'] = $id_string;
 
         return $this;

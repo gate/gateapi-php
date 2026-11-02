@@ -107,6 +107,27 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -240,16 +261,27 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['trade_id'] = isset($data['trade_id']) ? $data['trade_id'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['close_size'] = isset($data['close_size']) ? $data['close_size'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['role'] = isset($data['role']) ? $data['role'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['point_fee'] = isset($data['point_fee']) ? $data['point_fee'] : null;
+        
     }
 
     /**
@@ -262,7 +294,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getRoleAllowableValues();
-        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
+        if ((isset($this->container['role'])) && !in_array($this->container['role'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'role', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -303,6 +335,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setTradeId($trade_id)
     {
+        
         $this->container['trade_id'] = $trade_id;
 
         return $this;
@@ -327,6 +360,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -351,6 +385,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -375,6 +410,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -399,6 +435,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -423,6 +460,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setCloseSize($close_size)
     {
+        
         $this->container['close_size'] = $close_size;
 
         return $this;
@@ -447,6 +485,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -480,6 +519,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['role'] = $role;
 
         return $this;
@@ -504,6 +544,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -528,6 +569,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -552,6 +594,7 @@ class MyFuturesTradeTimeRange implements ModelInterface, ArrayAccess
      */
     public function setPointFee($point_fee)
     {
+        
         $this->container['point_fee'] = $point_fee;
 
         return $this;

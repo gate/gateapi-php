@@ -101,6 +101,27 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -210,13 +231,21 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['total_rewards'] = isset($data['total_rewards']) ? $data['total_rewards'] : null;
+        
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        
         $this->container['rule_name'] = isset($data['rule_name']) ? $data['rule_name'] : null;
+        
         $this->container['participants'] = isset($data['participants']) ? $data['participants'] : null;
+        
         $this->container['user_max_rewards'] = isset($data['user_max_rewards']) ? $data['user_max_rewards'] : null;
+        
     }
 
     /**
@@ -262,6 +291,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -286,6 +316,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -310,6 +341,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setTotalRewards($total_rewards)
     {
+        
         $this->container['total_rewards'] = $total_rewards;
 
         return $this;
@@ -334,6 +366,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setStartTime($start_time)
     {
+        
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -358,6 +391,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setEndTime($end_time)
     {
+        
         $this->container['end_time'] = $end_time;
 
         return $this;
@@ -382,6 +416,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setRuleName($rule_name)
     {
+        
         $this->container['rule_name'] = $rule_name;
 
         return $this;
@@ -406,6 +441,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setParticipants($participants)
     {
+        
         $this->container['participants'] = $participants;
 
         return $this;
@@ -430,6 +466,7 @@ class CandyDropV4ActivityCd01 implements ModelInterface, ArrayAccess
      */
     public function setUserMaxRewards($user_max_rewards)
     {
+        
         $this->container['user_max_rewards'] = $user_max_rewards;
 
         return $this;

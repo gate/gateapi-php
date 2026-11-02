@@ -156,6 +156,27 @@ class ChaseOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -346,40 +367,75 @@ class ChaseOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['settle'] = isset($data['settle']) ? $data['settle'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['price_limit'] = isset($data['price_limit']) ? $data['price_limit'] : null;
+        
         $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
+        
         $this->container['original_status'] = isset($data['original_status']) ? $data['original_status'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
+        
         $this->container['fill_amount'] = isset($data['fill_amount']) ? $data['fill_amount'] : null;
+        
         $this->container['average_fill_price'] = isset($data['average_fill_price']) ? $data['average_fill_price'] : null;
+        
         $this->container['suborder_id'] = isset($data['suborder_id']) ? $data['suborder_id'] : null;
+        
         $this->container['is_dual_mode'] = isset($data['is_dual_mode']) ? $data['is_dual_mode'] : null;
+        
         $this->container['side_label'] = isset($data['side_label']) ? $data['side_label'] : null;
+        
         $this->container['position_side_output'] = isset($data['position_side_output']) ? $data['position_side_output'] : null;
+        
         $this->container['chase_price'] = isset($data['chase_price']) ? $data['chase_price'] : null;
+        
         $this->container['interval_sec'] = isset($data['interval_sec']) ? $data['interval_sec'] : null;
+        
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        
         $this->container['suborder_price'] = isset($data['suborder_price']) ? $data['suborder_price'] : null;
+        
         $this->container['suborder_ongoing'] = isset($data['suborder_ongoing']) ? $data['suborder_ongoing'] : null;
+        
         $this->container['suborder_finish_as'] = isset($data['suborder_finish_as']) ? $data['suborder_finish_as'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['price_gap_type'] = isset($data['price_gap_type']) ? $data['price_gap_type'] : null;
+        
         $this->container['price_gap_value'] = isset($data['price_gap_value']) ? $data['price_gap_value'] : null;
+        
         $this->container['status_code'] = isset($data['status_code']) ? $data['status_code'] : null;
+        
         $this->container['create_time_precise'] = isset($data['create_time_precise']) ? $data['create_time_precise'] : null;
+        
         $this->container['finish_time_precise'] = isset($data['finish_time_precise']) ? $data['finish_time_precise'] : null;
+        
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['error_label'] = isset($data['error_label']) ? $data['error_label'] : null;
+        
     }
 
     /**
@@ -425,6 +481,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -449,6 +506,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -473,6 +531,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -497,6 +556,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setSettle($settle)
     {
+        
         $this->container['settle'] = $settle;
 
         return $this;
@@ -521,6 +581,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -545,6 +606,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceLimit($price_limit)
     {
+        
         $this->container['price_limit'] = $price_limit;
 
         return $this;
@@ -569,6 +631,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setReduceOnly($reduce_only)
     {
+        
         $this->container['reduce_only'] = $reduce_only;
 
         return $this;
@@ -593,6 +656,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -617,6 +681,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -641,6 +706,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishTime($finish_time)
     {
+        
         $this->container['finish_time'] = $finish_time;
 
         return $this;
@@ -665,6 +731,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setOriginalStatus($original_status)
     {
+        
         $this->container['original_status'] = $original_status;
 
         return $this;
@@ -689,6 +756,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -713,6 +781,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setReason($reason)
     {
+        
         $this->container['reason'] = $reason;
 
         return $this;
@@ -737,6 +806,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setFillAmount($fill_amount)
     {
+        
         $this->container['fill_amount'] = $fill_amount;
 
         return $this;
@@ -761,6 +831,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setAverageFillPrice($average_fill_price)
     {
+        
         $this->container['average_fill_price'] = $average_fill_price;
 
         return $this;
@@ -785,6 +856,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setSuborderId($suborder_id)
     {
+        
         $this->container['suborder_id'] = $suborder_id;
 
         return $this;
@@ -809,6 +881,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setIsDualMode($is_dual_mode)
     {
+        
         $this->container['is_dual_mode'] = $is_dual_mode;
 
         return $this;
@@ -833,6 +906,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setSideLabel($side_label)
     {
+        
         $this->container['side_label'] = $side_label;
 
         return $this;
@@ -857,6 +931,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionSideOutput($position_side_output)
     {
+        
         $this->container['position_side_output'] = $position_side_output;
 
         return $this;
@@ -881,6 +956,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setChasePrice($chase_price)
     {
+        
         $this->container['chase_price'] = $chase_price;
 
         return $this;
@@ -905,6 +981,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setIntervalSec($interval_sec)
     {
+        
         $this->container['interval_sec'] = $interval_sec;
 
         return $this;
@@ -929,6 +1006,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setUpdatedAt($updated_at)
     {
+        
         $this->container['updated_at'] = $updated_at;
 
         return $this;
@@ -953,6 +1031,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setSuborderPrice($suborder_price)
     {
+        
         $this->container['suborder_price'] = $suborder_price;
 
         return $this;
@@ -977,6 +1056,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setSuborderOngoing($suborder_ongoing)
     {
+        
         $this->container['suborder_ongoing'] = $suborder_ongoing;
 
         return $this;
@@ -1001,6 +1081,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setSuborderFinishAs($suborder_finish_as)
     {
+        
         $this->container['suborder_finish_as'] = $suborder_finish_as;
 
         return $this;
@@ -1025,6 +1106,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceType($price_type)
     {
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -1049,6 +1131,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceGapType($price_gap_type)
     {
+        
         $this->container['price_gap_type'] = $price_gap_type;
 
         return $this;
@@ -1073,6 +1156,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setPriceGapValue($price_gap_value)
     {
+        
         $this->container['price_gap_value'] = $price_gap_value;
 
         return $this;
@@ -1097,6 +1181,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setStatusCode($status_code)
     {
+        
         $this->container['status_code'] = $status_code;
 
         return $this;
@@ -1121,6 +1206,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTimePrecise($create_time_precise)
     {
+        
         $this->container['create_time_precise'] = $create_time_precise;
 
         return $this;
@@ -1145,6 +1231,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishTimePrecise($finish_time_precise)
     {
+        
         $this->container['finish_time_precise'] = $finish_time_precise;
 
         return $this;
@@ -1169,6 +1256,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setPosMarginMode($pos_margin_mode)
     {
+        
         $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;
@@ -1193,6 +1281,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setPositionMode($position_mode)
     {
+        
         $this->container['position_mode'] = $position_mode;
 
         return $this;
@@ -1217,6 +1306,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -1241,6 +1331,7 @@ class ChaseOrder implements ModelInterface, ArrayAccess
      */
     public function setErrorLabel($error_label)
     {
+        
         $this->container['error_label'] = $error_label;
 
         return $this;

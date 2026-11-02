@@ -100,6 +100,27 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -206,12 +227,19 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['spot_balances'] = isset($data['spot_balances']) ? $data['spot_balances'] : null;
+        
         $this->container['spot_orders'] = isset($data['spot_orders']) ? $data['spot_orders'] : null;
+        
         $this->container['futures_positions'] = isset($data['futures_positions']) ? $data['futures_positions'] : null;
+        
         $this->container['futures_orders'] = isset($data['futures_orders']) ? $data['futures_orders'] : null;
+        
         $this->container['options_positions'] = isset($data['options_positions']) ? $data['options_positions'] : null;
+        
         $this->container['options_orders'] = isset($data['options_orders']) ? $data['options_orders'] : null;
+        
         $this->container['spot_hedge'] = isset($data['spot_hedge']) ? $data['spot_hedge'] : null;
+        
     }
 
     /**
@@ -257,6 +285,7 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
      */
     public function setSpotBalances($spot_balances)
     {
+        
         $this->container['spot_balances'] = $spot_balances;
 
         return $this;
@@ -281,6 +310,7 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
      */
     public function setSpotOrders($spot_orders)
     {
+        
         $this->container['spot_orders'] = $spot_orders;
 
         return $this;
@@ -305,6 +335,7 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
      */
     public function setFuturesPositions($futures_positions)
     {
+        
         $this->container['futures_positions'] = $futures_positions;
 
         return $this;
@@ -329,6 +360,7 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
      */
     public function setFuturesOrders($futures_orders)
     {
+        
         $this->container['futures_orders'] = $futures_orders;
 
         return $this;
@@ -353,6 +385,7 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
      */
     public function setOptionsPositions($options_positions)
     {
+        
         $this->container['options_positions'] = $options_positions;
 
         return $this;
@@ -377,6 +410,7 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
      */
     public function setOptionsOrders($options_orders)
     {
+        
         $this->container['options_orders'] = $options_orders;
 
         return $this;
@@ -401,6 +435,7 @@ class UnifiedPortfolioInput implements ModelInterface, ArrayAccess
      */
     public function setSpotHedge($spot_hedge)
     {
+        
         $this->container['spot_hedge'] = $spot_hedge;
 
         return $this;

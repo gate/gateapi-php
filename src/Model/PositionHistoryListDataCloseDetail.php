@@ -94,6 +94,27 @@ class PositionHistoryListDataCloseDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class PositionHistoryListDataCloseDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['margin_level'] = isset($data['margin_level']) ? $data['margin_level'] : null;
+        
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        
         $this->container['equity'] = isset($data['equity']) ? $data['equity'] : null;
+        
         $this->container['stop_out_level'] = isset($data['stop_out_level']) ? $data['stop_out_level'] : null;
+        
     }
 
     /**
@@ -239,6 +264,7 @@ class PositionHistoryListDataCloseDetail implements ModelInterface, ArrayAccess
      */
     public function setMarginLevel($margin_level)
     {
+        
         $this->container['margin_level'] = $margin_level;
 
         return $this;
@@ -263,6 +289,7 @@ class PositionHistoryListDataCloseDetail implements ModelInterface, ArrayAccess
      */
     public function setMargin($margin)
     {
+        
         $this->container['margin'] = $margin;
 
         return $this;
@@ -287,6 +314,7 @@ class PositionHistoryListDataCloseDetail implements ModelInterface, ArrayAccess
      */
     public function setEquity($equity)
     {
+        
         $this->container['equity'] = $equity;
 
         return $this;
@@ -311,6 +339,7 @@ class PositionHistoryListDataCloseDetail implements ModelInterface, ArrayAccess
      */
     public function setStopOutLevel($stop_out_level)
     {
+        
         $this->container['stop_out_level'] = $stop_out_level;
 
         return $this;

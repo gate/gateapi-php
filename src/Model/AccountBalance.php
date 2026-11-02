@@ -94,6 +94,27 @@ class AccountBalance implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -210,9 +231,13 @@ class AccountBalance implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['unrealised_pnl'] = isset($data['unrealised_pnl']) ? $data['unrealised_pnl'] : null;
+        
         $this->container['borrowed'] = isset($data['borrowed']) ? $data['borrowed'] : null;
+        
     }
 
     /**
@@ -225,7 +250,7 @@ class AccountBalance implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getCurrencyAllowableValues();
-        if (!is_null($this->container['currency']) && !in_array($this->container['currency'], $allowedValues, true)) {
+        if ((isset($this->container['currency'])) && !in_array($this->container['currency'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'currency', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -266,6 +291,7 @@ class AccountBalance implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -299,6 +325,7 @@ class AccountBalance implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -323,6 +350,7 @@ class AccountBalance implements ModelInterface, ArrayAccess
      */
     public function setUnrealisedPnl($unrealised_pnl)
     {
+        
         $this->container['unrealised_pnl'] = $unrealised_pnl;
 
         return $this;
@@ -347,6 +375,7 @@ class AccountBalance implements ModelInterface, ArrayAccess
      */
     public function setBorrowed($borrowed)
     {
+        
         $this->container['borrowed'] = $borrowed;
 
         return $this;

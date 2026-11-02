@@ -98,6 +98,27 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -246,11 +267,17 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['hit_spot'] = isset($data['hit_spot']) ? $data['hit_spot'] : null;
+        
         $this->container['hit_stock'] = isset($data['hit_stock']) ? $data['hit_stock'] : null;
+        
         $this->container['hit_simple'] = isset($data['hit_simple']) ? $data['hit_simple'] : null;
+        
     }
 
     /**
@@ -269,7 +296,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'amount' can't be null";
         }
         $allowedValues = $this->getHitSpotAllowableValues();
-        if (!is_null($this->container['hit_spot']) && !in_array($this->container['hit_spot'], $allowedValues, true)) {
+        if ((isset($this->container['hit_spot'])) && !in_array($this->container['hit_spot'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'hit_spot', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -277,7 +304,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getHitStockAllowableValues();
-        if (!is_null($this->container['hit_stock']) && !in_array($this->container['hit_stock'], $allowedValues, true)) {
+        if ((isset($this->container['hit_stock'])) && !in_array($this->container['hit_stock'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'hit_stock', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -285,7 +312,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getHitSimpleAllowableValues();
-        if (!is_null($this->container['hit_simple']) && !in_array($this->container['hit_simple'], $allowedValues, true)) {
+        if ((isset($this->container['hit_simple'])) && !in_array($this->container['hit_simple'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'hit_simple', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -326,6 +353,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
      */
     public function setPlanId($plan_id)
     {
+        
         $this->container['plan_id'] = $plan_id;
 
         return $this;
@@ -350,6 +378,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -374,6 +403,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -407,6 +437,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['hit_spot'] = $hit_spot;
 
         return $this;
@@ -440,6 +471,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['hit_stock'] = $hit_stock;
 
         return $this;
@@ -473,6 +505,7 @@ class PlaceDualStockInvestmentOrderParams implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['hit_simple'] = $hit_simple;
 
         return $this;

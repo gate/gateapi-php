@@ -95,6 +95,27 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['action_mode'] = isset($data['action_mode']) ? $data['action_mode'] : null;
+        
     }
 
     /**
@@ -244,6 +270,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -268,6 +295,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -292,6 +320,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
      */
     public function setAmendText($amend_text)
     {
+        
         $this->container['amend_text'] = $amend_text;
 
         return $this;
@@ -316,6 +345,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -340,6 +370,7 @@ class FuturesOrderAmendment implements ModelInterface, ArrayAccess
      */
     public function setActionMode($action_mode)
     {
+        
         $this->container['action_mode'] = $action_mode;
 
         return $this;

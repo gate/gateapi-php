@@ -93,6 +93,27 @@ class PreviewOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class PreviewOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['from'] = isset($data['from']) ? $data['from'] : null;
+        
         $this->container['to'] = isset($data['to']) ? $data['to'] : null;
+        
         $this->container['usdt_evaluated_value'] = isset($data['usdt_evaluated_value']) ? $data['usdt_evaluated_value'] : null;
+        
         $this->container['usdt_evaluated_value_show'] = isset($data['usdt_evaluated_value_show']) ? $data['usdt_evaluated_value_show'] : null;
+        
     }
 
     /**
@@ -250,6 +275,7 @@ class PreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setFrom($from)
     {
+        
         $this->container['from'] = $from;
 
         return $this;
@@ -274,6 +300,7 @@ class PreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setTo($to)
     {
+        
         $this->container['to'] = $to;
 
         return $this;
@@ -298,6 +325,7 @@ class PreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setUsdtEvaluatedValue($usdt_evaluated_value)
     {
+        
         $this->container['usdt_evaluated_value'] = $usdt_evaluated_value;
 
         return $this;
@@ -322,6 +350,7 @@ class PreviewOrder implements ModelInterface, ArrayAccess
      */
     public function setUsdtEvaluatedValueShow($usdt_evaluated_value_show)
     {
+        
         $this->container['usdt_evaluated_value_show'] = $usdt_evaluated_value_show;
 
         return $this;

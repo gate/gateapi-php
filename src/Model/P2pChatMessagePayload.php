@@ -127,6 +127,27 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -275,26 +296,47 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['payment_voucher'] = isset($data['payment_voucher']) ? $data['payment_voucher'] : null;
+        
         $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
+        
         $this->container['toast_id'] = isset($data['toast_id']) ? $data['toast_id'] : null;
+        
         $this->container['reason_memo'] = isset($data['reason_memo']) ? $data['reason_memo'] : null;
+        
         $this->container['cancel_time'] = isset($data['cancel_time']) ? $data['cancel_time'] : null;
+        
         $this->container['seller_confirm'] = isset($data['seller_confirm']) ? $data['seller_confirm'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['account_des'] = isset($data['account_des']) ? $data['account_des'] : null;
+        
         $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
+        
         $this->container['file'] = isset($data['file']) ? $data['file'] : null;
+        
         $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
+        
         $this->container['account'] = isset($data['account']) ? $data['account'] : null;
+        
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        
         $this->container['memo_ext'] = isset($data['memo_ext']) ? $data['memo_ext'] : null;
+        
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        
         $this->container['real_name'] = isset($data['real_name']) ? $data['real_name'] : null;
+        
         $this->container['is_delete'] = isset($data['is_delete']) ? $data['is_delete'] : null;
+        
         $this->container['pay_name'] = isset($data['pay_name']) ? $data['pay_name'] : null;
+        
     }
 
     /**
@@ -340,6 +382,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -364,6 +407,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -388,6 +432,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setPaymentVoucher($payment_voucher)
     {
+        
         $this->container['payment_voucher'] = $payment_voucher;
 
         return $this;
@@ -412,6 +457,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setReasonId($reason_id)
     {
+        
         $this->container['reason_id'] = $reason_id;
 
         return $this;
@@ -436,6 +482,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setToastId($toast_id)
     {
+        
         $this->container['toast_id'] = $toast_id;
 
         return $this;
@@ -460,6 +507,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setReasonMemo($reason_memo)
     {
+        
         $this->container['reason_memo'] = $reason_memo;
 
         return $this;
@@ -484,6 +532,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setCancelTime($cancel_time)
     {
+        
         $this->container['cancel_time'] = $cancel_time;
 
         return $this;
@@ -508,6 +557,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setSellerConfirm($seller_confirm)
     {
+        
         $this->container['seller_confirm'] = $seller_confirm;
 
         return $this;
@@ -532,6 +582,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -556,6 +607,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setAccountDes($account_des)
     {
+        
         $this->container['account_des'] = $account_des;
 
         return $this;
@@ -580,6 +632,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setPayType($pay_type)
     {
+        
         $this->container['pay_type'] = $pay_type;
 
         return $this;
@@ -604,6 +657,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setFile($file)
     {
+        
         $this->container['file'] = $file;
 
         return $this;
@@ -628,6 +682,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setFileKey($file_key)
     {
+        
         $this->container['file_key'] = $file_key;
 
         return $this;
@@ -652,6 +707,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setAccount($account)
     {
+        
         $this->container['account'] = $account;
 
         return $this;
@@ -676,6 +732,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setMemo($memo)
     {
+        
         $this->container['memo'] = $memo;
 
         return $this;
@@ -700,6 +757,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setCode($code)
     {
+        
         $this->container['code'] = $code;
 
         return $this;
@@ -724,6 +782,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setMemoExt($memo_ext)
     {
+        
         $this->container['memo_ext'] = $memo_ext;
 
         return $this;
@@ -748,6 +807,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setTradeTips($trade_tips)
     {
+        
         $this->container['trade_tips'] = $trade_tips;
 
         return $this;
@@ -772,6 +832,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setRealName($real_name)
     {
+        
         $this->container['real_name'] = $real_name;
 
         return $this;
@@ -796,6 +857,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setIsDelete($is_delete)
     {
+        
         $this->container['is_delete'] = $is_delete;
 
         return $this;
@@ -820,6 +882,7 @@ class P2pChatMessagePayload implements ModelInterface, ArrayAccess
      */
     public function setPayName($pay_name)
     {
+        
         $this->container['pay_name'] = $pay_name;
 
         return $this;

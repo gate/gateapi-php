@@ -97,6 +97,27 @@ class SavedAddress implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class SavedAddress implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['tag'] = isset($data['tag']) ? $data['tag'] : null;
+        
         $this->container['verified'] = isset($data['verified']) ? $data['verified'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class SavedAddress implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -274,6 +302,7 @@ class SavedAddress implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;
@@ -298,6 +327,7 @@ class SavedAddress implements ModelInterface, ArrayAccess
      */
     public function setAddress($address)
     {
+        
         $this->container['address'] = $address;
 
         return $this;
@@ -322,6 +352,7 @@ class SavedAddress implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -346,6 +377,7 @@ class SavedAddress implements ModelInterface, ArrayAccess
      */
     public function setTag($tag)
     {
+        
         $this->container['tag'] = $tag;
 
         return $this;
@@ -370,6 +402,7 @@ class SavedAddress implements ModelInterface, ArrayAccess
      */
     public function setVerified($verified)
     {
+        
         $this->container['verified'] = $verified;
 
         return $this;

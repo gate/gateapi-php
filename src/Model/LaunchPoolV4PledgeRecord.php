@@ -97,6 +97,27 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['create_timest'] = isset($data['create_timest']) ? $data['create_timest'] : null;
+        
         $this->container['reward_coin'] = isset($data['reward_coin']) ? $data['reward_coin'] : null;
+        
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
     }
 
     /**
@@ -268,6 +295,7 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
      */
     public function setCreateTimest($create_timest)
     {
+        
         $this->container['create_timest'] = $create_timest;
 
         return $this;
@@ -292,6 +320,7 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
      */
     public function setRewardCoin($reward_coin)
     {
+        
         $this->container['reward_coin'] = $reward_coin;
 
         return $this;
@@ -316,6 +345,7 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -340,6 +370,7 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -364,6 +395,7 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -388,6 +420,7 @@ class LaunchPoolV4PledgeRecord implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;

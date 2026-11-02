@@ -129,6 +129,27 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -280,27 +301,49 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['bankid'] = isset($data['bankid']) ? $data['bankid'] : null;
+        
         $this->container['nickname'] = isset($data['nickname']) ? $data['nickname'] : null;
+        
         $this->container['bankname'] = isset($data['bankname']) ? $data['bankname'] : null;
+        
         $this->container['bankbranch'] = isset($data['bankbranch']) ? $data['bankbranch'] : null;
+        
         $this->container['bankcity'] = isset($data['bankcity']) ? $data['bankcity'] : null;
+        
         $this->container['bankprov'] = isset($data['bankprov']) ? $data['bankprov'] : null;
+        
         $this->container['bankaddr'] = isset($data['bankaddr']) ? $data['bankaddr'] : null;
+        
         $this->container['bankdesc'] = isset($data['bankdesc']) ? $data['bankdesc'] : null;
+        
         $this->container['hold_uid'] = isset($data['hold_uid']) ? $data['hold_uid'] : null;
+        
         $this->container['hold_username'] = isset($data['hold_username']) ? $data['hold_username'] : null;
+        
         $this->container['real_name'] = isset($data['real_name']) ? $data['real_name'] : null;
+        
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['account_des'] = isset($data['account_des']) ? $data['account_des'] : null;
+        
         $this->container['pay_type'] = isset($data['pay_type']) ? $data['pay_type'] : null;
+        
         $this->container['file'] = isset($data['file']) ? $data['file'] : null;
+        
         $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
+        
         $this->container['account'] = isset($data['account']) ? $data['account'] : null;
+        
         $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        
         $this->container['memo_ext'] = isset($data['memo_ext']) ? $data['memo_ext'] : null;
+        
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        
     }
 
     /**
@@ -346,6 +389,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -370,6 +414,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setBankid($bankid)
     {
+        
         $this->container['bankid'] = $bankid;
 
         return $this;
@@ -394,6 +439,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setNickname($nickname)
     {
+        
         $this->container['nickname'] = $nickname;
 
         return $this;
@@ -418,6 +464,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setBankname($bankname)
     {
+        
         $this->container['bankname'] = $bankname;
 
         return $this;
@@ -442,6 +489,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setBankbranch($bankbranch)
     {
+        
         $this->container['bankbranch'] = $bankbranch;
 
         return $this;
@@ -466,6 +514,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setBankcity($bankcity)
     {
+        
         $this->container['bankcity'] = $bankcity;
 
         return $this;
@@ -490,6 +539,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setBankprov($bankprov)
     {
+        
         $this->container['bankprov'] = $bankprov;
 
         return $this;
@@ -514,6 +564,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setBankaddr($bankaddr)
     {
+        
         $this->container['bankaddr'] = $bankaddr;
 
         return $this;
@@ -538,6 +589,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setBankdesc($bankdesc)
     {
+        
         $this->container['bankdesc'] = $bankdesc;
 
         return $this;
@@ -562,6 +614,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setHoldUid($hold_uid)
     {
+        
         $this->container['hold_uid'] = $hold_uid;
 
         return $this;
@@ -586,6 +639,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setHoldUsername($hold_username)
     {
+        
         $this->container['hold_username'] = $hold_username;
 
         return $this;
@@ -610,6 +664,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setRealName($real_name)
     {
+        
         $this->container['real_name'] = $real_name;
 
         return $this;
@@ -634,6 +689,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -658,6 +714,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setAccountDes($account_des)
     {
+        
         $this->container['account_des'] = $account_des;
 
         return $this;
@@ -682,6 +739,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setPayType($pay_type)
     {
+        
         $this->container['pay_type'] = $pay_type;
 
         return $this;
@@ -706,6 +764,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setFile($file)
     {
+        
         $this->container['file'] = $file;
 
         return $this;
@@ -730,6 +789,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setFileKey($file_key)
     {
+        
         $this->container['file_key'] = $file_key;
 
         return $this;
@@ -754,6 +814,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setAccount($account)
     {
+        
         $this->container['account'] = $account;
 
         return $this;
@@ -778,6 +839,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setMemo($memo)
     {
+        
         $this->container['memo'] = $memo;
 
         return $this;
@@ -802,6 +864,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setCode($code)
     {
+        
         $this->container['code'] = $code;
 
         return $this;
@@ -826,6 +889,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setMemoExt($memo_ext)
     {
+        
         $this->container['memo_ext'] = $memo_ext;
 
         return $this;
@@ -850,6 +914,7 @@ class P2pPaymentMethodAccount implements ModelInterface, ArrayAccess
      */
     public function setTradeTips($trade_tips)
     {
+        
         $this->container['trade_tips'] = $trade_tips;
 
         return $this;

@@ -92,6 +92,27 @@ class CrossexAccountUpdateRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class CrossexAccountUpdateRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        
         $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class CrossexAccountUpdateRequest implements ModelInterface, ArrayAccess
      */
     public function setPositionMode($position_mode)
     {
+        
         $this->container['position_mode'] = $position_mode;
 
         return $this;
@@ -257,6 +282,7 @@ class CrossexAccountUpdateRequest implements ModelInterface, ArrayAccess
      */
     public function setAccountMode($account_mode)
     {
+        
         $this->container['account_mode'] = $account_mode;
 
         return $this;
@@ -281,6 +307,7 @@ class CrossexAccountUpdateRequest implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;

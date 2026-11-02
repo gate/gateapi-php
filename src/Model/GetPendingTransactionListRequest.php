@@ -102,6 +102,27 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -226,13 +247,21 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['crypto_currency'] = isset($data['crypto_currency']) ? $data['crypto_currency'] : null;
+        
         $this->container['fiat_currency'] = isset($data['fiat_currency']) ? $data['fiat_currency'] : null;
+        
         $this->container['order_tab'] = isset($data['order_tab']) ? $data['order_tab'] : null;
+        
         $this->container['select_type'] = isset($data['select_type']) ? $data['select_type'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        
     }
 
     /**
@@ -251,7 +280,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'fiat_currency' can't be null";
         }
         $allowedValues = $this->getOrderTabAllowableValues();
-        if (!is_null($this->container['order_tab']) && !in_array($this->container['order_tab'], $allowedValues, true)) {
+        if ((isset($this->container['order_tab'])) && !in_array($this->container['order_tab'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'order_tab', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -292,6 +321,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setCryptoCurrency($crypto_currency)
     {
+        
         $this->container['crypto_currency'] = $crypto_currency;
 
         return $this;
@@ -316,6 +346,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setFiatCurrency($fiat_currency)
     {
+        
         $this->container['fiat_currency'] = $fiat_currency;
 
         return $this;
@@ -349,6 +380,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['order_tab'] = $order_tab;
 
         return $this;
@@ -373,6 +405,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setSelectType($select_type)
     {
+        
         $this->container['select_type'] = $select_type;
 
         return $this;
@@ -397,6 +430,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -421,6 +455,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -445,6 +480,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setStartTime($start_time)
     {
+        
         $this->container['start_time'] = $start_time;
 
         return $this;
@@ -469,6 +505,7 @@ class GetPendingTransactionListRequest implements ModelInterface, ArrayAccess
      */
     public function setEndTime($end_time)
     {
+        
         $this->container['end_time'] = $end_time;
 
         return $this;

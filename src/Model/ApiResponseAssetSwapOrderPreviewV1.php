@@ -96,6 +96,28 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            'data' => true,
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,10 +218,22 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
         $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        
+        // Explicit null overrides a default; an absent null has no presence.
+        if ($data !== null && array_key_exists('data', $data)) {
+            $this->container['data'] = $data['data'];
+        } elseif ($this->container['data'] === null) {
+            unset($this->container['data']);
+        }
+        
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        
     }
 
     /**
@@ -217,8 +251,8 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if (!array_key_exists('data', $this->container)) {
+            $invalidProperties[] = "'data' must be present";
         }
         if ($this->container['timestamp'] === null) {
             $invalidProperties[] = "'timestamp' can't be null";
@@ -257,6 +291,7 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
      */
     public function setCode($code)
     {
+        
         $this->container['code'] = $code;
 
         return $this;
@@ -281,6 +316,7 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
      */
     public function setLabel($label)
     {
+        
         $this->container['label'] = $label;
 
         return $this;
@@ -305,6 +341,7 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;
@@ -313,22 +350,29 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return OrderPreviewV1Resp
+     * @return OrderPreviewV1Resp|null
      */
     public function getData()
     {
-        return $this->container['data'];
+        return $this->container['data'] ?? null;
     }
 
     /**
      * Sets data
      *
-     * @param OrderPreviewV1Resp $data Preview result when successful, null when failed
+     * @param OrderPreviewV1Resp|null $data Preview result when successful, null when failed
      *
      * @return $this
      */
     public function setData($data)
     {
+        
+        // Keep enum membership above; only type-specific constraints skip null.
+        if ($data === null) {
+            $this->container['data'] = null;
+            return $this;
+        }
+        
         $this->container['data'] = $data;
 
         return $this;
@@ -353,6 +397,7 @@ class ApiResponseAssetSwapOrderPreviewV1 implements ModelInterface, ArrayAccess
      */
     public function setTimestamp($timestamp)
     {
+        
         $this->container['timestamp'] = $timestamp;
 
         return $this;

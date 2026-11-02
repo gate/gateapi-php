@@ -124,6 +124,27 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -266,24 +287,43 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['asset'] = isset($data['asset']) ? $data['asset'] : null;
+        
         $this->container['lock_up_period'] = isset($data['lock_up_period']) ? $data['lock_up_period'] : null;
+        
         $this->container['min_lend_amount'] = isset($data['min_lend_amount']) ? $data['min_lend_amount'] : null;
+        
         $this->container['user_max_lend_amount'] = isset($data['user_max_lend_amount']) ? $data['user_max_lend_amount'] : null;
+        
         $this->container['total_lend_amount'] = isset($data['total_lend_amount']) ? $data['total_lend_amount'] : null;
+        
         $this->container['year_rate'] = isset($data['year_rate']) ? $data['year_rate'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['pre_redeem'] = isset($data['pre_redeem']) ? $data['pre_redeem'] : null;
+        
         $this->container['reinvest'] = isset($data['reinvest']) ? $data['reinvest'] : null;
+        
         $this->container['redeem_account'] = isset($data['redeem_account']) ? $data['redeem_account'] : null;
+        
         $this->container['min_vip'] = isset($data['min_vip']) ? $data['min_vip'] : null;
+        
         $this->container['max_vip'] = isset($data['max_vip']) ? $data['max_vip'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['user_max_lend_volume'] = isset($data['user_max_lend_volume']) ? $data['user_max_lend_volume'] : null;
+        
         $this->container['user_total_amount'] = isset($data['user_total_amount']) ? $data['user_total_amount'] : null;
+        
         $this->container['sale_status'] = isset($data['sale_status']) ? $data['sale_status'] : null;
+        
     }
 
     /**
@@ -329,6 +369,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -353,6 +394,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -377,6 +419,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setAsset($asset)
     {
+        
         $this->container['asset'] = $asset;
 
         return $this;
@@ -401,6 +444,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setLockUpPeriod($lock_up_period)
     {
+        
         $this->container['lock_up_period'] = $lock_up_period;
 
         return $this;
@@ -425,6 +469,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setMinLendAmount($min_lend_amount)
     {
+        
         $this->container['min_lend_amount'] = $min_lend_amount;
 
         return $this;
@@ -449,6 +494,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setUserMaxLendAmount($user_max_lend_amount)
     {
+        
         $this->container['user_max_lend_amount'] = $user_max_lend_amount;
 
         return $this;
@@ -473,6 +519,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setTotalLendAmount($total_lend_amount)
     {
+        
         $this->container['total_lend_amount'] = $total_lend_amount;
 
         return $this;
@@ -497,6 +544,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setYearRate($year_rate)
     {
+        
         $this->container['year_rate'] = $year_rate;
 
         return $this;
@@ -521,6 +569,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -545,6 +594,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setPreRedeem($pre_redeem)
     {
+        
         $this->container['pre_redeem'] = $pre_redeem;
 
         return $this;
@@ -569,6 +619,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setReinvest($reinvest)
     {
+        
         $this->container['reinvest'] = $reinvest;
 
         return $this;
@@ -593,6 +644,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setRedeemAccount($redeem_account)
     {
+        
         $this->container['redeem_account'] = $redeem_account;
 
         return $this;
@@ -617,6 +669,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setMinVip($min_vip)
     {
+        
         $this->container['min_vip'] = $min_vip;
 
         return $this;
@@ -641,6 +694,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setMaxVip($max_vip)
     {
+        
         $this->container['max_vip'] = $max_vip;
 
         return $this;
@@ -665,6 +719,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -689,6 +744,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -713,6 +769,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setUserMaxLendVolume($user_max_lend_volume)
     {
+        
         $this->container['user_max_lend_volume'] = $user_max_lend_volume;
 
         return $this;
@@ -737,6 +794,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setUserTotalAmount($user_total_amount)
     {
+        
         $this->container['user_total_amount'] = $user_total_amount;
 
         return $this;
@@ -761,6 +819,7 @@ class FixedTermProduct implements ModelInterface, ArrayAccess
      */
     public function setSaleStatus($sale_status)
     {
+        
         $this->container['sale_status'] = $sale_status;
 
         return $this;

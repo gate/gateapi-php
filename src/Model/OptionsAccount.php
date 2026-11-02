@@ -123,6 +123,27 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -284,24 +305,43 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
+        
         $this->container['equity'] = isset($data['equity']) ? $data['equity'] : null;
+        
         $this->container['short_enabled'] = isset($data['short_enabled']) ? $data['short_enabled'] : null;
+        
         $this->container['mmp_enabled'] = isset($data['mmp_enabled']) ? $data['mmp_enabled'] : null;
+        
         $this->container['liq_triggered'] = isset($data['liq_triggered']) ? $data['liq_triggered'] : null;
+        
         $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
+        
         $this->container['unrealised_pnl'] = isset($data['unrealised_pnl']) ? $data['unrealised_pnl'] : null;
+        
         $this->container['init_margin'] = isset($data['init_margin']) ? $data['init_margin'] : null;
+        
         $this->container['maint_margin'] = isset($data['maint_margin']) ? $data['maint_margin'] : null;
+        
         $this->container['order_margin'] = isset($data['order_margin']) ? $data['order_margin'] : null;
+        
         $this->container['ask_order_margin'] = isset($data['ask_order_margin']) ? $data['ask_order_margin'] : null;
+        
         $this->container['bid_order_margin'] = isset($data['bid_order_margin']) ? $data['bid_order_margin'] : null;
+        
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['point'] = isset($data['point']) ? $data['point'] : null;
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['orders_limit'] = isset($data['orders_limit']) ? $data['orders_limit'] : null;
+        
         $this->container['position_notional_limit'] = isset($data['position_notional_limit']) ? $data['position_notional_limit'] : null;
+        
     }
 
     /**
@@ -314,7 +354,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getMarginModeAllowableValues();
-        if (!is_null($this->container['margin_mode']) && !in_array($this->container['margin_mode'], $allowedValues, true)) {
+        if ((isset($this->container['margin_mode'])) && !in_array($this->container['margin_mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'margin_mode', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -355,6 +395,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -379,6 +420,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -403,6 +445,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setPositionValue($position_value)
     {
+        
         $this->container['position_value'] = $position_value;
 
         return $this;
@@ -427,6 +470,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setEquity($equity)
     {
+        
         $this->container['equity'] = $equity;
 
         return $this;
@@ -451,6 +495,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setShortEnabled($short_enabled)
     {
+        
         $this->container['short_enabled'] = $short_enabled;
 
         return $this;
@@ -475,6 +520,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setMmpEnabled($mmp_enabled)
     {
+        
         $this->container['mmp_enabled'] = $mmp_enabled;
 
         return $this;
@@ -499,6 +545,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setLiqTriggered($liq_triggered)
     {
+        
         $this->container['liq_triggered'] = $liq_triggered;
 
         return $this;
@@ -532,6 +579,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['margin_mode'] = $margin_mode;
 
         return $this;
@@ -550,12 +598,13 @@ class OptionsAccount implements ModelInterface, ArrayAccess
     /**
      * Sets unrealised_pnl
      *
-     * @param string|null $unrealised_pnl Unrealised PnL = (mark price - entry price) * position size. For long postion, size is positive; for short positon, size is negative.This value is for reference only.
+     * @param string|null $unrealised_pnl Unrealized PnL, for reference only. Position unrealized PnL = (mark price - average entry price) × position quantity. Position quantity is measured in currency units, negative for shorts and positive for longs.
      *
      * @return $this
      */
     public function setUnrealisedPnl($unrealised_pnl)
     {
+        
         $this->container['unrealised_pnl'] = $unrealised_pnl;
 
         return $this;
@@ -580,6 +629,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setInitMargin($init_margin)
     {
+        
         $this->container['init_margin'] = $init_margin;
 
         return $this;
@@ -604,6 +654,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setMaintMargin($maint_margin)
     {
+        
         $this->container['maint_margin'] = $maint_margin;
 
         return $this;
@@ -628,6 +679,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setOrderMargin($order_margin)
     {
+        
         $this->container['order_margin'] = $order_margin;
 
         return $this;
@@ -652,6 +704,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setAskOrderMargin($ask_order_margin)
     {
+        
         $this->container['ask_order_margin'] = $ask_order_margin;
 
         return $this;
@@ -676,6 +729,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setBidOrderMargin($bid_order_margin)
     {
+        
         $this->container['bid_order_margin'] = $bid_order_margin;
 
         return $this;
@@ -700,6 +754,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -724,6 +779,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setPoint($point)
     {
+        
         $this->container['point'] = $point;
 
         return $this;
@@ -748,6 +804,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -772,6 +829,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setOrdersLimit($orders_limit)
     {
+        
         $this->container['orders_limit'] = $orders_limit;
 
         return $this;
@@ -796,6 +854,7 @@ class OptionsAccount implements ModelInterface, ArrayAccess
      */
     public function setPositionNotionalLimit($position_notional_limit)
     {
+        
         $this->container['position_notional_limit'] = $position_notional_limit;
 
         return $this;

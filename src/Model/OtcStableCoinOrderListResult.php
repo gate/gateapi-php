@@ -95,6 +95,27 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['page_size'] = isset($data['page_size']) ? $data['page_size'] : null;
+        
         $this->container['page_number'] = isset($data['page_number']) ? $data['page_number'] : null;
+        
         $this->container['total_page'] = isset($data['total_page']) ? $data['total_page'] : null;
+        
         $this->container['lists'] = isset($data['lists']) ? $data['lists'] : null;
+        
     }
 
     /**
@@ -259,6 +285,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -283,6 +310,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setPageSize($page_size)
     {
+        
         $this->container['page_size'] = $page_size;
 
         return $this;
@@ -307,6 +335,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setPageNumber($page_number)
     {
+        
         $this->container['page_number'] = $page_number;
 
         return $this;
@@ -331,6 +360,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setTotalPage($total_page)
     {
+        
         $this->container['total_page'] = $total_page;
 
         return $this;
@@ -355,6 +385,7 @@ class OtcStableCoinOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setLists($lists)
     {
+        
         $this->container['lists'] = $lists;
 
         return $this;

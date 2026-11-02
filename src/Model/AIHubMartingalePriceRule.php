@@ -92,6 +92,27 @@ class AIHubMartingalePriceRule implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -186,8 +207,11 @@ class AIHubMartingalePriceRule implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['price_type'] = isset($data['price_type']) ? $data['price_type'] : null;
+        
         $this->container['is_gte'] = isset($data['is_gte']) ? $data['is_gte'] : null;
+        
     }
 
     /**
@@ -233,6 +257,7 @@ class AIHubMartingalePriceRule implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -257,6 +282,7 @@ class AIHubMartingalePriceRule implements ModelInterface, ArrayAccess
      */
     public function setPriceType($price_type)
     {
+        
         $this->container['price_type'] = $price_type;
 
         return $this;
@@ -281,6 +307,7 @@ class AIHubMartingalePriceRule implements ModelInterface, ArrayAccess
      */
     public function setIsGte($is_gte)
     {
+        
         $this->container['is_gte'] = $is_gte;
 
         return $this;

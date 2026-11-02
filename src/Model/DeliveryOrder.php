@@ -138,6 +138,27 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -398,31 +419,57 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
+        
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['iceberg'] = isset($data['iceberg']) ? $data['iceberg'] : null;
+        
         $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        
         $this->container['close'] = isset($data['close']) ? $data['close'] : false;
+        
         $this->container['is_close'] = isset($data['is_close']) ? $data['is_close'] : null;
+        
         $this->container['reduce_only'] = isset($data['reduce_only']) ? $data['reduce_only'] : false;
+        
         $this->container['is_reduce_only'] = isset($data['is_reduce_only']) ? $data['is_reduce_only'] : null;
+        
         $this->container['is_liq'] = isset($data['is_liq']) ? $data['is_liq'] : null;
+        
         $this->container['tif'] = isset($data['tif']) ? $data['tif'] : 'gtc';
+        
         $this->container['left'] = isset($data['left']) ? $data['left'] : null;
+        
         $this->container['fill_price'] = isset($data['fill_price']) ? $data['fill_price'] : null;
+        
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        
         $this->container['tkfr'] = isset($data['tkfr']) ? $data['tkfr'] : null;
+        
         $this->container['mkfr'] = isset($data['mkfr']) ? $data['mkfr'] : null;
+        
         $this->container['refu'] = isset($data['refu']) ? $data['refu'] : null;
+        
         $this->container['auto_size'] = isset($data['auto_size']) ? $data['auto_size'] : null;
+        
         $this->container['stp_id'] = isset($data['stp_id']) ? $data['stp_id'] : null;
+        
         $this->container['stp_act'] = isset($data['stp_act']) ? $data['stp_act'] : null;
+        
         $this->container['amend_text'] = isset($data['amend_text']) ? $data['amend_text'] : null;
+        
     }
 
     /**
@@ -435,7 +482,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getFinishAsAllowableValues();
-        if (!is_null($this->container['finish_as']) && !in_array($this->container['finish_as'], $allowedValues, true)) {
+        if ((isset($this->container['finish_as'])) && !in_array($this->container['finish_as'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'finish_as', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -443,7 +490,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -457,7 +504,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'size' can't be null";
         }
         $allowedValues = $this->getTifAllowableValues();
-        if (!is_null($this->container['tif']) && !in_array($this->container['tif'], $allowedValues, true)) {
+        if ((isset($this->container['tif'])) && !in_array($this->container['tif'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'tif', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -465,7 +512,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getAutoSizeAllowableValues();
-        if (!is_null($this->container['auto_size']) && !in_array($this->container['auto_size'], $allowedValues, true)) {
+        if ((isset($this->container['auto_size'])) && !in_array($this->container['auto_size'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'auto_size', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -473,7 +520,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getStpActAllowableValues();
-        if (!is_null($this->container['stp_act']) && !in_array($this->container['stp_act'], $allowedValues, true)) {
+        if ((isset($this->container['stp_act'])) && !in_array($this->container['stp_act'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'stp_act', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -514,6 +561,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -538,6 +586,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -562,6 +611,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -586,6 +636,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setFinishTime($finish_time)
     {
+        
         $this->container['finish_time'] = $finish_time;
 
         return $this;
@@ -619,6 +670,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['finish_as'] = $finish_as;
 
         return $this;
@@ -652,6 +704,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -676,6 +729,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -700,6 +754,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -724,6 +779,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setIceberg($iceberg)
     {
+        
         $this->container['iceberg'] = $iceberg;
 
         return $this;
@@ -748,6 +804,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setPrice($price)
     {
+        
         $this->container['price'] = $price;
 
         return $this;
@@ -772,6 +829,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setClose($close)
     {
+        
         $this->container['close'] = $close;
 
         return $this;
@@ -796,6 +854,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setIsClose($is_close)
     {
+        
         $this->container['is_close'] = $is_close;
 
         return $this;
@@ -820,6 +879,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setReduceOnly($reduce_only)
     {
+        
         $this->container['reduce_only'] = $reduce_only;
 
         return $this;
@@ -844,6 +904,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setIsReduceOnly($is_reduce_only)
     {
+        
         $this->container['is_reduce_only'] = $is_reduce_only;
 
         return $this;
@@ -868,6 +929,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setIsLiq($is_liq)
     {
+        
         $this->container['is_liq'] = $is_liq;
 
         return $this;
@@ -901,6 +963,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['tif'] = $tif;
 
         return $this;
@@ -925,6 +988,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setLeft($left)
     {
+        
         $this->container['left'] = $left;
 
         return $this;
@@ -949,6 +1013,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setFillPrice($fill_price)
     {
+        
         $this->container['fill_price'] = $fill_price;
 
         return $this;
@@ -973,6 +1038,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setText($text)
     {
+        
         $this->container['text'] = $text;
 
         return $this;
@@ -997,6 +1063,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setTkfr($tkfr)
     {
+        
         $this->container['tkfr'] = $tkfr;
 
         return $this;
@@ -1021,6 +1088,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setMkfr($mkfr)
     {
+        
         $this->container['mkfr'] = $mkfr;
 
         return $this;
@@ -1045,6 +1113,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setRefu($refu)
     {
+        
         $this->container['refu'] = $refu;
 
         return $this;
@@ -1078,6 +1147,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['auto_size'] = $auto_size;
 
         return $this;
@@ -1102,6 +1172,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setStpId($stp_id)
     {
+        
         $this->container['stp_id'] = $stp_id;
 
         return $this;
@@ -1135,6 +1206,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['stp_act'] = $stp_act;
 
         return $this;
@@ -1159,6 +1231,7 @@ class DeliveryOrder implements ModelInterface, ArrayAccess
      */
     public function setAmendText($amend_text)
     {
+        
         $this->container['amend_text'] = $amend_text;
 
         return $this;

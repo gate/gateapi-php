@@ -96,6 +96,27 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,10 +217,15 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->container['bank_id'] = isset($data['bank_id']) ? $data['bank_id'] : null;
+        
         $this->container['id_document_front'] = isset($data['id_document_front']) ? $data['id_document_front'] : null;
+        
         $this->container['id_document_back'] = isset($data['id_document_back']) ? $data['id_document_back'] : null;
+        
         $this->container['address_proof'] = isset($data['address_proof']) ? $data['address_proof'] : null;
+        
         $this->container['relationship_proof'] = isset($data['relationship_proof']) ? $data['relationship_proof'] : null;
+        
     }
 
     /**
@@ -248,6 +274,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
      */
     public function setBankId($bank_id)
     {
+        
         $this->container['bank_id'] = $bank_id;
 
         return $this;
@@ -272,6 +299,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
      */
     public function setIdDocumentFront($id_document_front)
     {
+        
         $this->container['id_document_front'] = $id_document_front;
 
         return $this;
@@ -296,6 +324,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
      */
     public function setIdDocumentBack($id_document_back)
     {
+        
         $this->container['id_document_back'] = $id_document_back;
 
         return $this;
@@ -320,6 +349,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
      */
     public function setAddressProof($address_proof)
     {
+        
         $this->container['address_proof'] = $address_proof;
 
         return $this;
@@ -344,6 +374,7 @@ class OtcBankPersonalSupplementMultipartRequest implements ModelInterface, Array
      */
     public function setRelationshipProof($relationship_proof)
     {
+        
         $this->container['relationship_proof'] = $relationship_proof;
 
         return $this;

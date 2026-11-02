@@ -94,6 +94,19 @@ class ApiException extends Exception
         return $this->responseBody;
     }
 
+    /** Map a declared HTTP error without losing status, headers or raw body. */
+    public static function fromResponse($response)
+    {
+        $body = (string) $response->getBody();
+        $error = json_decode($body, true);
+        if (is_array($error) && isset($error['label']) && is_string($error['label'])
+            && $error['label'] !== '' && class_exists(__NAMESPACE__ . '\\GateApiException')) {
+            return new GateApiException($error, $response->getStatusCode(), $response->getHeaders(), $body);
+        }
+        return new self('[' . $response->getStatusCode() . '] ' . $response->getReasonPhrase(),
+            $response->getStatusCode(), $response->getHeaders(), $body);
+    }
+
     /**
      * Sets the deserialized response object (during deserialization)
      *

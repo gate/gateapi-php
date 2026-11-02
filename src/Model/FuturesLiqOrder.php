@@ -99,6 +99,27 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['order_size'] = isset($data['order_size']) ? $data['order_size'] : null;
+        
         $this->container['order_price'] = isset($data['order_price']) ? $data['order_price'] : null;
+        
         $this->container['fill_price'] = isset($data['fill_price']) ? $data['fill_price'] : null;
+        
         $this->container['left'] = isset($data['left']) ? $data['left'] : null;
+        
     }
 
     /**
@@ -256,6 +284,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -280,6 +309,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -304,6 +334,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -328,6 +359,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderSize($order_size)
     {
+        
         $this->container['order_size'] = $order_size;
 
         return $this;
@@ -352,6 +384,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
      */
     public function setOrderPrice($order_price)
     {
+        
         $this->container['order_price'] = $order_price;
 
         return $this;
@@ -376,6 +409,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
      */
     public function setFillPrice($fill_price)
     {
+        
         $this->container['fill_price'] = $fill_price;
 
         return $this;
@@ -400,6 +434,7 @@ class FuturesLiqOrder implements ModelInterface, ArrayAccess
      */
     public function setLeft($left)
     {
+        
         $this->container['left'] = $left;
 
         return $this;

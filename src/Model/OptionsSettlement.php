@@ -97,6 +97,27 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['profit'] = isset($data['profit']) ? $data['profit'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
         $this->container['strike_price'] = isset($data['strike_price']) ? $data['strike_price'] : null;
+        
         $this->container['settle_price'] = isset($data['settle_price']) ? $data['settle_price'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -274,6 +302,7 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -298,6 +327,7 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
      */
     public function setProfit($profit)
     {
+        
         $this->container['profit'] = $profit;
 
         return $this;
@@ -322,6 +352,7 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;
@@ -346,6 +377,7 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
      */
     public function setStrikePrice($strike_price)
     {
+        
         $this->container['strike_price'] = $strike_price;
 
         return $this;
@@ -370,6 +402,7 @@ class OptionsSettlement implements ModelInterface, ArrayAccess
      */
     public function setSettlePrice($settle_price)
     {
+        
         $this->container['settle_price'] = $settle_price;
 
         return $this;

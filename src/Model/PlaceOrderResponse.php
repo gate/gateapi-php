@@ -102,6 +102,27 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -211,13 +232,21 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
         $this->container['gas_mode'] = isset($data['gas_mode']) ? $data['gas_mode'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['token_address'] = isset($data['token_address']) ? $data['token_address'] : null;
+        
         $this->container['chain'] = isset($data['chain']) ? $data['chain'] : null;
+        
     }
 
     /**
@@ -263,6 +292,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -287,6 +317,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -311,6 +342,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;
@@ -335,6 +367,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setGasMode($gas_mode)
     {
+        
         $this->container['gas_mode'] = $gas_mode;
 
         return $this;
@@ -359,6 +392,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -383,6 +417,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -407,6 +442,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setTokenAddress($token_address)
     {
+        
         $this->container['token_address'] = $token_address;
 
         return $this;
@@ -431,6 +467,7 @@ class PlaceOrderResponse implements ModelInterface, ArrayAccess
      */
     public function setChain($chain)
     {
+        
         $this->container['chain'] = $chain;
 
         return $this;

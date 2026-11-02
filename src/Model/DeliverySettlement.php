@@ -103,6 +103,27 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -215,14 +236,23 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['settle_price'] = isset($data['settle_price']) ? $data['settle_price'] : null;
+        
         $this->container['profit'] = isset($data['profit']) ? $data['profit'] : null;
+        
         $this->container['fee'] = isset($data['fee']) ? $data['fee'] : null;
+        
     }
 
     /**
@@ -268,6 +298,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -292,6 +323,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -316,6 +348,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -340,6 +373,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -364,6 +398,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setMargin($margin)
     {
+        
         $this->container['margin'] = $margin;
 
         return $this;
@@ -388,6 +423,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -412,6 +448,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setSettlePrice($settle_price)
     {
+        
         $this->container['settle_price'] = $settle_price;
 
         return $this;
@@ -436,6 +473,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setProfit($profit)
     {
+        
         $this->container['profit'] = $profit;
 
         return $this;
@@ -460,6 +498,7 @@ class DeliverySettlement implements ModelInterface, ArrayAccess
      */
     public function setFee($fee)
     {
+        
         $this->container['fee'] = $fee;
 
         return $this;

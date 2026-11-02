@@ -94,6 +94,27 @@ class FutureCancelOrderResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -191,9 +212,13 @@ class FutureCancelOrderResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['succeeded'] = isset($data['succeeded']) ? $data['succeeded'] : null;
+        
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        
     }
 
     /**
@@ -239,6 +264,7 @@ class FutureCancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setId($id)
     {
+        
         $this->container['id'] = $id;
 
         return $this;
@@ -263,6 +289,7 @@ class FutureCancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -287,6 +314,7 @@ class FutureCancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setSucceeded($succeeded)
     {
+        
         $this->container['succeeded'] = $succeeded;
 
         return $this;
@@ -311,6 +339,7 @@ class FutureCancelOrderResult implements ModelInterface, ArrayAccess
      */
     public function setMessage($message)
     {
+        
         $this->container['message'] = $message;
 
         return $this;

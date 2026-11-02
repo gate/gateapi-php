@@ -90,6 +90,27 @@ class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -196,7 +217,9 @@ class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['close_type'] = isset($data['close_type']) ? $data['close_type'] : null;
+        
         $this->container['close_volume'] = isset($data['close_volume']) ? $data['close_volume'] : null;
+        
     }
 
     /**
@@ -212,7 +235,7 @@ class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'close_type' can't be null";
         }
         $allowedValues = $this->getCloseTypeAllowableValues();
-        if (!is_null($this->container['close_type']) && !in_array($this->container['close_type'], $allowedValues, true)) {
+        if ((isset($this->container['close_type'])) && !in_array($this->container['close_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'close_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -262,6 +285,7 @@ class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['close_type'] = $close_type;
 
         return $this;
@@ -286,6 +310,7 @@ class TradFiClosePositionRequest implements ModelInterface, ArrayAccess
      */
     public function setCloseVolume($close_volume)
     {
+        
         $this->container['close_volume'] = $close_volume;
 
         return $this;

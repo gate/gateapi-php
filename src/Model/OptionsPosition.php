@@ -118,6 +118,27 @@ class OptionsPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -251,21 +272,37 @@ class OptionsPosition implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['underlying'] = isset($data['underlying']) ? $data['underlying'] : null;
+        
         $this->container['underlying_price'] = isset($data['underlying_price']) ? $data['underlying_price'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['mark_iv'] = isset($data['mark_iv']) ? $data['mark_iv'] : null;
+        
         $this->container['realised_pnl'] = isset($data['realised_pnl']) ? $data['realised_pnl'] : null;
+        
         $this->container['unrealised_pnl'] = isset($data['unrealised_pnl']) ? $data['unrealised_pnl'] : null;
+        
         $this->container['pending_orders'] = isset($data['pending_orders']) ? $data['pending_orders'] : null;
+        
         $this->container['close_order'] = isset($data['close_order']) ? $data['close_order'] : null;
+        
         $this->container['delta'] = isset($data['delta']) ? $data['delta'] : null;
+        
         $this->container['gamma'] = isset($data['gamma']) ? $data['gamma'] : null;
+        
         $this->container['vega'] = isset($data['vega']) ? $data['vega'] : null;
+        
         $this->container['theta'] = isset($data['theta']) ? $data['theta'] : null;
+        
     }
 
     /**
@@ -311,6 +348,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -335,6 +373,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setUnderlying($underlying)
     {
+        
         $this->container['underlying'] = $underlying;
 
         return $this;
@@ -359,6 +398,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setUnderlyingPrice($underlying_price)
     {
+        
         $this->container['underlying_price'] = $underlying_price;
 
         return $this;
@@ -383,6 +423,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -407,6 +448,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -431,6 +473,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -455,6 +498,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -479,6 +523,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setMarkIv($mark_iv)
     {
+        
         $this->container['mark_iv'] = $mark_iv;
 
         return $this;
@@ -503,6 +548,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setRealisedPnl($realised_pnl)
     {
+        
         $this->container['realised_pnl'] = $realised_pnl;
 
         return $this;
@@ -527,6 +573,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setUnrealisedPnl($unrealised_pnl)
     {
+        
         $this->container['unrealised_pnl'] = $unrealised_pnl;
 
         return $this;
@@ -551,6 +598,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setPendingOrders($pending_orders)
     {
+        
         $this->container['pending_orders'] = $pending_orders;
 
         return $this;
@@ -575,6 +623,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setCloseOrder($close_order)
     {
+        
         $this->container['close_order'] = $close_order;
 
         return $this;
@@ -599,6 +648,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setDelta($delta)
     {
+        
         $this->container['delta'] = $delta;
 
         return $this;
@@ -623,6 +673,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setGamma($gamma)
     {
+        
         $this->container['gamma'] = $gamma;
 
         return $this;
@@ -647,6 +698,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setVega($vega)
     {
+        
         $this->container['vega'] = $vega;
 
         return $this;
@@ -671,6 +723,7 @@ class OptionsPosition implements ModelInterface, ArrayAccess
      */
     public function setTheta($theta)
     {
+        
         $this->container['theta'] = $theta;
 
         return $this;

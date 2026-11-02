@@ -133,6 +133,27 @@ class ContractStat implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -290,29 +311,53 @@ class ContractStat implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
         $this->container['lsr_taker'] = isset($data['lsr_taker']) ? $data['lsr_taker'] : null;
+        
         $this->container['lsr_account'] = isset($data['lsr_account']) ? $data['lsr_account'] : null;
+        
         $this->container['long_liq_size'] = isset($data['long_liq_size']) ? $data['long_liq_size'] : null;
+        
         $this->container['long_liq_amount'] = isset($data['long_liq_amount']) ? $data['long_liq_amount'] : null;
+        
         $this->container['long_liq_usd'] = isset($data['long_liq_usd']) ? $data['long_liq_usd'] : null;
+        
         $this->container['long_liq_usd_new'] = isset($data['long_liq_usd_new']) ? $data['long_liq_usd_new'] : null;
+        
         $this->container['short_liq_size'] = isset($data['short_liq_size']) ? $data['short_liq_size'] : null;
+        
         $this->container['short_liq_amount'] = isset($data['short_liq_amount']) ? $data['short_liq_amount'] : null;
+        
         $this->container['short_liq_usd'] = isset($data['short_liq_usd']) ? $data['short_liq_usd'] : null;
+        
         $this->container['short_liq_usd_new'] = isset($data['short_liq_usd_new']) ? $data['short_liq_usd_new'] : null;
+        
         $this->container['open_interest'] = isset($data['open_interest']) ? $data['open_interest'] : null;
+        
         $this->container['open_interest_usd'] = isset($data['open_interest_usd']) ? $data['open_interest_usd'] : null;
+        
         $this->container['top_lsr_account'] = isset($data['top_lsr_account']) ? $data['top_lsr_account'] : null;
+        
         $this->container['top_lsr_size'] = isset($data['top_lsr_size']) ? $data['top_lsr_size'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['top_long_size'] = isset($data['top_long_size']) ? $data['top_long_size'] : null;
+        
         $this->container['top_short_size'] = isset($data['top_short_size']) ? $data['top_short_size'] : null;
+        
         $this->container['long_taker_size'] = isset($data['long_taker_size']) ? $data['long_taker_size'] : null;
+        
         $this->container['short_taker_size'] = isset($data['short_taker_size']) ? $data['short_taker_size'] : null;
+        
         $this->container['top_long_account'] = isset($data['top_long_account']) ? $data['top_long_account'] : null;
+        
         $this->container['top_short_account'] = isset($data['top_short_account']) ? $data['top_short_account'] : null;
+        
         $this->container['long_users'] = isset($data['long_users']) ? $data['long_users'] : null;
+        
         $this->container['short_users'] = isset($data['short_users']) ? $data['short_users'] : null;
+        
     }
 
     /**
@@ -358,6 +403,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;
@@ -382,6 +428,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLsrTaker($lsr_taker)
     {
+        
         $this->container['lsr_taker'] = $lsr_taker;
 
         return $this;
@@ -406,6 +453,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLsrAccount($lsr_account)
     {
+        
         $this->container['lsr_account'] = $lsr_account;
 
         return $this;
@@ -430,6 +478,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLongLiqSize($long_liq_size)
     {
+        
         $this->container['long_liq_size'] = $long_liq_size;
 
         return $this;
@@ -454,6 +503,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLongLiqAmount($long_liq_amount)
     {
+        
         $this->container['long_liq_amount'] = $long_liq_amount;
 
         return $this;
@@ -478,6 +528,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLongLiqUsd($long_liq_usd)
     {
+        
         $this->container['long_liq_usd'] = $long_liq_usd;
 
         return $this;
@@ -502,6 +553,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLongLiqUsdNew($long_liq_usd_new)
     {
+        
         $this->container['long_liq_usd_new'] = $long_liq_usd_new;
 
         return $this;
@@ -526,6 +578,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setShortLiqSize($short_liq_size)
     {
+        
         $this->container['short_liq_size'] = $short_liq_size;
 
         return $this;
@@ -550,6 +603,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setShortLiqAmount($short_liq_amount)
     {
+        
         $this->container['short_liq_amount'] = $short_liq_amount;
 
         return $this;
@@ -574,6 +628,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setShortLiqUsd($short_liq_usd)
     {
+        
         $this->container['short_liq_usd'] = $short_liq_usd;
 
         return $this;
@@ -598,6 +653,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setShortLiqUsdNew($short_liq_usd_new)
     {
+        
         $this->container['short_liq_usd_new'] = $short_liq_usd_new;
 
         return $this;
@@ -622,6 +678,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setOpenInterest($open_interest)
     {
+        
         $this->container['open_interest'] = $open_interest;
 
         return $this;
@@ -646,6 +703,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setOpenInterestUsd($open_interest_usd)
     {
+        
         $this->container['open_interest_usd'] = $open_interest_usd;
 
         return $this;
@@ -670,6 +728,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setTopLsrAccount($top_lsr_account)
     {
+        
         $this->container['top_lsr_account'] = $top_lsr_account;
 
         return $this;
@@ -694,6 +753,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setTopLsrSize($top_lsr_size)
     {
+        
         $this->container['top_lsr_size'] = $top_lsr_size;
 
         return $this;
@@ -718,6 +778,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -742,6 +803,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setTopLongSize($top_long_size)
     {
+        
         $this->container['top_long_size'] = $top_long_size;
 
         return $this;
@@ -766,6 +828,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setTopShortSize($top_short_size)
     {
+        
         $this->container['top_short_size'] = $top_short_size;
 
         return $this;
@@ -790,6 +853,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLongTakerSize($long_taker_size)
     {
+        
         $this->container['long_taker_size'] = $long_taker_size;
 
         return $this;
@@ -814,6 +878,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setShortTakerSize($short_taker_size)
     {
+        
         $this->container['short_taker_size'] = $short_taker_size;
 
         return $this;
@@ -838,6 +903,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setTopLongAccount($top_long_account)
     {
+        
         $this->container['top_long_account'] = $top_long_account;
 
         return $this;
@@ -862,6 +928,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setTopShortAccount($top_short_account)
     {
+        
         $this->container['top_short_account'] = $top_short_account;
 
         return $this;
@@ -886,6 +953,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setLongUsers($long_users)
     {
+        
         $this->container['long_users'] = $long_users;
 
         return $this;
@@ -910,6 +978,7 @@ class ContractStat implements ModelInterface, ArrayAccess
      */
     public function setShortUsers($short_users)
     {
+        
         $this->container['short_users'] = $short_users;
 
         return $this;

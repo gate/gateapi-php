@@ -97,6 +97,27 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -226,11 +247,17 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['srvtm'] = isset($data['srvtm']) ? $data['srvtm'] : null;
+        
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['conversation_id'] = isset($data['conversation_id']) ? $data['conversation_id'] : null;
+        
         $this->container['msg_type'] = isset($data['msg_type']) ? $data['msg_type'] : null;
+        
         $this->container['risk_type'] = isset($data['risk_type']) ? $data['risk_type'] : null;
+        
         $this->container['toast_msg'] = isset($data['toast_msg']) ? $data['toast_msg'] : null;
+        
     }
 
     /**
@@ -243,7 +270,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getMsgTypeAllowableValues();
-        if (!is_null($this->container['msg_type']) && !in_array($this->container['msg_type'], $allowedValues, true)) {
+        if ((isset($this->container['msg_type'])) && !in_array($this->container['msg_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'msg_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -251,7 +278,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getRiskTypeAllowableValues();
-        if (!is_null($this->container['risk_type']) && !in_array($this->container['risk_type'], $allowedValues, true)) {
+        if ((isset($this->container['risk_type'])) && !in_array($this->container['risk_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'risk_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -292,6 +319,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
      */
     public function setSrvtm($srvtm)
     {
+        
         $this->container['srvtm'] = $srvtm;
 
         return $this;
@@ -316,6 +344,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -340,6 +369,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
      */
     public function setConversationId($conversation_id)
     {
+        
         $this->container['conversation_id'] = $conversation_id;
 
         return $this;
@@ -373,6 +403,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['msg_type'] = $msg_type;
 
         return $this;
@@ -406,6 +437,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['risk_type'] = $risk_type;
 
         return $this;
@@ -430,6 +462,7 @@ class P2pSendChatMessageResult implements ModelInterface, ArrayAccess
      */
     public function setToastMsg($toast_msg)
     {
+        
         $this->container['toast_msg'] = $toast_msg;
 
         return $this;

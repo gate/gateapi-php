@@ -90,6 +90,27 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -198,7 +219,9 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['adv_no'] = isset($data['adv_no']) ? $data['adv_no'] : null;
+        
         $this->container['adv_status'] = isset($data['adv_status']) ? $data['adv_status'] : null;
+        
     }
 
     /**
@@ -217,7 +240,7 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'adv_status' can't be null";
         }
         $allowedValues = $this->getAdvStatusAllowableValues();
-        if (!is_null($this->container['adv_status']) && !in_array($this->container['adv_status'], $allowedValues, true)) {
+        if ((isset($this->container['adv_status'])) && !in_array($this->container['adv_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'adv_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -258,6 +281,7 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
      */
     public function setAdvNo($adv_no)
     {
+        
         $this->container['adv_no'] = $adv_no;
 
         return $this;
@@ -291,6 +315,7 @@ class AdsUpdateStatus implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['adv_status'] = $adv_status;
 
         return $this;

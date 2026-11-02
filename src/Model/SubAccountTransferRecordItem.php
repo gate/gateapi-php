@@ -105,6 +105,27 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['timest'] = isset($data['timest']) ? $data['timest'] : null;
+        
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['sub_account'] = isset($data['sub_account']) ? $data['sub_account'] : null;
+        
         $this->container['sub_account_type'] = isset($data['sub_account_type']) ? $data['sub_account_type'] : 'spot';
+        
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['direction'] = isset($data['direction']) ? $data['direction'] : null;
+        
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        
         $this->container['client_order_id'] = isset($data['client_order_id']) ? $data['client_order_id'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
     }
 
     /**
@@ -286,6 +317,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setTimest($timest)
     {
+        
         $this->container['timest'] = $timest;
 
         return $this;
@@ -310,6 +342,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -334,6 +367,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setSubAccount($sub_account)
     {
+        
         $this->container['sub_account'] = $sub_account;
 
         return $this;
@@ -358,6 +392,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setSubAccountType($sub_account_type)
     {
+        
         $this->container['sub_account_type'] = $sub_account_type;
 
         return $this;
@@ -382,6 +417,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setCurrency($currency)
     {
+        
         $this->container['currency'] = $currency;
 
         return $this;
@@ -406,6 +442,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -430,6 +467,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setDirection($direction)
     {
+        
         $this->container['direction'] = $direction;
 
         return $this;
@@ -454,6 +492,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setSource($source)
     {
+        
         $this->container['source'] = $source;
 
         return $this;
@@ -478,6 +517,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setClientOrderId($client_order_id)
     {
+        
         $this->container['client_order_id'] = $client_order_id;
 
         return $this;
@@ -502,6 +542,7 @@ class SubAccountTransferRecordItem implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;

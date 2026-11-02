@@ -97,6 +97,27 @@ class AgencyCommission implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -200,11 +221,17 @@ class AgencyCommission implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['commission_time'] = isset($data['commission_time']) ? $data['commission_time'] : null;
+        
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['group_name'] = isset($data['group_name']) ? $data['group_name'] : null;
+        
         $this->container['commission_amount'] = isset($data['commission_amount']) ? $data['commission_amount'] : null;
+        
         $this->container['commission_asset'] = isset($data['commission_asset']) ? $data['commission_asset'] : null;
+        
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
+        
     }
 
     /**
@@ -250,6 +277,7 @@ class AgencyCommission implements ModelInterface, ArrayAccess
      */
     public function setCommissionTime($commission_time)
     {
+        
         $this->container['commission_time'] = $commission_time;
 
         return $this;
@@ -274,6 +302,7 @@ class AgencyCommission implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -298,6 +327,7 @@ class AgencyCommission implements ModelInterface, ArrayAccess
      */
     public function setGroupName($group_name)
     {
+        
         $this->container['group_name'] = $group_name;
 
         return $this;
@@ -322,6 +352,7 @@ class AgencyCommission implements ModelInterface, ArrayAccess
      */
     public function setCommissionAmount($commission_amount)
     {
+        
         $this->container['commission_amount'] = $commission_amount;
 
         return $this;
@@ -346,6 +377,7 @@ class AgencyCommission implements ModelInterface, ArrayAccess
      */
     public function setCommissionAsset($commission_asset)
     {
+        
         $this->container['commission_asset'] = $commission_asset;
 
         return $this;
@@ -370,6 +402,7 @@ class AgencyCommission implements ModelInterface, ArrayAccess
      */
     public function setSource($source)
     {
+        
         $this->container['source'] = $source;
 
         return $this;

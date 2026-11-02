@@ -181,6 +181,27 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -410,53 +431,101 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['is_sell'] = isset($data['is_sell']) ? $data['is_sell'] : null;
+        
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['orderid'] = isset($data['orderid']) ? $data['orderid'] : null;
+        
         $this->container['timest'] = isset($data['timest']) ? $data['timest'] : null;
+        
         $this->container['last_pay_time'] = isset($data['last_pay_time']) ? $data['last_pay_time'] : null;
+        
         $this->container['remain_pay_time'] = isset($data['remain_pay_time']) ? $data['remain_pay_time'] : null;
+        
         $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
+        
         $this->container['want_type'] = isset($data['want_type']) ? $data['want_type'] : null;
+        
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['reason_id'] = isset($data['reason_id']) ? $data['reason_id'] : null;
+        
         $this->container['reason_desc'] = isset($data['reason_desc']) ? $data['reason_desc'] : null;
+        
         $this->container['cancel_time'] = isset($data['cancel_time']) ? $data['cancel_time'] : null;
+        
         $this->container['in_appeal'] = isset($data['in_appeal']) ? $data['in_appeal'] : null;
+        
         $this->container['dispute_time'] = isset($data['dispute_time']) ? $data['dispute_time'] : null;
+        
         $this->container['cancelable'] = isset($data['cancelable']) ? $data['cancelable'] : null;
+        
         $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
+        
         $this->container['trade_tips'] = isset($data['trade_tips']) ? $data['trade_tips'] : null;
+        
         $this->container['show_bank'] = isset($data['show_bank']) ? $data['show_bank'] : null;
+        
         $this->container['bankname'] = isset($data['bankname']) ? $data['bankname'] : null;
+        
         $this->container['bankbranch'] = isset($data['bankbranch']) ? $data['bankbranch'] : null;
+        
         $this->container['bankid'] = isset($data['bankid']) ? $data['bankid'] : null;
+        
         $this->container['bank_holder_realname'] = isset($data['bank_holder_realname']) ? $data['bank_holder_realname'] : null;
+        
         $this->container['show_ali'] = isset($data['show_ali']) ? $data['show_ali'] : null;
+        
         $this->container['aliname'] = isset($data['aliname']) ? $data['aliname'] : null;
+        
         $this->container['is_alicode'] = isset($data['is_alicode']) ? $data['is_alicode'] : null;
+        
         $this->container['show_wechat'] = isset($data['show_wechat']) ? $data['show_wechat'] : null;
+        
         $this->container['wename'] = isset($data['wename']) ? $data['wename'] : null;
+        
         $this->container['show_others'] = isset($data['show_others']) ? $data['show_others'] : null;
+        
         $this->container['pay_others'] = isset($data['pay_others']) ? $data['pay_others'] : null;
+        
         $this->container['sel_paytype'] = isset($data['sel_paytype']) ? $data['sel_paytype'] : null;
+        
         $this->container['its_uid'] = isset($data['its_uid']) ? $data['its_uid'] : null;
+        
         $this->container['its_nickname'] = isset($data['its_nickname']) ? $data['its_nickname'] : null;
+        
         $this->container['its_realname'] = isset($data['its_realname']) ? $data['its_realname'] : null;
+        
         $this->container['have_traded'] = isset($data['have_traded']) ? $data['have_traded'] : null;
+        
         $this->container['appeal_allow_cancel'] = isset($data['appeal_allow_cancel']) ? $data['appeal_allow_cancel'] : null;
+        
         $this->container['appeal_verdict_has_open'] = isset($data['appeal_verdict_has_open']) ? $data['appeal_verdict_has_open'] : null;
+        
         $this->container['im_unread'] = isset($data['im_unread']) ? $data['im_unread'] : null;
+        
         $this->container['payment_voucher_url'] = isset($data['payment_voucher_url']) ? $data['payment_voucher_url'] : null;
+        
         $this->container['timest_paid'] = isset($data['timest_paid']) ? $data['timest_paid'] : null;
+        
         $this->container['own_realname'] = isset($data['own_realname']) ? $data['own_realname'] : null;
+        
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        
         $this->container['is_show_receive'] = isset($data['is_show_receive']) ? $data['is_show_receive'] : null;
+        
         $this->container['show_seller_contact_info'] = isset($data['show_seller_contact_info']) ? $data['show_seller_contact_info'] : null;
+        
         $this->container['supported_pay_types'] = isset($data['supported_pay_types']) ? $data['supported_pay_types'] : null;
+        
     }
 
     /**
@@ -502,6 +571,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setIsSell($is_sell)
     {
+        
         $this->container['is_sell'] = $is_sell;
 
         return $this;
@@ -520,12 +590,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets txid
      *
-     * @param int|null $txid Order ID
+     * @param int|null $txid Order ID (txid).
      *
      * @return $this
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -544,12 +615,13 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets orderid
      *
-     * @param int|null $orderid Order ID
+     * @param int|null $orderid ID of the posted order (orderid).
      *
      * @return $this
      */
     public function setOrderid($orderid)
     {
+        
         $this->container['orderid'] = $orderid;
 
         return $this;
@@ -574,6 +646,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setTimest($timest)
     {
+        
         $this->container['timest'] = $timest;
 
         return $this;
@@ -598,6 +671,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setLastPayTime($last_pay_time)
     {
+        
         $this->container['last_pay_time'] = $last_pay_time;
 
         return $this;
@@ -622,6 +696,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setRemainPayTime($remain_pay_time)
     {
+        
         $this->container['remain_pay_time'] = $remain_pay_time;
 
         return $this;
@@ -646,6 +721,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setCurrencyType($currency_type)
     {
+        
         $this->container['currency_type'] = $currency_type;
 
         return $this;
@@ -670,6 +746,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setWantType($want_type)
     {
+        
         $this->container['want_type'] = $want_type;
 
         return $this;
@@ -694,6 +771,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -718,6 +796,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;
@@ -742,6 +821,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -766,6 +846,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -790,6 +871,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -814,6 +896,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setReasonId($reason_id)
     {
+        
         $this->container['reason_id'] = $reason_id;
 
         return $this;
@@ -838,6 +921,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setReasonDesc($reason_desc)
     {
+        
         $this->container['reason_desc'] = $reason_desc;
 
         return $this;
@@ -862,6 +946,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setCancelTime($cancel_time)
     {
+        
         $this->container['cancel_time'] = $cancel_time;
 
         return $this;
@@ -886,6 +971,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setInAppeal($in_appeal)
     {
+        
         $this->container['in_appeal'] = $in_appeal;
 
         return $this;
@@ -910,6 +996,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setDisputeTime($dispute_time)
     {
+        
         $this->container['dispute_time'] = $dispute_time;
 
         return $this;
@@ -934,6 +1021,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setCancelable($cancelable)
     {
+        
         $this->container['cancelable'] = $cancelable;
 
         return $this;
@@ -958,6 +1046,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setHidePayment($hide_payment)
     {
+        
         $this->container['hide_payment'] = $hide_payment;
 
         return $this;
@@ -982,6 +1071,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setTradeTips($trade_tips)
     {
+        
         $this->container['trade_tips'] = $trade_tips;
 
         return $this;
@@ -1006,6 +1096,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setShowBank($show_bank)
     {
+        
         $this->container['show_bank'] = $show_bank;
 
         return $this;
@@ -1030,6 +1121,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setBankname($bankname)
     {
+        
         $this->container['bankname'] = $bankname;
 
         return $this;
@@ -1054,6 +1146,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setBankbranch($bankbranch)
     {
+        
         $this->container['bankbranch'] = $bankbranch;
 
         return $this;
@@ -1078,6 +1171,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setBankid($bankid)
     {
+        
         $this->container['bankid'] = $bankid;
 
         return $this;
@@ -1102,6 +1196,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setBankHolderRealname($bank_holder_realname)
     {
+        
         $this->container['bank_holder_realname'] = $bank_holder_realname;
 
         return $this;
@@ -1126,6 +1221,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setShowAli($show_ali)
     {
+        
         $this->container['show_ali'] = $show_ali;
 
         return $this;
@@ -1150,6 +1246,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setAliname($aliname)
     {
+        
         $this->container['aliname'] = $aliname;
 
         return $this;
@@ -1174,6 +1271,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setIsAlicode($is_alicode)
     {
+        
         $this->container['is_alicode'] = $is_alicode;
 
         return $this;
@@ -1198,6 +1296,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setShowWechat($show_wechat)
     {
+        
         $this->container['show_wechat'] = $show_wechat;
 
         return $this;
@@ -1222,6 +1321,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setWename($wename)
     {
+        
         $this->container['wename'] = $wename;
 
         return $this;
@@ -1246,6 +1346,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setShowOthers($show_others)
     {
+        
         $this->container['show_others'] = $show_others;
 
         return $this;
@@ -1270,6 +1371,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setPayOthers($pay_others)
     {
+        
         $this->container['pay_others'] = $pay_others;
 
         return $this;
@@ -1294,6 +1396,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setSelPaytype($sel_paytype)
     {
+        
         $this->container['sel_paytype'] = $sel_paytype;
 
         return $this;
@@ -1318,6 +1421,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setItsUid($its_uid)
     {
+        
         $this->container['its_uid'] = $its_uid;
 
         return $this;
@@ -1342,6 +1446,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setItsNickname($its_nickname)
     {
+        
         $this->container['its_nickname'] = $its_nickname;
 
         return $this;
@@ -1366,6 +1471,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setItsRealname($its_realname)
     {
+        
         $this->container['its_realname'] = $its_realname;
 
         return $this;
@@ -1390,6 +1496,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setHaveTraded($have_traded)
     {
+        
         $this->container['have_traded'] = $have_traded;
 
         return $this;
@@ -1414,6 +1521,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setAppealAllowCancel($appeal_allow_cancel)
     {
+        
         $this->container['appeal_allow_cancel'] = $appeal_allow_cancel;
 
         return $this;
@@ -1438,6 +1546,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setAppealVerdictHasOpen($appeal_verdict_has_open)
     {
+        
         $this->container['appeal_verdict_has_open'] = $appeal_verdict_has_open;
 
         return $this;
@@ -1462,6 +1571,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setImUnread($im_unread)
     {
+        
         $this->container['im_unread'] = $im_unread;
 
         return $this;
@@ -1486,6 +1596,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setPaymentVoucherUrl($payment_voucher_url)
     {
+        
         $this->container['payment_voucher_url'] = $payment_voucher_url;
 
         return $this;
@@ -1510,6 +1621,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setTimestPaid($timest_paid)
     {
+        
         $this->container['timest_paid'] = $timest_paid;
 
         return $this;
@@ -1534,6 +1646,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setOwnRealname($own_realname)
     {
+        
         $this->container['own_realname'] = $own_realname;
 
         return $this;
@@ -1558,6 +1671,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setOrderType($order_type)
     {
+        
         $this->container['order_type'] = $order_type;
 
         return $this;
@@ -1582,6 +1696,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setIsShowReceive($is_show_receive)
     {
+        
         $this->container['is_show_receive'] = $is_show_receive;
 
         return $this;
@@ -1606,6 +1721,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setShowSellerContactInfo($show_seller_contact_info)
     {
+        
         $this->container['show_seller_contact_info'] = $show_seller_contact_info;
 
         return $this;
@@ -1630,6 +1746,7 @@ class P2pTransactionDetail implements ModelInterface, ArrayAccess
      */
     public function setSupportedPayTypes($supported_pay_types)
     {
+        
         $this->container['supported_pay_types'] = $supported_pay_types;
 
         return $this;

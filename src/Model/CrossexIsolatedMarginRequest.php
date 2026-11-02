@@ -92,6 +92,27 @@ class CrossexIsolatedMarginRequest implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -203,8 +224,11 @@ class CrossexIsolatedMarginRequest implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
+        
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        
         $this->container['position_side'] = isset($data['position_side']) ? $data['position_side'] : null;
+        
     }
 
     /**
@@ -223,7 +247,7 @@ class CrossexIsolatedMarginRequest implements ModelInterface, ArrayAccess
             $invalidProperties[] = "'margin' can't be null";
         }
         $allowedValues = $this->getPositionSideAllowableValues();
-        if (!is_null($this->container['position_side']) && !in_array($this->container['position_side'], $allowedValues, true)) {
+        if ((isset($this->container['position_side'])) && !in_array($this->container['position_side'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'position_side', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -264,6 +288,7 @@ class CrossexIsolatedMarginRequest implements ModelInterface, ArrayAccess
      */
     public function setSymbol($symbol)
     {
+        
         $this->container['symbol'] = $symbol;
 
         return $this;
@@ -288,6 +313,7 @@ class CrossexIsolatedMarginRequest implements ModelInterface, ArrayAccess
      */
     public function setMargin($margin)
     {
+        
         $this->container['margin'] = $margin;
 
         return $this;
@@ -321,6 +347,7 @@ class CrossexIsolatedMarginRequest implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['position_side'] = $position_side;
 
         return $this;

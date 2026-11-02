@@ -95,6 +95,27 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -195,10 +216,15 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['pn'] = isset($data['pn']) ? $data['pn'] : null;
+        
         $this->container['ps'] = isset($data['ps']) ? $data['ps'] : null;
+        
         $this->container['total_pn'] = isset($data['total_pn']) ? $data['total_pn'] : null;
+        
         $this->container['count'] = isset($data['count']) ? $data['count'] : null;
+        
         $this->container['lists'] = isset($data['lists']) ? $data['lists'] : null;
+        
     }
 
     /**
@@ -259,6 +285,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setPn($pn)
     {
+        
         $this->container['pn'] = $pn;
 
         return $this;
@@ -283,6 +310,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setPs($ps)
     {
+        
         $this->container['ps'] = $ps;
 
         return $this;
@@ -307,6 +335,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setTotalPn($total_pn)
     {
+        
         $this->container['total_pn'] = $total_pn;
 
         return $this;
@@ -331,6 +360,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setCount($count)
     {
+        
         $this->container['count'] = $count;
 
         return $this;
@@ -355,6 +385,7 @@ class OtcOrderListResult implements ModelInterface, ArrayAccess
      */
     public function setLists($lists)
     {
+        
         $this->container['lists'] = $lists;
 
         return $this;

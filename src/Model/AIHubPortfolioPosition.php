@@ -98,6 +98,27 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['quote_amount'] = isset($data['quote_amount']) ? $data['quote_amount'] : null;
+        
         $this->container['position_value'] = isset($data['position_value']) ? $data['position_value'] : null;
+        
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        
         $this->container['side'] = isset($data['side']) ? $data['side'] : null;
+        
     }
 
     /**
@@ -251,6 +278,7 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -275,6 +303,7 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -299,6 +328,7 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
      */
     public function setQuoteAmount($quote_amount)
     {
+        
         $this->container['quote_amount'] = $quote_amount;
 
         return $this;
@@ -323,6 +353,7 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
      */
     public function setPositionValue($position_value)
     {
+        
         $this->container['position_value'] = $position_value;
 
         return $this;
@@ -347,6 +378,7 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
      */
     public function setMargin($margin)
     {
+        
         $this->container['margin'] = $margin;
 
         return $this;
@@ -371,6 +403,7 @@ class AIHubPortfolioPosition implements ModelInterface, ArrayAccess
      */
     public function setSide($side)
     {
+        
         $this->container['side'] = $side;
 
         return $this;

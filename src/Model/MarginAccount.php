@@ -102,6 +102,27 @@ class MarginAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -211,13 +232,21 @@ class MarginAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['currency_pair'] = isset($data['currency_pair']) ? $data['currency_pair'] : null;
+        
         $this->container['account_type'] = isset($data['account_type']) ? $data['account_type'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
+        
         $this->container['risk'] = isset($data['risk']) ? $data['risk'] : null;
+        
         $this->container['mmr'] = isset($data['mmr']) ? $data['mmr'] : null;
+        
         $this->container['base'] = isset($data['base']) ? $data['base'] : null;
+        
         $this->container['quote'] = isset($data['quote']) ? $data['quote'] : null;
+        
     }
 
     /**
@@ -263,6 +292,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setCurrencyPair($currency_pair)
     {
+        
         $this->container['currency_pair'] = $currency_pair;
 
         return $this;
@@ -287,6 +317,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setAccountType($account_type)
     {
+        
         $this->container['account_type'] = $account_type;
 
         return $this;
@@ -311,6 +342,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -335,6 +367,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setLocked($locked)
     {
+        
         $this->container['locked'] = $locked;
 
         return $this;
@@ -359,6 +392,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setRisk($risk)
     {
+        
         $this->container['risk'] = $risk;
 
         return $this;
@@ -383,6 +417,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setMmr($mmr)
     {
+        
         $this->container['mmr'] = $mmr;
 
         return $this;
@@ -407,6 +442,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setBase($base)
     {
+        
         $this->container['base'] = $base;
 
         return $this;
@@ -431,6 +467,7 @@ class MarginAccount implements ModelInterface, ArrayAccess
      */
     public function setQuote($quote)
     {
+        
         $this->container['quote'] = $quote;
 
         return $this;

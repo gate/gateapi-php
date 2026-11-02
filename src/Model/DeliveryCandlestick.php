@@ -98,6 +98,27 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -201,11 +222,17 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['t'] = isset($data['t']) ? $data['t'] : null;
+        
         $this->container['v'] = isset($data['v']) ? $data['v'] : null;
+        
         $this->container['c'] = isset($data['c']) ? $data['c'] : null;
+        
         $this->container['h'] = isset($data['h']) ? $data['h'] : null;
+        
         $this->container['l'] = isset($data['l']) ? $data['l'] : null;
+        
         $this->container['o'] = isset($data['o']) ? $data['o'] : null;
+        
     }
 
     /**
@@ -251,6 +278,7 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
      */
     public function setT($t)
     {
+        
         $this->container['t'] = $t;
 
         return $this;
@@ -275,6 +303,7 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
      */
     public function setV($v)
     {
+        
         $this->container['v'] = $v;
 
         return $this;
@@ -299,6 +328,7 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
      */
     public function setC($c)
     {
+        
         $this->container['c'] = $c;
 
         return $this;
@@ -323,6 +353,7 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
      */
     public function setH($h)
     {
+        
         $this->container['h'] = $h;
 
         return $this;
@@ -347,6 +378,7 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
      */
     public function setL($l)
     {
+        
         $this->container['l'] = $l;
 
         return $this;
@@ -371,6 +403,7 @@ class DeliveryCandlestick implements ModelInterface, ArrayAccess
      */
     public function setO($o)
     {
+        
         $this->container['o'] = $o;
 
         return $this;

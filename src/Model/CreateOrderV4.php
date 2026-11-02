@@ -91,6 +91,27 @@ class CreateOrderV4 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -185,8 +206,11 @@ class CreateOrderV4 implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        
         $this->container['rid'] = isset($data['rid']) ? $data['rid'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
     }
 
     /**
@@ -201,17 +225,21 @@ class CreateOrderV4 implements ModelInterface, ArrayAccess
         if ($this->container['pid'] === null) {
             $invalidProperties[] = "'pid' can't be null";
         }
+        
         if (($this->container['pid'] < 1)) {
             $invalidProperties[] = "invalid value for 'pid', must be bigger than or equal to 1.";
         }
 
+        
         if ($this->container['rid'] === null) {
             $invalidProperties[] = "'rid' can't be null";
         }
+        
         if (($this->container['rid'] < 1)) {
             $invalidProperties[] = "invalid value for 'rid', must be bigger than or equal to 1.";
         }
 
+        
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
@@ -249,6 +277,7 @@ class CreateOrderV4 implements ModelInterface, ArrayAccess
      */
     public function setPid($pid)
     {
+        
 
         if (($pid < 1)) {
             throw new \InvalidArgumentException('invalid value for $pid when calling CreateOrderV4., must be bigger than or equal to 1.');
@@ -278,6 +307,7 @@ class CreateOrderV4 implements ModelInterface, ArrayAccess
      */
     public function setRid($rid)
     {
+        
 
         if (($rid < 1)) {
             throw new \InvalidArgumentException('invalid value for $rid when calling CreateOrderV4., must be bigger than or equal to 1.');
@@ -307,6 +337,7 @@ class CreateOrderV4 implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;

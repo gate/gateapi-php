@@ -105,6 +105,27 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['equity'] = isset($data['equity']) ? $data['equity'] : null;
+        
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
+        
         $this->container['position_market_value'] = isset($data['position_market_value']) ? $data['position_market_value'] : null;
+        
         $this->container['position_pnl'] = isset($data['position_pnl']) ? $data['position_pnl'] : null;
+        
         $this->container['today_pnl'] = isset($data['today_pnl']) ? $data['today_pnl'] : null;
+        
         $this->container['option_position_market_value'] = isset($data['option_position_market_value']) ? $data['option_position_market_value'] : null;
+        
         $this->container['option_position_pnl'] = isset($data['option_position_pnl']) ? $data['option_position_pnl'] : null;
+        
         $this->container['option_today_pnl'] = isset($data['option_today_pnl']) ? $data['option_today_pnl'] : null;
+        
         $this->container['user_exists'] = isset($data['user_exists']) ? $data['user_exists'] : null;
+        
     }
 
     /**
@@ -274,6 +305,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setEquity($equity)
     {
+        
         $this->container['equity'] = $equity;
 
         return $this;
@@ -298,6 +330,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setBalance($balance)
     {
+        
         $this->container['balance'] = $balance;
 
         return $this;
@@ -322,6 +355,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setAvailable($available)
     {
+        
         $this->container['available'] = $available;
 
         return $this;
@@ -346,6 +380,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setPositionMarketValue($position_market_value)
     {
+        
         $this->container['position_market_value'] = $position_market_value;
 
         return $this;
@@ -370,6 +405,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setPositionPnl($position_pnl)
     {
+        
         $this->container['position_pnl'] = $position_pnl;
 
         return $this;
@@ -394,6 +430,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setTodayPnl($today_pnl)
     {
+        
         $this->container['today_pnl'] = $today_pnl;
 
         return $this;
@@ -418,6 +455,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setOptionPositionMarketValue($option_position_market_value)
     {
+        
         $this->container['option_position_market_value'] = $option_position_market_value;
 
         return $this;
@@ -442,6 +480,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setOptionPositionPnl($option_position_pnl)
     {
+        
         $this->container['option_position_pnl'] = $option_position_pnl;
 
         return $this;
@@ -466,6 +505,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setOptionTodayPnl($option_today_pnl)
     {
+        
         $this->container['option_today_pnl'] = $option_today_pnl;
 
         return $this;
@@ -490,6 +530,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function setUserExists($user_exists)
     {
+        
         $this->container['user_exists'] = $user_exists;
 
         return $this;

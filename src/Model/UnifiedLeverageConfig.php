@@ -99,6 +99,27 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -205,12 +226,19 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['current_leverage'] = isset($data['current_leverage']) ? $data['current_leverage'] : null;
+        
         $this->container['min_leverage'] = isset($data['min_leverage']) ? $data['min_leverage'] : null;
+        
         $this->container['max_leverage'] = isset($data['max_leverage']) ? $data['max_leverage'] : null;
+        
         $this->container['debit'] = isset($data['debit']) ? $data['debit'] : null;
+        
         $this->container['available_margin'] = isset($data['available_margin']) ? $data['available_margin'] : null;
+        
         $this->container['borrowable'] = isset($data['borrowable']) ? $data['borrowable'] : null;
+        
         $this->container['except_leverage_borrowable'] = isset($data['except_leverage_borrowable']) ? $data['except_leverage_borrowable'] : null;
+        
     }
 
     /**
@@ -256,6 +284,7 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
      */
     public function setCurrentLeverage($current_leverage)
     {
+        
         $this->container['current_leverage'] = $current_leverage;
 
         return $this;
@@ -280,6 +309,7 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
      */
     public function setMinLeverage($min_leverage)
     {
+        
         $this->container['min_leverage'] = $min_leverage;
 
         return $this;
@@ -304,6 +334,7 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
      */
     public function setMaxLeverage($max_leverage)
     {
+        
         $this->container['max_leverage'] = $max_leverage;
 
         return $this;
@@ -328,6 +359,7 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
      */
     public function setDebit($debit)
     {
+        
         $this->container['debit'] = $debit;
 
         return $this;
@@ -352,6 +384,7 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
      */
     public function setAvailableMargin($available_margin)
     {
+        
         $this->container['available_margin'] = $available_margin;
 
         return $this;
@@ -376,6 +409,7 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
      */
     public function setBorrowable($borrowable)
     {
+        
         $this->container['borrowable'] = $borrowable;
 
         return $this;
@@ -400,6 +434,7 @@ class UnifiedLeverageConfig implements ModelInterface, ArrayAccess
      */
     public function setExceptLeverageBorrowable($except_leverage_borrowable)
     {
+        
         $this->container['except_leverage_borrowable'] = $except_leverage_borrowable;
 
         return $this;

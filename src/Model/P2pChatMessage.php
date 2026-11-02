@@ -111,6 +111,27 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -248,18 +269,31 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['is_sell'] = isset($data['is_sell']) ? $data['is_sell'] : null;
+        
         $this->container['msg_type'] = isset($data['msg_type']) ? $data['msg_type'] : null;
+        
         $this->container['msg'] = isset($data['msg']) ? $data['msg'] : null;
+        
         $this->container['username'] = isset($data['username']) ? $data['username'] : null;
+        
         $this->container['timest'] = isset($data['timest']) ? $data['timest'] : null;
+        
         $this->container['msg_obj'] = isset($data['msg_obj']) ? $data['msg_obj'] : null;
+        
         $this->container['uid'] = isset($data['uid']) ? $data['uid'] : null;
+        
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        
         $this->container['pic'] = isset($data['pic']) ? $data['pic'] : null;
+        
         $this->container['file_key'] = isset($data['file_key']) ? $data['file_key'] : null;
+        
         $this->container['file_type'] = isset($data['file_type']) ? $data['file_type'] : null;
+        
         $this->container['risk_type'] = isset($data['risk_type']) ? $data['risk_type'] : null;
+        
         $this->container['toast_msg'] = isset($data['toast_msg']) ? $data['toast_msg'] : null;
+        
     }
 
     /**
@@ -272,7 +306,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getRiskTypeAllowableValues();
-        if (!is_null($this->container['risk_type']) && !in_array($this->container['risk_type'], $allowedValues, true)) {
+        if ((isset($this->container['risk_type'])) && !in_array($this->container['risk_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'risk_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -313,6 +347,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setIsSell($is_sell)
     {
+        
         $this->container['is_sell'] = $is_sell;
 
         return $this;
@@ -337,6 +372,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setMsgType($msg_type)
     {
+        
         $this->container['msg_type'] = $msg_type;
 
         return $this;
@@ -361,6 +397,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setMsg($msg)
     {
+        
         $this->container['msg'] = $msg;
 
         return $this;
@@ -385,6 +422,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setUsername($username)
     {
+        
         $this->container['username'] = $username;
 
         return $this;
@@ -409,6 +447,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setTimest($timest)
     {
+        
         $this->container['timest'] = $timest;
 
         return $this;
@@ -433,6 +472,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setMsgObj($msg_obj)
     {
+        
         $this->container['msg_obj'] = $msg_obj;
 
         return $this;
@@ -457,6 +497,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setUid($uid)
     {
+        
         $this->container['uid'] = $uid;
 
         return $this;
@@ -481,6 +522,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setType($type)
     {
+        
         $this->container['type'] = $type;
 
         return $this;
@@ -505,6 +547,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setPic($pic)
     {
+        
         $this->container['pic'] = $pic;
 
         return $this;
@@ -529,6 +572,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setFileKey($file_key)
     {
+        
         $this->container['file_key'] = $file_key;
 
         return $this;
@@ -553,6 +597,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setFileType($file_type)
     {
+        
         $this->container['file_type'] = $file_type;
 
         return $this;
@@ -586,6 +631,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['risk_type'] = $risk_type;
 
         return $this;
@@ -610,6 +656,7 @@ class P2pChatMessage implements ModelInterface, ArrayAccess
      */
     public function setToastMsg($toast_msg)
     {
+        
         $this->container['toast_msg'] = $toast_msg;
 
         return $this;

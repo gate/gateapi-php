@@ -164,6 +164,27 @@ class Position implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -398,44 +419,83 @@ class Position implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        
         $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
+        
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        
         $this->container['hedge_status'] = isset($data['hedge_status']) ? $data['hedge_status'] : null;
+        
         $this->container['hedged_size'] = isset($data['hedged_size']) ? $data['hedged_size'] : null;
+        
         $this->container['unhedged_size'] = isset($data['unhedged_size']) ? $data['unhedged_size'] : null;
+        
         $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
         $this->container['risk_limit'] = isset($data['risk_limit']) ? $data['risk_limit'] : null;
+        
         $this->container['leverage_max'] = isset($data['leverage_max']) ? $data['leverage_max'] : null;
+        
         $this->container['maintenance_rate'] = isset($data['maintenance_rate']) ? $data['maintenance_rate'] : null;
+        
         $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        
         $this->container['margin'] = isset($data['margin']) ? $data['margin'] : null;
+        
         $this->container['entry_price'] = isset($data['entry_price']) ? $data['entry_price'] : null;
+        
         $this->container['liq_price'] = isset($data['liq_price']) ? $data['liq_price'] : null;
+        
         $this->container['mark_price'] = isset($data['mark_price']) ? $data['mark_price'] : null;
+        
         $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
+        
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
+        
         $this->container['unrealised_pnl'] = isset($data['unrealised_pnl']) ? $data['unrealised_pnl'] : null;
+        
         $this->container['realised_pnl'] = isset($data['realised_pnl']) ? $data['realised_pnl'] : null;
+        
         $this->container['pnl_pnl'] = isset($data['pnl_pnl']) ? $data['pnl_pnl'] : null;
+        
         $this->container['pnl_fund'] = isset($data['pnl_fund']) ? $data['pnl_fund'] : null;
+        
         $this->container['pnl_fee'] = isset($data['pnl_fee']) ? $data['pnl_fee'] : null;
+        
         $this->container['history_pnl'] = isset($data['history_pnl']) ? $data['history_pnl'] : null;
+        
         $this->container['last_close_pnl'] = isset($data['last_close_pnl']) ? $data['last_close_pnl'] : null;
+        
         $this->container['realised_point'] = isset($data['realised_point']) ? $data['realised_point'] : null;
+        
         $this->container['history_point'] = isset($data['history_point']) ? $data['history_point'] : null;
+        
         $this->container['adl_ranking'] = isset($data['adl_ranking']) ? $data['adl_ranking'] : null;
+        
         $this->container['pending_orders'] = isset($data['pending_orders']) ? $data['pending_orders'] : null;
+        
         $this->container['close_order'] = isset($data['close_order']) ? $data['close_order'] : null;
+        
         $this->container['mode'] = isset($data['mode']) ? $data['mode'] : null;
+        
         $this->container['cross_leverage_limit'] = isset($data['cross_leverage_limit']) ? $data['cross_leverage_limit'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
         $this->container['update_id'] = isset($data['update_id']) ? $data['update_id'] : null;
+        
         $this->container['open_time'] = isset($data['open_time']) ? $data['open_time'] : null;
+        
         $this->container['risk_limit_table'] = isset($data['risk_limit_table']) ? $data['risk_limit_table'] : null;
+        
         $this->container['average_maintenance_rate'] = isset($data['average_maintenance_rate']) ? $data['average_maintenance_rate'] : null;
+        
         $this->container['pid'] = isset($data['pid']) ? $data['pid'] : null;
+        
         $this->container['pos_margin_mode'] = isset($data['pos_margin_mode']) ? $data['pos_margin_mode'] : null;
+        
         $this->container['lever'] = isset($data['lever']) ? $data['lever'] : null;
+        
     }
 
     /**
@@ -448,7 +508,7 @@ class Position implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getHedgeStatusAllowableValues();
-        if (!is_null($this->container['hedge_status']) && !in_array($this->container['hedge_status'], $allowedValues, true)) {
+        if ((isset($this->container['hedge_status'])) && !in_array($this->container['hedge_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'hedge_status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -456,7 +516,7 @@ class Position implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getModeAllowableValues();
-        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
+        if ((isset($this->container['mode'])) && !in_array($this->container['mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'mode', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -497,6 +557,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setUser($user)
     {
+        
         $this->container['user'] = $user;
 
         return $this;
@@ -521,6 +582,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setContract($contract)
     {
+        
         $this->container['contract'] = $contract;
 
         return $this;
@@ -545,6 +607,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setSize($size)
     {
+        
         $this->container['size'] = $size;
 
         return $this;
@@ -578,6 +641,7 @@ class Position implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['hedge_status'] = $hedge_status;
 
         return $this;
@@ -602,6 +666,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setHedgedSize($hedged_size)
     {
+        
         $this->container['hedged_size'] = $hedged_size;
 
         return $this;
@@ -626,6 +691,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setUnhedgedSize($unhedged_size)
     {
+        
         $this->container['unhedged_size'] = $unhedged_size;
 
         return $this;
@@ -650,6 +716,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setLeverage($leverage)
     {
+        
         $this->container['leverage'] = $leverage;
 
         return $this;
@@ -674,6 +741,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setRiskLimit($risk_limit)
     {
+        
         $this->container['risk_limit'] = $risk_limit;
 
         return $this;
@@ -698,6 +766,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setLeverageMax($leverage_max)
     {
+        
         $this->container['leverage_max'] = $leverage_max;
 
         return $this;
@@ -722,6 +791,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceRate($maintenance_rate)
     {
+        
         $this->container['maintenance_rate'] = $maintenance_rate;
 
         return $this;
@@ -746,6 +816,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setValue($value)
     {
+        
         $this->container['value'] = $value;
 
         return $this;
@@ -770,6 +841,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setMargin($margin)
     {
+        
         $this->container['margin'] = $margin;
 
         return $this;
@@ -794,6 +866,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setEntryPrice($entry_price)
     {
+        
         $this->container['entry_price'] = $entry_price;
 
         return $this;
@@ -818,6 +891,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setLiqPrice($liq_price)
     {
+        
         $this->container['liq_price'] = $liq_price;
 
         return $this;
@@ -842,6 +916,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setMarkPrice($mark_price)
     {
+        
         $this->container['mark_price'] = $mark_price;
 
         return $this;
@@ -866,6 +941,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setInitialMargin($initial_margin)
     {
+        
         $this->container['initial_margin'] = $initial_margin;
 
         return $this;
@@ -890,6 +966,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceMargin($maintenance_margin)
     {
+        
         $this->container['maintenance_margin'] = $maintenance_margin;
 
         return $this;
@@ -914,6 +991,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setUnrealisedPnl($unrealised_pnl)
     {
+        
         $this->container['unrealised_pnl'] = $unrealised_pnl;
 
         return $this;
@@ -938,6 +1016,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setRealisedPnl($realised_pnl)
     {
+        
         $this->container['realised_pnl'] = $realised_pnl;
 
         return $this;
@@ -962,6 +1041,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setPnlPnl($pnl_pnl)
     {
+        
         $this->container['pnl_pnl'] = $pnl_pnl;
 
         return $this;
@@ -986,6 +1066,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setPnlFund($pnl_fund)
     {
+        
         $this->container['pnl_fund'] = $pnl_fund;
 
         return $this;
@@ -1010,6 +1091,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setPnlFee($pnl_fee)
     {
+        
         $this->container['pnl_fee'] = $pnl_fee;
 
         return $this;
@@ -1034,6 +1116,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setHistoryPnl($history_pnl)
     {
+        
         $this->container['history_pnl'] = $history_pnl;
 
         return $this;
@@ -1058,6 +1141,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setLastClosePnl($last_close_pnl)
     {
+        
         $this->container['last_close_pnl'] = $last_close_pnl;
 
         return $this;
@@ -1082,6 +1166,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setRealisedPoint($realised_point)
     {
+        
         $this->container['realised_point'] = $realised_point;
 
         return $this;
@@ -1106,6 +1191,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setHistoryPoint($history_point)
     {
+        
         $this->container['history_point'] = $history_point;
 
         return $this;
@@ -1130,6 +1216,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setAdlRanking($adl_ranking)
     {
+        
         $this->container['adl_ranking'] = $adl_ranking;
 
         return $this;
@@ -1154,6 +1241,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setPendingOrders($pending_orders)
     {
+        
         $this->container['pending_orders'] = $pending_orders;
 
         return $this;
@@ -1178,6 +1266,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setCloseOrder($close_order)
     {
+        
         $this->container['close_order'] = $close_order;
 
         return $this;
@@ -1211,6 +1300,7 @@ class Position implements ModelInterface, ArrayAccess
                 )
             );
         }
+        
         $this->container['mode'] = $mode;
 
         return $this;
@@ -1235,6 +1325,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setCrossLeverageLimit($cross_leverage_limit)
     {
+        
         $this->container['cross_leverage_limit'] = $cross_leverage_limit;
 
         return $this;
@@ -1259,6 +1350,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;
@@ -1283,6 +1375,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setUpdateId($update_id)
     {
+        
         $this->container['update_id'] = $update_id;
 
         return $this;
@@ -1307,6 +1400,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setOpenTime($open_time)
     {
+        
         $this->container['open_time'] = $open_time;
 
         return $this;
@@ -1331,6 +1425,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setRiskLimitTable($risk_limit_table)
     {
+        
         $this->container['risk_limit_table'] = $risk_limit_table;
 
         return $this;
@@ -1355,6 +1450,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setAverageMaintenanceRate($average_maintenance_rate)
     {
+        
         $this->container['average_maintenance_rate'] = $average_maintenance_rate;
 
         return $this;
@@ -1373,12 +1469,13 @@ class Position implements ModelInterface, ArrayAccess
     /**
      * Sets pid
      *
-     * @param int|null $pid Sub-account position ID
+     * @param int|null $pid Split-position ID.
      *
      * @return $this
      */
     public function setPid($pid)
     {
+        
         $this->container['pid'] = $pid;
 
         return $this;
@@ -1403,6 +1500,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setPosMarginMode($pos_margin_mode)
     {
+        
         $this->container['pos_margin_mode'] = $pos_margin_mode;
 
         return $this;
@@ -1427,6 +1525,7 @@ class Position implements ModelInterface, ArrayAccess
      */
     public function setLever($lever)
     {
+        
         $this->container['lever'] = $lever;
 
         return $this;

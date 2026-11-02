@@ -113,6 +113,27 @@ class CrossexAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -240,19 +261,33 @@ class CrossexAccount implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['available_margin'] = isset($data['available_margin']) ? $data['available_margin'] : null;
+        
         $this->container['margin_balance'] = isset($data['margin_balance']) ? $data['margin_balance'] : null;
+        
         $this->container['initial_margin'] = isset($data['initial_margin']) ? $data['initial_margin'] : null;
+        
         $this->container['maintenance_margin'] = isset($data['maintenance_margin']) ? $data['maintenance_margin'] : null;
+        
         $this->container['initial_margin_rate'] = isset($data['initial_margin_rate']) ? $data['initial_margin_rate'] : null;
+        
         $this->container['maintenance_margin_rate'] = isset($data['maintenance_margin_rate']) ? $data['maintenance_margin_rate'] : null;
+        
         $this->container['position_mode'] = isset($data['position_mode']) ? $data['position_mode'] : null;
+        
         $this->container['account_limit'] = isset($data['account_limit']) ? $data['account_limit'] : null;
+        
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
+        
         $this->container['account_mode'] = isset($data['account_mode']) ? $data['account_mode'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['assets'] = isset($data['assets']) ? $data['assets'] : null;
+        
     }
 
     /**
@@ -331,6 +366,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -355,6 +391,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setAvailableMargin($available_margin)
     {
+        
         $this->container['available_margin'] = $available_margin;
 
         return $this;
@@ -379,6 +416,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setMarginBalance($margin_balance)
     {
+        
         $this->container['margin_balance'] = $margin_balance;
 
         return $this;
@@ -403,6 +441,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setInitialMargin($initial_margin)
     {
+        
         $this->container['initial_margin'] = $initial_margin;
 
         return $this;
@@ -427,6 +466,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceMargin($maintenance_margin)
     {
+        
         $this->container['maintenance_margin'] = $maintenance_margin;
 
         return $this;
@@ -451,6 +491,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setInitialMarginRate($initial_margin_rate)
     {
+        
         $this->container['initial_margin_rate'] = $initial_margin_rate;
 
         return $this;
@@ -475,6 +516,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setMaintenanceMarginRate($maintenance_margin_rate)
     {
+        
         $this->container['maintenance_margin_rate'] = $maintenance_margin_rate;
 
         return $this;
@@ -499,6 +541,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setPositionMode($position_mode)
     {
+        
         $this->container['position_mode'] = $position_mode;
 
         return $this;
@@ -523,6 +566,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setAccountLimit($account_limit)
     {
+        
         $this->container['account_limit'] = $account_limit;
 
         return $this;
@@ -547,6 +591,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setCreateTime($create_time)
     {
+        
         $this->container['create_time'] = $create_time;
 
         return $this;
@@ -571,6 +616,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setUpdateTime($update_time)
     {
+        
         $this->container['update_time'] = $update_time;
 
         return $this;
@@ -595,6 +641,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setAccountMode($account_mode)
     {
+        
         $this->container['account_mode'] = $account_mode;
 
         return $this;
@@ -619,6 +666,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -643,6 +691,7 @@ class CrossexAccount implements ModelInterface, ArrayAccess
      */
     public function setAssets($assets)
     {
+        
         $this->container['assets'] = $assets;
 
         return $this;

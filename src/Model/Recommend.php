@@ -93,6 +93,27 @@ class Recommend implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class Recommend implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        
         $this->container['btc_faith'] = isset($data['btc_faith']) ? $data['btc_faith'] : null;
+        
         $this->container['conservative'] = isset($data['conservative']) ? $data['conservative'] : null;
+        
         $this->container['gt_faith'] = isset($data['gt_faith']) ? $data['gt_faith'] : null;
+        
     }
 
     /**
@@ -250,6 +275,7 @@ class Recommend implements ModelInterface, ArrayAccess
      */
     public function setBalance($balance)
     {
+        
         $this->container['balance'] = $balance;
 
         return $this;
@@ -274,6 +300,7 @@ class Recommend implements ModelInterface, ArrayAccess
      */
     public function setBtcFaith($btc_faith)
     {
+        
         $this->container['btc_faith'] = $btc_faith;
 
         return $this;
@@ -298,6 +325,7 @@ class Recommend implements ModelInterface, ArrayAccess
      */
     public function setConservative($conservative)
     {
+        
         $this->container['conservative'] = $conservative;
 
         return $this;
@@ -322,6 +350,7 @@ class Recommend implements ModelInterface, ArrayAccess
      */
     public function setGtFaith($gt_faith)
     {
+        
         $this->container['gt_faith'] = $gt_faith;
 
         return $this;

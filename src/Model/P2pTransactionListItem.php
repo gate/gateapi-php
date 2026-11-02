@@ -133,6 +133,27 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -290,29 +311,53 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['type_buy'] = isset($data['type_buy']) ? $data['type_buy'] : null;
+        
         $this->container['timest'] = isset($data['timest']) ? $data['timest'] : null;
+        
         $this->container['timest_expire'] = isset($data['timest_expire']) ? $data['timest_expire'] : null;
+        
         $this->container['timestamp'] = isset($data['timestamp']) ? $data['timestamp'] : null;
+        
         $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        
         $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        
         $this->container['txid'] = isset($data['txid']) ? $data['txid'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
         $this->container['its_realname'] = isset($data['its_realname']) ? $data['its_realname'] : null;
+        
         $this->container['its_uid'] = isset($data['its_uid']) ? $data['its_uid'] : null;
+        
         $this->container['its_nick'] = isset($data['its_nick']) ? $data['its_nick'] : null;
+        
         $this->container['seller_realname'] = isset($data['seller_realname']) ? $data['seller_realname'] : null;
+        
         $this->container['buyer_realname'] = isset($data['buyer_realname']) ? $data['buyer_realname'] : null;
+        
         $this->container['cancelable'] = isset($data['cancelable']) ? $data['cancelable'] : null;
+        
         $this->container['currency_type'] = isset($data['currency_type']) ? $data['currency_type'] : null;
+        
         $this->container['want_type'] = isset($data['want_type']) ? $data['want_type'] : null;
+        
         $this->container['hide_payment'] = isset($data['hide_payment']) ? $data['hide_payment'] : null;
+        
         $this->container['sel_paytype'] = isset($data['sel_paytype']) ? $data['sel_paytype'] : null;
+        
         $this->container['pay_others'] = isset($data['pay_others']) ? $data['pay_others'] : null;
+        
         $this->container['cd_time'] = isset($data['cd_time']) ? $data['cd_time'] : null;
+        
         $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        
         $this->container['order_tag'] = isset($data['order_tag']) ? $data['order_tag'] : null;
+        
         $this->container['convert_info'] = isset($data['convert_info']) ? $data['convert_info'] : null;
+        
     }
 
     /**
@@ -358,6 +403,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setTypeBuy($type_buy)
     {
+        
         $this->container['type_buy'] = $type_buy;
 
         return $this;
@@ -382,6 +428,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setTimest($timest)
     {
+        
         $this->container['timest'] = $timest;
 
         return $this;
@@ -406,6 +453,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setTimestExpire($timest_expire)
     {
+        
         $this->container['timest_expire'] = $timest_expire;
 
         return $this;
@@ -430,6 +478,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setTimestamp($timestamp)
     {
+        
         $this->container['timestamp'] = $timestamp;
 
         return $this;
@@ -454,6 +503,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setRate($rate)
     {
+        
         $this->container['rate'] = $rate;
 
         return $this;
@@ -478,6 +528,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setAmount($amount)
     {
+        
         $this->container['amount'] = $amount;
 
         return $this;
@@ -502,6 +553,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setTotal($total)
     {
+        
         $this->container['total'] = $total;
 
         return $this;
@@ -526,6 +578,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setTxid($txid)
     {
+        
         $this->container['txid'] = $txid;
 
         return $this;
@@ -550,6 +603,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setStatus($status)
     {
+        
         $this->container['status'] = $status;
 
         return $this;
@@ -574,6 +628,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setItsRealname($its_realname)
     {
+        
         $this->container['its_realname'] = $its_realname;
 
         return $this;
@@ -598,6 +653,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setItsUid($its_uid)
     {
+        
         $this->container['its_uid'] = $its_uid;
 
         return $this;
@@ -622,6 +678,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setItsNick($its_nick)
     {
+        
         $this->container['its_nick'] = $its_nick;
 
         return $this;
@@ -646,6 +703,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setSellerRealname($seller_realname)
     {
+        
         $this->container['seller_realname'] = $seller_realname;
 
         return $this;
@@ -670,6 +728,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setBuyerRealname($buyer_realname)
     {
+        
         $this->container['buyer_realname'] = $buyer_realname;
 
         return $this;
@@ -694,6 +753,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setCancelable($cancelable)
     {
+        
         $this->container['cancelable'] = $cancelable;
 
         return $this;
@@ -718,6 +778,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setCurrencyType($currency_type)
     {
+        
         $this->container['currency_type'] = $currency_type;
 
         return $this;
@@ -742,6 +803,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setWantType($want_type)
     {
+        
         $this->container['want_type'] = $want_type;
 
         return $this;
@@ -766,6 +828,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setHidePayment($hide_payment)
     {
+        
         $this->container['hide_payment'] = $hide_payment;
 
         return $this;
@@ -790,6 +853,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setSelPaytype($sel_paytype)
     {
+        
         $this->container['sel_paytype'] = $sel_paytype;
 
         return $this;
@@ -814,6 +878,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setPayOthers($pay_others)
     {
+        
         $this->container['pay_others'] = $pay_others;
 
         return $this;
@@ -838,6 +903,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setCdTime($cd_time)
     {
+        
         $this->container['cd_time'] = $cd_time;
 
         return $this;
@@ -862,6 +928,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setOrderType($order_type)
     {
+        
         $this->container['order_type'] = $order_type;
 
         return $this;
@@ -886,6 +953,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setOrderTag($order_tag)
     {
+        
         $this->container['order_tag'] = $order_tag;
 
         return $this;
@@ -910,6 +978,7 @@ class P2pTransactionListItem implements ModelInterface, ArrayAccess
      */
     public function setConvertInfo($convert_info)
     {
+        
         $this->container['convert_info'] = $convert_info;
 
         return $this;

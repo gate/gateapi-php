@@ -372,7 +372,7 @@ class WalletApi
     /**
      * Operation getDepositAddress
      *
-     * Generate currency deposit address
+     * Get a currency deposit address
      *
      * @param  string $currency Currency name (required)
      *
@@ -389,7 +389,7 @@ class WalletApi
     /**
      * Operation getDepositAddressWithHttpInfo
      *
-     * Generate currency deposit address
+     * Get a currency deposit address
      *
      * @param  string $currency Currency name (required)
      *
@@ -446,7 +446,7 @@ class WalletApi
     /**
      * Operation getDepositAddressAsync
      *
-     * Generate currency deposit address
+     * Get a currency deposit address
      *
      * @param  string $currency Currency name (required)
      *
@@ -466,7 +466,7 @@ class WalletApi
     /**
      * Operation getDepositAddressAsyncWithHttpInfo
      *
-     * Generate currency deposit address
+     * Get a currency deposit address
      *
      * @param  string $currency Currency name (required)
      *
@@ -3042,7 +3042,7 @@ class WalletApi
     /**
      * Operation listWithdrawStatus
      *
-     * Query withdrawal status
+     * Get currency withdrawal fees and limits, optionally filtered by currency.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -3061,7 +3061,7 @@ class WalletApi
     /**
      * Operation listWithdrawStatusWithHttpInfo
      *
-     * Query withdrawal status
+     * Get currency withdrawal fees and limits, optionally filtered by currency.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -3120,7 +3120,7 @@ class WalletApi
     /**
      * Operation listWithdrawStatusAsync
      *
-     * Query withdrawal status
+     * Get currency withdrawal fees and limits, optionally filtered by currency.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -3142,7 +3142,7 @@ class WalletApi
     /**
      * Operation listWithdrawStatusAsyncWithHttpInfo
      *
-     * Query withdrawal status
+     * Get currency withdrawal fees and limits, optionally filtered by currency.
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
@@ -5793,11 +5793,11 @@ class WalletApi
     /**
      * Operation listSmallBalanceHistory
      *
-     * Get convertible small balance currency history
+     * Get small-balance conversion history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency to convert (optional)
+     * @param  string $currency Filter by conversion currency. (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 (optional, default to 100)
      *
@@ -5814,11 +5814,11 @@ class WalletApi
     /**
      * Operation listSmallBalanceHistoryWithHttpInfo
      *
-     * Get convertible small balance currency history
+     * Get small-balance conversion history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency to convert (optional)
+     * @param  string $currency Filter by conversion currency. (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 (optional, default to 100)
      *
@@ -5875,11 +5875,11 @@ class WalletApi
     /**
      * Operation listSmallBalanceHistoryAsync
      *
-     * Get convertible small balance currency history
+     * Get small-balance conversion history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency to convert (optional)
+     * @param  string $currency Filter by conversion currency. (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 (optional, default to 100)
      *
@@ -5899,11 +5899,11 @@ class WalletApi
     /**
      * Operation listSmallBalanceHistoryAsyncWithHttpInfo
      *
-     * Get convertible small balance currency history
+     * Get small-balance conversion history
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency to convert (optional)
+     * @param  string $currency Filter by conversion currency. (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 (optional, default to 100)
      *
@@ -5958,7 +5958,7 @@ class WalletApi
      *
      * Note: the input parameter is an associative array with the keys listed as the parameter name below
      *
-     * @param  string $currency Currency to convert (optional)
+     * @param  string $currency Filter by conversion currency. (optional)
      * @param  int $page Page number (optional, default to 1)
      * @param  int $limit Maximum number of items returned. Default: 100, minimum: 1, maximum: 100 (optional, default to 100)
      *

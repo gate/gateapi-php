@@ -110,6 +110,27 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -231,17 +252,29 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        
         $this->container['record_id'] = isset($data['record_id']) ? $data['record_id'] : null;
+        
         $this->container['init_ltv'] = isset($data['init_ltv']) ? $data['init_ltv'] : null;
+        
         $this->container['before_ltv'] = isset($data['before_ltv']) ? $data['before_ltv'] : null;
+        
         $this->container['after_ltv'] = isset($data['after_ltv']) ? $data['after_ltv'] : null;
+        
         $this->container['borrow_time'] = isset($data['borrow_time']) ? $data['borrow_time'] : null;
+        
         $this->container['repay_time'] = isset($data['repay_time']) ? $data['repay_time'] : null;
+        
         $this->container['borrow_currencies'] = isset($data['borrow_currencies']) ? $data['borrow_currencies'] : null;
+        
         $this->container['collateral_currencies'] = isset($data['collateral_currencies']) ? $data['collateral_currencies'] : null;
+        
         $this->container['repaid_currencies'] = isset($data['repaid_currencies']) ? $data['repaid_currencies'] : null;
+        
         $this->container['total_interest_list'] = isset($data['total_interest_list']) ? $data['total_interest_list'] : null;
+        
         $this->container['left_repay_interest_list'] = isset($data['left_repay_interest_list']) ? $data['left_repay_interest_list'] : null;
+        
     }
 
     /**
@@ -287,6 +320,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setOrderId($order_id)
     {
+        
         $this->container['order_id'] = $order_id;
 
         return $this;
@@ -311,6 +345,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setRecordId($record_id)
     {
+        
         $this->container['record_id'] = $record_id;
 
         return $this;
@@ -335,6 +370,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setInitLtv($init_ltv)
     {
+        
         $this->container['init_ltv'] = $init_ltv;
 
         return $this;
@@ -359,6 +395,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setBeforeLtv($before_ltv)
     {
+        
         $this->container['before_ltv'] = $before_ltv;
 
         return $this;
@@ -383,6 +420,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setAfterLtv($after_ltv)
     {
+        
         $this->container['after_ltv'] = $after_ltv;
 
         return $this;
@@ -407,6 +445,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setBorrowTime($borrow_time)
     {
+        
         $this->container['borrow_time'] = $borrow_time;
 
         return $this;
@@ -431,6 +470,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setRepayTime($repay_time)
     {
+        
         $this->container['repay_time'] = $repay_time;
 
         return $this;
@@ -455,6 +495,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setBorrowCurrencies($borrow_currencies)
     {
+        
         $this->container['borrow_currencies'] = $borrow_currencies;
 
         return $this;
@@ -479,6 +520,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setCollateralCurrencies($collateral_currencies)
     {
+        
         $this->container['collateral_currencies'] = $collateral_currencies;
 
         return $this;
@@ -503,6 +545,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setRepaidCurrencies($repaid_currencies)
     {
+        
         $this->container['repaid_currencies'] = $repaid_currencies;
 
         return $this;
@@ -527,6 +570,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setTotalInterestList($total_interest_list)
     {
+        
         $this->container['total_interest_list'] = $total_interest_list;
 
         return $this;
@@ -551,6 +595,7 @@ class MultiRepayRecord implements ModelInterface, ArrayAccess
      */
     public function setLeftRepayInterestList($left_repay_interest_list)
     {
+        
         $this->container['left_repay_interest_list'] = $left_repay_interest_list;
 
         return $this;

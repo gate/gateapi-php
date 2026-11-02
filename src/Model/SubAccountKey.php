@@ -105,6 +105,27 @@ class SubAccountKey implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -220,15 +241,25 @@ class SubAccountKey implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        
         $this->container['mode'] = isset($data['mode']) ? $data['mode'] : null;
+        
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        
         $this->container['perms'] = isset($data['perms']) ? $data['perms'] : null;
+        
         $this->container['ip_whitelist'] = isset($data['ip_whitelist']) ? $data['ip_whitelist'] : null;
+        
         $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        
         $this->container['last_access'] = isset($data['last_access']) ? $data['last_access'] : null;
+        
     }
 
     /**
@@ -274,6 +305,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setUserId($user_id)
     {
+        
         $this->container['user_id'] = $user_id;
 
         return $this;
@@ -292,12 +324,13 @@ class SubAccountKey implements ModelInterface, ArrayAccess
     /**
      * Sets mode
      *
-     * @param int|null $mode Mode: 1 - classic 2 - portfolio account
+     * @param int|null $mode Account mode: 1 for a classic account; 2 for a unified account.
      *
      * @return $this
      */
     public function setMode($mode)
     {
+        
         $this->container['mode'] = $mode;
 
         return $this;
@@ -322,6 +355,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setName($name)
     {
+        
         $this->container['name'] = $name;
 
         return $this;
@@ -346,6 +380,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setPerms($perms)
     {
+        
         $this->container['perms'] = $perms;
 
         return $this;
@@ -370,6 +405,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setIpWhitelist($ip_whitelist)
     {
+        
         $this->container['ip_whitelist'] = $ip_whitelist;
 
         return $this;
@@ -394,6 +430,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setKey($key)
     {
+        
         $this->container['key'] = $key;
 
         return $this;
@@ -418,6 +455,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setState($state)
     {
+        
         $this->container['state'] = $state;
 
         return $this;
@@ -442,6 +480,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setCreatedAt($created_at)
     {
+        
         $this->container['created_at'] = $created_at;
 
         return $this;
@@ -466,6 +505,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setUpdatedAt($updated_at)
     {
+        
         $this->container['updated_at'] = $updated_at;
 
         return $this;
@@ -490,6 +530,7 @@ class SubAccountKey implements ModelInterface, ArrayAccess
      */
     public function setLastAccess($last_access)
     {
+        
         $this->container['last_access'] = $last_access;
 
         return $this;

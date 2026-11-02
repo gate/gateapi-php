@@ -93,6 +93,27 @@ class CrossexInterestRate implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -190,9 +211,13 @@ class CrossexInterestRate implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['coin'] = isset($data['coin']) ? $data['coin'] : null;
+        
         $this->container['exchange_type'] = isset($data['exchange_type']) ? $data['exchange_type'] : null;
+        
         $this->container['hour_interest_rate'] = isset($data['hour_interest_rate']) ? $data['hour_interest_rate'] : null;
+        
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
+        
     }
 
     /**
@@ -250,6 +275,7 @@ class CrossexInterestRate implements ModelInterface, ArrayAccess
      */
     public function setCoin($coin)
     {
+        
         $this->container['coin'] = $coin;
 
         return $this;
@@ -274,6 +300,7 @@ class CrossexInterestRate implements ModelInterface, ArrayAccess
      */
     public function setExchangeType($exchange_type)
     {
+        
         $this->container['exchange_type'] = $exchange_type;
 
         return $this;
@@ -298,6 +325,7 @@ class CrossexInterestRate implements ModelInterface, ArrayAccess
      */
     public function setHourInterestRate($hour_interest_rate)
     {
+        
         $this->container['hour_interest_rate'] = $hour_interest_rate;
 
         return $this;
@@ -322,6 +350,7 @@ class CrossexInterestRate implements ModelInterface, ArrayAccess
      */
     public function setTime($time)
     {
+        
         $this->container['time'] = $time;
 
         return $this;

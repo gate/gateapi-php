@@ -104,6 +104,27 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     }
 
     /**
+     * Required nullable properties need presence, not a non-null test.
+     * The existing container remains the single source of presence and value.
+     * Child declarations mask inherited flags in the same way as type mappings.
+     *
+     * @return bool[]
+     */
+    public static function openAPIRequiredNullable()
+    {
+        return [
+            
+        ];
+    }
+
+    /** Whether a required nullable property was explicitly set, including null. */
+    public function isRequiredNullableSet($property)
+    {
+        return isset(self::openAPIRequiredNullable()[$property])
+            && array_key_exists($property, $this->container);
+    }
+
+    /**
      * Array of attributes where the key is the local name,
      * and the value is the original name
      *
@@ -256,14 +277,23 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
     public function __construct(array $data = null)
     {
         $this->container['welfare_task_id'] = isset($data['welfare_task_id']) ? $data['welfare_task_id'] : null;
+        
         $this->container['task_center_id'] = isset($data['task_center_id']) ? $data['task_center_id'] : null;
+        
         $this->container['task_type'] = isset($data['task_type']) ? $data['task_type'] : null;
+        
         $this->container['task_name'] = isset($data['task_name']) ? $data['task_name'] : null;
+        
         $this->container['task_desc'] = isset($data['task_desc']) ? $data['task_desc'] : null;
+        
         $this->container['reward_num'] = isset($data['reward_num']) ? $data['reward_num'] : null;
+        
         $this->container['reward_unit'] = isset($data['reward_unit']) ? $data['reward_unit'] : null;
+        
         $this->container['prize_type'] = isset($data['prize_type']) ? $data['prize_type'] : null;
+        
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        
     }
 
     /**
@@ -279,7 +309,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
             $invalidProperties[] = "'task_center_id' can't be null";
         }
         $allowedValues = $this->getPrizeTypeAllowableValues();
-        if (!is_null($this->container['prize_type']) && !in_array($this->container['prize_type'], $allowedValues, true)) {
+        if ((isset($this->container['prize_type'])) && !in_array($this->container['prize_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'prize_type', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -290,7 +320,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
             $invalidProperties[] = "'status' can't be null";
         }
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ((isset($this->container['status'])) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -331,6 +361,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
      */
     public function setWelfareTaskId($welfare_task_id)
     {
+        
         $this->container['welfare_task_id'] = $welfare_task_id;
 
         return $this;
@@ -355,6 +386,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
      */
     public function setTaskCenterId($task_center_id)
     {
+        
         $this->container['task_center_id'] = $task_center_id;
 
         return $this;
@@ -379,6 +411,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
      */
     public function setTaskType($task_type)
     {
+        
         $this->container['task_type'] = $task_type;
 
         return $this;
@@ -403,6 +436,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
      */
     public function setTaskName($task_name)
     {
+        
         $this->container['task_name'] = $task_name;
 
         return $this;
@@ -427,6 +461,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
      */
     public function setTaskDesc($task_desc)
     {
+        
         $this->container['task_desc'] = $task_desc;
 
         return $this;
@@ -451,6 +486,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
      */
     public function setRewardNum($reward_num)
     {
+        
         $this->container['reward_num'] = $reward_num;
 
         return $this;
@@ -475,6 +511,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
      */
     public function setRewardUnit($reward_unit)
     {
+        
         $this->container['reward_unit'] = $reward_unit;
 
         return $this;
@@ -508,6 +545,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
                 )
             );
         }
+        
         $this->container['prize_type'] = $prize_type;
 
         return $this;
@@ -541,6 +579,7 @@ class ApiResponseExSkillGetBeginnerTaskListRespDataTasks implements ModelInterfa
                 )
             );
         }
+        
         $this->container['status'] = $status;
 
         return $this;
