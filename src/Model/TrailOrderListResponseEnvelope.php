@@ -333,7 +333,7 @@ class TrailOrderListResponseEnvelope implements ModelInterface, ArrayAccess
     /**
      * Sets timestamp
      *
-     * @param int|null $timestamp Response timestamp in microseconds.
+     * @param int|null $timestamp Response timestamp (milliseconds)
      *
      * @return $this
      */

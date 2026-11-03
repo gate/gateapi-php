@@ -17944,7 +17944,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \GateApi\Model\TrailOrderListResponse
+     * @return \GateApi\Model\TrailOrderListResponseEnvelope
      */
     public function stopAllTrailOrders($settle, $stop_all_trail_orders)
     {
@@ -17962,7 +17962,7 @@ class FuturesApi
      *
      * @throws \GateApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \GateApi\Model\TrailOrderListResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \GateApi\Model\TrailOrderListResponseEnvelope, HTTP status code, HTTP response headers (array of strings)
      */
     public function stopAllTrailOrdersWithHttpInfo($settle, $stop_all_trail_orders)
     {
@@ -17995,7 +17995,7 @@ class FuturesApi
             );
         }
 
-        $returnType = '\GateApi\Model\TrailOrderListResponse';
+        $returnType = '\GateApi\Model\TrailOrderListResponseEnvelope';
         $responseBody = $response->getBody();
         if ($returnType === '\SplFileObject') {
             $content = $responseBody; //stream goes to serializer
@@ -18044,7 +18044,7 @@ class FuturesApi
      */
     public function stopAllTrailOrdersAsyncWithHttpInfo($settle, $stop_all_trail_orders)
     {
-        $returnType = '\GateApi\Model\TrailOrderListResponse';
+        $returnType = '\GateApi\Model\TrailOrderListResponseEnvelope';
         $request = $this->stopAllTrailOrdersRequest($settle, $stop_all_trail_orders);
 
         return $this->client

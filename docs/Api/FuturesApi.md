@@ -3798,7 +3798,7 @@ Name | Type | Description  | Notes
 
 ## stopAllTrailOrders
 
-> \GateApi\Model\TrailOrderListResponse stopAllTrailOrders($settle, $stop_all_trail_orders)
+> \GateApi\Model\TrailOrderListResponseEnvelope stopAllTrailOrders($settle, $stop_all_trail_orders)
 
 Batch terminate trail orders
 
@@ -3842,7 +3842,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\GateApi\Model\TrailOrderListResponse**](../Model/TrailOrderListResponse.md)
+[**\GateApi\Model\TrailOrderListResponseEnvelope**](../Model/TrailOrderListResponseEnvelope.md)
 
 ### Authorization
 

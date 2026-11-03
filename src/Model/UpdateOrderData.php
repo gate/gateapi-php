@@ -251,6 +251,27 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
+        if ($this->container['symbol'] === null) {
+            $invalidProperties[] = "'symbol' can't be null";
+        }
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
+        if ($this->container['volume'] === null) {
+            $invalidProperties[] = "'volume' can't be null";
+        }
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
+        }
+        if ($this->container['price_tp'] === null) {
+            $invalidProperties[] = "'price_tp' can't be null";
+        }
+        if ($this->container['price_sl'] === null) {
+            $invalidProperties[] = "'price_sl' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -269,7 +290,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Gets order_id
      *
-     * @return int|null
+     * @return int
      */
     public function getOrderId()
     {
@@ -279,7 +300,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets order_id
      *
-     * @param int|null $order_id Order ID
+     * @param int $order_id Order ID
      *
      * @return $this
      */
@@ -294,7 +315,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Gets symbol
      *
-     * @return string|null
+     * @return string
      */
     public function getSymbol()
     {
@@ -304,7 +325,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Currency pair
+     * @param string $symbol Currency pair
      *
      * @return $this
      */
@@ -319,7 +340,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Gets state
      *
-     * @return string|null
+     * @return string
      */
     public function getState()
     {
@@ -329,7 +350,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param string|null $state Order status code
+     * @param string $state Order status code
      *
      * @return $this
      */
@@ -344,7 +365,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Gets volume
      *
-     * @return string|null
+     * @return string
      */
     public function getVolume()
     {
@@ -354,7 +375,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets volume
      *
-     * @param string|null $volume Order quantity
+     * @param string $volume Order quantity
      *
      * @return $this
      */
@@ -369,7 +390,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Gets price
      *
-     * @return string|null
+     * @return string
      */
     public function getPrice()
     {
@@ -379,7 +400,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param string|null $price Current price
+     * @param string $price Current price
      *
      * @return $this
      */
@@ -394,7 +415,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Gets price_tp
      *
-     * @return string|null
+     * @return string
      */
     public function getPriceTp()
     {
@@ -404,7 +425,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets price_tp
      *
-     * @param string|null $price_tp Current take profit price
+     * @param string $price_tp Current take profit price
      *
      * @return $this
      */
@@ -419,7 +440,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Gets price_sl
      *
-     * @return string|null
+     * @return string
      */
     public function getPriceSl()
     {
@@ -429,7 +450,7 @@ class UpdateOrderData implements ModelInterface, ArrayAccess
     /**
      * Sets price_sl
      *
-     * @param string|null $price_sl Current stop loss price
+     * @param string $price_sl Current stop loss price
      *
      * @return $this
      */
