@@ -58,8 +58,10 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'id' => 'int',
         'user' => 'int',
         'create_time' => 'double',
+        'create_time_us' => 'int',
         'update_time' => 'string',
         'finish_time' => 'string',
+        'finish_time_us' => 'int',
         'finish_as' => 'string',
         'status' => 'string',
         'contract' => 'string',
@@ -98,8 +100,10 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'id' => 'int64',
         'user' => null,
         'create_time' => 'double',
+        'create_time_us' => 'int64',
         'update_time' => null,
         'finish_time' => null,
+        'finish_time_us' => 'int64',
         'finish_as' => null,
         'status' => null,
         'contract' => null,
@@ -180,8 +184,10 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'id' => 'id',
         'user' => 'user',
         'create_time' => 'create_time',
+        'create_time_us' => 'create_time_us',
         'update_time' => 'update_time',
         'finish_time' => 'finish_time',
+        'finish_time_us' => 'finish_time_us',
         'finish_as' => 'finish_as',
         'status' => 'status',
         'contract' => 'contract',
@@ -220,8 +226,10 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'user' => 'setUser',
         'create_time' => 'setCreateTime',
+        'create_time_us' => 'setCreateTimeUs',
         'update_time' => 'setUpdateTime',
         'finish_time' => 'setFinishTime',
+        'finish_time_us' => 'setFinishTimeUs',
         'finish_as' => 'setFinishAs',
         'status' => 'setStatus',
         'contract' => 'setContract',
@@ -260,8 +268,10 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'user' => 'getUser',
         'create_time' => 'getCreateTime',
+        'create_time_us' => 'getCreateTimeUs',
         'update_time' => 'getUpdateTime',
         'finish_time' => 'getFinishTime',
+        'finish_time_us' => 'getFinishTimeUs',
         'finish_as' => 'getFinishAs',
         'status' => 'getStatus',
         'contract' => 'getContract',
@@ -454,9 +464,13 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
         
         $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
         
+        $this->container['create_time_us'] = isset($data['create_time_us']) ? $data['create_time_us'] : null;
+        
         $this->container['update_time'] = isset($data['update_time']) ? $data['update_time'] : null;
         
         $this->container['finish_time'] = isset($data['finish_time']) ? $data['finish_time'] : null;
+        
+        $this->container['finish_time_us'] = isset($data['finish_time_us']) ? $data['finish_time_us'] : null;
         
         $this->container['finish_as'] = isset($data['finish_as']) ? $data['finish_as'] : null;
         
@@ -663,6 +677,31 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets create_time_us
+     *
+     * @return int|null
+     */
+    public function getCreateTimeUs()
+    {
+        return $this->container['create_time_us'];
+    }
+
+    /**
+     * Sets create_time_us
+     *
+     * @param int|null $create_time_us Order creation time as a Unix timestamp in microseconds; omitted when unavailable
+     *
+     * @return $this
+     */
+    public function setCreateTimeUs($create_time_us)
+    {
+        
+        $this->container['create_time_us'] = $create_time_us;
+
+        return $this;
+    }
+
+    /**
      * Gets update_time
      *
      * @return string|null
@@ -708,6 +747,31 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
     {
         
         $this->container['finish_time'] = $finish_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets finish_time_us
+     *
+     * @return int|null
+     */
+    public function getFinishTimeUs()
+    {
+        return $this->container['finish_time_us'];
+    }
+
+    /**
+     * Sets finish_time_us
+     *
+     * @param int|null $finish_time_us Order finish time as a Unix timestamp in microseconds; omitted if the order has not finished or the timestamp is unavailable
+     *
+     * @return $this
+     */
+    public function setFinishTimeUs($finish_time_us)
+    {
+        
+        $this->container['finish_time_us'] = $finish_time_us;
 
         return $this;
     }
@@ -1492,7 +1556,7 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        return json_encode(
+        return ObjectSerializer::encodeJson(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -1505,7 +1569,7 @@ class FuturesOrderTimerange implements ModelInterface, ArrayAccess
      */
     public function toHeaderValue()
     {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

@@ -597,7 +597,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        return json_encode(
+        return ObjectSerializer::encodeJson(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -610,7 +610,7 @@ class QuoteResponse implements ModelInterface, ArrayAccess
      */
     public function toHeaderValue()
     {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

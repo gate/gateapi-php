@@ -56,7 +56,9 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'id' => 'int',
         'current' => 'double',
+        'current_us' => 'int',
         'update' => 'double',
+        'update_us' => 'int',
         'asks' => '\GateApi\Model\FuturesOrderBookItem[]',
         'bids' => '\GateApi\Model\FuturesOrderBookItem[]'
     ];
@@ -69,7 +71,9 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'id' => 'int64',
         'current' => 'double',
+        'current_us' => 'int64',
         'update' => 'double',
+        'update_us' => 'int64',
         'asks' => null,
         'bids' => null
     ];
@@ -124,7 +128,9 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'current' => 'current',
+        'current_us' => 'current_us',
         'update' => 'update',
+        'update_us' => 'update_us',
         'asks' => 'asks',
         'bids' => 'bids'
     ];
@@ -137,7 +143,9 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'current' => 'setCurrent',
+        'current_us' => 'setCurrentUs',
         'update' => 'setUpdate',
+        'update_us' => 'setUpdateUs',
         'asks' => 'setAsks',
         'bids' => 'setBids'
     ];
@@ -150,7 +158,9 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'current' => 'getCurrent',
+        'current_us' => 'getCurrentUs',
         'update' => 'getUpdate',
+        'update_us' => 'getUpdateUs',
         'asks' => 'getAsks',
         'bids' => 'getBids'
     ];
@@ -219,7 +229,11 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
         
         $this->container['current'] = isset($data['current']) ? $data['current'] : null;
         
+        $this->container['current_us'] = isset($data['current_us']) ? $data['current_us'] : null;
+        
         $this->container['update'] = isset($data['update']) ? $data['update'] : null;
+        
+        $this->container['update_us'] = isset($data['update_us']) ? $data['update_us'] : null;
         
         $this->container['asks'] = isset($data['asks']) ? $data['asks'] : null;
         
@@ -308,6 +322,31 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets current_us
+     *
+     * @return int|null
+     */
+    public function getCurrentUs()
+    {
+        return $this->container['current_us'];
+    }
+
+    /**
+     * Sets current_us
+     *
+     * @param int|null $current_us Response data timestamp in microseconds; omitted when unavailable
+     *
+     * @return $this
+     */
+    public function setCurrentUs($current_us)
+    {
+        
+        $this->container['current_us'] = $current_us;
+
+        return $this;
+    }
+
+    /**
      * Gets update
      *
      * @return double|null
@@ -328,6 +367,31 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
     {
         
         $this->container['update'] = $update;
+
+        return $this;
+    }
+
+    /**
+     * Gets update_us
+     *
+     * @return int|null
+     */
+    public function getUpdateUs()
+    {
+        return $this->container['update_us'];
+    }
+
+    /**
+     * Sets update_us
+     *
+     * @param int|null $update_us Order book update timestamp in microseconds; omitted when unavailable
+     *
+     * @return $this
+     */
+    public function setUpdateUs($update_us)
+    {
+        
+        $this->container['update_us'] = $update_us;
 
         return $this;
     }
@@ -442,7 +506,7 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        return json_encode(
+        return ObjectSerializer::encodeJson(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -455,7 +519,7 @@ class FuturesOrderBook implements ModelInterface, ArrayAccess
      */
     public function toHeaderValue()
     {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

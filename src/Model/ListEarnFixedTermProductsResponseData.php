@@ -347,7 +347,7 @@ class ListEarnFixedTermProductsResponseData implements ModelInterface, ArrayAcce
      */
     public function __toString()
     {
-        return json_encode(
+        return ObjectSerializer::encodeJson(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -360,7 +360,7 @@ class ListEarnFixedTermProductsResponseData implements ModelInterface, ArrayAcce
      */
     public function toHeaderValue()
     {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

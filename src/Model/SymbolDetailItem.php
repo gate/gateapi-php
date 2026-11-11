@@ -80,7 +80,14 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'trade_mode' => 'int',
         'order_fill_timing' => 'int',
         'symbol_descs' => '\GateApi\Model\SymbolDetailItemSymbolDescs[]',
-        'icon_link' => 'string'
+        'icon_link' => 'string',
+        'margin_mode' => 'int',
+        'long_im' => 'string',
+        'long_mm' => 'string',
+        'short_im' => 'string',
+        'short_mm' => 'string',
+        'long_borrowing_rate' => 'string',
+        'short_borrowing_rate' => 'string'
     ];
 
     /**
@@ -115,7 +122,14 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'trade_mode' => null,
         'order_fill_timing' => null,
         'symbol_descs' => null,
-        'icon_link' => null
+        'icon_link' => null,
+        'margin_mode' => null,
+        'long_im' => null,
+        'long_mm' => null,
+        'short_im' => null,
+        'short_mm' => null,
+        'long_borrowing_rate' => null,
+        'short_borrowing_rate' => null
     ];
 
     /**
@@ -192,7 +206,14 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'trade_mode' => 'trade_mode',
         'order_fill_timing' => 'order_fill_timing',
         'symbol_descs' => 'symbol_descs',
-        'icon_link' => 'icon_link'
+        'icon_link' => 'icon_link',
+        'margin_mode' => 'margin_mode',
+        'long_im' => 'long_im',
+        'long_mm' => 'long_mm',
+        'short_im' => 'short_im',
+        'short_mm' => 'short_mm',
+        'long_borrowing_rate' => 'long_borrowing_rate',
+        'short_borrowing_rate' => 'short_borrowing_rate'
     ];
 
     /**
@@ -227,7 +248,14 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'trade_mode' => 'setTradeMode',
         'order_fill_timing' => 'setOrderFillTiming',
         'symbol_descs' => 'setSymbolDescs',
-        'icon_link' => 'setIconLink'
+        'icon_link' => 'setIconLink',
+        'margin_mode' => 'setMarginMode',
+        'long_im' => 'setLongIm',
+        'long_mm' => 'setLongMm',
+        'short_im' => 'setShortIm',
+        'short_mm' => 'setShortMm',
+        'long_borrowing_rate' => 'setLongBorrowingRate',
+        'short_borrowing_rate' => 'setShortBorrowingRate'
     ];
 
     /**
@@ -262,7 +290,14 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         'trade_mode' => 'getTradeMode',
         'order_fill_timing' => 'getOrderFillTiming',
         'symbol_descs' => 'getSymbolDescs',
-        'icon_link' => 'getIconLink'
+        'icon_link' => 'getIconLink',
+        'margin_mode' => 'getMarginMode',
+        'long_im' => 'getLongIm',
+        'long_mm' => 'getLongMm',
+        'short_im' => 'getShortIm',
+        'short_mm' => 'getShortMm',
+        'long_borrowing_rate' => 'getLongBorrowingRate',
+        'short_borrowing_rate' => 'getShortBorrowingRate'
     ];
 
     /**
@@ -335,6 +370,10 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
     const ORDER_FILL_TIMING_1 = 1;
     const ORDER_FILL_TIMING_2 = 2;
     const ORDER_FILL_TIMING_3 = 3;
+    const MARGIN_MODE_0 = 0;
+    const MARGIN_MODE_1 = 1;
+    const MARGIN_MODE_2 = 2;
+    const MARGIN_MODE_3 = 3;
     
 
     
@@ -433,6 +472,21 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         ];
     }
     
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMarginModeAllowableValues()
+    {
+        return [
+            self::MARGIN_MODE_0,
+            self::MARGIN_MODE_1,
+            self::MARGIN_MODE_2,
+            self::MARGIN_MODE_3,
+        ];
+    }
+    
 
     /**
      * Associative array for storing property values
@@ -503,6 +557,20 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         
         $this->container['icon_link'] = isset($data['icon_link']) ? $data['icon_link'] : null;
         
+        $this->container['margin_mode'] = isset($data['margin_mode']) ? $data['margin_mode'] : null;
+        
+        $this->container['long_im'] = isset($data['long_im']) ? $data['long_im'] : null;
+        
+        $this->container['long_mm'] = isset($data['long_mm']) ? $data['long_mm'] : null;
+        
+        $this->container['short_im'] = isset($data['short_im']) ? $data['short_im'] : null;
+        
+        $this->container['short_mm'] = isset($data['short_mm']) ? $data['short_mm'] : null;
+        
+        $this->container['long_borrowing_rate'] = isset($data['long_borrowing_rate']) ? $data['long_borrowing_rate'] : null;
+        
+        $this->container['short_borrowing_rate'] = isset($data['short_borrowing_rate']) ? $data['short_borrowing_rate'] : null;
+        
     }
 
     /**
@@ -558,6 +626,14 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
         if ((isset($this->container['order_fill_timing'])) && !in_array($this->container['order_fill_timing'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'order_fill_timing', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMarginModeAllowableValues();
+        if ((isset($this->container['margin_mode'])) && !in_array($this->container['margin_mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'margin_mode', must be one of '%s'",
                 implode("', '", $allowedValues)
             );
         }
@@ -1305,6 +1381,190 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets margin_mode
+     *
+     * @return int|null
+     */
+    public function getMarginMode()
+    {
+        return $this->container['margin_mode'];
+    }
+
+    /**
+     * Sets margin_mode
+     *
+     * @param int|null $margin_mode Margin trading mode. - 0: Neither margin financing nor securities borrowing is supported. - 1: Margin financing is supported. - 2: Securities borrowing is supported. - 3: Both margin financing and securities borrowing are supported.
+     *
+     * @return $this
+     */
+    public function setMarginMode($margin_mode)
+    {
+        $allowedValues = $this->getMarginModeAllowableValues();
+        if (!is_null($margin_mode) && !in_array($margin_mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'margin_mode', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        
+        $this->container['margin_mode'] = $margin_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_im
+     *
+     * @return string|null
+     */
+    public function getLongIm()
+    {
+        return $this->container['long_im'];
+    }
+
+    /**
+     * Sets long_im
+     *
+     * @param string|null $long_im Initial margin ratio for long positions
+     *
+     * @return $this
+     */
+    public function setLongIm($long_im)
+    {
+        
+        $this->container['long_im'] = $long_im;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_mm
+     *
+     * @return string|null
+     */
+    public function getLongMm()
+    {
+        return $this->container['long_mm'];
+    }
+
+    /**
+     * Sets long_mm
+     *
+     * @param string|null $long_mm Maintenance margin ratio for long positions
+     *
+     * @return $this
+     */
+    public function setLongMm($long_mm)
+    {
+        
+        $this->container['long_mm'] = $long_mm;
+
+        return $this;
+    }
+
+    /**
+     * Gets short_im
+     *
+     * @return string|null
+     */
+    public function getShortIm()
+    {
+        return $this->container['short_im'];
+    }
+
+    /**
+     * Sets short_im
+     *
+     * @param string|null $short_im Initial margin ratio for short positions
+     *
+     * @return $this
+     */
+    public function setShortIm($short_im)
+    {
+        
+        $this->container['short_im'] = $short_im;
+
+        return $this;
+    }
+
+    /**
+     * Gets short_mm
+     *
+     * @return string|null
+     */
+    public function getShortMm()
+    {
+        return $this->container['short_mm'];
+    }
+
+    /**
+     * Sets short_mm
+     *
+     * @param string|null $short_mm Maintenance margin ratio for short positions
+     *
+     * @return $this
+     */
+    public function setShortMm($short_mm)
+    {
+        
+        $this->container['short_mm'] = $short_mm;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_borrowing_rate
+     *
+     * @return string|null
+     */
+    public function getLongBorrowingRate()
+    {
+        return $this->container['long_borrowing_rate'];
+    }
+
+    /**
+     * Sets long_borrowing_rate
+     *
+     * @param string|null $long_borrowing_rate Annual margin financing interest rate. An empty string indicates that no valid rate is currently available.
+     *
+     * @return $this
+     */
+    public function setLongBorrowingRate($long_borrowing_rate)
+    {
+        
+        $this->container['long_borrowing_rate'] = $long_borrowing_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets short_borrowing_rate
+     *
+     * @return string|null
+     */
+    public function getShortBorrowingRate()
+    {
+        return $this->container['short_borrowing_rate'];
+    }
+
+    /**
+     * Sets short_borrowing_rate
+     *
+     * @param string|null $short_borrowing_rate Annual securities borrowing interest rate. An empty string indicates that no valid rate is currently available.
+     *
+     * @return $this
+     */
+    public function setShortBorrowingRate($short_borrowing_rate)
+    {
+        
+        $this->container['short_borrowing_rate'] = $short_borrowing_rate;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -1366,7 +1626,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        return json_encode(
+        return ObjectSerializer::encodeJson(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -1379,7 +1639,7 @@ class SymbolDetailItem implements ModelInterface, ArrayAccess
      */
     public function toHeaderValue()
     {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

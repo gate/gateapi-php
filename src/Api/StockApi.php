@@ -346,7 +346,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -393,6 +393,253 @@ class StockApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation setStockMarginFeature
+     *
+     * Set margin financing availability
+     *
+     * @param  \GateApi\Model\TradFiSpotSetMarginFeatureRequest $trad_fi_spot_set_margin_feature_request trad_fi_spot_set_margin_feature_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\SetMarginFeature|\GateApi\Model\TradFiSpotError
+     */
+    public function setStockMarginFeature($trad_fi_spot_set_margin_feature_request)
+    {
+        list($response) = $this->setStockMarginFeatureWithHttpInfo($trad_fi_spot_set_margin_feature_request);
+        return $response;
+    }
+
+    /**
+     * Operation setStockMarginFeatureWithHttpInfo
+     *
+     * Set margin financing availability
+     *
+     * @param  \GateApi\Model\TradFiSpotSetMarginFeatureRequest $trad_fi_spot_set_margin_feature_request (required)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\SetMarginFeature|\GateApi\Model\TradFiSpotError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function setStockMarginFeatureWithHttpInfo($trad_fi_spot_set_margin_feature_request)
+    {
+        $request = $this->setStockMarginFeatureRequest($trad_fi_spot_set_margin_feature_request);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\SetMarginFeature';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation setStockMarginFeatureAsync
+     *
+     * Set margin financing availability
+     *
+     * @param  \GateApi\Model\TradFiSpotSetMarginFeatureRequest $trad_fi_spot_set_margin_feature_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setStockMarginFeatureAsync($trad_fi_spot_set_margin_feature_request)
+    {
+        return $this->setStockMarginFeatureAsyncWithHttpInfo($trad_fi_spot_set_margin_feature_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation setStockMarginFeatureAsyncWithHttpInfo
+     *
+     * Set margin financing availability
+     *
+     * @param  \GateApi\Model\TradFiSpotSetMarginFeatureRequest $trad_fi_spot_set_margin_feature_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function setStockMarginFeatureAsyncWithHttpInfo($trad_fi_spot_set_margin_feature_request)
+    {
+        $returnType = '\GateApi\Model\SetMarginFeature';
+        $request = $this->setStockMarginFeatureRequest($trad_fi_spot_set_margin_feature_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'setStockMarginFeature'
+     *
+     * @param  \GateApi\Model\TradFiSpotSetMarginFeatureRequest $trad_fi_spot_set_margin_feature_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function setStockMarginFeatureRequest($trad_fi_spot_set_margin_feature_request)
+    {
+        // verify the required parameter 'trad_fi_spot_set_margin_feature_request' is set
+        if ($trad_fi_spot_set_margin_feature_request === null || (is_array($trad_fi_spot_set_margin_feature_request) && count($trad_fi_spot_set_margin_feature_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $trad_fi_spot_set_margin_feature_request when calling setStockMarginFeature'
+            );
+        }
+
+        $resourcePath = '/stock/users/margin-feature';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // body params
+        $_tempBody = null;
+        if (isset($trad_fi_spot_set_margin_feature_request)) {
+            $_tempBody = $trad_fi_spot_set_margin_feature_request;
+        }
+
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            ['application/json']
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('PUT', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -695,7 +942,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1021,7 +1268,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1271,7 +1518,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1533,7 +1780,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -1780,7 +2027,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2013,7 +2260,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2402,7 +2649,322 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation queryStockOrderDeals
+     *
+     * Query order trade records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $order_id Order ID (required)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\OrderDealList|\GateApi\Model\TradFiSpotError
+     */
+    public function queryStockOrderDeals($associative_array)
+    {
+        list($response) = $this->queryStockOrderDealsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation queryStockOrderDealsWithHttpInfo
+     *
+     * Query order trade records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $order_id Order ID (required)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\OrderDealList|\GateApi\Model\TradFiSpotError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function queryStockOrderDealsWithHttpInfo($associative_array)
+    {
+        $request = $this->queryStockOrderDealsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\OrderDealList';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation queryStockOrderDealsAsync
+     *
+     * Query order trade records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $order_id Order ID (required)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryStockOrderDealsAsync($associative_array)
+    {
+        return $this->queryStockOrderDealsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation queryStockOrderDealsAsyncWithHttpInfo
+     *
+     * Query order trade records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $order_id Order ID (required)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryStockOrderDealsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\OrderDealList';
+        $request = $this->queryStockOrderDealsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'queryStockOrderDeals'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  int $order_id Order ID (required)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function queryStockOrderDealsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $order_id = array_key_exists('order_id', $associative_array) ? $associative_array['order_id'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
+
+        // verify the required parameter 'order_id' is set
+        if ($order_id === null || (is_array($order_id) && count($order_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling queryStockOrderDeals'
+            );
+        }
+        if ($page_size !== null && $page_size > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling StockApi.queryStockOrderDeals, must be smaller than or equal to 100.');
+        }
+
+
+        $resourcePath = '/stock/orders/deals';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($order_id !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($order_id) && true) {
+                foreach($order_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['order_id'] = $order_id;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page_size) && true) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2669,7 +3231,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -2922,7 +3484,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3247,7 +3809,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3494,7 +4056,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -3863,7 +4425,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4110,7 +4672,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4157,6 +4719,455 @@ class StockApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation queryStockBalanceRecords
+     *
+     * Query user balance records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type Record types, separated by commas (optional)
+     * @param  string $business Business identifiers, separated by commas (optional)
+     * @param  string $symbol Symbol (optional)
+     * @param  int $begin_time Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $end_time End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $start_id Starting primary key ID for incremental queries. Only records with a greater id are returned. (optional)
+     * @param  string $sort_direction Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. (optional)
+     * @param  bool $include_detail Whether to return the raw detail field; defaults to false when omitted (optional)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GateApi\Model\BalanceRecordList|\GateApi\Model\TradFiSpotError
+     */
+    public function queryStockBalanceRecords($associative_array)
+    {
+        list($response) = $this->queryStockBalanceRecordsWithHttpInfo($associative_array);
+        return $response;
+    }
+
+    /**
+     * Operation queryStockBalanceRecordsWithHttpInfo
+     *
+     * Query user balance records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type Record types, separated by commas (optional)
+     * @param  string $business Business identifiers, separated by commas (optional)
+     * @param  string $symbol Symbol (optional)
+     * @param  int $begin_time Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $end_time End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $start_id Starting primary key ID for incremental queries. Only records with a greater id are returned. (optional)
+     * @param  string $sort_direction Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. (optional)
+     * @param  bool $include_detail Whether to return the raw detail field; defaults to false when omitted (optional)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \GateApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GateApi\Model\BalanceRecordList|\GateApi\Model\TradFiSpotError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function queryStockBalanceRecordsWithHttpInfo($associative_array)
+    {
+        $request = $this->queryStockBalanceRecordsRequest($associative_array);
+
+        $options = $this->createHttpClientOption();
+        try {
+            $response = $this->client->send($request, $options);
+        } catch (ConnectException $e) {
+            // Guzzle 7 separates connection failures from RequestException; preserve SDK errors.
+            throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode());
+        } catch (RequestException $e) {
+            $responseBody = $e->getResponse() ? (string) $e->getResponse()->getBody() : null;
+            if ($responseBody != null) {
+                $gateError = json_decode($responseBody, true);
+                if ($gateError !== null && isset($gateError['label'])) {
+                    throw new GateApiException(
+                        $gateError,
+                        $e->getCode(),
+                        $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                        $responseBody
+                    );
+                }
+            }
+            throw new ApiException(
+                "[{$e->getCode()}] {$e->getMessage()}",
+                $e->getCode(),
+                $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                $responseBody
+            );
+        }
+
+        $returnType = '\GateApi\Model\BalanceRecordList';
+        $responseBody = $response->getBody();
+        if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+        } else {
+            $content = (string) $responseBody;
+        }
+
+        return [
+            ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
+    }
+
+    /**
+     * Operation queryStockBalanceRecordsAsync
+     *
+     * Query user balance records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type Record types, separated by commas (optional)
+     * @param  string $business Business identifiers, separated by commas (optional)
+     * @param  string $symbol Symbol (optional)
+     * @param  int $begin_time Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $end_time End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $start_id Starting primary key ID for incremental queries. Only records with a greater id are returned. (optional)
+     * @param  string $sort_direction Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. (optional)
+     * @param  bool $include_detail Whether to return the raw detail field; defaults to false when omitted (optional)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryStockBalanceRecordsAsync($associative_array)
+    {
+        return $this->queryStockBalanceRecordsAsyncWithHttpInfo($associative_array)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation queryStockBalanceRecordsAsyncWithHttpInfo
+     *
+     * Query user balance records
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type Record types, separated by commas (optional)
+     * @param  string $business Business identifiers, separated by commas (optional)
+     * @param  string $symbol Symbol (optional)
+     * @param  int $begin_time Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $end_time End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $start_id Starting primary key ID for incremental queries. Only records with a greater id are returned. (optional)
+     * @param  string $sort_direction Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. (optional)
+     * @param  bool $include_detail Whether to return the raw detail field; defaults to false when omitted (optional)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function queryStockBalanceRecordsAsyncWithHttpInfo($associative_array)
+    {
+        $returnType = '\GateApi\Model\BalanceRecordList';
+        $request = $this->queryStockBalanceRecordsRequest($associative_array);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = (string) $responseBody;
+                    }
+
+                    return [
+                        ObjectSerializer::deserializeResponse($content, $returnType, $response->getHeaders()),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    // A connection failure has no response in Guzzle 7.
+                    if ($exception instanceof ConnectException) {
+                        throw new ApiException("[{$exception->getCode()}] {$exception->getMessage()}", $exception->getCode());
+                    }
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'queryStockBalanceRecords'
+     *
+     * Note: the input parameter is an associative array with the keys listed as the parameter name below
+     *
+     * @param  string $type Record types, separated by commas (optional)
+     * @param  string $business Business identifiers, separated by commas (optional)
+     * @param  string $symbol Symbol (optional)
+     * @param  int $begin_time Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $end_time End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. (optional)
+     * @param  int $start_id Starting primary key ID for incremental queries. Only records with a greater id are returned. (optional)
+     * @param  string $sort_direction Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. (optional)
+     * @param  bool $include_detail Whether to return the raw detail field; defaults to false when omitted (optional)
+     * @param  int $page Page number, defaults to 1 (optional)
+     * @param  int $page_size Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function queryStockBalanceRecordsRequest($associative_array)
+    {
+        // unbox the parameters from the associative array
+        $type = array_key_exists('type', $associative_array) ? $associative_array['type'] : null;
+        $business = array_key_exists('business', $associative_array) ? $associative_array['business'] : null;
+        $symbol = array_key_exists('symbol', $associative_array) ? $associative_array['symbol'] : null;
+        $begin_time = array_key_exists('begin_time', $associative_array) ? $associative_array['begin_time'] : null;
+        $end_time = array_key_exists('end_time', $associative_array) ? $associative_array['end_time'] : null;
+        $start_id = array_key_exists('start_id', $associative_array) ? $associative_array['start_id'] : null;
+        $sort_direction = array_key_exists('sort_direction', $associative_array) ? $associative_array['sort_direction'] : null;
+        $include_detail = array_key_exists('include_detail', $associative_array) ? $associative_array['include_detail'] : null;
+        $page = array_key_exists('page', $associative_array) ? $associative_array['page'] : null;
+        $page_size = array_key_exists('page_size', $associative_array) ? $associative_array['page_size'] : null;
+
+        if ($page_size !== null && $page_size > 100) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling StockApi.queryStockBalanceRecords, must be smaller than or equal to 100.');
+        }
+
+
+        $resourcePath = '/stock/users/balance-records';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($type !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($type) && true) {
+                foreach($type as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['type'] = $type;
+            }
+        }
+
+        // query params
+        if ($business !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($business) && true) {
+                foreach($business as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['business'] = $business;
+            }
+        }
+
+        // query params
+        if ($symbol !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($symbol) && true) {
+                foreach($symbol as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['symbol'] = $symbol;
+            }
+        }
+
+        // query params
+        if ($begin_time !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($begin_time) && true) {
+                foreach($begin_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['begin_time'] = $begin_time;
+            }
+        }
+
+        // query params
+        if ($end_time !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($end_time) && true) {
+                foreach($end_time as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['end_time'] = $end_time;
+            }
+        }
+
+        // query params
+        if ($start_id !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($start_id) && true) {
+                foreach($start_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['start_id'] = $start_id;
+            }
+        }
+
+        // query params
+        if ($sort_direction !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($sort_direction) && true) {
+                foreach($sort_direction as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sort_direction'] = $sort_direction;
+            }
+        }
+
+        // query params
+        if ($include_detail !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($include_detail) && true) {
+                foreach($include_detail as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['include_detail'] = $include_detail;
+            }
+        }
+
+        // query params
+        if ($page !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page) && true) {
+                foreach($page as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page'] = $page;
+            }
+        }
+
+        // query params
+        if ($page_size !== null) {
+            // Exploded objects retain their property names; list indices must
+            // never replace the declared parameter's name.
+            if('form' === 'form' && is_array($page_size) && true) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['page_size'] = $page_size;
+            }
+        }
+
+        // body params
+        $_tempBody = null;
+
+        // Preserve content-type preference when multiple encodings are allowed,
+        // but do not rely on a file field to activate string-only multipart.
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            []
+        );
+        $multipart = $multipart || stripos($headers['Content-Type'], 'multipart/form-data') === 0;
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
+            } else {
+                $httpBody = $_tempBody;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+                $headers['Content-Type'] = 'multipart/form-data; boundary=' . $httpBody->getBoundary();
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Gate APIv4 authentication
+        $signHeaders = $this->config->buildSignHeaders('GET', $resourcePath, $queryParams, $httpBody);
+        $headers = array_merge($headers, $signHeaders);
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+        // Set default X-Gate-Size-Decimal header for futures API
+        $defaultHeaders['X-Gate-Size-Decimal'] = '1';
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        // PSR-7 2 uses the class API; query encoding and ordering stay unchanged.
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -4343,7 +5354,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }
@@ -4573,7 +5584,7 @@ class StockApi
         if (isset($_tempBody)) {
             // $_tempBody is the method argument, if present
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($_tempBody));
+                $httpBody = ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($_tempBody));
             } else {
                 $httpBody = $_tempBody;
             }

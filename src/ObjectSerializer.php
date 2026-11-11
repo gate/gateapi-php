@@ -62,7 +62,11 @@ class ObjectSerializer
      */
     public static function sanitizeForSerialization($data, $type = null, $format = null)
     {
-        if (is_scalar($data) || null === $data) {
+        if ($data instanceof JsonNumber) {
+            return $data;
+        } elseif (self::isExactNumberType($type) && strpos($type, '|') === false && $data !== null) {
+            return new JsonNumber($data);
+        } elseif (is_scalar($data) || null === $data) {
             return $data;
         } elseif ($data instanceof \DateTime) {
             return ($format === 'date') ? $data->format('Y-m-d') : $data->format(self::$dateTimeFormat);
@@ -112,6 +116,217 @@ class ObjectSerializer
         } else {
             return (string)$data;
         }
+    }
+
+    /** Exact numeric values are scalar tokens, not JSON strings or generic objects. */
+    private static function isExactNumberType($type): bool
+    {
+        if (!is_string($type)) {
+            return false;
+        }
+        foreach (explode('|', $type) as $alternative) {
+            if (ltrim(trim($alternative), '\\') === __NAMESPACE__ . '\\JsonNumber') {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Resolve the same model identities used by the existing recursive decoder. */
+    private static function normalizedClass(string $class): string
+    {
+        if (!class_exists($class) && strpos($class, '\\') === false) {
+            $candidate = '\\GateApi\\Model\\' . $class;
+            if (class_exists($candidate)) {
+                return $candidate;
+            }
+        }
+        return $class;
+    }
+
+    /** The visited set is local and bounded by the generated type graph, including cycles. */
+    private static function requiresExactNumbers(string $class, array &$seen): bool
+    {
+        if (self::isExactNumberType($class)) {
+            return true;
+        }
+        if (substr($class, -2) === '[]') {
+            return self::requiresExactNumbers(substr($class, 0, -2), $seen);
+        }
+        if (substr($class, 0, 4) === 'map[') {
+            $parts = explode(',', substr($class, 4, -1), 2);
+            return isset($parts[1]) && self::requiresExactNumbers(trim($parts[1]), $seen);
+        }
+        foreach (explode('|', $class) as $alternative) {
+            $alternative = self::normalizedClass(trim($alternative));
+            if (isset($seen[$alternative])) {
+                continue;
+            }
+            $seen[$alternative] = true;
+            if (is_callable([$alternative, 'openAPITypes'])) {
+                foreach ($alternative::openAPITypes() as $child) {
+                    if (self::requiresExactNumbers($child, $seen)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /** Look up one wire child without expanding recursive models or map keyspaces. */
+    private static function childType(string $class, $key): string
+    {
+        if (substr($class, -2) === '[]') {
+            return substr($class, 0, -2);
+        }
+        if (substr($class, 0, 4) === 'map[') {
+            $parts = explode(',', substr($class, 4, -1), 2);
+            return isset($parts[1]) ? trim($parts[1]) : '';
+        }
+        $matches = [];
+        foreach (explode('|', $class) as $alternative) {
+            $alternative = self::normalizedClass(trim($alternative));
+            if (!is_callable([$alternative, 'attributeMap']) || !is_callable([$alternative, 'openAPITypes'])) {
+                continue;
+            }
+            $types = $alternative::openAPITypes();
+            foreach ($alternative::attributeMap() as $property => $wireName) {
+                if ((string)$wireName === (string)$key && isset($types[$property])) {
+                    $matches[$types[$property]] = true;
+                }
+            }
+        }
+        if (count($matches) > 1) {
+            throw new \InvalidArgumentException('Ambiguous exact numeric union child.');
+        }
+        return $matches ? array_key_first($matches) : '';
+    }
+
+    /**
+     * Keep native strict validation and legacy values, then traverse raw leaves
+     * once. Only declared exact members are replaced; strings, plain numeric
+     * fields and unknown object subtrees retain their native representation.
+     */
+    private static function decodeJson(string $raw, string $class)
+    {
+        $data = json_decode($raw, false, 512, JSON_THROW_ON_ERROR);
+        $seen = [];
+        if (!self::requiresExactNumbers($class, $seen)) {
+            return $data;
+        }
+        if (!is_array($data) && !is_object($data)) {
+            return self::isExactNumberType($class) && $data !== null && (is_int($data) || is_float($data))
+                ? new JsonNumber(trim($raw)) : $data;
+        }
+        if (self::isExactNumberType($class) && strpos($class, '|') === false) {
+            throw new \InvalidArgumentException('Expected a scalar JSON number.');
+        }
+        $items = \JsonMachine\RecursiveItems::fromString($raw, [
+            'decoder' => new \JsonMachine\JsonDecoder\PassThruDecoder(),
+        ]);
+        $iterator = new \RecursiveIteratorIterator($items, \RecursiveIteratorIterator::SELF_FIRST);
+        $nodes = [];
+        $nodes[0] =& $data;
+        $types = [$class];
+        foreach ($iterator as $token) {
+            $depth = $iterator->getDepth();
+            if ($depth >= 512) {
+                throw new \InvalidArgumentException('JSON response exceeds the supported depth.');
+            }
+            $key = $iterator->getSubIterator($depth)->key();
+            // PassThruDecoder preserves object key tokens too; numeric array
+            // indices remain integers, so escaped/numeric object keys stay distinct.
+            if (is_string($key)) {
+                $key = json_decode($key, false, 512, JSON_THROW_ON_ERROR);
+            }
+            $child = self::childType($types[$depth] ?? '', $key);
+            unset($nodes[$depth + 1]);
+            if (is_array($nodes[$depth] ?? null) && array_key_exists($key, $nodes[$depth])) {
+                $nodes[$depth + 1] =& $nodes[$depth][$key];
+            } elseif (is_object($nodes[$depth] ?? null) && property_exists($nodes[$depth], (string)$key)) {
+                $nodes[$depth + 1] =& $nodes[$depth]->{$key};
+            } else {
+                // The final native tree owns duplicate-key last-wins behavior;
+                // do not recreate members from an earlier overwritten object.
+                $nodes[$depth + 1] = null;
+                $child = '';
+            }
+            $types[$depth + 1] = $child;
+            if (!self::isExactNumberType($child)) {
+                continue;
+            }
+            if ($token instanceof \JsonMachine\RecursiveItems) {
+                if (strpos($child, '|') === false) {
+                    // Mark invalid scalar shapes without losing last-wins
+                    // behavior if a later duplicate supplies a valid number.
+                    $nodes[$depth + 1] = new \stdClass();
+                }
+                continue;
+            }
+            $value = json_decode($token, false, 512, JSON_THROW_ON_ERROR);
+            $nodes[$depth + 1] = is_int($value) || is_float($value)
+                ? new JsonNumber($token) : $value;
+        }
+        return $data;
+    }
+
+    /** Encode sanitized DTOs through one boundary, retaining exact numeric tokens. */
+    public static function encodeJson($data, int $flags = 0): string
+    {
+        if (!self::containsJsonNumber($data, 0)) {
+            return json_encode($data, $flags | JSON_THROW_ON_ERROR);
+        }
+        return self::encodeExactJson($data, $flags, 0);
+    }
+
+    private static function containsJsonNumber($data, int $depth): bool
+    {
+        if ($depth >= 512) {
+            throw new \InvalidArgumentException('JSON value exceeds the supported depth.');
+        }
+        if ($data instanceof JsonNumber) {
+            return true;
+        }
+        if (is_array($data) || $data instanceof \stdClass) {
+            foreach ($data as $value) {
+                if (self::containsJsonNumber($value, $depth + 1)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /** The bounded encoder only handles already-sanitized arrays/stdClass/scalars. */
+    private static function encodeExactJson($data, int $flags, int $depth): string
+    {
+        if ($depth >= 512) {
+            throw new \InvalidArgumentException('JSON value exceeds the supported depth.');
+        }
+        if ($data instanceof JsonNumber) {
+            return (string)$data;
+        }
+        if (!is_array($data) && !($data instanceof \stdClass)) {
+            return json_encode($data, $flags | JSON_THROW_ON_ERROR);
+        }
+        $list = is_array($data) && ($data === [] || array_keys($data) === range(0, count($data) - 1))
+            && !($flags & JSON_FORCE_OBJECT);
+        $parts = [];
+        $pretty = (bool)($flags & JSON_PRETTY_PRINT);
+        foreach ($data as $key => $value) {
+            $prefix = $pretty ? str_repeat('    ', $depth + 1) : '';
+            if (!$list) {
+                // JSON object keys stay strings even when value encoding opts
+                // into JSON_NUMERIC_CHECK; converting keys produces invalid JSON.
+                $prefix .= json_encode((string)$key, ($flags & ~JSON_NUMERIC_CHECK) | JSON_THROW_ON_ERROR) . ($pretty ? ': ' : ':');
+            }
+            $parts[] = $prefix . self::encodeExactJson($value, $flags, $depth + 1);
+        }
+        $start = $list ? '[' : '{';
+        $end = $list ? ']' : '}';
+        return $parts ? $start . ($pretty ? "\n" : '') . implode($pretty ? ",\n" : ',', $parts)
+            . ($pretty ? "\n" . str_repeat('    ', $depth) : '') . $end : $start . $end;
     }
 
     /**
@@ -290,13 +505,22 @@ class ObjectSerializer
         // Decode transport JSON once. Recursive values are already decoded;
         // interpreting a nested scalar string as JSON would change its type.
         if ($isJson && is_string($data) && $class !== '\\SplFileObject' && $class !== 'string') {
+            $seen = [];
+            if (self::requiresExactNumbers($class, $seen)) {
+                $data = self::decodeJson($data, $class);
+            } else {
             $decoded = json_decode($data);
             if (json_last_error() === JSON_ERROR_NONE) {
                 $data = $decoded;
             }
+            }
         }
         if (null === $data) {
             return null;
+        } elseif (self::isExactNumberType($class) && $data instanceof JsonNumber) {
+            return $data;
+        } elseif (self::isExactNumberType($class) && strpos($class, '|') === false) {
+            throw new \InvalidArgumentException('Expected an exact JSON number token.');
         } elseif (strpos($class, '|') !== false) {
             // The source generator emits primitive unions without a model
             // wrapper; retain the decoded value rather than coercing precision.
@@ -430,7 +654,7 @@ class ObjectSerializer
                 return null;
             }
             // Invalid JSON is a decode error, never a successful empty model.
-            $data = json_decode($data, false, 512, JSON_THROW_ON_ERROR);
+            $data = self::decodeJson($data, $class);
         }
         return self::deserialize($data, $class, $httpHeaders, false);
     }

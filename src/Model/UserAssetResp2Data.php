@@ -57,13 +57,22 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'equity' => 'string',
         'balance' => 'string',
         'available' => 'string',
+        'loan_amount' => 'string',
+        'buy_power' => 'string',
+        'leverage' => 'string',
+        'leave_liquidity' => 'string',
+        'leave_liquidity_rate' => 'string',
+        'aee' => 'string',
+        'options_margin' => 'string',
         'position_market_value' => 'string',
         'position_pnl' => 'string',
         'today_pnl' => 'string',
         'option_position_market_value' => 'string',
         'option_position_pnl' => 'string',
         'option_today_pnl' => 'string',
-        'user_exists' => 'bool'
+        'user_exists' => 'bool',
+        'margin_enabled' => 'bool',
+        'long_borrowing_rate' => 'string'
     ];
 
     /**
@@ -75,13 +84,22 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'equity' => null,
         'balance' => null,
         'available' => null,
+        'loan_amount' => null,
+        'buy_power' => null,
+        'leverage' => null,
+        'leave_liquidity' => null,
+        'leave_liquidity_rate' => null,
+        'aee' => null,
+        'options_margin' => null,
         'position_market_value' => null,
         'position_pnl' => null,
         'today_pnl' => null,
         'option_position_market_value' => null,
         'option_position_pnl' => null,
         'option_today_pnl' => null,
-        'user_exists' => null
+        'user_exists' => null,
+        'margin_enabled' => null,
+        'long_borrowing_rate' => null
     ];
 
     /**
@@ -135,13 +153,22 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'equity' => 'equity',
         'balance' => 'balance',
         'available' => 'available',
+        'loan_amount' => 'loan_amount',
+        'buy_power' => 'buy_power',
+        'leverage' => 'leverage',
+        'leave_liquidity' => 'leave_liquidity',
+        'leave_liquidity_rate' => 'leave_liquidity_rate',
+        'aee' => 'aee',
+        'options_margin' => 'options_margin',
         'position_market_value' => 'position_market_value',
         'position_pnl' => 'position_pnl',
         'today_pnl' => 'today_pnl',
         'option_position_market_value' => 'option_position_market_value',
         'option_position_pnl' => 'option_position_pnl',
         'option_today_pnl' => 'option_today_pnl',
-        'user_exists' => 'user_exists'
+        'user_exists' => 'user_exists',
+        'margin_enabled' => 'margin_enabled',
+        'long_borrowing_rate' => 'long_borrowing_rate'
     ];
 
     /**
@@ -153,13 +180,22 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'equity' => 'setEquity',
         'balance' => 'setBalance',
         'available' => 'setAvailable',
+        'loan_amount' => 'setLoanAmount',
+        'buy_power' => 'setBuyPower',
+        'leverage' => 'setLeverage',
+        'leave_liquidity' => 'setLeaveLiquidity',
+        'leave_liquidity_rate' => 'setLeaveLiquidityRate',
+        'aee' => 'setAee',
+        'options_margin' => 'setOptionsMargin',
         'position_market_value' => 'setPositionMarketValue',
         'position_pnl' => 'setPositionPnl',
         'today_pnl' => 'setTodayPnl',
         'option_position_market_value' => 'setOptionPositionMarketValue',
         'option_position_pnl' => 'setOptionPositionPnl',
         'option_today_pnl' => 'setOptionTodayPnl',
-        'user_exists' => 'setUserExists'
+        'user_exists' => 'setUserExists',
+        'margin_enabled' => 'setMarginEnabled',
+        'long_borrowing_rate' => 'setLongBorrowingRate'
     ];
 
     /**
@@ -171,13 +207,22 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         'equity' => 'getEquity',
         'balance' => 'getBalance',
         'available' => 'getAvailable',
+        'loan_amount' => 'getLoanAmount',
+        'buy_power' => 'getBuyPower',
+        'leverage' => 'getLeverage',
+        'leave_liquidity' => 'getLeaveLiquidity',
+        'leave_liquidity_rate' => 'getLeaveLiquidityRate',
+        'aee' => 'getAee',
+        'options_margin' => 'getOptionsMargin',
         'position_market_value' => 'getPositionMarketValue',
         'position_pnl' => 'getPositionPnl',
         'today_pnl' => 'getTodayPnl',
         'option_position_market_value' => 'getOptionPositionMarketValue',
         'option_position_pnl' => 'getOptionPositionPnl',
         'option_today_pnl' => 'getOptionTodayPnl',
-        'user_exists' => 'getUserExists'
+        'user_exists' => 'getUserExists',
+        'margin_enabled' => 'getMarginEnabled',
+        'long_borrowing_rate' => 'getLongBorrowingRate'
     ];
 
     /**
@@ -246,6 +291,20 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         
         $this->container['available'] = isset($data['available']) ? $data['available'] : null;
         
+        $this->container['loan_amount'] = isset($data['loan_amount']) ? $data['loan_amount'] : null;
+        
+        $this->container['buy_power'] = isset($data['buy_power']) ? $data['buy_power'] : null;
+        
+        $this->container['leverage'] = isset($data['leverage']) ? $data['leverage'] : null;
+        
+        $this->container['leave_liquidity'] = isset($data['leave_liquidity']) ? $data['leave_liquidity'] : null;
+        
+        $this->container['leave_liquidity_rate'] = isset($data['leave_liquidity_rate']) ? $data['leave_liquidity_rate'] : null;
+        
+        $this->container['aee'] = isset($data['aee']) ? $data['aee'] : null;
+        
+        $this->container['options_margin'] = isset($data['options_margin']) ? $data['options_margin'] : null;
+        
         $this->container['position_market_value'] = isset($data['position_market_value']) ? $data['position_market_value'] : null;
         
         $this->container['position_pnl'] = isset($data['position_pnl']) ? $data['position_pnl'] : null;
@@ -259,6 +318,10 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
         $this->container['option_today_pnl'] = isset($data['option_today_pnl']) ? $data['option_today_pnl'] : null;
         
         $this->container['user_exists'] = isset($data['user_exists']) ? $data['user_exists'] : null;
+        
+        $this->container['margin_enabled'] = isset($data['margin_enabled']) ? $data['margin_enabled'] : null;
+        
+        $this->container['long_borrowing_rate'] = isset($data['long_borrowing_rate']) ? $data['long_borrowing_rate'] : null;
         
     }
 
@@ -357,6 +420,181 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
     {
         
         $this->container['available'] = $available;
+
+        return $this;
+    }
+
+    /**
+     * Gets loan_amount
+     *
+     * @return string|null
+     */
+    public function getLoanAmount()
+    {
+        return $this->container['loan_amount'];
+    }
+
+    /**
+     * Sets loan_amount
+     *
+     * @param string|null $loan_amount Loan amount. Non-negative: the absolute value of the original available balance when it is negative, otherwise 0.
+     *
+     * @return $this
+     */
+    public function setLoanAmount($loan_amount)
+    {
+        
+        $this->container['loan_amount'] = $loan_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets buy_power
+     *
+     * @return string|null
+     */
+    public function getBuyPower()
+    {
+        return $this->container['buy_power'];
+    }
+
+    /**
+     * Sets buy_power
+     *
+     * @param string|null $buy_power Buying power
+     *
+     * @return $this
+     */
+    public function setBuyPower($buy_power)
+    {
+        
+        $this->container['buy_power'] = $buy_power;
+
+        return $this;
+    }
+
+    /**
+     * Gets leverage
+     *
+     * @return string|null
+     */
+    public function getLeverage()
+    {
+        return $this->container['leverage'];
+    }
+
+    /**
+     * Sets leverage
+     *
+     * @param string|null $leverage Leverage
+     *
+     * @return $this
+     */
+    public function setLeverage($leverage)
+    {
+        
+        $this->container['leverage'] = $leverage;
+
+        return $this;
+    }
+
+    /**
+     * Gets leave_liquidity
+     *
+     * @return string|null
+     */
+    public function getLeaveLiquidity()
+    {
+        return $this->container['leave_liquidity'];
+    }
+
+    /**
+     * Sets leave_liquidity
+     *
+     * @param string|null $leave_liquidity Excess liquidity
+     *
+     * @return $this
+     */
+    public function setLeaveLiquidity($leave_liquidity)
+    {
+        
+        $this->container['leave_liquidity'] = $leave_liquidity;
+
+        return $this;
+    }
+
+    /**
+     * Gets leave_liquidity_rate
+     *
+     * @return string|null
+     */
+    public function getLeaveLiquidityRate()
+    {
+        return $this->container['leave_liquidity_rate'];
+    }
+
+    /**
+     * Sets leave_liquidity_rate
+     *
+     * @param string|null $leave_liquidity_rate Excess liquidity ratio
+     *
+     * @return $this
+     */
+    public function setLeaveLiquidityRate($leave_liquidity_rate)
+    {
+        
+        $this->container['leave_liquidity_rate'] = $leave_liquidity_rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets aee
+     *
+     * @return string|null
+     */
+    public function getAee()
+    {
+        return $this->container['aee'];
+    }
+
+    /**
+     * Sets aee
+     *
+     * @param string|null $aee Available Excess Equity (AEE)
+     *
+     * @return $this
+     */
+    public function setAee($aee)
+    {
+        
+        $this->container['aee'] = $aee;
+
+        return $this;
+    }
+
+    /**
+     * Gets options_margin
+     *
+     * @return string|null
+     */
+    public function getOptionsMargin()
+    {
+        return $this->container['options_margin'];
+    }
+
+    /**
+     * Sets options_margin
+     *
+     * @param string|null $options_margin Options margin
+     *
+     * @return $this
+     */
+    public function setOptionsMargin($options_margin)
+    {
+        
+        $this->container['options_margin'] = $options_margin;
 
         return $this;
     }
@@ -535,6 +773,56 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets margin_enabled
+     *
+     * @return bool|null
+     */
+    public function getMarginEnabled()
+    {
+        return $this->container['margin_enabled'];
+    }
+
+    /**
+     * Sets margin_enabled
+     *
+     * @param bool|null $margin_enabled Whether margin financing is enabled
+     *
+     * @return $this
+     */
+    public function setMarginEnabled($margin_enabled)
+    {
+        
+        $this->container['margin_enabled'] = $margin_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_borrowing_rate
+     *
+     * @return string|null
+     */
+    public function getLongBorrowingRate()
+    {
+        return $this->container['long_borrowing_rate'];
+    }
+
+    /**
+     * Sets long_borrowing_rate
+     *
+     * @param string|null $long_borrowing_rate Annual margin financing interest rate. An empty string indicates that no valid rate is currently available.
+     *
+     * @return $this
+     */
+    public function setLongBorrowingRate($long_borrowing_rate)
+    {
+        
+        $this->container['long_borrowing_rate'] = $long_borrowing_rate;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -596,7 +884,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function __toString()
     {
-        return json_encode(
+        return ObjectSerializer::encodeJson(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -609,7 +897,7 @@ class UserAssetResp2Data implements ModelInterface, ArrayAccess
      */
     public function toHeaderValue()
     {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

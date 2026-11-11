@@ -568,7 +568,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function __toString()
     {
-        return json_encode(
+        return ObjectSerializer::encodeJson(
             ObjectSerializer::sanitizeForSerialization($this),
             JSON_PRETTY_PRINT
         );
@@ -581,7 +581,7 @@ class OtcBankEnterpriseSupplementMultipartRequest implements ModelInterface, Arr
      */
     public function toHeaderValue()
     {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+        return ObjectSerializer::encodeJson(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**createFlashSwapOrder**](FlashSwapApi.md#createFlashSwapOrder) | **POST** /flash_swap/orders | Create a flash swap order
 [**getFlashSwapOrder**](FlashSwapApi.md#getFlashSwapOrder) | **GET** /flash_swap/orders/{order_id} | Query single flash swap order
 [**previewFlashSwapOrder**](FlashSwapApi.md#previewFlashSwapOrder) | **POST** /flash_swap/orders/preview | Flash swap order preview
+[**listFlashSwapCurrencyPairV1**](FlashSwapApi.md#listFlashSwapCurrencyPairV1) | **GET** /flash-swap/v1/currency-pair | List Flash Swap currency pairs
 [**createFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#createFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash_swap/multi-currency/many-to-one/order/create | Flash Swap - Multi-currency exchange - Place order (many-to-one)
 [**previewFlashSwapMultiCurrencyManyToOneOrder**](FlashSwapApi.md#previewFlashSwapMultiCurrencyManyToOneOrder) | **POST** /flash_swap/multi-currency/many-to-one/order/preview | Flash Swap - Multi-currency exchange - Preview (many-to-one)
 [**createFlashSwapOrderV1**](FlashSwapApi.md#createFlashSwapOrderV1) | **POST** /flash_swap/order/create | Flash Swap - Place order (one-to-one)
@@ -328,6 +329,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## listFlashSwapCurrencyPairV1
+
+> \GateApi\Model\FlashSwapV1CurrencyPairListResp listFlashSwapCurrencyPairV1($asset_name, $side, $x_gate_region)
+
+List Flash Swap currency pairs
+
+List available Flash Swap currency pairs and buy/sell amount limits for the specified currency and trading side
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\FlashSwapApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['asset_name'] = 'BTC'; // string | Currency name
+$associate_array['side'] = 1; // int | Trading side - `1`: Sell - `2`: Buy
+$associate_array['x_gate_region'] = 'x_gate_region_example'; // string | User region
+
+try {
+    $result = $apiInstance->listFlashSwapCurrencyPairV1($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling FlashSwapApi->listFlashSwapCurrencyPairV1: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asset_name** | **string**| Currency name |
+ **side** | **int**| Trading side - &#x60;1&#x60;: Sell - &#x60;2&#x60;: Buy |
+ **x_gate_region** | **string**| User region | [optional]
+
+### Return type
+
+[**\GateApi\Model\FlashSwapV1CurrencyPairListResp**](../Model/FlashSwapV1CurrencyPairListResp.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)

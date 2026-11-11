@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**queryStockUserAssets**](StockApi.md#queryStockUserAssets) | **GET** /stock/users/assets | Query user assets
+[**setStockMarginFeature**](StockApi.md#setStockMarginFeature) | **PUT** /stock/users/margin-feature | Set margin financing availability
 [**queryStockSymbols**](StockApi.md#queryStockSymbols) | **GET** /stock/symbols | Query symbol list
 [**queryStockSymbolDetail**](StockApi.md#queryStockSymbolDetail) | **GET** /stock/symbols/detail | Query symbol details
 [**queryStockOrderBook**](StockApi.md#queryStockOrderBook) | **GET** /stock/market/{symbol}/orderbook | Query market order book
@@ -12,12 +13,14 @@ Method | HTTP request | Description
 [**createStockOrder**](StockApi.md#createStockOrder) | **POST** /stock/orders | Create order
 [**deleteAllStockOrders**](StockApi.md#deleteAllStockOrders) | **DELETE** /stock/orders | Cancel all open orders
 [**queryStockOrderHistory**](StockApi.md#queryStockOrderHistory) | **GET** /stock/orders/history | Query historical order list
+[**queryStockOrderDeals**](StockApi.md#queryStockOrderDeals) | **GET** /stock/orders/deals | Query order trade records
 [**updateStockOrder**](StockApi.md#updateStockOrder) | **PUT** /stock/orders/{order_id} | Modify order
 [**deleteStockOrder**](StockApi.md#deleteStockOrder) | **DELETE** /stock/orders/{order_id} | Cancel order
 [**queryStockPositions**](StockApi.md#queryStockPositions) | **GET** /stock/positions | Query current position list
 [**closeStockPosition**](StockApi.md#closeStockPosition) | **POST** /stock/positions/close | Close position
 [**queryStockTransactions**](StockApi.md#queryStockTransactions) | **GET** /stock/transactions | Query transaction records
 [**createStockTransaction**](StockApi.md#createStockTransaction) | **POST** /stock/transactions | Fund transfer
+[**queryStockBalanceRecords**](StockApi.md#queryStockBalanceRecords) | **GET** /stock/users/balance-records | Query user balance records
 [**queryStockExchanges**](StockApi.md#queryStockExchanges) | **GET** /stock/exchanges | Query supported exchanges
 [**queryStockFeeRate**](StockApi.md#queryStockFeeRate) | **GET** /stock/fee-rate | Query fee rates for Japanese and Korean stocks
 
@@ -81,6 +84,68 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## setStockMarginFeature
+
+> \GateApi\Model\SetMarginFeature setStockMarginFeature($trad_fi_spot_set_margin_feature_request)
+
+Set margin financing availability
+
+Rate limit: 5 requests per second. Enable or disable margin financing for the user.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\StockApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$trad_fi_spot_set_margin_feature_request = new \GateApi\Model\TradFiSpotSetMarginFeatureRequest(); // \GateApi\Model\TradFiSpotSetMarginFeatureRequest | 
+
+try {
+    $result = $apiInstance->setStockMarginFeature($trad_fi_spot_set_margin_feature_request);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling StockApi->setStockMarginFeature: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **trad_fi_spot_set_margin_feature_request** | [**\GateApi\Model\TradFiSpotSetMarginFeatureRequest**](../Model/TradFiSpotSetMarginFeatureRequest.md)|  |
+
+### Return type
+
+[**\GateApi\Model\SetMarginFeature**](../Model/SetMarginFeature.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
@@ -540,6 +605,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## queryStockOrderDeals
+
+> \GateApi\Model\OrderDealList queryStockOrderDeals($order_id, $page, $page_size)
+
+Query order trade records
+
+Rate limit: 5 requests per second. Query the current user's trade records by order ID. `price`, `value`, and `fee` are denominated in the instrument trading currency (for example, USD for US stocks, HKD for Hong Kong stocks, JPY for Japanese stocks, and KRW for Korean stocks). `role` returns `maker` or `taker`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\StockApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['order_id'] = 123456; // int | Order ID
+$associate_array['page'] = 1; // int | Page number, defaults to 1
+$associate_array['page_size'] = 20; // int | Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+
+try {
+    $result = $apiInstance->queryStockOrderDeals($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling StockApi->queryStockOrderDeals: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **order_id** | **int**| Order ID |
+ **page** | **int**| Page number, defaults to 1 | [optional]
+ **page_size** | **int**| Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. | [optional]
+
+### Return type
+
+[**\GateApi\Model\OrderDealList**](../Model/OrderDealList.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## updateStockOrder
 
 > \GateApi\Model\UpdateOrder2 updateStockOrder($order_id, $trad_fi_spot_order_update_request)
@@ -927,6 +1060,88 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## queryStockBalanceRecords
+
+> \GateApi\Model\BalanceRecordList queryStockBalanceRecords($type, $business, $symbol, $begin_time, $end_time, $start_id, $sort_direction, $include_detail, $page, $page_size)
+
+Query user balance records
+
+Rate limit: 5 requests per second. Query the current user's raw balance records. User scope is derived from the request headers; a query parameter `user_id` is not supported. - `type` and `business` support multiple comma-separated values. - `begin_time` and `end_time` filter record creation time in seconds. When both are provided, `end_time` must be greater than `begin_time`. - Results are always sorted by primary key `id`; `sort_direction` accepts `asc` or `desc`. The default is `id desc`. With `start_id` and no `sort_direction`, the order is `id asc`, and only records with `id > start_id` are returned for incremental retrieval. - `detail` is omitted by default and returned only when `include_detail=true`. - `stock_change` is parsed from `detail.amount` for stock quantity records; `balance` is a cash balance snapshot, not a stock position balance.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Gate APIv4 authorization: apiv4
+$config = GateApi\Configuration::getDefaultConfiguration()->setKey('YOUR_API_KEY')->setSecret('YOUR_API_SECRET');
+
+
+$apiInstance = new GateApi\Api\StockApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$associate_array['type'] = 'deposit,fee'; // string | Record types, separated by commas
+$associate_array['business'] = 'transfer,trade'; // string | Business identifiers, separated by commas
+$associate_array['symbol'] = 'AAPL'; // string | Symbol
+$associate_array['begin_time'] = 1769378400; // int | Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+$associate_array['end_time'] = 1769464800; // int | End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time.
+$associate_array['start_id'] = 1000; // int | Starting primary key ID for incremental queries. Only records with a greater id are returned.
+$associate_array['sort_direction'] = 'desc'; // string | Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id.
+$associate_array['include_detail'] = false; // bool | Whether to return the raw detail field; defaults to false when omitted
+$associate_array['page'] = 1; // int | Page number, defaults to 1
+$associate_array['page_size'] = 20; // int | Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100.
+
+try {
+    $result = $apiInstance->queryStockBalanceRecords($associate_array);
+    print_r($result);
+} catch (GateApi\GateApiException $e) {
+    echo "Gate API Exception: label: {$e->getLabel()}, message: {$e->getMessage()}" . PHP_EOL;
+} catch (Exception $e) {
+    echo 'Exception when calling StockApi->queryStockBalanceRecords: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Note: the input parameter is an associative array with the keys listed as the parameter name below.
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| Record types, separated by commas | [optional]
+ **business** | **string**| Business identifiers, separated by commas | [optional]
+ **symbol** | **string**| Symbol | [optional]
+ **begin_time** | **int**| Start time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. | [optional]
+ **end_time** | **int**| End time (Unix timestamp in seconds). When both begin_time and end_time are provided, end_time must be greater than begin_time. | [optional]
+ **start_id** | **int**| Starting primary key ID for incremental queries. Only records with a greater id are returned. | [optional]
+ **sort_direction** | **string**| Sort direction by primary key id. - asc: Ascending. - desc: Descending. When omitted, defaults to desc without start_id, or asc with start_id. | [optional]
+ **include_detail** | **bool**| Whether to return the raw detail field; defaults to false when omitted | [optional]
+ **page** | **int**| Page number, defaults to 1 | [optional]
+ **page_size** | **int**| Records per page. Defaults to 10, maximum 100. The server caps values greater than 100 at 100. | [optional]
+
+### Return type
+
+[**\GateApi\Model\BalanceRecordList**](../Model/BalanceRecordList.md)
+
+### Authorization
+
+[apiv4](../../README.md#apiv4)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
